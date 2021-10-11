@@ -1,5 +1,5 @@
 {
-  "name": "Your service name",
+  "name": "Submit CORE logs for social housing sales and lettings",
   "env": {
     "USE_AUTH": {
       "description": "Enable or disable password protection on production.",

@@ -1,6 +1,6 @@
 {
-  "name": "govuk-prototype-rig",
-  "description": "Rapidly create HTML prototypes of GOV.UK services",
+  "name": "core-prototype",
+  "description": "Prototype for the ‘Submit CORE logs for social housing sales and lettings’ service",
   "version": "0.1.0",
   "private": true,
   "type": "module",
