@@ -1,0 +1,104 @@
+
+{% extends "base.njk" %}
+
+{% set title = "Social housing lettings" %}
+{% set showSupportInFooter = "false" %}
+
+{% block header %}
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [{
+      href: "https://www.gov.uk",
+      text: "Home"
+    }, {
+      href: "https://www.gov.uk/housing-local-and-community",
+      text: "Housing, local and community"
+    }, {
+      href: "https://www.gov.uk/housing-local-and-community/housing",
+      text: "Housing"
+    }, {
+      href: "https://www.gov.uk/housing-local-and-community/council-housing-association",
+      text: "Council housing and housing association"
+    }]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-8">
+    <span class="govuk-caption-xl">Collection</span>
+    {{ title }}
+  </h1>
+  <p class="govuk-body-l govuk-!-width-two-thirds govuk-!-margin-bottom-9">This collection brings together all documents relating to social housing lettings collected through the Continuous Recording (CORE) system.</p>
+  <dl class="gem-c-metadata">
+    <div class="govuk-!-width-two-thirds">
+      <dt class="gem-c-metadata__term">From:</dt>
+      <dd class="gem-c-metadata__definition"><a class="govuk-link" href="/government/organisations/department-for-levelling-up-housing-and-communities">Department for Levelling Up, Housing and Communities</a> and <a class="govuk-link" href="/government/organisations/ministry-of-housing-communities-and-local-government">Ministry of Housing, Communities &amp; Local Government</a></dd>
+      <dt class="gem-c-metadata__term">Published</dt>
+      <dd class="gem-c-metadata__definition">14 October 2013</dd>
+      <dt class="gem-c-metadata__term">Last updated</dt>
+      <dd class="gem-c-metadata__definition">31 March 2021 — <a class="gem-c-metadata__definition-link govuk-!-display-none-print" href="#">See all updates</a></dd>
+    </div>
+  </dl>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <p>The continuous recording of lettings and sales in social housing in England (referred to as CORE) is a national information source that records information on the characteristics of both private registered providers and local authority new social housing tenants and the homes they rent.</p>
+      <p>This collection provides all of the statistical information that the Ministry of Housing, Communities and Local Government produces on social housing lettings and includes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>trends in social housing lettings over time</li>
+        <li>characteristics of tenants with new social housing lettings</li>
+        <li>types of tenancy agreements</li>
+      </ul>
+      <p>Summary information about characteristics of the tenants and the properties are available in the annual statistical releases below.</p>
+
+      <div class="call-to-action">
+        <h3 class="govuk-heading-s">Submit CORE logs</h3>
+        <p>You can <a href="/">submit CORE logs for social housing sales and lettings</a></p>
+      </div>
+
+      <p>Guidance for local authorities as well as more information about the CORE return is available from <a href="https://www.gov.uk/government/publications/provision-of-social-lettings-data-advice-to-local-authorities">Provision of social lettings data: advice to local authorities</a>.</p>
+      <p>As well as CORE, information about social housing is available from other sources. Details about some of these different data sources which are used to generate the latest available data tables (live tables) can be found in <a href="https://www.gov.uk/guidance/rents-lettings-and-tenancies-data-notes-and-definitions-for-local-authorities-and-data-analysts">Rents, lettings and tenancy data</a>.</p>
+      <p>General information about <a href="https://www.gov.uk/council-housing">social housing</a> is also available.</p>
+
+      <div class="call-to-action">
+        <h3 class="govuk-heading-s">CORE data users</h3>
+        <p>If you would like to make a proposal to add or amend the information collected on CORE, or if you just want to know more about the review process, please read and complete this <a href="https://www.gov.uk/guidance/rents-lettings-and-tenancies-data-notes-and-definitions-for-local-authorities-and-data-analysts">change request form</a>.</p>
+      </div>
+
+      <h3 class="govuk-heading-s">CORE guidance and manuals</h3>
+      <p>Further guidance and manuals on a range of topics such as data dictionaries, statistical disclosure, the lettings and sales log and log changes can be found on the <a href="https://core.communities.gov.uk/public/GuidesAndManuals.html">CORE website</a>.</p>
+
+      <div class="call-to-action">
+        <h3 class="govuk-heading-s">Feedback</h3>
+        <p>We are interested in understanding more about how our data is used and the decisions they inform. This is important for us so we can provide a high quality service which meets users’ needs.</p>
+        <p>Please contact us with feedback at <a href="mailto:Housing.Statistics@communities.gov.uk">Housing.Statistics@communities.gov.uk</a>.</p>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      {{ appRelatedNavigation({
+        sections: [{
+          items: [{
+            text: "Social housing lettings in England, April to September 2020",
+            href: "#"
+          }, {
+            text: "Local authority average weekly rents in England: 2009 to 2010 final and provisional updates for 2010 to 2011",
+            href: "#"
+          }, {
+            text: "Local authority housing statistics for England: 2009 to 2010",
+            href: "#"
+          }, {
+            text: "Local authority average weekly rents in England: 2009 to 2010 final and provisional updates for 2010 to 2011",
+            href: "#"
+          }, {
+            text: "Local authority housing statistics: year ending March 2014",
+            href: "#"
+          }]
+        }]
+      }) }}
+    </div>
+  </div>
+{% endblock %}

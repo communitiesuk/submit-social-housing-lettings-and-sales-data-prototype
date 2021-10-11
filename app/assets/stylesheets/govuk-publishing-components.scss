@@ -1,0 +1,55 @@
+// Metadata
+.gem-c-metadata {
+  @include govuk-text-colour;
+  @include govuk-font(16);
+  @include govuk-clearfix;
+  border-top: 1px solid govuk-colour("mid-grey");
+  line-height: 1.4;
+  margin-bottom: govuk-spacing(3);
+  padding-top: govuk-spacing(4);
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: govuk-spacing(9);
+  }
+
+  .govuk-link {
+    font-weight: bold;
+  }
+
+  .gem-c-metadata__definition-link {
+    font-weight: normal;
+  }
+}
+
+.gem-c-metadata__term {
+  margin-top: govuk-spacing(2);
+
+  @include govuk-media-query($from: tablet) {
+    box-sizing: border-box;
+    clear: left;
+    float: left;
+    margin-top: 0;
+    padding-right: govuk-spacing(1);
+  }
+}
+
+.gem-c-metadata__definition {
+  margin: 0;
+
+  @include govuk-media-query($from: tablet) {
+    &:not(:last-of-type) {
+      margin-bottom: govuk-spacing(1);
+    }
+  }
+}
+
+// Call to action
+.call-to-action {
+  background-color: govuk-colour("light-grey");
+  margin: 2em 0;
+  padding: 2em;
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+}

@@ -9,4 +9,7 @@ $govuk-assets-path: "/govuk/assets/";
 // Import components
 @import "../app/components/all";
 
+// GOV.UK Publishing Components (used for prototyped pages that exist on GOV.UK)
+@import "./govuk-publishing-components";
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you

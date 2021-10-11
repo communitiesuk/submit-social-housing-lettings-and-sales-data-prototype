@@ -1,63 +1,45 @@
 {% extends "base.njk" %}
 
-{% set serviceName = "Prototype Rig" %}
-{% set title = "GOV.UK Prototype Rig" %}
-
-{% block pageTitle %}{{ title }}{% endblock %}
-
-{% block beforeContent %}{% endblock %}
+{% set title = serviceName %}
 
 {% block content %}
-  <h1 class="govuk-heading-xl">{{ title }}</h1>
+  <h1 class="govuk-heading-xl govuk-!-width-two-thirds">{{ title }}</h1>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <p class="govuk-body-l">Rapidly create prototypes of GOV.UK services<p>
-      <p>The Prototype Rig contains all you need to prototype anything from simple static pages to complex, data-driven transactions.</p>
+      <p>Use this service to submit new logs to the Department for Levelling Up, Housing and Communities (DLUHC). We’ll send you a confirmation email for each log you submit.</p>
+      <p>You can:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>create and submit individual logs</li>
+        <li>view logs and change answers</li>
+        <li>print a form</li>
+      </ul>
 
-      <h2 class="govuk-heading-m">About this project</h2>
-      <p>The Prototype Rig is a minimal and opinionated version of the <a href="https://govuk-prototype-kit.herokuapp.com/docs">GOV.UK Prototype Kit</a>. It is designed to be used by developers familiar with the Nunjucks templating language.</p>
-      <p>It drops support for legacy frameworks and undocumented features, and updates the underlying tooling. It also includes Nunjucks helpers that are useful when creating pages and flows.</p>
-      <p>You can <a href="https://github.com/paulrobertlloyd/govuk-prototype-rig#readme">read more about this project</a> on GitHub.</p>
+      {{ govukButton({
+        href: "/sign-in",
+        text: "Start now",
+        isStartButton: true
+      }) }}
+
+      <h2 class="govuk-heading-m">Before you start</h2>
+      <p>Use your existing account details to sign in.</p>
+      <p>If you’re a new user, your organisation’s CORE administrator will need to create an account for you. If you do not know who that is, <a href="https://digital.dclg.gov.uk/jira/servicedesk/customer/portal/4/group/21">contact the helpdesk</a>.</p>
+      <p>You can <a href="/guidance">read guidance on continuous recording of lettings and sales in social housing in England (CORE)</a>.</p>
     </div>
 
     <div class="govuk-grid-column-one-third">
       {{ appRelatedNavigation({
         sections: [{
-          title: "Example pages",
+          title: "Useful documents",
           items: [{
-            text: "Check answers page",
-            href: "/examples/check-answers"
-          }, {
-            text: "Confirmation page",
-            href: "/examples/confirmation"
-          }, {
-            text: "Content page",
-            href: "/examples/content"
-          }, {
-            text: "Question page",
-            href: "/examples/question"
-          }, {
-            text: "Start page on GOV.UK",
-            href: "/examples/start"
-          }, {
-            text: "Summary cards",
-            href: "/examples/summary-cards"
-          }, {
-            text: "Task list page",
-            href: "/examples/task-list"
-          }, {
-            text: "Validation errors",
-            href: "/examples/validation-errors"
+            href: "/public/files/paper-form-social-housing-letting.pdf",
+            text: "Download the 2020 to 2021 Lettings Log as a PDF (2MB)"
           }]
         }, {
-          title: "Elsewhere on the web",
+          title: "Help and support",
           items: [{
-            text: "GOV.UK Design System",
-            href: "https://design-system.service.gov.uk"
-          }, {
-            text: "GOV.UK Frontend",
-            href: "https://frontend.design-system.service.gov.uk"
+            href: "#",
+            text: "Get help with this service"
           }]
         }]
       }) }}
