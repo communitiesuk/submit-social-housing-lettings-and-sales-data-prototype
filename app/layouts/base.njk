@@ -65,13 +65,37 @@
 {% endblock %}
 
 {% block footer %}
+  {% set footerMetaHtml %}
+    {% if not showSupportInFooter %}
+      <h2 class="govuk-heading-m">Get help with this service</h2>
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Online helpdesk</h3>
+      <p class="govuk-body govuk-!-font-size-16"><a class="govuk-link govuk-footer__link" href="https://digital.dclg.gov.uk/jira/servicedesk/customer/portal/4/group/21" target="_blank">CORE helpdesk</a> (opens in a new tab)</p>
+
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Telephone</h3>
+      <ul class="govuk-list govuk-!-font-size-16">
+        <li>Telephone: 0333 202 5084</li>
+        <li>Monday to Friday, 9am to 5:30pm (except public holidays)</li>
+      </ul>
+
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Email</h3>
+      <ul class="govuk-list govuk-!-font-size-16">
+        <li><a class="govuk-link govuk-footer__link" href="mailto:mhclg.digital-services@communities.gov.uk?subject=CORE">mhclg.digital-services@communities.gov.uk</a></li>
+        <li>We aim to respond within 2 working days</li>
+      </ul>
+    {% endif %}
+
+    {% if useAutoStoreData %}
+      <h2 class="govuk-visually-hidden">Footer links</h2>
+      <ul class="govuk-footer__inline-list govuk-!-margin-top-6">
+        <li class="govuk-footer__inline-list-item">
+          <a class="govuk-footer__link" href="/clear-session-data">Clear session data</a>
+        </li>
+      </ul>
+    {% endif %}
+  {% endset %}
   {{ govukFooter({
     meta: {
-      items: [{
-        href: "/clear-session-data",
-        text: "Clear session data"
-      } if useAutoStoreData],
-      visuallyHiddenTitle: "Footer links"
+      html: footerMetaHtml
     }
   }) }}
 {% endblock %}
