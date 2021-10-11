@@ -47,7 +47,11 @@
     homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: "/",
-    containerClasses: "govuk-width-container"
+    containerClasses: "govuk-width-container",
+    navigation: [{
+      href: "/account/sign-out",
+      text: "Sign out"
+    }] if data.account
   }) }}
 {% endblock %}
 
