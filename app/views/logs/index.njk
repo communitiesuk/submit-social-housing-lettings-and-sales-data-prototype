@@ -1,0 +1,80 @@
+{% extends "base.njk" %}
+
+{% set title = "Your logs" %}
+
+{% set hasLogsInProgress = data.logs | selectattr("updated") | length > 0 %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl govuk-!-width-two-thirds">{{ title }}</h1>
+
+      {{ govukButton({
+        href: "#",
+        text: "Create a new log"
+      }) }}
+
+      {%- set incompleteRows = [] -%}
+      {% for log in data.logs | selectattr("updated") %}
+        {% set row = incompleteRows.push([{
+            html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
+          }, {
+            text: log.tenantCode
+          }, {
+            text: log.postCode
+          }, {
+            text: log.updated | govukDate
+          }])
+        %}
+      {% endfor %}
+
+      {{ govukTable({
+        caption: "Logs you need to complete",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: [{
+          text: "Log reference"
+        }, {
+          text: "Tenant code"
+        }, {
+          text: "Postcode"
+        }, {
+          text: "Last changed"
+        }],
+        rows: incompleteRows
+      }) if hasLogsInProgress }}
+
+      {%- set summittedRows = [] -%}
+      {%- for log in data.logs | selectattr("submitted") -%}
+        {%- set row = summittedRows.push([{
+            html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
+          }, {
+            text: log.tenantCode
+          }, {
+            text: log.postCode
+          }, {
+            text: log.submitted | govukDate
+          }])
+        -%}
+      {%- endfor -%}
+
+      {{ govukTable({
+        caption: "Logs you’ve submitted",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: [{
+          text: "Log reference"
+        }, {
+          text: "Tenant code"
+        }, {
+          text: "Postcode"
+        }, {
+          text: "Date submitted"
+        }],
+        rows: summittedRows
+      }) }}
+
+      <p><a href="#">See all completed logs ({{ data.logs | selectattr("submitted") | length }})</a></p>
+    </div>
+  </div>
+{% endblock %}

@@ -5,6 +5,20 @@ export default (env) => {
   const filters = {}
 
   /**
+   * Covert date to human readable value
+   *
+   * @example 2021-10-11 => 11 October 2021
+   *
+   * @param {String} string Date
+   * @return {String} Human readbable date
+   */
+  filters.govukDate = (s) => {
+    return new Date(s).toLocaleDateString('en-GB', {
+      year: 'numeric', month: 'long', day: 'numeric'
+    })
+  }
+
+  /**
    * Logs an object in the template to the console in the browser.
    *
    * @example {{ "hello world" | log }}

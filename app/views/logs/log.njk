@@ -1,0 +1,29 @@
+{% extends "base.njk" %}
+
+{% set title = "Log " + log.id %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    items: [{
+      href: "/logs"
+    }]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl govuk-!-width-two-thirds">{{ title }}</h1>
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">This log is incomplete</h2>
+      <p class="govuk-body govuk-!-margin-bottom-7">
+        You have completed 0 of {{ data.sections | length }} sections.<br>
+        Skip to next incomplete section: <a href="{{ nextSection(logId).href }}">{{ nextSection(logId).text }}</a>
+      </p>
+
+      {{ appTaskList({
+        disableSectionNumbering: true,
+        sections: taskListSections(log.id)
+      }) }}
+    </div>
+  </div>
+{% endblock %}
