@@ -1,0 +1,6 @@
+{% macro heading(heading, caption, size="l", headingLevel="1") %}
+<h{{ headingLevel }} class="govuk-heading-{{ size }}">
+  {% if caption %}<span class="govuk-caption-{{ size }}">{{ caption }}</span>{% endif %}
+  {{ heading }}
+</h{{ headingLevel }}>
+{% endmacro %}

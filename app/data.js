@@ -1,6 +1,8 @@
 import logs from './data/logs.js'
+import sections from './data/sections.js'
+import questions from './data/questions.js'
 
-export default {
+export default (async () => ({
   logs,
   groups: [{
     id: 'household',
@@ -18,32 +20,6 @@ export default {
     id: 'submission',
     title: 'Submission'
   }],
-  sections: [{
-    title: 'Household characteristics',
-    group: 'household'
-  }, {
-    title: 'Household situation',
-    group: 'household'
-  }, {
-    title: 'Household needs',
-    group: 'household'
-  }, {
-    title: 'Tenancy information',
-    group: 'tenancy'
-  }, {
-    title: 'Property information',
-    group: 'tenancy'
-  }, {
-    title: 'Income and benefits',
-    group: 'rent'
-  }, {
-    title: 'Rent',
-    group: 'rent'
-  }, {
-    title: 'Local authority',
-    group: 'local-authority'
-  }, {
-    title: 'Declaration',
-    group: 'submission'
-  }]
-}
+  sections,
+  questions: await questions()
+}))()

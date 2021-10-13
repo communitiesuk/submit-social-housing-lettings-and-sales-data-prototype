@@ -1,0 +1,16 @@
+{% extends "question.njk" %}
+
+{% set title = "What was the tenant’s housing situation immediately before this letting?" %}
+{% set backLink = referrer or logPath %}
+{% set formAction = referrer or sectionPath + "/previous-homelessness" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["housing-situation"]
+  }, ["logs", log.id, section.id, "previous-housing-situation"])) }}
+{% endblock %}

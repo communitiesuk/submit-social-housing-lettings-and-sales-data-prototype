@@ -1,10 +1,24 @@
-import _ from 'lodash'
+import { getEntryById } from './utils.js'
 
 /**
  * Global helper methods available for use in Nunjucks templates
  */
 export default (env) => {
   const globals = {}
+
+  const tagStatuses = {
+    notStarted: {
+      text: 'Not started',
+      colour: 'grey'
+    },
+    inProgress: {
+      text: 'In progress',
+      colour: 'blue'
+    },
+    completed: {
+      text: 'Completed'
+    }
+  }
 
   globals.nextSection = (logId) => ({
     text: 'Household characteristics',
@@ -13,18 +27,24 @@ export default (env) => {
 
   globals.taskListSections = function (logId) {
     const { logs, groups, sections } = this.ctx.data
-    const log = logs.find(log => log.id === logId)
 
     const taskListItem = (section) => {
-      const sectionId = _.kebabCase(section.title)
+      console.log('sectionData', logs[logId])
+
+      let status
+      if (logs[logId][section.id] === undefined) {
+        status = 'notStarted'
+      } else if (logs[logId][section.id]?.completed === 'true') {
+        status = 'completed'
+      } else {
+        status = 'inProgress'
+      }
+
       return {
-        id: sectionId,
+        id: section.id,
         text: section.title,
-        href: `/logs/${log.id}/${sectionId}`,
-        tag: {
-          text: log?.[sectionId]?.completed ? 'Completed' : 'Not started',
-          colour: log?.[sectionId]?.completed ? false : 'grey'
-        }
+        href: `/logs/${logId}/${section.id}`,
+        tag: tagStatuses[status]
       }
     }
 

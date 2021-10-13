@@ -1,0 +1,25 @@
+{% extends "form.njk" %}
+
+{% set title = "Check your answers" %}
+{% set backLink = logPath %}
+{% set formAction = logPath %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ macro.heading(title, caption) }}
+
+      {% block checkAnswers %}
+      {% endblock %}
+
+      {{ govukInput(decorate({
+        value: "true",
+        type: "hidden"
+      }, ["logs", log.id, section.id, "completed"])) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+    </div>
+  </div>
+{% endblock %}

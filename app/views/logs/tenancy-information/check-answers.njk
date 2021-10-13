@@ -1,0 +1,49 @@
+{% extends "check-answers.njk" %}
+
+{% block checkAnswers %}
+  {{ govukSummaryList({
+    rows: [{
+      key: {
+        text: "Tenacy start date"
+      },
+      value: {
+        text: log[section.id]["start-date"] | textFromInputValue(data.questions["date-full"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/start-date?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "tenacy start date"
+        }]
+      }
+    }, {
+      key: {
+        text: "Starter tenancy"
+      },
+      value: {
+        text: log[section.id]["is-starter"] | textFromInputValue(data.questions["yes-no"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/is-starter?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "if starter tenancy"
+        }]
+      }
+    }, {
+      key: {
+        text: "Tenancy type"
+      },
+      value: {
+        text: log[section.id]["tenancy-type"] | textFromInputValue(data.questions["tenancy-type"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/tenancy-type?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "tenancy-type"
+        }]
+      }
+    }]
+  }) }}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "form.njk" %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% block question %}
+      {% endblock %}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+    </div>
+  </div>
+{% endblock %}

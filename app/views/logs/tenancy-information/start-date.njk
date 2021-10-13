@@ -1,0 +1,19 @@
+{% extends "question.njk" %}
+
+{% set title = "What is the tenancy start date?" %}
+{% set backLink = referrer or logPath %}
+{% set formAction = referrer or sectionPath + "/is-starter" %}
+
+{% block question %}
+  {{ govukDateInput(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    hint: {
+      text: "For example, 12 11 2021"
+    },
+    items: data.questions["date-full"]
+  }, ["logs", log.id, section.id, "start-date"])) }}
+{% endblock %}

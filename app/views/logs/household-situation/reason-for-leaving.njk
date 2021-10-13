@@ -1,0 +1,29 @@
+{% extends "question.njk" %}
+
+{% set title = "Leaving their last settled home" %}
+{% set backLink = referrer or sectionPath + "/previous-homelessness" %}
+{% set formAction = referrer or sectionPath + "/check-answers" %}
+
+{% block question %}
+  {{ macro.heading(title, caption) }}
+
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "What is the tenant’s main reason for leaving?"
+      }
+    },
+    items: data.questions["reason-for-leaving"]
+  }, ["logs", log.id, section.id, "reason-for-leaving"])) }}
+
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Was the reason for leaving because of the benefit cap or removal of the spare room subsidy?"
+      }
+    },
+    items: data.questions["reason-for-leaving-benefit-cap"]
+  }, ["logs", log.id, section.id, "reason-for-leaving-benefit-cap"])) }}
+{% endblock %}

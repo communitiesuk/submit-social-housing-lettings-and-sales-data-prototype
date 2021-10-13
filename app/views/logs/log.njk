@@ -2,10 +2,13 @@
 
 {% set title = "Log " + log.id %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
     items: [{
-      href: "/logs"
+      href: "/logs",
+      text: "Logs"
+    }, {
+      text: title
     }]
   }) }}
 {% endblock %}
@@ -17,7 +20,7 @@
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">This log is incomplete</h2>
       <p class="govuk-body govuk-!-margin-bottom-7">
         You have completed 0 of {{ data.sections | length }} sections.<br>
-        Skip to next incomplete section: <a href="{{ nextSection(logId).href }}">{{ nextSection(logId).text }}</a>
+        Skip to next incomplete section: <a href="{{ nextSection(log.id).href }}">{{ nextSection(log.id).text }}</a>
       </p>
 
       {{ appTaskList({

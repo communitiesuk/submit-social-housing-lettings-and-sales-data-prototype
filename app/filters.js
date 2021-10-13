@@ -2,7 +2,46 @@
  * Filters available for use in Nunjucks templates
  */
 export default (env) => {
+  const nunjucksSafe = env.getFilter('safe')
   const filters = {}
+
+  /**
+   * Covert govukDateFromInput field values to human readable value
+   *
+   * @example { day: '12', month: '11', year: '2021' } => 12 October 2021
+   *
+   * @param {object} object Date
+   * @return {String} ISO 8601 date
+   */
+  filters.govukDateFromInput = (object) => {
+    if (!object) {
+      return
+    }
+
+    const date = Object.values(object).reverse().join('-')
+    return filters.govukDate(date)
+  }
+
+  /**
+   * Covert saved value to human readable text
+   *
+   * @example 'fixed-secure' => Fixed term – Secure
+   *
+   * @param {object} object Date
+   * @return {String} ISO 8601 date
+   */
+  filters.textFromInputValue = (value, questions) => {
+    if (!value) {
+      return nunjucksSafe('<span class="govuk-hint">You didn’t answer this question</span>')
+    }
+
+    if (value.month) {
+      return filters.govukDateFromInput(value)
+    }
+
+    const { text } = questions.find(question => question.value === value)
+    return text
+  }
 
   /**
    * Covert date to human readable value
@@ -27,8 +66,15 @@ export default (env) => {
    * @return {String} A script tag with a `console.log` call.
    */
   filters.log = (a) => {
-    const nunjucksSafe = env.getFilter('safe')
     return nunjucksSafe(`<script>console.log(${JSON.stringify(a, null, '\t')});</script>`)
+  }
+
+  filters.objectToArray = (object) => {
+    const objArray = []
+    Object.keys(object).forEach(key => objArray.push(
+      { ...{ id: key }, ...object[key] }
+    ))
+    return objArray
   }
 
   return filters

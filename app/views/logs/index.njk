@@ -2,7 +2,8 @@
 
 {% set title = "Your logs" %}
 
-{% set hasLogsInProgress = data.logs | selectattr("updated") | length > 0 %}
+{% set logsIncomplete = data.logs | objectToArray | selectattr("updated") %}
+{% set logsSubmitted = data.logs | objectToArray | selectattr("submitted") %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -15,7 +16,7 @@
       }) }}
 
       {%- set incompleteRows = [] -%}
-      {% for log in data.logs | selectattr("updated") %}
+      {% for log in logsIncomplete %}
         {% set row = incompleteRows.push([{
             html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
           }, {
@@ -42,10 +43,10 @@
           text: "Last changed"
         }],
         rows: incompleteRows
-      }) if hasLogsInProgress }}
+      }) if logsIncomplete }}
 
       {%- set summittedRows = [] -%}
-      {%- for log in data.logs | selectattr("submitted") -%}
+      {%- for log in logsSubmitted -%}
         {%- set row = summittedRows.push([{
             html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
           }, {
@@ -72,9 +73,9 @@
           text: "Date submitted"
         }],
         rows: summittedRows
-      }) }}
+      }) if logsSubmitted }}
 
-      <p><a href="#">See all completed logs ({{ data.logs | selectattr("submitted") | length }})</a></p>
+      <p><a href="#">See all completed logs ({{ logsSubmitted | length }})</a></p>
     </div>
   </div>
 {% endblock %}
