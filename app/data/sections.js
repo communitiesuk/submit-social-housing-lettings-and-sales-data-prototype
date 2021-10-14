@@ -51,7 +51,7 @@ export default [{
     `${sectionPath}/start-date`,
     `${sectionPath}/is-starter`,
     `${sectionPath}/tenancy-type`,
-    `${sectionPath}/check-answers`
+    `${sectionPath}/check-your-answers`
   ]
 }, {
   id: 'property-information',

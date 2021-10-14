@@ -56,12 +56,12 @@ router.get('/logs/:logId/:sectionId/:view?', (req, res) => {
   // Calculate back and next paths
   const paths = section.paths
     ? utils.nextAndBackPaths(section.paths(sectionPath), req)
-    : {}
+    : []
 
   res.render(`logs/${sectionId}/${view}`, {
     caption: section.title,
     log,
-    logPath: `/logs/${log.id}`,
+    logPath: `/logs/${logId}`,
     section,
     sectionPath,
     paths,
@@ -79,10 +79,12 @@ router.post('/logs/:logId/:sectionId/:view?', (req, res) => {
   // Calculate back and next paths
   const paths = section.paths
     ? utils.nextAndBackPaths(section.paths(sectionPath), req)
-    : {}
+    : []
 
   // Fork if next path is a fork
-  const fork = utils.nextForkPath(section.forks(sectionPath, sectionKeyPath), req)
+  const fork = section.forks
+    ? utils.nextForkPath(section.forks(sectionPath, sectionKeyPath), req)
+    : false
 
   fork ? res.redirect(fork) : res.redirect(paths.next)
 })
