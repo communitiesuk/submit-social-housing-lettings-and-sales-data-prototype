@@ -56,7 +56,13 @@ export default [{
 }, {
   id: 'property-information',
   title: 'Property information',
-  group: 'tenancy'
+  group: 'tenancy',
+  paths: (sectionPath) => [
+    `${sectionPath}/reference`,
+    `${sectionPath}/postcode`,
+    `${sectionPath}/local-authority-known`,
+    `${sectionPath}/local-authority`
+  ]
 }, {
   id: 'income-and-benefits',
   title: 'Income and benefits',

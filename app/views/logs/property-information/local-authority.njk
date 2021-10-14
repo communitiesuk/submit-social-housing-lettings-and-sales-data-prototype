@@ -1,0 +1,14 @@
+{% extends "question.njk" %}
+
+{% set title = "What is the Local Authority where is this property is located?" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["local-authorities"]
+  }, ["logs", log.id, section.id, "property-local-authority"])) }}
+{% endblock %}
