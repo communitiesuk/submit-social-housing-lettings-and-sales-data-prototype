@@ -51,14 +51,4 @@ router.get('/logs/:logId/:sectionId/:view?', (req, res) => {
   })
 })
 
-/**
- * Example route which validates a form submission
- */
-router.post('/examples/validation-errors', validations.exampleValidation, (req, res) => {
-  const errors = validator.validationResult(req)
-  res.render('examples/validation-errors', {
-    errors: errors.isEmpty() ? false : errors.mapped()
-  })
-})
-
 export default router
