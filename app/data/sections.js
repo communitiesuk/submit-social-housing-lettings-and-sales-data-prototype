@@ -1,16 +1,29 @@
 export default [{
   id: 'about-this-log',
   title: 'About this log',
-  paths: (sectionRoot) => [
-    `${sectionRoot}/gdpr`,
-    `${sectionRoot}/organisation`,
-    `${sectionRoot}/check-your-answers`
+  paths: (sectionPath) => [
+    `${sectionPath}/gdpr`,
+    `${sectionPath}/organisation`,
+    `${sectionPath}/sale-or-letting`,
+    `${sectionPath}/letting-renewal`,
+    `${sectionPath}/letting-start-date`,
+    `${sectionPath}/letting-type`,
+    `${sectionPath}/tenant-code`,
+    `${sectionPath}/check-your-answers`,
+    `${sectionPath}/sale-completion-date`,
+    `${sectionPath}/purchaser-code`,
+    `${sectionPath}/check-your-answers`
   ],
-  forks: (sectionRoot, keyPathRoot) => [{
-    currentPath: `${sectionRoot}/gdpr`,
-    forkPath: `${sectionRoot}/cannot-use-this-service`,
+  forks: (sectionPath, keyPathRoot) => [{
+    currentPath: `${sectionPath}/gdpr`,
+    forkPath: `${sectionPath}/cannot-use-this-service`,
     storedData: keyPathRoot.concat('gdpr'),
     values: ['false']
+  }, {
+    currentPath: `${sectionPath}/sale-or-letting`,
+    forkPath: `${sectionPath}/sale-completion-date`,
+    storedData: keyPathRoot.concat('sale-or-letting'),
+    values: ['sale']
   }]
 }, {
   id: 'household-characteristics',
@@ -20,11 +33,11 @@ export default [{
   id: 'household-situation',
   title: 'Household situation',
   group: 'household',
-  paths: (sectionRoot) => [
-    `${sectionRoot}/previous-housing-situation`,
-    `${sectionRoot}/previous-homelessness`,
-    `${sectionRoot}/reason-for-leaving`,
-    `${sectionRoot}/check-answers`
+  paths: (sectionPath) => [
+    `${sectionPath}/previous-housing-situation`,
+    `${sectionPath}/previous-homelessness`,
+    `${sectionPath}/reason-for-leaving`,
+    `${sectionPath}/check-your-answers`
   ]
 }, {
   id: 'household-needs',
@@ -34,11 +47,11 @@ export default [{
   id: 'tenancy-information',
   title: 'Tenancy information',
   group: 'tenancy',
-  paths: (sectionRoot) => [
-    `${sectionRoot}/start-date`,
-    `${sectionRoot}/is-starter`,
-    `${sectionRoot}/tenancy-type`,
-    `${sectionRoot}/check-answers`
+  paths: (sectionPath) => [
+    `${sectionPath}/start-date`,
+    `${sectionPath}/is-starter`,
+    `${sectionPath}/tenancy-type`,
+    `${sectionPath}/check-answers`
   ]
 }, {
   id: 'property-information',

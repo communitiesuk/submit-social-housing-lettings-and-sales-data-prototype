@@ -1,0 +1,14 @@
+{% extends "question.njk" %}
+
+{% set title = "Is this a sale or letting?" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["sale-or-letting"]
+  }, ["logs", log.id, section.id, "sale-or-letting"])) }}
+{% endblock %}

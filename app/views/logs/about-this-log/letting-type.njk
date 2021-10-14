@@ -1,0 +1,27 @@
+{% extends "question.njk" %}
+
+{% set title = "Tell us about this letting?" %}
+
+{% block question %}
+  {{ macro.heading(title, caption) }}
+
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Type of rent"
+      }
+    },
+    items: data.questions["letting-rent-type"]
+  }, ["logs", log.id, section.id, "letting-rent-type"])) }}
+
+    {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Type of need"
+      }
+    },
+    items: data.questions["letting-need-type"]
+  }, ["logs", log.id, section.id, "letting-need-type"])) }}
+{% endblock %}

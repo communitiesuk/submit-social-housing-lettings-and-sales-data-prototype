@@ -7,6 +7,16 @@ const router = express.Router()
 /**
  * Logs
  */
+router.get('/logs/new', (req, res) => {
+  const { logs } = req.session.data
+  const logId = utils.generateLogId()
+
+  // Create a new blank log in session data
+  logs[logId] = {}
+
+  res.redirect(`/logs/${logId}/about-this-log`)
+})
+
 router.get('/logs/:logId', (req, res) => {
   const { logId } = req.params
   const { logs } = req.session.data
@@ -41,11 +51,11 @@ router.get('/logs/:logId/:sectionId/:view?', (req, res) => {
 
   const log = utils.getEntryById(logs, logId)
   const section = utils.getById(sections, sectionId)
-  const sectionRoot = `/logs/${logId}/${sectionId}`
+  const sectionPath = `/logs/${logId}/${sectionId}`
 
   // Calculate back and next paths
   const paths = section.paths
-    ? utils.nextAndBackPaths(section.paths(sectionRoot), req)
+    ? utils.nextAndBackPaths(section.paths(sectionPath), req)
     : {}
 
   res.render(`logs/${sectionId}/${view}`, {
@@ -53,6 +63,7 @@ router.get('/logs/:logId/:sectionId/:view?', (req, res) => {
     log,
     logPath: `/logs/${log.id}`,
     section,
+    sectionPath,
     paths,
     referrer
   })
@@ -62,16 +73,16 @@ router.post('/logs/:logId/:sectionId/:view?', (req, res) => {
   const { logId, sectionId } = req.params
 
   const section = utils.getById(sections, sectionId)
-  const sectionRoot = `/logs/${logId}/${sectionId}`
+  const sectionPath = `/logs/${logId}/${sectionId}`
   const sectionKeyPath = `logs[${logId}][${sectionId}]`
 
   // Calculate back and next paths
   const paths = section.paths
-    ? utils.nextAndBackPaths(section.paths(sectionRoot), req)
+    ? utils.nextAndBackPaths(section.paths(sectionPath), req)
     : {}
 
   // Fork if next path is a fork
-  const fork = utils.nextForkPath(section.forks(sectionRoot, sectionKeyPath), req)
+  const fork = utils.nextForkPath(section.forks(sectionPath, sectionKeyPath), req)
 
   fork ? res.redirect(fork) : res.redirect(paths.next)
 })

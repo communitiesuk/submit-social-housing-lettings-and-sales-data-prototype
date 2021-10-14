@@ -1,5 +1,9 @@
 import _ from 'lodash'
 
+export const generateLogId = () => {
+  return (Number(new Date())).toString(36).slice(-5).toUpperCase()
+}
+
 export const getById = (items, id) => {
   return items.find(item => item.id === id)
 }

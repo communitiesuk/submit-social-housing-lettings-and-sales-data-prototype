@@ -1,0 +1,150 @@
+{% extends "check-answers.njk" %}
+
+{% set isLet = log[section.id]["sale-or-letting"] == "letting" %}
+{% set isSale = log[section.id]["sale-or-letting"] == "sale" %}
+
+{% block checkAnswers %}
+  {{ govukSummaryList({
+    rows: [{
+      key: {
+        text: "Owning organisation"
+      },
+      value: {
+        text: log[section.id]["organisation-owner"] | textFromInputValue(data.questions["organisation"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/organisation?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "owning organisation"
+        }]
+      }
+    }, {
+      key: {
+        text: "Managing organisation"
+      },
+      value: {
+        text: log[section.id]["organisation-manager"] | textFromInputValue(data.questions["organisation"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/organisation?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "managing organisation"
+        }]
+      }
+    }, {
+      key: {
+        text: "Sale or letting"
+      },
+      value: {
+        text: log[section.id]["sale-or-letting"] | textFromInputValue(data.questions["sale-or-letting"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/sale-or-letting?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "if sale or letting"
+        }]
+      }
+    }, {
+      key: {
+        text: "Renewal"
+      },
+      value: {
+        text: log[section.id]["letting-renewal"] | textFromInputValue(data.questions["yes-no"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/letting-renewal?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "if renewal"
+        }]
+      }
+    } if isLet, {
+      key: {
+        text: "Tenacy start date"
+      },
+      value: {
+        text: log[section.id]["letting-start-date"] | textFromInputValue(data.questions["date-full"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/letting-start-date?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "tenacy start date"
+        }]
+      }
+    } if isLet, {
+      key: {
+        text: "Type of rent"
+      },
+      value: {
+        text: log[section.id]["letting-rent-type"] | textFromInputValue(data.questions["letting-rent-type"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/letting-type?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "type of rent"
+        }]
+      }
+    } if isLet, {
+      key: {
+        text: "Type of need"
+      },
+      value: {
+        text: log[section.id]["letting-need-type"] | textFromInputValue(data.questions["letting-need-type"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/letting-type?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "type of need"
+        }]
+      }
+    } if isLet, {
+      key: {
+        text: "Tenant code"
+      },
+      value: {
+        text: log[section.id]["tenant-code"]
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/tenant-code?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "tenant code"
+        }]
+      }
+    } if isLet, {
+      key: {
+        text: "Sale completion date"
+      },
+      value: {
+        text: log[section.id]["sale-completion-date"] | textFromInputValue(data.questions["date-full"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/sale-completion-date?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "sale completion date"
+        }]
+      }
+    } if isSale, {
+      key: {
+        text: "Purchaser code"
+      },
+      value: {
+        text: log[section.id]["purchaser-code"]
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/purchaser-code?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "purchaser code"
+        }]
+      }
+    } if isSale]
+  }) }}
+{% endblock %}

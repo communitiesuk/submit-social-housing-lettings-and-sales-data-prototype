@@ -4,6 +4,6 @@ export default [{
   text: 'Organisation A',
   value: 'organisation-a'
 }, {
-  text: 'Organisation A',
-  value: 'organisation-a'
+  text: 'Organisation B',
+  value: 'organisation-b'
 }]
