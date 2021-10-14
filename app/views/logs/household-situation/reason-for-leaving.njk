@@ -1,8 +1,6 @@
 {% extends "question.njk" %}
 
 {% set title = "Leaving their last settled home" %}
-{% set backLink = referrer or sectionPath + "/previous-homelessness" %}
-{% set formAction = referrer or sectionPath + "/check-answers" %}
 
 {% block question %}
   {{ macro.heading(title, caption) }}

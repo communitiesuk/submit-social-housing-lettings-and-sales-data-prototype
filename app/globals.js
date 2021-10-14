@@ -1,4 +1,4 @@
-import { getEntryById } from './utils.js'
+import sections from './data/sections.js'
 
 /**
  * Global helper methods available for use in Nunjucks templates
@@ -26,11 +26,9 @@ export default (env) => {
   })
 
   globals.taskListSections = function (logId) {
-    const { logs, groups, sections } = this.ctx.data
+    const { logs, groups } = this.ctx.data
 
     const taskListItem = (section) => {
-      console.log('sectionData', logs[logId])
-
       let status
       if (logs[logId][section.id] === undefined) {
         status = 'notStarted'

@@ -1,5 +1,4 @@
 import logs from './data/logs.js'
-import sections from './data/sections.js'
 import questions from './data/questions.js'
 
 export default (async () => ({
@@ -20,6 +19,5 @@ export default (async () => ({
     id: 'submission',
     title: 'Submission'
   }],
-  sections,
   questions: await questions()
 }))()

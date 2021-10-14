@@ -1,0 +1,16 @@
+{% extends "base.njk" %}
+
+{% set title = "You cannot use this service" %}
+{% set backLink = referrer or paths.back %}
+{% set formAction = referrer or paths.next %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ macro.heading(title) }}
+
+      <p>We cannot accept data about a tenant or buyer who has not seen the official DLUHC GDPR notice.</p>
+      <p><a href="/logs">Go to the dashboard</a></p>
+    </div>
+  </div>
+{% endblock %}

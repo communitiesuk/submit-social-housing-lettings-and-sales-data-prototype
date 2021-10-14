@@ -1,8 +1,6 @@
 {% extends "question.njk" %}
 
 {% set title = "Is this a starter tenancy?" %}
-{% set backLink = referrer or sectionPath + "/start-date" %}
-{% set formAction = referrer or sectionPath + "/tenancy-type" %}
 
 {% block question %}
   {{ govukRadios(decorate({

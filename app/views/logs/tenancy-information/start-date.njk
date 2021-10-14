@@ -1,8 +1,6 @@
 {% extends "question.njk" %}
 
 {% set title = "What is the tenancy start date?" %}
-{% set backLink = referrer or logPath %}
-{% set formAction = referrer or sectionPath + "/is-starter" %}
 
 {% block question %}
   {{ govukDateInput(decorate({

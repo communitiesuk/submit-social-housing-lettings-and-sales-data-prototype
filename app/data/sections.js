@@ -1,4 +1,18 @@
 export default [{
+  id: 'about-this-log',
+  title: 'About this log',
+  paths: (sectionRoot) => [
+    `${sectionRoot}/gdpr`,
+    `${sectionRoot}/organisation`,
+    `${sectionRoot}/check-your-answers`
+  ],
+  forks: (sectionRoot, keyPathRoot) => [{
+    currentPath: `${sectionRoot}/gdpr`,
+    forkPath: `${sectionRoot}/cannot-use-this-service`,
+    storedData: keyPathRoot.concat('gdpr'),
+    values: ['false']
+  }]
+}, {
   id: 'household-characteristics',
   title: 'Household characteristics',
   group: 'household'
@@ -6,7 +20,12 @@ export default [{
   id: 'household-situation',
   title: 'Household situation',
   group: 'household',
-  firstQuestion: 'previous-housing-situation'
+  paths: (sectionRoot) => [
+    `${sectionRoot}/previous-housing-situation`,
+    `${sectionRoot}/previous-homelessness`,
+    `${sectionRoot}/reason-for-leaving`,
+    `${sectionRoot}/check-answers`
+  ]
 }, {
   id: 'household-needs',
   title: 'Household needs',
@@ -15,7 +34,12 @@ export default [{
   id: 'tenancy-information',
   title: 'Tenancy information',
   group: 'tenancy',
-  firstQuestion: 'start-date'
+  paths: (sectionRoot) => [
+    `${sectionRoot}/start-date`,
+    `${sectionRoot}/is-starter`,
+    `${sectionRoot}/tenancy-type`,
+    `${sectionRoot}/check-answers`
+  ]
 }, {
   id: 'property-information',
   title: 'Property information',

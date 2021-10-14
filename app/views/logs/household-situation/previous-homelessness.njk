@@ -1,8 +1,6 @@
 {% extends "question.njk" %}
 
 {% set title = "Did the tenant experience homelessness immediately before this letting?" %}
-{% set backLink = referrer or sectionPath + "/previous-housing-situation" %}
-{% set formAction = referrer or sectionPath + "/reason-for-leaving" %}
 
 {% block question %}
   {{ govukRadios(decorate({

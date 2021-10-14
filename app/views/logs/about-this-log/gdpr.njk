@@ -1,6 +1,6 @@
 {% extends "question.njk" %}
 
-{% set title = "What is the type of tenancy after the starter period has ended?" %}
+{% set title = "Has the tenant seen the GDPR notice?" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -9,6 +9,6 @@
         text: macro.heading(title, caption)
       }
     },
-    items: data.questions["tenancy-type"]
-  }, ["logs", log.id, section.id, "tenancy-type"])) }}
+    items: data.questions["yes-no"]
+  }, ["logs", log.id, section.id, "gdpr"])) }}
 {% endblock %}

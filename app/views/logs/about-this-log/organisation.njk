@@ -1,0 +1,23 @@
+{% extends "question.njk" %}
+
+{% set title = "[Organisation]" %}
+
+{% block question %}
+  {{ macro.heading(title, caption) }}
+
+  {{ govukSelect(decorate({
+    label: {
+      classes: "govuk-label--m",
+      text: "Which organisation owns this property?"
+    },
+    items: data.questions["organisation"]
+  }, ["logs", log.id, section.id, "organisation-owner"])) }}
+
+  {{ govukSelect(decorate({
+    label: {
+      classes: "govuk-label--m",
+      text: "Which organisation manages this property?"
+    },
+    items: data.questions["organisation"]
+  }, ["logs", log.id, section.id, "organisation-manager"])) }}
+{% endblock %}
