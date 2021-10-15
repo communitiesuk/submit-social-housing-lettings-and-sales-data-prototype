@@ -1,0 +1,14 @@
+{% extends "question.njk" %}
+
+{% set title = "Why was the property relet to the exiting tenant?" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["reason-for-vacancy-relet"]
+  }, ["logs", log.id, section.id, "reason-for-relet"])) }}
+{% endblock %}

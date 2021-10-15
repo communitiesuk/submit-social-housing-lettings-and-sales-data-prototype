@@ -1,0 +1,14 @@
+{% extends "question.njk" %}
+
+{% set title = "Which type was the property most recently let as?" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["recent-relet-type"]
+  }, ["logs", log.id, section.id, "property-recent-relet-type"])) }}
+{% endblock %}
