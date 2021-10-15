@@ -1,0 +1,11 @@
+{% extends "question.njk" %}
+
+{% set title = "Why don’t you know either the postcode or the Local Authority?" %}
+
+{% block question %}
+  {{ govukTextarea(decorate({
+    label: {
+      text: macro.heading(title, caption)
+    }
+  }, ["logs", log.id, section.id, "why-dont-you-know-postcode-or-la"])) }}
+{% endblock %}
