@@ -61,8 +61,37 @@ export default [{
     `${sectionPath}/reference`,
     `${sectionPath}/postcode`,
     `${sectionPath}/local-authority-known`,
-    `${sectionPath}/local-authority`
-  ]
+    `${sectionPath}/local-authority`,
+    `${sectionPath}/why-dont-you-know-postcode-or-la`,
+    `${sectionPath}/is-property-relet`,
+    `${sectionPath}/recent-relet-type`,
+    `${sectionPath}/reason-for-vacancy`, 
+    `${sectionPath}/reason-for-vacancy-relet`,
+    `${sectionPath}/reason-for-vacancy-moved`,
+    `${sectionPath}/reason-for-vacancy-evicted`,
+    `${sectionPath}/type-of-unit`
+  ],
+  forks: (sectionPath, keyPathRoot) => [{
+    currentPath: `${sectionPath}/reason-for-vacancy`,
+    forkPath: `${sectionPath}/reason-for-vacancy-relet`,
+    storedData: keyPathRoot.concat('reason-for-vacancy'),
+    values: ['relet']
+  }, {
+    currentPath: `${sectionPath}/reason-for-vacancy`,
+    forkPath: `${sectionPath}/reason-for-vacancy-moved`,
+    storedData: keyPathRoot.concat('reason-for-vacancy'),
+    values: ['moved']
+  }, {
+    currentPath: `${sectionPath}/reason-for-vacancy`,
+    forkPath: `${sectionPath}/reason-for-vacancy-evicted`,
+    storedData: keyPathRoot.concat('reason-for-vacancy'),
+    values: ['evicted']
+  }, {
+    currentPath: `${sectionPath}/reason-for-vacancy`,
+    forkPath: `${sectionPath}/type-of-unit`,
+    storedData: keyPathRoot.concat('reason-for-vacancy'),
+    values: ['died']
+  }]
 }, {
   id: 'income-and-benefits',
   title: 'Income and benefits',
