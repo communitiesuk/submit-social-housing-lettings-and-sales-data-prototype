@@ -1,5 +1,66 @@
 {% extends "check-answers.njk" %}
 
+{% set postcodeKnown = log[section.id]["postcode-known"] == "true" %}
+{% set laKnown = log[section.id]["local-authority-known"] == "true" %}
+
 {% block checkAnswers %}
-  <p><mark>To do</mark></p>
+  {{ govukSummaryList({
+    rows: [{
+      key: {
+        text: "Property reference"
+      },
+      value: {
+        text: log[section.id]["property-reference"] | textFromInputValue
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/reference?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "property reference"
+        }]
+      }
+    }, { 
+      key: {
+        text: "Postcode"
+      },
+      value: {
+        text: "You don’t know the postcode"
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/postcode?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "postcode"
+        }]
+      }
+    } if not postcodeKnown, {
+      key: {
+        text: "Postcode"
+      },
+      value: {
+        text: log[section.id]["postcode"]
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/postcode?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "postcode"
+        }]
+      }
+    } if postcodeKnown, {
+      key: {
+        text: "Local authority"
+      },
+      value: {
+        text: log[section.id]["local-authority"] | textFromInputValue(data.questions["local-authorities"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/local-authority-known?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "Local authority"
+        }]
+      }
+    } if not postcodeKnown and laKnown]
+  }) }}
 {% endblock %}
