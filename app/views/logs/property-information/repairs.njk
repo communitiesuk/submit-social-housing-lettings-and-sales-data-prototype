@@ -1,6 +1,6 @@
 {% extends "question.njk" %}
 
-{% set title = "Do you know the Local Authority where this property is located?" %}
+{% set title = "Were any major repairs carried out during the void period?" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -10,5 +10,5 @@
       }
     },
     items: data.questions["yes-no"]
-  }, ["logs", log.id, section.id, "local-authority-known"])) }}
+  }, ["logs", log.id, section.id, "repairs"])) }}
 {% endblock %}
