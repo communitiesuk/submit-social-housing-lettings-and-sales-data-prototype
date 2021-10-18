@@ -31,16 +31,30 @@ export default (env) => {
    * @return {String} ISO 8601 date
    */
   filters.textFromInputValue = (value, questions) => {
+    const hintHtml = nunjucksSafe('<span class="govuk-hint">You didn’t answer this question</span>')
+
     if (!value) {
-      return nunjucksSafe('<span class="govuk-hint">You didn’t answer this question</span>')
+      return hintHtml
     }
 
-    if (value.month) {
-      return filters.govukDateFromInput(value)
+    // Strings
+    if (typeof value === 'string') {
+      const question = questions.find(question => question.value === value)
+      return question ? question.text : value
     }
 
-    const { text } = questions.find(question => question.value === value)
-    return text
+    // Dates
+    // (We’ll assume only dates are objects, for now)
+    if (typeof value === 'object' && !Array.isArray(value)) {
+      const date = filters.govukDateFromInput(value)
+      return date !== 'Invalid Date' ? date : hintHtml
+    }
+
+    // Arrays
+    // We’ll just join them with commas, for now
+    if (Array.isArray(value)) {
+      return value.join(', ')
+    }
   }
 
   /**
