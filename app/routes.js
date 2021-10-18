@@ -14,7 +14,9 @@ router.get('/logs/new', (req, res) => {
   const logId = utils.generateLogId()
 
   // Create a new blank log in session data
-  logs[logId] = {}
+  logs[logId] = {
+    updated: new Date().toISOString()
+  }
 
   res.redirect(`/logs/${logId}/about-this-log`)
 })
