@@ -3,12 +3,36 @@
 {% set title = "Were any major repairs carried out during the void period?" %}
 
 {% block question %}
+  {% set dateHtml %}
+  {{ govukDateInput(decorate({
+    fieldset: {
+      legend: {
+        text: "When were the repairs completed?"
+      }
+    },
+    hint: {
+      text: "For example, 27 3 2021"
+    }
+  }, ["logs", log.id, section.id, "repairs-date"])) }}
+  {% endset %}
   {{ govukRadios(decorate({
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
       }
     },
-    items: data.questions["yes-no"]
+    items: [
+      {
+        text: "Yes",
+        value: "true",
+        conditional: {
+          html: dateHtml
+        }
+      },
+      {
+        text: "No",
+        value: "false"
+      }
+    ]
   }, ["logs", log.id, section.id, "repairs"])) }}
 {% endblock %}
