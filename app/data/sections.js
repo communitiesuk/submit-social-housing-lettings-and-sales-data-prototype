@@ -101,6 +101,11 @@ export default [{
     storedData: keyPathRoot.concat('local-authority-known'),
     values: ['false']
   }, {
+    currentPath: `${sectionPath}/local-authority`, //from here
+    forkPath: `${sectionPath}/is-relet`, //go here
+    storedData: keyPathRoot.concat('local-authority-known'), //if this ===
+    values: ['true'] //value
+  }, {
     currentPath: `${sectionPath}/is-relet`,
     forkPath: `${sectionPath}/reason-for-vacancy-non-relet`,
     storedData: keyPathRoot.concat('is-relet'),

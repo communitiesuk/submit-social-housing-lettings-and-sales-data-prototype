@@ -31,16 +31,29 @@ export default (env) => {
    * @return {String} ISO 8601 date
    */
   filters.textFromInputValue = (value, questions) => {
-    if (!value) {
-      return nunjucksSafe('<span class="govuk-hint">You didn’t answer this question</span>')
-    }
+    const noValueProvidedText = '<span class="govuk-hint">You didn’t answer this question</span>'
+    if (!questions) { //check text value
+      if (!value) {
+        return nunjucksSafe(noValueProvidedText)
+      }
+      if (value.month) {
+        return filters.govukDateFromInput(value)
+      }
+      return value
+    } 
 
-    if (value.month) {
-      return filters.govukDateFromInput(value)
+    else { //check question values
+      if (!value) {
+        return nunjucksSafe(noValueProvidedText)
+      }
+      else {
+        const { text } = questions.find(question => question.value === value)
+        return text
+      }
+      
     }
-
-    const { text } = questions.find(question => question.value === value)
-    return text
+    
+    
   }
 
   /**
