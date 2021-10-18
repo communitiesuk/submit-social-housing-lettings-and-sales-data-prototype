@@ -1,0 +1,14 @@
+{% extends "question.njk" %}
+
+{% set title = "How many times has the property been previously offered since becoming available for relet?" %}
+
+{% block question %}
+  {{ govukInput(decorate({
+    classes: "govuk-input--width-2",
+    label: {
+      html: macro.heading(title, caption)
+    },
+    inputmode: "numeric",
+    pattern: "[0-9]*"
+  }, ["logs", log.id, section.id, "times-previously-offered"])) }}
+{% endblock %}

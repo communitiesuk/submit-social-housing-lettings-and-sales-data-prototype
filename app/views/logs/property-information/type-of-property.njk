@@ -1,6 +1,6 @@
 {% extends "question.njk" %}
 
-{% set title = "Do you know the Local Authority where this property is located?" %}
+{% set title = "What type of unit is the property?" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -9,6 +9,6 @@
         text: macro.heading(title, caption)
       }
     },
-    items: data.questions["yes-no"]
-  }, ["logs", log.id, section.id, "local-authority-known"])) }}
+    items: data.questions["type-of-property"]
+  }, ["logs", log.id, section.id, "type-of-property"])) }}
 {% endblock %}
