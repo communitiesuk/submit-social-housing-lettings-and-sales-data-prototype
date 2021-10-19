@@ -11,9 +11,10 @@
 {% set vacancyDueToMove = log[section.id]["reason-for-vacancy"] == "moved" %}
 {% set vacancyDueToEviction = log[section.id]["reason-for-vacancy"] == "evicted" %}
 
-{% set wasRepaired = log[section.id]["repais"] == "true" %}
+{% set wasRepaired = log[section.id]["repairs"] == "true" %}
 
 {% block checkAnswers %}
+  {{ wasRepaired }}
   {{ govukSummaryList({
     rows: [{
       key: {
@@ -295,6 +296,20 @@
           visuallyHiddenText: "repairs completion date"
         }]
       }
-    } if wasRepaired]
+    } if wasRepaired, {
+      key: {
+        text: "Times previously offered since becoming available"
+      },
+      value: {
+        text: log[section.id]["times-previously-offered"] | textFromInputValue
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/times-previously-offered?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "times offered"
+        }]
+      }
+    }]
   }) }}
 {% endblock %}
