@@ -49,6 +49,7 @@ router.get('/logs/:logId/:sectionId', (req, res) => {
 })
 
 router.all('/logs/:logId/:sectionId/:view?', async (req, res) => {
+  console.log('from router')
   const { logId, sectionId, view } = req.params
   const { referrer } = req.query
   const { logs } = req.session.data
@@ -66,8 +67,9 @@ router.all('/logs/:logId/:sectionId/:view?', async (req, res) => {
 
   // Calculate back and next paths
   const paths = section.paths
-    ? utils.nextAndBackPaths(section.paths(sectionPath), req)
+    ? utils.nextAndBackPaths(section.paths(sectionPath, log), req)
     : []
+  console.log(paths)
 
   // Common render options, shared between normal and validated view
   let renderOptions = {
