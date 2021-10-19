@@ -6,6 +6,11 @@
 {% block form %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList(errors)
+      }) if errors }}
+
       {% block question %}
       {% endblock %}
 
