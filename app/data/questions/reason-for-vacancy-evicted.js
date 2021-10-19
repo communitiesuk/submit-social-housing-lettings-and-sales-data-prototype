@@ -1,7 +1,7 @@
 export default [{
-  text: 'Evicted due to arrears',
+  text: 'Arrears',
   value: 'arrears'
 }, {
-  text: 'Evicted due to anti-social behaviour or other reason',
+  text: 'Anti-social behaviour',
   value: 'anti-social'
 }]
