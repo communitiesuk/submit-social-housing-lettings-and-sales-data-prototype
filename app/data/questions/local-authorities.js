@@ -1,4 +1,4 @@
-export default [{
+const localAuthorities = [{
   UID: 1,
   value: 'E06000001',
   text: 'Hartlepool'
@@ -1515,3 +1515,16 @@ export default [{
   value: 'S12000011',
   text: 'East Renfrewshire'
 }]
+
+const localAuthoritiesInEngland = localAuthorities
+  .filter(la => la.value.startsWith('E'))
+  .sort((a, b) => {
+    const fa = a.text.toLowerCase()
+    const fb = b.text.toLowerCase()
+
+    if (fa < fb) { return -1 }
+    if (fa > fb) { return 1 }
+    return 0
+  })
+
+export default localAuthoritiesInEngland
