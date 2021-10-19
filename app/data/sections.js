@@ -57,26 +57,29 @@ export default [{
   id: 'property-information',
   title: 'Property information',
   group: 'tenancy',
-  paths: (sectionPath) => [
-    `${sectionPath}/reference`,
-    `${sectionPath}/postcode`,
-      // ↳ Local authority if cannot be inferred from postcode
-      `${sectionPath}/local-authority-known`,
-      `${sectionPath}/local-authority`,
-      // ↳ No postcode or local authority known
-      `${sectionPath}/why-dont-you-know-postcode-or-la`,
-    `${sectionPath}/is-relet`,
-    `${sectionPath}/recent-relet-type`,
-    `${sectionPath}/reason-for-vacancy`,
-    `${sectionPath}/type-of-unit`,
-    `${sectionPath}/type-of-property`,
-    `${sectionPath}/is-adapted`,
-    `${sectionPath}/number-of-bedrooms`,
-    `${sectionPath}/void-date`,
-    `${sectionPath}/repairs`,
-    `${sectionPath}/times-previously-offered`,
-    `${sectionPath}/check-your-answers`,
+  paths: (sectionPath, log) => {
+    const isGeneralNeeds = log['about-this-log']['letting-need-type'] === 'general-needs'
+    const isRenewal = log['about-this-log']['letting-renewal'] === 'true'
 
+    return [
+      `${sectionPath}/reference`,
+      ...!isRenewal ? `${sectionPath}/postcode` : [],
+      // ↳ Local authority if cannot be inferred from postcode
+      ...!isRenewal ? `${sectionPath}/local-authority-known` : [],
+      ...!isRenewal ? `${sectionPath}/local-authority` : [],
+      // ↳ No postcode or local authority known
+      ...!isRenewal ? `${sectionPath}/why-dont-you-know-postcode-or-la` : [],
+      `${sectionPath}/is-relet`,
+      `${sectionPath}/recent-relet-type`,
+      `${sectionPath}/reason-for-vacancy`,
+      ...!isRenewal ? `${sectionPath}/type-of-unit` : [],
+      ...!isRenewal ? `${sectionPath}/type-of-property` : [],
+      ...isGeneralNeeds ? `${sectionPath}/is-adapted` : [],
+      ...!isRenewal ? `${sectionPath}/number-of-bedrooms` : [],
+      `${sectionPath}/void-date`,
+      `${sectionPath}/repairs`,
+      `${sectionPath}/times-previously-offered`,
+      `${sectionPath}/check-your-answers`,
       // ↳ Reason for vacancy for propery that was not relet
       `${sectionPath}/reason-for-vacancy-non-relet`,
       `${sectionPath}/type-of-unit`,
@@ -89,7 +92,8 @@ export default [{
       // ↳ Reason for vacancy was tenant evicted
       `${sectionPath}/reason-for-vacancy-evicted`,
       `${sectionPath}/type-of-unit`
-  ],
+    ]
+  },
   forks: (sectionPath, keyPathRoot) => [{
     currentPath: `${sectionPath}/postcode`,
     forkPath: `${sectionPath}/is-relet`,
@@ -101,10 +105,10 @@ export default [{
     storedData: keyPathRoot.concat('local-authority-known'),
     values: ['false']
   }, {
-    currentPath: `${sectionPath}/local-authority`, //from here
-    forkPath: `${sectionPath}/is-relet`, //go here
-    storedData: keyPathRoot.concat('local-authority-known'), //if this ===
-    values: ['true'] //value
+    currentPath: `${sectionPath}/local-authority`,
+    forkPath: `${sectionPath}/is-relet`,
+    storedData: keyPathRoot.concat('local-authority-known'),
+    values: ['true']
   }, {
     currentPath: `${sectionPath}/is-relet`,
     forkPath: `${sectionPath}/reason-for-vacancy-non-relet`,
