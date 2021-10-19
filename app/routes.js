@@ -39,7 +39,7 @@ router.get('/logs/:logId/:sectionId', (req, res) => {
   const log = utils.getEntryById(logs, logId)
   const section = utils.getById(sections, sectionId)
   const sectionRoot = `/logs/${logId}/${sectionId}`
-  const sectionFirstPath = section.paths(sectionRoot)[0]
+  const sectionFirstPath = section.paths(sectionRoot, log)[0]
 
   if (log[sectionId]?.completed === 'true') {
     res.redirect(`${sectionRoot}/check-answers`)
@@ -49,6 +49,7 @@ router.get('/logs/:logId/:sectionId', (req, res) => {
 })
 
 router.all('/logs/:logId/:sectionId/:view?', async (req, res) => {
+  console.log('from router')
   const { logId, sectionId, view } = req.params
   const { referrer } = req.query
   const { logs } = req.session.data
@@ -66,7 +67,7 @@ router.all('/logs/:logId/:sectionId/:view?', async (req, res) => {
 
   // Calculate back and next paths
   const paths = section.paths
-    ? utils.nextAndBackPaths(section.paths(sectionPath), req)
+    ? utils.nextAndBackPaths(section.paths(sectionPath, log), req)
     : []
 
   // Common render options, shared between normal and validated view
