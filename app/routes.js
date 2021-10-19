@@ -82,7 +82,7 @@ router.all('/logs/:logId/:sectionId/:view?', async (req, res) => {
 
   if (req.method === 'POST') {
     // Check if any fields on the page require validation
-    const fieldsToValidate = validations(req).logs[sectionId][view]
+    const fieldsToValidate = validations(req).logs[sectionId]?.[view]
     if (fieldsToValidate) {
       await Promise.all(fieldsToValidate.map(validation => validation.run(req)))
     }
