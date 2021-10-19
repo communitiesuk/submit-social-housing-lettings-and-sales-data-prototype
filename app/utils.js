@@ -9,7 +9,6 @@ export const getById = (items, id) => {
 }
 
 export const getEntryById = (items, id) => {
-  console.log(items, id)
   for (const [key, value] of Object.entries(items)) {
     value.id = key
   }

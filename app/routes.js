@@ -49,7 +49,6 @@ router.get('/logs/:logId/:sectionId', (req, res) => {
 })
 
 router.all('/logs/:logId/:sectionId/:view?', async (req, res) => {
-  console.log('from router')
   const { logId, sectionId, view } = req.params
   const { referrer } = req.query
   const { logs } = req.session.data
