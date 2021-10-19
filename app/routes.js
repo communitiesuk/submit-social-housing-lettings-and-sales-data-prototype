@@ -38,11 +38,11 @@ router.get('/logs/:logId/:sectionId', (req, res) => {
 
   const log = utils.getEntryById(logs, logId)
   const section = utils.getById(sections, sectionId)
-  const sectionRoot = `/logs/${logId}/${sectionId}`
-  const sectionFirstPath = section.paths(sectionRoot, log)[0]
+  const sectionPath = `/logs/${logId}/${sectionId}`
+  const sectionFirstPath = section.paths(sectionPath, log)[0]
 
   if (log[sectionId]?.completed === 'true') {
-    res.redirect(`${sectionRoot}/check-answers`)
+    res.redirect(`${sectionPath}/check-answers`)
   } else {
     res.redirect(`${sectionFirstPath}`)
   }
@@ -91,7 +91,10 @@ router.all('/logs/:logId/:sectionId/:view?', async (req, res) => {
     // Check if we have any validation errors
     const errors = validationResult(req)
     if (errors.isEmpty()) {
-      fork ? res.redirect(fork) : res.redirect(paths.next)
+      // If next path is empty, this is the last path so redirect to check answers page
+      const next = paths.next !== '' ? paths.next : `${sectionPath}/check-your-answers`
+
+      fork ? res.redirect(fork) : res.redirect(next)
     } else {
       renderOptions = { ...renderOptions, ...{ errors: errors.mapped() } }
       res.render(`logs/${sectionId}/${view}`, renderOptions)
