@@ -58,41 +58,92 @@ export default [{
   title: 'Property information',
   group: 'tenancy',
   paths: (sectionPath, log) => {
-    const isGeneralNeeds = log['about-this-log']['letting-need-type'] === 'general-needs'
+    const isSupportedHousing = log['about-this-log']['letting-need-type'] === 'supported-housing'
     const isRenewal = log['about-this-log']['letting-renewal'] === 'true'
 
-    return [
-      `${sectionPath}/reference`,
-      ...!isRenewal ? `${sectionPath}/postcode` : [],
-      // ↳ Local authority if cannot be inferred from postcode
-      ...!isRenewal ? `${sectionPath}/local-authority-known` : [],
-      ...!isRenewal ? `${sectionPath}/local-authority` : [],
-      // ↳ No postcode or local authority known
-      ...!isRenewal ? `${sectionPath}/why-dont-you-know-postcode-or-la` : [],
-      `${sectionPath}/is-relet`,
-      `${sectionPath}/recent-relet-type`,
-      `${sectionPath}/reason-for-vacancy`,
-      ...!isRenewal ? `${sectionPath}/type-of-unit` : [],
-      ...!isRenewal ? `${sectionPath}/type-of-property` : [],
-      ...isGeneralNeeds ? `${sectionPath}/is-adapted` : [],
-      ...!isRenewal ? `${sectionPath}/number-of-bedrooms` : [],
-      `${sectionPath}/void-date`,
-      `${sectionPath}/repairs`,
-      `${sectionPath}/times-previously-offered`,
-      `${sectionPath}/check-your-answers`,
-      // ↳ Reason for vacancy for propery that was not relet
-      `${sectionPath}/reason-for-vacancy-non-relet`,
-      `${sectionPath}/type-of-unit`,
-      // ↳ Reason for vacancy for propery that was relet
-      `${sectionPath}/reason-for-vacancy-relet`,
-      `${sectionPath}/type-of-unit`,
-      // ↳ Reason for vacancy was tenant moved
-      `${sectionPath}/reason-for-vacancy-moved`,
-      `${sectionPath}/type-of-unit`,
-      // ↳ Reason for vacancy was tenant evicted
-      `${sectionPath}/reason-for-vacancy-evicted`,
-      `${sectionPath}/type-of-unit`
-    ]
+    switch (true) {
+      case (isSupportedHousing && !isRenewal):
+        return [
+          `${sectionPath}/reference`,
+          `${sectionPath}/postcode`,
+          // ↳ Local authority if cannot be inferred from postcode
+          `${sectionPath}/local-authority-known`,
+          `${sectionPath}/local-authority`,
+          // ↳ No postcode or local authority known
+          `${sectionPath}/why-dont-you-know-postcode-or-la`,
+          `${sectionPath}/type-of-unit`,
+          `${sectionPath}/type-of-property`,
+          `${sectionPath}/is-adapted`,
+          `${sectionPath}/number-of-bedrooms`,
+          `${sectionPath}/void-date`,
+          `${sectionPath}/repairs`,
+          `${sectionPath}/times-previously-offered`,
+          `${sectionPath}/check-your-answers`
+        ]
+      case (!isSupportedHousing && isRenewal):
+        return [
+          `${sectionPath}/reference`,
+          `${sectionPath}/is-relet`,
+          `${sectionPath}/is-adapted`,
+          `${sectionPath}/void-date`,
+          `${sectionPath}/repairs`,
+          `${sectionPath}/times-previously-offered`,
+          `${sectionPath}/check-your-answers`,
+          // ↳ Reason for vacancy for propery that was not relet
+          `${sectionPath}/reason-for-vacancy-non-relet`,
+          `${sectionPath}/type-of-unit`,
+          // ↳ Reason for vacancy for propery that was relet
+          `${sectionPath}/reason-for-vacancy-relet`,
+          `${sectionPath}/type-of-unit`,
+          // ↳ Reason for vacancy was tenant moved
+          `${sectionPath}/reason-for-vacancy-moved`,
+          `${sectionPath}/type-of-unit`,
+          // ↳ Reason for vacancy was tenant evicted
+          `${sectionPath}/reason-for-vacancy-evicted`,
+          `${sectionPath}/type-of-unit`
+        ]
+      case (isSupportedHousing && isRenewal):
+        return [
+          `${sectionPath}/reference`,
+          `${sectionPath}/is-adapted`,
+          `${sectionPath}/repairs`,
+          `${sectionPath}/times-previously-offered`,
+          `${sectionPath}/check-your-answers`
+        ]
+      default:
+        return [
+          `${sectionPath}/reference`,
+          `${sectionPath}/postcode`,
+          // ↳ Local authority if cannot be inferred from postcode
+          `${sectionPath}/local-authority-known`,
+          `${sectionPath}/local-authority`,
+          // ↳ No postcode or local authority known
+          `${sectionPath}/why-dont-you-know-postcode-or-la`,
+          `${sectionPath}/is-relet`,
+          `${sectionPath}/recent-relet-type`,
+          `${sectionPath}/reason-for-vacancy`,
+          `${sectionPath}/type-of-unit`,
+          `${sectionPath}/type-of-property`,
+          `${sectionPath}/is-adapted`,
+          `${sectionPath}/number-of-bedrooms`,
+          `${sectionPath}/void-date`,
+          `${sectionPath}/repairs`,
+          `${sectionPath}/times-previously-offered`,
+          `${sectionPath}/check-your-answers`,
+          // ↳ Reason for vacancy for propery that was not relet
+          `${sectionPath}/reason-for-vacancy-non-relet`,
+          `${sectionPath}/type-of-unit`,
+          // ↳ Reason for vacancy for propery that was relet
+          `${sectionPath}/reason-for-vacancy-relet`,
+          `${sectionPath}/type-of-unit`,
+          // ↳ Reason for vacancy was tenant moved
+          `${sectionPath}/reason-for-vacancy-moved`,
+          `${sectionPath}/type-of-unit`,
+          // ↳ Reason for vacancy was tenant evicted
+          `${sectionPath}/reason-for-vacancy-evicted`,
+          `${sectionPath}/type-of-unit`
+        ]
+    }
   },
   forks: (sectionPath, keyPathRoot) => [{
     currentPath: `${sectionPath}/postcode`,
