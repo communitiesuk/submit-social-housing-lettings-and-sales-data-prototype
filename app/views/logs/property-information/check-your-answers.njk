@@ -14,7 +14,6 @@
 {% set wasRepaired = log[section.id]["repairs"] == "true" %}
 
 {% block checkAnswers %}
-  {{ wasRepaired }}
   {{ govukSummaryList({
     rows: [{
       key: {
@@ -30,7 +29,7 @@
           visuallyHiddenText: "property reference"
         }]
       }
-    }, { 
+    }, {
       key: {
         text: "Postcode"
       },

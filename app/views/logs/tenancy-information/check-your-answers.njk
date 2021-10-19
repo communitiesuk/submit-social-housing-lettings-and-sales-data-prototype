@@ -7,7 +7,7 @@
         text: "Tenacy start date"
       },
       value: {
-        text: log[section.id]["start-date"] | textFromInputValue(data.questions["date-full"])
+        text: log[section.id]["start-date"] | govukDateFromInput
       },
       actions: {
         items: [{

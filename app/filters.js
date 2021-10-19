@@ -27,44 +27,38 @@ export default (env) => {
    *
    * @example 'fixed-secure' => Fixed term – Secure
    *
-   * @param {object} object Date
-   * @return {String} ISO 8601 date
+   * @param {object|String|Array} value Value entered/chosen
+   * @param {object} questions Question data
+   * @return {String} Formatted answer
    */
   filters.textFromInputValue = (value, questions) => {
     const noValueProvidedText = nunjucksSafe('<span class="govuk-hint">You didn’t answer this question</span>')
-    if (!questions) { //check text value
-      if (!value) {
-        return noValueProvidedText
-      }
 
-      // Dates
-      // (We’ll assume only dates are objects, for now)
-      if (typeof value === 'object' && !Array.isArray(value)) {
-        const date = filters.govukDateFromInput(value)
-        return date !== 'Invalid Date' ? date : hintHtml
-      }
-
-      // Arrays
-      // We’ll just join them with commas, for now
-      if (Array.isArray(value)) {
-        return value.join(', ')
-      }
-
-      return value
+    if (!value) {
+      return noValueProvidedText
     }
 
-    else { //check question values
-      if (!value) {
-        return noValueProvidedText
-      }
-      else {
-        const { text } = questions.find(question => question.value === value)
-        return text
-      }
-
+    // Use structured answer from question data
+    // (If no structured answer found, return given value)
+    if (questions) {
+      const question = questions.find(question => question.value === value)
+      return question ? question.text : value
     }
 
+    // Dates
+    // (We’ll assume only dates are objects, for now)
+    if (typeof value === 'object' && !Array.isArray(value)) {
+      const date = filters.govukDateFromInput(value)
+      return date !== 'Invalid Date' ? date : noValueProvidedText
+    }
 
+    // Arrays
+    // We’ll just join them with commas, for now
+    if (Array.isArray(value)) {
+      return value.join(', ')
+    }
+
+    return value
   }
 
   /**
