@@ -76,7 +76,7 @@ export const validations = (req) => {
           check(getFieldName('tenant-code'))
             .not()
             .isEmpty()
-            .withMessage('Select the rent type')
+            .withMessage('Enter the tenant code')
         ],
         // 'sale-completion-date': [
         //   check(getFieldName('sale-completion-date.year'))
