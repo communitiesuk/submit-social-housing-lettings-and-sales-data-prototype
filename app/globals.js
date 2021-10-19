@@ -38,10 +38,12 @@ export default (env) => {
         status = 'inProgress'
       }
 
+      const href = section.paths ? `/logs/${logId}/${section.id}` : '#'
+
       return {
         id: section.id,
         text: section.title,
-        href: `/logs/${logId}/${section.id}`,
+        href,
         tag: tagStatuses[status]
       }
     }
