@@ -8,7 +8,7 @@ export default [{
     text: 'Excluding renewals of a fixed-term tenancy'
   }
 }, {
-  text: 'Relet to tenant who occupied same property as temporary accommodation',
+  text: 'Re-let to tenant who occupied same property as temporary accommodation',
   value: 'convert-from-temporary'
 }, {
   text: 'Tenant involved in a succession downsize',

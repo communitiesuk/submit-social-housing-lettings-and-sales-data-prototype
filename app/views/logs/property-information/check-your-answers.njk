@@ -3,7 +3,7 @@
 {% set postcodeKnown = log[section.id]["postcode-known"] == "true" %}
 {% set laKnown = log[section.id]["local-authority-known"] == "true" %}
 
-{# relet/newlets #}
+{# Re-let/new let #}
 {% set isRelet = log[section.id]["is-relet"] == "true" %}
 {% set isNewlet = log[section.id]["is-relet"] == "false" %}
 
@@ -101,7 +101,7 @@
       }
     } if not postcodeKnown and not laKnown, {
       key: {
-        text: "Is the property a relet?"
+        text: "Is the property a re-let?"
       },
       value: {
         text: log[section.id]["is-relet"] | textFromInputValue(data.questions["yes-no"])
@@ -110,7 +110,7 @@
         items: [{
           href: sectionPath + "/is-relet?referrer=" + referrer,
           text: "Change",
-          visuallyHiddenText: "if this property is a relet"
+          visuallyHiddenText: "if this property is a re-let"
         }]
       }
     }, {
@@ -157,7 +157,7 @@
       }
     } if isRelet, {
       key: {
-        text: "Reason for relet to existing tenant"
+        text: "Reason for re-let to existing tenant"
       },
       value: {
         text: log[section.id]["reason-for-relet"] | textFromInputValue(data.questions["reason-for-vacancy-relet"])
@@ -166,7 +166,7 @@
         items: [{
           href: sectionPath + "/reason-for-vacancy-relet?referrer=" + referrer,
           text: "Change",
-          visuallyHiddenText: "reason for relet to existing tenant"
+          visuallyHiddenText: "reason for re-let to existing tenant"
         }]
       }
     } if vacancyDueToRelet, {

@@ -1,5 +1,5 @@
 export default [{
-  text: 'The property was relet to an existing tenant',
+  text: 'The property was re-let to an existing tenant',
   value: 'relet'
 }, {
   text: 'The previous tenant moved elsewhere',
