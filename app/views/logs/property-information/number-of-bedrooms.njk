@@ -1,0 +1,14 @@
+{% extends "question.njk" %}
+
+{% set title = "How many bedrooms does the property have?" %}
+
+{% block question %}
+  {{ govukInput(decorate({
+    classes: "govuk-input--width-2",
+    label: {
+      html: macro.heading(title, caption)
+    },
+    inputmode: "numeric",
+    pattern: "[0-9]*"
+  }, ["logs", log.id, section.id, "number-of-bedrooms"])) }}
+{% endblock %}

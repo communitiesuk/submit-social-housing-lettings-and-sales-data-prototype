@@ -31,30 +31,40 @@ export default (env) => {
    * @return {String} ISO 8601 date
    */
   filters.textFromInputValue = (value, questions) => {
-    const hintHtml = nunjucksSafe('<span class="govuk-hint">You didn’t answer this question</span>')
+    const noValueProvidedText = nunjucksSafe('<span class="govuk-hint">You didn’t answer this question</span>')
+    if (!questions) { //check text value
+      if (!value) {
+        return noValueProvidedText
+      }
 
-    if (!value) {
-      return hintHtml
+      // Dates
+      // (We’ll assume only dates are objects, for now)
+      if (typeof value === 'object' && !Array.isArray(value)) {
+        const date = filters.govukDateFromInput(value)
+        return date !== 'Invalid Date' ? date : hintHtml
+      }
+
+      // Arrays
+      // We’ll just join them with commas, for now
+      if (Array.isArray(value)) {
+        return value.join(', ')
+      }
+
+      return value
     }
 
-    // Strings
-    if (typeof value === 'string') {
-      const question = questions.find(question => question.value === value)
-      return question ? question.text : value
+    else { //check question values
+      if (!value) {
+        return noValueProvidedText
+      }
+      else {
+        const { text } = questions.find(question => question.value === value)
+        return text
+      }
+
     }
 
-    // Dates
-    // (We’ll assume only dates are objects, for now)
-    if (typeof value === 'object' && !Array.isArray(value)) {
-      const date = filters.govukDateFromInput(value)
-      return date !== 'Invalid Date' ? date : hintHtml
-    }
 
-    // Arrays
-    // We’ll just join them with commas, for now
-    if (Array.isArray(value)) {
-      return value.join(', ')
-    }
   }
 
   /**

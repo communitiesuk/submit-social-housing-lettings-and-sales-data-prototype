@@ -1,0 +1,14 @@
+{% extends "question.njk" %}
+
+{% set title = "What is the reason for the property being vacant?" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["reason-for-vacancy-non-relet"]
+  }, ["logs", log.id, section.id, "reason-for-non-relet"])) }}
+{% endblock %}

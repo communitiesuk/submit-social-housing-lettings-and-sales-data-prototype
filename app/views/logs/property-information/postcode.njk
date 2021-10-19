@@ -1,0 +1,34 @@
+{% extends "question.njk" %}
+
+{% set title = "Do you know the property’s postcode?" %}
+
+{% block question %}
+  {% set postcodeHtml %}
+  {{ govukInput(decorate({
+    label: {
+      text: "Postcode"
+    },
+    classes: "govuk-input--width-5"
+  }, ["logs", log.id, section.id, "postcode"])) }}
+  {% endset %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: [
+      {
+        value: "true",
+        text: "Yes",
+        conditional: {
+          html: postcodeHtml
+        }
+      },
+      {
+        value: "false",
+        text: "No"
+      }
+    ]
+  }, ["logs", log.id, section.id, "postcode-known"])) }}
+{% endblock %}

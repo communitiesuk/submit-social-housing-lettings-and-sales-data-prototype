@@ -1,0 +1,14 @@
+{% extends "question.njk" %}
+
+{% set title = "What type of building is the property?" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["type-of-property"]
+  }, ["logs", log.id, section.id, "type-of-property"])) }}
+{% endblock %}

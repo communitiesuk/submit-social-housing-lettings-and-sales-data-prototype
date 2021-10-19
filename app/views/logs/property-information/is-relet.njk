@@ -1,0 +1,14 @@
+{% extends "question.njk" %}
+
+{% set title = "Is the property a relet?" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["yes-no"]
+  }, ["logs", log.id, section.id, "is-relet"])) }}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "question.njk" %}
+
+{% set title = "Why did the previous tenant move elsewhere?" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["reason-for-vacancy-moved"]
+  }, ["logs", log.id, section.id, "reason-for-move"])) }}
+{% endblock %}

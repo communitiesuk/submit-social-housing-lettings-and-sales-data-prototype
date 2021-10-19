@@ -1,0 +1,315 @@
+{% extends "check-answers.njk" %}
+
+{% set postcodeKnown = log[section.id]["postcode-known"] == "true" %}
+{% set laKnown = log[section.id]["local-authority-known"] == "true" %}
+
+{# relet/newlets #}
+{% set isRelet = log[section.id]["is-relet"] == "true" %}
+{% set isNewlet = log[section.id]["is-relet"] == "false" %}
+
+{% set vacancyDueToRelet = log[section.id]["reason-for-vacancy"] == "relet" %}
+{% set vacancyDueToMove = log[section.id]["reason-for-vacancy"] == "moved" %}
+{% set vacancyDueToEviction = log[section.id]["reason-for-vacancy"] == "evicted" %}
+
+{% set wasRepaired = log[section.id]["repairs"] == "true" %}
+
+{% block checkAnswers %}
+  {{ wasRepaired }}
+  {{ govukSummaryList({
+    rows: [{
+      key: {
+        text: "Property reference"
+      },
+      value: {
+        text: log[section.id]["property-reference"] | textFromInputValue
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/reference?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "property reference"
+        }]
+      }
+    }, { 
+      key: {
+        text: "Postcode"
+      },
+      value: {
+        text: "Not known"
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/postcode?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "postcode"
+        }]
+      }
+    } if not postcodeKnown, {
+      key: {
+        text: "Postcode"
+      },
+      value: {
+        text: log[section.id]["postcode"]
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/postcode?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "postcode"
+        }]
+      }
+    } if postcodeKnown, {
+      key: {
+        text: "Local authority"
+      },
+      value: {
+        text: "Not known"
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/local-authority-known?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "Local authority"
+        }]
+      }
+    } if not postcodeKnown and not laKnown, {
+      key: {
+        text: "Local authority"
+      },
+      value: {
+        text: log[section.id]["local-authority"] | textFromInputValue(data.questions["local-authorities"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/local-authority-known?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "Local authority"
+        }]
+      }
+    } if not postcodeKnown and laKnown, {
+      key: {
+        text: "Reason you don’t know either the postcode or local authority"
+      },
+      value: {
+        text: log[section.id]["why-dont-you-know-postcode-or-la"] | textFromInputValue
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/why-dont-you-know-postcode-or-la?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "the reason you don't know either the postcode or local authority"
+        }]
+      }
+    } if not postcodeKnown and not laKnown, {
+      key: {
+        text: "Is the property a relet?"
+      },
+      value: {
+        text: log[section.id]["is-relet"] | textFromInputValue(data.questions["yes-no"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/is-relet?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "if this property is a relet"
+        }]
+      }
+    }, {
+      key: {
+        text: "Most recent let type"
+      },
+      value: {
+        text: log[section.id]["property-recent-relet-type"] | textFromInputValue(data.questions["recent-relet-type"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/recent-relet-type?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "the recent let type"
+        }]
+      }
+    } if isRelet, {
+      key: {
+        text: "Vacancy reason"
+      },
+      value: {
+        text: log[section.id]["reason-for-non-relet"] | textFromInputValue(data.questions["reason-for-vacancy-non-relet"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/reason-for-vacancy-non-relet?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "reason for vacancy"
+        }]
+      }
+    } if isNewlet, {
+      key: {
+        text: "Vacancy reason"
+      },
+      value: {
+        text: log[section.id]["reason-for-vacancy"] | textFromInputValue(data.questions["reason-for-vacancy"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/reason-for-vacancy?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "reason for vacancy"
+        }]
+      }
+    } if isRelet, {
+      key: {
+        text: "Reason for relet to existing tenant"
+      },
+      value: {
+        text: log[section.id]["reason-for-relet"] | textFromInputValue(data.questions["reason-for-vacancy-relet"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/reason-for-vacancy-relet?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "reason for relet to existing tenant"
+        }]
+      }
+    } if vacancyDueToRelet, {
+      key: {
+        text: "Reason for the previous tenant moving"
+      },
+      value: {
+        text: log[section.id]["reason-for-move"] | textFromInputValue(data.questions["reason-for-vacancy-moved"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/reason-for-vacancy-moved?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "reason for the previous tenant moving"
+        }]
+      }
+    } if vacancyDueToMove, {
+      key: {
+        text: "Reason the previous tenant was evicted"
+      },
+      value: {
+        text: log[section.id]["reason-for-eviction"] | textFromInputValue(data.questions["reason-for-vacancy-evicted"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/reason-for-vacancy-evicted?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "reason the previous tenant was evicted"
+        }]
+      }
+    } if vacancyDueToEviction, {
+      key: {
+        text: "Type of unit"
+      },
+      value: {
+        text: log[section.id]["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/type-of-unit?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "type of unit"
+        }]
+      }
+    }, {
+      key: {
+        text: "Type of building"
+      },
+      value: {
+        text: log[section.id]["type-of-property"] | textFromInputValue(data.questions["type-of-property"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/type-of-property?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "type of building"
+        }]
+      }
+    }, {
+      key: {
+        text: "Wheelchair adaptation"
+      },
+      value: {
+        text: log[section.id]["is-adapted"] | textFromInputValue(data.questions["yes-no"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/is-adapted?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "wheelchair adaptation status"
+        }]
+      }
+    }, {
+      key: {
+        text: "Number of bedrooms"
+      },
+      value: {
+        text: log[section.id]["number-of-bedrooms"] | textFromInputValue
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/number-of-bedrooms?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "number of bedrooms"
+        }]
+      }
+    }, {
+      key: {
+        text: "Void, new build handover or renewal date"
+      },
+      value: {
+        text: log[section.id]["void-date"] | textFromInputValue
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/void-date?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "date"
+        }]
+      }
+    }, {
+      key: {
+        text: "Major repairs carried out during the void period"
+      },
+      value: {
+        text: log[section.id]["repairs"] | textFromInputValue(data.questions['yes-no'])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/repairs?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "repairs status"
+        }]
+      }
+    }, {
+      key: {
+        text: "Repairs completion date"
+      },
+      value: {
+        text: log[section.id]["repairs-date"] | textFromInputValue
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/repairs?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "repairs completion date"
+        }]
+      }
+    } if wasRepaired, {
+      key: {
+        text: "Times previously offered since becoming available"
+      },
+      value: {
+        text: log[section.id]["times-previously-offered"] | textFromInputValue
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/times-previously-offered?referrer=" + sectionPath,
+          text: "Change",
+          visuallyHiddenText: "times offered"
+        }]
+      }
+    }]
+  }) }}
+{% endblock %}

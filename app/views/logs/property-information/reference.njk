@@ -1,0 +1,16 @@
+{% extends "question.njk" %}
+
+{% set title = "What is the property reference?" %}
+{% set hint = "This is usually how you refer to this property on your own systems" %}
+
+{% block question %}
+  {{ govukInput(decorate({
+    classes: "govuk-input--width-20",
+    label: {
+      html: macro.heading(title, caption)
+    },
+    hint: {
+      text: hint
+    }
+  }, ["logs", log.id, section.id, "property-reference"])) }}
+{% endblock %}
