@@ -36,9 +36,11 @@ router.get('/logs/:logId', (req, res) => {
 
   const log = utils.getEntryById(logs, logId)
 
-  res.render('logs/log', {
-    log
-  })
+  if (log) {
+    res.render('logs/log', { log })
+  } else {
+    res.redirect('/logs')
+  }
 })
 
 router.get('/logs/:logId/:sectionId', (req, res) => {
