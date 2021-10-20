@@ -48,7 +48,7 @@
   {{ govukHeader({
     homepageUrl: "/",
     serviceName: serviceName,
-    serviceUrl: "/",
+    serviceUrl: "/logs"  if data.account else "/",
     containerClasses: "govuk-width-container",
     navigation: [{
       href: "/account/sign-out",
