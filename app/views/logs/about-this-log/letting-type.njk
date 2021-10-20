@@ -1,6 +1,6 @@
 {% extends "question.njk" %}
 
-{% set title = "Tell us about this letting?" %}
+{% set title = "Tell us about this letting" %}
 
 {% block question %}
   {{ macro.heading(title, caption) }}
@@ -9,17 +9,17 @@
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
-        text: "Type of rent"
+        text: "Rent type"
       }
     },
     items: data.questions["letting-rent-type"]
   }, ["logs", log.id, section.id, "letting-rent-type"])) }}
 
-    {{ govukRadios(decorate({
+  {{ govukRadios(decorate({
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
-        text: "Type of need"
+        text: "Needs type"
       }
     },
     items: data.questions["letting-need-type"]
