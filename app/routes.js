@@ -61,8 +61,8 @@ router.get('/logs/:logId/:sectionId', (req, res) => {
 
 router.all('/logs/:logId/:sectionId/:view?', async (req, res) => {
   const { logId, sectionId, view } = req.params
-  const { referrer } = req.query
   const { logs } = req.session.data
+  let { referrer } = req.query
 
   const log = utils.getEntryById(logs, logId)
   const logPath = `/logs/${logId}`
@@ -79,6 +79,11 @@ router.all('/logs/:logId/:sectionId/:view?', async (req, res) => {
   const paths = section.paths
     ? utils.nextAndBackPaths(section.paths(sectionPath, log), req)
     : []
+
+  // For check your answers page, the referrer is always that page
+  if (view === 'check-your-answers') {
+    referrer = req.path
+  }
 
   // Common render options, shared between normal and validated view
   let renderOptions = {
