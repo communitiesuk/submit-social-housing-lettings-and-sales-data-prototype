@@ -166,7 +166,7 @@
     text: "Reason for re-let to existing tenant"
   },
   value: {
-    text: log[section.id]["reason-for-relet"] | textFromInputValue(data.questions["reason-for-vacancy-relet"])
+    text: log[section.id]["reason-for-vacancy-relet"] | textFromInputValue(data.questions["reason-for-vacancy-relet"])
   },
   actions: {
     items: [{
@@ -181,11 +181,11 @@
     text: "Reason for the previous tenant moving"
   },
   value: {
-    text: log[section.id]["reason-for-move"] | textFromInputValue(data.questions["reason-for-vacancy-moved"])
+    text: log[section.id]["reason-for-vacancy-moved"] | textFromInputValue(data.questions["reason-for-vacancy-moved"])
   },
   actions: {
     items: [{
-      href: sectionPath + "/reason-for-vacancy-moved?referrer=" + referrer,
+      href: sectionPath + "/reason-for-vacancy-relet?referrer=" + referrer,
       text: "Change",
       visuallyHiddenText: "reason for the previous tenant moving"
     }]
@@ -196,11 +196,11 @@
     text: "Reason the previous tenant was evicted"
   },
   value: {
-    text: log[section.id]["reason-for-eviction"] | textFromInputValue(data.questions["reason-for-vacancy-evicted"])
+    text: log[section.id]["reason-for-vacancy-evicted"] | textFromInputValue(data.questions["reason-for-vacancy-evicted"])
   },
   actions: {
     items: [{
-      href: sectionPath + "/reason-for-vacancy-evicted?referrer=" + referrer,
+      href: sectionPath + "/reason-for-vacancy-relet?referrer=" + referrer,
       text: "Change",
       visuallyHiddenText: "reason the previous tenant was evicted"
     }]
