@@ -13,6 +13,10 @@ export const getEntryById = (items, id) => {
     value.id = key
   }
 
+  if (!items[id]) {
+    throw Error(`Entry with ID ‘${id}’ not found`)
+  }
+
   return items[id]
 }
 
