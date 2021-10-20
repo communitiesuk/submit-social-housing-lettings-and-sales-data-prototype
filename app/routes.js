@@ -7,6 +7,15 @@ import { validations } from './validations.js'
 const router = express.Router()
 
 /**
+ * Account
+ */
+router.get('/account/sign-out', (req, res) => {
+  delete req.session.data.account
+
+  res.redirect('/')
+})
+
+/**
  * Logs
  */
 router.get('/logs/new', (req, res) => {
