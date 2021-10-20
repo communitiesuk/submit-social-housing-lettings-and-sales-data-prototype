@@ -50,8 +50,8 @@ router.get('/logs/:logId/:sectionId', (req, res) => {
   const sectionPath = `/logs/${logId}/${sectionId}`
   const sectionFirstPath = section.paths(sectionPath, log)[0]
 
-  if (log[sectionId]?.completed === 'true') {
-    res.redirect(`${sectionPath}/check-answers`)
+  if (log[sectionId]) {
+    res.redirect(`${sectionPath}/check-your-answers`)
   } else {
     res.redirect(`${sectionFirstPath}`)
   }
