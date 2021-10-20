@@ -80,17 +80,6 @@ export default [{
           `${sectionPath}/times-previously-offered`,
           `${sectionPath}/check-your-answers`
         ]
-      case (!isSupportedHousing && isRenewal):
-        return [
-          `${sectionPath}/reference`,
-          `${sectionPath}/is-relet`,
-          `${sectionPath}/reason-for-vacancy`,
-          `${sectionPath}/is-adapted`,
-          `${sectionPath}/void-date`,
-          `${sectionPath}/repairs`,
-          `${sectionPath}/times-previously-offered`,
-          `${sectionPath}/check-your-answers`
-        ]
       case (isSupportedHousing && isRenewal):
         return [
           `${sectionPath}/reference`,
@@ -99,7 +88,7 @@ export default [{
           `${sectionPath}/times-previously-offered`,
           `${sectionPath}/check-your-answers`
         ]
-      default:
+      case (!isSupportedHousing && !isRenewal):
         return [
           `${sectionPath}/reference`,
           `${sectionPath}/postcode`,
@@ -111,10 +100,21 @@ export default [{
           `${sectionPath}/is-relet`,
           `${sectionPath}/recent-relet-type`,
           `${sectionPath}/reason-for-vacancy`,
+          `${sectionPath}/is-adapted`,
           `${sectionPath}/type-of-unit`,
           `${sectionPath}/type-of-property`,
-          `${sectionPath}/is-adapted`,
           `${sectionPath}/number-of-bedrooms`,
+          `${sectionPath}/void-date`,
+          `${sectionPath}/repairs`,
+          `${sectionPath}/times-previously-offered`,
+          `${sectionPath}/check-your-answers`
+        ]
+      default:
+        return [
+          `${sectionPath}/reference`,
+          `${sectionPath}/is-relet`,
+          `${sectionPath}/reason-for-vacancy`,
+          `${sectionPath}/is-adapted`,
           `${sectionPath}/void-date`,
           `${sectionPath}/repairs`,
           `${sectionPath}/times-previously-offered`,
@@ -143,13 +143,16 @@ export default [{
     storedData: keyPathRoot.concat('is-relet'),
     values: ['false']
   }, {
-    currentPath: `${sectionPath}/reason-for-vacancy-non-relet`,
-    skipTo: `${sectionPath}/type-of-unit`
-  }, {
     currentPath: `${sectionPath}/reason-for-vacancy`,
     forkPath: `${sectionPath}/reason-for-vacancy-relet`,
     storedData: keyPathRoot.concat('reason-for-vacancy'),
     excludedValues: ['died']
+  }, {
+    currentPath: `${sectionPath}/reason-for-vacancy-relet`,
+    skipTo: `${sectionPath}/is-adapted`
+  }, {
+    currentPath: `${sectionPath}/reason-for-vacancy-non-relet`,
+    skipTo: `${sectionPath}/is-adapted`
   }]
 }, {
   id: 'income-and-benefits',
