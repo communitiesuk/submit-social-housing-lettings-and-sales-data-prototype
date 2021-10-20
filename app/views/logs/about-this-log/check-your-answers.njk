@@ -66,7 +66,7 @@
         text: "Tenacy start date"
       },
       value: {
-        text: log[section.id]["letting-start-date"] | govukDateFromInput
+        text: log[section.id]["letting-start-date"] | textFromInputValue
       },
       actions: {
         items: [{
@@ -108,7 +108,7 @@
         text: "Tenant code"
       },
       value: {
-        text: log[section.id]["tenant-code"]
+        text: log[section.id]["tenant-code"] | textFromInputValue
       },
       actions: {
         items: [{
@@ -122,7 +122,7 @@
         text: "Sale completion date"
       },
       value: {
-        text: log[section.id]["sale-completion-date"] | govukDateFromInput
+        text: log[section.id]["sale-completion-date"] | textFromInputValue
       },
       actions: {
         items: [{
@@ -136,7 +136,7 @@
         text: "Purchaser code"
       },
       value: {
-        text: log[section.id]["purchaser-code"]
+        text: log[section.id]["purchaser-code"] | textFromInputValue
       },
       actions: {
         items: [{
