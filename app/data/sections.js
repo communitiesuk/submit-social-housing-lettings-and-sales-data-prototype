@@ -84,6 +84,7 @@ export default [{
         return [
           `${sectionPath}/reference`,
           `${sectionPath}/is-relet`,
+          `${sectionPath}/reason-for-vacancy`,
           `${sectionPath}/is-adapted`,
           `${sectionPath}/void-date`,
           `${sectionPath}/repairs`,
