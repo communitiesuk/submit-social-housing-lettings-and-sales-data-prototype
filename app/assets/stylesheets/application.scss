@@ -13,3 +13,8 @@ $govuk-assets-path: "/govuk/assets/";
 @import "./govuk-publishing-components";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+// Overrides
+.app-\!-colour-muted {
+  color: $govuk-secondary-text-colour !important;
+}

@@ -32,7 +32,7 @@ export default (env) => {
    * @return {String} Formatted answer
    */
   filters.textFromInputValue = (value, questions) => {
-    const noValueProvidedText = nunjucksSafe('<span class="govuk-hint">You didn’t answer this question</span>')
+    const noValueProvidedText = nunjucksSafe('<span class="app-!-colour-muted">You didn’t answer this question</span>')
 
     if (!value) {
       return noValueProvidedText
