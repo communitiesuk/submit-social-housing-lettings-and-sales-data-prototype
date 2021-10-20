@@ -1,13 +1,13 @@
 export default [{
-  text: 'The property was re-let to an existing tenant',
+  text: 'Property was re-let to an existing tenant',
   value: 'relet'
 }, {
-  text: 'The previous tenant moved elsewhere',
+  text: 'Previous tenant moved elsewhere',
   value: 'moved'
 }, {
-  text: 'The previous tenant was evicted',
+  text: 'Previous tenant was evicted',
   value: 'evicted'
 }, {
-  text: 'The previous tenant died with no succession',
+  text: 'Previous tenant died with no succession',
   value: 'died'
 }]

@@ -1,12 +1,12 @@
 export default [{
-  text: 'A social rent basis',
-  value: 'social-rent'
-}, {
-  text: 'An affordable rent basis',
+  text: 'Affordable rent basis',
   value: 'affordable-rent'
 }, {
-  text: 'An intermediate rent basis',
+  text: 'Intermediate rent basis',
   value: 'intermediate-rent'
+}, {
+  text: 'Social rent basis',
+  value: 'social-rent'
 }, {
   divider: 'or'
 }, {
