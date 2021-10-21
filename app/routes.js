@@ -49,14 +49,12 @@ router.get('/logs/:logId/:sectionId', (req, res, next) => {
     const { logs } = req.session.data
 
     const log = utils.getEntryById(logs, logId)
-    const section = utils.getById(sections, sectionId)
-    const sectionPath = `/logs/${logId}/${sectionId}`
-    const sectionFirstPath = section.paths(sectionPath, log)[0]
+    const section = utils.getById(sections(log), sectionId)
 
     if (log[sectionId]) {
-      res.redirect(`${sectionPath}/check-your-answers`)
+      res.redirect(`/logs/${logId}/${sectionId}/check-your-answers`)
     } else {
-      res.redirect(`${sectionFirstPath}`)
+      res.redirect(section.paths[0])
     }
   } catch (error) {
     next(error)
@@ -69,9 +67,15 @@ router.all('/logs/:logId/:sectionId/:view?', async (req, res, next) => {
     const { logs } = req.session.data
     let { referrer } = req.query
 
+    // Property information section variants share the same views
+    let sectionViewsDir = sectionId
+    if (sectionId.startsWith('property-information')) {
+      sectionViewsDir = 'property-information'
+    }
+
     const log = utils.getEntryById(logs, logId)
     const logPath = `/logs/${logId}`
-    const section = utils.getById(sections, sectionId)
+    const section = utils.getById(sections(log), sectionId)
     const sectionPath = `/logs/${logId}/${sectionId}`
     const sectionKeyPath = `logs[${logId}][${sectionId}]`
 
@@ -82,7 +86,7 @@ router.all('/logs/:logId/:sectionId/:view?', async (req, res, next) => {
 
     // Calculate back and next paths
     const paths = section.paths
-      ? utils.nextAndBackPaths(section.paths(sectionPath, log), req)
+      ? utils.nextAndBackPaths(section.paths, req)
       : []
 
     // For check your answers page, the referrer is always that page
@@ -117,10 +121,10 @@ router.all('/logs/:logId/:sectionId/:view?', async (req, res, next) => {
         fork ? res.redirect(fork) : res.redirect(next)
       } else {
         renderOptions = { ...renderOptions, ...{ errors: errors.mapped() } }
-        res.render(`logs/${sectionId}/${view}`, renderOptions)
+        res.render(`logs/${sectionViewsDir}/${view}`, renderOptions)
       }
     } else {
-      res.render(`logs/${sectionId}/${view}`, renderOptions)
+      res.render(`logs/${sectionViewsDir}/${view}`, renderOptions)
     }
   } catch (error) {
     next(error)
