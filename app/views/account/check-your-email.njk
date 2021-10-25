@@ -1,0 +1,14 @@
+{% extends "base.njk" %}
+
+{% set title = "Check your email" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ macro.heading(title) }}
+
+      <p><a class="govuk-link--no-underline govuk-link--text-colour" href="/account/reset-password">If this email address exists in our system, we will have sent a link to reset your password to <strong>{{ data.account.email or "name@example.com" }}</strong>.</a></p>
+      <p>If our email doesn’t arrive within 5 minutes, check your spam and trash folder, or <a href="/account/request-password-reset">try again</a>.</p>
+    </div>
+  </div>
+{% endblock %}

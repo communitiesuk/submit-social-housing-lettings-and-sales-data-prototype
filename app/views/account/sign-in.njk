@@ -1,17 +1,20 @@
 {% extends "form.njk" %}
 
-{% set title = "Sign in" %}
+{% set title = "Sign in to your CORE account" %}
 {% set formAction = "/logs" %}
 
 {% block form %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">{{ title }}</h1>
+      {{ govukNotificationBanner({
+        html: "Your password has been reset. Sign in with your new password to continue.",
+        type: "success"
+      }) if success == "password-reset" }}
+
+      {{ macro.heading(title) }}
 
       {{ govukInput(decorate({
-        classes: "govuk-!-width-two-thirds",
         label: {
-          classes: "govuk-label--m",
           text: "Email address"
         },
         autocomplete: "email",
@@ -19,18 +22,24 @@
       }, ["account", "email"])) }}
 
       {{ govukInput({
-        classes: "govuk-!-width-two-thirds",
         label: {
-          classes: "govuk-label--m",
           text: "Password"
         },
         type: "password",
+        autocomplete: "current-password",
         spellcheck: false
       }) }}
+
+      {{ govukInput(decorate({
+        type: "hidden",
+        value: "true"
+      }, ["account", "token"])) }}
 
       {{ govukButton({
         text: "Sign in"
       }) }}
+
+      <p>You can <a href="/account/request-password-reset">reset your password</a> if you’ve forgotten it.</p>
     </div>
   </div>
 {% endblock %}
