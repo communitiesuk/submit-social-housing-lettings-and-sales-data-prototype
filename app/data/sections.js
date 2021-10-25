@@ -62,7 +62,7 @@ export default (log) => {
   }
 
   /**
-   * Household situation
+   * Household needs
    */
   const householdNeeds = {
     id: 'household-needs',
@@ -89,7 +89,7 @@ export default (log) => {
    * Property information
    */
 
-  // General needs
+  // General needs && not a renewal
   const propertyInformation = {
     id: 'property-information',
     title: 'Property information',
@@ -148,7 +148,7 @@ export default (log) => {
     }]
   }
 
-  // General needs, renewal
+  // General needs && renewal
   const propertyInformationRenewal = {
     id: 'property-information-renewal',
     title: 'Property information',
@@ -182,7 +182,7 @@ export default (log) => {
     }]
   }
 
-  // Supported housing
+  // Supported housing && not a renewal
   const propertyInformationSupportedHousing = {
     id: 'property-information-supported-housing',
     title: 'Property information',
@@ -238,7 +238,7 @@ export default (log) => {
     }]
   }
 
-  // Supported housing (renewal)
+  // Supported housing && renewal
   const propertyInformationSupportedHousingRenewal = {
     id: 'property-information-supported-housing-renewal',
     title: 'Property information',
