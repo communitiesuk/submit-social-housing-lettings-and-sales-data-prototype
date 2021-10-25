@@ -11,6 +11,7 @@ $govuk-assets-path: "/govuk/assets/";
 
 // GOV.UK Publishing Components (used for prototyped pages that exist on GOV.UK)
 @import "./govuk-publishing-components";
+@import "./autocomplete";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
