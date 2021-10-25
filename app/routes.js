@@ -10,9 +10,17 @@ const router = express.Router()
  * Account
  */
 router.get('/account/sign-out', (req, res) => {
-  delete req.session.data.account
+  delete req.session.data.account.token
 
-  res.redirect('/')
+  res.redirect('/account/sign-in')
+})
+
+router.all('/account/:view?', (req, res) => {
+  const view = req.params.view ? req.params.view : 'index'
+  const { referrer, success } = req.query
+  const { account } = req.session.data
+
+  res.render(`account/${view}`, { account, referrer, success })
 })
 
 /**

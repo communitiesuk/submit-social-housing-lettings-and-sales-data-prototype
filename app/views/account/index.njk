@@ -1,0 +1,59 @@
+{% extends "base.njk" %}
+
+{% set title = "Your account" %}
+{% set referrer = "/account" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ macro.heading(title) }}
+
+      <h2 class="govuk-heading-m">Personal details</h2>
+      {{ govukSummaryList({
+        rows: [{
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: account.name
+          },
+          actions: {
+            items: [{
+              href: "/account/personal-details?referrer=" + referrer,
+              text: "Change",
+              visuallyHiddenText: "name"
+            }]
+          }
+        }, {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            text: account.email
+          },
+          actions: {
+            items: [{
+              href: "/account/personal-details?referrer=" + referrer,
+              text: "Change",
+              visuallyHiddenText: "email address"
+            }]
+          }
+        }, {
+          key: {
+            text: "Password"
+          },
+          value: {
+            html: "••••••••"
+          },
+          actions: {
+            items: [{
+              href: "/account/password?referrer=" + referrer,
+              text: "Change",
+              visuallyHiddenText: "password"
+            }]
+          }
+        }]
+      }) }}
+    </div>
+  </div>
+{% endblock %}

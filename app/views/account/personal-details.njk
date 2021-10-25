@@ -1,0 +1,33 @@
+{% extends "form.njk" %}
+
+{% set title = "Change your personal details" %}
+{% set backLink = "/account" %}
+{% set formAction = "/account" %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ macro.heading(title) }}
+
+      {{ govukInput(decorate({
+        label: {
+          text: "Name"
+        },
+        autocomplete: "name",
+        spellcheck: false
+      }, ["account", "name"])) }}
+
+      {{ govukInput(decorate({
+        label: {
+          text: "Email address"
+        },
+        autocomplete: "email",
+        spellcheck: false
+      }, ["account", "email"])) }}
+
+      {{ govukButton({
+        text: "Save changes"
+      }) }}
+    </div>
+  </div>
+{% endblock %}

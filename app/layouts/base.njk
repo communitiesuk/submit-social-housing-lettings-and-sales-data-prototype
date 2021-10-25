@@ -51,9 +51,12 @@
     serviceUrl: "/logs"  if data.account else "/",
     containerClasses: "govuk-width-container",
     navigation: [{
+      href: "/account/",
+      text: "Your account"
+    }, {
       href: "/account/sign-out",
       text: "Sign out"
-    }] if data.account
+    }] if data.account.token
   }) }}
 {% endblock %}
 
