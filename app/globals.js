@@ -27,18 +27,19 @@ export default (env) => {
 
   globals.taskListSections = function (logId) {
     const { logs, groups } = this.ctx.data
+    const log = logs[logId]
 
     const taskListItem = (section) => {
       let status
-      if (logs[logId][section.id] === undefined) {
+      if (log[section.id] === undefined) {
         status = 'notStarted'
-      } else if (logs[logId][section.id]?.completed === 'true') {
+      } else if (log[section.id]?.completed === 'true') {
         status = 'completed'
       } else {
         status = 'inProgress'
       }
 
-      const href = section.paths ? `/logs/${logId}/${section.id}` : '#'
+      const href = section.paths ? `/logs/${log.id}/${section.id}` : '#'
 
       return {
         id: section.id,
@@ -52,7 +53,7 @@ export default (env) => {
     for (const group of groups) {
       taskListSections.push({
         titleText: group.title,
-        items: sections
+        items: sections(log)
           .filter(section => section.group === group.id)
           .map(section => taskListItem(section))
       })
