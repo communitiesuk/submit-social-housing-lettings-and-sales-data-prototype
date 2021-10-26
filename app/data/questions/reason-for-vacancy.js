@@ -1,12 +1,36 @@
 export default [{
-  text: 'Property was re-let to an existing tenant',
-  value: 'relet'
+  text: 'Renewal of fixed-term tenancy',
+  value: 'renewal-fixed-term'
 }, {
-  text: 'Previous tenant moved elsewhere',
-  value: 'moved'
+  text: 'Internal transfer',
+  value: 'internal-transfer',
+  hint: {
+    text: 'Excluding renewals of a fixed-term tenancy'
+  }
 }, {
-  text: 'Previous tenant was evicted',
-  value: 'evicted'
+  text: 'Re-let to tenant who occupied same property as temporary accommodation',
+  value: 'convert-from-temporary'
+}, {
+  text: 'Tenant involved in a succession downsize',
+  value: 'downsize'
+}, {
+  text: 'Tenant moved to private sector or other accommodation',
+  value: 'moved-private-sector'
+}, {
+  text: 'Tenant moved to other social housing provider',
+  value: 'other-provider'
+}, {
+  text: 'Tenant moved to care home',
+  value: 'care-home'
+}, {
+  text: 'Tenant abandoned property',
+  value: 'abandoned'
+}, {
+  text: 'Tenant was evicted due to rent arrears',
+  value: 'arrears'
+}, {
+  text: 'Tenant was evicted due to anti-social behaviour',
+  value: 'anti-social'
 }, {
   text: 'Previous tenant died with no succession',
   value: 'died'

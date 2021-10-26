@@ -1527,4 +1527,10 @@ const localAuthoritiesInEngland = localAuthorities
     return 0
   })
 
+localAuthoritiesInEngland.unshift({
+  UID: 0,
+  value: null,
+  text: 'Select…'
+})
+
 export default localAuthoritiesInEngland

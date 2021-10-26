@@ -105,13 +105,13 @@ export default (log) => {
       'is-relet',
       'recent-relet-type',
       'reason-for-vacancy',
+      'times-previously-offered',
       'type-of-unit',
       'type-of-property',
       'is-adapted',
       'number-of-bedrooms',
       'void-date',
       'repairs',
-      'times-previously-offered',
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot) => [{
@@ -135,16 +135,13 @@ export default (log) => {
       storedData: keyPathRoot.concat('is-relet'),
       values: ['false']
     }, {
-      currentPath: `${sectionPath}/reason-for-vacancy`,
-      forkPath: `${sectionPath}/reason-for-vacancy-relet`,
-      storedData: keyPathRoot.concat('reason-for-vacancy'),
-      excludedValues: ['died']
-    }, {
-      currentPath: `${sectionPath}/reason-for-vacancy-relet`,
-      skipTo: `${sectionPath}/is-adapted`
-    }, {
       currentPath: `${sectionPath}/reason-for-vacancy-non-relet`,
-      skipTo: `${sectionPath}/is-adapted`
+      skipTo: `${sectionPath}/times-previously-offered`
+    }, {
+      currentPath: `${sectionPath}/void-date`,
+      forkPath: `${sectionPath}/check-your-answers`,
+      storedData: keyPathRoot.concat('reason-for-non-relet'),
+      values: ['newprop']
     }]
   }
 
@@ -168,14 +165,6 @@ export default (log) => {
       forkPath: `${sectionPath}/reason-for-vacancy-non-relet`,
       storedData: keyPathRoot.concat('is-relet'),
       values: ['false']
-    }, {
-      currentPath: `${sectionPath}/reason-for-vacancy`,
-      forkPath: `${sectionPath}/reason-for-vacancy-relet`,
-      storedData: keyPathRoot.concat('reason-for-vacancy'),
-      excludedValues: ['died']
-    }, {
-      currentPath: `${sectionPath}/reason-for-vacancy-relet`,
-      skipTo: `${sectionPath}/is-adapted`
     }, {
       currentPath: `${sectionPath}/reason-for-vacancy-non-relet`,
       skipTo: `${sectionPath}/is-adapted`

@@ -5,10 +5,8 @@
 {% set laKnown = log[section.id]["local-authority-known"] == "true" %}
 {% set isRelet = log[section.id]["is-relet"] == "true" %}
 {% set isNewlet = log[section.id]["is-relet"] == "false" %}
-{% set vacancyDueToRelet = log[section.id]["reason-for-vacancy"] == "relet" %}
-{% set vacancyDueToMove = log[section.id]["reason-for-vacancy"] == "moved" %}
-{% set vacancyDueToEviction = log[section.id]["reason-for-vacancy"] == "evicted" %}
 {% set wasRepaired = log[section.id]["repairs"] == "true" %}
+{% set isNewprop = log[section.id]["reason-for-non-relet"] == "newprop" %}
 
 {# Answer objects #}
 {% set property_reference = {
@@ -56,12 +54,12 @@
     }]
   }
 } if postcodeKnown %}
-{% set local_authority_unknown = {
+{% set local_authority_known = {
   key: {
-    text: "Local authority"
+    text: "Local authority known"
   },
   value: {
-    text: "Not known"
+    text: log[section.id]["local-authority-known"] | textFromInputValue(data.questions["yes-no"])
   },
   actions: {
     items: [{
@@ -70,13 +68,13 @@
       visuallyHiddenText: "Local authority"
     }]
   }
-} if not postcodeKnown and not laKnown %}
+} if not postcodeKnown %}
 {% set local_authority = {
   key: {
     text: "Local authority"
   },
   value: {
-    text: log[section.id]["local-authority"] | textFromInputValue(data.questions["local-authorities"])
+    text: log[section.id]["local-authorities"] | textFromInputValue(data.questions["local-authorities"])
   },
   actions: {
     items: [{
@@ -161,51 +159,6 @@
     }]
   }
 } if isRelet %}
-{% set reason_for_relet = {
-  key: {
-    text: "Reason for re-let to existing tenant"
-  },
-  value: {
-    text: log[section.id]["reason-for-vacancy-relet"] | textFromInputValue(data.questions["reason-for-vacancy-relet"])
-  },
-  actions: {
-    items: [{
-      href: sectionPath + "/reason-for-vacancy-relet?referrer=" + referrer,
-      text: "Change",
-      visuallyHiddenText: "reason for re-let to existing tenant"
-    }]
-  }
-} if vacancyDueToRelet %}
-{% set reason_for_move = {
-  key: {
-    text: "Reason for the previous tenant moving"
-  },
-  value: {
-    text: log[section.id]["reason-for-vacancy-moved"] | textFromInputValue(data.questions["reason-for-vacancy-moved"])
-  },
-  actions: {
-    items: [{
-      href: sectionPath + "/reason-for-vacancy-relet?referrer=" + referrer,
-      text: "Change",
-      visuallyHiddenText: "reason for the previous tenant moving"
-    }]
-  }
-} if vacancyDueToMove %}
-{% set reason_for_eviction = {
-  key: {
-    text: "Reason the previous tenant was evicted"
-  },
-  value: {
-    text: log[section.id]["reason-for-vacancy-evicted"] | textFromInputValue(data.questions["reason-for-vacancy-evicted"])
-  },
-  actions: {
-    items: [{
-      href: sectionPath + "/reason-for-vacancy-relet?referrer=" + referrer,
-      text: "Change",
-      visuallyHiddenText: "reason the previous tenant was evicted"
-    }]
-  }
-} if vacancyDueToEviction %}
 {% set type_of_unit = {
   key: {
     text: "Type of unit"
@@ -295,7 +248,7 @@
       visuallyHiddenText: "repairs status"
     }]
   }
-} %}
+} if not isNewprop %}
 {% set repairs_date = {
   key: {
     text: "Repairs completion date"
@@ -338,20 +291,17 @@
         property_reference,
         postcode_unknown,
         postcode,
-        local_authority_unknown,
+        local_authority_known,
         local_authority,
         reason_for_not_knowing,
         is_property_a_relet,
         vacancy_reason_when_newlet,
         vacancy_reason_when_relet,
-        reason_for_relet,
-        reason_for_move,
-        reason_for_eviction,
+        times_offered,
         adapted_for_wheelchair,
         void_date,
         repairs,
-        repairs_date,
-        times_offered
+        repairs_date
       ]
     }) }}
   {% elif not isSupportedHousing and isRenewal %}
@@ -361,9 +311,6 @@
         is_property_a_relet,
         vacancy_reason_when_newlet,
         vacancy_reason_when_relet,
-        reason_for_relet,
-        reason_for_move,
-        reason_for_eviction,
         adapted_for_wheelchair,
         void_date,
         repairs,
@@ -387,16 +334,13 @@
         property_reference,
         postcode_unknown,
         postcode,
-        local_authority_unknown,
+        local_authority_known,
         local_authority,
         reason_for_not_knowing,
         is_property_a_relet,
         recent_let_type,
         vacancy_reason_when_newlet,
         vacancy_reason_when_relet,
-        reason_for_relet,
-        reason_for_move,
-        reason_for_eviction,
         type_of_unit,
         type_of_building,
         adapted_for_wheelchair,

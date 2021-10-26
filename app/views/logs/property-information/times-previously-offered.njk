@@ -1,7 +1,13 @@
 {% extends "question.njk" %}
 
-{% set title = "How many times has the property been previously offered since becoming available for re-let?" %}
-{% set hint = "This could be as a first let or after the last tenancy ended." %}
+{% set isRelet = log[section.id]["is-relet"] %}
+{% if isRelet == "true" %}
+  {% set title = "How many times has the property been previously offered since becoming available for re-let?" %}
+{% else %}
+  {% set title = "How many times has the property been previously offered since becoming available?" %}
+{% endif %}
+
+{% set hint = "If the property is being let for the first time, enter 0." %}
 
 {% block question %}
   {{ govukInput(decorate({
