@@ -1,13 +1,12 @@
 {% extends "form.njk" %}
 
 {% set title = "Sign in to your account to submit CORE data" %}
-{% set formAction = "/logs" %}
 
 {% block form %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukNotificationBanner({
-        html: "Your password has been reset. Sign in with your new password to continue.",
+        text: "Your password has been reset. Sign in with your new password to continue.",
         type: "success"
       }) if success == "password-reset" }}
 
@@ -30,11 +29,6 @@
         autocomplete: "current-password",
         spellcheck: false
       }) }}
-
-      {{ govukInput(decorate({
-        type: "hidden",
-        value: "true"
-      }, ["account", "token"])) }}
 
       {{ govukButton({
         text: "Sign in"

@@ -1,0 +1,45 @@
+{% extends "base.njk" %}
+
+{% import "macros.njk" as macro %}
+
+{% set title = "Users" %}
+
+{% block content %}
+  {{ govukNotificationBanner({
+    text: macro.notificationBannerText(success, users[userId].name),
+    type: "success"
+  }) if success }}
+
+  {{ macro.heading(title) }}
+
+  {{ govukButton({
+    href: "/users/new",
+    text: "Invite user"
+  }) }}
+
+  {%- set userRows = [] -%}
+  {% for id, user in users %}
+    {% if user.email != account.email %}
+      {% set row = userRows.push([{
+          html: macro.userNameHtml(id, user)
+        }, {
+          text: "Data " + user.role
+        }, {
+          text: macro.userLastActiveHtml(id, user)
+        }])
+      %}
+    {% endif %}
+  {% endfor %}
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [{
+      text: "Name and email address"
+    }, {
+      text: "Role"
+    }, {
+      text: "Last logged in"
+    }],
+    rows: userRows
+  }) }}
+{% endblock %}

@@ -10,17 +10,83 @@ const router = express.Router()
  * Account
  */
 router.get('/account/sign-out', (req, res) => {
-  delete req.session.data.account.token
+  if (req.session.data.account) {
+    delete req.session.data.account.token
+  }
 
   res.redirect('/account/sign-in')
 })
 
+router.post('/account/sign-in', (req, res) => {
+  const { account, users } = req.session.data
+
+  // Demo accounts
+  if (account.email === 'delia.cross@example.gov.uk') {
+    req.session.data.account = users.EXDC1
+  } else if (account.email === 'daisy.perkins@example.gov.uk') {
+    req.session.data.account = users.EXDP1
+  }
+
+  req.session.data.account.token = true
+
+  res.redirect('/logs')
+})
+
+router.post('/account/reset-password', (req, res) => {
+  res.redirect('/account/sign-in?success=password-reset')
+})
+
 router.all('/account/:view?', (req, res) => {
   const view = req.params.view ? req.params.view : 'index'
-  const { referrer, success } = req.query
   const { account } = req.session.data
+  const { referrer, success } = req.query
 
   res.render(`account/${view}`, { account, referrer, success })
+})
+
+/**
+ * Users
+ */
+router.all('/users', (req, res) => {
+  const { account, users } = req.session.data
+  const { referrer, success, userId } = req.query
+
+  res.render('users/index', { account, referrer, success, userId, users })
+})
+
+router.get('/users/new', (req, res) => {
+  const { users } = req.session.data
+  const userId = utils.generateLogId()
+
+  // Create a new blank log in session data
+  users[userId] = {}
+
+  res.redirect(`/users/${userId}/personal-details`)
+})
+
+router.post('/users/:userId/deactivate', (req, res) => {
+  const { users } = req.session.data
+  const { userId } = req.params
+
+  users[userId].deactivated = true
+
+  res.redirect(`/users?success=deactivated&userId=${userId}`)
+})
+
+router.get('/users/:userId/:view?', (req, res) => {
+  const view = req.params.view ? req.params.view : 'user'
+  const { userId } = req.params
+  const { account, users } = req.session.data
+  const { referrer, success } = req.query
+
+  const user = utils.getEntryById(users, userId)
+  const userPath = `/users/${userId}`
+
+  if (user) {
+    res.render(`users/${view}`, { account, referrer, success, user, users, userPath })
+  } else {
+    res.redirect('/users')
+  }
 })
 
 /**

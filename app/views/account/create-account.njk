@@ -1,6 +1,6 @@
 {% extends "form.njk" %}
 
-{% set title = "Create a CORE account" %}
+{% set title = "Create an account to submit CORE data" %}
 {% set formAction = "/logs" %}
 
 {% block form %}
@@ -8,16 +8,16 @@
     <div class="govuk-grid-column-two-thirds">
       {{ macro.heading(title) }}
 
-      <p>You have been invited to create a CORE account with the email address <strong>jane.doe@walford.gov.uk</strong>.</p>
+      <p>You have been invited to create an account with the email address <strong>jane.doe@example.gov.uk</strong>.</p>
 
       {{ govukInput(decorate({
         type: "hidden",
-        value: "Jane Doe"
+        value: "Janina Doe"
       }, ["account", "name"])) }}
 
       {{ govukInput(decorate({
         type: "hidden",
-        value: "jane.doe@walford.gov.uk"
+        value: "janina.doe@example.gov.uk"
       }, ["account", "email"])) }}
 
       {{ govukInput({
