@@ -152,22 +152,51 @@ export default (log) => {
     group: 'tenancy',
     paths: getPaths('property-information-renewal', [
       'reference',
+      'postcode',
+      // ↳ Local authority if cannot be inferred from postcode
+      'local-authority-known',
+      'local-authority',
+      // ↳ No postcode or local authority known
+      'why-dont-you-know-postcode-or-la',
       'is-relet',
+      'recent-relet-type',
       'reason-for-vacancy',
+      'times-previously-offered',
+      'type-of-unit',
+      'type-of-property',
       'is-adapted',
       'void-date',
       'repairs',
-      'times-previously-offered',
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/postcode`,
+      forkPath: `${sectionPath}/is-relet`,
+      storedData: keyPathRoot.concat('postcode-known'),
+      values: ['true']
+    }, {
+      currentPath: `${sectionPath}/local-authority-known`,
+      forkPath: `${sectionPath}/why-dont-you-know-postcode-or-la`,
+      storedData: keyPathRoot.concat('local-authority-known'),
+      values: ['false']
+    }, {
+      currentPath: `${sectionPath}/local-authority`,
+      forkPath: `${sectionPath}/is-relet`,
+      storedData: keyPathRoot.concat('local-authority-known'),
+      values: ['true']
+    }, {
       currentPath: `${sectionPath}/is-relet`,
       forkPath: `${sectionPath}/reason-for-vacancy-non-relet`,
       storedData: keyPathRoot.concat('is-relet'),
       values: ['false']
     }, {
       currentPath: `${sectionPath}/reason-for-vacancy-non-relet`,
-      skipTo: `${sectionPath}/is-adapted`
+      skipTo: `${sectionPath}/times-previously-offered`
+    }, {
+      currentPath: `${sectionPath}/void-date`,
+      forkPath: `${sectionPath}/check-your-answers`,
+      storedData: keyPathRoot.concat('reason-for-non-relet'),
+      values: ['newprop']
     }]
   }
 
@@ -234,11 +263,33 @@ export default (log) => {
     group: 'tenancy',
     paths: getPaths('property-information-supported-housing-renewal', [
       'reference',
+      'postcode',
+      // ↳ Local authority if cannot be inferred from postcode
+      'local-authority-known',
+      'local-authority',
+      // ↳ No postcode or local authority known
+      'why-dont-you-know-postcode-or-la',
+      'type-of-unit',
+      'type-of-property',
       'is-adapted',
-      'repairs',
-      'times-previously-offered',
       'check-your-answers'
-    ])
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/postcode`,
+      forkPath: `${sectionPath}/type-of-unit`,
+      storedData: keyPathRoot.concat('postcode-known'),
+      values: ['true']
+    }, {
+      currentPath: `${sectionPath}/local-authority-known`,
+      forkPath: `${sectionPath}/why-dont-you-know-postcode-or-la`,
+      storedData: keyPathRoot.concat('local-authority-known'),
+      values: ['false']
+    }, {
+      currentPath: `${sectionPath}/local-authority`,
+      forkPath: `${sectionPath}/type-of-unit`,
+      storedData: keyPathRoot.concat('local-authority-known'),
+      values: ['true']
+    }]
   }
 
   /**

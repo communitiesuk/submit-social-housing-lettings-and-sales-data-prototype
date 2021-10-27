@@ -18,7 +18,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/reference?referrer=" + referrer,
+      href: sectionPath + "/reference",
       text: "Change",
       visuallyHiddenText: "property reference"
     }]
@@ -33,7 +33,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/postcode?referrer=" + referrer,
+      href: sectionPath + "/postcode",
       text: "Change",
       visuallyHiddenText: "postcode"
     }]
@@ -48,7 +48,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/postcode?referrer=" + referrer,
+      href: sectionPath + "/postcode",
       text: "Change",
       visuallyHiddenText: "postcode"
     }]
@@ -63,7 +63,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/local-authority-known?referrer=" + referrer,
+      href: sectionPath + "/local-authority-known",
       text: "Change",
       visuallyHiddenText: "Local authority"
     }]
@@ -78,7 +78,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/local-authority-known?referrer=" + referrer,
+      href: sectionPath + "/local-authority-known",
       text: "Change",
       visuallyHiddenText: "Local authority"
     }]
@@ -93,7 +93,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/why-dont-you-know-postcode-or-la?referrer=" + referrer,
+      href: sectionPath + "/why-dont-you-know-postcode-or-la",
       text: "Change",
       visuallyHiddenText: "the reason you don't know either the postcode or local authority"
     }]
@@ -101,16 +101,16 @@
 } if not postcodeKnown and not laKnown %}
 {% set is_property_a_relet = {
   key: {
-    text: "Is the property a re-let?"
+    text: "First time being let as social-housing"
   },
   value: {
-    text: log[section.id]["is-relet"] | textFromInputValue(data.questions["yes-no"])
+    text: log[section.id]["is-relet"] | textFromInputValue(data.questions["re-let"])
   },
   actions: {
     items: [{
-      href: sectionPath + "/is-relet?referrer=" + referrer,
+      href: sectionPath + "/is-relet",
       text: "Change",
-      visuallyHiddenText: "if this property is a re-let"
+      visuallyHiddenText: "if this is the first time being let as social-housing"
     }]
   }
 } %}
@@ -123,7 +123,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/recent-relet-type?referrer=" + referrer,
+      href: sectionPath + "/recent-relet-type",
       text: "Change",
       visuallyHiddenText: "the recent let type"
     }]
@@ -138,7 +138,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/reason-for-vacancy-non-relet?referrer=" + referrer,
+      href: sectionPath + "/reason-for-vacancy-non-relet",
       text: "Change",
       visuallyHiddenText: "reason for vacancy"
     }]
@@ -153,7 +153,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/reason-for-vacancy?referrer=" + referrer,
+      href: sectionPath + "/reason-for-vacancy",
       text: "Change",
       visuallyHiddenText: "reason for vacancy"
     }]
@@ -168,7 +168,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/type-of-unit?referrer=" + referrer,
+      href: sectionPath + "/type-of-unit",
       text: "Change",
       visuallyHiddenText: "type of unit"
     }]
@@ -183,7 +183,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/type-of-property?referrer=" + referrer,
+      href: sectionPath + "/type-of-property",
       text: "Change",
       visuallyHiddenText: "type of building"
     }]
@@ -198,7 +198,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/is-adapted?referrer=" + referrer,
+      href: sectionPath + "/is-adapted",
       text: "Change",
       visuallyHiddenText: "wheelchair adaptation status"
     }]
@@ -213,7 +213,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/number-of-bedrooms?referrer=" + referrer,
+      href: sectionPath + "/number-of-bedrooms",
       text: "Change",
       visuallyHiddenText: "number of bedrooms"
     }]
@@ -228,7 +228,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/void-date?referrer=" + referrer,
+      href: sectionPath + "/void-date",
       text: "Change",
       visuallyHiddenText: "date"
     }]
@@ -243,7 +243,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/repairs?referrer=" + referrer,
+      href: sectionPath + "/repairs",
       text: "Change",
       visuallyHiddenText: "repairs status"
     }]
@@ -258,7 +258,7 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/repairs?referrer=" + referrer,
+      href: sectionPath + "/repairs",
       text: "Change",
       visuallyHiddenText: "repairs completion date"
     }]
@@ -273,12 +273,20 @@
   },
   actions: {
     items: [{
-      href: sectionPath + "/times-previously-offered?referrer=" + referrer,
+      href: sectionPath + "/times-previously-offered",
       text: "Change",
       visuallyHiddenText: "times offered"
     }]
   }
 } %}
+
+{% macro inferred_answers(rows) %}
+<h2 class="govuk-heading-m">Inferred data</h2>
+<p>We were able to work out the following from answers you gave elsewhere</p>
+{{ govukSummaryList({
+  rows: rows
+})}}
+{% endmacro %}
 
 {% block checkAnswers %}
 
@@ -295,39 +303,168 @@
         local_authority,
         reason_for_not_knowing,
         is_property_a_relet,
+        recent_let_type,
         vacancy_reason_when_newlet,
         vacancy_reason_when_relet,
-        times_offered,
+        type_of_unit,
+        type_of_building,
         adapted_for_wheelchair,
         void_date,
         repairs,
-        repairs_date
+        repairs_date,
+        times_offered
       ]
     }) }}
+    {{ inferred_answers([
+      {
+        key: {
+          text: "Number of bedrooms"
+        },
+        value: {
+          text: "Not required for Social housing"
+        }
+      }
+    ]) }}
   {% elif not isSupportedHousing and isRenewal %}
     {{ govukSummaryList({
       rows: [
         property_reference,
-        is_property_a_relet,
-        vacancy_reason_when_newlet,
-        vacancy_reason_when_relet,
+        postcode_unknown,
+        postcode,
+        local_authority_known,
+        local_authority,
+        reason_for_not_knowing,
+        type_of_unit,
+        type_of_building,
         adapted_for_wheelchair,
-        void_date,
-        repairs,
-        repairs_date,
-        times_offered
+        number_of_bedrooms
       ]
     }) }}
+    {{ inferred_answers([
+      {
+        key: {
+          text: "Local authority"
+        },
+        value: {
+          text: "Arun"
+        }
+      } if postcodeKnown, {
+        key: {
+          text: "First time being let as social-housing"
+        },
+        value: {
+          text: "No"
+        }
+      }, {
+        key: {
+          text: "Reason for vacancy"
+        },
+        value: {
+          text: "Renewal of fixed-term tenancy"
+        }
+      }, {
+        key: {
+          text: "Times previously offered since becoming available"
+        },
+        value: {
+          text: "0"
+        }
+      }, {
+        key: {
+          text: "Most recent let type"
+        },
+        value: {
+          text: log["about-this-log"]["letting-rent-type"] | textFromInputValue(data.questions['letting-rent-type'])
+        }
+      }, {
+        key: {
+          text: "Renewal date"
+        },
+        value: {
+          text: log["about-this-log"]["letting-start-date"] | textFromInputValue
+        }
+      }, {
+        key: {
+          text: "Major repairs carried out during void period"
+        },
+        value: {
+          text: "No"
+        }
+      }
+    ]) }}
   {% elif isSupportedHousing and isRenewal %}
     {{ govukSummaryList({
       rows: [
         property_reference,
-        adapted_for_wheelchair,
-        repairs,
-        repairs_date,
-        times_offered
+        postcode_unknown,
+        postcode,
+        local_authority_known,
+        local_authority,
+        reason_for_not_knowing,
+        type_of_unit,
+        type_of_building,
+        adapted_for_wheelchair
       ]
     }) }}
+    {{ inferred_answers([
+      {
+        key: {
+          text: "Local authority"
+        },
+        value: {
+          text: "Arun"
+        }
+      } if postcodeKnown, {
+        key: {
+          text: "First time being let as social-housing"
+        },
+        value: {
+          text: "No"
+        }
+      }, {
+        key: {
+          text: "Reason for vacancy"
+        },
+        value: {
+          text: "Renewal of fixed-term tenancy"
+        }
+      }, {
+        key: {
+          text: "Times previously offered since becoming available"
+        },
+        value: {
+          text: "0"
+        }
+      }, {
+        key: {
+          text: "Most recent let type"
+        },
+        value: {
+          text: log["about-this-log"]["letting-rent-type"] | textFromInputValue(data.questions['letting-rent-type'])
+        }
+      }, {
+        key: {
+          text: "Renewal date"
+        },
+        value: {
+          text: log["about-this-log"]["letting-start-date"] | textFromInputValue
+        }
+      }, {
+        key: {
+          text: "Major repairs carried out during void period"
+        },
+        value: {
+          text: "No"
+        }
+      }, {
+        key: {
+          text: "Number of bedrooms"
+        },
+        value: {
+          text: "Not required for social housing"
+        }
+      }
+    ]) }}
   {% else %}
     {{ govukSummaryList({
       rows: [
@@ -351,5 +488,15 @@
         times_offered
       ]
     }) }}
+    {{ inferred_answers([
+      {
+        key: {
+          text: "Local authority"
+        },
+        value: {
+          text: "Arun"
+        }
+      } if postcodeKnown
+    ]) }}
   {% endif %}
 {% endblock %}
