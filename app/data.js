@@ -1,7 +1,7 @@
 import logs from './data/logs.js'
 import questions from './data/questions.js'
 
-export default (async () => ({
+export default async () => ({
   logs,
   groups: [{
     id: 'household',
@@ -20,4 +20,4 @@ export default (async () => ({
     title: 'Submission'
   }],
   questions: await questions()
-}))()
+})
