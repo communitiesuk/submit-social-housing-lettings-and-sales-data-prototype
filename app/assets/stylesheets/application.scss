@@ -9,7 +9,10 @@ $govuk-assets-path: "/govuk/assets/";
 // Import components
 @import "../app/components/all";
 
-// GOV.UK Publishing Components (used for prototyped pages that exist on GOV.UK)
+// GOV.UK Notify email (used for prototyping emails sent by GOV.UK Notify)
+@import "./govuk-notify-email";
+
+// GOV.UK Publishing Components (used for prototyping pages that exist on GOV.UK)
 @import "./govuk-publishing-components";
 @import "./autocomplete";
 

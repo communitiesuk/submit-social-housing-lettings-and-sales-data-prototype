@@ -1,0 +1,38 @@
+{% extends "base.njk" %}
+
+{% set htmlClasses = "govuk-email" %}
+{% set bodyClasses = "govuk-email__body" %}
+{% set mainClasses = "govuk-email__main" %}
+{% set containerClasses = "govuk-email__container" %}
+
+{% block skipLink %}{% endblock %}
+{% block beforeContent %}{% endblock %}
+
+{% block bodyStart %}
+  <dl class="govuk-email__headers govuk-email__container">
+    <div class="govuk-email__headers-from">
+      <dt class="govuk-visually-hidden">From:</dt>
+      <dd><b>dluhc.core@notifications.service.gov.uk</b><dd>
+    </div>
+    <div class="govuk-email__headers-subject">
+      <dt class="govuk-visually-hidden">Subject:</dt>
+      <dd>{{ title }}</dd>
+    </div>
+    <div class="govuk-email__headers-to">
+      <dt>To:</dt>
+      <dd>{{ to or "name@example.com" }}</dd>
+    </div>
+    <div class="govuk-email__headers-date">
+      <dt class="govuk-visually-hidden">Date:</dt>
+      <dd>{{ "now" | govukDate }}<dd>
+    </div>
+  </dl>
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    containerClasses: "govuk-email__container"
+  }) }}
+{% endblock %}
+
+{% block footer %}{% endblock %}
