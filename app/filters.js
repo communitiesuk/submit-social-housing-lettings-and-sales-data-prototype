@@ -2,25 +2,11 @@
  * Filters available for use in Nunjucks templates
  */
 export default (env) => {
-  const nunjucksSafe = env.getFilter('safe')
+  const safe = env.getFilter('safe')
+  const govukDate = env.getFilter('govukDate')
+  const isoDateFromDateInput = env.getFilter('isoDateFromDateInput')
+
   const filters = {}
-
-  /**
-   * Covert govukDateFromInput field values to human readable value
-   *
-   * @example { day: '12', month: '11', year: '2021' } => 12 October 2021
-   *
-   * @param {object} object Date
-   * @return {String} ISO 8601 date
-   */
-  filters.govukDateFromInput = (object) => {
-    if (!object) {
-      return
-    }
-
-    const date = Object.values(object).reverse().join('-')
-    return filters.govukDate(date)
-  }
 
   /**
    * Covert saved value to human readable text
@@ -32,7 +18,7 @@ export default (env) => {
    * @return {String} Formatted answer
    */
   filters.textFromInputValue = (value, questions) => {
-    const noValueProvidedText = nunjucksSafe('<span class="app-!-colour-muted">You didn’t answer this question</span>')
+    const noValueProvidedText = safe('<span class="app-!-colour-muted">You didn’t answer this question</span>')
 
     if (!value) {
       return noValueProvidedText
@@ -48,7 +34,7 @@ export default (env) => {
     // Dates
     // (We’ll assume only dates are objects, for now)
     if (typeof value === 'object' && !Array.isArray(value)) {
-      const date = filters.govukDateFromInput(value)
+      const date = govukDate(isoDateFromDateInput(value))
       return date !== 'Invalid Date' ? date : noValueProvidedText
     }
 
@@ -59,32 +45,6 @@ export default (env) => {
     }
 
     return value
-  }
-
-  /**
-   * Covert date to human readable value
-   *
-   * @example 2021-10-11 => 11 October 2021
-   *
-   * @param {String} string Date
-   * @return {String} Human readbable date
-   */
-  filters.govukDate = (s) => {
-    return new Date(s).toLocaleDateString('en-GB', {
-      year: 'numeric', month: 'long', day: 'numeric'
-    })
-  }
-
-  /**
-   * Logs an object in the template to the console in the browser.
-   *
-   * @example {{ "hello world" | log }}
-   *
-   * @param {any} a Any type
-   * @return {String} A script tag with a `console.log` call.
-   */
-  filters.log = (a) => {
-    return nunjucksSafe(`<script>console.log(${JSON.stringify(a, null, '\t')});</script>`)
   }
 
   filters.objectToArray = (object) => {
