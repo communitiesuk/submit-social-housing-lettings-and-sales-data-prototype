@@ -10,8 +10,4 @@ import 'accessible-autocomplete'
 document.addEventListener('DOMContentLoaded', () => {
   window.GOVUKFrontend.initAll()
   window.PrototypeRig.modules.start()
-  window.accessibleAutocomplete.enhanceSelectElement({
-    defaultValue: '',
-    selectElement: document.querySelector('#autocomplete')
-  })
 })

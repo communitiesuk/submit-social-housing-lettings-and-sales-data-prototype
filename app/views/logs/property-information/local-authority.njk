@@ -7,7 +7,15 @@
     label: {
       html: macro.heading(title, caption)
     },
-    id: "autocomplete",
     items: data.questions["local-authorities"]
   }, ["logs", log.id, section.id, "local-authorities"])) }}
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  window.accessibleAutocomplete.enhanceSelectElement({
+    defaultValue: '',
+    selectElement: document.querySelector('#logs-{{ log.id }}-{{ section.id }}-local-authorities')
+  })
+</script>
 {% endblock %}
