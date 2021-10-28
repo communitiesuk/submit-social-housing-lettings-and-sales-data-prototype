@@ -1,6 +1,6 @@
 {% extends "form.njk" %}
 
-{% set backLink = referrer or paths.back or logPath %}
+{% set backLink = 'javascript:history.go(-1);' %}
 {% set formAction = referrer or paths.current %}
 
 {% block form %}

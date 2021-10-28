@@ -1,6 +1,11 @@
 {% extends "question.njk" %}
 
-{% set title = "What is the void, new build handover or renewal date?" %}
+{% set isNewprop = log[section.id]["reason-for-non-relet"] == "newprop" %}
+{% if isNewprop %}
+{% set title = "What is the new build handover date?" %}
+{% else %}
+{% set title = "What is the void or renewal date?" %}
+{% endif %}
 
 {% block question %}
   {{ govukDateInput(decorate({

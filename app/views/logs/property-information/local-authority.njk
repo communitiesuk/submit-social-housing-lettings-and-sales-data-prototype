@@ -3,12 +3,19 @@
 {% set title = "Select a local authority" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
-    fieldset: {
-      legend: {
-        text: macro.heading(title, caption)
-      }
+  {{ govukSelect(decorate({
+    label: {
+      html: macro.heading(title, caption)
     },
     items: data.questions["local-authorities"]
-  }, ["logs", log.id, section.id, "local-authority"])) }}
+  }, ["logs", log.id, section.id, "local-authorities"])) }}
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  window.accessibleAutocomplete.enhanceSelectElement({
+    defaultValue: '',
+    selectElement: document.querySelector('#logs-{{ log.id }}-{{ section.id }}-local-authorities')
+  })
+</script>
 {% endblock %}
