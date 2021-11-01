@@ -2,29 +2,65 @@
 {% macro heading(heading, caption, size="l", headingLevel="1") %}
 <h{{ headingLevel }} class="govuk-heading-{{ size }}">
   {% if caption %}<span class="govuk-caption-{{ size }}">{{ caption }}</span>{% endif %}
-  {{ heading }}
+  {{ heading | noOrphans | safe }}
 </h{{ headingLevel }}>
 {% endmacro %}
 
 {% macro notificationBannerText(success, object) %}
   {{ (object + " has been invited to submit CORE data.") if success == "invited" }}
   {{ (object + " has been deactivated.") if success == "deactivated" }}
+  {{ "User has been deleted." if success == "deleted" }}
   {{ ("An invitation to submit CORE data has been resent to " + object + ".") if success == "reinvited" }}
 {% endmacro %}
 
 {# User macros #}
-{% macro userNameHtml(id, user) %}
-  <a href="/users/{{ id }}">{{ user.name }}</a><br>
+{% macro userNameHtml(user) %}
+  <a href="/users/{{ user.id }}">{{ user.name }}</a><br>
   <span class="govuk-!-font-weight-regular">{{ user.email }}</span>
 {% endmacro %}
 
-{% macro userLastActiveHtml(id, user) %}
+{% macro userPermissionsHtml(data, user) %}
+  {{ data.organisations[user.organisationId].name | noOrphans | safe }}<br>
+  <span class="app-!-colour-muted">{{ data.roles[user.role].name }}</span>
+{% endmacro %}
+
+{% macro userLastActiveHtml(user) %}
   {% if user.deactivated %}
     <span class="app-!-colour-muted">Deactivated</span>
   {% elif user.lastActive %}
     {{ user.lastActive | govukDate }}
   {% else %}
-    Invited by {{ user.invitedBy or "Janina Doe" }}<br>
-    <a href="/users?success=reinvited&#38;userId={{ id }}">Resend invitation email</a>
+    Not logged in yet<br>
+    <a href="/organisations/{{ user.organisationId }}/users?success=reinvited&#38;userId={{ user.id }}">Resend invitation email</a>
+  {% endif %}
+{% endmacro %}
+
+{% macro organisationAreasHtml(localAuthorities, organisation) %}
+  {% if organisation.areas | length > 1 %}
+    <ul class="govuk-list govuk-list--bullet">
+    {% for gss in organisation.areas %}
+      {% set localAuthority = localAuthorities | where("gss", gss) | first %}
+      <li>{{ localAuthority.name }}</li>
+    {% endfor %}
+    </ul>
+  {% elif organisation.areas | length == 1 %}
+    {% set localAuthority = localAuthorities | where("gss", organisation.areas[0]) | first %}
+    {{ localAuthority.name }}
+  {% else %}
+    None
+  {% endif %}
+{% endmacro %}
+
+{% macro organisationRelationshipHtml(organisations, organisation, type) %}
+  {% if organisation[type] | length > 1 %}
+    <ul class="govuk-list govuk-list--bullet">
+    {% for parentId in organisation[type] %}
+      <li>{{ organisations[parentId].name }}</li>
+    {% endfor %}
+    </ul>
+  {% elif organisation[type] | length == 1 %}
+    {{ organisations[organisation[type][0]].name }}
+  {% else %}
+    None
   {% endif %}
 {% endmacro %}

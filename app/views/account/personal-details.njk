@@ -23,7 +23,7 @@
         },
         autocomplete: "email",
         spellcheck: false
-      }, ["account", "email"])) if canManageUsers }}
+      }, ["account", "email"])) if isCoordinator }}
 
       {{ govukButton({
         text: "Save changes"

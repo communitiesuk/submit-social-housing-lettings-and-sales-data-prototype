@@ -1,0 +1,33 @@
+{% extends "form.njk" %}
+
+{% set title = "Which organisation does this user belong to?" %}
+{% if user.organisationId %}
+  {# Editing an existing user #}
+  {% set buttonText = "Save changes" %}
+  {% set backLink = userPath %}
+  {% set formAction = userPath %}
+{% else %}
+  {# Inviting a new user #}
+  {% set buttonText = "Continue" %}
+  {% set backLink = userPath + "/personal-details" %}
+  {% set formAction = userPath + "/role" %}
+{% endif %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukRadios(decorate({
+        fieldset: {
+          legend: {
+            html: macro.heading(title, user.name)
+          }
+        },
+        items: (allOrganisations if isAdmin else managedOrganisations) | optionItems("name", "id")
+      }, ["users", user.id, "organisationId"])) }}
+
+      {{ govukButton({
+        text: buttonText
+      }) }}
+    </div>
+  </div>
+{% endblock %}

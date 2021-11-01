@@ -1,0 +1,18 @@
+{% extends "form.njk" %}
+
+{% set title = "Are you sure you want to reactivate this organisation?" %}
+{% set backLink = organisationPath %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ macro.heading(title, organisation.name) }}
+
+      {{ govukButton({
+        text: "I’m sure – reactivate this organisation"
+      }) }}
+
+      <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="{{ organisationPath }}">No - I’ve changed my mind</a></p>
+    </div>
+  </div>
+{% endblock %}

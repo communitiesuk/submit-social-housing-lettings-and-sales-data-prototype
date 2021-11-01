@@ -3,12 +3,25 @@
 {% import "macros.njk" as macro %}
 
 {% set title = user.name or user.email %}
-{% set referrer = "/account" %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
     items: [{
-      href: "/users",
+      href: "/organisations",
+      text: "Organisations"
+    }, {
+      href: organisationPath,
+      text: organisation.name
+    }, {
+      href: organisationPath + "/users",
+      text: "Users"
+    }, {
+      text: title
+    }] if isAdmin else [{
+      href: organisationPath,
+      text: "Your organisation"
+    }, {
+      href: organisationPath + "/users",
       text: "Users"
     }, {
       text: title
@@ -17,9 +30,24 @@
 {% endblock %}
 
 {% block content %}
+  {{ macro.heading(title) }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {{ macro.heading(title, 'Users') }}
+      {% if user.deactivated %}
+        <p class="govuk-button-group">
+          <span class="app-!-colour-muted govuk-!-margin-right-2">This user has been deactivated.</span>
+          {% if isCoordinator or isAdmin %}
+            <a class="govuk-link" href="{{ userPath }}/reactivate">Reactivate user</a>
+            <a class="govuk-link" href="{{ userPath }}/delete">Delete user</a>
+          {% endif %}
+        </p>
+      {% elif isCoordinator or isAdmin %}
+        <p class="govuk-button-group">
+          <a class="govuk-link" href="{{ userPath }}/deactivate">Deactivate user</a>
+          <a class="govuk-link" href="{{ userPath }}/delete">Delete user</a>
+        </p>
+      {% endif %}
 
       {{ govukSummaryList({
         rows: [{
@@ -52,10 +80,24 @@
           } if not user.deactivated
         }, {
           key: {
+            text: "Organisation"
+          },
+          value: {
+            text: data.organisations[user.organisationId].name
+          },
+          actions: {
+            items: [{
+              href: userPath + "/organisation",
+              text: "Change",
+              visuallyHiddenText: "organisation"
+            } if isCoordinator or isAdmin]
+          } if not user.deactivated
+        }, {
+          key: {
             text: "Role"
           },
           value: {
-            text: "Data " + user.role
+            text: data.roles[user.role].name
           },
           actions: {
             items: [{
@@ -69,16 +111,17 @@
             text: "Last logged in"
           },
           value: {
-            html: macro.userLastActiveHtml(id, user)
+            html: user.lastActive | govukDate if user.lastActive else "Not logged in yet"
           }
-        } if not user.deactivated]
+        } if not user.deactivated, {
+          key: {
+            text: "Invited by"
+          },
+          value: {
+            html: users[user.invitedById].name
+          }
+        }]
       }) }}
-
-      {% if not user.deactivated %}
-        <p><a href="{{ userPath }}/deactivate">Deactivate user</a></p>
-      {% else %}
-        <p class="govuk-body app-!-colour-muted">This user has been deactivated.</p>
-      {% endif %}
     </div>
   </div>
 {% endblock %}

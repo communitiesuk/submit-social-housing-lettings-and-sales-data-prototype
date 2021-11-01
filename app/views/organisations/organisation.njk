@@ -1,0 +1,164 @@
+{% extends "base.njk" %}
+
+{% import "macros.njk" as macro %}
+
+{% set title = organisation.name if isAdmin else "Your organisation" %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [{
+      href: "/organisations",
+      text: "Organisations"
+    }, {
+      text: title
+    }]
+  }) if isAdmin }}
+{% endblock %}
+
+{% block content %}
+  {{ macro.heading(title) }}
+
+  {{ appSubNavigation({
+    items: [{
+      href: organisationPath,
+      text: "Details",
+      active: true
+    }, {
+      href: organisationPath + "/users",
+      text: "Users"
+    }]
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if organisation.deactivated %}
+        <p class="govuk-button-group">
+          <span class="app-!-colour-muted govuk-!-margin-right-2">This organisation has been deactivated.</span>
+          {% if isAdmin %}
+            <a class="govuk-link" href="{{ organisationPath }}/reactivate">Reactivate organisation</a>
+          {% endif %}
+        </p>
+      {% elif isAdmin %}
+        <p class="govuk-button-group">
+          <a class="govuk-link" href="{{ organisationPath }}/deactivate">Deactivate organisation</a>
+        </p>
+      {% endif %}
+
+      {{ govukSummaryList({
+        rows: [{
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: organisation.name
+          },
+          actions: {
+            items: [{
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }]
+          } if isAdmin or isCoordinator
+        }, {
+          key: {
+            text: "Address"
+          },
+          value: {
+            html: organisation.address | replace(", ", "\n") | replace(". ", "\n") | nl2br
+          },
+          actions: {
+            items: [{
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "address"
+            }]
+          } if isAdmin or isCoordinator
+        }, {
+          key: {
+            text: "Telephone number"
+          },
+          value: {
+            text: organisation.tel
+          },
+          actions: {
+            items: [{
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "telephone number"
+            }]
+          } if isAdmin or isCoordinator
+        }, {
+          key: {
+            text: "Type"
+          },
+          value: {
+            text: organisation.type
+          },
+          actions: {
+            items: [{
+              href: organisationPath + "/details",
+              text: "Change",
+              visuallyHiddenText: "type"
+            }]
+          } if isAdmin
+        }, {
+          key: {
+            text: "Local authorities operated in"
+          },
+          value: {
+            html: macro.organisationAreasHtml(localAuthorities, organisation)
+          },
+          actions: {
+            items: [{
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "local authorities operated in"
+            }]
+          } if isAdmin
+        }, {
+          key: {
+            text: "Holds own stock"
+          },
+          value: {
+            text: "Yes" if organisation.stock else "No"
+          },
+          actions: {
+            items: [{
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "if holds housing stock"
+            }]
+          } if isAdmin
+        }, {
+          key: {
+            text: "Other stock owners"
+          },
+          value: {
+            html: macro.organisationRelationshipHtml(organisations, organisation, "parents")
+          },
+          actions: {
+            items: [{
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "parent organisations"
+            }]
+          } if isAdmin
+        }, {
+          key: {
+            text: "Managing agents"
+          },
+          value: {
+            html: macro.organisationRelationshipHtml(organisations, organisation, "children")
+          },
+          actions: {
+            items: [{
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "child organisations"
+            }]
+          } if isAdmin
+        }]
+      }) }}
+    </div>
+  </div>
+{% endblock %}

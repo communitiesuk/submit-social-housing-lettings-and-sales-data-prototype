@@ -1,16 +1,59 @@
 import * as utils from '../utils.js'
 
+// Admins can view all users at `/users`
 export const usersRoutes = (router) => {
-  router.all('/users', (req, res) => {
-    const { account, users } = req.session.data
-    const { referrer, success, userId } = req.query
+  router.all('/users', (req, res, next) => {
+    const { data } = req.session
+    const { organisationId } = data.account
 
-    res.render('users/index', { account, referrer, success, userId, users })
+    // Only admin users can view all users
+    if (!res.locals.isAdmin) {
+      return res.redirect(`/organisations/${organisationId}/users`)
+    }
+
+    next()
   })
 
+  /**
+   * List users
+   */
+  router.all(['/users', '/organisations/:organisationId/users'], (req, res) => {
+    let { organisations, users } = req.session.data
+    const { organisationId } = req.params
+
+    // Convert users to array
+    users = utils.objectToArray(users)
+
+    // If path is scoped to organisation, only show users in that organisation
+    // or any of its children
+    let organisation
+    let organisationPath = ''
+    if (organisationId) {
+      organisation = utils.getEntityById(organisations, organisationId)
+      organisationPath = `/organisations/${organisationId}`
+
+      const organisationRelationships = [
+        organisationId,
+        ...(organisation.children ? organisation.children : []),
+      ]
+
+      users = users.filter(user => organisationRelationships.includes(user.organisationId))
+    }
+
+    res.render('users/index', {
+      query: req.query,
+      organisation,
+      organisationPath,
+      users
+    })
+  })
+
+  /**
+   * Create user
+   */
   router.get('/users/new', (req, res) => {
     const { users } = req.session.data
-    const userId = utils.generateLogId()
+    const userId = utils.generateUniqueId()
 
     // Create a new blank user in session data
     users[userId] = {}
@@ -18,28 +61,80 @@ export const usersRoutes = (router) => {
     res.redirect(`/users/${userId}/personal-details`)
   })
 
-  router.post('/users/:userId/deactivate', (req, res) => {
-    const { users } = req.session.data
-    const { userId } = req.params
-
-    users[userId].deactivated = true
-
-    res.redirect(`/users?success=deactivated&userId=${userId}`)
-  })
-
+  /**
+   * View user
+   */
   router.get('/users/:userId/:view?', (req, res) => {
-    const view = req.params.view ? req.params.view : 'user'
+    const { account, organisations, users } = req.session.data
     const { userId } = req.params
-    const { account, users } = req.session.data
-    const { referrer, success } = req.query
+    const view = req.params.view ? req.params.view : 'user'
 
-    const user = utils.getEntryById(users, userId)
+    const user = utils.getEntityById(users, userId)
     const userPath = `/users/${userId}`
+    const organisation = utils.getEntityById(organisations, account.organisationId)
+    const organisationPath = `/organisations/${account.organisationId}`
+
+    // Admin can add users to any organisation
+    const allOrganisations = utils.objectToArray(organisations)
+
+    // Data coordinators can add users to own organisation and its children
+    const managedOrganisations = [organisation].concat(
+      allOrganisations.filter(organisation => {
+        if (organisation.parents) {
+          return organisation.parents.includes(account.organisationId)
+        }
+      })
+    )
 
     if (user) {
-      res.render(`users/${view}`, { account, referrer, success, user, users, userPath })
+      res.render(`users/${view}`, {
+        query: req.query,
+        allOrganisations,
+        managedOrganisations,
+        organisation,
+        organisationPath,
+        user,
+        users,
+        userPath
+      })
     } else {
       res.redirect('/users')
     }
+  })
+
+  /**
+   * Delete user
+   */
+  router.post('/users/:userId/delete', (req, res) => {
+    const { users } = req.session.data
+    const { userId } = req.params
+
+    delete users[userId]
+
+    res.redirect(`/users?success=deleted`)
+  })
+
+  /**
+   * Update user
+   */
+  router.post('/users/:userId/:view?', (req, res, next) => {
+    const { users } = req.session.data
+    const { userId, view } = req.params
+
+    const userPath = `/users/${userId}`
+
+    // Deactivate user
+    if (view === 'deactivate') {
+      users[userId].deactivated = true
+      return res.redirect(userPath)
+    }
+
+    // Reactivate user
+    if (view === 'reactivate') {
+      users[userId].deactivated = false
+      return res.redirect(userPath)
+    }
+
+    next()
   })
 }

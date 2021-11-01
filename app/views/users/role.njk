@@ -1,6 +1,6 @@
 {% extends "form.njk" %}
 
-{% set title = "What is this user’s role?" %}
+{% set title = "What role does this user have?" %}
 {% if user.role %}
   {# Editing an existing user #}
   {% set buttonText = "Save changes" %}
@@ -16,16 +16,26 @@
 {% block form %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {% set dataProviderPermissionsHintHtml %}
+      {% set adminPermissionsHintHtml %}
         <ul class="govuk-list govuk-list--bullet govuk-hint">
-          <li>Can view and submit logs</li>
+          <li>Manages all logs</li>
+          <li>Manages all organisations</li>
+          <li>Manages all users</li>
         </ul>
       {% endset %}
 
       {% set dataCoordinatorPermissionsHintHtml %}
+        {% set organisation = organisations[user.organisationId] %}
         <ul class="govuk-list govuk-list--bullet govuk-hint">
-          <li>Can view and submit logs</li>
-          <li>Can manage other users</li>
+          <li>Manages logs for {{ organisation.name }} and any of its managing agents</li>
+          <li>Manages details for {{ organisation.name }}</li>
+          <li>Manages users for {{ organisation.name }}</li>
+        </ul>
+      {% endset %}
+
+      {% set dataProviderPermissionsHintHtml %}
+        <ul class="govuk-list govuk-list--bullet govuk-hint">
+          <li>Views and submits logs for {{ organisation.name }}</li>
         </ul>
       {% endset %}
 
@@ -36,15 +46,15 @@
           }
         },
         items: [{
-          value: "provider",
-          text: "Data provider",
+          value: "admin",
+          text: "Administrator",
           label: {
             classes: "govuk-label--s"
           },
           hint: {
-            html: dataProviderPermissionsHintHtml
+            html: adminPermissionsHintHtml
           }
-        }, {
+        } if isAdmin, {
           value: "coordinator",
           text: "Data coordinator",
           label: {
@@ -52,6 +62,15 @@
           },
           hint: {
             html: dataCoordinatorPermissionsHintHtml
+          }
+        } if isCoordinator or isAdmin, {
+          value: "provider",
+          text: "Data provider",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            html: dataProviderPermissionsHintHtml
           }
         }]
       }, ["users", user.id, "role"])) }}

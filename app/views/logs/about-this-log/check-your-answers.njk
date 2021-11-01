@@ -11,7 +11,7 @@
         text: "Owning organisation"
       },
       value: {
-        text: log[section.id]["organisation-owner"] | textFromInputValue(data.questions["organisation"])
+        text: data.organisations[log[section.id]["organisation-owner"]].name
       },
       actions: {
         items: [{
@@ -25,7 +25,7 @@
         text: "Managing organisation"
       },
       value: {
-        text: log[section.id]["organisation-manager"] | textFromInputValue(data.questions["organisation"])
+        text: data.organisations[log[section.id]["organisation-manager"]].name
       },
       actions: {
         items: [{

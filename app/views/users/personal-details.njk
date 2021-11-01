@@ -12,8 +12,8 @@
   {% set caption = false %}
   {% set title = "Invite a user to submit CORE data" %}
   {% set buttonText = "Continue" %}
-  {% set backLink = "/users" %}
-  {% set formAction = userPath + "/role" %}
+  {% set backLink = "/users" if activeSection == "users" else organisationPath %}
+  {% set formAction = userPath + "/organisation" %}
 {% endif %}
 
 {% block form %}
@@ -25,7 +25,6 @@
         label: {
           text: "Name"
         },
-        autocomplete: "name",
         spellcheck: false
       }, ["users", user.id, "name"])) }}
 
@@ -33,15 +32,14 @@
         label: {
           text: "Email address"
         },
-        autocomplete: "email",
         spellcheck: false
       }, ["users", user.id, "email"])) }}
 
-      {% if not user.invitedBy %}
+      {% if not user.invitedById %}
         {{ govukInput(decorate({
           type: "hidden",
-          value: account.name
-        }, ["users", user.id, "invitedBy"])) }}
+          value: data.account.name
+        }, ["users", user.id, "invitedById"])) }}
       {% endif %}
 
       {{ govukButton({
