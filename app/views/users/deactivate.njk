@@ -1,0 +1,21 @@
+{% extends "form.njk" %}
+
+{% set title = "Are you sure you want to deactive this user?" | noOrphans | safe %}
+{% set backLink = userPath %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ macro.heading(title, user.name) }}
+
+      <p>Deactivating this user will mean they can no longer access this service to submit CORE data.</p>
+      <p>Any logs this user has already submitted will not be affected.</p>
+
+      {{ govukButton({
+        classes: "govuk-button--warning",
+        text: "I’m sure – I do want to deactivate this user"
+      }) }}
+      <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/users">No - I’ve changed my mind</a></p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "form.njk" %}
+
+{% if user.name and user.email %}
+  {# Editing an existing user #}
+  {% set caption = user.name %}
+  {% set title = "Personal details" %}
+  {% set buttonText = "Save changes" %}
+  {% set backLink = userPath %}
+  {% set formAction = userPath %}
+{% else %}
+  {# Inviting a new user #}
+  {% set caption = false %}
+  {% set title = "Invite a user to submit CORE data" %}
+  {% set buttonText = "Continue" %}
+  {% set backLink = "/users" %}
+  {% set formAction = userPath + "/role" %}
+{% endif %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ macro.heading(title, caption) }}
+
+      {{ govukInput(decorate({
+        label: {
+          text: "Name"
+        },
+        autocomplete: "name",
+        spellcheck: false
+      }, ["users", user.id, "name"])) }}
+
+      {{ govukInput(decorate({
+        label: {
+          text: "Email address"
+        },
+        autocomplete: "email",
+        spellcheck: false
+      }, ["users", user.id, "email"])) }}
+
+      {% if not user.invitedBy %}
+        {{ govukInput(decorate({
+          type: "hidden",
+          value: account.name
+        }, ["users", user.id, "invitedBy"])) }}
+      {% endif %}
+
+      {{ govukButton({
+        text: buttonText
+      }) }}
+    </div>
+  </div>
+{% endblock %}

@@ -1,5 +1,6 @@
 import logs from './data/logs.js'
 import questions from './data/questions.js'
+import users from './data/users.js'
 
 export default async () => ({
   logs,
@@ -19,5 +20,6 @@ export default async () => ({
     id: 'submission',
     title: 'Submission'
   }],
-  questions: await questions()
+  questions: await questions(),
+  users
 })

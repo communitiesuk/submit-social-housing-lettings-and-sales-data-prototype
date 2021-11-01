@@ -1,6 +1,30 @@
+{# Common macros #}
 {% macro heading(heading, caption, size="l", headingLevel="1") %}
 <h{{ headingLevel }} class="govuk-heading-{{ size }}">
   {% if caption %}<span class="govuk-caption-{{ size }}">{{ caption }}</span>{% endif %}
   {{ heading }}
 </h{{ headingLevel }}>
+{% endmacro %}
+
+{% macro notificationBannerText(success, object) %}
+  {{ (object + " has been invited to submit CORE data.") if success == "invited" }}
+  {{ (object + " has been deactivated.") if success == "deactivated" }}
+  {{ ("An invitation to submit CORE data has been resent to " + object + ".") if success == "reinvited" }}
+{% endmacro %}
+
+{# User macros #}
+{% macro userNameHtml(id, user) %}
+  <a href="/users/{{ id }}">{{ user.name }}</a><br>
+  <span class="govuk-!-font-weight-regular">{{ user.email }}</span>
+{% endmacro %}
+
+{% macro userLastActiveHtml(id, user) %}
+  {% if user.deactivated %}
+    <span class="app-!-colour-muted">Deactivated</span>
+  {% elif user.lastActive %}
+    {{ user.lastActive | govukDate }}
+  {% else %}
+    Invited by {{ user.invitedBy or "Janina Doe" }}<br>
+    <a href="/users?success=reinvited&#38;userId={{ id }}">Resend invitation email</a>
+  {% endif %}
 {% endmacro %}

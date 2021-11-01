@@ -36,7 +36,7 @@
               href: "/account/personal-details?referrer=" + referrer,
               text: "Change",
               visuallyHiddenText: "email address"
-            }]
+            } if canManageUsers]
           }
         }, {
           key: {
@@ -51,6 +51,20 @@
               text: "Change",
               visuallyHiddenText: "password"
             }]
+          }
+        }, {
+          key: {
+            text: "Role"
+          },
+          value: {
+            text: "Data " + account.role
+          },
+          actions: {
+            items: [{
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "role"
+            } if canManageUsers]
           }
         }]
       }) }}
