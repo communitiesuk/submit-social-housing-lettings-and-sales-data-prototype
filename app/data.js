@@ -5,6 +5,9 @@ import users from './data/users.js'
 export default async () => ({
   logs,
   groups: [{
+    id: 'before-you-start',
+    title: 'Before you start'
+  }, {
     id: 'household',
     title: 'About the household'
   }, {
