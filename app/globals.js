@@ -24,10 +24,6 @@ export default (env) => {
       text: 'Completed',
       canStart: true
     },
-    locked: {
-      id: 'locked',
-      text: 'Locked'
-    },
     cannotStart: {
       id: 'cannotStart',
       text: 'Cannot start yet',
@@ -48,6 +44,13 @@ export default (env) => {
       let status
 
       switch (section.id) {
+        case 'about-this-log':
+          if (log[section.id]?.completed === 'true') {
+            status = 'completed'
+          } else {
+            status = 'notStarted'
+          }
+          break
         case 'declaration':
           status = 'cannotStart'
           break

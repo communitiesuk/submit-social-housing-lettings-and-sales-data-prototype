@@ -153,5 +153,10 @@
     summaryText: "Why can’t I edit this section?",
     html: 'We ask different question based on your responses to this section. If you want to change your answers, you should <a href="#">delete this log</a> and start a new one.'
   }) }}
+  {% else %}
+  {{ govukWarningText({
+    text: "You will not be able to change these answers later on.",
+    iconFallbackText: "Warning"
+  }) }}
   {% endif %}
 {% endblock %}
