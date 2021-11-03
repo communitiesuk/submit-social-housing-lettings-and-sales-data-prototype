@@ -54,16 +54,6 @@
   }
 }
 
-.app-task-list__additional {
-  display: block;
-  clear: left;
-  @include govuk-clearfix;
-  @include govuk-responsive-margin(7, "top");
-  >* {
-    margin-bottom: 0;
-  }
-}
-
 .app-task-list__item:first-child {
   border-top: 1px solid $govuk-border-colour;
 }
