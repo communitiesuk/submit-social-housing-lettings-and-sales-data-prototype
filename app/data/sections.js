@@ -11,6 +11,7 @@ export default (log) => {
   const aboutThisLog = {
     id: 'about-this-log',
     title: 'About this log',
+    group: 'before-you-start',
     paths: getPaths('about-this-log', [
       'gdpr',
       'organisation',

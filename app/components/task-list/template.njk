@@ -1,13 +1,16 @@
 {% from "govuk/components/tag/macro.njk" import govukTag %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
 {% set containerElement = ("ul" if params.disableSectionNumbering else "ol") if params.sections else "div" %}
+{% macro _aboutThisLogDetails() %}
+{% endmacro%}
 {% macro _taskList(items) %}
   <ul class="app-task-list__items">
     {% for item in items %}
       {%- set itemId = item.text | lower | replace(" ", "-") -%}
       {%- set itemTagClasses = (" " + item.tag.classes if item.tag.classes) + (" govuk-tag--" + item.tag.colour if item.tag.colour) -%}
-      <li class="app-task-list__item">
+      <li class="app-task-list__item" id="item-{{ itemId }}">
         <span class="app-task-list__task-name">
-          {% if item.href %}
+          {% if item.href and item.tag.canStart %}
             <a href="{{ item.href }}" aria-describedby="{{ itemId }}">{{ item.text }}</a>
           {% else %}
             <span class="app-task-list__task-name">{{ item.text }}</span>

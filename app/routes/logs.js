@@ -14,7 +14,7 @@ export const logRoutes = (router) => {
       updated: new Date().toISOString()
     }
 
-    res.redirect(`/logs/${logId}/about-this-log`)
+    res.redirect(`/logs/${logId}/`)
   })
 
   router.get('/logs/:logId', (req, res) => {

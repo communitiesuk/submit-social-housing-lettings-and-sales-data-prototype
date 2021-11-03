@@ -8,21 +8,32 @@ export default (env) => {
 
   const tagStatuses = {
     notStarted: {
+      id: 'notStarted',
       text: 'Not started',
-      colour: 'grey'
+      colour: 'grey',
+      canStart: true
     },
     inProgress: {
+      id: 'inProgress',
       text: 'In progress',
-      colour: 'blue'
+      colour: 'blue',
+      canStart: true
     },
     completed: {
-      text: 'Completed'
+      id: 'completed',
+      text: 'Completed',
+      canStart: true
+    },
+    cannotStart: {
+      id: 'cannotStart',
+      text: 'Cannot start yet',
+      colour: 'grey'
     }
   }
 
   globals.nextSection = (logId) => ({
-    text: 'Household characteristics',
-    href: `/logs/${logId}/household-characteristics`
+    text: 'About this log',
+    id: 'about-this-log'
   })
 
   globals.taskListSections = function (logId) {
@@ -31,12 +42,31 @@ export default (env) => {
 
     const taskListItem = (section) => {
       let status
-      if (log[section.id] === undefined) {
-        status = 'notStarted'
-      } else if (log[section.id]?.completed === 'true') {
-        status = 'completed'
-      } else {
-        status = 'inProgress'
+
+      switch (section.id) {
+        case 'about-this-log':
+          if (log[section.id]?.completed === 'true') {
+            status = 'completed'
+          } else {
+            status = 'notStarted'
+          }
+          break
+        case 'declaration':
+          status = 'cannotStart'
+          break
+        default:
+          if (log['about-this-log']?.completed === 'true') {
+            if (log[section.id]?.completed === 'true') {
+              status = 'completed'
+            } else if (log[section.id] === undefined) {
+              status = 'notStarted'
+            } else {
+              status = 'inProgress'
+            }
+          } else {
+            status = 'cannotStart'
+          }
+          break
       }
 
       const href = section.paths ? `/logs/${log.id}/${section.id}` : '#'

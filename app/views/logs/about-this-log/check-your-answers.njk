@@ -2,6 +2,7 @@
 
 {% set isLet = log[section.id]["sale-or-letting"] == "letting" %}
 {% set isSale = log[section.id]["sale-or-letting"] == "sale" %}
+{% set isCompleted = log[section.id]["completed"] == "true" %}
 
 {% block checkAnswers %}
   {{ govukSummaryList({
@@ -18,7 +19,7 @@
           text: "Change",
           visuallyHiddenText: "owning organisation"
         }]
-      }
+      } if not isCompleted
     }, {
       key: {
         text: "Managing organisation"
@@ -32,7 +33,7 @@
           text: "Change",
           visuallyHiddenText: "managing organisation"
         }]
-      }
+      } if not isCompleted
     }, {
       key: {
         text: "Sale or letting"
@@ -46,7 +47,7 @@
           text: "Change",
           visuallyHiddenText: "if sale or letting"
         }]
-      }
+      } if not isCompleted
     }, {
       key: {
         text: "Property renewal"
@@ -60,7 +61,7 @@
           text: "Change",
           visuallyHiddenText: "if renewal"
         }]
-      }
+      } if not isCompleted
     } if isLet, {
       key: {
         text: "Tenacy start date"
@@ -74,7 +75,7 @@
           text: "Change",
           visuallyHiddenText: "tenacy start date"
         }]
-      }
+      } if not isCompleted
     } if isLet, {
       key: {
         text: "Rent type"
@@ -88,7 +89,7 @@
           text: "Change",
           visuallyHiddenText: "rent type"
         }]
-      }
+      } if not isCompleted
     } if isLet, {
       key: {
         text: "Needs type"
@@ -102,7 +103,7 @@
           text: "Change",
           visuallyHiddenText: "needs type"
         }]
-      }
+      } if not isCompleted
     } if isLet, {
       key: {
         text: "Tenant code"
@@ -116,7 +117,7 @@
           text: "Change",
           visuallyHiddenText: "tenant code"
         }]
-      }
+      } if not isCompleted
     } if isLet, {
       key: {
         text: "Sale completion date"
@@ -130,7 +131,7 @@
           text: "Change",
           visuallyHiddenText: "sale completion date"
         }]
-      }
+      } if not isCompleted
     } if isSale, {
       key: {
         text: "Purchaser code"
@@ -144,7 +145,18 @@
           text: "Change",
           visuallyHiddenText: "purchaser code"
         }]
-      }
+      } if not isCompleted
     } if isSale]
   }) }}
+  {% if isCompleted %}
+  {{ govukDetails({
+    summaryText: "Why can’t I change these answers?",
+    html: 'We ask different questions about this log based on the answers you give us. If you want to change any information, you must <a href="#">delete this log and create a new one</a>.'
+  }) }}
+  {% else %}
+  {{ govukWarningText({
+    text: "You won’t be able to change these answers after you’ve saved them.",
+    iconFallbackText: "Warning"
+  }) }}
+  {% endif %}
 {% endblock %}

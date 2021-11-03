@@ -11,7 +11,8 @@ export default {
       'letting-renewal': 'true',
       'letting-rent-type': 'affordable-rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
-      'tenant-code': '298739'
+      'tenant-code': '298739',
+      completed: 'true'
     }
   },
   BZ787: {
@@ -26,7 +27,8 @@ export default {
       'letting-need-type': 'general-needs',
       'letting-renewal': 'false',
       'letting-rent-type': 'affordable-rent',
-      'letting-start-date': { day: '12', month: '1', year: '2021' }
+      'letting-start-date': { day: '12', month: '1', year: '2021' },
+      completed: 'true'
     }
   },
   BZ766: {
@@ -41,7 +43,8 @@ export default {
       'letting-need-type': 'general-needs',
       'letting-renewal': 'true',
       'letting-rent-type': 'affordable-rent',
-      'letting-start-date': { day: '12', month: '1', year: '2021' }
+      'letting-start-date': { day: '12', month: '1', year: '2021' },
+      completed: 'true'
     }
   },
   BZ765: {
@@ -56,7 +59,8 @@ export default {
       'letting-need-type': 'supported-housing',
       'letting-renewal': 'false',
       'letting-rent-type': 'affordable-rent',
-      'letting-start-date': { day: '12', month: '1', year: '2021' }
+      'letting-start-date': { day: '12', month: '1', year: '2021' },
+      completed: 'true'
     }
   },
   BZ112: {
@@ -71,7 +75,8 @@ export default {
       'letting-need-type': 'supported-housing',
       'letting-renewal': 'true',
       'letting-rent-type': 'affordable-rent',
-      'letting-start-date': { day: '12', month: '1', year: '2021' }
+      'letting-start-date': { day: '12', month: '1', year: '2021' },
+      completed: 'true'
     }
   }
 }
