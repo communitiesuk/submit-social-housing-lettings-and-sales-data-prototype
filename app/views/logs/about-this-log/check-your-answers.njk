@@ -150,12 +150,12 @@
   }) }}
   {% if isCompleted %}
   {{ govukDetails({
-    summaryText: "Why can’t I edit this section?",
-    html: 'We ask different question based on your responses to this section. If you want to change your answers, you should <a href="#">delete this log</a> and start a new one.'
+    summaryText: "Why can’t I change these answers?",
+    html: 'We ask different questions about this log based on the answers you give us. If you want to change any information, you must <a href="#">delete this log and create a new one</a>.'
   }) }}
   {% else %}
   {{ govukWarningText({
-    text: "You will not be able to change these answers later on.",
+    text: "You won’t be able to change these answers after you’ve saved them.",
     iconFallbackText: "Warning"
   }) }}
   {% endif %}
