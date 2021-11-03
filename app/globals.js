@@ -33,7 +33,7 @@ export default (env) => {
 
   globals.nextSection = (logId) => ({
     text: 'About this log',
-    href: `/logs/${logId}/about-this-log`
+    id: 'about-this-log'
   })
 
   globals.taskListSections = function (logId) {
