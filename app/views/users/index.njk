@@ -2,42 +2,73 @@
 
 {% import "macros.njk" as macro %}
 
-{% set title = "Users" %}
+{% if activeSection == "users" %}
+  {% set title = "Users" %}
+{% else %}
+  {% set title = organisation.name if isAdmin else "Your organisation" %}
+{% endif %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [{
+      href: "/organisations",
+      text: "Organisations"
+    }, {
+      href: organisationPath,
+      text: organisation.name
+    }, {
+      text: "Users"
+    }]
+  }) if isAdmin and activeSection != "users" }}
+{% endblock %}
 
 {% block content %}
+  {% set deactivatedUser = users | where("id", query.userId) | first %}
   {{ govukNotificationBanner({
-    text: macro.notificationBannerText(success, users[userId].name),
+    text: macro.notificationBannerText(query.success, deactivatedUser.name),
     type: "success"
-  }) if success }}
+  }) if query.success }}
 
   {{ macro.heading(title) }}
+
+  {{ appSubNavigation({
+    items: [{
+      href: organisationPath,
+      text: "Details"
+    }, {
+      href: organisationPath + "/users",
+      text: "Users",
+      active: true
+    }]
+  }) if organisation }}
 
   {{ govukButton({
     href: "/users/new",
     text: "Invite user"
   }) }}
 
-  {%- set userRows = [] -%}
-  {% for id, user in users %}
-    {% if user.email != account.email %}
-      {% set row = userRows.push([{
-          html: macro.userNameHtml(id, user)
-        }, {
-          text: "Data " + user.role
-        }, {
-          text: macro.userLastActiveHtml(id, user)
-        }])
-      %}
-    {% endif %}
+  {% set userRows = [] %}
+  {% for user in users %}
+    {% set row = userRows.push([{
+        html: macro.userNameHtml(user)
+      }, {
+        html: macro.userPermissionsHtml(data, user)
+      }, {
+        text: macro.userLastActiveHtml(user)
+      }])
+    %}
   {% endfor %}
 
   {{ govukTable({
     firstCellIsHeader: true,
     head: [{
+      classes: "govuk-!-width-one-quarter",
       text: "Name and email address"
     }, {
-      text: "Role"
+      classes: "govuk-!-width-one-half",
+      text: "Organisation and role"
     }, {
+      classes: "govuk-!-width-one-quarter",
       text: "Last logged in"
     }],
     rows: userRows

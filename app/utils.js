@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-export const generateLogId = () => {
+export const generateUniqueId = () => {
   return (Number(new Date())).toString(36).slice(-5).toUpperCase()
 }
 
@@ -8,7 +8,7 @@ export const getById = (items, id) => {
   return items.find(item => item.id === id)
 }
 
-export const getEntryById = (items, id) => {
+export const getEntityById = (items, id) => {
   for (const [key, value] of Object.entries(items)) {
     value.id = key
   }
@@ -18,6 +18,14 @@ export const getEntryById = (items, id) => {
   }
 
   return items[id]
+}
+
+export const objectToArray = (object) => {
+  const objArray = []
+  Object.keys(object).forEach(key => objArray.push(
+    { ...{ id: key }, ...object[key] }
+  ))
+  return objArray
 }
 
 const _originalQuery = (req) => {

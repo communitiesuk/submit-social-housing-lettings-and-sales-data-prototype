@@ -2,10 +2,11 @@ export default {
   EX001: {
     postCode: 'BN17 6RJ',
     updated: '2021-07-29',
+    updatedBy: 'DPOO1',
     'about-this-log': {
       gdpr: 'true',
-      'organisation-manager': 'organisation-a',
-      'organisation-owner': 'organisation-a',
+      'organisation-manager': 'PARENT1',
+      'organisation-owner': 'CHILD1',
       'sale-or-letting': 'letting',
       'letting-need-type': 'general-needs',
       'letting-renewal': 'true',
@@ -18,11 +19,12 @@ export default {
   BZ787: {
     postCode: 'AA1 7BB',
     submitted: '2021-07-29',
+    submittedBy: 'DPOO1',
     'about-this-log': {
       'tenant-code': 'Gen needs/!renewal',
       gdpr: 'true',
-      'organisation-manager': 'organisation-a',
-      'organisation-owner': 'organisation-a',
+      'organisation-manager': 'PARENT1',
+      'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
       'letting-need-type': 'general-needs',
       'letting-renewal': 'false',
@@ -34,11 +36,12 @@ export default {
   BZ766: {
     postCode: 'BN17 6RB',
     submitted: '2021-07-29',
+    submittedBy: 'DPOO1',
     'about-this-log': {
       'tenant-code': 'Gen needs/renewal',
       gdpr: 'true',
-      'organisation-manager': 'organisation-a',
-      'organisation-owner': 'organisation-a',
+      'organisation-manager': 'PARENT1',
+      'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
       'letting-need-type': 'general-needs',
       'letting-renewal': 'true',
@@ -50,11 +53,12 @@ export default {
   BZ765: {
     postCode: 'BN17 6RC',
     submitted: '2021-07-26',
+    submittedBy: 'DPOO1',
     'about-this-log': {
       'tenant-code': 'Sup hou/!renewal',
       gdpr: 'true',
-      'organisation-manager': 'organisation-a',
-      'organisation-owner': 'organisation-a',
+      'organisation-manager': 'PARENT1',
+      'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
       'letting-need-type': 'supported-housing',
       'letting-renewal': 'false',
@@ -66,11 +70,12 @@ export default {
   BZ112: {
     postCode: 'BN2 8FG',
     submitted: '2021-07-25',
+    submittedBy: 'DPOO1',
     'about-this-log': {
       'tenant-code': 'Sup hou/renewal',
       gdpr: 'true',
-      'organisation-manager': 'organisation-a',
-      'organisation-owner': 'organisation-a',
+      'organisation-manager': 'PARENT1',
+      'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
       'letting-need-type': 'supported-housing',
       'letting-renewal': 'true',

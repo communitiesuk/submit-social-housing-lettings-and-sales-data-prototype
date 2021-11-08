@@ -1,5 +1,7 @@
 import logs from './data/logs.js'
 import questions from './data/questions.js'
+import organisations from './data/organisations.js'
+import roles from './data/roles.js'
 import users from './data/users.js'
 
 export default async () => ({
@@ -24,5 +26,7 @@ export default async () => ({
     title: 'Submission'
   }],
   questions: await questions(),
+  organisations,
+  roles,
   users
 })

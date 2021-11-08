@@ -1,0 +1,1517 @@
+export default [{
+  uid: 1,
+  gss: 'E06000001',
+  name: 'Hartlepool'
+}, {
+  uid: 2,
+  gss: 'S12000013',
+  name: 'Na h-Eileanan Siar'
+}, {
+  uid: 3,
+  gss: 'E06000002',
+  name: 'Middlesbrough'
+}, {
+  uid: 4,
+  gss: 'E06000003',
+  name: 'Redcar and Cleveland'
+}, {
+  uid: 5,
+  gss: 'E06000004',
+  name: 'Stockton-on-Tees'
+}, {
+  uid: 6,
+  gss: 'E06000005',
+  name: 'Darlington'
+}, {
+  uid: 7,
+  gss: 'E06000006',
+  name: 'Halton'
+}, {
+  uid: 8,
+  gss: 'E06000007',
+  name: 'Warrington'
+}, {
+  uid: 9,
+  gss: 'E06000008',
+  name: 'Blackburn with Darwen'
+}, {
+  uid: 10,
+  gss: 'E06000009',
+  name: 'Blackpool'
+}, {
+  uid: 11,
+  gss: 'E06000010',
+  name: 'Kingston upon Hull, City of'
+}, {
+  uid: 12,
+  gss: 'E06000011',
+  name: 'East Riding of Yorkshire'
+}, {
+  uid: 13,
+  gss: 'E06000012',
+  name: 'North East Lincolnshire'
+}, {
+  uid: 14,
+  gss: 'E06000013',
+  name: 'North Lincolnshire'
+}, {
+  uid: 15,
+  gss: 'E06000014',
+  name: 'York'
+}, {
+  uid: 16,
+  gss: 'E06000015',
+  name: 'Derby'
+}, {
+  uid: 17,
+  gss: 'E06000016',
+  name: 'Leicester'
+}, {
+  uid: 18,
+  gss: 'E06000017',
+  name: 'Rutland'
+}, {
+  uid: 19,
+  gss: 'E06000018',
+  name: 'Nottingham'
+}, {
+  uid: 20,
+  gss: 'E06000019',
+  name: 'Herefordshire, County of'
+}, {
+  uid: 21,
+  gss: 'E06000020',
+  name: 'Telford and Wrekin'
+}, {
+  uid: 22,
+  gss: 'E06000021',
+  name: 'Stoke-on-Trent'
+}, {
+  uid: 23,
+  gss: 'E06000022',
+  name: 'Bath and North East Somerset'
+}, {
+  uid: 24,
+  gss: 'E06000023',
+  name: 'Bristol, City of'
+}, {
+  uid: 25,
+  gss: 'E06000024',
+  name: 'North Somerset'
+}, {
+  uid: 26,
+  gss: 'E06000025',
+  name: 'South Gloucestershire'
+}, {
+  uid: 27,
+  gss: 'E06000026',
+  name: 'Plymouth'
+}, {
+  uid: 28,
+  gss: 'E06000027',
+  name: 'Torbay'
+}, {
+  uid: 29,
+  gss: 'E06000030',
+  name: 'Swindon'
+}, {
+  uid: 30,
+  gss: 'E06000031',
+  name: 'Peterborough'
+}, {
+  uid: 31,
+  gss: 'E06000032',
+  name: 'Luton'
+}, {
+  uid: 32,
+  gss: 'E06000033',
+  name: 'Southend-on-Sea'
+}, {
+  uid: 33,
+  gss: 'E06000034',
+  name: 'Thurrock'
+}, {
+  uid: 34,
+  gss: 'E06000035',
+  name: 'Medway'
+}, {
+  uid: 35,
+  gss: 'E06000036',
+  name: 'Bracknell Forest'
+}, {
+  uid: 36,
+  gss: 'E06000037',
+  name: 'West Berkshire'
+}, {
+  uid: 37,
+  gss: 'E06000038',
+  name: 'Reading'
+}, {
+  uid: 38,
+  gss: 'E06000039',
+  name: 'Slough'
+}, {
+  uid: 39,
+  gss: 'E06000040',
+  name: 'Windsor and Maidenhead'
+}, {
+  uid: 40,
+  gss: 'E06000041',
+  name: 'Wokingham'
+}, {
+  uid: 41,
+  gss: 'E06000042',
+  name: 'Milton Keynes'
+}, {
+  uid: 42,
+  gss: 'E06000043',
+  name: 'Brighton and Hove'
+}, {
+  uid: 43,
+  gss: 'E06000044',
+  name: 'Portsmouth'
+}, {
+  uid: 44,
+  gss: 'E06000045',
+  name: 'Southampton'
+}, {
+  uid: 45,
+  gss: 'E06000046',
+  name: 'Isle of Wight'
+}, {
+  uid: 46,
+  gss: 'E06000047',
+  name: 'County Durham'
+}, {
+  uid: 47,
+  gss: 'E06000049',
+  name: 'Cheshire East'
+}, {
+  uid: 48,
+  gss: 'E06000050',
+  name: 'Cheshire West and Chester'
+}, {
+  uid: 49,
+  gss: 'E06000051',
+  name: 'Shropshire'
+}, {
+  uid: 50,
+  gss: 'E06000052',
+  name: 'Cornwall'
+}, {
+  uid: 51,
+  gss: 'E06000053',
+  name: 'Isles of Scilly'
+}, {
+  uid: 52,
+  gss: 'E06000054',
+  name: 'Wiltshire'
+}, {
+  uid: 53,
+  gss: 'E06000055',
+  name: 'Bedford'
+}, {
+  uid: 54,
+  gss: 'E06000056',
+  name: 'Central Bedfordshire'
+}, {
+  uid: 55,
+  gss: 'E06000057',
+  name: 'Northumberland'
+}, {
+  uid: 56,
+  gss: 'E06000058',
+  name: 'Bournemouth, Christchurch and Poole'
+}, {
+  uid: 57,
+  gss: 'E07000218',
+  name: 'North Warwickshire'
+}, {
+  uid: 58,
+  gss: 'E07000219',
+  name: 'Nuneaton and Bedworth'
+}, {
+  uid: 59,
+  gss: 'E07000220',
+  name: 'Rugby'
+}, {
+  uid: 60,
+  gss: 'E07000221',
+  name: 'Stratford-on-Avon'
+}, {
+  uid: 61,
+  gss: 'E07000222',
+  name: 'Warwick'
+}, {
+  uid: 62,
+  gss: 'E07000223',
+  name: 'Adur'
+}, {
+  uid: 63,
+  gss: 'E07000224',
+  name: 'Arun'
+}, {
+  uid: 64,
+  gss: 'E07000225',
+  name: 'Chichester'
+}, {
+  uid: 65,
+  gss: 'E07000226',
+  name: 'Crawley'
+}, {
+  uid: 66,
+  gss: 'E07000227',
+  name: 'Horsham'
+}, {
+  uid: 67,
+  gss: 'E07000228',
+  name: 'Mid Sussex'
+}, {
+  uid: 68,
+  gss: 'E07000229',
+  name: 'Worthing'
+}, {
+  uid: 69,
+  gss: 'E07000234',
+  name: 'Bromsgrove'
+}, {
+  uid: 70,
+  gss: 'E07000235',
+  name: 'Malvern Hills'
+}, {
+  uid: 71,
+  gss: 'E07000236',
+  name: 'Redditch'
+}, {
+  uid: 72,
+  gss: 'E07000237',
+  name: 'Worcester'
+}, {
+  uid: 73,
+  gss: 'E07000238',
+  name: 'Wychavon'
+}, {
+  uid: 74,
+  gss: 'E07000239',
+  name: 'Wyre Forest'
+}, {
+  uid: 75,
+  gss: 'E07000240',
+  name: 'St Albans'
+}, {
+  uid: 76,
+  gss: 'E07000241',
+  name: 'Welwyn Hatfield'
+}, {
+  uid: 77,
+  gss: 'E07000242',
+  name: 'East Hertfordshire'
+}, {
+  uid: 78,
+  gss: 'E07000243',
+  name: 'Stevenage'
+}, {
+  uid: 79,
+  gss: 'E07000244',
+  name: 'East Suffolk'
+}, {
+  uid: 80,
+  gss: 'E07000245',
+  name: 'West Suffolk'
+}, {
+  uid: 81,
+  gss: 'E07000246',
+  name: 'Somerset West and Taunton'
+}, {
+  uid: 82,
+  gss: 'E08000001',
+  name: 'Bolton'
+}, {
+  uid: 83,
+  gss: 'E08000002',
+  name: 'Bury'
+}, {
+  uid: 84,
+  gss: 'E08000003',
+  name: 'Manchester'
+}, {
+  uid: 85,
+  gss: 'E08000004',
+  name: 'Oldham'
+}, {
+  uid: 86,
+  gss: 'E08000005',
+  name: 'Rochdale'
+}, {
+  uid: 87,
+  gss: 'E08000006',
+  name: 'Salford'
+}, {
+  uid: 88,
+  gss: 'E08000007',
+  name: 'Stockport'
+}, {
+  uid: 89,
+  gss: 'E08000008',
+  name: 'Tameside'
+}, {
+  uid: 90,
+  gss: 'E08000009',
+  name: 'Trafford'
+}, {
+  uid: 91,
+  gss: 'E08000010',
+  name: 'Wigan'
+}, {
+  uid: 92,
+  gss: 'E08000011',
+  name: 'Knowsley'
+}, {
+  uid: 93,
+  gss: 'E08000012',
+  name: 'Liverpool'
+}, {
+  uid: 94,
+  gss: 'E08000013',
+  name: 'St. Helens'
+}, {
+  uid: 95,
+  gss: 'E08000014',
+  name: 'Sefton'
+}, {
+  uid: 96,
+  gss: 'E08000015',
+  name: 'Wirral'
+}, {
+  uid: 97,
+  gss: 'E08000016',
+  name: 'Barnsley'
+}, {
+  uid: 98,
+  gss: 'E08000017',
+  name: 'Doncaster'
+}, {
+  uid: 99,
+  gss: 'E08000018',
+  name: 'Rotherham'
+}, {
+  uid: 100,
+  gss: 'E08000019',
+  name: 'Sheffield'
+}, {
+  uid: 101,
+  gss: 'E08000021',
+  name: 'Newcastle upon Tyne'
+}, {
+  uid: 102,
+  gss: 'E08000022',
+  name: 'North Tyneside'
+}, {
+  uid: 103,
+  gss: 'E08000023',
+  name: 'South Tyneside'
+}, {
+  uid: 104,
+  gss: 'E08000024',
+  name: 'Sunderland'
+}, {
+  uid: 105,
+  gss: 'E08000025',
+  name: 'Birmingham'
+}, {
+  uid: 106,
+  gss: 'E08000026',
+  name: 'Coventry'
+}, {
+  uid: 107,
+  gss: 'E08000027',
+  name: 'Dudley'
+}, {
+  uid: 108,
+  gss: 'E08000028',
+  name: 'Sandwell'
+}, {
+  uid: 109,
+  gss: 'E08000029',
+  name: 'Solihull'
+}, {
+  uid: 110,
+  gss: 'E08000030',
+  name: 'Walsall'
+}, {
+  uid: 111,
+  gss: 'E06000059',
+  name: 'Dorset'
+}, {
+  uid: 112,
+  gss: 'E08000031',
+  name: 'Wolverhampton'
+}, {
+  uid: 113,
+  gss: 'S12000014',
+  name: 'Falkirk'
+}, {
+  uid: 114,
+  gss: 'S12000017',
+  name: 'Highland'
+}, {
+  uid: 115,
+  gss: 'S12000018',
+  name: 'Inverclyde'
+}, {
+  uid: 116,
+  gss: 'S12000019',
+  name: 'Midlothian'
+}, {
+  uid: 117,
+  gss: 'S12000020',
+  name: 'Moray'
+}, {
+  uid: 118,
+  gss: 'S12000021',
+  name: 'North Ayrshire'
+}, {
+  uid: 119,
+  gss: 'S12000023',
+  name: 'Orkney Islands'
+}, {
+  uid: 120,
+  gss: 'S12000026',
+  name: 'Scottish Borders'
+}, {
+  uid: 121,
+  gss: 'S12000027',
+  name: 'Shetland Islands'
+}, {
+  uid: 122,
+  gss: 'S12000028',
+  name: 'South Ayrshire'
+}, {
+  uid: 123,
+  gss: 'S12000029',
+  name: 'South Lanarkshire'
+}, {
+  uid: 124,
+  gss: 'S12000030',
+  name: 'Stirling'
+}, {
+  uid: 125,
+  gss: 'S12000033',
+  name: 'Aberdeen City'
+}, {
+  uid: 126,
+  gss: 'S12000034',
+  name: 'Aberdeenshire'
+}, {
+  uid: 127,
+  gss: 'S12000035',
+  name: 'Argyll and Bute'
+}, {
+  uid: 128,
+  gss: 'S12000036',
+  name: 'City of Edinburgh'
+}, {
+  uid: 129,
+  gss: 'S12000038',
+  name: 'Renfrewshire'
+}, {
+  uid: 130,
+  gss: 'S12000039',
+  name: 'West Dunbartonshire'
+}, {
+  uid: 131,
+  gss: 'S12000040',
+  name: 'West Lothian'
+}, {
+  uid: 132,
+  gss: 'S12000041',
+  name: 'Angus'
+}, {
+  uid: 133,
+  gss: 'S12000042',
+  name: 'Dundee City'
+}, {
+  uid: 134,
+  gss: 'S12000045',
+  name: 'East Dunbartonshire'
+}, {
+  uid: 135,
+  gss: 'E06000060',
+  name: 'Buckinghamshire'
+}, {
+  uid: 136,
+  gss: 'S12000047',
+  name: 'Fife'
+}, {
+  uid: 137,
+  gss: 'E07000008',
+  name: 'Cambridge'
+}, {
+  uid: 138,
+  gss: 'S12000048',
+  name: 'Perth and Kinross'
+}, {
+  uid: 139,
+  gss: 'E07000009',
+  name: 'East Cambridgeshire'
+}, {
+  uid: 140,
+  gss: 'S12000049',
+  name: 'Glasgow City'
+}, {
+  uid: 141,
+  gss: 'E07000010',
+  name: 'Fenland'
+}, {
+  uid: 142,
+  gss: 'S12000050',
+  name: 'North Lanarkshire'
+}, {
+  uid: 143,
+  gss: 'E07000011',
+  name: 'Huntingdonshire'
+}, {
+  uid: 144,
+  gss: 'W06000001',
+  name: 'Isle of Anglesey'
+}, {
+  uid: 145,
+  gss: 'E07000012',
+  name: 'South Cambridgeshire'
+}, {
+  uid: 146,
+  gss: 'W06000002',
+  name: 'Gwynedd'
+}, {
+  uid: 147,
+  gss: 'E07000026',
+  name: 'Allerdale'
+}, {
+  uid: 148,
+  gss: 'W06000003',
+  name: 'Conwy'
+}, {
+  uid: 149,
+  gss: 'E07000027',
+  name: 'Barrow-in-Furness'
+}, {
+  uid: 150,
+  gss: 'W06000004',
+  name: 'Denbighshire'
+}, {
+  uid: 151,
+  gss: 'E07000028',
+  name: 'Carlisle'
+}, {
+  uid: 152,
+  gss: 'W06000005',
+  name: 'Flintshire'
+}, {
+  uid: 153,
+  gss: 'E07000029',
+  name: 'Copeland'
+}, {
+  uid: 154,
+  gss: 'W06000006',
+  name: 'Wrexham'
+}, {
+  uid: 155,
+  gss: 'E07000030',
+  name: 'Eden'
+}, {
+  uid: 156,
+  gss: 'W06000008',
+  name: 'Ceredigion'
+}, {
+  uid: 157,
+  gss: 'E07000031',
+  name: 'South Lakeland'
+}, {
+  uid: 158,
+  gss: 'W06000009',
+  name: 'Pembrokeshire'
+}, {
+  uid: 159,
+  gss: 'E07000032',
+  name: 'Amber Valley'
+}, {
+  uid: 160,
+  gss: 'W06000010',
+  name: 'Carmarthenshire'
+}, {
+  uid: 161,
+  gss: 'E07000033',
+  name: 'Bolsover'
+}, {
+  uid: 162,
+  gss: 'W06000011',
+  name: 'Swansea'
+}, {
+  uid: 163,
+  gss: 'E07000034',
+  name: 'Chesterfield'
+}, {
+  uid: 164,
+  gss: 'W06000012',
+  name: 'Neath Port Talbot'
+}, {
+  uid: 165,
+  gss: 'E07000035',
+  name: 'Derbyshire Dales'
+}, {
+  uid: 166,
+  gss: 'W06000013',
+  name: 'Bridgend'
+}, {
+  uid: 167,
+  gss: 'E07000036',
+  name: 'Erewash'
+}, {
+  uid: 168,
+  gss: 'W06000014',
+  name: 'Vale of Glamorgan'
+}, {
+  uid: 169,
+  gss: 'E07000037',
+  name: 'High Peak'
+}, {
+  uid: 170,
+  gss: 'W06000015',
+  name: 'Cardiff'
+}, {
+  uid: 171,
+  gss: 'E07000038',
+  name: 'North East Derbyshire'
+}, {
+  uid: 172,
+  gss: 'W06000016',
+  name: 'Rhondda Cynon Taf'
+}, {
+  uid: 173,
+  gss: 'E07000039',
+  name: 'South Derbyshire'
+}, {
+  uid: 174,
+  gss: 'W06000018',
+  name: 'Caerphilly'
+}, {
+  uid: 175,
+  gss: 'E07000040',
+  name: 'East Devon'
+}, {
+  uid: 176,
+  gss: 'W06000019',
+  name: 'Blaenau Gwent'
+}, {
+  uid: 177,
+  gss: 'E07000041',
+  name: 'Exeter'
+}, {
+  uid: 178,
+  gss: 'W06000020',
+  name: 'Torfaen'
+}, {
+  uid: 179,
+  gss: 'E07000042',
+  name: 'Mid Devon'
+}, {
+  uid: 180,
+  gss: 'W06000021',
+  name: 'Monmouthshire'
+}, {
+  uid: 181,
+  gss: 'E07000043',
+  name: 'North Devon'
+}, {
+  uid: 182,
+  gss: 'W06000022',
+  name: 'Newport'
+}, {
+  uid: 183,
+  gss: 'E07000044',
+  name: 'South Hams'
+}, {
+  uid: 184,
+  gss: 'W06000023',
+  name: 'Powys'
+}, {
+  uid: 185,
+  gss: 'E07000045',
+  name: 'Teignbridge'
+}, {
+  uid: 186,
+  gss: 'W06000024',
+  name: 'Merthyr Tydfil'
+}, {
+  uid: 187,
+  gss: 'E07000046',
+  name: 'Torridge'
+}, {
+  uid: 188,
+  gss: 'E07000047',
+  name: 'West Devon'
+}, {
+  uid: 189,
+  gss: 'E07000061',
+  name: 'Eastbourne'
+}, {
+  uid: 190,
+  gss: 'E07000062',
+  name: 'Hastings'
+}, {
+  uid: 191,
+  gss: 'E07000063',
+  name: 'Lewes'
+}, {
+  uid: 192,
+  gss: 'E07000064',
+  name: 'Rother'
+}, {
+  uid: 193,
+  gss: 'E07000065',
+  name: 'Wealden'
+}, {
+  uid: 194,
+  gss: 'E07000066',
+  name: 'Basildon'
+}, {
+  uid: 195,
+  gss: 'E07000067',
+  name: 'Braintree'
+}, {
+  uid: 196,
+  gss: 'E07000068',
+  name: 'Brentwood'
+}, {
+  uid: 197,
+  gss: 'E07000069',
+  name: 'Castle Point'
+}, {
+  uid: 198,
+  gss: 'E07000070',
+  name: 'Chelmsford'
+}, {
+  uid: 199,
+  gss: 'E07000071',
+  name: 'Colchester'
+}, {
+  uid: 200,
+  gss: 'E07000072',
+  name: 'Epping Forest'
+}, {
+  uid: 201,
+  gss: 'E07000073',
+  name: 'Harlow'
+}, {
+  uid: 202,
+  gss: 'E07000074',
+  name: 'Maldon'
+}, {
+  uid: 203,
+  gss: 'E07000075',
+  name: 'Rochford'
+}, {
+  uid: 204,
+  gss: 'E07000076',
+  name: 'Tendring'
+}, {
+  uid: 205,
+  gss: 'E07000077',
+  name: 'Uttlesford'
+}, {
+  uid: 206,
+  gss: 'E07000078',
+  name: 'Cheltenham'
+}, {
+  uid: 207,
+  gss: 'E07000079',
+  name: 'Cotswold'
+}, {
+  uid: 208,
+  gss: 'E07000080',
+  name: 'Forest of Dean'
+}, {
+  uid: 209,
+  gss: 'E07000081',
+  name: 'Gloucester'
+}, {
+  uid: 210,
+  gss: 'E07000082',
+  name: 'Stroud'
+}, {
+  uid: 211,
+  gss: 'E07000083',
+  name: 'Tewkesbury'
+}, {
+  uid: 212,
+  gss: 'E07000084',
+  name: 'Basingstoke and Deane'
+}, {
+  uid: 213,
+  gss: 'E07000085',
+  name: 'East Hampshire'
+}, {
+  uid: 214,
+  gss: 'E07000146',
+  name: 'King’s Lynn and West Norfolk'
+}, {
+  uid: 215,
+  gss: 'E07000086',
+  name: 'Eastleigh'
+}, {
+  uid: 216,
+  gss: 'E07000147',
+  name: 'North Norfolk'
+}, {
+  uid: 217,
+  gss: 'E07000148',
+  name: 'Norwich'
+}, {
+  uid: 218,
+  gss: 'E07000149',
+  name: 'South Norfolk'
+}, {
+  uid: 219,
+  gss: 'E07000150',
+  name: 'Corby'
+}, {
+  uid: 220,
+  gss: 'E07000151',
+  name: 'Daventry'
+}, {
+  uid: 221,
+  gss: 'E07000152',
+  name: 'East Northamptonshire'
+}, {
+  uid: 222,
+  gss: 'E07000153',
+  name: 'Kettering'
+}, {
+  uid: 223,
+  gss: 'E07000154',
+  name: 'Northampton'
+}, {
+  uid: 224,
+  gss: 'E07000155',
+  name: 'South Northamptonshire'
+}, {
+  uid: 225,
+  gss: 'E07000156',
+  name: 'Wellingborough'
+}, {
+  uid: 226,
+  gss: 'E07000163',
+  name: 'Craven'
+}, {
+  uid: 227,
+  gss: 'E07000164',
+  name: 'Hambleton'
+}, {
+  uid: 228,
+  gss: 'E07000165',
+  name: 'Harrogate'
+}, {
+  uid: 229,
+  gss: 'E07000166',
+  name: 'Richmondshire'
+}, {
+  uid: 230,
+  gss: 'E07000167',
+  name: 'Ryedale'
+}, {
+  uid: 231,
+  gss: 'E07000168',
+  name: 'Scarborough'
+}, {
+  uid: 232,
+  gss: 'E07000169',
+  name: 'Selby'
+}, {
+  uid: 233,
+  gss: 'E07000170',
+  name: 'Ashfield'
+}, {
+  uid: 234,
+  gss: 'E07000171',
+  name: 'Bassetlaw'
+}, {
+  uid: 235,
+  gss: 'E07000172',
+  name: 'Broxtowe'
+}, {
+  uid: 236,
+  gss: 'E07000173',
+  name: 'Gedling'
+}, {
+  uid: 237,
+  gss: 'E07000174',
+  name: 'Mansfield'
+}, {
+  uid: 238,
+  gss: 'E07000175',
+  name: 'Newark and Sherwood'
+}, {
+  uid: 239,
+  gss: 'E07000176',
+  name: 'Rushcliffe'
+}, {
+  uid: 240,
+  gss: 'E07000177',
+  name: 'Cherwell'
+}, {
+  uid: 241,
+  gss: 'E07000178',
+  name: 'Oxford'
+}, {
+  uid: 242,
+  gss: 'E07000179',
+  name: 'South Oxfordshire'
+}, {
+  uid: 243,
+  gss: 'E07000180',
+  name: 'Vale of White Horse'
+}, {
+  uid: 244,
+  gss: 'E07000181',
+  name: 'West Oxfordshire'
+}, {
+  uid: 245,
+  gss: 'E07000187',
+  name: 'Mendip'
+}, {
+  uid: 246,
+  gss: 'E07000188',
+  name: 'Sedgemoor'
+}, {
+  uid: 247,
+  gss: 'E07000189',
+  name: 'South Somerset'
+}, {
+  uid: 248,
+  gss: 'E07000192',
+  name: 'Cannock Chase'
+}, {
+  uid: 249,
+  gss: 'E07000193',
+  name: 'East Staffordshire'
+}, {
+  uid: 250,
+  gss: 'E07000194',
+  name: 'Lichfield'
+}, {
+  uid: 251,
+  gss: 'E07000195',
+  name: 'Newcastle-under-Lyme'
+}, {
+  uid: 252,
+  gss: 'E07000196',
+  name: 'South Staffordshire'
+}, {
+  uid: 253,
+  gss: 'E07000197',
+  name: 'Stafford'
+}, {
+  uid: 254,
+  gss: 'E07000198',
+  name: 'Staffordshire Moorlands'
+}, {
+  uid: 255,
+  gss: 'E07000199',
+  name: 'Tamworth'
+}, {
+  uid: 256,
+  gss: 'E07000200',
+  name: 'Babergh'
+}, {
+  uid: 257,
+  gss: 'E07000202',
+  name: 'Ipswich'
+}, {
+  uid: 258,
+  gss: 'E07000203',
+  name: 'Mid Suffolk'
+}, {
+  uid: 259,
+  gss: 'E07000207',
+  name: 'Elmbridge'
+}, {
+  uid: 260,
+  gss: 'E07000208',
+  name: 'Epsom and Ewell'
+}, {
+  uid: 261,
+  gss: 'E07000209',
+  name: 'Guildford'
+}, {
+  uid: 262,
+  gss: 'E07000210',
+  name: 'Mole Valley'
+}, {
+  uid: 263,
+  gss: 'E07000211',
+  name: 'Reigate and Banstead'
+}, {
+  uid: 264,
+  gss: 'E07000212',
+  name: 'Runnymede'
+}, {
+  uid: 265,
+  gss: 'E07000213',
+  name: 'Spelthorne'
+}, {
+  uid: 266,
+  gss: 'E07000214',
+  name: 'Surrey Heath'
+}, {
+  uid: 267,
+  gss: 'E07000215',
+  name: 'Tandridge'
+}, {
+  uid: 268,
+  gss: 'E07000216',
+  name: 'Waverley'
+}, {
+  uid: 269,
+  gss: 'E07000217',
+  name: 'Woking'
+}, {
+  uid: 270,
+  gss: 'E07000087',
+  name: 'Fareham'
+}, {
+  uid: 271,
+  gss: 'E07000088',
+  name: 'Gosport'
+}, {
+  uid: 272,
+  gss: 'E07000089',
+  name: 'Hart'
+}, {
+  uid: 273,
+  gss: 'E07000090',
+  name: 'Havant'
+}, {
+  uid: 274,
+  gss: 'E07000091',
+  name: 'New Forest'
+}, {
+  uid: 275,
+  gss: 'E07000092',
+  name: 'Rushmoor'
+}, {
+  uid: 276,
+  gss: 'E07000093',
+  name: 'Test Valley'
+}, {
+  uid: 277,
+  gss: 'E07000094',
+  name: 'Winchester'
+}, {
+  uid: 278,
+  gss: 'E07000095',
+  name: 'Broxbourne'
+}, {
+  uid: 279,
+  gss: 'E07000096',
+  name: 'Dacorum'
+}, {
+  uid: 280,
+  gss: 'E07000098',
+  name: 'Hertsmere'
+}, {
+  uid: 281,
+  gss: 'E07000099',
+  name: 'North Hertfordshire'
+}, {
+  uid: 282,
+  gss: 'E07000102',
+  name: 'Three Rivers'
+}, {
+  uid: 283,
+  gss: 'E07000103',
+  name: 'Watford'
+}, {
+  uid: 284,
+  gss: 'E07000105',
+  name: 'Ashford'
+}, {
+  uid: 285,
+  gss: 'E07000106',
+  name: 'Canterbury'
+}, {
+  uid: 286,
+  gss: 'E07000107',
+  name: 'Dartford'
+}, {
+  uid: 287,
+  gss: 'E07000108',
+  name: 'Dover'
+}, {
+  uid: 288,
+  gss: 'E07000109',
+  name: 'Gravesham'
+}, {
+  uid: 289,
+  gss: 'E07000110',
+  name: 'Maidstone'
+}, {
+  uid: 290,
+  gss: 'E07000111',
+  name: 'Sevenoaks'
+}, {
+  uid: 291,
+  gss: 'E07000112',
+  name: 'Folkestone and Hythe'
+}, {
+  uid: 292,
+  gss: 'E07000113',
+  name: 'Swale'
+}, {
+  uid: 293,
+  gss: 'E07000114',
+  name: 'Thanet'
+}, {
+  uid: 294,
+  gss: 'E07000115',
+  name: 'Tonbridge and Malling'
+}, {
+  uid: 295,
+  gss: 'E07000116',
+  name: 'Tunbridge Wells'
+}, {
+  uid: 296,
+  gss: 'E07000117',
+  name: 'Burnley'
+}, {
+  uid: 297,
+  gss: 'E07000118',
+  name: 'Chorley'
+}, {
+  uid: 298,
+  gss: 'E07000119',
+  name: 'Fylde'
+}, {
+  uid: 299,
+  gss: 'E07000120',
+  name: 'Hyndburn'
+}, {
+  uid: 300,
+  gss: 'E07000121',
+  name: 'Lancaster'
+}, {
+  uid: 301,
+  gss: 'E07000122',
+  name: 'Pendle'
+}, {
+  uid: 302,
+  gss: 'E07000123',
+  name: 'Preston'
+}, {
+  uid: 303,
+  gss: 'E07000124',
+  name: 'Ribble Valley'
+}, {
+  uid: 304,
+  gss: 'E07000125',
+  name: 'Rossendale'
+}, {
+  uid: 305,
+  gss: 'E07000126',
+  name: 'South Ribble'
+}, {
+  uid: 306,
+  gss: 'E07000127',
+  name: 'West Lancashire'
+}, {
+  uid: 307,
+  gss: 'E07000128',
+  name: 'Wyre'
+}, {
+  uid: 308,
+  gss: 'E07000129',
+  name: 'Blaby'
+}, {
+  uid: 309,
+  gss: 'E07000130',
+  name: 'Charnwood'
+}, {
+  uid: 310,
+  gss: 'E07000131',
+  name: 'Harborough'
+}, {
+  uid: 311,
+  gss: 'E07000132',
+  name: 'Hinckley and Bosworth'
+}, {
+  uid: 312,
+  gss: 'E07000133',
+  name: 'Melton'
+}, {
+  uid: 313,
+  gss: 'E07000134',
+  name: 'North West Leicestershire'
+}, {
+  uid: 314,
+  gss: 'E07000135',
+  name: 'Oadby and Wigston'
+}, {
+  uid: 315,
+  gss: 'E07000136',
+  name: 'Boston'
+}, {
+  uid: 316,
+  gss: 'E07000137',
+  name: 'East Lindsey'
+}, {
+  uid: 317,
+  gss: 'E07000138',
+  name: 'Lincoln'
+}, {
+  uid: 318,
+  gss: 'E07000139',
+  name: 'North Kesteven'
+}, {
+  uid: 319,
+  gss: 'E07000140',
+  name: 'South Holland'
+}, {
+  uid: 320,
+  gss: 'E07000141',
+  name: 'South Kesteven'
+}, {
+  uid: 321,
+  gss: 'E07000142',
+  name: 'West Lindsey'
+}, {
+  uid: 322,
+  gss: 'E07000143',
+  name: 'Breckland'
+}, {
+  uid: 323,
+  gss: 'E07000144',
+  name: 'Broadland'
+}, {
+  uid: 324,
+  gss: 'E07000145',
+  name: 'Great Yarmouth'
+}, {
+  uid: 325,
+  gss: 'E08000032',
+  name: 'Bradford'
+}, {
+  uid: 326,
+  gss: 'E08000033',
+  name: 'Calderdale'
+}, {
+  uid: 327,
+  gss: 'E08000034',
+  name: 'Kirklees'
+}, {
+  uid: 328,
+  gss: 'E08000035',
+  name: 'Leeds'
+}, {
+  uid: 329,
+  gss: 'E08000036',
+  name: 'Wakefield'
+}, {
+  uid: 330,
+  gss: 'E08000037',
+  name: 'Gateshead'
+}, {
+  uid: 331,
+  gss: 'E09000001',
+  name: 'City of London'
+}, {
+  uid: 332,
+  gss: 'E09000002',
+  name: 'Barking and Dagenham'
+}, {
+  uid: 333,
+  gss: 'E09000003',
+  name: 'Barnet'
+}, {
+  uid: 334,
+  gss: 'E09000004',
+  name: 'Bexley'
+}, {
+  uid: 335,
+  gss: 'E09000005',
+  name: 'Brent'
+}, {
+  uid: 336,
+  gss: 'E09000006',
+  name: 'Bromley'
+}, {
+  uid: 337,
+  gss: 'E09000007',
+  name: 'Camden'
+}, {
+  uid: 338,
+  gss: 'E09000008',
+  name: 'Croydon'
+}, {
+  uid: 339,
+  gss: 'E09000009',
+  name: 'Ealing'
+}, {
+  uid: 340,
+  gss: 'E09000010',
+  name: 'Enfield'
+}, {
+  uid: 341,
+  gss: 'E09000011',
+  name: 'Greenwich'
+}, {
+  uid: 342,
+  gss: 'E09000012',
+  name: 'Hackney'
+}, {
+  uid: 343,
+  gss: 'E09000013',
+  name: 'Hammersmith and Fulham'
+}, {
+  uid: 344,
+  gss: 'E09000014',
+  name: 'Haringey'
+}, {
+  uid: 345,
+  gss: 'E09000015',
+  name: 'Harrow'
+}, {
+  uid: 346,
+  gss: 'E09000016',
+  name: 'Havering'
+}, {
+  uid: 347,
+  gss: 'E09000017',
+  name: 'Hillingdon'
+}, {
+  uid: 348,
+  gss: 'E09000018',
+  name: 'Hounslow'
+}, {
+  uid: 349,
+  gss: 'E09000019',
+  name: 'Islington'
+}, {
+  uid: 350,
+  gss: 'E09000020',
+  name: 'Kensington and Chelsea'
+}, {
+  uid: 351,
+  gss: 'E09000021',
+  name: 'Kingston upon Thames'
+}, {
+  uid: 352,
+  gss: 'E09000022',
+  name: 'Lambeth'
+}, {
+  uid: 353,
+  gss: 'E09000023',
+  name: 'Lewisham'
+}, {
+  uid: 354,
+  gss: 'E09000024',
+  name: 'Merton'
+}, {
+  uid: 355,
+  gss: 'E09000025',
+  name: 'Newham'
+}, {
+  uid: 356,
+  gss: 'E09000026',
+  name: 'Redbridge'
+}, {
+  uid: 357,
+  gss: 'E09000027',
+  name: 'Richmond upon Thames'
+}, {
+  uid: 358,
+  gss: 'E09000028',
+  name: 'Southwark'
+}, {
+  uid: 359,
+  gss: 'E09000029',
+  name: 'Sutton'
+}, {
+  uid: 360,
+  gss: 'E09000030',
+  name: 'Tower Hamlets'
+}, {
+  uid: 361,
+  gss: 'E09000031',
+  name: 'Waltham Forest'
+}, {
+  uid: 362,
+  gss: 'E09000032',
+  name: 'Wandsworth'
+}, {
+  uid: 363,
+  gss: 'E09000033',
+  name: 'Westminster'
+}, {
+  uid: 364,
+  gss: 'N09000001',
+  name: 'Antrim and Newtownabbey'
+}, {
+  uid: 365,
+  gss: 'N09000002',
+  name: 'Armagh City, Banbridge and Craigavon'
+}, {
+  uid: 366,
+  gss: 'N09000003',
+  name: 'Belfast'
+}, {
+  uid: 367,
+  gss: 'N09000004',
+  name: 'Causeway Coast and Glens'
+}, {
+  uid: 368,
+  gss: 'N09000005',
+  name: 'Derry City and Strabane'
+}, {
+  uid: 369,
+  gss: 'N09000006',
+  name: 'Fermanagh and Omagh'
+}, {
+  uid: 370,
+  gss: 'N09000007',
+  name: 'Lisburn and Castlereagh'
+}, {
+  uid: 371,
+  gss: 'N09000008',
+  name: 'Mid and East Antrim'
+}, {
+  uid: 372,
+  gss: 'N09000009',
+  name: 'Mid Ulster'
+}, {
+  uid: 373,
+  gss: 'N09000010',
+  name: 'Newry, Mourne and Down'
+}, {
+  uid: 374,
+  gss: 'N09000011',
+  name: 'Ards and North Down'
+}, {
+  uid: 375,
+  gss: 'S12000005',
+  name: 'Clackmannanshire'
+}, {
+  uid: 376,
+  gss: 'S12000006',
+  name: 'Dumfries and Galloway'
+}, {
+  uid: 377,
+  gss: 'S12000008',
+  name: 'East Ayrshire'
+}, {
+  uid: 378,
+  gss: 'S12000010',
+  name: 'East Lothian'
+}, {
+  uid: 379,
+  gss: 'S12000011',
+  name: 'East Renfrewshire'
+}]

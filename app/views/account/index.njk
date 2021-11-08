@@ -1,5 +1,7 @@
 {% extends "base.njk" %}
 
+{% import "macros.njk" as macro %}
+
 {% set title = "Your account" %}
 {% set referrer = "/account" %}
 
@@ -36,7 +38,7 @@
               href: "/account/personal-details?referrer=" + referrer,
               text: "Change",
               visuallyHiddenText: "email address"
-            } if canManageUsers]
+            } if isCoordinator or isAdmin]
           }
         }, {
           key: {
@@ -54,17 +56,31 @@
           }
         }, {
           key: {
+            text: "Organisation"
+          },
+          value: {
+            text: data.organisations[account.organisationId].name
+          },
+          actions: {
+            items: [{
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "organisation"
+            } if isAdmin]
+          }
+        }, {
+          key: {
             text: "Role"
           },
           value: {
-            text: "Data " + account.role
+            text: data.roles[account.role].name
           },
           actions: {
             items: [{
               href: "#",
               text: "Change",
               visuallyHiddenText: "role"
-            } if canManageUsers]
+            } if isCoordinator or isAdmin]
           }
         }]
       }) }}

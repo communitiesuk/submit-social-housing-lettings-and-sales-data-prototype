@@ -1,13 +1,31 @@
 import { validationResult } from 'express-validator'
 
-import * as utils from '../utils.js'
 import sections from '../data/sections.js'
+import * as utils from '../utils.js'
 import { validations } from '../validations.js'
 
 export const logRoutes = (router) => {
+  /**
+   * List logs
+   */
+  router.get('/logs', (req, res) => {
+    let { logs } = req.session.data
+
+    // Convert organisations to array
+    logs = utils.objectToArray(logs)
+
+    res.render('logs/index', {
+      query: req.query,
+      logs
+    })
+  })
+
+  /**
+   * Create log
+   */
   router.get('/logs/new', (req, res) => {
     const { logs } = req.session.data
-    const logId = utils.generateLogId()
+    const logId = utils.generateUniqueId()
 
     // Create a new blank log in session data
     logs[logId] = {
@@ -17,11 +35,14 @@ export const logRoutes = (router) => {
     res.redirect(`/logs/${logId}/`)
   })
 
+  /**
+   * View log
+   */
   router.get('/logs/:logId', (req, res) => {
     const { logId } = req.params
     const { logs } = req.session.data
 
-    const log = utils.getEntryById(logs, logId)
+    const log = utils.getEntityById(logs, logId)
 
     if (log) {
       res.render('logs/log', { log })
@@ -30,12 +51,15 @@ export const logRoutes = (router) => {
     }
   })
 
+  /**
+   * View log section
+   */
   router.get('/logs/:logId/:sectionId', (req, res, next) => {
     try {
       const { logId, sectionId } = req.params
       const { logs } = req.session.data
 
-      const log = utils.getEntryById(logs, logId)
+      const log = utils.getEntityById(logs, logId)
       const section = utils.getById(sections(log), sectionId)
 
       if (log[sectionId]) {
@@ -48,6 +72,9 @@ export const logRoutes = (router) => {
     }
   })
 
+  /**
+   * View log section question
+   */
   router.all('/logs/:logId/:sectionId/:view?', async (req, res, next) => {
     try {
       const { logId, sectionId, view } = req.params
@@ -60,7 +87,7 @@ export const logRoutes = (router) => {
         sectionViewsDir = 'property-information'
       }
 
-      const log = utils.getEntryById(logs, logId)
+      const log = utils.getEntityById(logs, logId)
       const logPath = `/logs/${logId}`
       const section = utils.getById(sections(log), sectionId)
       const sectionPath = `/logs/${logId}/${sectionId}`

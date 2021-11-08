@@ -1,0 +1,49 @@
+{% extends "base.njk" %}
+
+{% import "macros.njk" as macro %}
+
+{% set title = "Organisations" %}
+
+{% block content %}
+  {{ govukNotificationBanner({
+    text: macro.notificationBannerText(query.success, "Organisation"),
+    type: "success"
+  }) if query.success }}
+
+  {{ macro.heading(title) }}
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      href: "#",
+      text: "Create a new organisation"
+    }) }}
+    <p><a href="#">Merge organisations</a></p>
+  </div>
+
+  {%- set organisationRows = [] -%}
+  {% for organisation in organisations %}
+    {% set row = organisationRows.push([{
+        html: "<a href=\"/organisations/" + organisation.id + "\">" + organisation.name + "</a>" + ("<br><span class=\"govuk-!-font-weight-regular app-!-colour-muted\">Deactivated</span>" if organisation.deactivated)
+      }, {
+        text: organisation.id
+      }, {
+        text: organisation.type
+      }])
+    %}
+  {% endfor %}
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [{
+      classes: "govuk-!-width-one-half",
+      text: "Name"
+    }, {
+      classes: "govuk-!-width-one-quarter",
+      text: "Registration number"
+    }, {
+      classes: "govuk-!-width-one-quarter",
+      text: "Type"
+    }],
+    rows: organisationRows
+  }) }}
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends "form.njk" %}
 
-{% set title = "Are you sure you want to deactivate this user?" %}
+{% set title = "Are you sure you want to delete this user?" %}
 {% set backLink = userPath %}
 
 {% block form %}
@@ -8,12 +8,12 @@
     <div class="govuk-grid-column-two-thirds">
       {{ macro.heading(title, user.name) }}
 
-      <p>Deactivating this user will mean they can no longer access this service to submit CORE data.</p>
+      <p>Deleting this user will mean they can no longer access this service to submit CORE data.</p>
       <p>Any logs this user has already submitted will not be affected.</p>
 
       {{ govukButton({
         classes: "govuk-button--warning",
-        text: "I’m sure – deactivate this user"
+        text: "I’m sure delete this user"
       }) }}
 
       <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="{{ userPath }}">No - I’ve changed my mind</a></p>

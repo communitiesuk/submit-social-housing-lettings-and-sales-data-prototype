@@ -2,80 +2,86 @@
 
 {% set title = "Your logs" %}
 
-{% set logsIncomplete = data.logs | objectToArray | selectattr("updated") %}
-{% set logsSubmitted = data.logs | objectToArray | selectattr("submitted") %}
+{% set logsIncomplete = logs| selectattr("updated") %}
+{% set logsSubmitted = logs | selectattr("submitted") %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl govuk-!-width-two-thirds">{{ title }}</h1>
+    <h1 class="govuk-heading-xl govuk-!-width-two-thirds">{{ title }}</h1>
 
-      {{ govukButton({
-        href: "/logs/new",
-        text: "Create a new log"
-      }) }}
+    {{ govukButton({
+      href: "/logs/new",
+      text: "Create a new log"
+    }) }}
 
-      {%- set incompleteRows = [] -%}
-      {% for log in logsIncomplete %}
-        {% set row = incompleteRows.push([{
-            html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
-          }, {
-            text: log["about-this-log"]["tenant-code"]
-          }, {
-            text: log.postCode
-          }, {
-            text: log.updated | govukDate
-          }])
-        %}
-      {% endfor %}
+    {%- set incompleteRows = [] -%}
+    {% for log in logsIncomplete %}
+      {% set row = incompleteRows.push([{
+          html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
+        }, {
+          text: log["about-this-log"]["tenant-code"]
+        }, {
+          text: log.postCode
+        }, {
+          html: (log.updated | govukDate) + "<br>by " + data.users[log.updatedBy].name
+        }, {
+          html: "<a href=\"#\">Re-assign</a>"
+        } if isCoordinator or isAdmin])
+      %}
+    {% endfor %}
 
-      {{ govukTable({
-        caption: "Logs you need to complete",
-        captionClasses: "govuk-table__caption--m",
-        firstCellIsHeader: true,
-        head: [{
-          text: "Log reference"
-        }, {
-          text: "Tenant code"
-        }, {
-          text: "Postcode"
-        }, {
-          text: "Last changed"
-        }],
-        rows: incompleteRows
-      }) if logsIncomplete }}
+    {{ govukTable({
+      caption: "Logs you need to complete",
+      captionClasses: "govuk-table__caption--m",
+      firstCellIsHeader: true,
+      head: [{
+        text: "Log reference",
+        attributes: { width: "20%" }
+      }, {
+        text: "Tenant code",
+        attributes: { width: "25%" }
+      }, {
+        text: "Postcode",
+        attributes: { width: "20%" }
+      }, {
+        text: "Last changed"
+      }, {
+        text: "Actions"
+      } if isCoordinator or isAdmin],
+      rows: incompleteRows
+    }) if logsIncomplete }}
 
-      {%- set summittedRows = [] -%}
-      {%- for log in logsSubmitted -%}
-        {%- set row = summittedRows.push([{
-            html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
-          }, {
-            text: log["about-this-log"]["tenant-code"]
-          }, {
-            text: log.postCode
-          }, {
-            text: log.submitted | govukDate
-          }])
-        -%}
-      {%- endfor -%}
+    {%- set summittedRows = [] -%}
+    {%- for log in logsSubmitted -%}
+      {%- set row = summittedRows.push([{
+          html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
+        }, {
+          text: log["about-this-log"]["tenant-code"]
+        }, {
+          text: log.postCode
+        }, {
+          html: (log.submitted | govukDate) + "<br>by " + data.users[log.submittedBy].name
+        }])
+      -%}
+    {%- endfor -%}
 
-      {{ govukTable({
-        caption: "Logs you’ve submitted",
-        captionClasses: "govuk-table__caption--m",
-        firstCellIsHeader: true,
-        head: [{
-          text: "Log reference"
-        }, {
-          text: "Tenant code"
-        }, {
-          text: "Postcode"
-        }, {
-          text: "Date submitted"
-        }],
-        rows: summittedRows
-      }) if logsSubmitted }}
+    {{ govukTable({
+      caption: "Logs you’ve submitted",
+      captionClasses: "govuk-table__caption--m",
+      firstCellIsHeader: true,
+      head: [{
+        text: "Log reference",
+        attributes: { width: "20%" }
+      }, {
+        text: "Tenant code",
+        attributes: { width: "25%" }
+      }, {
+        text: "Postcode",
+        attributes: { width: "20%" }
+      }, {
+        text: "Submitted"
+      }],
+      rows: summittedRows
+    }) if logsSubmitted }}
 
-      <p><a href="#">See all completed logs ({{ logsSubmitted | length }})</a></p>
-    </div>
-  </div>
+    <p><a href="#">See all completed logs ({{ logsSubmitted | length }})</a></p>
 {% endblock %}
