@@ -159,10 +159,6 @@ export default (log) => {
       'local-authority',
       // ↳ No postcode or local authority known
       'why-dont-you-know-postcode-or-la',
-      'is-relet',
-      'recent-relet-type',
-      'reason-for-vacancy',
-      'times-previously-offered',
       'type-of-unit',
       'type-of-property',
       'is-adapted',
@@ -172,7 +168,7 @@ export default (log) => {
     ]),
     forks: (sectionPath, keyPathRoot) => [{
       currentPath: `${sectionPath}/postcode`,
-      forkPath: `${sectionPath}/is-relet`,
+      forkPath: `${sectionPath}/type-of-unit`,
       storedData: keyPathRoot.concat('postcode-known'),
       values: ['true']
     }, {
@@ -182,14 +178,9 @@ export default (log) => {
       values: ['false']
     }, {
       currentPath: `${sectionPath}/local-authority`,
-      forkPath: `${sectionPath}/is-relet`,
+      forkPath: `${sectionPath}/type-of-unit`,
       storedData: keyPathRoot.concat('local-authority-known'),
       values: ['true']
-    }, {
-      currentPath: `${sectionPath}/is-relet`,
-      forkPath: `${sectionPath}/reason-for-vacancy-non-relet`,
-      storedData: keyPathRoot.concat('is-relet'),
-      values: ['false']
     }, {
       currentPath: `${sectionPath}/reason-for-vacancy-non-relet`,
       skipTo: `${sectionPath}/times-previously-offered`
@@ -214,13 +205,16 @@ export default (log) => {
       'local-authority',
       // ↳ No postcode or local authority known
       'why-dont-you-know-postcode-or-la',
+      'is-relet',
+      'recent-relet-type',
+      'reason-for-vacancy',
+      'times-previously-offered',
       'type-of-unit',
       'type-of-property',
       'is-adapted',
       'number-of-bedrooms',
       'void-date',
       'repairs',
-      'times-previously-offered',
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot) => [{
