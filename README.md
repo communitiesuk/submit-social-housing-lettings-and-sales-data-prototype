@@ -9,15 +9,13 @@ This prototype is based on the [GOV.UK Prototype Rig](https://govuk-prototype-ri
 ## Installation
 
 1. Clone this repository:\
-`git clone git@github.com:paulrobertlloyd/govuk-prototype-rig.git`
+`git clone git@github.com:paulrobertlloyd/core-prototype.git`
 
 2. Install the dependencies:\
 `npm install`
 
 3. Start the application:\
 `npm start`
-
-You can change the service name by changing the `name` value in `app.json`.
 
 ## Developing locally
 
