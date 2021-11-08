@@ -162,6 +162,7 @@ export default (log) => {
       'type-of-unit',
       'type-of-property',
       'is-adapted',
+      'number-of-bedrooms',
       'void-date',
       'repairs',
       'check-your-answers'
@@ -237,11 +238,6 @@ export default (log) => {
       forkPath: `${sectionPath}/reason-for-vacancy-non-relet`,
       storedData: keyPathRoot.concat('is-relet'),
       values: ['false']
-    }, {
-      currentPath: `${sectionPath}/reason-for-vacancy`,
-      forkPath: `${sectionPath}/reason-for-vacancy-relet`,
-      storedData: keyPathRoot.concat('reason-for-vacancy'),
-      excludedValues: ['died']
     }, {
       currentPath: `${sectionPath}/reason-for-vacancy-relet`,
       skipTo: `${sectionPath}/is-adapted`
