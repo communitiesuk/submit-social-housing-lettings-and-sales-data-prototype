@@ -1,4 +1,4 @@
-{% extends "base.njk" %}
+{% extends "layouts/base.njk" %}
 
 {% set title = "Log " + log.id %}
 
@@ -23,7 +23,7 @@
         Skip to next incomplete section: <a href="#item-{{ nextSection(log.id).id }}">{{ nextSection(log.id).text }}</a>
       </p>
 
-      {{ appTaskList({
+      {{ rigTaskList({
         disableSectionNumbering: true,
         sections: taskListSections(log.id)
       }) }}

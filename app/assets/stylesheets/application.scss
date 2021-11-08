@@ -6,7 +6,10 @@ $govuk-assets-path: "/govuk/assets/";
 // Import GOV.UK Frontend
 @import "govuk-frontend/govuk/all";
 
-// Import components
+// Import GOV.UK Prototype Rig components
+@import "govuk-prototype-rig/rig/all";
+
+// Import app components
 @import "../app/components/all";
 
 // GOV.UK Notify email (used for prototyping emails sent by GOV.UK Notify)
@@ -14,7 +17,6 @@ $govuk-assets-path: "/govuk/assets/";
 
 // GOV.UK Publishing Components (used for prototyping pages that exist on GOV.UK)
 @import "./govuk-publishing-components";
-@import "./autocomplete";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 

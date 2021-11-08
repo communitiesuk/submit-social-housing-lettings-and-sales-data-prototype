@@ -1,42 +1,12 @@
-{% extends "govuk/template.njk" %}
+{% extends "rig/template.njk" %}
 
-{% from "govuk/components/accordion/macro.njk"           import govukAccordion %}
-{% from "govuk/components/back-link/macro.njk"           import govukBackLink %}
-{% from "govuk/components/breadcrumbs/macro.njk"         import govukBreadcrumbs %}
-{% from "govuk/components/button/macro.njk"              import govukButton %}
-{% from "govuk/components/character-count/macro.njk"     import govukCharacterCount %}
-{% from "govuk/components/checkboxes/macro.njk"          import govukCheckboxes %}
-{% from "govuk/components/cookie-banner/macro.njk"       import govukCookieBanner %}
-{% from "govuk/components/date-input/macro.njk"          import govukDateInput %}
-{% from "govuk/components/details/macro.njk"             import govukDetails %}
-{% from "govuk/components/error-message/macro.njk"       import govukErrorMessage %}
-{% from "govuk/components/error-summary/macro.njk"       import govukErrorSummary %}
-{% from "govuk/components/fieldset/macro.njk"            import govukFieldset %}
-{% from "govuk/components/file-upload/macro.njk"         import govukFileUpload %}
-{% from "govuk/components/input/macro.njk"               import govukInput %}
-{% from "govuk/components/inset-text/macro.njk"          import govukInsetText %}
-{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-{% from "govuk/components/panel/macro.njk"               import govukPanel %}
-{% from "govuk/components/phase-banner/macro.njk"        import govukPhaseBanner %}
-{% from "govuk/components/radios/macro.njk"              import govukRadios %}
-{% from "govuk/components/select/macro.njk"              import govukSelect %}
-{% from "govuk/components/skip-link/macro.njk"           import govukSkipLink %}
-{% from "govuk/components/summary-list/macro.njk"        import govukSummaryList %}
-{% from "govuk/components/table/macro.njk"               import govukTable %}
-{% from "govuk/components/tabs/macro.njk"                import govukTabs %}
-{% from "govuk/components/tag/macro.njk"                 import govukTag %}
-{% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
-{% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
-
-{% from "related-navigation/macro.njk"                   import appRelatedNavigation %}
-{% from "sub-navigation/macro.njk"                       import appSubNavigation %}
-{% from "summary-card/macro.njk"                         import appSummaryCard %}
-{% from "task-list/macro.njk"                            import appTaskList %}
+{% from "components/sub-navigation/macro.njk" import appSubNavigation %}
 
 {% import "macros.njk" as macro %}
 
 {% block head %}
   <link rel="stylesheet" href="/public/stylesheets/application.css" media="all">
+  <script src="/public/javascripts/application.js" defer></script>
 {% endblock %}
 
 {% block pageTitle %}
@@ -44,6 +14,8 @@
   {{- title + " - " if title -}}
   {{- serviceName + " - GOV.UK" -}}
 {% endblock %}
+
+{% set bodyAttributes = {"data-module": "edge"} %}
 
 {% block header %}
   {{ govukHeader({
@@ -73,8 +45,6 @@
     }] if data.account.token
   }) }}
 {% endblock %}
-
-{% set bodyAttributes = {"data-module": "edge"} %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
@@ -130,15 +100,4 @@
       html: footerMetaHtml
     }
   }) }}
-{% endblock %}
-
-{% block bodyEnd %}
-  {% block scripts %}
-    {{ data | log }}
-    <script src="/public/javascripts/application.js"></script>
-    {% if useAutoStoreData %}
-      <script src="/public/javascripts/auto-store-data.js"></script>
-    {% endif %}
-    {% block pageScripts %}{% endblock %}
-  {% endblock %}
 {% endblock %}
