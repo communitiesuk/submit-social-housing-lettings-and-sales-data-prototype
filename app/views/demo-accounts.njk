@@ -1,0 +1,55 @@
+{% extends "form.njk" %}
+
+{% set title = "Demo accounts" %}
+{% set formAction = "/account/sign-in" %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ macro.heading(title) }}
+
+      <h2 class="govuk-heading-m">DLUHC and support providers</h2>
+      <p>A CORE aministrator at DLUHC or a helpdesk agent can manage all information held by the service.</p>
+      <div class="govuk-button-group">
+        {{ govukButton(decorate({
+          text: "Sign in as an administrator",
+          value: "admin@communities.gov.uk"
+        }, ["account", "email"])) }}
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+      <h2 class="govuk-heading-m">Owning organisation</h2>
+      <p>An organisation that holds its own stock.</p>
+      <p>A data coordinator can manage details about this organisation and manage case logs the organisation is responsible for. A data provider can only submit and view case logs.</p>
+      <div class="govuk-button-group">
+        {{ govukButton(decorate({
+          text: "Sign in as a data coordinator",
+          value: "data.coordinator@owning.gov.uk"
+        }, ["account", "email"])) }}
+
+        {{ govukButton(decorate({
+          text: "Sign in as a data provider",
+          value: "data.provider@owning.gov.uk"
+        }, ["account", "email"])) }}
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+      <h2 class="govuk-heading-m">Managing organisation</h2>
+      <p>An organisation that manages stock on behalf of an owning organisation.</p>
+      <p>A data coordinator can manage details about this organisation and manage case logs the organisation is responsible for. A data provider can only submit and view case logs.</p>
+      <div class="govuk-button-group">
+        {{ govukButton(decorate({
+          text: "Sign in as a data coordinator",
+          value: "data.coordinator@managing.org.uk"
+        }, ["account", "email"])) }}
+
+        {{ govukButton(decorate({
+          text: "Sign in as a data provider",
+          value: "data.provider@managing.org.uk"
+        }, ["account", "email"])) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}
