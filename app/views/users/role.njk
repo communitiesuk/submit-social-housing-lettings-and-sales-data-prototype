@@ -9,7 +9,7 @@
 {% else %}
   {# Inviting a new user #}
   {% set buttonText = "Send invitation" %}
-  {% set backLink = userPath + "/personal-details" %}
+  {% set backLink = userPath + "/organisation" %}
   {% set formAction = "/users?success=invited&userId=" + user.id %}
 {% endif %}
 
@@ -25,9 +25,9 @@
       {% endset %}
 
       {% set dataCoordinatorPermissionsHintHtml %}
-        {% set organisation = organisations[user.organisationId] %}
+        {% set organisation = data.organisations[user.organisationId] %}
         <ul class="govuk-list govuk-list--bullet govuk-hint">
-          <li>Manages logs for {{ organisation.name }} and any of its managing agents</li>
+          <li>Manages logs for {{ organisation.name }} and its managing agents</li>
           <li>Manages details for {{ organisation.name }}</li>
           <li>Manages users for {{ organisation.name }}</li>
         </ul>
