@@ -121,8 +121,13 @@
       </li>
       {% endif %}
       <li class="govuk-footer__inline-list-item">
-        Current role: {{ data.roles[data.account.role].name }}
+        <a class="govuk-footer__link" href="/demo-accounts">Demo accounts</a>
       </li>
+      {% if data.account %}
+        <li class="govuk-footer__inline-list-item">
+          Current role: {{ data.roles[data.account.role].name }}
+        </li>
+      {% endif %}
     </ul>
   {% endset %}
   {{ govukFooter({
