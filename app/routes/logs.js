@@ -1,4 +1,5 @@
 import { validationResult } from 'express-validator'
+import { wizard } from 'govuk-prototype-rig'
 
 import sections from '../data/sections.js'
 import * as utils from '../utils.js'
@@ -95,12 +96,12 @@ export const logRoutes = (router) => {
 
       // Fork if next path is a fork
       const fork = section.forks
-        ? utils.nextForkPath(section.forks(sectionPath, sectionKeyPath), req)
+        ? wizard.nextForkPath(section.forks(sectionPath, sectionKeyPath), req)
         : false
 
       // Calculate back and next paths
       const paths = section.paths
-        ? utils.nextAndBackPaths(section.paths, req)
+        ? wizard.nextAndBackPaths(section.paths, req)
         : []
 
       // For check your answers page, the referrer is always that page

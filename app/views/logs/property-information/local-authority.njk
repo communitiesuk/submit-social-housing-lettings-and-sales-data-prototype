@@ -1,21 +1,12 @@
-{% extends "question.njk" %}
+{% extends "layouts/question.njk" %}
 
 {% set title = "Select a local authority" %}
 
 {% block question %}
-  {{ govukSelect(decorate({
+  {{ rigAutocomplete(decorate({
     label: {
       html: macro.heading(title, caption)
     },
     items: data.questions["local-authorities"]
   }, ["logs", log.id, section.id, "local-authorities"])) }}
-{% endblock %}
-
-{% block pageScripts %}
-<script>
-  window.accessibleAutocomplete.enhanceSelectElement({
-    defaultValue: '',
-    selectElement: document.querySelector('#logs-{{ log.id }}-{{ section.id }}-local-authorities')
-  })
-</script>
 {% endblock %}

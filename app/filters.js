@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 /**
- * Filters available for use in Nunjucks templates
+ * Prototype specific filters for use in Nunjucks templates.
  */
 export default (env) => {
   const filters = {}

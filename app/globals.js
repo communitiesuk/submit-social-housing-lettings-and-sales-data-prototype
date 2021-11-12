@@ -1,9 +1,9 @@
 import sections from './data/sections.js'
 
 /**
- * Global helper methods available for use in Nunjucks templates
+ * Prototype specific global functions for use in Nunjucks templates.
  */
-export default (env) => {
+export default () => {
   const globals = {}
 
   const tagStatuses = {

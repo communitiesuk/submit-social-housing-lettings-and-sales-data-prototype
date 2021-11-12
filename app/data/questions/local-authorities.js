@@ -12,9 +12,4 @@ const localAuthoritiesInEngland = localAuthorities
   })
   .map(la => ({ text: la.name, value: la.gss }))
 
-localAuthoritiesInEngland.unshift({
-  value: null,
-  text: 'Select…'
-})
-
 export default localAuthoritiesInEngland
