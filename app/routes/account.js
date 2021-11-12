@@ -54,7 +54,8 @@ export const accountRoutes = (router) => {
     const { account } = req.session.data
 
     res.render(`account/${view}`, {
-      account
+      account,
+      query: req.query
     })
   })
 }
