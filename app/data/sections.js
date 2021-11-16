@@ -81,7 +81,7 @@ export default (log) => {
     paths: getPaths('tenancy-information', [
       'start-date',
       'is-starter',
-      'tenancy-type',
+      'type-of-tenancy',
       'check-your-answers'
     ])
   }

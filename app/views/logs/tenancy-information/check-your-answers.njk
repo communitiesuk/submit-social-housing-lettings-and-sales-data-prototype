@@ -35,13 +35,13 @@
         text: "Tenancy type"
       },
       value: {
-        text: log[section.id]["tenancy-type"] | textFromInputValue(data.questions["tenancy-type"])
+        text: log[section.id]["type-of-tenancy"] | textFromInputValue(data.questions["type-of-tenancy"])
       },
       actions: {
         items: [{
-          href: sectionPath + "/tenancy-type?referrer=" + referrer,
+          href: sectionPath + "/type-of-tenancy?referrer=" + referrer,
           text: "Change",
-          visuallyHiddenText: "tenancy-type"
+          visuallyHiddenText: "type-of-tenancy"
         }]
       }
     }]
