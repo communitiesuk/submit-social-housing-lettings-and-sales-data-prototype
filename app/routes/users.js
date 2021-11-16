@@ -1,12 +1,13 @@
 import * as utils from '../utils.js'
 
-// Admins can view all users at `/users`
-export const usersRoutes = (router) => {
+export const userRoutes = (router) => {
+  /**
+   * Only admin users can view all users
+   */
   router.all('/users', (req, res, next) => {
     const { data } = req.session
     const { organisationId } = data.account
 
-    // Only admin users can view all users
     if (!res.locals.isAdmin) {
       return res.redirect(`/organisations/${organisationId}/users`)
     }
@@ -34,7 +35,7 @@ export const usersRoutes = (router) => {
 
       const organisationRelationships = [
         organisationId,
-        ...(organisation.children ? organisation.children : []),
+        ...(organisation.children ? organisation.children : [])
       ]
 
       users = users.filter(user => organisationRelationships.includes(user.organisationId))
@@ -83,6 +84,8 @@ export const usersRoutes = (router) => {
         if (organisation.parents) {
           return organisation.parents.includes(account.organisationId)
         }
+
+        return false
       })
     )
 
@@ -111,7 +114,7 @@ export const usersRoutes = (router) => {
 
     delete users[userId]
 
-    res.redirect(`/users?success=deleted`)
+    res.redirect('/users?success=deleted')
   })
 
   /**

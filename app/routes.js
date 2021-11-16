@@ -1,8 +1,8 @@
 import express from 'express'
 import { accountRoutes } from './routes/account.js'
 import { logRoutes } from './routes/logs.js'
-import { organisationsRoutes } from './routes/organisations.js'
-import { usersRoutes } from './routes/users.js'
+import { organisationRoutes } from './routes/organisations.js'
+import { userRoutes } from './routes/users.js'
 
 const router = express.Router()
 
@@ -29,7 +29,7 @@ router.all('*', (req, res, next) => {
 
 accountRoutes(router)
 logRoutes(router)
-usersRoutes(router)
-organisationsRoutes(router)
+userRoutes(router)
+organisationRoutes(router)
 
 export default router

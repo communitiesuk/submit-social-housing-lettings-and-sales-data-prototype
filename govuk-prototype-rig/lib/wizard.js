@@ -6,7 +6,7 @@ import _ from 'lodash'
  * @returns {string} Original query
  */
 function _originalQuery (req) {
-  var originalQueryString = req.originalUrl.split('?')[1]
+  const originalQueryString = req.originalUrl.split('?')[1]
   return originalQueryString ? `?${originalQueryString}` : ''
 }
 

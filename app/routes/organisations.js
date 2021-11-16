@@ -1,7 +1,7 @@
 import * as utils from '../utils.js'
 import localAuthorities from '../datasets/local-authorities.js'
 
-export const organisationsRoutes = (router) => {
+export const organisationRoutes = (router) => {
   /**
    * List organisations
    */
@@ -57,7 +57,7 @@ export const organisationsRoutes = (router) => {
   /**
    * Update organisation
    */
-   router.post('/organisations/:organisationId/:view?', (req, res) => {
+  router.post('/organisations/:organisationId/:view?', (req, res) => {
     const { organisations } = req.session.data
     const { organisationId, view } = req.params
 
