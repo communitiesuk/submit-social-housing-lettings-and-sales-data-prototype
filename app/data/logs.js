@@ -8,9 +8,9 @@ export default {
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'CHILD1',
       'sale-or-letting': 'letting',
-      'letting-need-type': 'general-needs',
+      'type-of-need': 'general-needs',
       'letting-renewal': 'true',
-      'letting-rent-type': 'affordable-rent',
+      'type-of-rent': 'affordable-rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
       'tenant-code': '298739',
       completed: 'true'
@@ -26,9 +26,9 @@ export default {
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
-      'letting-need-type': 'general-needs',
+      'type-of-need': 'general-needs',
       'letting-renewal': 'false',
-      'letting-rent-type': 'affordable-rent',
+      'type-of-rent': 'affordable-rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
       completed: 'true'
     }
@@ -43,9 +43,9 @@ export default {
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
-      'letting-need-type': 'general-needs',
+      'type-of-need': 'general-needs',
       'letting-renewal': 'true',
-      'letting-rent-type': 'affordable-rent',
+      'type-of-rent': 'affordable-rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
       completed: 'true'
     }
@@ -60,9 +60,9 @@ export default {
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
-      'letting-need-type': 'supported-housing',
+      'type-of-need': 'supported-housing',
       'letting-renewal': 'false',
-      'letting-rent-type': 'affordable-rent',
+      'type-of-rent': 'affordable-rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
       completed: 'true'
     }
@@ -77,9 +77,9 @@ export default {
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
-      'letting-need-type': 'supported-housing',
+      'type-of-need': 'supported-housing',
       'letting-renewal': 'true',
-      'letting-rent-type': 'affordable-rent',
+      'type-of-rent': 'affordable-rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
       completed: 'true'
     }

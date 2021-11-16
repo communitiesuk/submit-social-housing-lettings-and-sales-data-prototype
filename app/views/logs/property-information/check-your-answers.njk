@@ -290,7 +290,7 @@
 
 {% block checkAnswers %}
 
-  {% set isSupportedHousing = log['about-this-log']['letting-need-type'] == 'supported-housing' %}
+  {% set isSupportedHousing = log['about-this-log']['type-of-need'] == 'supported-housing' %}
   {% set isRenewal = log['about-this-log']['letting-renewal'] == 'true' %}
 
   {% if isSupportedHousing and not isRenewal %}
@@ -374,7 +374,7 @@
           text: "Most recent let type"
         },
         value: {
-          text: log["about-this-log"]["letting-rent-type"] | textFromInputValue(data.questions['letting-rent-type'])
+          text: log["about-this-log"]["type-of-rent"] | textFromInputValue(data.questions['type-of-rent'])
         }
       }, {
         key: {
@@ -440,7 +440,7 @@
           text: "Most recent let type"
         },
         value: {
-          text: log["about-this-log"]["letting-rent-type"] | textFromInputValue(data.questions['letting-rent-type'])
+          text: log["about-this-log"]["type-of-rent"] | textFromInputValue(data.questions['type-of-rent'])
         }
       }, {
         key: {

@@ -63,11 +63,11 @@ export const validations = (req) => {
         //     .withMessage('Enter the tenancy start date')
         // ],
         'letting-type': [
-          check(getFieldName('letting-rent-type'))
+          check(getFieldName('type-of-rent'))
             .not()
             .isEmpty()
             .withMessage('Select the rent type'),
-          check(getFieldName('letting-need-type'))
+          check(getFieldName('type-of-need'))
             .not()
             .isEmpty()
             .withMessage('Select the needs type')

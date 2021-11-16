@@ -12,8 +12,8 @@
         text: "Rent type"
       }
     },
-    items: data.questions["letting-rent-type"]
-  }, ["logs", log.id, section.id, "letting-rent-type"])) }}
+    items: data.questions["type-of-rent"]
+  }, ["logs", log.id, section.id, "type-of-rent"])) }}
 
   {{ govukRadios(decorate({
     fieldset: {
@@ -22,6 +22,6 @@
         text: "Needs type"
       }
     },
-    items: data.questions["letting-need-type"]
-  }, ["logs", log.id, section.id, "letting-need-type"])) }}
+    items: data.questions["type-of-need"]
+  }, ["logs", log.id, section.id, "type-of-need"])) }}
 {% endblock %}

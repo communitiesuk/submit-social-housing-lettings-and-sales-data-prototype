@@ -323,7 +323,7 @@ export default (log) => {
   let isSupportedHousing
   let isRenewal
   if (log['about-this-log']) {
-    isSupportedHousing = log['about-this-log']['letting-need-type'] === 'supported-housing'
+    isSupportedHousing = log['about-this-log']['type-of-need'] === 'supported-housing'
     isRenewal = log['about-this-log']['letting-renewal'] === 'true'
   }
 
