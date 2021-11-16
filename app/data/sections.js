@@ -104,7 +104,7 @@ export default (log) => {
       // ↳ No postcode or local authority known
       'why-dont-you-know-postcode-or-la',
       'is-relet',
-      'recent-relet-type',
+      'type-of-let',
       'reason-for-vacancy',
       'times-previously-offered',
       'type-of-unit',
@@ -207,7 +207,7 @@ export default (log) => {
       // ↳ No postcode or local authority known
       'why-dont-you-know-postcode-or-la',
       'is-relet',
-      'recent-relet-type',
+      'type-of-let',
       'reason-for-vacancy',
       'times-previously-offered',
       'type-of-unit',
