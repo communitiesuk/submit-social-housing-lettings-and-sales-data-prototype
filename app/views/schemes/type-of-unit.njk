@@ -1,0 +1,20 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "What type of unit is the property?" %}
+{% if scheme["type-of-unit"] %}
+  {# Editing an existing scheme #}
+  {% set caption = scheme.name %}
+  {# {% set buttonText = "Save changes" %}
+  {% set formAction = schemePath %} #}
+{% endif %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["type-of-unit"]
+  }, ["schemes", scheme.id, "type-of-unit"])) }}
+{% endblock %}

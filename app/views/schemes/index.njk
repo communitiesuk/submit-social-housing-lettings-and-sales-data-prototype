@@ -1,0 +1,66 @@
+{% extends "layouts/base.njk" %}
+
+{% import "macros.njk" as macro %}
+
+{% set title = organisation.name if isAdmin else "Your organisation" %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [{
+      href: "/organisations",
+      text: "Organisations"
+    }, {
+      href: organisationPath,
+      text: organisation.name
+    }, {
+      text: "Schemes"
+    }]
+  }) if isAdmin and activeSection != "users" }}
+{% endblock %}
+
+{% block content %}
+  {{ macro.heading(title) }}
+
+  {{ macro.organisationNavigation(organisationPath, "Schemes") }}
+
+  {{ govukButton({
+    href: "/schemes/new",
+    text: "New supported housing scheme"
+  }) }}
+
+  {% set schemeRows = [] %}
+  {% for scheme in schemes %}
+    {% set schemePath = "/schemes/" + scheme.id %}
+    {% set row = schemeRows.push([{
+        html: macro.entityHtml(scheme.name, schemePath, scheme.postcode or scheme["local-authority"])
+      }, {
+        html: scheme["client-groups"] | textFromInputValue(data.questions["client-groups"]) | replace(",", "<br>")
+      }, {
+        html: (scheme["start-date"] | textFromInputValue) + (" to " + (scheme["end-date"] | textFromInputValue) if scheme["end-date"])
+      }, {
+        html: macro.schemeStatusTagHtml(scheme.status)
+      }])
+    %}
+  {% endfor %}
+
+  {% if schemes | length > 0 %}
+    {{ govukTable({
+      firstCellIsHeader: true,
+      head: [{
+        classes: "govuk-!-width-one-quarter",
+        text: "Name"
+      }, {
+        classes: "govuk-!-width-one-half",
+        text: "Client groups"
+      }, {
+        classes: "govuk-!-width-one-quarter",
+        text: "Open from"
+      }, {
+        text: "Status"
+      }],
+      rows: schemeRows
+    }) }}
+  {% else %}
+    <p class="govuk-body">No supported housing schemes have been created yet.</p>
+  {% endif %}
+{% endblock %}

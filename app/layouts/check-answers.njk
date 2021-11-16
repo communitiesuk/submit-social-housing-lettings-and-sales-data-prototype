@@ -1,6 +1,6 @@
 {% extends "layouts/form.njk" %}
 
-{% set title = "Check your answers" %}
+{% set title = title or "Check your answers" %}
 {% set backLink = 'javascript:history.go(-1);' %}
 {% set formAction = logPath %}
 
@@ -12,10 +12,11 @@
       {% block checkAnswers %}
       {% endblock %}
 
+      {# Mark section as complete if checking the answers for a log section #}
       {{ govukInput(decorate({
         value: "true",
         type: "hidden"
-      }, ["logs", log.id, section.id, "completed"])) }}
+      }, ["logs", log.id, section.id, "completed"])) if log }}
 
       {{ govukButton({
         text: "Save and continue"

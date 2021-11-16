@@ -1,0 +1,21 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Is the property built or adapted to wheelchair-user standards?" %}
+{% if scheme["is-adapted"] %}
+  {# Editing an existing scheme #}
+  {% set caption = scheme.name %}
+  {# {% set buttonText = "Save changes" %}
+  {% set formAction = schemePath %} #}
+{% endif %}
+
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["yes-no"]
+  }, ["schemes", scheme.id, "is-adapted"])) }}
+{% endblock %}

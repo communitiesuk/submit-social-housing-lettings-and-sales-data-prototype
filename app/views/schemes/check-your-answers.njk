@@ -1,0 +1,30 @@
+{% extends "layouts/form.njk" %}
+
+{% set title = "Check your answers before submitting for approval" %}
+{% set backLink = 'javascript:history.go(-1);' %}
+{% set formAction = schemePath + "?success=submitted" %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters-from-desktop">
+      {{ macro.heading(title, caption) }}
+
+      {% include "schemes/_scheme-summary.njk" %}
+
+      <p>Schemes will be approved within 3 working days.</p>
+
+      <div class="govuk-button-group">
+        {{ govukButton(decorate({
+          text: "Submit scheme for approval",
+          value: "In review"
+        }, ["schemes", scheme.id, "status"])) }}
+
+        {{ govukButton(decorate({
+          classes: "govuk-button--secondary",
+          text: "Save as draft",
+          value: "Draft"
+        }, ["schemes", scheme.id, "status"])) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

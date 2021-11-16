@@ -1,0 +1,55 @@
+{% extends "layouts/form.njk" %}
+
+{% import "macros.njk" as macro %}
+
+{% set title = scheme.name %}
+{% set formAction = schemePath %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [{
+      href: "/organisations",
+      text: "Organisations"
+    }, {
+      href: organisationPath,
+      text: organisation.name
+    }, {
+      href: organisationPath + "/schemes",
+      text: "Supported housing schemes"
+    }, {
+      text: title
+    }] if isAdmin else [{
+      href: organisationPath,
+      text: "Your organisation"
+    }, {
+      href: organisationPath + "/schemes",
+      text: "Supported housing schemes"
+    }, {
+      text: title
+    }]
+  }) }}
+{% endblock %}
+
+{% block form %}
+  {{ govukNotificationBanner({
+    text: macro.notificationBannerText(query.success),
+    type: "success"
+  }) if query.success }}
+
+  {{ macro.heading(title) }}
+
+  {{ macro.schemeStatusTagHtml(scheme.status, "govuk-!-margin-bottom-6") }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      {% include "schemes/_scheme-summary.njk" %}
+
+      {% if scheme.status == "Draft" %}
+        {{ govukButton(decorate({
+          text: "Submit scheme for approval",
+          value: "In review"
+        }, ["schemes", scheme.id, "status"])) }}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

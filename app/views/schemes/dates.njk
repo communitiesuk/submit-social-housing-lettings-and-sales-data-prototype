@@ -1,0 +1,56 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "When does this scheme operate?" %}
+{% if scheme["start-date"] %}
+  {# Editing an existing scheme #}
+  {% set caption = scheme.name %}
+  {% set buttonText = "Save changes" %}
+  {% set formAction = schemePath %}
+{% endif %}
+
+{% block question %}
+  {{ macro.heading(title, caption) }}
+
+  {{ govukDateInput(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Start date"
+      }
+    },
+    hint: {
+      text: "For example, 12 11 2020"
+    },
+    items: data.questions["date-full"]
+  }, ["schemes", scheme.id, "start-date"])) }}
+
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Does this scheme have a closing date?"
+      }
+    },
+    items: [{
+      text: "Yes",
+      value: "true",
+      conditional: {
+        html: govukDateInput(decorate({
+          fieldset: {
+            legend: {
+              classes: "govuk-fieldset__legend--s",
+              text: "What is the closing date?"
+            }
+          },
+          hint: {
+            text: "For example, 12 11 2020"
+          },
+          items: data.questions["date-full"]
+        }, ["schemes", scheme.id, "end-date"]))
+      }
+    }, {
+      text: "No",
+      value: "false"
+    }]
+  }, ["schemes", scheme.id, "end-date-known"])) }}
+{% endblock %}

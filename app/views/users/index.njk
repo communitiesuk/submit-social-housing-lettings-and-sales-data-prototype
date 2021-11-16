@@ -31,16 +31,7 @@
 
   {{ macro.heading(title) }}
 
-  {{ appSubNavigation({
-    items: [{
-      href: organisationPath,
-      text: "Details"
-    }, {
-      href: organisationPath + "/users",
-      text: "Users",
-      active: true
-    }]
-  }) if organisation }}
+  {{ macro.organisationNavigation(organisationPath, "Users") }}
 
   {{ govukButton({
     href: "/users/new",
@@ -49,10 +40,13 @@
 
   {% set userRows = [] %}
   {% for user in users %}
+    {% set userPath = "/users/" + user.id %}
+    {% set userOrganisation = data.organisations[user.organisationId].name %}
+    {% set userRole = data.roles[user.role].name %}
     {% set row = userRows.push([{
-        html: macro.userNameHtml(user)
+        html: macro.entityHtml(user.name, userPath, user.email)
       }, {
-        html: macro.userPermissionsHtml(data, user)
+        html: macro.entityHtml(userOrganisation, false, userRole)
       }, {
         text: macro.userLastActiveHtml(user)
       }])

@@ -1,0 +1,21 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "How many units are in this scheme?" %}
+{% if scheme.units %}
+  {# Editing an existing scheme #}
+  {% set caption = scheme.name %}
+  {# {% set buttonText = "Save changes" %}
+  {% set formAction = schemePath %} #}
+{% endif %}
+
+{% block question %}
+  {{ govukInput(decorate({
+    classes: "govuk-input--width-5",
+    label: {
+      html: macro.heading(title, caption)
+    },
+    inputmode: "numeric",
+    pattern: "[0-9]*",
+    spellcheck: false
+  }, ["schemes", scheme.id, "units"])) }}
+{% endblock %}

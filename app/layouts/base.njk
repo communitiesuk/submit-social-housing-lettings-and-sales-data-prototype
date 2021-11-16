@@ -1,7 +1,5 @@
 {% extends "rig/template.njk" %}
 
-{% from "components/sub-navigation/macro.njk" import appSubNavigation %}
-
 {% import "macros.njk" as macro %}
 
 {% block head %}
@@ -24,21 +22,25 @@
     serviceUrl: "/logs"  if data.account.token else "/",
     containerClasses: "govuk-width-container",
     navigation: [{
+      href: "/logs/",
+      text: "Case logs",
+      active: activeSection == "logs"
+    }, {
       href: "/organisations/",
       text: "Organisations",
-      active: activeSection == 'organisations'
+      active: activeSection == "organisations"
     } if isAdmin, {
       href: "/users/",
       text: "Users",
-      active: activeSection == 'users'
+      active: activeSection == "users"
     } if isAdmin, {
       href: "/organisations/" + data.account.organisationId,
       text: "Your organisation",
-      active: activeSection == 'organisations'
+      active: activeSection == "organisations"
     } if isCoordinator, {
       href: "/account/",
       text: "Your account",
-      active: activeSection == 'account'
+      active: activeSection == "account"
     }, {
       href: "/account/sign-out",
       text: "Sign out"

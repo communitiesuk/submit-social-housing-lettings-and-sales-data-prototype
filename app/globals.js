@@ -92,5 +92,26 @@ export default () => {
     return taskListSections
   }
 
+  /**
+   * Generate action link(s)
+   *
+   * @param {Array|object} actions List of actions
+   * @returns object Value for `actions` parameter
+   */
+  globals.actionLinks = actions => {
+    const items = []
+
+    actions = Array.isArray(actions) ? actions : [actions]
+    actions.forEach(action => {
+      items.push({
+        href: action.href,
+        text: action.text ? action.text : 'Change',
+        visuallyHiddenText: action.text ? false : action.visuallyHiddenText
+      })
+    })
+
+    return { items }
+  }
+
   return globals
 }

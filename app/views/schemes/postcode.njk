@@ -1,0 +1,38 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Do you know the property’s postcode?" %}
+{% if scheme.postcode %}
+  {# Editing an existing scheme #}
+  {% set caption = scheme.name %}
+  {% set buttonText = "Save changes" %}
+  {% set formAction = schemePath %}
+{% endif %}
+
+{% block question %}
+  {% set postcodeHtml %}
+    {{ govukInput(decorate({
+      label: {
+        text: "Postcode"
+      },
+      classes: "govuk-input--width-5"
+    }, ["schemes", scheme.id, "postcode"])) }}
+  {% endset %}
+
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: [{
+      value: "true",
+      text: "Yes",
+      conditional: {
+        html: postcodeHtml
+      }
+    }, {
+      value: "false",
+      text: "No"
+    }]
+  }, ["schemes", scheme.id, "postcode-known"])) }}
+{% endblock %}

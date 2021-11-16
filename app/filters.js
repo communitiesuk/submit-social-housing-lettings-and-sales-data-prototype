@@ -29,6 +29,19 @@ export default (env) => {
     // Use structured answer from question data
     // (If no structured answer found, return given value)
     if (questions) {
+      // Multiple structured answers (from checkboxes)
+      if (Array.isArray(value)) {
+        const items = []
+        value.forEach(item => {
+          item = String(item)
+          const question = questions.find(question => question.value === item)
+          const text = question ? question.text : item
+          items.push(text)
+        })
+        return items.join(', ')
+      }
+
+      // Single structured answer (from radio)
       value = String(value)
       const question = questions.find(question => question.value === value)
       return question ? question.text : value
@@ -39,12 +52,6 @@ export default (env) => {
     if (typeof value === 'object' && !Array.isArray(value)) {
       const date = govukDate(isoDateFromDateInput(value))
       return date !== 'Invalid Date' ? date : noValueProvidedText
-    }
-
-    // Arrays
-    // We’ll just join them with commas, for now
-    if (Array.isArray(value)) {
-      return value.join(', ')
     }
 
     return value

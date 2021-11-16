@@ -92,11 +92,12 @@ export const logRoutes = (router) => {
       const logPath = `/logs/${logId}`
       const section = utils.getById(sections(log), sectionId)
       const sectionPath = `/logs/${logId}/${sectionId}`
-      const sectionKeyPath = `logs[${logId}][${sectionId}]`
 
       // Fork if next path is a fork
-      const fork = section.forks
-        ? wizard.nextForkPath(section.forks(sectionPath, sectionKeyPath), req)
+      const sectionKeyPath = `logs[${logId}][${sectionId}]`
+      const sectionForks = section.forks(sectionPath, sectionKeyPath)
+      const fork = sectionForks
+        ? wizard.nextForkPath(sectionForks, req)
         : false
 
       // Calculate back and next paths
@@ -131,7 +132,9 @@ export const logRoutes = (router) => {
         const errors = validationResult(req)
         if (errors.isEmpty()) {
           // If next path is empty, this is the last path so redirect to check answers page
-          const next = paths.next !== '' ? paths.next : `${sectionPath}/check-your-answers`
+          const next = paths.next !== ''
+            ? paths.next
+            : `${sectionPath}/check-your-answers`
 
           fork ? res.redirect(fork) : res.redirect(next)
         } else {

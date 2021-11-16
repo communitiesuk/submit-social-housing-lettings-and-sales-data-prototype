@@ -11,19 +11,21 @@
   {{ (object + " has been deactivated.") if success == "deactivated" }}
   {{ "User has been deleted." if success == "deleted" }}
   {{ ("An invitation to submit CORE data has been resent to " + object + ".") if success == "reinvited" }}
+  {{ ("Scheme has been submitted for approval") if success == "submitted" }}
+{% endmacro %}
+
+{% macro entityHtml(title, href, caption) %}
+  {% if href %}
+    <a href="{{ href }}">{{ title }}</a>
+  {% else %}
+    {{ title }}
+  {% endif %}
+  {% if caption %}
+    <br><span class="govuk-!-font-weight-regular app-!-colour-muted">{{ caption }}</span>
+  {% endif %}
 {% endmacro %}
 
 {# User macros #}
-{% macro userNameHtml(user) %}
-  <a href="/users/{{ user.id }}">{{ user.name }}</a><br>
-  <span class="govuk-!-font-weight-regular">{{ user.email }}</span>
-{% endmacro %}
-
-{% macro userPermissionsHtml(data, user) %}
-  {{ data.organisations[user.organisationId].name | noOrphans | safe }}<br>
-  <span class="app-!-colour-muted">{{ data.roles[user.role].name }}</span>
-{% endmacro %}
-
 {% macro userLastActiveHtml(user) %}
   {% if user.deactivated %}
     <span class="app-!-colour-muted">Deactivated</span>
@@ -35,20 +37,41 @@
   {% endif %}
 {% endmacro %}
 
-{% macro organisationAreasHtml(localAuthorities, organisation) %}
-  {% if organisation.areas | length > 1 %}
+{% macro localAuthoritiesHtml(localAuthorities, areas) %}
+  {% if areas | length > 1 %}
     <ul class="govuk-list govuk-list--bullet">
-    {% for gss in organisation.areas %}
+    {% for gss in areas %}
       {% set localAuthority = localAuthorities | where("gss", gss) | first %}
       <li>{{ localAuthority.name }}</li>
     {% endfor %}
     </ul>
-  {% elif organisation.areas | length == 1 %}
-    {% set localAuthority = localAuthorities | where("gss", organisation.areas[0]) | first %}
+  {% elif areas | length == 1 %}
+    {% set localAuthority = localAuthorities | where("gss", areas[0]) | first %}
     {{ localAuthority.name }}
   {% else %}
     None
   {% endif %}
+{% endmacro %}
+
+{# Organisation macros #}
+{% from "components/sub-navigation/macro.njk" import appSubNavigation %}
+{% macro organisationNavigation(organisationPath, section) %}
+  {{ appSubNavigation({
+      items: [{
+      href: organisationPath,
+      text: "Details",
+      active: section == "Details"
+    }, {
+      href: organisationPath + "/users",
+      text: "Users",
+      active: section == "Users"
+    }, {
+      href: organisationPath + "/schemes",
+      text: "Schemes",
+      active: section == "Schemes"
+    }]
+  }) }}
+  <h2 class="govuk-visually-hidden">{{ section }}</h2>
 {% endmacro %}
 
 {% macro organisationRelationshipHtml(organisations, organisation, type) %}
@@ -63,4 +86,23 @@
   {% else %}
     None
   {% endif %}
+{% endmacro %}
+
+{# Scheme macros #}
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+{% macro schemeStatusTagHtml(status, classes) %}
+  {{ govukTag({
+    text: "Approved",
+    classes: "govuk-tag--green" + (" " + classes if classes)
+  }) if status == "Approved" }}
+
+  {{ govukTag({
+    html: "In review" | noOrphans,
+    classes: "govuk-tag--orange" + (" " + classes if classes)
+  }) if status == "In review" }}
+
+  {{ govukTag({
+    text: "Draft",
+    classes: "govuk-tag--grey" + (" " + classes if classes)
+  }) if status == "Draft" }}
 {% endmacro %}
