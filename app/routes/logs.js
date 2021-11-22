@@ -95,7 +95,9 @@ export const logRoutes = (router) => {
 
       // Fork if next path is a fork
       const sectionKeyPath = `logs[${logId}][${sectionId}]`
-      const sectionForks = section.forks(sectionPath, sectionKeyPath)
+      const sectionForks = section.forks
+        ? section.forks(sectionPath, sectionKeyPath)
+        : []
       const fork = sectionForks
         ? wizard.nextForkPath(sectionForks, req)
         : false

@@ -72,7 +72,7 @@
     },
     actions: actionLinks({
       href: schemePath + "/local-authority-known",
-      visuallyHiddenText: "if local authority known"
+      visuallyHiddenText: "if local authority is known"
     }) if not isLocked
   } if not hasPostcode, {
     key: {
@@ -185,7 +185,7 @@
     }) if not isLocked
   }, {
     key: {
-      text: "Wheelchair adaption"
+      text: "Wheelchair adaptation"
     },
     value: {
       text: scheme["is-adapted"] | textFromInputValue(data.questions["yes-no"])

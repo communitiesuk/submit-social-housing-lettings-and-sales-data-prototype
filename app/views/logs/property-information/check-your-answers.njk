@@ -1,354 +1,293 @@
 {% extends "layouts/check-answers.njk" %}
 
+{# Some answers may come from a scheme #}
+{% macro schemeAnswer(field) -%}
+  {%- if log["about-this-log"]["uses-scheme"] == "true" -%}
+    {%- set schemeId = log["about-this-log"]["schemeId"] -%}
+    {{ data.schemes[schemeId][field] }}
+  {%- else -%}
+    {{ log[section.id][field] }}
+  {%- endif -%}
+{%- endmacro %}
+
 {# set variables to test various user selected data #}
-{% set postcodeKnown = log[section.id]["postcode-known"] == "true" %}
-{% set laKnown = log[section.id]["local-authority-known"] == "true" %}
+{% set hasPostcode = schemeAnswer("postcode-known") == "true" %}
+{% set hasLocalAurthority = schemeAnswer("local-authority-known") == "true" %}
 {% set isRelet = log[section.id]["is-relet"] == "true" %}
 {% set isNewlet = log[section.id]["is-relet"] == "false" %}
-{% set wasRepaired = log[section.id]["repairs"] == "true" %}
+{% set isRepaired = log[section.id]["repairs"] == "true" %}
 {% set isNewprop = log[section.id]["reason-for-non-relet"] == "newprop" %}
+{% set isSupportedHousing = log["about-this-log"]["uses-scheme"] == "true" %}
+{% set isRenewal = log["about-this-log"]["letting-renewal"] == "true" %}
 
 {# Answer objects #}
-{% set property_reference = {
+{% set propertyReferenceRow = {
   key: {
     text: "Property reference"
   },
   value: {
     text: log[section.id]["property-reference"] | textFromInputValue
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/reference",
-      text: "Change",
-      visuallyHiddenText: "property reference"
-    }]
-  }
+  actions: actionLinks({
+    href: sectionPath + "/reference",
+    visuallyHiddenText: "property reference"
+  })
 } %}
-{% set postcode_unknown = {
+
+{% set postcodeRow = {
   key: {
     text: "Postcode"
   },
   value: {
-    text: "Not known"
+    text: schemeAnswer("postcode") if hasPostcode else "Not known"
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/postcode",
-      text: "Change",
-      visuallyHiddenText: "postcode"
-    }]
-  }
-} if not postcodeKnown %}
-{% set postcode = {
-  key: {
-    text: "Postcode"
-  },
-  value: {
-    text: log[section.id]["postcode"]
-  },
-  actions: {
-    items: [{
-      href: sectionPath + "/postcode",
-      text: "Change",
-      visuallyHiddenText: "postcode"
-    }]
-  }
-} if postcodeKnown %}
-{% set local_authority_known = {
+  actions: actionLinks({
+    href: sectionPath + "/postcode",
+    visuallyHiddenText: "postcode"
+  }) if not isSupportedHousing
+} %}
+
+{% set localAuthorityKnownRow = {
   key: {
     text: "Local authority known"
   },
   value: {
-    text: log[section.id]["local-authority-known"] | textFromInputValue(data.questions["yes-no"])
+    text: schemeAnswer("local-authority-known") | textFromInputValue(data.questions["yes-no"])
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/local-authority-known",
-      text: "Change",
-      visuallyHiddenText: "Local authority"
-    }]
-  }
-} if not postcodeKnown %}
-{% set local_authority = {
+  actions: actionLinks({
+    href: sectionPath + "/local-authority-known",
+    visuallyHiddenText: "if local authority is known"
+  }) if not isSupportedHousing
+} if not hasPostcode %}
+
+{% set localAuthorityRow = {
   key: {
     text: "Local authority"
   },
   value: {
-    text: log[section.id]["local-authorities"] | textFromInputValue(data.questions["local-authorities"])
+    text: schemeAnswer("local-authorities") | textFromInputValue(data.questions["local-authorities"])
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/local-authority-known",
-      text: "Change",
-      visuallyHiddenText: "Local authority"
-    }]
-  }
-} if not postcodeKnown and laKnown %}
-{% set reason_for_not_knowing = {
+  actions: actionLinks({
+    href: sectionPath + "/local-authority",
+    visuallyHiddenText: "local authority"
+  }) if not isSupportedHousing
+} if not hasPostcode and hasLocalAurthority %}
+
+{% set reasonForNotKnowingRow = {
   key: {
     text: "Reason you don’t know either the postcode or local authority"
   },
   value: {
-    text: log[section.id]["why-dont-you-know-postcode-or-la"] | textFromInputValue
+    text: schemeAnswer("why-dont-you-know-postcode-or-la")
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/why-dont-you-know-postcode-or-la",
-      text: "Change",
-      visuallyHiddenText: "the reason you don't know either the postcode or local authority"
-    }]
-  }
-} if not postcodeKnown and not laKnown %}
-{% set is_property_a_relet = {
+  actions: actionLinks({
+    href: sectionPath + "/why-dont-you-know-postcode-or-la",
+    visuallyHiddenText: "the reason you don't know either the postcode or local authority"
+  }) if not isSupportedHousing
+} if not hasPostcode and not hasLocalAurthority %}
+
+{% set isReletRow = {
   key: {
     text: "First time being let as social-housing"
   },
   value: {
     text: log[section.id]["is-relet"] | textFromInputValue(data.questions["re-let"])
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/is-relet",
-      text: "Change",
-      visuallyHiddenText: "if this is the first time being let as social-housing"
-    }]
-  }
+  actions: actionLinks({
+    href: sectionPath + "/is-relet",
+    visuallyHiddenText: "if this is the first time being let as social-housing"
+  })
 } %}
-{% set recent_let_type = {
+
+{% set typeOfLetRow = {
   key: {
     text: "Most recent let type"
   },
   value: {
     text: log[section.id]["type-of-let"] | textFromInputValue(data.questions["type-of-let"])
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/type-of-let",
-      text: "Change",
-      visuallyHiddenText: "the recent let type"
-    }]
-  }
+  actions: actionLinks({
+    href: sectionPath + "/type-of-let",
+    visuallyHiddenText: "the recent let type"
+  })
 } if isRelet %}
-{% set vacancy_reason_when_newlet = {
+
+{% set reasonForVacancyNonReletRow = {
   key: {
     text: "Vacancy reason"
   },
   value: {
     text: log[section.id]["reason-for-non-relet"] | textFromInputValue(data.questions["reason-for-vacancy-non-relet"])
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/reason-for-vacancy-non-relet",
-      text: "Change",
-      visuallyHiddenText: "reason for vacancy"
-    }]
-  }
+  actions: actionLinks({
+    href: sectionPath + "/reason-for-vacancy-non-relet",
+    visuallyHiddenText: "reason for vacancy"
+  })
 } if isNewlet %}
-{% set vacancy_reason_when_relet = {
+
+{% set reasonForVacancyRow = {
   key: {
     text: "Vacancy reason"
   },
   value: {
     text: log[section.id]["reason-for-vacancy"] | textFromInputValue(data.questions["reason-for-vacancy"])
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/reason-for-vacancy",
-      text: "Change",
-      visuallyHiddenText: "reason for vacancy"
-    }]
-  }
+  actions: actionLinks({
+    href: sectionPath + "/reason-for-vacancy",
+    visuallyHiddenText: "reason for vacancy"
+  })
 } if isRelet %}
-{% set type_of_unit = {
+
+{% set typeOfUnitRow = {
   key: {
     text: "Type of unit"
   },
   value: {
-    text: log[section.id]["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"])
+    text: schemeAnswer("type-of-unit") | textFromInputValue(data.questions["type-of-unit"])
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/type-of-unit",
-      text: "Change",
-      visuallyHiddenText: "type of unit"
-    }]
-  }
+  actions: actionLinks({
+    href: sectionPath + "/type-of-unit",
+    visuallyHiddenText: "type of unit"
+  }) if not isSupportedHousing
 } %}
-{% set type_of_building = {
+
+{% set typeOfPropertyRow = {
   key: {
     text: "Type of building"
   },
   value: {
-    text: log[section.id]["type-of-property"] | textFromInputValue(data.questions["type-of-property"])
+    text: schemeAnswer("type-of-property") | textFromInputValue(data.questions["type-of-property"])
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/type-of-property",
-      text: "Change",
-      visuallyHiddenText: "type of building"
-    }]
-  }
+  actions: actionLinks({
+    href: sectionPath + "/type-of-property",
+    visuallyHiddenText: "type of building"
+  }) if not isSupportedHousing
 } %}
-{% set adapted_for_wheelchair = {
+
+{% set isAdaptedRow = {
   key: {
     text: "Wheelchair adaptation"
   },
   value: {
-    text: log[section.id]["is-adapted"] | textFromInputValue(data.questions["yes-no"])
+    text: schemeAnswer("is-adapted") | textFromInputValue(data.questions["yes-no"])
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/is-adapted",
-      text: "Change",
-      visuallyHiddenText: "wheelchair adaptation status"
-    }]
-  }
+  actions: actionLinks({
+    href: sectionPath + "/is-adapted",
+    visuallyHiddenText: "if property has been built or adapted to wheelchair-user standards"
+  }) if not isSupportedHousing
 } %}
-{% set number_of_bedrooms = {
+
+{% set numberOfBedroomsRow = {
   key: {
     text: "Number of bedrooms"
   },
   value: {
     text: log[section.id]["number-of-bedrooms"] | textFromInputValue
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/number-of-bedrooms",
-      text: "Change",
-      visuallyHiddenText: "number of bedrooms"
-    }]
-  }
+  actions: actionLinks({
+    href: sectionPath + "/number-of-bedrooms",
+    visuallyHiddenText: "number of bedrooms"
+  })
 } %}
-{% set void_date = {
+
+{% set voidDateRow = {
   key: {
     text: "Void, new build handover or renewal date"
   },
   value: {
     text: log[section.id]["void-date"] | textFromInputValue
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/void-date",
-      text: "Change",
-      visuallyHiddenText: "date"
-    }]
-  }
+  actions: actionLinks({
+    href: sectionPath + "/void-date",
+    visuallyHiddenText: "void date"
+  })
 } %}
-{% set repairs = {
+
+{% set repairsRow = {
   key: {
     text: "Major repairs carried out during the void period"
   },
   value: {
-    text: log[section.id]["repairs"] | textFromInputValue(data.questions['yes-no'])
+    text: log[section.id]["repairs"] | textFromInputValue(data.questions["yes-no"])
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/repairs",
-      text: "Change",
-      visuallyHiddenText: "repairs status"
-    }]
-  }
+  actions: actionLinks({
+    href: sectionPath + "/repairs",
+    visuallyHiddenText: "status of major repairs"
+  })
 } if not isNewprop %}
-{% set repairs_date = {
+
+{% set repairsDateRow = {
   key: {
     text: "Repairs completion date"
   },
   value: {
     text: log[section.id]["repairs-date"] | textFromInputValue
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/repairs",
-      text: "Change",
-      visuallyHiddenText: "repairs completion date"
-    }]
-  }
-} if wasRepaired %}
-{% set times_offered = {
+  actions: actionLinks({
+    href: sectionPath + "/repairs",
+    visuallyHiddenText: "completion date for repairs"
+  })
+} if isRepaired %}
+
+{% set timesOfferedRow = {
   key: {
     text: "Times previously offered since becoming available"
   },
   value: {
     text: log[section.id]["times-previously-offered"] | textFromInputValue
   },
-  actions: {
-    items: [{
-      href: sectionPath + "/times-previously-offered",
-      text: "Change",
-      visuallyHiddenText: "times offered"
-    }]
-  }
+  actions: actionLinks({
+    href: sectionPath + "/times-previously-offered",
+    visuallyHiddenText: "times previously offered"
+  })
 } %}
 
-{% macro inferred_answers(rows) %}
-<h2 class="govuk-heading-m">Additional answers</h2>
-<p>We’ve worked out the following answers based on information you’ve given us elsewhere:</p>
-{{ govukSummaryList({
-  rows: rows
-})}}
+{% macro inferredAnswers(rows) %}
+  <h2 class="govuk-heading-m">Additional answers</h2>
+  <p>We’ve worked out the following answers based on information you’ve given us elsewhere:</p>
+  {{ govukSummaryList({
+    rows: rows
+  }) }}
 {% endmacro %}
 
 {% block checkAnswers %}
 
-  {% set isSupportedHousing = log['about-this-log']['type-of-need'] == 'supported-housing' %}
-  {% set isRenewal = log['about-this-log']['letting-renewal'] == 'true' %}
-
   {% if isSupportedHousing and not isRenewal %}
     {{ govukSummaryList({
       rows: [
-        property_reference,
-        postcode_unknown,
-        postcode,
-        local_authority_known,
-        local_authority,
-        reason_for_not_knowing,
-        is_property_a_relet,
-        recent_let_type,
-        vacancy_reason_when_newlet,
-        vacancy_reason_when_relet,
-        type_of_unit,
-        type_of_building,
+        propertyReferenceRow,
+        postcodeRow,
+        localAuthorityKnownRow,
+        localAuthorityRow,
+        reasonForNotKnowingRow,
+        isReletRow,
+        typeOfLetRow,
+        reasonForVacancyNonReletRow,
+        reasonForVacancyRow,
+        typeOfUnit,
+        typeOfProperty,
         adapted_for_wheelchair,
-        void_date,
-        repairs,
-        repairs_date,
-        times_offered
+        voidDateRow,
+        repairsRow,
+        repairsDateRow,
+        timesOfferedRow
       ]
     }) }}
-    {{ inferred_answers([
-      {
-        key: {
-          text: "Number of bedrooms"
-        },
-        value: {
-          text: "Not required for Social housing"
-        }
-      }
-    ]) }}
   {% elif not isSupportedHousing and isRenewal %}
     {{ govukSummaryList({
       rows: [
-        property_reference,
-        postcode_unknown,
-        postcode,
-        local_authority_known,
-        local_authority,
-        reason_for_not_knowing,
-        type_of_unit,
-        type_of_building,
-        adapted_for_wheelchair,
-        number_of_bedrooms
+        propertyReferenceRow,
+        postcodeRow,
+        localAuthorityKnownRow,
+        localAuthorityRow,
+        reasonForNotKnowingRow,
+        typeOfUnitRow,
+        typeOfPropertyRow,
+        isAdaptedRow,
+        numberOfBedroomsRow
       ]
     }) }}
-    {{ inferred_answers([
-      {
-        key: {
-          text: "Local authority"
-        },
-        value: {
-          text: "Arun"
-        }
-      } if postcodeKnown, {
+    {{ inferredAnswers([{
         key: {
           text: "First time being let as social-housing"
         },
@@ -374,7 +313,7 @@
           text: "Most recent let type"
         },
         value: {
-          text: log["about-this-log"]["type-of-rent"] | textFromInputValue(data.questions['type-of-rent'])
+          text: log["about-this-log"]["type-of-rent"] | textFromInputValue(data.questions["type-of-rent"])
         }
       }, {
         key: {
@@ -395,26 +334,17 @@
   {% elif isSupportedHousing and isRenewal %}
     {{ govukSummaryList({
       rows: [
-        property_reference,
-        postcode_unknown,
-        postcode,
-        local_authority_known,
-        local_authority,
-        reason_for_not_knowing,
-        type_of_unit,
-        type_of_building,
-        adapted_for_wheelchair
+        propertyReferenceRow,
+        postcodeRow,
+        localAuthorityKnownRow,
+        localAuthorityRow,
+        reasonForNotKnowingRow,
+        typeOfUnitRow,
+        typeOfPropertyRow,
+        isAdaptedRow
       ]
     }) }}
-    {{ inferred_answers([
-      {
-        key: {
-          text: "Local authority"
-        },
-        value: {
-          text: "Arun"
-        }
-      } if postcodeKnown, {
+    {{ inferredAnswers([{
         key: {
           text: "First time being let as social-housing"
         },
@@ -440,7 +370,7 @@
           text: "Most recent let type"
         },
         value: {
-          text: log["about-this-log"]["type-of-rent"] | textFromInputValue(data.questions['type-of-rent'])
+          text: log["about-this-log"]["type-of-rent"] | textFromInputValue(data.questions["type-of-rent"])
         }
       }, {
         key: {
@@ -456,39 +386,31 @@
         value: {
           text: "No"
         }
-      }, {
-        key: {
-          text: "Number of bedrooms"
-        },
-        value: {
-          text: "Not required for social housing"
-        }
       }
     ]) }}
   {% else %}
     {{ govukSummaryList({
       rows: [
-        property_reference,
-        postcode_unknown,
-        postcode,
-        local_authority_known,
-        local_authority,
-        reason_for_not_knowing,
-        is_property_a_relet,
-        recent_let_type,
-        vacancy_reason_when_newlet,
-        vacancy_reason_when_relet,
-        type_of_unit,
-        type_of_building,
-        adapted_for_wheelchair,
-        number_of_bedrooms,
-        void_date,
-        repairs,
-        repairs_date,
-        times_offered
+        propertyReferenceRow,
+        postcodeRow,
+        localAuthorityKnownRow,
+        localAuthorityRow,
+        reasonForNotKnowingRow,
+        isReletRow,
+        typeOfLetRow,
+        reasonForVacancyNonReletRow,
+        reasonForVacancyRow,
+        typeOfUnitRow,
+        typeOfPropertyRow,
+        isAdaptedRow,
+        numberOfBedroomsRow,
+        voidDateRow,
+        repairsRow,
+        repairsDateRow,
+        timesOfferedRow
       ]
     }) }}
-    {{ inferred_answers([
+    {{ inferredAnswers([
       {
         key: {
           text: "Local authority"
@@ -496,7 +418,7 @@
         value: {
           text: "Arun"
         }
-      } if postcodeKnown
+      } if hasPostcode
     ]) }}
   {% endif %}
 {% endblock %}
