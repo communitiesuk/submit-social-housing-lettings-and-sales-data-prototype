@@ -3,10 +3,53 @@
 {% set isLet = log[section.id]["sale-or-letting"] == "letting" %}
 {% set isSale = log[section.id]["sale-or-letting"] == "sale" %}
 {% set isCompleted = log[section.id]["completed"] == "true" %}
+{% set usingScheme = log[section.id]["uses-scheme"] == "true" %}
 
 {% block checkAnswers %}
   {{ govukSummaryList({
     rows: [{
+      key: {
+        text: "Sale or letting"
+      },
+      value: {
+        text: log[section.id]["sale-or-letting"] | textFromInputValue(data.questions["sale-or-letting"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/sale-or-letting?referrer=" + referrer,
+          text: "Change",
+          visuallyHiddenText: "if sale or letting"
+        }]
+      } if not isCompleted
+    }, {
+      key: {
+        text: "Part of supporting housing scheme"
+      },
+      value: {
+        text: log[section.id]["uses-scheme"] | textFromInputValue(data.questions["yes-no"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/uses-scheme?referrer=" + referrer,
+          text: "Change",
+          visuallyHiddenText: "if sale or letting"
+        }]
+      } if not isCompleted
+    }, {
+      key: {
+        text: "Scheme name"
+      },
+      value: {
+        text: data.schemes[log[section.id]["schemeId"]].name
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/scheme?referrer=" + referrer,
+          text: "Change",
+          visuallyHiddenText: "if sale or letting"
+        }]
+      } if not isCompleted
+    }, {
       key: {
         text: "Owning organisation"
       },
@@ -32,20 +75,6 @@
           href: sectionPath + "/organisation?referrer=" + referrer,
           text: "Change",
           visuallyHiddenText: "managing organisation"
-        }]
-      } if not isCompleted
-    }, {
-      key: {
-        text: "Sale or letting"
-      },
-      value: {
-        text: log[section.id]["sale-or-letting"] | textFromInputValue(data.questions["sale-or-letting"])
-      },
-      actions: {
-        items: [{
-          href: sectionPath + "/sale-or-letting?referrer=" + referrer,
-          text: "Change",
-          visuallyHiddenText: "if sale or letting"
         }]
       } if not isCompleted
     }, {
@@ -90,7 +119,7 @@
           visuallyHiddenText: "rent type"
         }]
       } if not isCompleted
-    } if isLet, {
+    } if isLet, ({
       key: {
         text: "Needs type"
       },
@@ -104,7 +133,7 @@
           visuallyHiddenText: "needs type"
         }]
       } if not isCompleted
-    } if isLet, {
+    } if isLet) if not usingScheme, {
       key: {
         text: "Tenant code"
       },

@@ -14,11 +14,12 @@ export default (log) => {
     group: 'before-you-start',
     paths: getPaths('about-this-log', [
       'gdpr',
-      'organisation',
       'sale-or-letting',
+      'uses-scheme',
+      'organisation',
       'letting-renewal',
       'letting-start-date',
-      'letting-type',
+      'type-of-rent',
       'tenant-code',
       'check-your-answers',
       'sale-completion-date',
@@ -30,6 +31,22 @@ export default (log) => {
       forkPath: `${sectionPath}/cannot-use-this-service`,
       storedData: keyPathRoot.concat('gdpr'),
       values: ['false']
+    }, {
+      currentPath: `${sectionPath}/uses-scheme`,
+      forkPath: `${sectionPath}/scheme`,
+      storedData: keyPathRoot.concat('uses-scheme'),
+      values: ['true']
+    }, {
+      currentPath: `${sectionPath}/scheme`,
+      skipTo: `${sectionPath}/letting-renewal`
+    }, {
+      currentPath: `${sectionPath}/type-of-rent`,
+      forkPath: `${sectionPath}/type-of-need`,
+      storedData: keyPathRoot.concat('uses-scheme'),
+      values: ['false']
+    }, {
+      currentPath: `${sectionPath}/type-of-need`,
+      skipTo: `${sectionPath}/tenant-code`
     }, {
       currentPath: `${sectionPath}/sale-or-letting`,
       forkPath: `${sectionPath}/sale-completion-date`,
