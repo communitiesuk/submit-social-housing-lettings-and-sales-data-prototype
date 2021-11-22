@@ -87,7 +87,7 @@ export default (env) => {
       value: item[value],
       ...(hint && {
         hint: {
-          text: item[hint]
+          html: item[hint]
         }
       })
     }))

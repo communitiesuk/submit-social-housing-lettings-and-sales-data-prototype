@@ -9,6 +9,6 @@
         html: macro.heading(title, caption)
       }
     },
-    items: data.questions.scheme | optionItems("name", "id", "postcode")
+    items: data.questions.scheme | optionItems("name", "id", "hint")
   }, ["logs", log.id, section.id, "schemeId"])) }}
 {% endblock %}
