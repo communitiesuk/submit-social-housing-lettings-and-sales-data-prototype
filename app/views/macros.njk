@@ -4,7 +4,7 @@
   {% if caption %}<span class="govuk-caption-{{ size }}">{{ caption }}</span>{% endif %}
   {{ heading | noOrphans | safe }}
 </h{{ headingLevel }}>
-{% endmacro %}
+{% endmacro %} 
 
 {% macro notificationBannerText(success, object) %}
   {{ (object + " has been invited to submit CORE data.") if success == "invited" }}
