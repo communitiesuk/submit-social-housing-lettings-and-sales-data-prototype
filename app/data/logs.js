@@ -6,8 +6,8 @@ export default {
     'about-this-log': {
       gdpr: 'true',
       'uses-scheme': 'false',
-      'organisation-manager': 'PARENT1',
-      'organisation-owner': 'CHILD1',
+      'organisation-manager': 'CHILD1',
+      'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
       'type-of-need': 'general-needs',
       'letting-renewal': 'true',

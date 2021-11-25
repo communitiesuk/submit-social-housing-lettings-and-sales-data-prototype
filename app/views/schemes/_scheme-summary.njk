@@ -198,17 +198,18 @@
 }) }}
 
 {{ macro.heading("Dates", false, "m") }}
+
 {{ govukSummaryList({
   rows: [{
     key: {
-      text: "Scheme open from"
+      text: "Scheme dates"
     },
     value: {
       text: (scheme["start-date"] | textFromInputValue) + (" to " + (scheme["end-date"] | textFromInputValue) if scheme["end-date-known"] == "true")
     },
     actions: actionLinks({
       href: schemePath + "/dates",
-      visuallyHiddenText: "scheme open dates"
+      visuallyHiddenText: "scheme dates"
     }) if not isLocked
   }]
 }) }}
