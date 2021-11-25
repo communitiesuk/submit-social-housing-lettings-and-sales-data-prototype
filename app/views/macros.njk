@@ -55,7 +55,7 @@
 
 {# Organisation macros #}
 {% from "components/sub-navigation/macro.njk" import appSubNavigation %}
-{% macro organisationNavigation(organisationPath, section) %}
+{% macro organisationNavigation(organisationPath, section, isOwningOrg) %}
   {{ appSubNavigation({
       items: [{
       href: organisationPath,
@@ -69,7 +69,7 @@
       href: organisationPath + "/schemes",
       text: "Schemes",
       active: section == "Schemes"
-    }]
+    } if isOwningOrg == true]
   }) }}
   <h2 class="govuk-visually-hidden">{{ section }}</h2>
 {% endmacro %}

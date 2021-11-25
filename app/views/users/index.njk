@@ -31,7 +31,7 @@
 
   {{ macro.heading(title) }}
 
-  {{ macro.organisationNavigation(organisationPath, "Users") }}
+  {{ macro.organisationNavigation(organisationPath, "Users", isOwningOrg) }}
 
   {{ govukButton({
     href: "/users/new",

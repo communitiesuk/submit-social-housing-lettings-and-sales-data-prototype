@@ -21,7 +21,7 @@
 {% block content %}
   {{ macro.heading(title) }}
 
-  {{ macro.organisationNavigation(organisationPath, "Schemes") }}
+  {{ macro.organisationNavigation(organisationPath, "Schemes", isOwningOrg) }}
 
   {{ govukButton({
     href: "/schemes/new",
