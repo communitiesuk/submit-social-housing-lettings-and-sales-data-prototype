@@ -1,0 +1,12 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "How many pepole live in the household?" %}
+
+{% block question %}
+  {{ govukInput(decorate({
+    label: {
+        text: macro.heading(title, caption)
+    },
+    classes: "govuk-input--width-3"
+  }, ["logs", log.id, section.id, "number-in-household"])) }}
+{% endblock %}
