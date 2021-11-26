@@ -61,7 +61,12 @@ export default (log) => {
   const householdCharacteristics = {
     id: 'household-characteristics',
     title: 'Household characteristics',
-    group: 'household'
+    group: 'household',
+    paths: getPaths('household-characteristics', [
+      'number-in-household',
+      'lead-tenant-age',
+      'lead-tenant-gender'
+    ])
   }
 
   /**

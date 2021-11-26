@@ -1,0 +1,14 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Which of these best describes the lead tenant’s gender identity?" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["gender-identity"]
+  }, ["logs", log.id, section.id, "lead-tenant-gender"])) }}
+{% endblock %}
