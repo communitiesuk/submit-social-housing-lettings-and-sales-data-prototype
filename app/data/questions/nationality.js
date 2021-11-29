@@ -44,6 +44,8 @@ export default [{
   text: '11. From another European Economic Area (EEA) country',
   value: '11'
 }, {
+    divider: "or"
+}, {
   text: '12. From any other country',
   value: '12'
 }, {
