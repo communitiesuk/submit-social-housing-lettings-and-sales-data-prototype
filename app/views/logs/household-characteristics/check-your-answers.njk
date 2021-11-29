@@ -1,0 +1,68 @@
+{% extends "layouts/check-answers.njk" %}
+
+{% set leadTenantAge %}
+{%- if log[section.id]["lead-tenant-age-known"] == 'true' -%}{{ log[section.id]["lead-tenant-age"] }}{%- endif -%}
+{%- if log[section.id]["lead-tenant-age-known"] == 'false' -%}Not known{%- endif -%}
+{% endset %}%}
+
+{% block checkAnswers %}
+  {{ govukSummaryList({
+    rows: [{
+      key: {
+        text: "Number of people in household"
+      },
+      value: {
+        text: log[section.id]["number-in-household"] | textFromInputValue()
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/number-in-household",
+          text: "Change",
+          visuallyHiddenText: "number of people in household"
+        }]
+      }
+    }, {
+      key: {
+        text: "Lead tenant’s age"
+      },
+      value: {
+        text: leadTenantAge | textFromInputValue()
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/lead-tenant-age",
+          text: "Change",
+          visuallyHiddenText: "lead’s tenant age"
+        }]
+      }
+    }, {
+      key: {
+        text: "Lead tenant’s gender identity"
+      },
+      value: {
+        text: log[section.id]["lead-tenant-gender"] | textFromInputValue(data.questions["gender-identity"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/lead-tenant-gender",
+          text: "Change",
+          visuallyHiddenText: "lead tenant’s gender identity"
+        }]
+      }
+    }, {
+      key: {
+        text: "Lead tenant’s nationality"
+      },
+      value: {
+        text: log[section.id]["lead-tenant-nationality"] | textFromInputValue(data.questions["nationality"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/lead-tenant-nationality",
+          text: "Change",
+          visuallyHiddenText: "lead tenant’s nationality"
+        }]
+      }
+    }]
+  }) }}
+{% endblock %}

@@ -65,7 +65,8 @@ export default (log) => {
     paths: getPaths('household-characteristics', [
       'number-in-household',
       'lead-tenant-age',
-      'lead-tenant-gender'
+      'lead-tenant-gender',
+      'lead-tenant-nationality'
     ])
   }
 

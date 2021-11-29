@@ -1,6 +1,6 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Do you know the lead tenant's age?" %}
+{% set title = "Do you know the lead tenant’s age?" %}
 {% set hint = "The lead tenant is the person in the household who does the most paid work. If several people do the same paid work, the lead tenant is whoever is the oldest." %}
 
 {% block question %}
@@ -13,10 +13,13 @@
     }, ["logs", log.id, section.id, "lead-tenant-age"])) }}
   {% endset %}
 
+  {{ macro.caption(caption) }}
   {{ govukRadios(decorate({
     fieldset: {
       legend: {
-        text: macro.heading(title, caption)
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
       }
     },
     hint: {
