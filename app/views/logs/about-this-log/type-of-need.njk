@@ -1,0 +1,14 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Needs type" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["type-of-need"]
+  }, ["logs", log.id, section.id, "type-of-need"])) }}
+{% endblock %}

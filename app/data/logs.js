@@ -5,8 +5,9 @@ export default {
     updatedBy: 'DPOO1',
     'about-this-log': {
       gdpr: 'true',
-      'organisation-manager': 'PARENT1',
-      'organisation-owner': 'CHILD1',
+      'uses-scheme': 'false',
+      'organisation-manager': 'CHILD1',
+      'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
       'type-of-need': 'general-needs',
       'letting-renewal': 'true',
@@ -23,6 +24,7 @@ export default {
     'about-this-log': {
       'tenant-code': 'Gen needs/!renewal',
       gdpr: 'true',
+      'uses-scheme': 'false',
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
@@ -40,6 +42,7 @@ export default {
     'about-this-log': {
       'tenant-code': 'Gen needs/renewal',
       gdpr: 'true',
+      'uses-scheme': 'false',
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
@@ -57,10 +60,11 @@ export default {
     'about-this-log': {
       'tenant-code': 'Sup hou/!renewal',
       gdpr: 'true',
+      'uses-scheme': 'true',
+      schemeId: 'EXAMPLE',
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
-      'type-of-need': 'supported-housing',
       'letting-renewal': 'false',
       'type-of-rent': 'affordable-rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
@@ -74,13 +78,18 @@ export default {
     'about-this-log': {
       'tenant-code': 'Sup hou/renewal',
       gdpr: 'true',
+      'uses-scheme': 'true',
+      schemeId: 'EXAMPLE',
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
       'sale-or-letting': 'letting',
-      'type-of-need': 'supported-housing',
       'letting-renewal': 'true',
       'type-of-rent': 'affordable-rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
+      completed: 'true'
+    },
+    'property-information-supported-housing-renewal': {
+      'property-reference': '12345',
       completed: 'true'
     }
   }

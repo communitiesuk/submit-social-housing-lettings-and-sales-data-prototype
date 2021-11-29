@@ -1,0 +1,56 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Scheme details" %}
+{% if scheme.name %}
+  {# Editing an existing scheme #}
+  {% set caption = scheme.name %}
+  {% set buttonText = "Save changes" %}
+  {% set formAction = schemePath %}
+{% endif %}
+
+{% block question %}
+  {{ macro.heading(title, caption) }}
+
+  {{ govukInput(decorate({
+    value: organisationId,
+    type: "hidden"
+  }, ["schemes", scheme.id, "organisationId"])) }}
+
+  {{ govukInput(decorate({
+    label: {
+      classes: "govuk-label--m",
+      text: "Scheme name"
+    },
+    spellcheck: false
+  }, ["schemes", scheme.id, "name"])) }}
+
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Type of scheme"
+      }
+    },
+    items: data.questions["type-of-scheme"]
+  }, ["schemes", scheme.id, "type"])) }}
+
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Does this scheme contain confidential information?"
+      }
+    },
+    items: data.questions["yes-no"]
+  }, ["schemes", scheme.id, "confidential"])) }}
+
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Does this scheme include a Supporting People grant?"
+      }
+    },
+    items: data.questions["yes-no"]
+  }, ["schemes", scheme.id, "sp-grant"])) }}
+{% endblock %}

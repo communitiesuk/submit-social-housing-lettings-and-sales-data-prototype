@@ -1,0 +1,20 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Does this scheme use a registered care home?" %}
+{% if scheme["type-of-registered-home"] %}
+  {# Editing an existing scheme #}
+  {% set caption = scheme.name %}
+  {% set buttonText = "Save changes" %}
+  {% set formAction = schemePath %}
+{% endif %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["type-of-registered-home"]
+  }, ["schemes", scheme.id, "type-of-registered-home"])) }}
+{% endblock %}

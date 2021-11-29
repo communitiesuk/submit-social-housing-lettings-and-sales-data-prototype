@@ -1,0 +1,215 @@
+{# Set edit state based on scheme status #}
+{% set isLocked = scheme.status == "Approved" or scheme.status == "In review" %}
+
+{# Set variables to test various user selected data #}
+{% set hasPostcode = scheme["postcode-known"] == "true" %}
+{% set hasLocalAurthority = scheme["local-authority-known"] == "true" %}
+{% set localAuthority = localAuthorities | where("gss", scheme["local-authority"]) | first %}
+
+{{ macro.heading("Scheme details", false, "m") }}
+{{ govukSummaryList({
+  rows: [{
+    key: {
+      text: "Name"
+    },
+    value: {
+      text: scheme.name
+    },
+    actions: actionLinks({
+      href: schemePath + "/details",
+      visuallyHiddenText: "name"
+    }) if not isLocked
+  }, {
+    key: {
+      text: "Type of scheme"
+    },
+    value: {
+      text: scheme.type | textFromInputValue(data.questions["type-of-scheme"])
+    },
+    actions: actionLinks({
+      href: schemePath + "/details",
+      visuallyHiddenText: "type of scheme"
+    }) if not isLocked
+  }, {
+    key: {
+      text: "Confidential"
+    },
+    value: {
+      text: scheme.confidential | textFromInputValue(data.questions["yes-no"])
+    },
+    actions: actionLinks({
+      href: schemePath + "/details",
+      visuallyHiddenText: "if confidential"
+    }) if not isLocked
+  }, {
+    key: {
+      text: "Includes Supporting People grant"
+    },
+    value: {
+      text: scheme["sp-grant"] | textFromInputValue(data.questions["yes-no"])
+    },
+    actions: actionLinks({
+      href: schemePath + "/details",
+      visuallyHiddenText: "if includes Supporting People grant"
+    }) if not isLocked
+  }, {
+    key: {
+      text: "Postcode"
+    },
+    value: {
+      html: macro.entityHtml(scheme.postcode, false, localAuthority.name) if hasPostcode else "Not known"
+    },
+    actions: actionLinks({
+      href: schemePath + "/postcode",
+      visuallyHiddenText: "postcode"
+    }) if not isLocked
+  }, {
+    key: {
+      text: "Local authority known"
+    },
+    value: {
+      text: scheme["local-authority-known"] | textFromInputValue(data.questions["yes-no"])
+    },
+    actions: actionLinks({
+      href: schemePath + "/local-authority-known",
+      visuallyHiddenText: "if local authority is known"
+    }) if not isLocked
+  } if not hasPostcode, {
+    key: {
+      text: "Local authority"
+    },
+    value: {
+      text: scheme["local-authority"] | textFromInputValue(data.questions["local-authorities"])
+    },
+    actions: actionLinks({
+      href: schemePath + "/local-authority",
+      visuallyHiddenText: "local authority"
+    }) if not isLocked
+  } if not hasPostcode and hasLocalAurthority, {
+    key: {
+      text: "Reason you don’t know either the postcode or local authority"
+    },
+    value: {
+      text: scheme["why-dont-you-know-postcode-or-la"] | textFromInputValue
+    },
+    actions: actionLinks({
+      href: schemePath + "/why-dont-you-know-postcode-or-la",
+      visuallyHiddenText: "the reason you don’t know either the postcode or local authority"
+    }) if not isLocked
+  } if not hasPostcode and not hasLocalAurthority]
+}) }}
+
+{{ macro.heading("Clients", false, "m") }}
+{{ govukSummaryList({
+  rows: [{
+    key: {
+      text: "Client groups"
+    },
+    value: {
+      html: scheme["client-groups"] | textFromInputValue(data.questions["client-groups"]) | replace(",", "<br>")
+    },
+    actions: actionLinks({
+      href: schemePath + "/client-groups",
+      visuallyHiddenText: "client groups"
+    }) if not isLocked
+  }, {
+    key: {
+      text: "Registered care home"
+    },
+    value: {
+      text: scheme["type-of-registered-home"] | textFromInputValue(data.questions["type-of-registered-home"])
+    },
+    actions: actionLinks({
+      href: schemePath + "/type-of-registered-home",
+      visuallyHiddenText: "registered care home"
+    }) if not isLocked
+  }, {
+    key: {
+      text: "Level of support given"
+    },
+    value: {
+      text: scheme["type-of-support"] | textFromInputValue(data.questions["type-of-support"])
+    },
+    actions: actionLinks({
+      href: schemePath + "/type-of-support",
+      visuallyHiddenText: "type of support"
+    }) if not isLocked
+  }, {
+    key: {
+      text: "Intended length of stay"
+    },
+    value: {
+      text: scheme["intended-stay"] | textFromInputValue(data.questions["intended-stay"])
+    },
+    actions: actionLinks({
+      href: schemePath + "/intended-stay",
+      visuallyHiddenText: "intended length of stay"
+    }) if not isLocked
+  }]
+}) }}
+
+{{ macro.heading("Property information", false, "m") }}
+{{ govukSummaryList({
+  rows: [{
+    key: {
+      text: "Type of unit"
+    },
+    value: {
+      text: scheme["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"])
+    },
+    actions: actionLinks({
+      href: schemePath + "/type-of-unit",
+      visuallyHiddenText: "type of unit"
+    }) if not isLocked
+  }, {
+    key: {
+      text: "Number of units"
+    },
+    value: {
+      text: scheme.units
+    },
+    actions: actionLinks({
+      href: schemePath + "/units",
+      visuallyHiddenText: "number of units"
+    }) if not isLocked
+  }, {
+    key: {
+      text: "Type of building"
+    },
+    value: {
+      text: scheme["type-of-property"] | textFromInputValue(data.questions["type-of-property"])
+    },
+    actions: actionLinks({
+      href: schemePath + "/type-of-property",
+      visuallyHiddenText: "type of building"
+    }) if not isLocked
+  }, {
+    key: {
+      text: "Wheelchair adaptation"
+    },
+    value: {
+      text: scheme["is-adapted"] | textFromInputValue(data.questions["yes-no"])
+    },
+    actions: actionLinks({
+      href: schemePath + "/is-adapted",
+      visuallyHiddenText: "if property has been built or adapted to wheelchair-user standards"
+    }) if not isLocked
+  }]
+}) }}
+
+{{ macro.heading("Dates", false, "m") }}
+
+{{ govukSummaryList({
+  rows: [{
+    key: {
+      text: "Scheme dates"
+    },
+    value: {
+      text: (scheme["start-date"] | textFromInputValue) + (" to " + (scheme["end-date"] | textFromInputValue) if scheme["end-date-known"] == "true")
+    },
+    actions: actionLinks({
+      href: schemePath + "/dates",
+      visuallyHiddenText: "scheme dates"
+    }) if not isLocked
+  }]
+}) }}

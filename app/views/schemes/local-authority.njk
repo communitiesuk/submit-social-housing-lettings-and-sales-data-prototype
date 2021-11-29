@@ -1,0 +1,18 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Select a local authority" %}
+{% if scheme["local-authority"] %}
+  {# Editing an existing scheme #}
+  {% set caption = scheme.name %}
+  {% set buttonText = "Save changes" %}
+  {% set formAction = schemePath %}
+{% endif %}
+
+{% block question %}
+  {{ rigAutocomplete(decorate({
+    label: {
+      html: macro.heading(title, caption)
+    },
+    items: data.questions["local-authorities"]
+  }, ["schemes", scheme.id, "local-authority"])) }}
+{% endblock %}

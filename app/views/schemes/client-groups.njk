@@ -1,0 +1,20 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "What client groups is this scheme open to?" %}
+{% if scheme["client-groups"] %}
+  {# Editing an existing scheme #}
+  {% set caption = scheme.name %}
+  {% set buttonText = "Save changes" %}
+  {% set formAction = schemePath %}
+{% endif %}
+
+{% block question %}
+  {{ govukCheckboxes(decorate({
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["client-groups"]
+  }, ["schemes", scheme.id, "client-groups"])) }}
+{% endblock %}

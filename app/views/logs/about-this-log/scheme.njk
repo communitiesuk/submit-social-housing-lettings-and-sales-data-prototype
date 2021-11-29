@@ -1,0 +1,14 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Which scheme does this log relate to?" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
+    },
+    items: data.questions.scheme | optionItems("name", "id", "hint")
+  }, ["logs", log.id, section.id, "schemeId"])) }}
+{% endblock %}

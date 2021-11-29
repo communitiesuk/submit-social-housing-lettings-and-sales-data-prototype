@@ -18,16 +18,7 @@
 {% block content %}
   {{ macro.heading(title) }}
 
-  {{ appSubNavigation({
-    items: [{
-      href: organisationPath,
-      text: "Details",
-      active: true
-    }, {
-      href: organisationPath + "/users",
-      text: "Users"
-    }]
-  }) }}
+  {{ macro.organisationNavigation(organisationPath, "Details", isOwningOrg) }}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
@@ -106,7 +97,7 @@
             text: "Local authorities operated in"
           },
           value: {
-            html: macro.organisationAreasHtml(localAuthorities, organisation)
+            html: macro.localAuthoritiesHtml(localAuthorities, organisation.area)
           },
           actions: {
             items: [{

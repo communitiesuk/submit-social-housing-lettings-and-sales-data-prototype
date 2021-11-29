@@ -14,11 +14,12 @@ export default (log) => {
     group: 'before-you-start',
     paths: getPaths('about-this-log', [
       'gdpr',
-      'organisation',
       'sale-or-letting',
+      'uses-scheme',
+      'organisation',
       'letting-renewal',
       'letting-start-date',
-      'letting-type',
+      'type-of-rent',
       'tenant-code',
       'check-your-answers',
       'sale-completion-date',
@@ -30,6 +31,22 @@ export default (log) => {
       forkPath: `${sectionPath}/cannot-use-this-service`,
       storedData: keyPathRoot.concat('gdpr'),
       values: ['false']
+    }, {
+      currentPath: `${sectionPath}/uses-scheme`,
+      forkPath: `${sectionPath}/scheme`,
+      storedData: keyPathRoot.concat('uses-scheme'),
+      values: ['true']
+    }, {
+      currentPath: `${sectionPath}/scheme`,
+      skipTo: `${sectionPath}/letting-renewal`
+    }, {
+      currentPath: `${sectionPath}/type-of-rent`,
+      forkPath: `${sectionPath}/type-of-need`,
+      storedData: keyPathRoot.concat('uses-scheme'),
+      values: ['false']
+    }, {
+      currentPath: `${sectionPath}/type-of-need`,
+      skipTo: `${sectionPath}/tenant-code`
     }, {
       currentPath: `${sectionPath}/sale-or-letting`,
       forkPath: `${sectionPath}/sale-completion-date`,
@@ -200,40 +217,15 @@ export default (log) => {
     group: 'tenancy',
     paths: getPaths('property-information-supported-housing', [
       'reference',
-      'postcode',
-      // ↳ Local authority if cannot be inferred from postcode
-      'local-authority-known',
-      'local-authority',
-      // ↳ No postcode or local authority known
-      'why-dont-you-know-postcode-or-la',
       'is-relet',
       'type-of-let',
       'reason-for-vacancy',
       'times-previously-offered',
-      'type-of-unit',
-      'type-of-property',
-      'is-adapted',
-      'number-of-bedrooms',
       'void-date',
       'repairs',
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot) => [{
-      currentPath: `${sectionPath}/postcode`,
-      forkPath: `${sectionPath}/is-relet`,
-      storedData: keyPathRoot.concat('postcode-known'),
-      values: ['true']
-    }, {
-      currentPath: `${sectionPath}/local-authority-known`,
-      forkPath: `${sectionPath}/why-dont-you-know-postcode-or-la`,
-      storedData: keyPathRoot.concat('local-authority-known'),
-      values: ['false']
-    }, {
-      currentPath: `${sectionPath}/local-authority`,
-      forkPath: `${sectionPath}/is-relet`,
-      storedData: keyPathRoot.concat('local-authority-known'),
-      values: ['true']
-    }, {
       currentPath: `${sectionPath}/is-relet`,
       forkPath: `${sectionPath}/reason-for-vacancy-non-relet`,
       storedData: keyPathRoot.concat('is-relet'),
@@ -254,33 +246,8 @@ export default (log) => {
     group: 'tenancy',
     paths: getPaths('property-information-supported-housing-renewal', [
       'reference',
-      'postcode',
-      // ↳ Local authority if cannot be inferred from postcode
-      'local-authority-known',
-      'local-authority',
-      // ↳ No postcode or local authority known
-      'why-dont-you-know-postcode-or-la',
-      'type-of-unit',
-      'type-of-property',
-      'is-adapted',
       'check-your-answers'
-    ]),
-    forks: (sectionPath, keyPathRoot) => [{
-      currentPath: `${sectionPath}/postcode`,
-      forkPath: `${sectionPath}/type-of-unit`,
-      storedData: keyPathRoot.concat('postcode-known'),
-      values: ['true']
-    }, {
-      currentPath: `${sectionPath}/local-authority-known`,
-      forkPath: `${sectionPath}/why-dont-you-know-postcode-or-la`,
-      storedData: keyPathRoot.concat('local-authority-known'),
-      values: ['false']
-    }, {
-      currentPath: `${sectionPath}/local-authority`,
-      forkPath: `${sectionPath}/type-of-unit`,
-      storedData: keyPathRoot.concat('local-authority-known'),
-      values: ['true']
-    }]
+    ])
   }
 
   /**
@@ -323,7 +290,7 @@ export default (log) => {
   let isSupportedHousing
   let isRenewal
   if (log['about-this-log']) {
-    isSupportedHousing = log['about-this-log']['type-of-need'] === 'supported-housing'
+    isSupportedHousing = log['about-this-log']['uses-scheme'] === 'true'
     isRenewal = log['about-this-log']['letting-renewal'] === 'true'
   }
 

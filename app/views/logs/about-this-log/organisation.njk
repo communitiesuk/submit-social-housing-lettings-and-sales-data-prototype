@@ -10,7 +10,7 @@
       classes: "govuk-label--m",
       text: "Which organisation owns this property?"
     },
-    items: data.questions.organisation.owning
+    items: data.questions.organisation.owning | optionItems
   }, ["logs", log.id, section.id, "organisation-owner"])) }}
 
   {{ govukSelect(decorate({
@@ -18,6 +18,6 @@
       classes: "govuk-label--m",
       text: "Which organisation manages this property?"
     },
-    items: data.questions.organisation.managing
+    items: data.questions.organisation.managing | optionItems
   }, ["logs", log.id, section.id, "organisation-manager"])) }}
 {% endblock %}
