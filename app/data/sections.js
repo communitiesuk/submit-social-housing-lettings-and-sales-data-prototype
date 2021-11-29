@@ -66,7 +66,9 @@ export function sections (log) {
       'number-in-household',
       'lead-tenant-age',
       'lead-tenant-gender',
-      'lead-tenant-nationality'
+      'lead-tenant-nationality',
+      'lead-tenant-working-situation',
+      'lead-tenant-check'
     ])
   }
 
