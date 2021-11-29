@@ -3,9 +3,12 @@
 {% set title = "How many pepole live in the household?" %}
 
 {% block question %}
+  {{ macro.caption(caption) }}
   {{ govukInput(decorate({
     label: {
-        text: macro.heading(title, caption)
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-label--l"
     },
     classes: "govuk-input--width-3"
   }, ["logs", log.id, section.id, "number-in-household"])) }}
