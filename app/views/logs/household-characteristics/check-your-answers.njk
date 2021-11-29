@@ -63,6 +63,20 @@
           visuallyHiddenText: "lead tenant’s nationality"
         }]
       }
+    }, {
+      key: {
+        text: "Lead tenant’s working situation"
+      },
+      value: {
+        text: log[section.id]["lead-tenant-working-situation"] | textFromInputValue(data.questions["working-situation"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/lead-tenant-working-situation",
+          text: "Change",
+          visuallyHiddenText: "lead tenant’s working situation"
+        }]
+      }
     }]
   }) }}
 {% endblock %}
