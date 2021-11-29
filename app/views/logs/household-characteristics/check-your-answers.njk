@@ -1,6 +1,5 @@
 {% extends "layouts/check-answers.njk" %}
 
-<<<<<<< HEAD
 {% set householdSize = log[section.id]["number-in-household"] | int %}
 
 {% macro age (is_known, age) %}
@@ -9,12 +8,6 @@
 {% else %}<span class="app-!-colour-muted">You didn’t answer this question</span>
 {% endif -%}
 {% endmacro %}
-=======
-{% set leadTenantAge %}
-{%- if log[section.id]["lead-tenant-age-known"] == 'true' -%}{{ log[section.id]["lead-tenant-age"] }}{%- endif -%}
-{%- if log[section.id]["lead-tenant-age-known"] == 'false' -%}Not known{%- endif -%}
-{% endset %}%}
->>>>>>> bd3fa18 (updated markup and added 2 new questions)
 
 {% block checkAnswers %}
   {{ govukSummaryList({
@@ -32,25 +25,17 @@
           visuallyHiddenText: "number of people in household"
         }]
       }
-<<<<<<< HEAD
     }]
   }) }}
 
   <h2 class="govuk-heading-m govuk-!-margin-top-9">Lead tenant</h2>
   {{ govukSummaryList({
     rows: [{
-=======
-    }, {
->>>>>>> bd3fa18 (updated markup and added 2 new questions)
       key: {
         text: "Lead tenant’s age"
       },
       value: {
-<<<<<<< HEAD
         text: age(log[section.id]["lead-tenant-age-known"], log[section.id]["lead-tenant-age"])
-=======
-        text: leadTenantAge | textFromInputValue()
->>>>>>> bd3fa18 (updated markup and added 2 new questions)
       },
       actions: {
         items: [{
