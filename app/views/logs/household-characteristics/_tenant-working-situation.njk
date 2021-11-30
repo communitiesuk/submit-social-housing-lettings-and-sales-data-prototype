@@ -1,0 +1,14 @@
+{{ macro.caption(caption) }}
+{{ govukRadios(decorate({
+  fieldset: {
+    legend: {
+      text: "Which of these best describes the tenant’s working situation?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: hint
+  },
+  items: data.questions["working-situation"]
+}, ["logs", log.id, section.id, "tenant-" + tenantId + "-working-situation"])) }}

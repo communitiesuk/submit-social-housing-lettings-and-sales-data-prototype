@@ -1,0 +1,29 @@
+{% set ageHtml %}
+  {{ govukInput(decorate({
+    label: {
+      text: "Age"
+    },
+    classes: "govuk-input--width-3"
+  }, ["logs", log.id, section.id, "tenant-" + tenantId + "-age"])) }}
+{% endset %}
+
+{{ macro.caption(caption) }}
+{{ govukRadios(decorate({
+  fieldset: {
+    legend: {
+      text: "Do you know the tenant's age?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [{
+    value: "true",
+    text: "Yes",
+    conditional: {
+      html: ageHtml
+    }
+  }, {
+    value: "false",
+    text: "No"
+  }]
+}, ["logs", log.id, section.id, "tenant-" + tenantId + "-age-known"])) }}

@@ -51,7 +51,12 @@ export default (log) => {
       'lead-tenant-gender',
       'lead-tenant-nationality',
       'lead-tenant-working-situation',
-      'lead-tenant-check'
+      'lead-tenant-check',
+      'tenant-2-relationship',
+      'tenant-2-age',
+      'tenant-2-gender',
+      'tenant-2-working-situation',
+      'check-your-answers'
     ])
   }
 
