@@ -1,9 +1,13 @@
 {% extends "layouts/check-answers.njk" %}
 
-{% set leadTenantAge %}
-{%- if log[section.id]["lead-tenant-age-known"] == 'true' -%}{{ log[section.id]["lead-tenant-age"] }}{%- endif -%}
-{%- if log[section.id]["lead-tenant-age-known"] == 'false' -%}Not known{%- endif -%}
-{% endset %}%}
+{% set householdSize = log[section.id]["number-in-household"] | int %}
+
+{% macro age (is_known, age) %}
+{%- if is_known == 'true' %}{{ age }}
+{% elif is_known == 'false' %}Not known
+{% else %}<span class="app-!-colour-muted">You didn’t answer this question</span>
+{% endif -%}
+{% endmacro %}
 
 {% block checkAnswers %}
   {{ govukSummaryList({
@@ -21,12 +25,17 @@
           visuallyHiddenText: "number of people in household"
         }]
       }
-    }, {
+    }]
+  }) }}
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-9">Lead tenant</h2>
+  {{ govukSummaryList({
+    rows: [{
       key: {
         text: "Lead tenant’s age"
       },
       value: {
-        text: leadTenantAge | textFromInputValue()
+        text: age(log[section.id]["lead-tenant-age-known"], log[section.id]["lead-tenant-age"])
       },
       actions: {
         items: [{
@@ -79,4 +88,69 @@
       }
     }]
   }) }}
+
+  {% if householdSize > 1 %}
+  {% for i in range(1, householdSize) %}
+  <h2 class="govuk-heading-m govuk-!-margin-top-9">Tenant {{ i + 1 }}</h2>
+  {{ govukSummaryList({
+    rows: [{
+      key: {
+        text: "Relationship to lead tenant"
+      },
+      value: {
+        text: log[section.id]["tenant-" + (i + 1) + "-relationship"] | textFromInputValue(data.questions["relationship-to-lead-tenant"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/tenant-" + (i + 1) + "-relationship",
+          text: "Change",
+          visuallyHiddenText: "relationship to lead tenant"
+        }]
+      }
+    }, {
+      key: {
+        text: "Age"
+      },
+      value: {
+        text: age(log[section.id]["tenant-" + (i + 1) + "-age-known"], log[section.id]["tenant-" + (i + 1) + "-age"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/tenant-" + (i + 1) + "-age",
+          text: "Change",
+          visuallyHiddenText: "tenant’s age"
+        }]
+      }
+    }, {
+      key: {
+        text: "Gender Identity"
+      },
+      value: {
+        text: log[section.id]["tenant-" + (i + 1) + "-gender"] | textFromInputValue(data.questions["gender-identity"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/tenant-" + (i + 1) + "-gender",
+          text: "Change",
+          visuallyHiddenText: "tenant’s gender identity"
+        }]
+      }
+    }, {
+      key: {
+        text: "Working situation"
+      },
+      value: {
+        text: log[section.id]["tenant-" + (i + 1) + "-working-situation"] | textFromInputValue(data.questions["working-situation"])
+      },
+      actions: {
+        items: [{
+          href: sectionPath + "/tenant-" + (i + 1) + "-working-situation",
+          text: "Change",
+          visuallyHiddenText: "tenant’s working situation"
+        }]
+      }
+    }]
+  }) }}
+  {% endfor %}
+  {% endif %}
 {% endblock %}

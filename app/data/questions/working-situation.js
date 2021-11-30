@@ -1,8 +1,8 @@
 export default [{
-  text: '2. Part-time - Less than 30 hours a week',
-  value: '2'
-}, {
   text: '1. Full-time - 30 hours or more',
+  value: '1'
+}, {
+  text: '2. Part-time - Less than 30 hours a week',
   value: '2'
 }, {
   text: '3. In government training into work, such as New Deal',

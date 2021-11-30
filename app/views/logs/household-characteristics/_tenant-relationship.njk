@@ -1,0 +1,14 @@
+{{ macro.caption(caption) }}
+{{ govukRadios(decorate({
+  fieldset: {
+    legend: {
+      text: "What is this tenant’s relationship to the lead tenant?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: hint
+  },
+  items: data.questions["relationship-to-lead-tenant"]
+}, ["logs", log.id, section.id, "tenant-" + tenantId + "-relationship"])) }}
