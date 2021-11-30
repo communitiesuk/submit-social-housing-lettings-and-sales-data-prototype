@@ -1,31 +1,20 @@
 {% extends "layouts/question.njk" %}
 
 {% set householdSize = log[section.id]["number-in-household"] | int %}
-{% set title = "You have told us about 1 of " + householdSize + " people in the household" %}
+{% set title = "Do you know details for another tenant?" %}
+{% set hint = "You must provide details of all tenants if you know them. So far, you have told us about 1 of " + householdSize + " people in the household" %}
 
 {% block question %}
-  {{ macro.heading(title) }}
-  <dl class="govuk-summary-list">
-    <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key">Lead tenant</dt>
-      <dd class="govuk-summary-list__value">You have told us about this person</dd>
-    </div>
-    {% for i in range(1, householdSize) %}
-    <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key">Tenant {{ i + 1 }}</dt>
-      <dd class="govuk-summary-list__value app-!-colour-muted">You haven’t yet told us about this person</dd>
-    </div>
-    {% endfor %}
-  </dl>
   {{ govukRadios(decorate({
     fieldset: {
       legend: {
         text: 'Do you know details for another tenant?',
-        classes: "govuk-fieldset__legend--m"
+        classes: "govuk-fieldset__legend--l",
+        isPageHeading: true
       }
     },
     hint: {
-      text: 'You must provide details of all tenants if you know them'
+      text: hint
     },
     items: data.questions["yes-no"]
   }, ["logs", log.id, section.id, "lead-tenant-add-someone-else"])) }}
