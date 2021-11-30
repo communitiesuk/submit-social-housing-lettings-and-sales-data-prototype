@@ -35,7 +35,7 @@ export default (env) => {
         value.forEach(item => {
           item = String(item)
           const question = questions.find(question => question.value === item)
-          const text = question ? question.text : item
+          const text = question ? question.answer || question.text : item
           items.push(text)
         })
         return items.join(', ')
@@ -44,7 +44,7 @@ export default (env) => {
       // Single structured answer (from radio)
       value = String(value)
       const question = questions.find(question => question.value === value)
-      return question ? question.text : value
+      return question ? question.answer || question.text : value
     }
 
     // Dates

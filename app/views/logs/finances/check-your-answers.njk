@@ -1,0 +1,102 @@
+{% extends "layouts/check-answers.njk" %}
+
+{% set outgoingsValue =
+  log[section.id]["outgoings-rent"] | float +
+  log[section.id]["outgoings-service-charge"] | float +
+  log[section.id]["outgoings-personal-charge"] | float +
+  log[section.id]["outgoings-support-charge"] | float
+%}
+
+{% block checkAnswers %}
+  {{ govukSummaryList({
+    rows: [{
+      key: {
+        text: "Household’s combined income after tax"
+      },
+      value: {
+        text: log[section.id]["income-period"] | textFromInputValue(data.questions["income-period"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/income-period",
+        visuallyHiddenText: "household’s combined income after tax"
+      }) if not isCompleted
+    }, {
+      key: {
+        text: "Total household income"
+      },
+      value: {
+        text: log[section.id]["income-value"] | sterling
+      },
+      actions: actionLinks({
+        href: sectionPath + "/income-value",
+        visuallyHiddenText: "total household income"
+      }) if not isCompleted
+    }, {
+      key: {
+        text: "Housing-related benefits received"
+      },
+      value: {
+        text: log[section.id]["income-benefits"] | textFromInputValue(data.questions["type-of-benefit"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/income-benefits",
+        visuallyHiddenText: "housing-related benefits received"
+      }) if not isCompleted
+    }, {
+      key: {
+        text: "Household income from Universal Credit, state pension or benefits"
+      },
+      value: {
+        text: log[section.id]["income-benefits-portion"] | textFromInputValue(data.questions["income-benefits-portion"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/income-benefits-portion",
+        visuallyHiddenText: "household income from Universal Credit, state pension or benefits"
+      }) if not isCompleted
+    }, {
+      key: {
+        text: "Frequency of household rent and charges"
+      },
+      value: {
+        text: log[section.id]["outgoings-period"] | textFromInputValue(data.questions["outgoings-period"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/outgoings-period",
+        visuallyHiddenText: "frequency of household rent and charges"
+      }) if not isCompleted
+    }, {
+      key: {
+        text: "Total household rent and charges"
+      },
+      value: {
+        text: outgoingsValue | sterling
+      },
+      actions: actionLinks({
+        href: sectionPath + "/outgoings-values",
+        visuallyHiddenText: "total household rent and charges"
+      }) if not isCompleted
+    }, {
+      key: {
+        text: "Outstanding amount for basic rent and charges"
+      },
+      value: {
+        text: log[section.id]["outgoings-after-benefits"] | textFromInputValue(data.questions["yes-no"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/outgoings-after-benefits",
+        visuallyHiddenText: "outstanding amount for basic rent and charges"
+      }) if not isCompleted
+    } if log[section.id]["outgoings-after-benefits"] == "true", {
+      key: {
+        text: "Estimated outstanding amount"
+      },
+      value: {
+        text: log[section.id]["outgoings-outstanding"] | sterling
+      },
+      actions: actionLinks({
+        href: sectionPath + "/outgoings-outstanding",
+        visuallyHiddenText: "estimated outstanding amount"
+      }) if not isCompleted
+    } if log[section.id]["outgoings-after-benefits"] == "true"]
+  }) }}
+{% endblock %}

@@ -15,6 +15,20 @@ export default {
       'letting-start-date': { day: '12', month: '1', year: '2021' },
       'tenant-code': '298739',
       completed: 'true'
+    },
+    finances: {
+      'income-period': 'weekly',
+      'income-value': 250,
+      'income-benefits': 'housing-benefit',
+      'income-benefits-portion': 'some',
+      'outgoings-period': 'weekly-50',
+      'outgoings-rent': 200,
+      'outgoings-service-charge': 15,
+      'outgoings-personal-charge': 0,
+      'outgoings-support-charge': 0,
+      'outgoings-after-benefits': 'true',
+      'outgoings-outstanding': 15,
+      completed: 'true'
     }
   },
   BZ787: {

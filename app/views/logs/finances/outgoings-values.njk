@@ -1,0 +1,106 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Household rent and charges" %}
+
+{% set outgoingsValue =
+  log[section.id]["outgoings-rent"] | float +
+  log[section.id]["outgoings-service-charge"] | float +
+  log[section.id]["outgoings-personal-charge"] | float +
+  log[section.id]["outgoings-support-charge"] | float
+%}
+
+{% block question %}
+  {% call govukFieldset({
+    legend: {
+      html: macro.heading(title, caption)
+    }
+  }) %}
+    {{ govukInput(decorate({
+      classes: "govuk-input--width-5",
+      label: {
+        classes: "govuk-label--m",
+        text: "What is the basic rent?"
+      },
+      hint: {
+        text: "Eligible for housing benefit or Universal Credit."
+      },
+      inputmode: "numeric",
+      pattern: "[0-9]*",
+      prefix: {
+        text: "£"
+      }
+    }, ["logs", log.id, section.id, "outgoings-rent"])) }}
+
+    {{ govukInput(decorate({
+      classes: "govuk-input--width-5",
+      label: {
+        classes: "govuk-label--m",
+        text: "What is the service charge?"
+      },
+      hint: {
+        text: "Eligible for housing benefit or Universal Credit."
+      },
+      inputmode: "numeric",
+      pattern: "[0-9]*",
+      prefix: {
+        text: "£"
+      }
+    }, ["logs", log.id, section.id, "outgoings-service-charge"])) }}
+
+    {{ govukInput(decorate({
+      classes: "govuk-input--width-5",
+      label: {
+        classes: "govuk-label--m",
+        text: "What is the personal service charge?"
+      },
+      hint: {
+        text: "For example, heating or hot water."
+      },
+      inputmode: "numeric",
+      pattern: "[0-9]*",
+      prefix: {
+        text: "£"
+      }
+    }, ["logs", log.id, section.id, "outgoings-personal-charge"])) }}
+
+    {{ govukInput(decorate({
+      classes: "govuk-input--width-5",
+      label: {
+        classes: "govuk-label--m",
+        text: "What is the support charge?"
+      },
+      hint: {
+        text: "Any charges made to fund support services included in tenancy agreement."
+      },
+      inputmode: "numeric",
+      pattern: "[0-9]*",
+      prefix: {
+        text: "£"
+      }
+    }, ["logs", log.id, section.id, "outgoings-support-charge"])) }}
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {{ appOutput(decorate({
+      classes: "govuk-input--width-5",
+      label: {
+        classes: "govuk-label--m",
+        text: "Total charge"
+      },
+      hint: {
+        text: "Calculated total for rent and all charges."
+      },
+      prefix: {
+        text: "£"
+      },
+      for: "logs-" + log.id + "-" + section.id + "-outgoings-rent " +
+        "logs-" + log.id + "-" + section.id + "-outgoings-service-charge " +
+        "logs-" + log.id + "-" + section.id + "-outgoings-personal-charge " +
+        "logs-" + log.id + "-" + section.id + "-outgoings-support-charge",
+      value: outgoingsValue,
+      attributes: {
+        "data-module": "output"
+      }
+    }, ["logs", log.id, section.id, "outgoings-value"])) }}
+  {% endcall %}
+{% endblock %}

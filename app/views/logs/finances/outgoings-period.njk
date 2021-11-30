@@ -1,0 +1,14 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "How often does the household pay rent and other charges?" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["outgoings-period"]
+  }, ["logs", log.id, section.id, "outgoings-period"])) }}
+{% endblock %}
