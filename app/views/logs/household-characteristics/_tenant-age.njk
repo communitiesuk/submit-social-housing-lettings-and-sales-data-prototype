@@ -7,7 +7,7 @@
   }, ["logs", log.id, section.id, "tenant-" + tenantId + "-age"])) }}
 {% endset %}
 
-{{ macro.caption(caption) }}
+{{ macro.caption(caption + " for tenant " + tenantId) }}
 {{ govukRadios(decorate({
   fieldset: {
     legend: {
