@@ -1,4 +1,5 @@
-import sections from './data/sections.js'
+import { sections as getSections } from './data/sections.js'
+import * as utils from './utils.js'
 
 /**
  * Prototype specific global functions for use in Nunjucks templates.
@@ -31,10 +32,26 @@ export default () => {
     }
   }
 
-  globals.nextSection = (logId) => ({
-    text: 'About this log',
-    id: 'about-this-log'
-  })
+  globals.nextSection = function (logId) {
+    const { logs } = this.ctx.data
+
+    const log = utils.getEntityById(logs, logId)
+    const sections = getSections(log)
+    const incompleteSections = []
+
+    for (const section of sections) {
+      // Get sections that are not complete
+      // Only return sections with paths (i.e. sections in the prototype)
+      if (log[section.id]?.completed !== 'true' && section.paths) {
+        incompleteSections.push({
+          id: section.id,
+          title: section.title
+        })
+      }
+    }
+
+    return incompleteSections[0]
+  }
 
   globals.taskListSections = function (logId) {
     const { logs, groups } = this.ctx.data
@@ -83,7 +100,7 @@ export default () => {
     for (const group of groups) {
       taskListSections.push({
         titleText: group.title,
-        items: sections(log)
+        items: getSections(log)
           .filter(section => section.group === group.id)
           .map(section => taskListItem(section))
       })

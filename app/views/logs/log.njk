@@ -20,7 +20,7 @@
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">This log is incomplete</h2>
       <p class="govuk-body govuk-!-margin-bottom-7">
         You have completed 0 of {{ data.sections | length }} sections.<br>
-        Skip to next incomplete section: <a href="#item-{{ nextSection(log.id).id }}">{{ nextSection(log.id).text }}</a>
+        Skip to next incomplete section: <a href="#{{ nextSection(log.id).id }}">{{ nextSection(log.id).title }}</a>
       </p>
 
       {{ rigTaskList({

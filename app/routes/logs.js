@@ -1,7 +1,7 @@
 import { validationResult } from 'express-validator'
 import { wizard } from 'govuk-prototype-rig'
 
-import sections from '../data/sections.js'
+import { sections } from '../data/sections.js'
 import * as utils from '../utils.js'
 import { validations } from '../validations.js'
 
