@@ -5,7 +5,7 @@
 {% block question %}
   {{ govukTextarea(decorate({
     label: {
-      text: macro.heading(title, caption)
+      text: macro.heading(title)
     }
   }, ["logs", log.id, section.id, "why-dont-you-know-postcode-or-la"])) }}
 {% endblock %}

@@ -1,7 +1,20 @@
 {% extends "layouts/form.njk" %}
 
-{% set backLink = backLink or "javascript:history.go(-1);" %}
 {% set formAction = formAction or paths.current %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [{
+      href: "/logs",
+      text: "Case logs"
+    }, {
+      href: "/logs/" + log.id,
+      text: "Log " + log.id
+    }, {
+      text: caption
+    }]
+  }) }}
+{% endblock %}
 
 {% block form %}
   <div class="govuk-grid-row">

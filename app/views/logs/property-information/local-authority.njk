@@ -5,7 +5,7 @@
 {% block question %}
   {{ rigAutocomplete(decorate({
     label: {
-      html: macro.heading(title, caption)
+      html: macro.heading(title)
     },
     items: data.questions["local-authorities"]
   }, ["logs", log.id, section.id, "local-authorities"])) }}
