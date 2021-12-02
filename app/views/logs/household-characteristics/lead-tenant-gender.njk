@@ -1,0 +1,19 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Which of these best describes the lead tenant’s gender identity?" %}
+{% set hint = "The lead tenant is the person in the household who does the most paid work. If several people do the same paid work, the lead tenant is whoever is the oldest." %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        html: macro.fieldsetHeading(title, "Lead tenant"),
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    hint: {
+      text: hint
+    },
+    items: data.questions["gender-identity"]
+  }, ["logs", log.id, section.id, "lead-tenant-gender"])) }}
+{% endblock %}

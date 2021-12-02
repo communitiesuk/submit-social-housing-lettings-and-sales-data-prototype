@@ -1,0 +1,37 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Do you know the lead tenant’s age?" %}
+{% set hint = "The lead tenant is the person in the household who does the most paid work. If several people do the same paid work, the lead tenant is whoever is the oldest." %}
+
+{% block question %}
+  {% set ageHtml %}
+    {{ govukInput(decorate({
+      label: {
+        text: "Age"
+      },
+      classes: "govuk-input--width-3"
+    }, ["logs", log.id, section.id, "lead-tenant-age"])) }}
+  {% endset %}
+
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        html: macro.fieldsetHeading(title, "Lead tenant"),
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    hint: {
+        text: hint
+    },
+    items: [{
+      value: "true",
+      text: "Yes",
+      conditional: {
+        html: ageHtml
+      }
+    }, {
+      value: "false",
+      text: "No"
+    }]
+  }, ["logs", log.id, section.id, "lead-tenant-age-known"])) }}
+{% endblock %}

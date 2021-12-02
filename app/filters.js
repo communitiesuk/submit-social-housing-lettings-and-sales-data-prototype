@@ -95,5 +95,23 @@ export default (env) => {
     return array
   }
 
+  // Used in Household Characteristics, this only supports `first` through
+  // `eighth` at the moment this is a prototype, so lets not guild the lilly.
+  filters.numberToOrdinal = int => {
+    int = parseInt(int)
+    const ordinals = [
+      'first',
+      'second',
+      'third',
+      'fourth',
+      'fifth',
+      'sixth',
+      'seventh',
+      'eighth'
+    ]
+
+    return int <= 8 ? ordinals[int - 1] : int
+  }
+
   return filters
 }

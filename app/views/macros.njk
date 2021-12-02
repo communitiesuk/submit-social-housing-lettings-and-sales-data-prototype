@@ -4,7 +4,14 @@
   {% if caption %}<span class="govuk-caption-{{ size }}">{{ caption }}</span>{% endif %}
   {{ heading | noOrphans | safe }}
 </h{{ headingLevel }}>
-{% endmacro %} 
+{% endmacro %}
+
+{% macro fieldsetHeading(heading, caption, size="l", headingLevel="1") %}
+<h{{ headingLevel }} class="govuk-fieldset__heading">
+  {% if caption %}<span class="govuk-caption-{{ size }}">{{ caption }}</span>{% endif %}
+  {{ heading | noOrphans | safe }}
+</h{{ headingLevel }}>
+{% endmacro %}
 
 {% macro notificationBannerText(success, object) %}
   {{ (object + " has been invited to submit CORE data.") if success == "invited" }}
