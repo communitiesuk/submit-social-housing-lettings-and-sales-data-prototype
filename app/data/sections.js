@@ -68,13 +68,39 @@ export function sections (log) {
       'lead-tenant-gender',
       'lead-tenant-nationality',
       'lead-tenant-working-situation',
-      'lead-tenant-check',
+      'review-lead',
       'tenant-2-relationship',
       'tenant-2-age',
       'tenant-2-gender',
       'tenant-2-working-situation',
+      'review-tenant-2',
+      'tenant-3-relationship',
+      'tenant-3-age',
+      'tenant-3-gender',
+      'tenant-3-working-situation',
       'check-your-answers'
-    ])
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/lead-tenant-working-situation`, //from here
+      forkPath: `${sectionPath}/check-your-answers`, //go here
+      storedData: keyPathRoot.concat('number-in-household'), //if this
+      values: ['1'] //equals this
+    }, {
+      currentPath: `${sectionPath}/review-lead`, //from here
+      forkPath: `${sectionPath}/check-your-answers`, //go here
+      storedData: keyPathRoot.concat('know-tenant-2'), //if this
+      values: ['false'] //equals this
+    }, {
+      currentPath: `${sectionPath}/tenant-2-working-situation`, //from here
+      forkPath: `${sectionPath}/check-your-answers`, //go here
+      storedData: keyPathRoot.concat('number-in-household'), //if this
+      values: ['2'] //equals this
+    }, {
+      currentPath: `${sectionPath}/review-tenant-2`, //from here
+      forkPath: `${sectionPath}/check-your-answers`, //go here
+      storedData: keyPathRoot.concat('know-tenant-3'), //if this
+      values: ['false'] //equals this
+    }]
   }
 
   /**
