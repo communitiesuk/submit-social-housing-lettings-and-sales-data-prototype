@@ -1,0 +1,14 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "After the household has received any housing-related benefits, will there be an outstanding amount for basic rent and eligible charges?" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["yes-no"]
+  }, ["logs", log.id, section.id, "outgoings-after-benefits"])) }}
+{% endblock %}

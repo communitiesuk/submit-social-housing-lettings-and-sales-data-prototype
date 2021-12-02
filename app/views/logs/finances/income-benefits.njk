@@ -1,0 +1,15 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Is the household likely to be receiving any of these housing-related benefits?" %}
+{% set questionId = "income-benefits" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["type-of-benefit"]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}

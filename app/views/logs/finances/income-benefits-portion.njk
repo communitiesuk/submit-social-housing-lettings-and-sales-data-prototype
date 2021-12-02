@@ -1,0 +1,18 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "How much of the household’s income is from Universal Credit, state pensions or benefits?" %}
+{% set questionId = "income-benefits-portion" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
+    },
+    hint: {
+      text: "This excludes child and housing benefit, council tax support and tax credits."
+    },
+    items: data.questions[questionId]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}

@@ -251,21 +251,38 @@ export function sections (log) {
   }
 
   /**
-   * Income and benefits
+   * Finances
    */
-  const incomeAndBenefits = {
-    id: 'income-and-benefits',
-    title: 'Income and benefits',
-    group: 'rent'
-  }
-
-  /**
-   * Rent
-   */
-  const rent = {
-    id: 'rent',
-    title: 'Rent',
-    group: 'rent'
+  const finances = {
+    id: 'finances',
+    title: 'Income, benefits and outgoings',
+    group: 'finances',
+    paths: getPaths('finances', [
+      'income-period',
+      'income-value',
+      'income-benefits',
+      'income-benefits-portion',
+      'outgoings-period',
+      'outgoings-value',
+      'check-your-answers'
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/outgoings-value`,
+      forkPath: `${sectionPath}/outgoings-after-benefits`,
+      storedData: keyPathRoot.concat('income-benefits'),
+      excludedValues: ['none', 'unknown', 'prefers-not-to-say']
+    }, {
+      currentPath: `${sectionPath}/outgoings-after-benefits`,
+      forkPath: (value) => {
+        if (value === 'true') {
+          return `${sectionPath}/outgoings-outstanding`
+        } else {
+          return `${sectionPath}/check-your-answers`
+        }
+      },
+      storedData: keyPathRoot.concat('outgoings-after-benefits'),
+      values: ['true', 'false']
+    }]
   }
 
   /**
@@ -278,7 +295,7 @@ export function sections (log) {
   }
 
   /**
-   * Local authority
+   * Declaration
    */
   const declaration = {
     id: 'declaration',
@@ -304,8 +321,7 @@ export function sections (log) {
     ...(!isSupportedHousing && isRenewal ? [propertyInformationRenewal] : []),
     ...(isSupportedHousing && !isRenewal ? [propertyInformationSupportedHousing] : []),
     ...(isSupportedHousing && isRenewal ? [propertyInformationSupportedHousingRenewal] : []),
-    incomeAndBenefits,
-    rent,
+    finances,
     localAuthority,
     declaration
   ]

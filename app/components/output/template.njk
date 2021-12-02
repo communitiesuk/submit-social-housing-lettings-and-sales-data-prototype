@@ -1,0 +1,48 @@
+{% from "govuk/components/hint/macro.njk" import govukHint %}
+{% from "govuk/components/label/macro.njk" import govukLabel %}
+
+{#- a record of other elements that we need to associate with the input using
+   aria-describedby – for example hints or error messages -#}
+{% set describedBy = params.describedBy if params.describedBy else "" %}
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} {%- if params.formGroup.classes %} {{ params.formGroup.classes }}{% endif %}">
+  {{ govukLabel({
+    html: params.label.html,
+    text: params.label.text,
+    classes: params.label.classes,
+    isPageHeading: params.label.isPageHeading,
+    attributes: params.label.attributes,
+    for: params.id
+  }) | indent(2) | trim }}
+{% if params.hint %}
+  {% set hintId = params.id + '-hint' %}
+  {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
+  {{ govukHint({
+    id: hintId,
+    classes: params.hint.classes,
+    attributes: params.hint.attributes,
+    html: params.hint.html,
+    text: params.hint.text
+  }) | indent(2) | trim }}
+{% endif %}
+
+{%- if params.prefix or params.suffix %}<div class="govuk-input__wrapper">{% endif -%}
+
+  {%- if params.prefix.text or params.prefix.html %}
+    <div class="govuk-input__prefix {{- ' ' + params.prefix.classes if params.prefix.classes }}" aria-hidden="true" {%- for attribute, value in params.prefix.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+      {{- params.prefix.html | safe if params.prefix.html else params.prefix.text -}}
+    </div>
+  {% endif -%}
+
+  <output class="govuk-input app-input--output {%- if params.classes %} {{ params.classes }}{% endif %}" id="{{ params.id }}" name="{{ params.name }}"
+  {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
+  {%- if params.for %} for="{{ params.for }}"{% endif %}
+  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>{{ params.value if params.value }}</output>
+
+  {%- if params.suffix.text or params.suffix.html %}
+    <div class="govuk-input__suffix {{- ' ' + params.suffix.classes if params.suffix.classes }}" aria-hidden="true" {%- for attribute, value in params.suffix.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+      {{- params.suffix.html | safe if params.suffix.html else params.suffix.text -}}
+    </div>
+  {% endif -%}
+
+{%- if params.prefix or params.suffix %}</div>{% endif %}
+</div>

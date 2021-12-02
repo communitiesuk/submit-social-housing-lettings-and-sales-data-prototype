@@ -17,8 +17,8 @@ export default async () => ({
     id: 'tenancy',
     title: 'Tenancy and property information'
   }, {
-    id: 'rent',
-    title: 'Rent and charges'
+    id: 'finances',
+    title: 'Finances'
   }, {
     id: 'local-authority',
     title: 'Local authority'

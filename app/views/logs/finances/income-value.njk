@@ -1,0 +1,19 @@
+{% extends "layouts/question.njk" %}
+
+{% set period = log[section.id]["income-period"] | replace("ly", "") %}
+{% set title = "How much income does the household have in total per " + period + "?" %}
+{% set questionId = "income-value" %}
+
+{% block question %}
+  {{ govukInput(decorate({
+    classes: "govuk-input--width-5",
+    label: {
+      html: macro.heading(title, caption)
+    },
+    inputmode: "numeric",
+    pattern: "[0-9]*",
+    prefix: {
+      text: "£"
+    }
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}
