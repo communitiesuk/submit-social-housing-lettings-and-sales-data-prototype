@@ -1,6 +1,6 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Do you know the household’s combined income after tax?" %}
+{% set title = "Household’s combined income" %}
 {% set questionId = "income-period" %}
 
 {% set incomeHtml %}
@@ -21,18 +21,20 @@
 {% endset %}
 
 {% block question %}
-  {% call govukFieldset({
-    legend: {
-      html: macro.heading(title)
-    }
-  }) %}
-    {{ govukDetails({
-      summaryText: "What counts as income?",
-      html: incomeHtml
-    }) }}
+  {{ macro.heading(title) }}
 
-    {{ govukRadios(decorate({
-      items: data.questions[questionId]
-    }, ["logs", log.id, section.id, questionId])) }}
-  {% endcall %}
+  {{ govukDetails({
+    summaryText: "What counts as income?",
+    html: incomeHtml
+  }) }}
+
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Do you know the household’s combined income after tax?"
+      }
+    },
+    items: data.questions[questionId]
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
