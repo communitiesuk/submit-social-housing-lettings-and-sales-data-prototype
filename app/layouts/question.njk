@@ -1,6 +1,12 @@
 {% extends "layouts/form.njk" %}
 
-{% set formAction = formAction or paths.current %}
+{% if questionId and log[section.id][questionId] %}
+  {% set formAction = formAction or sectionPath + "/check-your-answers" %}
+  {% set buttonText = buttonText or "Save changes" %}
+{% else %}
+  {% set formAction = formAction or paths.current %}
+  {% set buttonText = buttonText or "Save and continue" %}
+{% endif %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
@@ -28,7 +34,7 @@
       {% endblock %}
 
       {{ govukButton({
-        text: buttonText or "Save and continue"
+        text: buttonText
       }) }}
     </div>
   </div>

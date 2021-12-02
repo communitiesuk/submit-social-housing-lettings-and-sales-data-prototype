@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "Do you know the household’s combined income after tax?" %}
+{% set questionId = "income-period" %}
 
 {% set incomeHtml %}
   <p class="govuk-body">You should include any income from:</p>
@@ -31,7 +32,7 @@
     }) }}
 
     {{ govukRadios(decorate({
-      items: data.questions["income-period"]
-    }, ["logs", log.id, section.id, "income-period"])) }}
+      items: data.questions[questionId]
+    }, ["logs", log.id, section.id, questionId])) }}
   {% endcall %}
 {% endblock %}

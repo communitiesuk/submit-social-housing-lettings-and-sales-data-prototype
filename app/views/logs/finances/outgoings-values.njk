@@ -1,13 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "Household rent and charges" %}
-
-{% set outgoingsValue =
-  log[section.id]["outgoings-rent"] | float +
-  log[section.id]["outgoings-service-charge"] | float +
-  log[section.id]["outgoings-personal-charge"] | float +
-  log[section.id]["outgoings-support-charge"] | float
-%}
+{% set questionId = "outgoings-value" %}
 
 {% block question %}
   {% call govukFieldset({
@@ -93,7 +87,6 @@
       prefix: {
         text: "£"
       },
-      value: outgoingsValue,
       attributes: {
         "data-module": "output",
         "data-output-for": "logs-" + log.id + "-" + section.id + "-outgoings-rent " +
@@ -101,6 +94,6 @@
           "logs-" + log.id + "-" + section.id + "-outgoings-personal-charge " +
           "logs-" + log.id + "-" + section.id + "-outgoings-support-charge"
       }
-    }, ["logs", log.id, section.id, "outgoings-value"])) }}
+    }, ["logs", log.id, section.id, questionId])) }}
   {% endcall %}
 {% endblock %}

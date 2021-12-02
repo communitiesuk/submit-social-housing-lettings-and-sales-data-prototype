@@ -2,6 +2,7 @@
 
 {% set period = log[section.id]["income-period"] | replace("ly", "") %}
 {% set title = "How much income does the household have in total per " + period + "?" %}
+{% set questionId = "income-value" %}
 
 {% block question %}
   {{ govukInput(decorate({
@@ -14,5 +15,5 @@
     prefix: {
       text: "£"
     }
-  }, ["logs", log.id, section.id, "income-value"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

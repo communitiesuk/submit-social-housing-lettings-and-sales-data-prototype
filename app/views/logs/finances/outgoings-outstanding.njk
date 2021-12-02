@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "What do you expect the outstanding amount to be?" %}
+{% set questionId = "outgoings-outstanding" %}
 
 {% block question %}
   {{ govukInput(decorate({
@@ -16,5 +17,5 @@
     prefix: {
       text: "£"
     }
-  }, ["logs", log.id, section.id, "outgoings-outstanding"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
