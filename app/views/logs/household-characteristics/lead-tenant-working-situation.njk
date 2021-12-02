@@ -4,7 +4,7 @@
 {% set hint = "The lead tenant is the person in the household who does the most paid work. If several people do the same paid work, the lead tenant is whoever is the oldest." %}
 
 {% block question %}
-  {{ macro.caption(caption) }}
+  {{ macro.caption("Lead tenant") }}
   {{ govukRadios(decorate({
     fieldset: {
       legend: {

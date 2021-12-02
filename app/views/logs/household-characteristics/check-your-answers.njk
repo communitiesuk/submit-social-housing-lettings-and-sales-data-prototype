@@ -86,102 +86,90 @@
           visuallyHiddenText: "lead tenant’s working situation"
         }]
       }
-    }, {
-      key: {
-        text: "Details known for tenant 2"
-      },
-      value: {
-        text: log[section.id]["know-tenant-2"] | textFromInputValue(data.questions["yes-no"])
-      },
-      actions: {
-        items: [{
-          href: sectionPath + "/review-tenant-2?referrer=" + referrer,
-          text: "Change",
-          visuallyHiddenText: "whether you know the details for tenant 2"
-        }]
-      }
     }]
   }) }}
 
   {% if householdSize > 1 %}
     {% for i in range(1, householdSize) %}
-      {% set nextTenantExists = 'true' if (i + 1) < householdSize %}
-      {% if log[section.id]["know-tenant-" + (i + 1)] == 'true'  %}
-        <h2 class="govuk-heading-m govuk-!-margin-top-9">Tenant {{ i + 1 }}</h2>
-        {{ govukSummaryList({
-          rows: [{
-            key: {
-              text: "Relationship to lead tenant"
-            },
-            value: {
-              text: log[section.id]["tenant-" + (i + 1) + "-relationship"] | textFromInputValue(data.questions["relationship-to-lead-tenant"])
-            },
-            actions: {
-              items: [{
-                href: sectionPath + "/tenant-" + (i + 1) + "-relationship?referrer=" + referrer,
-                text: "Change",
-                visuallyHiddenText: "relationship to lead tenant"
-              }]
-            }
-          }, {
-            key: {
-              text: "Age"
-            },
-            value: {
-              text: age(log[section.id]["tenant-" + (i + 1) + "-age-known"], log[section.id]["tenant-" + (i + 1) + "-age"])
-            },
-            actions: {
-              items: [{
-                href: sectionPath + "/tenant-" + (i + 1) + "-age?referrer=" + referrer,
-                text: "Change",
-                visuallyHiddenText: "tenant’s age"
-              }]
-            }
-          }, {
-            key: {
-              text: "Gender identity"
-            },
-            value: {
-              text: log[section.id]["tenant-" + (i + 1) + "-gender"] | textFromInputValue(data.questions["gender-identity"])
-            },
-            actions: {
-              items: [{
-                href: sectionPath + "/tenant-" + (i + 1) + "-gender?referrer=" + referrer,
-                text: "Change",
-                visuallyHiddenText: "tenant’s gender identity"
-              }]
-            }
-          }, {
-            key: {
-              text: "Working situation"
-            },
-            value: {
-              text: log[section.id]["tenant-" + (i + 1) + "-working-situation"] | textFromInputValue(data.questions["working-situation"])
-            },
-            actions: {
-              items: [{
-                href: sectionPath + "/tenant-" + (i + 1) + "-working-situation?referrer=" + referrer,
-                text: "Change",
-                visuallyHiddenText: "tenant’s working situation"
-              }]
-            }
-          }, {
-            key: {
-              text: "Details known for tenant " + (i + 2)
-            },
-            value: {
-              text: log[section.id]["know-tenant-" + (i + 2)] | textFromInputValue(data.questions["yes-no"])
-            },
-            actions: {
-              items: [{
-                href: sectionPath + "/review-tenant-" + (i + 1) + "?referrer=" + referrer,
-                text: "Change",
-                visuallyHiddenText: "whether you know the details for tenant " + (i + 2)
-              }]
-            }
-          } if nextTenantExists]
-        }) }}
-      {% endif %}
+
+      {% set tenantKnown = true if log[section.id]["tenant-" + (i + 1) + "-known"] == 'true' %}
+      {% set tenantKnownResponse = 'Yes' if tenantKnown %}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-9">Tenant {{ i + 1 }}</h2>
+      {{ govukSummaryList({
+        rows: [{
+          key: {
+            text: "Details known for tenant " + (i + 1)
+          },
+          value: {
+            text: tenantKnownResponse or "No"
+          },
+          actions: {
+            items: [{
+              href: sectionPath + "/tenant-" + (i + 1) + "-known",
+              text: "Change",
+              visuallyHiddenText: "whether you know the details for tenant " + (i + 1)
+            }]
+          }
+        }, {
+          key: {
+            text: "Relationship to lead tenant"
+          },
+          value: {
+            text: log[section.id]["tenant-" + (i + 1) + "-relationship"] | textFromInputValue(data.questions["relationship-to-lead-tenant"])
+          },
+          actions: {
+            items: [{
+              href: sectionPath + "/tenant-" + (i + 1) + "-relationship?referrer=" + referrer,
+              text: "Change",
+              visuallyHiddenText: "relationship to lead tenant"
+            }]
+          }
+        } if tenantKnown, {
+          key: {
+            text: "Age"
+          },
+          value: {
+            text: age(log[section.id]["tenant-" + (i + 1) + "-age-known"], log[section.id]["tenant-" + (i + 1) + "-age"])
+          },
+          actions: {
+            items: [{
+              href: sectionPath + "/tenant-" + (i + 1) + "-age?referrer=" + referrer,
+              text: "Change",
+              visuallyHiddenText: "tenant’s age"
+            }]
+          }
+        } if tenantKnown, {
+          key: {
+            text: "Gender identity"
+          },
+          value: {
+            text: log[section.id]["tenant-" + (i + 1) + "-gender"] | textFromInputValue(data.questions["gender-identity"])
+          },
+          actions: {
+            items: [{
+              href: sectionPath + "/tenant-" + (i + 1) + "-gender?referrer=" + referrer,
+              text: "Change",
+              visuallyHiddenText: "tenant’s gender identity"
+            }]
+          }
+        } if tenantKnown, {
+          key: {
+            text: "Working situation"
+          },
+          value: {
+            text: log[section.id]["tenant-" + (i + 1) + "-working-situation"] | textFromInputValue(data.questions["working-situation"])
+          },
+          actions: {
+            items: [{
+              href: sectionPath + "/tenant-" + (i + 1) + "-working-situation?referrer=" + referrer,
+              text: "Change",
+              visuallyHiddenText: "tenant’s working situation"
+            }]
+          }
+        } if tenantKnown]
+      }) }}
+
     {% endfor %}
   {% endif %}
 {% endblock %}

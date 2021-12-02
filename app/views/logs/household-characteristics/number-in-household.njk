@@ -1,9 +1,8 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "How many pepole live in the household?" %}
+{% set title = "How many people live in the household?" %}
 
 {% block question %}
-  {{ macro.caption(caption) }}
   {{ govukInput(decorate({
     label: {
         text: title,

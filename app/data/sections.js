@@ -64,16 +64,19 @@ export function sections (log) {
     group: 'household',
     paths: getPaths('household-characteristics', [
       'number-in-household',
+      //tenant 1 (lead)
       'lead-tenant-age',
       'lead-tenant-gender',
       'lead-tenant-nationality',
       'lead-tenant-working-situation',
-      'review-lead',
+      //tennat 2
+      'tenant-2-known',
       'tenant-2-relationship',
       'tenant-2-age',
       'tenant-2-gender',
       'tenant-2-working-situation',
-      'review-tenant-2',
+      //tennat 3
+      'tenant-3-known',
       'tenant-3-relationship',
       'tenant-3-age',
       'tenant-3-gender',
@@ -86,9 +89,9 @@ export function sections (log) {
       storedData: keyPathRoot.concat('number-in-household'), //if this
       values: ['1'] //equals this
     }, {
-      currentPath: `${sectionPath}/review-lead`, //from here
+      currentPath: `${sectionPath}/tenant-2-known`, //from here
       forkPath: `${sectionPath}/check-your-answers`, //go here
-      storedData: keyPathRoot.concat('know-tenant-2'), //if this
+      storedData: keyPathRoot.concat('tenant-2-known'), //if this
       values: ['false'] //equals this
     }, {
       currentPath: `${sectionPath}/tenant-2-working-situation`, //from here
@@ -96,9 +99,9 @@ export function sections (log) {
       storedData: keyPathRoot.concat('number-in-household'), //if this
       values: ['2'] //equals this
     }, {
-      currentPath: `${sectionPath}/review-tenant-2`, //from here
+      currentPath: `${sectionPath}/tenant-3-known`, //from here
       forkPath: `${sectionPath}/check-your-answers`, //go here
-      storedData: keyPathRoot.concat('know-tenant-3'), //if this
+      storedData: keyPathRoot.concat('tenant-3-known'), //if this
       values: ['false'] //equals this
     }]
   }

@@ -1,7 +1,7 @@
 {% set householdSize = log[section.id]["number-in-household"] | int %}
 {% set heading = "You have given us details for " + tenantId + " of " + householdSize + " tenants." %}
 
-{{ macro.heading(heading, caption) }}
+{{ macro.heading(heading) }}
 {{ govukRadios(decorate({
   fieldset: {
     legend: {
@@ -13,4 +13,4 @@
     text: "You must provide details of all tenants if you know them."
   },
   items: data.questions["yes-no"]
-}, ["logs", log.id, section.id, "know-tenant-" + (tenantId + 1)])) }}
+}, ["logs", log.id, section.id, "tenant-" + (tenantId + 1) + "-known"])) }}
