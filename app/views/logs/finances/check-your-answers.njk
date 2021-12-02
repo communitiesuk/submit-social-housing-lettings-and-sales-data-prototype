@@ -1,12 +1,5 @@
 {% extends "layouts/check-answers.njk" %}
 
-{% set outgoingsValue =
-  log[section.id]["outgoings-rent"] | float +
-  log[section.id]["outgoings-service-charge"] | float +
-  log[section.id]["outgoings-personal-charge"] | float +
-  log[section.id]["outgoings-support-charge"] | float
-%}
-
 {% block checkAnswers %}
   {{ govukSummaryList({
     rows: [{
@@ -69,7 +62,7 @@
         text: "Total household rent and charges"
       },
       value: {
-        text: outgoingsValue | sterling
+        text: log[section.id]["outgoings-value"] | sterling
       },
       actions: actionLinks({
         href: sectionPath + "/outgoings-values",

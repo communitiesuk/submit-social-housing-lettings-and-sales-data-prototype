@@ -81,7 +81,7 @@
 
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
 
-    {{ appOutput(decorate({
+    {{ govukInput(decorate({
       classes: "govuk-input--width-5",
       label: {
         classes: "govuk-label--m",
@@ -93,13 +93,13 @@
       prefix: {
         text: "£"
       },
-      for: "logs-" + log.id + "-" + section.id + "-outgoings-rent " +
-        "logs-" + log.id + "-" + section.id + "-outgoings-service-charge " +
-        "logs-" + log.id + "-" + section.id + "-outgoings-personal-charge " +
-        "logs-" + log.id + "-" + section.id + "-outgoings-support-charge",
       value: outgoingsValue,
       attributes: {
-        "data-module": "output"
+        "data-module": "output",
+        "data-output-for": "logs-" + log.id + "-" + section.id + "-outgoings-rent " +
+          "logs-" + log.id + "-" + section.id + "-outgoings-service-charge " +
+          "logs-" + log.id + "-" + section.id + "-outgoings-personal-charge " +
+          "logs-" + log.id + "-" + section.id + "-outgoings-support-charge"
       }
     }, ["logs", log.id, section.id, "outgoings-value"])) }}
   {% endcall %}
