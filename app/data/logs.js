@@ -26,6 +26,7 @@ export default {
       'outgoings-service-charge': 15,
       'outgoings-personal-charge': 0,
       'outgoings-support-charge': 0,
+      'outgoings-value': 215,
       'outgoings-after-benefits': 'true',
       'outgoings-outstanding': 15,
       completed: 'true'

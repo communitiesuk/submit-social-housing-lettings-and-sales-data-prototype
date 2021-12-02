@@ -263,19 +263,25 @@ export function sections (log) {
       'income-benefits',
       'income-benefits-portion',
       'outgoings-period',
-      'outgoings-values',
+      'outgoings-value',
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot) => [{
-      currentPath: `${sectionPath}/outgoings-values`,
+      currentPath: `${sectionPath}/outgoings-value`,
       forkPath: `${sectionPath}/outgoings-after-benefits`,
       storedData: keyPathRoot.concat('income-benefits'),
       excludedValues: ['none', 'unknown', 'prefers-not-to-say']
     }, {
       currentPath: `${sectionPath}/outgoings-after-benefits`,
-      forkPath: `${sectionPath}/outgoings-outstanding`,
+      forkPath: (value) => {
+        if (value === 'true') {
+          return `${sectionPath}/outgoings-outstanding`
+        } else {
+          return `${sectionPath}/check-your-answers`
+        }
+      },
       storedData: keyPathRoot.concat('outgoings-after-benefits'),
-      values: ['true']
+      values: ['true', 'false']
     }]
   }
 

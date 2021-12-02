@@ -1,5 +1,11 @@
 {% extends "layouts/check-answers.njk" %}
 
+{% set hasIncomeBenefits =
+  log[section.id]["income-benefits"] !== "none" or
+  log[section.id]["income-benefits"] !== "unknown" or
+  log[section.id]["income-benefits"] !== "prefers-not-to-say"
+%}
+
 {% block checkAnswers %}
   {{ govukSummaryList({
     rows: [{
@@ -65,7 +71,7 @@
         text: log[section.id]["outgoings-value"] | sterling
       },
       actions: actionLinks({
-        href: sectionPath + "/outgoings-values",
+        href: sectionPath + "/outgoings-value",
         visuallyHiddenText: "total household rent and charges"
       }) if not isCompleted
     }, {
@@ -79,7 +85,7 @@
         href: sectionPath + "/outgoings-after-benefits",
         visuallyHiddenText: "outstanding amount for basic rent and charges"
       }) if not isCompleted
-    } if log[section.id]["outgoings-after-benefits"] == "true", {
+    } if hasIncomeBenefits, {
       key: {
         text: "Estimated outstanding amount"
       },
