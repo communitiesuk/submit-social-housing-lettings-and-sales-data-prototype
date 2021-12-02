@@ -282,6 +282,9 @@ export function sections (log) {
       },
       storedData: keyPathRoot.concat('outgoings-after-benefits'),
       values: ['true', 'false']
+    }, {
+      currentPath: `${sectionPath}/outgoings-outstanding`,
+      skipTo: `${sectionPath}/check-your-answers`
     }]
   }
 
