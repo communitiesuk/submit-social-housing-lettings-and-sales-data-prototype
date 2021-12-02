@@ -31,15 +31,17 @@
         type: "hidden"
       }, ["logs", log.id, section.id, "completed"])) if log }}
 
-      {{ govukButton({
-        text: "Return to log"
-      }) }}
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Return to log"
+        }) }}
 
-      {{ govukButton({
-        classes: "govuk-button--secondary",
-        text: "Go to next incomplete section",
-        href: logPath + "/" + nextSection(log.id).id
-      }) }}
+        {{ govukButton({
+          classes: "govuk-button--secondary",
+          text: "Go to next incomplete section",
+          href: logPath + "/" + nextSection(log.id).id
+        }) }}
+      </div>
     </div>
   </div>
 {% endblock %}
