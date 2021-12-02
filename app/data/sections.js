@@ -1,4 +1,4 @@
-export default (log) => {
+export function sections (log) {
   const logPath = `/logs/${log.id}`
 
   const getPaths = (sectionId, paths) => {

@@ -32,7 +32,13 @@
       }, ["logs", log.id, section.id, "completed"])) if log }}
 
       {{ govukButton({
-        text: "Save and continue"
+        text: "Return to log"
+      }) }}
+
+      {{ govukButton({
+        classes: "govuk-button--secondary",
+        text: "Go to next incomplete section",
+        href: logPath + "/" + nextSection(log.id).id
       }) }}
     </div>
   </div>
