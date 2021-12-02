@@ -6,7 +6,7 @@
 {% block question %}
   {% call govukFieldset({
     legend: {
-      html: macro.heading(title, caption)
+      html: macro.heading(title)
     }
   }) %}
     {{ govukInput(decorate({
