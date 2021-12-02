@@ -1,9 +1,9 @@
 {% extends "layouts/check-answers.njk" %}
 
 {% set hasIncomeBenefits =
-  log[section.id]["income-benefits"] !== "none" or
-  log[section.id]["income-benefits"] !== "unknown" or
-  log[section.id]["income-benefits"] !== "prefers-not-to-say"
+  (log[section.id]["income-benefits"] !== "none") and
+  (log[section.id]["income-benefits"] !== "unknown") and
+  (log[section.id]["income-benefits"] !== "prefers-not-to-say")
 %}
 
 {% block checkAnswers %}
