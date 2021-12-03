@@ -10,6 +10,11 @@
   {%- endif -%}
 {%- endmacro %}
 
+{% macro postcodeHtml(postcode, localauthority) %}
+  {{ postcode }}
+  <br><span class="govuk-!-font-weight-regular app-!-colour-muted">{{ localauthority }}</span>
+{% endmacro %}
+
 {# set variables to test various user selected data #}
 {% set hasPostcode = schemeAnswer("postcode-known") == "true" %}
 {% set hasLocalAurthority = schemeAnswer("local-authority-known") == "true" %}
@@ -34,12 +39,13 @@
   })
 } %}
 
+{# Hardcode `Arun` as LA for now. Maybe add live postcode lookup later. #}
 {% set postcodeRow = {
   key: {
     text: "Postcode"
   },
   value: {
-    text: schemeAnswer("postcode") if hasPostcode else "Not known"
+    text: postcodeHtml(schemeAnswer("postcode"), "Arun") if hasPostcode else "Not known"
   },
   actions: actionLinks({
     href: sectionPath + "/postcode",
