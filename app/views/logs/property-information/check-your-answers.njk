@@ -242,14 +242,6 @@
   })
 } %}
 
-{% macro inferredAnswers(rows) %}
-  <h2 class="govuk-heading-m">Additional answers</h2>
-  <p>We’ve worked out the following answers based on information you’ve given us elsewhere:</p>
-  {{ govukSummaryList({
-    rows: rows
-  }) }}
-{% endmacro %}
-
 {% block checkAnswers %}
 
   {% if isSupportedHousing and not isRenewal %}
@@ -287,50 +279,6 @@
         numberOfBedroomsRow
       ]
     }) }}
-    {{ inferredAnswers([{
-        key: {
-          text: "First time being let as social-housing"
-        },
-        value: {
-          text: "No"
-        }
-      }, {
-        key: {
-          text: "Reason for vacancy"
-        },
-        value: {
-          text: "Renewal of fixed-term tenancy"
-        }
-      }, {
-        key: {
-          text: "Times previously offered since becoming available"
-        },
-        value: {
-          text: "0"
-        }
-      }, {
-        key: {
-          text: "Most recent let type"
-        },
-        value: {
-          text: log["about-this-log"]["type-of-rent"] | textFromInputValue(data.questions["type-of-rent"])
-        }
-      }, {
-        key: {
-          text: "Renewal date"
-        },
-        value: {
-          text: log["about-this-log"]["letting-start-date"] | textFromInputValue
-        }
-      }, {
-        key: {
-          text: "Major repairs carried out during void period"
-        },
-        value: {
-          text: "No"
-        }
-      }
-    ]) }}
   {% elif isSupportedHousing and isRenewal %}
     {{ govukSummaryList({
       rows: [
@@ -344,50 +292,6 @@
         isAdaptedRow
       ]
     }) }}
-    {{ inferredAnswers([{
-        key: {
-          text: "First time being let as social-housing"
-        },
-        value: {
-          text: "No"
-        }
-      }, {
-        key: {
-          text: "Reason for vacancy"
-        },
-        value: {
-          text: "Renewal of fixed-term tenancy"
-        }
-      }, {
-        key: {
-          text: "Times previously offered since becoming available"
-        },
-        value: {
-          text: "0"
-        }
-      }, {
-        key: {
-          text: "Most recent let type"
-        },
-        value: {
-          text: log["about-this-log"]["type-of-rent"] | textFromInputValue(data.questions["type-of-rent"])
-        }
-      }, {
-        key: {
-          text: "Renewal date"
-        },
-        value: {
-          text: log["about-this-log"]["letting-start-date"] | textFromInputValue
-        }
-      }, {
-        key: {
-          text: "Major repairs carried out during void period"
-        },
-        value: {
-          text: "No"
-        }
-      }
-    ]) }}
   {% else %}
     {{ govukSummaryList({
       rows: [
@@ -410,15 +314,5 @@
         timesOfferedRow
       ]
     }) }}
-    {{ inferredAnswers([
-      {
-        key: {
-          text: "Local authority"
-        },
-        value: {
-          text: "Arun"
-        }
-      } if hasPostcode
-    ]) }}
   {% endif %}
 {% endblock %}
