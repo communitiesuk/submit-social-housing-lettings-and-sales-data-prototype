@@ -61,7 +61,49 @@ export function sections (log) {
   const householdCharacteristics = {
     id: 'household-characteristics',
     title: 'Household characteristics',
-    group: 'household'
+    group: 'household',
+    paths: getPaths('household-characteristics', [
+      'number-in-household',
+      // Tenant 1 (lead)
+      'lead-tenant-age',
+      'lead-tenant-gender',
+      'lead-tenant-nationality',
+      'lead-tenant-working-situation',
+      // Tenant 2
+      'tenant-2-known',
+      'tenant-2-relationship',
+      'tenant-2-age',
+      'tenant-2-gender',
+      'tenant-2-working-situation',
+      // Tenant 3
+      'tenant-3-known',
+      'tenant-3-relationship',
+      'tenant-3-age',
+      'tenant-3-gender',
+      'tenant-3-working-situation',
+      'check-your-answers'
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/lead-tenant-working-situation`,
+      forkPath: `${sectionPath}/check-your-answers`,
+      storedData: keyPathRoot.concat('number-in-household'),
+      values: ['1']
+    }, {
+      currentPath: `${sectionPath}/tenant-2-known`,
+      forkPath: `${sectionPath}/check-your-answers`,
+      storedData: keyPathRoot.concat('tenant-2-known'),
+      values: ['false']
+    }, {
+      currentPath: `${sectionPath}/tenant-2-working-situation`,
+      forkPath: `${sectionPath}/check-your-answers`,
+      storedData: keyPathRoot.concat('number-in-household'),
+      values: ['2']
+    }, {
+      currentPath: `${sectionPath}/tenant-3-known`,
+      forkPath: `${sectionPath}/check-your-answers`,
+      storedData: keyPathRoot.concat('tenant-3-known'),
+      values: ['false']
+    }]
   }
 
   /**
