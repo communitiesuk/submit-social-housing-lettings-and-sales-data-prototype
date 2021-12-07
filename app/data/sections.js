@@ -363,15 +363,6 @@ export function sections (log) {
   }
 
   /**
-   * Local authority
-   */
-  const localAuthority = {
-    id: 'local-authority',
-    title: 'Local authority',
-    group: 'local-authority'
-  }
-
-  /**
    * Declaration
    */
   const declaration = {
@@ -400,7 +391,6 @@ export function sections (log) {
     ...(isSupportedHousing && !isRenewal ? [propertyInformationSupportedHousing] : []),
     ...(isSupportedHousing && isRenewal ? [propertyInformationSupportedHousingRenewal] : []),
     finances,
-    localAuthority,
     declaration
   ]
 }

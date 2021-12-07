@@ -20,9 +20,6 @@ export default async () => ({
     id: 'finances',
     title: 'Finances'
   }, {
-    id: 'local-authority',
-    title: 'Local authority'
-  }, {
     id: 'submission',
     title: 'Submission'
   }],
