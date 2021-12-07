@@ -96,6 +96,6 @@
         href: sectionPath + "/outgoings-outstanding",
         visuallyHiddenText: "estimated outstanding amount"
       }) if not isCompleted
-    } if log[section.id]["outgoings-after-benefits"] == "true"]
+    } if hasIncomeBenefits and log[section.id]["outgoings-after-benefits"] == "true"]
   }) }}
 {% endblock %}
