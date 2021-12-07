@@ -133,16 +133,48 @@ export function sections (log) {
   /**
    * Tenancy information
    */
+
+  // General needs
   const tenancyInformation = {
     id: 'tenancy-information',
     title: 'Tenancy information',
     group: 'tenancy',
     paths: getPaths('tenancy-information', [
-      'start-date',
       'is-starter',
       'type-of-tenancy',
       'check-your-answers'
-    ])
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/type-of-tenancy`,
+      forkPath: `${sectionPath}/fixed-term-length`,
+      storedData: keyPathRoot.concat('type-of-tenancy'),
+      values: ['fixed-secure', 'fixed-ast']
+    }, {
+      currentPath: `${sectionPath}/fixed-term-length`,
+      skipTo: `${sectionPath}/check-your-answers`
+    }]
+  }
+
+  // Supported housing
+  const tenancyInformationSupportedHousing = {
+    id: 'tenancy-information-supported-housing',
+    title: 'Tenancy information',
+    group: 'tenancy',
+    paths: getPaths('tenancy-information-supported-housing', [
+      'is-starter',
+      'type-of-tenancy',
+      'sheltered-accommodation',
+      'check-your-answers'
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/type-of-tenancy`,
+      forkPath: `${sectionPath}/fixed-term-length`,
+      storedData: keyPathRoot.concat('type-of-tenancy'),
+      values: ['fixed-secure', 'fixed-ast']
+    }, {
+      currentPath: `${sectionPath}/fixed-term-length`,
+      skipTo: `${sectionPath}/sheltered-accommodation`
+    }]
   }
 
   /**
@@ -361,7 +393,8 @@ export function sections (log) {
     householdCharacteristics,
     householdSituation,
     householdNeeds,
-    tenancyInformation,
+    ...(!isSupportedHousing ? [tenancyInformation] : []),
+    ...(isSupportedHousing ? [tenancyInformationSupportedHousing] : []),
     ...(!isSupportedHousing && !isRenewal ? [propertyInformation] : []),
     ...(!isSupportedHousing && isRenewal ? [propertyInformationRenewal] : []),
     ...(isSupportedHousing && !isRenewal ? [propertyInformationSupportedHousing] : []),

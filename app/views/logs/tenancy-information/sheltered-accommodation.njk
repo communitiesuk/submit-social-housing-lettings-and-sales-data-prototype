@@ -1,11 +1,7 @@
 {% extends "layouts/question.njk" %}
 
-{% if log[section.id]["is-starter"] == "true" %}
-  {% set title = "What is the type of tenancy after the starter period has ended?" %}
-{% else %}
-  {% set title = "What is the type of tenancy?" %}
-{% endif %}
-{% set questionId = "type-of-tenancy" %}
+{% set title = "Is this letting in sheltered accommodation?" %}
+{% set questionId = "sheltered-accommodation" %}
 
 {% block question %}
   {{ govukRadios(decorate({

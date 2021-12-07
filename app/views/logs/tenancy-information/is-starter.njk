@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "Is this a starter tenancy?" %}
+{% set questionId = "is-starter" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -9,6 +10,9 @@
         text: macro.heading(title)
       }
     },
+    hint: {
+      text: "This is also known as an ‘introductory period’."
+    },
     items: data.questions["yes-no"]
-  }, ["logs", log.id, section.id, "is-starter"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

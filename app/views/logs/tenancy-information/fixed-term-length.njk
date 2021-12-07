@@ -1,0 +1,16 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "What is the length of the fixed-term tenancy to the nearest year?" %}
+{% set questionId = "fixed-term-length" %}
+
+{% block question %}
+  {{ govukInput(decorate({
+    classes: "govuk-input--width-2",
+    label: {
+      text: macro.heading(title)
+    },
+    hint: {
+      text: "Not including the starter or introductory period."
+    } if log[section.id]["is-starter"] == "true"
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}
