@@ -1,5 +1,5 @@
 {
-  "name": "Log social housing lettings and sales (CORE)",
+  "name": "Submit social housing lettings and sales data (CORE)",
   "env": {
     "USE_AUTH": {
       "description": "Enable or disable password protection on production.",
