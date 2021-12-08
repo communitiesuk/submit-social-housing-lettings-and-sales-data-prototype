@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "Which scheme does this log relate to?" %}
+{% set questionId = "schemeId" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -10,5 +11,5 @@
       }
     },
     items: data.questions.scheme | optionItems("name", "id", "hint")
-  }, ["logs", log.id, section.id, "schemeId"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "Rent type" %}
+{% set questionId = "type-of-rent" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -10,5 +11,5 @@
       }
     },
     items: data.questions["type-of-rent"]
-  }, ["logs", log.id, section.id, "type-of-rent"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

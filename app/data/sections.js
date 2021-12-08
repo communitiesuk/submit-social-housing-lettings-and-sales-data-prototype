@@ -21,9 +21,11 @@ export function sections (log) {
       'letting-start-date',
       'type-of-rent',
       'tenant-code',
+      'property-reference',
       'check-your-answers',
       'sale-completion-date',
       'purchaser-code',
+      'property-reference',
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot) => [{
@@ -39,14 +41,6 @@ export function sections (log) {
     }, {
       currentPath: `${sectionPath}/scheme`,
       skipTo: `${sectionPath}/letting-renewal`
-    }, {
-      currentPath: `${sectionPath}/type-of-rent`,
-      forkPath: `${sectionPath}/type-of-need`,
-      storedData: keyPathRoot.concat('uses-scheme'),
-      values: ['false']
-    }, {
-      currentPath: `${sectionPath}/type-of-need`,
-      skipTo: `${sectionPath}/tenant-code`
     }, {
       currentPath: `${sectionPath}/sale-or-letting`,
       forkPath: `${sectionPath}/sale-completion-date`,
@@ -187,7 +181,6 @@ export function sections (log) {
     title: 'Property information',
     group: 'tenancy',
     paths: getPaths('property-information', [
-      'reference',
       'postcode',
       'local-authority',
       'is-relet',
@@ -229,7 +222,6 @@ export function sections (log) {
     title: 'Property information',
     group: 'tenancy',
     paths: getPaths('property-information-renewal', [
-      'reference',
       'postcode',
       'local-authority',
       'type-of-unit',
@@ -262,7 +254,6 @@ export function sections (log) {
     title: 'Property information',
     group: 'tenancy',
     paths: getPaths('property-information-supported-housing', [
-      'reference',
       'is-relet',
       'type-of-let',
       'reason-for-vacancy',
@@ -291,7 +282,6 @@ export function sections (log) {
     title: 'Property information',
     group: 'tenancy',
     paths: getPaths('property-information-supported-housing-renewal', [
-      'reference',
       'check-your-answers'
     ])
   }

@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "What is the tenant code?" %}
+{% set questionId = "tenant-code" %}
 
 {% block question %}
   {{ govukInput(decorate({
@@ -8,5 +9,5 @@
     label: {
       html: macro.heading(title)
     }
-  }, ["logs", log.id, section.id, "tenant-code"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
