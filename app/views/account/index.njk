@@ -18,13 +18,10 @@
           value: {
             text: account.name
           },
-          actions: {
-            items: [{
-              href: "/account/personal-details",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }]
-          }
+          actions: actionLinks({
+            href: "/account/personal-details",
+            visuallyHiddenText: "name"
+          })
         }, {
           key: {
             text: "Email address"
@@ -32,13 +29,10 @@
           value: {
             text: account.email
           },
-          actions: {
-            items: [{
-              href: "/account/personal-details",
-              text: "Change",
-              visuallyHiddenText: "email address"
-            }]
-          }
+          actions: actionLinks({
+            href: "/account/personal-details",
+            visuallyHiddenText: "email address"
+          })
         }, {
           key: {
             text: "Password"
@@ -46,13 +40,10 @@
           value: {
             html: "••••••••"
           },
-          actions: {
-            items: [{
-              href: "/account/password",
-              text: "Change",
-              visuallyHiddenText: "password"
-            }]
-          }
+          actions: actionLinks({
+            href: "/account/password",
+            visuallyHiddenText: "password"
+          })
         }, {
           key: {
             text: "Organisation"
@@ -60,13 +51,10 @@
           value: {
             text: data.organisations[account.organisationId].name
           },
-          actions: {
-            items: [{
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "organisation"
-            } if isAdmin]
-          }
+          actions: actionLinks({
+            href: "#",
+            visuallyHiddenText: "organisation"
+          }) if isAdmin
         }, {
           key: {
             text: "Role"
@@ -74,13 +62,10 @@
           value: {
             text: data.roles[account.role].name
           },
-          actions: {
-            items: [{
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "role"
-            } if isCoordinator or isAdmin]
-          }
+          actions: actionLinks({
+            href: "#",
+            visuallyHiddenText: "role"
+          }) if isCoordinator or isAdmin
         }]
       }) }}
     </div>

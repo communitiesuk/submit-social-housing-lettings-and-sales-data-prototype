@@ -43,13 +43,10 @@
           value: {
             text: organisation.name
           },
-          actions: {
-            items: [{
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }]
-          } if isAdmin or isCoordinator
+          actions: actionLinks({
+            href: "#",
+            visuallyHiddenText: "name"
+          }) if isAdmin or isCoordinator
         }, {
           key: {
             text: "Address"
@@ -57,13 +54,10 @@
           value: {
             html: organisation.address | replace(", ", "\n") | replace(". ", "\n") | nl2br
           },
-          actions: {
-            items: [{
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "address"
-            }]
-          } if isAdmin or isCoordinator
+          actions: actionLinks({
+            href: "#",
+            visuallyHiddenText: "address"
+          }) if isAdmin or isCoordinator
         }, {
           key: {
             text: "Telephone number"
@@ -71,13 +65,10 @@
           value: {
             text: organisation.tel
           },
-          actions: {
-            items: [{
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "telephone number"
-            }]
-          } if isAdmin or isCoordinator
+          actions: actionLinks({
+            href: "#",
+            visuallyHiddenText: "telephone number"
+          }) if isAdmin or isCoordinator
         }, {
           key: {
             text: "Type"
@@ -85,13 +76,10 @@
           value: {
             text: organisation.type
           },
-          actions: {
-            items: [{
-              href: organisationPath + "/details",
-              text: "Change",
-              visuallyHiddenText: "type"
-            }]
-          } if isAdmin
+          actions: actionLinks({
+            href: "#",
+            visuallyHiddenText: "type"
+          }) if isAdmin
         }, {
           key: {
             text: "Local authorities operated in"
@@ -99,13 +87,10 @@
           value: {
             html: macro.localAuthoritiesHtml(localAuthorities, organisation.area)
           },
-          actions: {
-            items: [{
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "local authorities operated in"
-            }]
-          } if isAdmin
+          actions: actionLinks({
+            href: "#",
+            visuallyHiddenText: "local authorities operated in"
+          }) if isAdmin
         }, {
           key: {
             text: "Holds own stock"
@@ -113,13 +98,10 @@
           value: {
             text: "Yes" if organisation.stock else "No"
           },
-          actions: {
-            items: [{
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "if holds housing stock"
-            }]
-          } if isAdmin
+          actions: actionLinks({
+            href: "#",
+            visuallyHiddenText: "if holds housing stock"
+          }) if isAdmin
         }, {
           key: {
             text: "Other stock owners"
@@ -127,13 +109,10 @@
           value: {
             html: macro.organisationRelationshipHtml(organisations, organisation, "parents")
           },
-          actions: {
-            items: [{
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "parent organisations"
-            }]
-          } if isAdmin
+          actions: actionLinks({
+            href: "#",
+            visuallyHiddenText: "parent organisations"
+          }) if isAdmin
         }, {
           key: {
             text: "Managing agents"
@@ -141,13 +120,10 @@
           value: {
             html: macro.organisationRelationshipHtml(organisations, organisation, "children")
           },
-          actions: {
-            items: [{
-              href: "#",
-              text: "Change",
-              visuallyHiddenText: "child organisations"
-            }]
-          } if isAdmin
+          actions: actionLinks({
+            href: "#",
+            visuallyHiddenText: "child organisations"
+          }) if isAdmin
         }]
       }) }}
     </div>

@@ -57,13 +57,10 @@
           value: {
             text: user.name
           },
-          actions: {
-            items: [{
-              href: userPath + "/personal-details",
-              text: "Change",
-              visuallyHiddenText: "name"
-            }]
-          } if not user.deactivated
+          actions: actionLinks({
+            href: userPath + "/personal-details",
+            visuallyHiddenText: "name"
+          }) if not user.deactivated
         }, {
           key: {
             text: "Email address"
@@ -71,13 +68,10 @@
           value: {
             text: user.email | urlize | safe
           },
-          actions: {
-            items: [{
-              href: userPath + "/personal-details",
-              text: "Change",
-              visuallyHiddenText: "email address"
-            }]
-          } if not user.deactivated
+          actions: actionLinks({
+            href: userPath + "/personal-details",
+            visuallyHiddenText: "email address"
+          }) if not user.deactivated
         }, {
           key: {
             text: "Organisation"
@@ -85,13 +79,10 @@
           value: {
             text: data.organisations[user.organisationId].name
           },
-          actions: {
-            items: [{
-              href: userPath + "/organisation",
-              text: "Change",
-              visuallyHiddenText: "organisation"
-            } if isCoordinator or isAdmin]
-          } if not user.deactivated
+          actions: actionLinks({
+            href: userPath + "/organisation",
+            visuallyHiddenText: "organisation"
+          } if isCoordinator or isAdmin) if not user.deactivated
         }, {
           key: {
             text: "Role"
@@ -99,13 +90,10 @@
           value: {
             text: data.roles[user.role].name
           },
-          actions: {
-            items: [{
-              href: userPath + "/role",
-              text: "Change",
-              visuallyHiddenText: "role"
-            }]
-          } if not user.deactivated
+          actions: actionLinks({
+            href: userPath + "/role",
+            visuallyHiddenText: "role"
+          } if isCoordinator or isAdmin) if not user.deactivated
         }, {
           key: {
             text: "Last logged in"
