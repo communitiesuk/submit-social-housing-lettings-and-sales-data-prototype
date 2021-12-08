@@ -1,8 +1,8 @@
 {% extends "layouts/base.njk" %}
 
 {% set title = "You cannot use this service" %}
-{% set backLink = referrer or paths.back %}
-{% set formAction = referrer or paths.next %}
+{% set backLink = paths.back %}
+{% set formAction = paths.next %}
 
 {% block content %}
   <div class="govuk-grid-row">

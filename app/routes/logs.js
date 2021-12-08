@@ -80,7 +80,6 @@ export const logRoutes = (router) => {
     try {
       let { logId, sectionId, itemId, view } = req.params
       const { logs } = req.session.data
-      let { referrer } = req.query
 
       // If there’s no :view param, use :itemId param for view
       if (!view) {
@@ -116,11 +115,6 @@ export const logRoutes = (router) => {
         ? wizard.nextAndBackPaths(section.paths, req)
         : []
 
-      // For check your answers page, the referrer is always that page
-      if (view === 'check-your-answers') {
-        referrer = req.path
-      }
-
       // Common render options, shared between normal and validated view
       let renderOptions = {
         caption: section.title,
@@ -129,8 +123,7 @@ export const logRoutes = (router) => {
         section,
         sectionPath,
         itemId,
-        paths,
-        referrer
+        paths
       }
 
       if (req.method === 'POST') {

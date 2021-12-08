@@ -15,7 +15,7 @@
         text: log[section.id]["sale-or-letting"] | textFromInputValue(data.questions["sale-or-letting"])
       },
       actions: actionLinks({
-        href: sectionPath + "/sale-or-letting?referrer=" + referrer,
+        href: sectionPath + "/sale-or-letting",
         visuallyHiddenText: "if sale or letting"
       }) if not isCompleted
     }, {

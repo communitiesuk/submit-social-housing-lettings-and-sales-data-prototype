@@ -3,7 +3,6 @@
 {% import "macros.njk" as macro %}
 
 {% set title = "Your account" %}
-{% set referrer = "/account" %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -21,7 +20,7 @@
           },
           actions: {
             items: [{
-              href: "/account/personal-details?referrer=" + referrer,
+              href: "/account/personal-details",
               text: "Change",
               visuallyHiddenText: "name"
             }]
@@ -35,7 +34,7 @@
           },
           actions: {
             items: [{
-              href: "/account/personal-details?referrer=" + referrer,
+              href: "/account/personal-details",
               text: "Change",
               visuallyHiddenText: "email address"
             }]
@@ -49,7 +48,7 @@
           },
           actions: {
             items: [{
-              href: "/account/password?referrer=" + referrer,
+              href: "/account/password",
               text: "Change",
               visuallyHiddenText: "password"
             }]
