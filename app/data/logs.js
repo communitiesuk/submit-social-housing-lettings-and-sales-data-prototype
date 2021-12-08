@@ -18,17 +18,21 @@ export default {
     },
     'household-characteristics': {
       'number-in-household': 2,
-      'lead-tenant-age': '45',
-      'lead-tenant-age-known': 'true',
-      'lead-tenant-gender': 'male',
-      'lead-tenant-nationality': '1',
-      'lead-tenant-working-situation': '3',
-      'tenant-2-age': '42',
-      'tenant-2-age-known': 'true',
-      'tenant-2-gender': 'female',
-      'tenant-2-known': 'true',
-      'tenant-2-relationship': '1',
-      'tenant-2-working-situation': '8',
+      'lead-tenant': {
+        age: 45,
+        'age-known': 'true',
+        gender: 'male',
+        nationality: '1',
+        'working-situation': '3'
+      },
+      'tenant-2': {
+        age: 42,
+        'age-known': 'true',
+        gender: 'female',
+        known: 'true',
+        'relationship-to-lead-tenant': '1',
+        'working-situation': '8'
+      },
       completed: 'true'
     },
     'household-situation': {

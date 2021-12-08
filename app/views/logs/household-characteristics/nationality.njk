@@ -1,0 +1,20 @@
+{% extends "layouts/question.njk" %}
+
+{% set caption = "Lead tenant" %}
+{% set title = "What is the lead tenant’s nationality?" %}
+{% set questionId = "nationality" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--l",
+        html: macro.fieldsetHeading(title, caption)
+      }
+    },
+    hint: {
+      text: "The lead tenant is the person in the household who does the most paid work. If several people do the same paid work, the lead tenant is whoever is the oldest."
+    },
+    items: data.questions[questionId]
+  }, ["logs", log.id, section.id, itemId, questionId])) }}
+{% endblock %}

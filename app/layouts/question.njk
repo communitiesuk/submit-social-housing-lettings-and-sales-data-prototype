@@ -1,6 +1,10 @@
 {% extends "layouts/form.njk" %}
 
-{% if questionId and log[section.id][questionId] %}
+{% set hasAnsweredQuestion =
+  log[section.id][itemId][questionId] or
+  log[section.id][questionId] %}
+
+{% if questionId and hasAnsweredQuestion %}
   {% set formAction = formAction or sectionPath + "/check-your-answers" %}
   {% set buttonText = buttonText or "Save changes" %}
 {% else %}

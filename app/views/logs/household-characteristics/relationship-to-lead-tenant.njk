@@ -1,0 +1,18 @@
+{% extends "layouts/question.njk" %}
+
+{% set isLeadTenant = itemId == 1 %}
+{% set caption = itemId | replace("-", " ") | capitalize %}
+{% set title = "What is this tenant’s relationship to the lead tenant?" %}
+{% set questionId = "relationship-to-lead-tenant" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--l",
+        html: macro.fieldsetHeading(title, caption)
+      }
+    },
+    items: data.questions[questionId]
+  }, ["logs", log.id, section.id, itemId, questionId])) }}
+{% endblock %}

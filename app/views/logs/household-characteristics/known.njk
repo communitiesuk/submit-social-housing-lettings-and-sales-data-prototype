@@ -1,0 +1,21 @@
+{% extends "layouts/question.njk" %}
+
+{% set householdSize = log[section.id]["number-in-household"] | int %}
+{% set tenantInt = itemId | replace("tenant-", "") | int %}
+{% set questionId = "known" %}
+
+{% block question %}
+  {{ macro.heading("You have given us details for " + (tenantInt - 1) + " of " + householdSize + " tenants") }}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Do you know the details of the " + tenantInt | numberToOrdinal + " tenant?"
+      }
+    },
+    hint: {
+      text: "You must provide details of all tenants if you know them."
+    },
+    items: data.questions["yes-no"]
+  }, ["logs", log.id, section.id, itemId, questionId])) }}
+{% endblock %}
