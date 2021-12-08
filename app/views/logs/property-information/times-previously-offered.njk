@@ -6,8 +6,7 @@
 {% else %}
   {% set title = "How many times has the property been previously offered since becoming available?" %}
 {% endif %}
-
-{% set hint = "If the property is being let for the first time, enter 0." %}
+{% set questionId = "times-previously-offered" %}
 
 {% block question %}
   {{ govukInput(decorate({
@@ -16,9 +15,9 @@
       html: macro.heading(title)
     },
     hint: {
-      text: hint
+      text: "If the property is being let for the first time, enter 0."
     },
     inputmode: "numeric",
     pattern: "[0-9]*"
-  }, ["logs", log.id, section.id, "times-previously-offered"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

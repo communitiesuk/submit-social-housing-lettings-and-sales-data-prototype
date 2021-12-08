@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "Do you know what local authority the property is located in?" %}
+{% set questionId = "local-authority-known" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -31,5 +32,5 @@
         }, ["logs", log.id, section.id, "why-dont-you-know-postcode-or-la"]))
       }
     }]
-  }, ["logs", log.id, section.id, "local-authority-known"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

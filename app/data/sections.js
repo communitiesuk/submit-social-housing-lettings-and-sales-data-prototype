@@ -177,7 +177,7 @@ export function sections (log) {
     paths: getPaths('property-information', [
       'postcode',
       'local-authority',
-      'is-relet',
+      'is-re-let',
       'type-of-let',
       'reason-for-vacancy',
       'times-previously-offered',
@@ -191,17 +191,14 @@ export function sections (log) {
     ]),
     forks: (sectionPath, keyPathRoot) => [{
       currentPath: `${sectionPath}/postcode`,
-      forkPath: `${sectionPath}/type-of-unit`,
+      forkPath: `${sectionPath}/is-re-let`,
       storedData: keyPathRoot.concat('postcode-known'),
       values: ['true']
     }, {
-      currentPath: `${sectionPath}/is-relet`,
-      forkPath: `${sectionPath}/reason-for-vacancy-non-relet`,
-      storedData: keyPathRoot.concat('is-relet'),
-      values: ['false']
-    }, {
-      currentPath: `${sectionPath}/reason-for-vacancy-non-relet`,
-      skipTo: `${sectionPath}/times-previously-offered`
+      currentPath: `${sectionPath}/is-re-let`,
+      forkPath: `${sectionPath}/reason-for-vacancy`,
+      storedData: keyPathRoot.concat('is-re-let'),
+      values: ['relet']
     }, {
       currentPath: `${sectionPath}/void-date`,
       forkPath: `${sectionPath}/check-your-answers`,
@@ -248,25 +245,20 @@ export function sections (log) {
     title: 'Property information',
     group: 'tenancy',
     paths: getPaths('property-information-supported-housing', [
-      'is-relet',
+      'is-re-let',
       'type-of-let',
       'reason-for-vacancy',
+      'is-adapted',
       'times-previously-offered',
       'void-date',
       'repairs',
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot) => [{
-      currentPath: `${sectionPath}/is-relet`,
-      forkPath: `${sectionPath}/reason-for-vacancy-non-relet`,
-      storedData: keyPathRoot.concat('is-relet'),
-      values: ['false']
-    }, {
-      currentPath: `${sectionPath}/reason-for-vacancy-relet`,
-      skipTo: `${sectionPath}/is-adapted`
-    }, {
-      currentPath: `${sectionPath}/reason-for-vacancy-non-relet`,
-      skipTo: `${sectionPath}/is-adapted`
+      currentPath: `${sectionPath}/is-re-let`,
+      forkPath: `${sectionPath}/reason-for-vacancy`,
+      storedData: keyPathRoot.concat('is-re-let'),
+      values: ['relet']
     }]
   }
 

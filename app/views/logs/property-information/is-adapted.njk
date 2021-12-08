@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "Is the property built or adapted to wheelchair-user standards?" %}
+{% set questionId = "is-adapted" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -10,5 +11,5 @@
       }
     },
     items: data.questions["yes-no"]
-  }, ["logs", log.id, section.id, "is-adapted"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
