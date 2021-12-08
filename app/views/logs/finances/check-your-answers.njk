@@ -1,5 +1,8 @@
 {% extends "layouts/check-answers.njk" %}
 
+{% from "components/summary-message/macro.njk" import appSummaryMessage %}
+
+{% set period = log[section.id]["income-period"] | replace("ly", "") %}
 {% set hasIncomeBenefits =
   (log[section.id]["income-benefits"] !== "none") and
   (log[section.id]["income-benefits"] !== "unknown") and
@@ -21,7 +24,7 @@
       }) if not isCompleted
     }, {
       key: {
-        text: "Total household income"
+        text: "Total household income per " + period
       },
       value: {
         text: log[section.id]["income-value"] | sterling
@@ -68,7 +71,11 @@
         text: "Total household rent and charges"
       },
       value: {
-        text: log[section.id]["outgoings-value"] | sterling
+        html: appSummaryMessage ({
+          classes: "app-summary-message--information",
+          titleText: "Value is higher than expected. Check this is correct before submitting.",
+          text: log[section.id]["outgoings-value"] | sterling
+        })
       },
       actions: actionLinks({
         href: sectionPath + "/outgoings-value",
