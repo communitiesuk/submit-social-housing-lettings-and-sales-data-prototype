@@ -22,7 +22,8 @@ export default (env) => {
 
     const noValueProvidedText = safe('<span class="app-!-colour-muted">You didn’t answer this question</span>')
 
-    if (!value) {
+    // Nunjucks sometimes returns an object with an empty value
+    if (!value || value.val === '') {
       return noValueProvidedText
     }
 
@@ -51,7 +52,7 @@ export default (env) => {
     // (We’ll assume only dates are objects, for now)
     if (typeof value === 'object' && !Array.isArray(value)) {
       const date = govukDate(isoDateFromDateInput(value))
-      return date !== 'Invalid Date' ? date : noValueProvidedText
+      return date !== 'Invalid DateTime' ? date : noValueProvidedText
     }
 
     return value
