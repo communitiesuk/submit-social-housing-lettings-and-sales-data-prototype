@@ -14,6 +14,7 @@ export default {
       'type-of-rent': 'affordable-rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
       'tenant-code': '298739',
+      'property-reference': 'RT45657',
       completed: 'true'
     },
     'household-characteristics': {
@@ -47,7 +48,6 @@ export default {
       'local-authority-known': 'true',
       'number-of-bedrooms': '2',
       'postcode-known': 'false',
-      'property-reference': 'RT45657',
       repairs: 'false',
       'type-of-property': 'purpose-built',
       'type-of-unit': 'flat',
@@ -79,7 +79,6 @@ export default {
     submitted: '2021-07-29',
     submittedBy: 'DPOO1',
     'about-this-log': {
-      'tenant-code': 'Gen needs/!renewal',
       gdpr: 'true',
       'uses-scheme': 'false',
       'organisation-manager': 'PARENT1',
@@ -89,6 +88,8 @@ export default {
       'letting-renewal': 'false',
       'type-of-rent': 'affordable-rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
+      'tenant-code': 'Gen needs/!renewal',
+      'property-reference': 'RT45657',
       completed: 'true'
     }
   },
@@ -97,7 +98,6 @@ export default {
     submitted: '2021-07-29',
     submittedBy: 'DPOO1',
     'about-this-log': {
-      'tenant-code': 'Gen needs/renewal',
       gdpr: 'true',
       'uses-scheme': 'false',
       'organisation-manager': 'PARENT1',
@@ -107,6 +107,8 @@ export default {
       'letting-renewal': 'true',
       'type-of-rent': 'affordable-rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
+      'tenant-code': 'Gen needs/!renewal',
+      'property-reference': 'RT45657',
       completed: 'true'
     }
   },
@@ -115,7 +117,6 @@ export default {
     submitted: '2021-07-26',
     submittedBy: 'DPOO1',
     'about-this-log': {
-      'tenant-code': 'Sup hou/!renewal',
       gdpr: 'true',
       'uses-scheme': 'true',
       schemeId: 'EXAMPLE',
@@ -125,6 +126,8 @@ export default {
       'letting-renewal': 'false',
       'type-of-rent': 'affordable-rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
+      'tenant-code': 'Sup hou/!renewal',
+      'property-reference': 'RT45657',
       completed: 'true'
     }
   },
@@ -133,7 +136,6 @@ export default {
     submitted: '2021-07-25',
     submittedBy: 'DPOO1',
     'about-this-log': {
-      'tenant-code': 'Sup hou/renewal',
       gdpr: 'true',
       'uses-scheme': 'true',
       schemeId: 'EXAMPLE',
@@ -143,6 +145,8 @@ export default {
       'letting-renewal': 'true',
       'type-of-rent': 'affordable-rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
+      'tenant-code': 'Sup hou/renewal',
+      'property-reference': 'RT45657',
       completed: 'true'
     },
     'property-information-supported-housing-renewal': {
