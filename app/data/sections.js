@@ -106,13 +106,7 @@ export function sections (log) {
   const householdSituation = {
     id: 'household-situation',
     title: 'Household situation',
-    group: 'household',
-    paths: getPaths('household-situation', [
-      'previous-housing-situation',
-      'previous-homelessness',
-      'reason-for-leaving',
-      'check-your-answers'
-    ])
+    group: 'household'
   }
 
   /**

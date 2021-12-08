@@ -35,13 +35,6 @@ export default {
       },
       completed: 'true'
     },
-    'household-situation': {
-      'previous-homelessness': 'no',
-      'previous-housing-situation': 'privacy-sector-tenancy',
-      'reason-for-leaving': 'repossession',
-      'reason-for-leaving-benefit-cap': 'no',
-      completed: 'true'
-    },
     'tenancy-information': {
       'fixed-term-length': 5,
       'is-starter': 'false',
