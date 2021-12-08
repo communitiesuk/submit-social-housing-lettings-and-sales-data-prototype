@@ -6,11 +6,7 @@ import localAuthorities from '../datasets/local-authorities.js'
 const getSchemePaths = schemePath => [
   `${schemePath}/details`,
   `${schemePath}/postcode`,
-  // ↳ Local authority if cannot be inferred from postcode
-  `${schemePath}/local-authority-known`,
   `${schemePath}/local-authority`,
-  // ↳ No postcode or local authority known
-  `${schemePath}/why-dont-you-know-postcode-or-la`,
   `${schemePath}/client-groups`,
   `${schemePath}/type-of-registered-home`,
   `${schemePath}/type-of-support`,
@@ -27,16 +23,6 @@ const getSchemeForks = (schemePath, schemeKeyPath) => [{
   currentPath: `${schemePath}/postcode`,
   forkPath: `${schemePath}/client-groups`,
   storedData: schemeKeyPath.concat('postcode-known'),
-  values: ['true']
-}, {
-  currentPath: `${schemePath}/local-authority-known`,
-  forkPath: `${schemePath}/why-dont-you-know-postcode-or-la`,
-  storedData: schemeKeyPath.concat('local-authority-known'),
-  values: ['false']
-}, {
-  currentPath: `${schemePath}/local-authority`,
-  forkPath: `${schemePath}/client-groups`,
-  storedData: schemeKeyPath.concat('local-authority-known'),
   values: ['true']
 }]
 

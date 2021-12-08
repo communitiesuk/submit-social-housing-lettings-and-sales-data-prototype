@@ -3,7 +3,7 @@
 
 {# Set variables to test various user selected data #}
 {% set hasPostcode = scheme["postcode-known"] == "true" %}
-{% set hasLocalAurthority = scheme["local-authority-known"] == "true" %}
+{% set hasLocalAuthority = scheme["local-authority-known"] == "true" %}
 {% set localAuthority = localAuthorities | where("gss", scheme["local-authority"]) | first %}
 
 {{ macro.heading("Scheme details", false, "m") }}
@@ -65,38 +65,27 @@
     }) if not isLocked
   }, {
     key: {
-      text: "Local authority known"
-    },
-    value: {
-      text: scheme["local-authority-known"] | textFromInputValue(data.questions["yes-no"])
-    },
-    actions: actionLinks({
-      href: schemePath + "/local-authority-known",
-      visuallyHiddenText: "if local authority is known"
-    }) if not isLocked
-  } if not hasPostcode, {
-    key: {
       text: "Local authority"
     },
     value: {
-      text: scheme["local-authority"] | textFromInputValue(data.questions["local-authorities"])
+      text: scheme["local-authority"] | textFromInputValue(data.questions["local-authorities"]) if hasLocalAuthority else "Not known"
     },
     actions: actionLinks({
       href: schemePath + "/local-authority",
       visuallyHiddenText: "local authority"
     }) if not isLocked
-  } if not hasPostcode and hasLocalAurthority, {
+  } if not hasPostcode, {
     key: {
-      text: "Reason you don’t know either the postcode or local authority"
+      text: "Reason you don’t know the postcode or local authority"
     },
     value: {
       text: scheme["why-dont-you-know-postcode-or-la"] | textFromInputValue
     },
     actions: actionLinks({
-      href: schemePath + "/why-dont-you-know-postcode-or-la",
-      visuallyHiddenText: "the reason you don’t know either the postcode or local authority"
+      href: schemePath + "/local-authority",
+      visuallyHiddenText: "the reason you don’t know the postcode or local authority"
     }) if not isLocked
-  } if not hasPostcode and not hasLocalAurthority]
+  } if not hasPostcode and not hasLocalAuthority]
 }) }}
 
 {{ macro.heading("Clients", false, "m") }}

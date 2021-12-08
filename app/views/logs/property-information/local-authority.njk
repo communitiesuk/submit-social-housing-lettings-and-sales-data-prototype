@@ -1,12 +1,35 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Select a local authority" %}
+{% set title = "Do you know what local authority the property is located in?" %}
 
 {% block question %}
-  {{ rigAutocomplete(decorate({
-    label: {
-      html: macro.heading(title)
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title)
+      }
     },
-    items: data.questions["local-authorities"]
-  }, ["logs", log.id, section.id, "local-authorities"])) }}
+    items: [{
+      text: "Yes",
+      value: "true",
+      conditional: {
+        html: rigAutocomplete(decorate({
+          label: {
+            text: "Select a local authority"
+          },
+          items: data.questions["local-authorities"]
+        }, ["logs", log.id, section.id, "local-authorities"]))
+      }
+    }, {
+      text: "No",
+      value: "false",
+      conditional: {
+        html: govukTextarea(decorate({
+          label: {
+            text: "Give a reason why you don’t know the postcode or local authority"
+          }
+        }, ["logs", log.id, section.id, "why-dont-you-know-postcode-or-la"]))
+      }
+    }]
+  }, ["logs", log.id, section.id, "local-authority-known"])) }}
 {% endblock %}
