@@ -1,6 +1,8 @@
 {% extends "layouts/question.njk" %}
 
+{% set reLet = log[section.id]["is-re-let"] %}
 {% set title = "What is the reason for the property being vacant?" %}
+{% set questionId = "reason-for-vacancy" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -9,6 +11,6 @@
         text: macro.heading(title)
       }
     },
-    items: data.questions["reason-for-vacancy"]
-  }, ["logs", log.id, section.id, "reason-for-vacancy"])) }}
+    items: data.questions["reason-for-vacancy"][reLet]
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

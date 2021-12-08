@@ -53,7 +53,7 @@
   }) if not isSupportedHousing
 } if not hasPostcode %}
 
-{% set reasonForNotKnowingRow = {
+{% set localAuthorityUnknownRow = {
   key: {
     text: "Reason you don’t know the postcode or local authority"
   },
@@ -71,10 +71,10 @@
     text: "First time being let as social-housing"
   },
   value: {
-    text: log[section.id]["is-relet"] | textFromInputValue(data.questions["re-let"])
+    text: log[section.id]["is-re-let"] | textFromInputValue(data.questions["re-let"])
   },
   actions: actionLinks({
-    href: sectionPath + "/is-relet",
+    href: sectionPath + "/is-re-let",
     visuallyHiddenText: "if this is the first time being let as social-housing"
   })
 } %}
@@ -92,31 +92,18 @@
   })
 } if isRelet %}
 
-{% set reasonForVacancyNonReletRow = {
-  key: {
-    text: "Vacancy reason"
-  },
-  value: {
-    text: log[section.id]["reason-for-non-relet"] | textFromInputValue(data.questions["reason-for-vacancy-non-relet"])
-  },
-  actions: actionLinks({
-    href: sectionPath + "/reason-for-vacancy-non-relet",
-    visuallyHiddenText: "reason for vacancy"
-  })
-} if isNewlet %}
-
 {% set reasonForVacancyRow = {
   key: {
     text: "Vacancy reason"
   },
   value: {
-    text: log[section.id]["reason-for-vacancy"] | textFromInputValue(data.questions["reason-for-vacancy"])
+    text: log[section.id]["reason-for-vacancy"] | textFromInputValue(data.questions["reason-for-vacancy"][log[section.id]["is-re-let"]])
   },
   actions: actionLinks({
     href: sectionPath + "/reason-for-vacancy",
     visuallyHiddenText: "reason for vacancy"
   })
-} if isRelet %}
+} %}
 
 {% set typeOfUnitRow = {
   key: {
@@ -172,7 +159,7 @@
 
 {% set voidDateRow = {
   key: {
-    text: "Void, new build handover or renewal date"
+    text: "Build handover date?" if isNewprop else "Void or renewal date"
   },
   value: {
     text: log[section.id]["void-date"] | textFromInputValue
@@ -185,29 +172,16 @@
 
 {% set repairsRow = {
   key: {
-    text: "Major repairs carried out during the void period"
+    text: "Major repairs carried out during void period"
   },
   value: {
-    text: log[section.id]["repairs"] | textFromInputValue(data.questions["yes-no"])
+    text: "Yes – Completed on " + log[section.id]["repairs-date"] | textFromInputValue if isRepaired else "No"
   },
   actions: actionLinks({
     href: sectionPath + "/repairs",
     visuallyHiddenText: "status of major repairs"
   })
 } if not isNewprop %}
-
-{% set repairsDateRow = {
-  key: {
-    text: "Repairs completion date"
-  },
-  value: {
-    text: log[section.id]["repairs-date"] | textFromInputValue
-  },
-  actions: actionLinks({
-    href: sectionPath + "/repairs",
-    visuallyHiddenText: "completion date for repairs"
-  })
-} if isRepaired %}
 
 {% set timesOfferedRow = {
   key: {
@@ -223,71 +197,45 @@
 } %}
 
 {% block checkAnswers %}
-
   {% if isSupportedHousing and not isRenewal %}
     {{ govukSummaryList({
       rows: [
-        postcodeRow,
-        localAuthorityKnownRow,
-        localAuthorityRow,
-        reasonForNotKnowingRow,
         isReletRow,
         typeOfLetRow,
-        reasonForVacancyNonReletRow,
         reasonForVacancyRow,
-        typeOfUnit,
-        typeOfProperty,
-        adapted_for_wheelchair,
+        timesOfferedRow,
         voidDateRow,
-        repairsRow,
-        repairsDateRow,
-        timesOfferedRow
+        repairsRow
       ]
     }) }}
   {% elif not isSupportedHousing and isRenewal %}
     {{ govukSummaryList({
       rows: [
         postcodeRow,
-        localAuthorityKnownRow,
         localAuthorityRow,
-        reasonForNotKnowingRow,
+        localAuthorityUnknownRow,
         typeOfUnitRow,
         typeOfPropertyRow,
         isAdaptedRow,
         numberOfBedroomsRow
       ]
     }) }}
-  {% elif isSupportedHousing and isRenewal %}
-    {{ govukSummaryList({
-      rows: [
-        postcodeRow,
-        localAuthorityKnownRow,
-        localAuthorityRow,
-        reasonForNotKnowingRow,
-        typeOfUnitRow,
-        typeOfPropertyRow,
-        isAdaptedRow
-      ]
-    }) }}
   {% else %}
     {{ govukSummaryList({
       rows: [
         postcodeRow,
-        localAuthorityKnownRow,
         localAuthorityRow,
-        reasonForNotKnowingRow,
+        localAuthorityUnknownRow,
         isReletRow,
         typeOfLetRow,
-        reasonForVacancyNonReletRow,
         reasonForVacancyRow,
+        timesOfferedRow,
         typeOfUnitRow,
         typeOfPropertyRow,
         isAdaptedRow,
         numberOfBedroomsRow,
         voidDateRow,
-        repairsRow,
-        repairsDateRow,
-        timesOfferedRow
+        repairsRow
       ]
     }) }}
   {% endif %}

@@ -1,12 +1,12 @@
 export default [{
   text: 'Yes',
-  value: 'false',
+  value: 'relet',
   hint: {
     text: 'This is a new let'
   }
 }, {
   text: 'No',
-  value: 'true',
+  value: 'non-relet',
   hint: {
     text: 'This is a re-let of existing social housing'
   }

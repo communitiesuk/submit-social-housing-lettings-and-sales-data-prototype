@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "Were any major repairs carried out during the void period?" %}
+{% set questionId = "repairs" %}
 
 {% block question %}
   {% set dateHtml %}
@@ -20,21 +21,19 @@
   {{ govukRadios(decorate({
     fieldset: {
       legend: {
-        text: macro.heading(title)
+        classes: "govuk-fieldset__legend--l",
+        text: macro.fieldsetHeading(title)
       }
     },
-    items: [
-      {
-        text: "Yes",
-        value: "true",
-        conditional: {
-          html: dateHtml
-        }
-      },
-      {
-        text: "No",
-        value: "false"
+    items: [{
+      text: "Yes",
+      value: "true",
+      conditional: {
+        html: dateHtml
       }
-    ]
-  }, ["logs", log.id, section.id, "repairs"])) }}
+    }, {
+      text: "No",
+      value: "false"
+    }]
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

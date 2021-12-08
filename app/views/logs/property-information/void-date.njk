@@ -2,10 +2,11 @@
 
 {% set isNewprop = log[section.id]["reason-for-non-relet"] == "newprop" %}
 {% if isNewprop %}
-{% set title = "What is the new build handover date?" %}
+  {% set title = "What is the new build handover date?" %}
 {% else %}
-{% set title = "What is the void or renewal date?" %}
+  {% set title = "What is the void or renewal date?" %}
 {% endif %}
+{% set questionId = "void-date" %}
 
 {% block question %}
   {{ govukDateInput(decorate({
@@ -18,5 +19,5 @@
       text: "For example, 12 11 2020"
     },
     items: data.questions["date-full"]
-  }, ["logs", log.id, section.id, "void-date"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

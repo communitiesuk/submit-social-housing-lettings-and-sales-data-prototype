@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "What type of building is the property?" %}
+{% set questionId = "type-of-property" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -9,6 +10,6 @@
         text: macro.heading(title)
       }
     },
-    items: data.questions["type-of-property"]
-  }, ["logs", log.id, section.id, "type-of-property"])) }}
+    items: data.questions[questionId]
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
