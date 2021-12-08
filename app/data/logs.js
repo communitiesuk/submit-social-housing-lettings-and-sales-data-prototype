@@ -16,6 +16,51 @@ export default {
       'tenant-code': '298739',
       completed: 'true'
     },
+    'household-characteristics': {
+      'number-in-household': 2,
+      'lead-tenant-age': '45',
+      'lead-tenant-age-known': 'true',
+      'lead-tenant-gender': 'male',
+      'lead-tenant-nationality': '1',
+      'lead-tenant-working-situation': '3',
+      'tenant-2-age': '42',
+      'tenant-2-age-known': 'true',
+      'tenant-2-gender': 'female',
+      'tenant-2-known': 'true',
+      'tenant-2-relationship': '1',
+      'tenant-2-working-situation': '8',
+      completed: 'true'
+    },
+    'household-situation': {
+      'previous-homelessness': 'no',
+      'previous-housing-situation': 'privacy-sector-tenancy',
+      'reason-for-leaving': 'repossession',
+      'reason-for-leaving-benefit-cap': 'no',
+      completed: 'true'
+    },
+    'tenancy-information': {
+      'fixed-term-length': 5,
+      'is-starter': 'false',
+      'type-of-tenancy': 'fixed-secure',
+      completed: 'true'
+    },
+    'property-information-renewal': {
+      'is-adapted': 'false',
+      'local-authorities': ['E09000002'],
+      'local-authority-known': 'true',
+      'number-of-bedrooms': '2',
+      'postcode-known': 'false',
+      'property-reference': 'RT45657',
+      repairs: 'false',
+      'type-of-property': 'purpose-built',
+      'type-of-unit': 'flat',
+      'void-date': {
+        day: '12',
+        month: '11',
+        year: '2022'
+      },
+      completed: 'true'
+    },
     finances: {
       'income-period': 'weekly',
       'income-value': 250,
