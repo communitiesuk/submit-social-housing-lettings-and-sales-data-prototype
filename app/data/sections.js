@@ -270,16 +270,6 @@ export function sections (log) {
     }]
   }
 
-  // Supported housing && renewal
-  const propertyInformationSupportedHousingRenewal = {
-    id: 'property-information-supported-housing-renewal',
-    title: 'Property information',
-    group: 'tenancy',
-    paths: getPaths('property-information-supported-housing-renewal', [
-      'check-your-answers'
-    ])
-  }
-
   /**
    * Finances
    */
@@ -345,7 +335,6 @@ export function sections (log) {
     ...(!isSupportedHousing && !isRenewal ? [propertyInformation] : []),
     ...(!isSupportedHousing && isRenewal ? [propertyInformationRenewal] : []),
     ...(isSupportedHousing && !isRenewal ? [propertyInformationSupportedHousing] : []),
-    ...(isSupportedHousing && isRenewal ? [propertyInformationSupportedHousingRenewal] : []),
     finances,
     declaration
   ]
