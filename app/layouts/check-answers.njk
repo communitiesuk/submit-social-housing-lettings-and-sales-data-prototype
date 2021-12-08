@@ -33,12 +33,12 @@
 
       <div class="govuk-button-group">
         {{ govukButton({
-          text: "Return to log"
+          text: "Save and return to log"
         }) }}
 
         {{ govukButton({
           classes: "govuk-button--secondary",
-          text: "Go to next incomplete section",
+          text: "Save and go to next incomplete section",
           attributes: {
             formaction: logPath + "/" + nextSection(log.id).id
           }
