@@ -189,11 +189,7 @@ export function sections (log) {
     paths: getPaths('property-information', [
       'reference',
       'postcode',
-      // ↳ Local authority if cannot be inferred from postcode
-      'local-authority-known',
       'local-authority',
-      // ↳ No postcode or local authority known
-      'why-dont-you-know-postcode-or-la',
       'is-relet',
       'type-of-let',
       'reason-for-vacancy',
@@ -208,18 +204,8 @@ export function sections (log) {
     ]),
     forks: (sectionPath, keyPathRoot) => [{
       currentPath: `${sectionPath}/postcode`,
-      forkPath: `${sectionPath}/is-relet`,
+      forkPath: `${sectionPath}/type-of-unit`,
       storedData: keyPathRoot.concat('postcode-known'),
-      values: ['true']
-    }, {
-      currentPath: `${sectionPath}/local-authority-known`,
-      forkPath: `${sectionPath}/why-dont-you-know-postcode-or-la`,
-      storedData: keyPathRoot.concat('local-authority-known'),
-      values: ['false']
-    }, {
-      currentPath: `${sectionPath}/local-authority`,
-      forkPath: `${sectionPath}/is-relet`,
-      storedData: keyPathRoot.concat('local-authority-known'),
       values: ['true']
     }, {
       currentPath: `${sectionPath}/is-relet`,
@@ -245,11 +231,7 @@ export function sections (log) {
     paths: getPaths('property-information-renewal', [
       'reference',
       'postcode',
-      // ↳ Local authority if cannot be inferred from postcode
-      'local-authority-known',
       'local-authority',
-      // ↳ No postcode or local authority known
-      'why-dont-you-know-postcode-or-la',
       'type-of-unit',
       'type-of-property',
       'is-adapted',
@@ -262,16 +244,6 @@ export function sections (log) {
       currentPath: `${sectionPath}/postcode`,
       forkPath: `${sectionPath}/type-of-unit`,
       storedData: keyPathRoot.concat('postcode-known'),
-      values: ['true']
-    }, {
-      currentPath: `${sectionPath}/local-authority-known`,
-      forkPath: `${sectionPath}/why-dont-you-know-postcode-or-la`,
-      storedData: keyPathRoot.concat('local-authority-known'),
-      values: ['false']
-    }, {
-      currentPath: `${sectionPath}/local-authority`,
-      forkPath: `${sectionPath}/type-of-unit`,
-      storedData: keyPathRoot.concat('local-authority-known'),
       values: ['true']
     }, {
       currentPath: `${sectionPath}/reason-for-vacancy-non-relet`,

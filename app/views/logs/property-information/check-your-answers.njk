@@ -17,7 +17,7 @@
 
 {# set variables to test various user selected data #}
 {% set hasPostcode = schemeAnswer("postcode-known") == "true" %}
-{% set hasLocalAurthority = schemeAnswer("local-authority-known") == "true" %}
+{% set hasLocalAuthority = schemeAnswer("local-authority-known") == "true" %}
 {% set isRelet = log[section.id]["is-relet"] == "true" %}
 {% set isNewlet = log[section.id]["is-relet"] == "false" %}
 {% set isRepaired = log[section.id]["repairs"] == "true" %}
@@ -53,44 +53,31 @@
   }) if not isSupportedHousing
 } %}
 
-{% set localAuthorityKnownRow = {
-  key: {
-    text: "Local authority known"
-  },
-  value: {
-    text: schemeAnswer("local-authority-known") | textFromInputValue(data.questions["yes-no"])
-  },
-  actions: actionLinks({
-    href: sectionPath + "/local-authority-known",
-    visuallyHiddenText: "if local authority is known"
-  }) if not isSupportedHousing
-} if not hasPostcode %}
-
 {% set localAuthorityRow = {
   key: {
     text: "Local authority"
   },
   value: {
-    text: schemeAnswer("local-authorities") | textFromInputValue(data.questions["local-authorities"])
+    text: schemeAnswer("local-authorities") | textFromInputValue(data.questions["local-authorities"]) if hasLocalAuthority else "Not known"
   },
   actions: actionLinks({
     href: sectionPath + "/local-authority",
     visuallyHiddenText: "local authority"
   }) if not isSupportedHousing
-} if not hasPostcode and hasLocalAurthority %}
+} if not hasPostcode %}
 
 {% set reasonForNotKnowingRow = {
   key: {
-    text: "Reason you don’t know either the postcode or local authority"
+    text: "Reason you don’t know the postcode or local authority"
   },
   value: {
     text: schemeAnswer("why-dont-you-know-postcode-or-la")
   },
   actions: actionLinks({
     href: sectionPath + "/why-dont-you-know-postcode-or-la",
-    visuallyHiddenText: "the reason you don't know either the postcode or local authority"
+    visuallyHiddenText: "the reason you don't know the postcode or local authority"
   }) if not isSupportedHousing
-} if not hasPostcode and not hasLocalAurthority %}
+} if not hasPostcode and not hasLocalAuthority %}
 
 {% set isReletRow = {
   key: {
