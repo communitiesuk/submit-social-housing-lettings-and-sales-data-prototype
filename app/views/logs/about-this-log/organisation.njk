@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "Organisation details" %}
+{% set questionId = "organisation-owner" %}
 
 {% block question %}
   {{ macro.heading(title) }}
@@ -11,7 +12,7 @@
       text: "Which organisation owns this property?"
     },
     items: data.questions.organisation.owning | optionItems
-  }, ["logs", log.id, section.id, "organisation-owner"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 
   {{ govukSelect(decorate({
     label: {

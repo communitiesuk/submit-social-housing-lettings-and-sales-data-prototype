@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "What is the property reference?" %}
+{% set questionId = "property-reference" %}
 
 {% block question %}
   {{ govukInput(decorate({
@@ -11,5 +12,5 @@
     hint: {
       text: "This is usually how you refer to this property on your own systems"
     }
-  }, ["logs", log.id, section.id, "property-reference"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

@@ -26,7 +26,7 @@
         text: log[section.id]["uses-scheme"] | textFromInputValue(data.questions["yes-no"])
       },
       actions: actionLinks({
-        href: sectionPath + "/uses-scheme?referrer=" + referrer,
+        href: sectionPath + "/uses-scheme",
         visuallyHiddenText: "if part of a supported housing scheme"
       }) if not isCompleted
     }, {
@@ -37,7 +37,7 @@
         text: data.schemes[log[section.id]["schemeId"]].name
       },
       actions: actionLinks({
-        href: sectionPath + "/scheme?referrer=" + referrer,
+        href: sectionPath + "/scheme",
         visuallyHiddenText: "scheme name"
       }) if not isCompleted
     } if log[section.id]["schemeId"], {
@@ -48,7 +48,7 @@
         text: data.organisations[log[section.id]["organisation-owner"]].name
       },
       actions: actionLinks({
-        href: sectionPath + "/organisation?referrer=" + referrer,
+        href: sectionPath + "/organisation",
         visuallyHiddenText: "owning organisation"
       }) if not isCompleted
     }, {
@@ -59,7 +59,7 @@
         text: data.organisations[log[section.id]["organisation-manager"]].name
       },
       actions: actionLinks({
-        href: sectionPath + "/organisation?referrer=" + referrer,
+        href: sectionPath + "/organisation",
         visuallyHiddenText: "managing organisation"
       }) if not isCompleted
     }, {
@@ -70,7 +70,7 @@
         text: log[section.id]["letting-renewal"] | textFromInputValue(data.questions["yes-no"])
       },
       actions: actionLinks({
-        href: sectionPath + "/letting-renewal?referrer=" + referrer,
+        href: sectionPath + "/letting-renewal",
         visuallyHiddenText: "if renewal"
       }) if not isCompleted
     } if isLet, {
@@ -81,7 +81,7 @@
         text: log[section.id]["letting-start-date"] | textFromInputValue
       },
       actions: actionLinks({
-        href: sectionPath + "/letting-start-date?referrer=" + referrer,
+        href: sectionPath + "/letting-start-date",
         visuallyHiddenText: "tenacy start date"
       }) if not isCompleted
     } if isLet, {
@@ -92,7 +92,7 @@
         text: log[section.id]["type-of-rent"] | textFromInputValue(data.questions["type-of-rent"])
       },
       actions: actionLinks({
-        href: sectionPath + "/type-of-rent?referrer=" + referrer,
+        href: sectionPath + "/type-of-rent",
         visuallyHiddenText: "rent type"
       }) if not isCompleted
     } if isLet, {
@@ -103,7 +103,7 @@
         text: log[section.id]["tenant-code"] | textFromInputValue
       },
       actions: actionLinks({
-        href: sectionPath + "/tenant-code?referrer=" + referrer,
+        href: sectionPath + "/tenant-code",
         visuallyHiddenText: "tenant code"
       })
     } if isLet, {
@@ -114,7 +114,7 @@
         text: log[section.id]["sale-completion-date"] | textFromInputValue
       },
       actions: actionLinks({
-        href: sectionPath + "/sale-completion-date?referrer=" + referrer,
+        href: sectionPath + "/sale-completion-date",
         visuallyHiddenText: "sale completion date"
       }) if not isCompleted
     } if isSale, {
@@ -125,7 +125,7 @@
         text: log[section.id]["purchaser-code"] | textFromInputValue
       },
       actions: actionLinks({
-        href: sectionPath + "/purchaser-code?referrer=" + referrer,
+        href: sectionPath + "/purchaser-code",
         visuallyHiddenText: "purchaser code"
       })
     } if isSale, {
@@ -136,7 +136,7 @@
         text: log[section.id]["property-reference"] | textFromInputValue
       },
       actions: actionLinks({
-        href: sectionPath + "/property-reference?referrer=" + referrer,
+        href: sectionPath + "/property-reference",
         visuallyHiddenText: "property reference"
       })
     }]

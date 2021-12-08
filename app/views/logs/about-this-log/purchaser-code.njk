@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "What is the purchaser code?" %}
+{% set questionId = "purchaser-code" %}
 
 {% block question %}
   {{ govukInput(decorate({
@@ -8,5 +9,5 @@
     label: {
       html: macro.heading(title)
     }
-  }, ["logs", log.id, section.id, "purchaser-code"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

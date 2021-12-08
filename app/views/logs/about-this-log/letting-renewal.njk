@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "Is this a renewal to the same tenant in the same property?" %}
+{% set questionId = "letting-renewal" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -10,5 +11,5 @@
       }
     },
     items: data.questions["yes-no"]
-  }, ["logs", log.id, section.id, "letting-renewal"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

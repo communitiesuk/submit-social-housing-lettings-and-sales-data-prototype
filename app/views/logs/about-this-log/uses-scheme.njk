@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "Is this property in a supported housing scheme?" %}
+{% set questionId = "uses-scheme" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -10,5 +11,5 @@
       }
     },
     items: data.questions["yes-no"]
-  }, ["logs", log.id, section.id, "uses-scheme"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
