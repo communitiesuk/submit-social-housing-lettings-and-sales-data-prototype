@@ -128,7 +128,18 @@
         href: sectionPath + "/purchaser-code?referrer=" + referrer,
         visuallyHiddenText: "purchaser code"
       })
-    } if isSale]
+    } if isSale, {
+      key: {
+        text: "Property reference"
+      },
+      value: {
+        text: log[section.id]["property-reference"] | textFromInputValue
+      },
+      actions: actionLinks({
+        href: sectionPath + "/property-reference?referrer=" + referrer,
+        visuallyHiddenText: "property reference"
+      })
+    }]
   }) }}
 
   {% if isCompleted %}

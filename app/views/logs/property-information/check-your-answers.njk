@@ -26,19 +26,6 @@
 {% set isRenewal = log["about-this-log"]["letting-renewal"] == "true" %}
 
 {# Answer objects #}
-{% set propertyReferenceRow = {
-  key: {
-    text: "Property reference"
-  },
-  value: {
-    text: log[section.id]["property-reference"] | textFromInputValue
-  },
-  actions: actionLinks({
-    href: sectionPath + "/reference",
-    visuallyHiddenText: "property reference"
-  })
-} %}
-
 {# Hardcode `Arun` as LA for now. Maybe add live postcode lookup later. #}
 {% set postcodeRow = {
   key: {
@@ -240,7 +227,6 @@
   {% if isSupportedHousing and not isRenewal %}
     {{ govukSummaryList({
       rows: [
-        propertyReferenceRow,
         postcodeRow,
         localAuthorityKnownRow,
         localAuthorityRow,
@@ -261,7 +247,6 @@
   {% elif not isSupportedHousing and isRenewal %}
     {{ govukSummaryList({
       rows: [
-        propertyReferenceRow,
         postcodeRow,
         localAuthorityKnownRow,
         localAuthorityRow,
@@ -275,7 +260,6 @@
   {% elif isSupportedHousing and isRenewal %}
     {{ govukSummaryList({
       rows: [
-        propertyReferenceRow,
         postcodeRow,
         localAuthorityKnownRow,
         localAuthorityRow,
@@ -288,7 +272,6 @@
   {% else %}
     {{ govukSummaryList({
       rows: [
-        propertyReferenceRow,
         postcodeRow,
         localAuthorityKnownRow,
         localAuthorityRow,
