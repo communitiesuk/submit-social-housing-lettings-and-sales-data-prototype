@@ -1,35 +1,23 @@
 {% extends "layouts/check-answers.njk" %}
 
+{% set isFixedTerm =
+  (log[section.id]["type-of-tenancy"] == "fixed-secure") or
+  (log[section.id]["type-of-tenancy"] == "fixed-ast") %}
+{% set isSupportedHousing = log["about-this-log"]["uses-scheme"] == "true" %}
+
 {% block checkAnswers %}
   {{ govukSummaryList({
     rows: [{
-      key: {
-        text: "Tenacy start date"
-      },
-      value: {
-        text: log[section.id]["start-date"] | textFromInputValue
-      },
-      actions: {
-        items: [{
-          href: sectionPath + "/start-date?referrer=" + referrer,
-          text: "Change",
-          visuallyHiddenText: "tenacy start date"
-        }]
-      }
-    }, {
       key: {
         text: "Starter tenancy"
       },
       value: {
         text: log[section.id]["is-starter"] | textFromInputValue(data.questions["yes-no"])
       },
-      actions: {
-        items: [{
-          href: sectionPath + "/is-starter?referrer=" + referrer,
-          text: "Change",
-          visuallyHiddenText: "if starter tenancy"
-        }]
-      }
+      actions: actionLinks({
+        href: sectionPath + "/is-starter",
+        visuallyHiddenText: "if starter tenancy"
+      })
     }, {
       key: {
         text: "Tenancy type"
@@ -37,13 +25,32 @@
       value: {
         text: log[section.id]["type-of-tenancy"] | textFromInputValue(data.questions["type-of-tenancy"])
       },
-      actions: {
-        items: [{
-          href: sectionPath + "/type-of-tenancy?referrer=" + referrer,
-          text: "Change",
-          visuallyHiddenText: "type-of-tenancy"
-        }]
-      }
-    }]
+      actions: actionLinks({
+        href: sectionPath + "/type-of-tenancy",
+        visuallyHiddenText: "type of tenancy"
+      })
+    }, {
+      key: {
+        text: "Length of fixed-term tenancy"
+      },
+      value: {
+        text: log[section.id]["fixed-term-length"] | textFromInputValue
+      },
+      actions: actionLinks({
+        href: sectionPath + "/fixed-term-length",
+        visuallyHiddenText: "length of fixed-term tenancy"
+      })
+    } if isFixedTerm, {
+      key: {
+        text: "Sheltered accommodation"
+      },
+      value: {
+        text: log[section.id]["sheltered-accommodation"] | textFromInputValue(data.questions["sheltered-accommodation"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/sheltered-accommodation",
+        visuallyHiddenText: "if sheltered accommodation"
+      })
+    } if isSupportedHousing]
   }) }}
 {% endblock %}

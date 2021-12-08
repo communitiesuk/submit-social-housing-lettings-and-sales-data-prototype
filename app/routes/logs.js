@@ -82,10 +82,14 @@ export const logRoutes = (router) => {
       const { logs } = req.session.data
       let { referrer } = req.query
 
-      // Property information section variants share the same views
+      // Property and tenancy information sections have variants that share
+      // the same views
       let sectionViewsDir = sectionId
       if (sectionId.startsWith('property-information')) {
         sectionViewsDir = 'property-information'
+      }
+      if (sectionId.startsWith('tenancy-information')) {
+        sectionViewsDir = 'tenancy-information'
       }
 
       const log = utils.getEntityById(logs, logId)

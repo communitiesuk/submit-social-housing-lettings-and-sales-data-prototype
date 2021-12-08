@@ -39,7 +39,9 @@
         {{ govukButton({
           classes: "govuk-button--secondary",
           text: "Go to next incomplete section",
-          href: logPath + "/" + nextSection(log.id).id
+          attributes: {
+            formaction: logPath + "/" + nextSection(log.id).id
+          }
         }) }}
       </div>
     </div>
