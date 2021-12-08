@@ -1,7 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "Do you know the lead tenant’s age?" %}
-{% set hint = "The lead tenant is the person in the household who does the most paid work. If several people do the same paid work, the lead tenant is whoever is the oldest." %}
+{% set questionId = "lead-tenant-age-known" %}
 
 {% block question %}
   {% set ageHtml %}
@@ -21,7 +21,7 @@
       }
     },
     hint: {
-        text: hint
+      text: "The lead tenant is the person in the household who does the most paid work. If several people do the same paid work, the lead tenant is whoever is the oldest."
     },
     items: [{
       value: "true",

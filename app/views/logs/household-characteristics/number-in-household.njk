@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "How many people live in the household?" %}
+{% set questionId = "number-in-household" %}
 
 {% block question %}
   {{ govukInput(decorate({
@@ -9,5 +10,5 @@
       classes: "govuk-label--l"
     },
     classes: "govuk-input--width-3"
-  }, ["logs", log.id, section.id, "number-in-household"])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
