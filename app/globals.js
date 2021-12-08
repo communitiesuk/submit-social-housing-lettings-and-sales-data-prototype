@@ -91,7 +91,7 @@ export default () => {
       return {
         id: section.id,
         text: section.title,
-        href,
+        href: status !== 'cannotStart' ? href : false,
         tag: tagStatuses[status]
       }
     }
