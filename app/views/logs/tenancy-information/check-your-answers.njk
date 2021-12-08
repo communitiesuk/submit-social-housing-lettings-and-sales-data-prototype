@@ -12,7 +12,7 @@
         text: "Starter tenancy"
       },
       value: {
-        text: log[section.id]["is-starter"] | textFromInputValue(data.questions["yes-no"])
+        html: log[section.id]["is-starter"] | textFromInputValue(data.questions["yes-no"])
       },
       actions: actionLinks({
         href: sectionPath + "/is-starter",
@@ -23,7 +23,7 @@
         text: "Tenancy type"
       },
       value: {
-        text: log[section.id]["type-of-tenancy"] | textFromInputValue(data.questions["type-of-tenancy"])
+        html: log[section.id]["type-of-tenancy"] | textFromInputValue(data.questions["type-of-tenancy"])
       },
       actions: actionLinks({
         href: sectionPath + "/type-of-tenancy",
@@ -34,7 +34,7 @@
         text: "Length of fixed-term tenancy"
       },
       value: {
-        text: log[section.id]["fixed-term-length"] | textFromInputValue
+        html: log[section.id]["fixed-term-length"] | textFromInputValue + " years"
       },
       actions: actionLinks({
         href: sectionPath + "/fixed-term-length",
@@ -45,7 +45,7 @@
         text: "Sheltered accommodation"
       },
       value: {
-        text: log[section.id]["sheltered-accommodation"] | textFromInputValue(data.questions["sheltered-accommodation"])
+        html: log[section.id]["sheltered-accommodation"] | textFromInputValue(data.questions["sheltered-accommodation"])
       },
       actions: actionLinks({
         href: sectionPath + "/sheltered-accommodation",
