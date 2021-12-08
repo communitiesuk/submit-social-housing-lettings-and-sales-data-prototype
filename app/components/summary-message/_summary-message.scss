@@ -1,0 +1,31 @@
+.app-summary-message {
+  border-left: $govuk-border-width-narrow solid;
+  margin-bottom: govuk-spacing(2) !important;
+  padding: govuk-spacing(1) 0 govuk-spacing(1) govuk-spacing(3)
+}
+
+.app-summary-message--information {
+  border-color: govuk-colour("blue");
+
+  .app-summary-message__title {
+    color: govuk-colour("blue");
+  }
+}
+
+.app-summary-message--error {
+  border-color: $govuk-error-colour;
+
+  .app-summary-message__title {
+    color: $govuk-error-colour;
+  }
+}
+
+.app-summary-message__title {
+  @include govuk-font($size: 19, $weight: "bold");
+  margin-bottom: govuk-spacing(2);
+  margin-top: govuk-spacing(0);
+}
+
+.app-summary-message > *:last-child {
+  margin-bottom: govuk-spacing(0);
+}
