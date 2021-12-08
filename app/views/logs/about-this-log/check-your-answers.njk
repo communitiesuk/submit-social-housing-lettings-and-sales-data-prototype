@@ -20,14 +20,14 @@
       }) if not isCompleted
     }, {
       key: {
-        text: "Part of supporting housing scheme"
+        text: "Part of a supporting housing scheme"
       },
       value: {
         text: log[section.id]["uses-scheme"] | textFromInputValue(data.questions["yes-no"])
       },
       actions: actionLinks({
         href: sectionPath + "/uses-scheme?referrer=" + referrer,
-        visuallyHiddenText: "if part of supported housing scheme"
+        visuallyHiddenText: "if part of a supported housing scheme"
       }) if not isCompleted
     }, {
       key: {
@@ -95,18 +95,7 @@
         href: sectionPath + "/type-of-rent?referrer=" + referrer,
         visuallyHiddenText: "rent type"
       }) if not isCompleted
-    } if isLet, ({
-      key: {
-        text: "Needs type"
-      },
-      value: {
-        text: log[section.id]["type-of-need"] | textFromInputValue(data.questions["type-of-need"])
-      },
-      actions: actionLinks({
-        href: sectionPath + "/type-of-need?referrer=" + referrer,
-        visuallyHiddenText: "needs type"
-      }) if not isCompleted
-    } if isLet) if not usingScheme, {
+    } if isLet, {
       key: {
         text: "Tenant code"
       },

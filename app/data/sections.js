@@ -40,14 +40,6 @@ export function sections (log) {
       currentPath: `${sectionPath}/scheme`,
       skipTo: `${sectionPath}/letting-renewal`
     }, {
-      currentPath: `${sectionPath}/type-of-rent`,
-      forkPath: `${sectionPath}/type-of-need`,
-      storedData: keyPathRoot.concat('uses-scheme'),
-      values: ['false']
-    }, {
-      currentPath: `${sectionPath}/type-of-need`,
-      skipTo: `${sectionPath}/tenant-code`
-    }, {
       currentPath: `${sectionPath}/sale-or-letting`,
       forkPath: `${sectionPath}/sale-completion-date`,
       storedData: keyPathRoot.concat('sale-or-letting'),
