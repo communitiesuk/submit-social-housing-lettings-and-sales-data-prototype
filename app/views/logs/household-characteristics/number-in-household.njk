@@ -6,8 +6,7 @@
 {% block question %}
   {{ govukInput(decorate({
     label: {
-      html: macro.heading(title),
-      classes: "govuk-label--l"
+      html: macro.heading(title)
     },
     classes: "govuk-input--width-3"
   }, ["logs", log.id, section.id, questionId])) }}

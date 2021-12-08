@@ -76,11 +76,16 @@ export const logRoutes = (router) => {
   /**
    * View log section question
    */
-  router.all('/logs/:logId/:sectionId/:view?', async (req, res, next) => {
+  router.all('/logs/:logId/:sectionId/:itemId?/:view?', async (req, res, next) => {
     try {
-      const { logId, sectionId, view } = req.params
+      let { logId, sectionId, itemId, view } = req.params
       const { logs } = req.session.data
       let { referrer } = req.query
+
+      // If there’s no :view param, use :itemId param for view
+      if (!view) {
+        view = itemId
+      }
 
       // Property and tenancy information sections have variants that share
       // the same views
@@ -123,6 +128,7 @@ export const logRoutes = (router) => {
         logPath,
         section,
         sectionPath,
+        itemId,
         paths,
         referrer
       }

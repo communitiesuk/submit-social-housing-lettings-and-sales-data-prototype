@@ -1,9 +1,0 @@
-{{ govukRadios(decorate({
-  fieldset: {
-    legend: {
-      html: macro.fieldsetHeading("Which of these best describes the tenant’s gender identity?", "Tenant " + tenantId),
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
-  items: data.questions["gender-identity"]
-}, ["logs", log.id, section.id, "tenant-" + tenantId + "-gender"])) }}
