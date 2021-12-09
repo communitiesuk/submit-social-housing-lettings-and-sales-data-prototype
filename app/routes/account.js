@@ -1,5 +1,16 @@
 export const accountRoutes = (router) => {
   /**
+   * Redirect to logs page if visit home page and signed in
+   */
+  router.get('/', (req, res) => {
+    if (req.session.data.account) {
+      res.redirect('/logs')
+    } else {
+      res.render('index')
+    }
+  })
+
+  /**
    * Sign out
    */
   router.get('/account/sign-out', (req, res) => {
