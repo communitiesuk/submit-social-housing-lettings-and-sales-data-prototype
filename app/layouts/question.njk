@@ -4,6 +4,8 @@
   log[section.id][itemId][questionId] or
   log[section.id][questionId] %}
 
+{% set backLink = 'javascript:history.go(-1);' %}
+
 {% if questionId and hasAnsweredQuestion %}
   {% set formAction = formAction or sectionPath + "/check-your-answers" %}
   {% set buttonText = buttonText or "Save changes" %}
@@ -11,20 +13,6 @@
   {% set formAction = formAction or paths.current %}
   {% set buttonText = buttonText or "Save and continue" %}
 {% endif %}
-
-{% block pageNavigation %}
-  {{ govukBreadcrumbs({
-    items: [{
-      href: "/logs",
-      text: "Logs"
-    }, {
-      href: "/logs/" + log.id,
-      text: "Log " + log.id
-    }, {
-      text: caption
-    }]
-  }) }}
-{% endblock %}
 
 {% block form %}
   <div class="govuk-grid-row">
