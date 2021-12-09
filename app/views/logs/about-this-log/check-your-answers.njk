@@ -29,7 +29,7 @@
         href: sectionPath + "/uses-scheme",
         visuallyHiddenText: "if part of a supported housing scheme"
       }) if not isCompleted
-    }, {
+    } if isLet, {
       key: {
         text: "Scheme name"
       },
@@ -45,24 +45,24 @@
         text: "Owning organisation"
       },
       value: {
-        text: data.organisations[log[section.id]["organisation-owner"]].name
+        text: data.organisations[log[section.id]["organisation-owner"]].name | textFromInputValue
       },
       actions: actionLinks({
         href: sectionPath + "/organisation",
         visuallyHiddenText: "owning organisation"
       }) if not isCompleted
-    }, {
+    } if isLet and not usingScheme, {
       key: {
         text: "Managing organisation"
       },
       value: {
-        text: data.organisations[log[section.id]["organisation-manager"]].name
+        text: data.organisations[log[section.id]["organisation-manager"]].name | textFromInputValue
       },
       actions: actionLinks({
         href: sectionPath + "/organisation",
         visuallyHiddenText: "managing organisation"
       }) if not isCompleted
-    }, {
+    } if isLet and not usingScheme, {
       key: {
         text: "Property renewal"
       },

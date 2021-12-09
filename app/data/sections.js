@@ -22,10 +22,6 @@ export function sections (log) {
       'type-of-rent',
       'tenant-code',
       'property-reference',
-      'check-your-answers',
-      'sale-completion-date',
-      'purchaser-code',
-      'property-reference',
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot) => [{
@@ -46,6 +42,12 @@ export function sections (log) {
       forkPath: `${sectionPath}/sale-completion-date`,
       storedData: keyPathRoot.concat('sale-or-letting'),
       values: ['sale']
+    }, {
+      currentPath: `${sectionPath}/sale-completion-date`,
+      skipTo: `${sectionPath}/purchaser-code`
+    }, {
+      currentPath: `${sectionPath}/purchaser-code`,
+      skipTo: `${sectionPath}/property-reference`
     }]
   }
 
