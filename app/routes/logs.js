@@ -10,15 +10,20 @@ export const logRoutes = (router) => {
    * List logs
    */
   router.get('/logs', (req, res) => {
-    let { logs } = req.session.data
+    let { account, logs } = req.session.data
 
     // Convert organisations to array
     logs = utils.objectToArray(logs)
 
-    res.render('logs/index', {
-      query: req.query,
-      logs
-    })
+    // Redirect to home page if signed out
+    if (!account) {
+      res.redirect('/')
+    } else {
+      res.render('logs/index', {
+        query: req.query,
+        logs
+      })
+    }
   })
 
   /**
