@@ -5,13 +5,16 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <p>Use this service to submit new logs to the Department for Levelling Up, Housing and Communities (DLUHC). We’ll send you a confirmation email for each log you submit.</p>
-      <p>You can:</p>
+      <p>Use this service to submit social housing lettings and sales data to the Department for Levelling Up, Housing and Communities (DLUHC).</p>
+      <p>We’ll ask you questions about a sale or letting, like details about the household or property. Your answers will create a log that you can submit directly to us.</p>
+      <p>Your organisation can also:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>create and submit individual logs</li>
-        <li>view logs and change answers</li>
-        <li>print a form</li>
+        <li>upload data for multiple sales and lettings</li>
+        <li>transfer data using an API</li>
+        <li><a href="/public/files/paper-form-social-housing-letting.pdf">download a copy of the 2021 to 2022 lettings log as a PDF</a> (2MB)</li>
       </ul>
+      <p>The data will be used to update the national record for social housing. It will also help to inform policy about the cost of social housing and what type of housing needs to be built.</p>
+      <p>This service is only for social housing in England.</p>
 
       {{ govukButton({
         href: "/account/sign-in",
@@ -20,24 +23,19 @@
       }) }}
 
       <h2 class="govuk-heading-m">Before you start</h2>
-      <p>Use your existing account details to sign in.</p>
-      <p>If you’re a new user, a data coordinator at your organisation will need to create an account for you. If you do not know who that is, <a href="https://digital.dclg.gov.uk/jira/servicedesk/customer/portal/4/group/21">contact the helpdesk</a>.</p>
-      <p>You can <a href="/guidance">read guidance on continuous recording of lettings and sales in social housing in England (CORE)</a>.</p>
+      <p>Use your account details to sign in.</p>
+      <p>If you need to set up a new account, speak to your organisation’s CORE data coordinator. If you don’t know who that is, <a href="https://digital.dclg.gov.uk/jira/servicedesk/customer/portal/4/group/21">contact the helpdesk</a>.</p>
+      <p>You can <a href="https://digital.dclg.gov.uk/jira/servicedesk/customer/portal/4/group/21">request an account</a> if your organisation doesn’t have one.</p>
+      <p><a href="#">Read our data sharing agreement</a>.</p>
     </div>
 
     <div class="govuk-grid-column-one-third">
       {{ rigRelatedNavigation({
         sections: [{
-          title: "Useful documents",
-          items: [{
-            href: "/public/files/paper-form-social-housing-letting.pdf",
-            text: "Download the 2020 to 2021 Lettings Log as a PDF (2MB)"
-          }]
-        }, {
-          title: "Help and support",
+          title: "Related content",
           items: [{
             href: "#",
-            text: "Get help with this service"
+            text: "How to submit social housing lettings and sales data (CORE)"
           }]
         }]
       }) }}
