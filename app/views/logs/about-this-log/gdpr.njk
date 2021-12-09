@@ -9,6 +9,9 @@
         text: macro.heading(title)
       }
     },
+    hint: {
+      html: "You must <a href=\"/public/files/privacy-notice.pdf\">show the privacy notice</a> to the tenant or buyer before you can use this service."
+    },
     items: data.questions["yes-no"]
   }, ["logs", log.id, section.id, "gdpr"])) }}
 {% endblock %}
