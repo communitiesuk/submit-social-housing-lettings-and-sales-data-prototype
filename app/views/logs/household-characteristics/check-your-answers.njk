@@ -31,7 +31,7 @@
     {% set isLeadTenant = itemId == "lead-tenant" %}
     {% set isKnown = "true" %}
     {% if not isLeadTenant %}
-      {% set isKnown = log[section.id][itemId].known %}
+      {% set isKnown = log[section.id][itemId + "-known"] == "true" %}
     {% endif %}
     {% set name = "lead tenant" if isLeadTenant else "tenant " + i %}
 
@@ -43,7 +43,7 @@
           text: "Details known"
         },
         value: {
-          text: isKnown | textFromInputValue(data.questions["yes-no"])
+          text: "Yes" if isKnown else "No"
         },
         actions: actionLinks({
           href: sectionPath + "/" + itemId + "/known",

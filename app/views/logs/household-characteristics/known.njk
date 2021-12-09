@@ -2,7 +2,7 @@
 
 {% set householdSize = log[section.id]["number-in-household"] | int %}
 {% set tenantInt = itemId | replace("tenant-", "") | int %}
-{% set questionId = "known" %}
+{% set questionId = itemId + "-known" %}
 
 {% block question %}
   {{ macro.heading("You have given us details for " + (tenantInt - 1) + " of " + householdSize + " tenants") }}
@@ -17,5 +17,5 @@
       text: "You must provide details of all tenants if you know them."
     },
     items: data.questions["yes-no"]
-  }, ["logs", log.id, section.id, itemId, questionId])) }}
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

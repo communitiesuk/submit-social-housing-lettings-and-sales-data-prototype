@@ -80,24 +80,24 @@ export function sections (log) {
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot) => [{
-      currentPath: `${sectionPath}/1/working-situation`,
+      currentPath: `${sectionPath}/lead-tenant/working-situation`,
       forkPath: `${sectionPath}/check-your-answers`,
       storedData: keyPathRoot.concat('number-in-household'),
       values: ['1']
     }, {
-      currentPath: `${sectionPath}/2/known`,
+      currentPath: `${sectionPath}/tenant-2/known`,
       forkPath: `${sectionPath}/check-your-answers`,
-      storedData: keyPathRoot.concat('tenant-2').concat('known'),
+      storedData: keyPathRoot.concat('tenant-2-known'),
       values: ['false']
     }, {
-      currentPath: `${sectionPath}/2/working-situation`,
+      currentPath: `${sectionPath}/tenant-2/working-situation`,
       forkPath: `${sectionPath}/check-your-answers`,
       storedData: keyPathRoot.concat('number-in-household'),
       values: ['2']
     }, {
-      currentPath: `${sectionPath}/3/known`,
+      currentPath: `${sectionPath}/tenant-3/known`,
       forkPath: `${sectionPath}/check-your-answers`,
-      storedData: keyPathRoot.concat('3').concat('known'),
+      storedData: keyPathRoot.concat('tenant-3-known'),
       values: ['false']
     }]
   }

@@ -26,11 +26,11 @@ export default {
         nationality: '1',
         'working-situation': '3'
       },
+      'tenant-2-known': 'true',
       'tenant-2': {
         age: 42,
         'age-known': 'true',
         gender: 'female',
-        known: 'true',
         'relationship-to-lead-tenant': '1',
         'working-situation': '8'
       },
