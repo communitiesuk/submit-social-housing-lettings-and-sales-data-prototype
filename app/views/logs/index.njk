@@ -1,6 +1,6 @@
 {% extends "layouts/base.njk" %}
 
-{% set title = "Case logs" %}
+{% set title = "Your logs" %}
 
 {% set logsIncomplete = logs| selectattr("updated") %}
 {% set logsSubmitted = logs | selectattr("submitted") %}
