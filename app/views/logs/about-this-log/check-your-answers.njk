@@ -2,8 +2,8 @@
 
 {% set isLet = log[section.id]["sale-or-letting"] == "letting" %}
 {% set isSale = log[section.id]["sale-or-letting"] == "sale" %}
+{% set isSupported = log[section.id]["type-of-need"] == "supported" %}
 {% set isCompleted = log[section.id]["completed"] == "true" %}
-{% set usingScheme = log[section.id]["uses-scheme"] == "true" %}
 
 {% block checkAnswers %}
   {{ govukSummaryList({
@@ -42,27 +42,27 @@
       }) if not isCompleted
     } if isLet, {
       key: {
-        text: "Part of a supporting housing scheme"
+        text: "Needs type"
       },
       value: {
-        text: log[section.id]["uses-scheme"] | textFromInputValue(data.questions["yes-no"])
+        text: log[section.id]["type-of-need"] | textFromInputValue(data.questions["type-of-need"])
       },
       actions: actionLinks({
-        href: sectionPath + "/uses-scheme",
-        visuallyHiddenText: "if part of a supported housing scheme"
+        href: sectionPath + "/needs-type",
+        visuallyHiddenText: "needs type"
       }) if not isCompleted
     } if isLet, {
       key: {
-        text: "Scheme name"
+        text: "Supported housing scheme"
       },
       value: {
         text: data.schemes[log[section.id]["schemeId"]].name
       },
       actions: actionLinks({
         href: sectionPath + "/scheme",
-        visuallyHiddenText: "scheme name"
+        visuallyHiddenText: "supported housing scheme"
       }) if not isCompleted
-    } if log[section.id]["schemeId"], {
+    } if isSupported, {
       key: {
         text: "Property renewal"
       },

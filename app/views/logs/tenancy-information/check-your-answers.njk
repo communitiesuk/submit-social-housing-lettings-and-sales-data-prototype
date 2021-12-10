@@ -3,7 +3,7 @@
 {% set isFixedTerm =
   (log[section.id]["type-of-tenancy"] == "fixed-secure") or
   (log[section.id]["type-of-tenancy"] == "fixed-ast") %}
-{% set isSupportedHousing = log["about-this-log"]["uses-scheme"] == "true" %}
+{% set isSupported = log["about-this-log"]["type-of-need"] == "supported" %}
 
 {% block checkAnswers %}
   {{ govukSummaryList({
@@ -51,6 +51,6 @@
         href: sectionPath + "/sheltered-accommodation",
         visuallyHiddenText: "if sheltered accommodation"
       })
-    } if isSupportedHousing]
+    } if isSupported]
   }) }}
 {% endblock %}

@@ -16,7 +16,7 @@ export function sections (log) {
       'gdpr',
       'sale-or-letting',
       'organisation',
-      'uses-scheme',
+      'type-of-need',
       'letting-renewal',
       'letting-start-date',
       'type-of-rent',
@@ -30,10 +30,10 @@ export function sections (log) {
       storedData: keyPathRoot.concat('gdpr'),
       values: ['false']
     }, {
-      currentPath: `${sectionPath}/uses-scheme`,
+      currentPath: `${sectionPath}/type-of-need`,
       forkPath: `${sectionPath}/scheme`,
-      storedData: keyPathRoot.concat('uses-scheme'),
-      values: ['true']
+      storedData: keyPathRoot.concat('type-of-need'),
+      values: ['supported']
     }, {
       currentPath: `${sectionPath}/scheme`,
       skipTo: `${sectionPath}/letting-renewal`
@@ -315,7 +315,7 @@ export function sections (log) {
   let isSupportedHousing
   let isRenewal
   if (log['about-this-log']) {
-    isSupportedHousing = log['about-this-log']['uses-scheme'] === 'true'
+    isSupportedHousing = log['about-this-log']['type-of-need'] === 'supported'
     isRenewal = log['about-this-log']['letting-renewal'] === 'true'
   }
 
