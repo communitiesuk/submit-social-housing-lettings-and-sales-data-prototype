@@ -2,7 +2,7 @@
 
 {# Some answers may come from a scheme #}
 {% macro schemeAnswer(field) -%}
-  {%- if log["about-this-log"]["uses-scheme"] == "true" -%}
+  {%- if log["about-this-log"]["type-of-need"] == "supported" -%}
     {%- set schemeId = log["about-this-log"]["schemeId"] -%}
     {{ data.schemes[schemeId][field] }}
   {%- else -%}
@@ -22,7 +22,7 @@
 {% set isNewlet = log[section.id]["is-relet"] == "false" %}
 {% set isRepaired = log[section.id]["repairs"] == "true" %}
 {% set isNewprop = log[section.id]["reason-for-non-relet"] == "newprop" %}
-{% set isSupportedHousing = log["about-this-log"]["uses-scheme"] == "true" %}
+{% set isSupported = log["about-this-log"]["type-of-need"] == "supported" %}
 {% set isRenewal = log["about-this-log"]["letting-renewal"] == "true" %}
 
 {# Answer objects #}
@@ -37,7 +37,7 @@
   actions: actionLinks({
     href: sectionPath + "/postcode",
     visuallyHiddenText: "postcode"
-  }) if not isSupportedHousing
+  }) if not isSupported
 } %}
 
 {% set localAuthorityRow = {
@@ -50,7 +50,7 @@
   actions: actionLinks({
     href: sectionPath + "/local-authority",
     visuallyHiddenText: "local authority"
-  }) if not isSupportedHousing
+  }) if not isSupported
 } if not hasPostcode %}
 
 {% set localAuthorityUnknownRow = {
@@ -63,7 +63,7 @@
   actions: actionLinks({
     href: sectionPath + "/why-dont-you-know-postcode-or-la",
     visuallyHiddenText: "the reason you don't know the postcode or local authority"
-  }) if not isSupportedHousing
+  }) if not isSupported
 } if not hasPostcode and not hasLocalAuthority %}
 
 {% set isReletRow = {
@@ -115,7 +115,7 @@
   actions: actionLinks({
     href: sectionPath + "/type-of-unit",
     visuallyHiddenText: "type of unit"
-  }) if not isSupportedHousing
+  }) if not isSupported
 } %}
 
 {% set typeOfPropertyRow = {
@@ -128,7 +128,7 @@
   actions: actionLinks({
     href: sectionPath + "/type-of-property",
     visuallyHiddenText: "type of building"
-  }) if not isSupportedHousing
+  }) if not isSupported
 } %}
 
 {% set isAdaptedRow = {
@@ -141,7 +141,7 @@
   actions: actionLinks({
     href: sectionPath + "/is-adapted",
     visuallyHiddenText: "if property has been built or adapted to wheelchair-user standards"
-  }) if not isSupportedHousing
+  }) if not isSupported
 } %}
 
 {% set numberOfBedroomsRow = {
@@ -197,7 +197,7 @@
 } %}
 
 {% block checkAnswers %}
-  {% if isSupportedHousing and not isRenewal %}
+  {% if isSupported and not isRenewal %}
     {{ govukSummaryList({
       rows: [
         isReletRow,
@@ -208,7 +208,7 @@
         repairsRow
       ]
     }) }}
-  {% elif not isSupportedHousing and isRenewal %}
+  {% elif not isSupported and isRenewal %}
     {{ govukSummaryList({
       rows: [
         postcodeRow,
