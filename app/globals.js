@@ -50,8 +50,6 @@ export default () => {
       }
     }
 
-    console.log(incompleteSections)
-
     return incompleteSections[1]
   }
 
