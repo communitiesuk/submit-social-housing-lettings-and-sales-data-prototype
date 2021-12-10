@@ -50,7 +50,9 @@ export default () => {
       }
     }
 
-    return incompleteSections[0]
+    console.log(incompleteSections)
+
+    return incompleteSections[1]
   }
 
   globals.taskListSections = function (logId) {
