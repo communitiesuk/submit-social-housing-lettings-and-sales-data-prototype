@@ -20,6 +20,28 @@
       }) if not isCompleted
     }, {
       key: {
+        text: "Owning organisation"
+      },
+      value: {
+        text: data.organisations[log[section.id]["organisation-owner"]].name | textFromInputValue
+      },
+      actions: actionLinks({
+        href: sectionPath + "/organisation",
+        visuallyHiddenText: "owning organisation"
+      }) if not isCompleted
+    } if isLet, {
+      key: {
+        text: "Managing organisation"
+      },
+      value: {
+        text: data.organisations[log[section.id]["organisation-manager"]].name | textFromInputValue
+      },
+      actions: actionLinks({
+        href: sectionPath + "/organisation",
+        visuallyHiddenText: "managing organisation"
+      }) if not isCompleted
+    } if isLet, {
+      key: {
         text: "Part of a supporting housing scheme"
       },
       value: {
@@ -41,28 +63,6 @@
         visuallyHiddenText: "scheme name"
       }) if not isCompleted
     } if log[section.id]["schemeId"], {
-      key: {
-        text: "Owning organisation"
-      },
-      value: {
-        text: data.organisations[log[section.id]["organisation-owner"]].name | textFromInputValue
-      },
-      actions: actionLinks({
-        href: sectionPath + "/organisation",
-        visuallyHiddenText: "owning organisation"
-      }) if not isCompleted
-    } if isLet and not usingScheme, {
-      key: {
-        text: "Managing organisation"
-      },
-      value: {
-        text: data.organisations[log[section.id]["organisation-manager"]].name | textFromInputValue
-      },
-      actions: actionLinks({
-        href: sectionPath + "/organisation",
-        visuallyHiddenText: "managing organisation"
-      }) if not isCompleted
-    } if isLet and not usingScheme, {
       key: {
         text: "Property renewal"
       },

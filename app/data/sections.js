@@ -15,8 +15,8 @@ export function sections (log) {
     paths: getPaths('about-this-log', [
       'gdpr',
       'sale-or-letting',
-      'uses-scheme',
       'organisation',
+      'uses-scheme',
       'letting-renewal',
       'letting-start-date',
       'type-of-rent',
