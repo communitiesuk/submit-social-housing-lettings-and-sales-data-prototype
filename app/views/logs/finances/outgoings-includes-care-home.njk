@@ -1,0 +1,46 @@
+{% extends "layouts/question.njk" %}
+
+{% set outgoingsPeriod = log[section.id]["outgoings-period"] %}
+ {% if outgoingsPeriod == "fortnightly" %}
+   {% set period = "every 2 weeks" %}
+ {% elif outgoingsPeriod == "every-4-weeks" %}
+   {% set period = "every 4 weeks" %}
+ {% elif outgoingsPeriod == "monthly" %}
+   {% set period = "per month" %}
+ {% else %}
+   {% set period = "per week" %}
+ {% endif %}
+{% set title = "Is this accommodation a care home?" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
+    },
+    items: [{
+      value: "true",
+      text: "Yes",
+      conditional: {
+        html: govukInput(decorate({
+          classes: "govuk-input--width-5",
+          label: {
+            text: "How much does the household pay each " + period + "?"
+          },
+          inputmode: "numeric",
+          pattern: "[0-9]*",
+          prefix: {
+            text: "£"
+          },
+          suffix: {
+            text: period
+          }
+        }, ["logs", log.id, section.id, "outgoings-care-home"]))
+      }
+    }, {
+      value: "false",
+      text: "No"
+    }]
+  }, ["logs", log.id, section.id, "outgoings-includes-care-home"])) }}
+{% endblock %}

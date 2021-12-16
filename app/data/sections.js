@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export function sections (log) {
   const logPath = `/logs/${log.id}`
 
@@ -302,6 +304,67 @@ export function sections (log) {
     }]
   }
 
+  const financesSupportedHousing = {
+    id: 'finances-supported-housing',
+    title: 'Income, benefits and outgoings',
+    group: 'finances',
+    paths: getPaths('finances-supported-housing', [
+      'income-period',
+      'income-value',
+      'income-benefits',
+      'income-benefits-portion',
+      'outgoings-includes-rent',
+      'outgoings-period',
+      'outgoings-includes-care-home',
+      'outgoings-value',
+      'check-your-answers'
+    ]),
+    forks: (sectionPath, keyPathRoot, req) => [{
+      currentPath: `${sectionPath}/outgoings-includes-rent`,
+      forkPath: `${sectionPath}/check-your-answers`,
+      storedData: keyPathRoot.concat('outgoings-includes-rent'),
+      values: ['false']
+    }, {
+      currentPath: `${sectionPath}/outgoings-includes-care-home`,
+      forkPath: (value) => {
+        const { data } = req.session
+        const incomeBenefits = _.get(data, keyPathRoot.concat('income-benefits'))
+        const hasBenefits = !['none', 'unknown', 'prefers-not-to-say'].includes(incomeBenefits)
+        if (value === 'false') {
+          // Not care home accommodation
+          return `${sectionPath}/outgoings-value`
+        } else if (value === 'true' && hasBenefits) {
+          // Care home accommodation and receives benefits
+          return `${sectionPath}/outgoings-after-benefits`
+        } else if (value === 'true' && !hasBenefits) {
+          // Care home accommodation and not in receipt of benefits
+          return `${sectionPath}/check-your-answers`
+        }
+      },
+      storedData: keyPathRoot.concat('outgoings-includes-care-home'),
+      values: ['true', 'false']
+    }, {
+      currentPath: `${sectionPath}/outgoings-value`,
+      forkPath: `${sectionPath}/outgoings-after-benefits`,
+      storedData: keyPathRoot.concat('income-benefits'),
+      excludedValues: ['none', 'unknown', 'prefers-not-to-say']
+    }, {
+      currentPath: `${sectionPath}/outgoings-after-benefits`,
+      forkPath: (value) => {
+        if (value === 'true') {
+          return `${sectionPath}/outgoings-outstanding`
+        } else {
+          return `${sectionPath}/check-your-answers`
+        }
+      },
+      storedData: keyPathRoot.concat('outgoings-after-benefits'),
+      values: ['true', 'false']
+    }, {
+      currentPath: `${sectionPath}/outgoings-outstanding`,
+      skipTo: `${sectionPath}/check-your-answers`
+    }]
+  }
+
   /**
    * Declaration
    */
@@ -329,7 +392,8 @@ export function sections (log) {
     ...(!isSupportedHousing && !isRenewal ? [propertyInformation] : []),
     ...(!isSupportedHousing && isRenewal ? [propertyInformationRenewal] : []),
     ...(isSupportedHousing && !isRenewal ? [propertyInformationSupportedHousing] : []),
-    finances,
+    ...(!isSupportedHousing ? [finances] : []),
+    ...(isSupportedHousing ? [financesSupportedHousing] : []),
     declaration
   ]
 }

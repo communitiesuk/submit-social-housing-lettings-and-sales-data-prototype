@@ -91,14 +91,17 @@ export const logRoutes = (router) => {
         view = itemId
       }
 
-      // Property and tenancy information sections have variants that share
-      // the same views
+      // Property, tenancy information and finance sections have variants
+      // that share the same views
       let sectionViewsDir = sectionId
       if (sectionId.startsWith('property-information')) {
         sectionViewsDir = 'property-information'
       }
       if (sectionId.startsWith('tenancy-information')) {
         sectionViewsDir = 'tenancy-information'
+      }
+      if (sectionId.startsWith('finances')) {
+        sectionViewsDir = 'finances'
       }
 
       const log = utils.getEntityById(logs, logId)
@@ -109,7 +112,7 @@ export const logRoutes = (router) => {
       // Fork if next path is a fork
       const sectionKeyPath = `logs[${logId}][${sectionId}]`
       const sectionForks = section.forks
-        ? section.forks(sectionPath, sectionKeyPath)
+        ? section.forks(sectionPath, sectionKeyPath, req)
         : []
       const fork = sectionForks
         ? wizard.nextForkPath(sectionForks, req)
