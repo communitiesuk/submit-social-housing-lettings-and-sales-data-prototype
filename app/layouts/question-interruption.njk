@@ -1,0 +1,38 @@
+{% extends "layouts/form.njk" %}
+
+{% set hasAnsweredQuestion =
+  log[section.id][itemId][questionId] or
+  log[section.id][questionId] %}
+
+{% set backLink = 'javascript:history.go(-1);' %}
+
+{% if questionId and hasAnsweredQuestion %}
+  {% set formAction = formAction or sectionPath + "/check-your-answers" %}
+  {% set buttonText = buttonText or "Save changes" %}
+{% else %}
+  {% set formAction = formAction or paths.current %}
+  {% set buttonText = buttonText or "Save and continue" %}
+{% endif %}
+
+{% block form %}
+  {{ govukErrorSummary({
+    titleText: "There is a problem",
+    errorList: errorList(errors)
+  }) if errors }}
+
+  <div class="govuk-panel app-panel--interruption">
+    <h1 class="govuk-panel__title">
+      {{ title | noOrphans | safe }}
+    </h1>
+
+    <div class="govuk-panel__body">
+      {% block interruption %}
+      {% endblock %}
+
+      {{ govukButton({
+        classes: "app-button--inverse",
+        text: buttonText
+      }) }}
+    </div>
+  </div>
+{% endblock %}

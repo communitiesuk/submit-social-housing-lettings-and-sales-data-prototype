@@ -84,28 +84,6 @@
         text: "Care home accomodation"
       },
       value: {
-        text: log[section.id]["outgoings-includes-care-home"] | textFromInputValue(data.questions["yes-no"])
-      },
-      actions: actionLinks({
-        href: sectionPath + "/outgoings-includes-care-home",
-        visuallyHiddenText: "if care home accommodation"
-      }) if not isCompleted
-    } if isSupported and isRenter, {
-      key: {
-        text: "Care home charges"
-      },
-      value: {
-        text: log[section.id]["outgoings-care-home"] | sterling
-      },
-      actions: actionLinks({
-        href: sectionPath + "/outgoings-includes-care-home",
-        visuallyHiddenText: "care home charges"
-      }) if not isCompleted
-    } if isCareHome and isRenter, {
-      key: {
-        text: "Total household rent or charges"
-      },
-      value: {
         text: log[section.id]["outgoings-value"] | sterling
       },
       actions: actionLinks({
