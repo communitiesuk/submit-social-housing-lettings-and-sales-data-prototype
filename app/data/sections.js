@@ -280,10 +280,16 @@ export function sections (log) {
       'income-benefits-portion',
       'outgoings-period',
       'outgoings-value',
+      'outgoings-value-check',
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot) => [{
-      currentPath: `${sectionPath}/outgoings-value`,
+      currentPath: `${sectionPath}/income-period`,
+      forkPath: `${sectionPath}/income-benefits`,
+      storedData: keyPathRoot.concat('income-period'),
+      values: ['prefers-not-to-say']
+    }, {
+      currentPath: `${sectionPath}/outgoings-value-check`,
       forkPath: `${sectionPath}/outgoings-after-benefits`,
       storedData: keyPathRoot.concat('income-benefits'),
       excludedValues: ['none', 'unknown', 'prefers-not-to-say']
@@ -317,9 +323,15 @@ export function sections (log) {
       'outgoings-period',
       'outgoings-includes-care-home',
       'outgoings-value',
+      'outgoings-value-check',
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot, req) => [{
+      currentPath: `${sectionPath}/income-period`,
+      forkPath: `${sectionPath}/income-benefits`,
+      storedData: keyPathRoot.concat('income-period'),
+      values: ['prefers-not-to-say']
+    }, {
       currentPath: `${sectionPath}/outgoings-includes-rent`,
       forkPath: `${sectionPath}/check-your-answers`,
       storedData: keyPathRoot.concat('outgoings-includes-rent'),
@@ -344,7 +356,7 @@ export function sections (log) {
       storedData: keyPathRoot.concat('outgoings-includes-care-home'),
       values: ['true', 'false']
     }, {
-      currentPath: `${sectionPath}/outgoings-value`,
+      currentPath: `${sectionPath}/outgoings-value-check`,
       forkPath: `${sectionPath}/outgoings-after-benefits`,
       storedData: keyPathRoot.concat('income-benefits'),
       excludedValues: ['none', 'unknown', 'prefers-not-to-say']
