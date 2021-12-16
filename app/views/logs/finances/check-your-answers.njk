@@ -1,13 +1,15 @@
 {% extends "layouts/check-answers.njk" %}
 
-{% from "components/summary-message/macro.njk" import appSummaryMessage %}
-
 {% set period = log[section.id]["income-period"] | replace("ly", "") %}
 {% set hasIncomeBenefits =
   (log[section.id]["income-benefits"] !== "none") and
   (log[section.id]["income-benefits"] !== "unknown") and
   (log[section.id]["income-benefits"] !== "prefers-not-to-say")
 %}
+{% set hasOutgoingsAfterBenefits = log[section.id]["outgoings-after-benefits"] == "true" %}
+{% set isSupported = log["about-this-log"]["type-of-need"] == "supported" %}
+{% set isRenter = log[section.id]["outgoings-includes-rent"] == "true" | string %}
+{% set isCareHome = log[section.id]["outgoings-includes-care-home"] == "true" | string %}
 
 {% block checkAnswers %}
   {{ govukSummaryList({
@@ -57,42 +59,71 @@
       }) if not isCompleted
     }, {
       key: {
-        text: "Frequency of household rent and charges"
+        text: "Does the household pay rent or charges?"
+      },
+      value: {
+        text: log[section.id]["outgoings-includes-rent"] | textFromInputValue(data.questions["yes-no"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/outgoings-includes-rent",
+        visuallyHiddenText: "if the household pay rent or charges"
+      }) if not isCompleted
+    } if isSupported, {
+      key: {
+        text: "Frequency of household rent or charges"
       },
       value: {
         text: log[section.id]["outgoings-period"] | textFromInputValue(data.questions["outgoings-period"])
       },
       actions: actionLinks({
         href: sectionPath + "/outgoings-period",
-        visuallyHiddenText: "frequency of household rent and charges"
+        visuallyHiddenText: "frequency of household rent or charges"
       }) if not isCompleted
-    }, {
+    } if isRenter, {
       key: {
-        text: "Total household rent and charges"
+        text: "Care home accomodation"
       },
       value: {
-        html: appSummaryMessage ({
-          classes: "app-summary-message--information",
-          titleText: "Value is outside the expected range. You should check this is correct before submitting.",
-          text: log[section.id]["outgoings-value"] | sterling
-        })
+        text: log[section.id]["outgoings-includes-care-home"] | textFromInputValue(data.questions["yes-no"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/outgoings-includes-care-home",
+        visuallyHiddenText: "if care home accommodation"
+      }) if not isCompleted
+    } if isSupported and isRenter, {
+      key: {
+        text: "Care home charges"
+      },
+      value: {
+        text: log[section.id]["outgoings-care-home"] | sterling
+      },
+      actions: actionLinks({
+        href: sectionPath + "/outgoings-includes-care-home",
+        visuallyHiddenText: "care home charges"
+      }) if not isCompleted
+    } if isCareHome and isRenter, {
+      key: {
+        text: "Total household rent or charges"
+      },
+      value: {
+        text: log[section.id]["outgoings-value"] | sterling
       },
       actions: actionLinks({
         href: sectionPath + "/outgoings-value",
-        visuallyHiddenText: "total household rent and charges"
+        visuallyHiddenText: "total household rent or charges"
       }) if not isCompleted
-    }, {
+    } if isRenter and not isCareHome, {
       key: {
-        text: "Outstanding amount for basic rent and charges"
+        text: "Will there be an outstanding amount for basic rent and eligible charges?"
       },
       value: {
         text: log[section.id]["outgoings-after-benefits"] | textFromInputValue(data.questions["yes-no"])
       },
       actions: actionLinks({
         href: sectionPath + "/outgoings-after-benefits",
-        visuallyHiddenText: "outstanding amount for basic rent and charges"
+        visuallyHiddenText: "if there will be an outstanding amount for basic rent and eligible charges"
       }) if not isCompleted
-    } if hasIncomeBenefits, {
+    } if isRenter and hasIncomeBenefits, {
       key: {
         text: "Estimated outstanding amount"
       },
@@ -103,6 +134,6 @@
         href: sectionPath + "/outgoings-outstanding",
         visuallyHiddenText: "estimated outstanding amount"
       }) if not isCompleted
-    } if hasIncomeBenefits and log[section.id]["outgoings-after-benefits"] == "true"]
+    } if isRenter and hasIncomeBenefits and hasOutgoingsAfterBenefits]
   }) }}
 {% endblock %}

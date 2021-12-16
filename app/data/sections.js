@@ -302,6 +302,53 @@ export function sections (log) {
     }]
   }
 
+  const financesSupportedHousing = {
+    id: 'finances-supported-housing',
+    title: 'Income, benefits and outgoings',
+    group: 'finances',
+    paths: getPaths('finances-supported-housing', [
+      'income-period',
+      'income-value',
+      'income-benefits',
+      'income-benefits-portion',
+      'outgoings-includes-rent',
+      'outgoings-period',
+      'outgoings-includes-care-home',
+      'outgoings-value',
+      'check-your-answers'
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/outgoings-includes-rent`,
+      forkPath: `${sectionPath}/check-your-answers`,
+      storedData: keyPathRoot.concat('outgoings-includes-rent'),
+      values: ['false']
+    }, {
+      currentPath: `${sectionPath}/outgoings-includes-care-home`,
+      forkPath: `${sectionPath}/outgoings-after-benefits`,
+      storedData: keyPathRoot.concat('income-benefits'),
+      excludedValues: ['none', 'unknown', 'prefers-not-to-say']
+    }, {
+      currentPath: `${sectionPath}/outgoings-value`,
+      forkPath: `${sectionPath}/outgoings-after-benefits`,
+      storedData: keyPathRoot.concat('income-benefits'),
+      excludedValues: ['none', 'unknown', 'prefers-not-to-say']
+    }, {
+      currentPath: `${sectionPath}/outgoings-after-benefits`,
+      forkPath: (value) => {
+        if (value === 'true') {
+          return `${sectionPath}/outgoings-outstanding`
+        } else {
+          return `${sectionPath}/check-your-answers`
+        }
+      },
+      storedData: keyPathRoot.concat('outgoings-after-benefits'),
+      values: ['true', 'false']
+    }, {
+      currentPath: `${sectionPath}/outgoings-outstanding`,
+      skipTo: `${sectionPath}/check-your-answers`
+    }]
+  }
+
   /**
    * Declaration
    */
@@ -329,7 +376,8 @@ export function sections (log) {
     ...(!isSupportedHousing && !isRenewal ? [propertyInformation] : []),
     ...(!isSupportedHousing && isRenewal ? [propertyInformationRenewal] : []),
     ...(isSupportedHousing && !isRenewal ? [propertyInformationSupportedHousing] : []),
-    finances,
+    ...(!isSupportedHousing ? [finances] : []),
+    ...(isSupportedHousing ? [financesSupportedHousing] : []),
     declaration
   ]
 }
