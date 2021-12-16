@@ -1,8 +1,8 @@
 {% extends "layouts/question.njk" %}
 
-{% set isLeadTenant = itemId == 1 %}
-{% set caption = itemId | replace("-", " ") | capitalize %}
-{% set title = "What is this tenant’s relationship to the lead tenant?" %}
+{% set isLeadTenant = itemId == "lead-tenant" %}
+{% set name = itemId | replace("-", " ") | noOrphans %}
+{% set title = "What is " + name + "’s relationship to the lead tenant?" %}
 {% set questionId = "relationship-to-lead-tenant" %}
 
 {% block question %}

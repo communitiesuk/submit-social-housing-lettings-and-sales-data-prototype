@@ -4,7 +4,7 @@
 {% set questionId = "organisation-owner" %}
 
 {% block question %}
-  {{ macro.heading(title) }}
+  {{ macro.heading(title, caption) }}
 
   {{ govukSelect(decorate({
     label: {
