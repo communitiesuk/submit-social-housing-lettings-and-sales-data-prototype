@@ -1,8 +1,12 @@
 {% extends "layouts/question.njk" %}
 
-{% set isLeadTenant = itemId == 1 %}
-{% set caption = itemId | replace("-", " ") | capitalize %}
-{% set title = "Which of these best describes the tenant’s gender identity?" %}
+{% set isLeadTenant = itemId == "lead-tenant" %}
+{% if isLeadTenant %}
+  {% set name = "the lead tenant" %}
+{% else %}
+  {% set name = itemId | replace("-", " ") | noOrphans %}
+{% endif %}
+{% set title = "Which of these best describes " + name + "’s gender identity?" %}
 {% set questionId = "gender" %}
 
 {% block question %}

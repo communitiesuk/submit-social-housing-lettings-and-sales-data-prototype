@@ -7,7 +7,7 @@
   {{ govukInput(decorate({
     classes: "govuk-input--width-10",
     label: {
-      html: macro.heading(title)
+      html: macro.heading(title, caption)
     }
   }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
