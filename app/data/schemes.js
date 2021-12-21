@@ -2,7 +2,6 @@ export default {
   EXAMPLE: {
     organisationId: 'PARENT1',
     name: 'Example scheme',
-    status: 'Draft',
     'local-authority': 'E09000013',
     'postcode-known': 'true',
     postcode: 'SW6 1AA',
@@ -25,6 +24,7 @@ export default {
       year: 2019
     },
     'end-date-known': 'false',
-    'sp-grant': 'false'
+    'sp-grant': 'false',
+    completed: 'true'
   }
 }

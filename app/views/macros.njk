@@ -94,22 +94,3 @@
     None
   {% endif %}
 {% endmacro %}
-
-{# Scheme macros #}
-{% from "govuk/components/tag/macro.njk" import govukTag %}
-{% macro schemeStatusTagHtml(status, classes) %}
-  {{ govukTag({
-    text: "Approved",
-    classes: "govuk-tag--green" + (" " + classes if classes)
-  }) if status == "Approved" }}
-
-  {{ govukTag({
-    html: "In review" | noOrphans,
-    classes: "govuk-tag--orange" + (" " + classes if classes)
-  }) if status == "In review" }}
-
-  {{ govukTag({
-    text: "Draft",
-    classes: "govuk-tag--grey" + (" " + classes if classes)
-  }) if status == "Draft" }}
-{% endmacro %}

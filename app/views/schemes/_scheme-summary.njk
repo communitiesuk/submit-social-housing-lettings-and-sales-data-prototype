@@ -1,5 +1,5 @@
 {# Set edit state based on scheme status #}
-{% set isLocked = scheme.status == "Approved" or scheme.status == "In review" %}
+{% set isCompleted = scheme.completed == "true" %}
 
 {# Set variables to test various user selected data #}
 {% set hasPostcode = scheme["postcode-known"] == "true" %}
@@ -18,7 +18,7 @@
     actions: actionLinks({
       href: schemePath + "/details",
       visuallyHiddenText: "name"
-    }) if not isLocked
+    })
   }, {
     key: {
       text: "Type of scheme"
@@ -29,7 +29,7 @@
     actions: actionLinks({
       href: schemePath + "/details",
       visuallyHiddenText: "type of scheme"
-    }) if not isLocked
+    }) if not isCompleted
   }, {
     key: {
       text: "Confidential"
@@ -40,7 +40,7 @@
     actions: actionLinks({
       href: schemePath + "/details",
       visuallyHiddenText: "if confidential"
-    }) if not isLocked
+    }) if not isCompleted
   }, {
     key: {
       text: "Includes Supporting People grant"
@@ -51,7 +51,7 @@
     actions: actionLinks({
       href: schemePath + "/details",
       visuallyHiddenText: "if includes Supporting People grant"
-    }) if not isLocked
+    }) if not isCompleted
   }, {
     key: {
       text: "Postcode"
@@ -62,7 +62,7 @@
     actions: actionLinks({
       href: schemePath + "/postcode",
       visuallyHiddenText: "postcode"
-    }) if not isLocked
+    }) if not isCompleted
   }, {
     key: {
       text: "Local authority"
@@ -73,7 +73,7 @@
     actions: actionLinks({
       href: schemePath + "/local-authority",
       visuallyHiddenText: "local authority"
-    }) if not isLocked
+    }) if not isCompleted
   } if not hasPostcode, {
     key: {
       text: "Reason you don’t know the postcode or local authority"
@@ -84,7 +84,7 @@
     actions: actionLinks({
       href: schemePath + "/local-authority",
       visuallyHiddenText: "the reason you don’t know the postcode or local authority"
-    }) if not isLocked
+    }) if not isCompleted
   } if not hasPostcode and not hasLocalAuthority]
 }) }}
 
@@ -100,7 +100,7 @@
     actions: actionLinks({
       href: schemePath + "/client-groups",
       visuallyHiddenText: "client groups"
-    }) if not isLocked
+    }) if not isCompleted
   }, {
     key: {
       text: "Registered care home"
@@ -111,7 +111,7 @@
     actions: actionLinks({
       href: schemePath + "/type-of-registered-home",
       visuallyHiddenText: "registered care home"
-    }) if not isLocked
+    }) if not isCompleted
   }, {
     key: {
       text: "Level of support given"
@@ -122,7 +122,7 @@
     actions: actionLinks({
       href: schemePath + "/type-of-support",
       visuallyHiddenText: "type of support"
-    }) if not isLocked
+    }) if not isCompleted
   }, {
     key: {
       text: "Intended length of stay"
@@ -133,7 +133,7 @@
     actions: actionLinks({
       href: schemePath + "/intended-stay",
       visuallyHiddenText: "intended length of stay"
-    }) if not isLocked
+    }) if not isCompleted
   }]
 }) }}
 
@@ -149,7 +149,7 @@
     actions: actionLinks({
       href: schemePath + "/type-of-unit",
       visuallyHiddenText: "type of unit"
-    }) if not isLocked
+    }) if not isCompleted
   }, {
     key: {
       text: "Number of units"
@@ -160,7 +160,7 @@
     actions: actionLinks({
       href: schemePath + "/units",
       visuallyHiddenText: "number of units"
-    }) if not isLocked
+    }) if not isCompleted
   }, {
     key: {
       text: "Type of building"
@@ -171,7 +171,7 @@
     actions: actionLinks({
       href: schemePath + "/type-of-property",
       visuallyHiddenText: "type of building"
-    }) if not isLocked
+    }) if not isCompleted
   }, {
     key: {
       text: "Wheelchair adaptation"
@@ -182,7 +182,7 @@
     actions: actionLinks({
       href: schemePath + "/is-adapted",
       visuallyHiddenText: "if property has been built or adapted to wheelchair-user standards"
-    }) if not isLocked
+    }) if not isCompleted
   }]
 }) }}
 
@@ -194,11 +194,11 @@
       text: "Scheme dates"
     },
     value: {
-      text: (scheme["start-date"] | textFromInputValue) + (" to " + (scheme["end-date"] | textFromInputValue) if scheme["end-date-known"] == "true")
+      html: (scheme["start-date"] | textFromInputValue) + (" to " + (scheme["end-date"] | textFromInputValue) if scheme["end-date-known"] == "true")
     },
     actions: actionLinks({
       href: schemePath + "/dates",
       visuallyHiddenText: "scheme dates"
-    }) if not isLocked
+    }) if not isCompleted
   }]
 }) }}

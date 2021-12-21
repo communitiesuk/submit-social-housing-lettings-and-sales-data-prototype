@@ -38,18 +38,19 @@
 
   {{ macro.heading(title) }}
 
-  {{ macro.schemeStatusTagHtml(scheme.status, "govuk-!-margin-bottom-6") }}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters">
       {% include "schemes/_scheme-summary.njk" %}
 
-      {% if scheme.status == "Draft" %}
-        {{ govukButton(decorate({
-          text: "Submit scheme for approval",
-          value: "In review"
-        }, ["schemes", scheme.id, "status"])) }}
-      {% endif %}
+      {# TODO: Decide on policy around schemes/logs #}
+      {{ govukDetails({
+        summaryText: "Why can’t I change some of these answers?",
+        html: "We ask different questions in logs based on the answers you give us."
+      }) }}
+
+      {{ govukButton({
+        text: "Save changes"
+      }) }}
     </div>
   </div>
 {% endblock %}
