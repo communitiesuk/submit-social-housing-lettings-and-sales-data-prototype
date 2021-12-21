@@ -81,7 +81,29 @@
       }) if not isCompleted
     } if isRenter, {
       key: {
-        text: "Care home accomodation"
+        text: "Care home accommodation"
+      },
+      value: {
+        text: log[section.id]["outgoings-includes-care-home"] | textFromInputValue(data.questions["yes-no"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/outgoings-includes-care-home",
+        visuallyHiddenText: "if care home accommodation"
+      }) if not isCompleted
+    }, {
+      key: {
+        text: "Care home charges"
+      },
+      value: {
+        text: log[section.id]["outgoings-care-home"] | sterling
+      },
+      actions: actionLinks({
+        href: sectionPath + "/outgoings-includes-care-home",
+        visuallyHiddenText: "care home charges"
+      }) if not isCompleted
+    } if isCareHome, {
+      key: {
+        text: "Household rent and charges"
       },
       value: {
         text: log[section.id]["outgoings-value"] | sterling
@@ -92,14 +114,14 @@
       }) if not isCompleted
     } if isRenter and not isCareHome, {
       key: {
-        text: "Will there be an outstanding amount for basic rent and eligible charges?"
+        text: "Outstanding amount for basic rent and charges"
       },
       value: {
         text: log[section.id]["outgoings-after-benefits"] | textFromInputValue(data.questions["yes-no"])
       },
       actions: actionLinks({
         href: sectionPath + "/outgoings-after-benefits",
-        visuallyHiddenText: "if there will be an outstanding amount for basic rent and eligible charges"
+        visuallyHiddenText: "outstanding amount for basic rent and charges"
       }) if not isCompleted
     } if isRenter and hasIncomeBenefits, {
       key: {
