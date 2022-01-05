@@ -1,7 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set period = log[section.id]["income-period"] | replace("ly", "") %}
-{% set title = "How much income does the household have in total per " + period + "?" %}
+{% set title = "How much income does the household have in total every " + period + "?" %}
 {% set questionId = "income-value" %}
 
 {% block question %}
@@ -16,7 +16,7 @@
       text: "£"
     },
     suffix: {
-      text: "per " + period
+      text: "every " + period
     }
   }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

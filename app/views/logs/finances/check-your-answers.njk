@@ -1,6 +1,16 @@
 {% extends "layouts/check-answers.njk" %}
 
-{% set period = log[section.id]["income-period"] | replace("ly", "") %}
+{% set inPeriod = log[section.id]["income-period"] | replace("ly", "") %}
+{% set outgoingsPeriod = log[section.id]["outgoings-period"] %}
+{% if outgoingsPeriod == "fortnightly" %}
+  {% set outPeriod = "every 2 weeks" %}
+{% elif outgoingsPeriod == "every-4-weeks" %}
+  {% set outPeriod = "every 4 weeks" %}
+{% elif outgoingsPeriod == "monthly" %}
+  {% set outPeriod = "every month" %}
+{% else %}
+  {% set outPeriod = "every week" %}
+{% endif %}
 {% set hasIncomeBenefits =
   (log[section.id]["income-benefits"] !== "none") and
   (log[section.id]["income-benefits"] !== "unknown") and
@@ -26,10 +36,10 @@
       }) if not isCompleted
     }, {
       key: {
-        text: "Total household income per " + period
+        text: "Total household income"
       },
       value: {
-        text: log[section.id]["income-value"] | sterling
+        text: log[section.id]["income-value"] | sterling + " every " + inPeriod
       },
       actions: actionLinks({
         href: sectionPath + "/income-value",
@@ -106,7 +116,7 @@
         text: "Household rent and charges"
       },
       value: {
-        text: log[section.id]["outgoings-value"] | sterling
+        text: log[section.id]["outgoings-value"] | sterling + " " + outPeriod
       },
       actions: actionLinks({
         href: sectionPath + "/outgoings-value",
@@ -128,7 +138,7 @@
         text: "Estimated outstanding amount"
       },
       value: {
-        text: log[section.id]["outgoings-outstanding"] | sterling
+        text: log[section.id]["outgoings-outstanding"] | sterling + " " + outPeriod
       },
       actions: actionLinks({
         href: sectionPath + "/outgoings-outstanding",

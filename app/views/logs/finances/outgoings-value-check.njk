@@ -6,9 +6,9 @@
 {% elif outgoingsPeriod == "every-4-weeks" %}
   {% set period = "every 4 weeks" %}
 {% elif outgoingsPeriod == "monthly" %}
-  {% set period = "per month" %}
+  {% set period = "every month" %}
 {% else %}
-  {% set period = "per week" %}
+  {% set period = "every week" %}
 {% endif %}
 {% set title = "Value for rent is outside of the expected range" %}
 {% set questionId = "outgoings-value-correct" %}
