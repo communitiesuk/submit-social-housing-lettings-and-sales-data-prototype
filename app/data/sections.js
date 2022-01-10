@@ -67,18 +67,18 @@ export function sections (log) {
       'lead-tenant/gender',
       'lead-tenant/nationality',
       'lead-tenant/working-situation',
-      // Tenant 2
-      'tenant-2/known',
-      'tenant-2/relationship-to-lead-tenant',
-      'tenant-2/age',
-      'tenant-2/gender',
-      'tenant-2/working-situation',
-      // Tenant 3
-      'tenant-3/known',
-      'tenant-3/relationship-to-lead-tenant',
-      'tenant-3/age',
-      'tenant-3/gender',
-      'tenant-3/working-situation',
+      // Person 2
+      'person-2/known',
+      'person-2/relationship-to-lead-tenant',
+      'person-2/age',
+      'person-2/gender',
+      'person-2/working-situation',
+      // Person 3
+      'person-3/known',
+      'person-3/relationship-to-lead-tenant',
+      'person-3/age',
+      'person-3/gender',
+      'person-3/working-situation',
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot) => [{
@@ -87,19 +87,19 @@ export function sections (log) {
       storedData: keyPathRoot.concat('number-in-household'),
       values: ['1']
     }, {
-      currentPath: `${sectionPath}/tenant-2/known`,
+      currentPath: `${sectionPath}/person-2/known`,
       forkPath: `${sectionPath}/check-your-answers`,
-      storedData: keyPathRoot.concat('tenant-2-known'),
+      storedData: keyPathRoot.concat('person-2-known'),
       values: ['false']
     }, {
-      currentPath: `${sectionPath}/tenant-2/working-situation`,
+      currentPath: `${sectionPath}/person-2/working-situation`,
       forkPath: `${sectionPath}/check-your-answers`,
       storedData: keyPathRoot.concat('number-in-household'),
       values: ['2']
     }, {
-      currentPath: `${sectionPath}/tenant-3/known`,
+      currentPath: `${sectionPath}/person-3/known`,
       forkPath: `${sectionPath}/check-your-answers`,
-      storedData: keyPathRoot.concat('tenant-3-known'),
+      storedData: keyPathRoot.concat('person-3-known'),
       values: ['false']
     }]
   }
