@@ -31,6 +31,6 @@ export default [{
   text: 'Other',
   value: '0'
 }, {
-  text: 'Tenant prefers not to say',
+  text: 'Person prefers not to say',
   value: '10'
 }]

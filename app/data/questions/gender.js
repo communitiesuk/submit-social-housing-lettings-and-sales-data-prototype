@@ -8,6 +8,6 @@ export default [{
   text: 'Non-binary',
   value: 'other'
 }, {
-  text: 'Tenant prefers not to say',
+  text: 'Person prefers not to say',
   value: 'prefer-not-to-say'
 }]
