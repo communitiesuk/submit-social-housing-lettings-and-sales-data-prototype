@@ -27,13 +27,13 @@
   }) }}
 
   {% for i in range(1, householdSize + 1) %}
-    {% set itemId = "lead-tenant" if i == 1 else "tenant-" + i %}
+    {% set itemId = "lead-tenant" if i == 1 else "person-" + i %}
     {% set isLeadTenant = itemId == "lead-tenant" %}
     {% set isKnown = "true" %}
     {% if not isLeadTenant %}
       {% set isKnown = log[section.id][itemId + "-known"] == "true" %}
     {% endif %}
-    {% set name = "lead tenant" if isLeadTenant else "tenant " + i %}
+    {% set name = "lead tenant" if isLeadTenant else "person " + i %}
 
     {{ rigSummaryCard({
       classes: "govuk-!-margin-bottom-6",
