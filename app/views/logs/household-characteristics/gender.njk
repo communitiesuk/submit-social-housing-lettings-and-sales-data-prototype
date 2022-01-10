@@ -4,7 +4,7 @@
 {% if isLeadTenant %}
   {% set name = "the lead tenant" %}
 {% else %}
-  {% set name = itemId | replace("-", " ") | noOrphans %}
+  {% set name = itemId | replace("-", " ") %}
 {% endif %}
 {% set title = "Which of these best describes " + name + "’s gender identity?" %}
 {% set questionId = "gender" %}
