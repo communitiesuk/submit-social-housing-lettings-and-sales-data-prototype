@@ -49,6 +49,6 @@ export default [{
   text: 'From any other country',
   value: '12'
 }, {
-  text: 'Tenant prefers not to say',
+  text: 'Person prefers not to say',
   value: '13'
 }]

@@ -3,6 +3,9 @@ export default [{
   value: '1'
 }, {
   text: 'Child',
+  hint: {
+    text: 'Must be eligible for child benefit, aged under 16 or under 20 if still in full-time education'
+  },
   value: '2'
 }, {
   text: 'Other',
@@ -10,6 +13,6 @@ export default [{
 }, {
   divider: 'or'
 }, {
-  text: 'Tenant prefers not to say',
+  text: 'Person prefers not to say',
   value: 'prefer-not-to-say'
 }]
