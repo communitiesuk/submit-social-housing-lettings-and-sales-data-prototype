@@ -1,71 +1,54 @@
 export default [{
-  text: '1. UK national resident in UK',
-  answer: 'UK national resident in UK',
+  text: 'UK national resident in UK',
   value: '1'
 }, {
-  text: '2. UK national returning from residence overseas',
-  answer: 'UK national returning from residence overseas',
+  text: 'UK national returning from residence overseas',
   value: '2'
 }, {
-  text: '14. Bulgarian',
-  answer: 'Bulgarian',
+  text: 'Bulgarian',
   value: '14'
 }, {
-  text: '16. Croatian',
-  answer: 'Croatian',
+  text: 'Croatian',
   value: '16'
 }, {
-  text: '3. Czech',
-  answer: 'Czech',
+  text: 'Czech',
   value: '3'
 }, {
-  text: '4. Estonian',
-  answer: 'Estonian',
+  text: 'Estonian',
   value: '4'
 }, {
-  text: '5. Hungarian',
-  answer: 'Hungarian',
+  text: 'Hungarian',
   value: '5'
 }, {
-  text: '17. Irish',
-  answer: 'Irish',
+  text: 'Irish',
   value: '17'
 }, {
-  text: '6. Latvian',
-  answer: 'Latvian',
+  text: 'Latvian',
   value: '6'
 }, {
-  text: '7. Lithuanian',
-  answer: 'Lithuanian',
+  text: 'Lithuanian',
   value: '7'
 }, {
-  text: '8. Polish',
-  answer: 'Polish',
+  text: 'Polish',
   value: '8'
 }, {
-  text: '15. Romanian',
-  answer: 'Romanian',
+  text: 'Romanian',
   value: '15'
 }, {
-  text: '9. Slovakian',
-  answer: 'Slovakian',
+  text: 'Slovakian',
   value: '9'
 }, {
-  text: '10. Slovenian',
-  answer: 'Slovenian',
+  text: 'Slovenian',
   value: '10'
 }, {
-  text: '11. From another European Economic Area (EEA) country',
-  answer: 'From another European Economic Area (EEA) country',
+  text: 'From another European Economic Area (EEA) country',
   value: '11'
 }, {
   divider: 'or'
 }, {
-  text: '12. From any other country',
-  answer: 'From any other country',
+  text: 'From any other country',
   value: '12'
 }, {
-  text: '13. Tenant prefers not to say',
-  answer: 'Tenant prefers not to say',
+  text: 'Tenant prefers not to say',
   value: '13'
 }]

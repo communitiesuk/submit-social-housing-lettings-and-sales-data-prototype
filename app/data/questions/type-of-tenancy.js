@@ -1,25 +1,19 @@
 export default [{
-  text: '6. Fixed term – Secure',
-  answer: 'Fixed term – Secure',
+  text: 'Fixed term – Secure',
   value: 'fixed-secure'
 }, {
-  text: '1. Fixed term – Assured Shorthold Tenancy (AST)',
-  answer: 'Fixed term – Assured Shorthold Tenancy (AST)',
+  text: 'Fixed term – Assured Shorthold Tenancy (AST)',
   value: 'fixed-ast'
 }, {
-  text: '7. Lifetime – Secure',
-  answer: 'Lifetime – Secure',
+  text: 'Lifetime – Secure',
   value: 'lifetime-secure'
 }, {
-  text: '2. Lifetime – Assured',
-  answer: 'Lifetime – Assured',
+  text: 'Lifetime – Assured',
   value: 'lifetime-assured'
 }, {
-  text: '6. License agreement',
-  answer: 'License agreement',
+  text: 'License agreement',
   value: 'license'
 }, {
-  text: '3. Other',
-  answer: 'Other',
+  text: 'Other',
   value: 'other'
 }]
