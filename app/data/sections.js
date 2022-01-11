@@ -8,13 +8,13 @@ export function sections (log) {
   }
 
   /**
-   * About this log
+   * Tailor your log
    */
   const aboutThisLog = {
-    id: 'about-this-log',
-    title: 'About this log',
+    id: 'tailor-log',
+    title: 'Tailor your log',
     group: 'before-you-start',
-    paths: getPaths('about-this-log', [
+    paths: getPaths('tailor-log', [
       'gdpr',
       'letting-or-sale',
       'organisation',
@@ -386,12 +386,12 @@ export function sections (log) {
     group: 'submission'
   }
 
-  // Answers to questions in ‘About this log’ affect questions shown in task list
+  // Answers to questions in ‘Tailor your log’ affect questions shown in task list
   let isSupportedHousing
   let isRenewal
-  if (log['about-this-log']) {
-    isSupportedHousing = log['about-this-log']['type-of-need'] === 'supported'
-    isRenewal = log['about-this-log']['letting-renewal'] === 'true'
+  if (log['tailor-log']) {
+    isSupportedHousing = log['tailor-log']['type-of-need'] === 'supported'
+    isRenewal = log['tailor-log']['letting-renewal'] === 'true'
   }
 
   return [

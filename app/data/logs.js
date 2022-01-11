@@ -3,7 +3,7 @@ export default {
     postCode: 'BN17 6RJ',
     updated: '2021-07-29',
     updatedBy: 'DPOO1',
-    'about-this-log': {
+    'tailor-log': {
       gdpr: 'true',
       'organisation-manager': 'CHILD1',
       'organisation-owner': 'PARENT1',
@@ -77,7 +77,7 @@ export default {
     postCode: 'AA1 7BB',
     submitted: '2021-07-29',
     submittedBy: 'DPOO1',
-    'about-this-log': {
+    'tailor-log': {
       gdpr: 'true',
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
@@ -95,7 +95,7 @@ export default {
     postCode: 'BN17 6RB',
     submitted: '2021-07-29',
     submittedBy: 'DPOO1',
-    'about-this-log': {
+    'tailor-log': {
       gdpr: 'true',
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
@@ -113,7 +113,7 @@ export default {
     postCode: 'BN17 6RC',
     submitted: '2021-07-26',
     submittedBy: 'DPOO1',
-    'about-this-log': {
+    'tailor-log': {
       gdpr: 'true',
       schemeId: 'EXAMPLE',
       'organisation-manager': 'PARENT1',
@@ -132,7 +132,7 @@ export default {
     postCode: 'BN2 8FG',
     submitted: '2021-07-25',
     submittedBy: 'DPOO1',
-    'about-this-log': {
+    'tailor-log': {
       gdpr: 'true',
       schemeId: 'EXAMPLE',
       'organisation-manager': 'PARENT1',

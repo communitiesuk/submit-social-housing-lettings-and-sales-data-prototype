@@ -27,7 +27,7 @@ export const validations = (req) => {
    */
   return {
     logs: {
-      'about-this-log': {
+      'tailor-log': {
         gdpr: [
           check(getFieldName('gdpr'))
             .not()
