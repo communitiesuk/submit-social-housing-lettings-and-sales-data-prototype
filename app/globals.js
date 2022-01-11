@@ -61,7 +61,7 @@ export default () => {
       let status
 
       switch (section.id) {
-        case 'about-this-log':
+        case 'tailor-log':
           if (log[section.id]?.completed === 'true') {
             status = 'completed'
           } else {
@@ -72,7 +72,7 @@ export default () => {
           status = 'cannotStart'
           break
         default:
-          if (log['about-this-log']?.completed === 'true') {
+          if (log['tailor-log']?.completed === 'true') {
             if (log[section.id]?.completed === 'true') {
               status = 'completed'
             } else if (log[section.id] === undefined) {

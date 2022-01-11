@@ -17,7 +17,7 @@
   (log[section.id]["income-benefits"] !== "prefers-not-to-say")
 %}
 {% set hasOutgoingsAfterBenefits = log[section.id]["outgoings-after-benefits"] == "true" %}
-{% set isSupported = log["about-this-log"]["type-of-need"] == "supported" %}
+{% set isSupported = log["tailor-log"]["type-of-need"] == "supported" %}
 {% set isRenter = log[section.id]["outgoings-includes-rent"] == "true" | string %}
 {% set isCareHome = log[section.id]["outgoings-includes-care-home"] == "true" | string %}
 

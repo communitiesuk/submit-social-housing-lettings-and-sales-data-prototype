@@ -2,8 +2,8 @@
 
 {# Some answers may come from a scheme #}
 {% macro schemeAnswer(field) -%}
-  {%- if log["about-this-log"]["type-of-need"] == "supported" -%}
-    {%- set schemeId = log["about-this-log"]["schemeId"] -%}
+  {%- if log["tailor-log"]["type-of-need"] == "supported" -%}
+    {%- set schemeId = log["tailor-log"]["schemeId"] -%}
     {{ data.schemes[schemeId][field] }}
   {%- else -%}
     {{ log[section.id][field] }}
@@ -22,8 +22,8 @@
 {% set isNewlet = log[section.id]["is-relet"] == "false" %}
 {% set isRepaired = log[section.id]["repairs"] == "true" %}
 {% set isNewprop = log[section.id]["reason-for-non-relet"] == "newprop" %}
-{% set isSupported = log["about-this-log"]["type-of-need"] == "supported" %}
-{% set isRenewal = log["about-this-log"]["letting-renewal"] == "true" %}
+{% set isSupported = log["tailor-log"]["type-of-need"] == "supported" %}
+{% set isRenewal = log["tailor-log"]["letting-renewal"] == "true" %}
 
 {# Answer objects #}
 {# Hardcode `Arun` as LA for now. Maybe add live postcode lookup later. #}
