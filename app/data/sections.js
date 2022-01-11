@@ -16,7 +16,7 @@ export function sections (log) {
     group: 'before-you-start',
     paths: getPaths('about-this-log', [
       'gdpr',
-      'sale-or-letting',
+      'letting-or-sale',
       'organisation',
       'type-of-need',
       'letting-renewal',
@@ -40,9 +40,9 @@ export function sections (log) {
       currentPath: `${sectionPath}/scheme`,
       skipTo: `${sectionPath}/letting-renewal`
     }, {
-      currentPath: `${sectionPath}/sale-or-letting`,
+      currentPath: `${sectionPath}/letting-or-sale`,
       forkPath: `${sectionPath}/sale-completion-date`,
-      storedData: keyPathRoot.concat('sale-or-letting'),
+      storedData: keyPathRoot.concat('letting-or-sale'),
       values: ['sale']
     }, {
       currentPath: `${sectionPath}/sale-completion-date`,

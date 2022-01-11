@@ -44,11 +44,11 @@ export const validations = (req) => {
             .contains('Select…')
             .withMessage('Select the organisation that manages this property')
         ],
-        'sale-or-letting': [
-          check(getFieldName('sale-or-letting'))
+        'letting-or-sale': [
+          check(getFieldName('letting-or-sale'))
             .not()
             .isEmpty()
-            .withMessage('Tell us if it’s a sale or letting')
+            .withMessage('Tell us if it’s a letting or sale')
         ],
         'letting-renewal': [
           check(getFieldName('letting-renewal'))

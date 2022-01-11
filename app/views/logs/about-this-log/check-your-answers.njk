@@ -1,7 +1,7 @@
 {% extends "layouts/check-answers.njk" %}
 
-{% set isLet = log[section.id]["sale-or-letting"] == "letting" %}
-{% set isSale = log[section.id]["sale-or-letting"] == "sale" %}
+{% set isLet = log[section.id]["letting-or-sale"] == "letting" %}
+{% set isSale = log[section.id]["letting-or-sale"] == "sale" %}
 {% set isSupported = log[section.id]["type-of-need"] == "supported" %}
 {% set isCompleted = log[section.id]["completed"] == "true" %}
 
@@ -9,14 +9,14 @@
   {{ govukSummaryList({
     rows: [{
       key: {
-        text: "Sale or letting"
+        text: "Letting or sale"
       },
       value: {
-        text: log[section.id]["sale-or-letting"] | textFromInputValue(data.questions["sale-or-letting"])
+        text: log[section.id]["letting-or-sale"] | textFromInputValue(data.questions["letting-or-sale"])
       },
       actions: actionLinks({
-        href: sectionPath + "/sale-or-letting",
-        visuallyHiddenText: "if sale or letting"
+        href: sectionPath + "/letting-or-sale",
+        visuallyHiddenText: "if letting or sale"
       }) if not isCompleted
     }, {
       key: {

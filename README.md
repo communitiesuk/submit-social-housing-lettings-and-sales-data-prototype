@@ -1,4 +1,4 @@
-# Submit CORE logs for social housing sales and lettings (prototype)
+# Submit social housing lettings and sales data (CORE) prototype
 
 This prototype is based on the [GOV.UK Prototype Rig](https://govuk-prototype-rig.herokuapp.com).
 

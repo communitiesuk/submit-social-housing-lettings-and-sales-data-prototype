@@ -1,6 +1,6 @@
 {
   "name": "core-prototype",
-  "description": "Prototype for the ‘Submit CORE logs for social housing sales and lettings’ service",
+  "description": "Prototype for the ‘Submit social housing lettings and sales data (CORE)’ service",
   "version": "0.1.0",
   "private": true,
   "type": "module",

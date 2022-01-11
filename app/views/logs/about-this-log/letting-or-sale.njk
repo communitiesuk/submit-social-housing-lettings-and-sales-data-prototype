@@ -1,6 +1,6 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Is this a sale or letting?" %}
+{% set title = "Is this a letting or sale?" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -9,6 +9,6 @@
         text: macro.heading(title, caption)
       }
     },
-    items: data.questions["sale-or-letting"]
-  }, ["logs", log.id, section.id, "sale-or-letting"])) }}
+    items: data.questions["letting-or-sale"]
+  }, ["logs", log.id, section.id, "letting-or-sale"])) }}
 {% endblock %}
