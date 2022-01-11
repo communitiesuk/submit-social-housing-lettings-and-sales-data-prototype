@@ -1,19 +1,15 @@
 export default [{
-  text: '1. All',
-  answer: 'All',
+  text: 'All',
   value: 'all'
 }, {
-  text: '2. Some',
-  answer: 'Some',
+  text: 'Some',
   value: 'some'
 }, {
-  text: '3. None',
-  answer: 'None',
+  text: 'None',
   value: 'none'
 }, {
   divider: 'or'
 }, {
-  text: '4. Don’t know',
-  answer: 'Don’t know',
+  text: 'Don’t know',
   value: 'unknown'
 }]

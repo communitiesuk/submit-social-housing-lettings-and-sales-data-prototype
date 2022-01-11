@@ -1,19 +1,15 @@
 export default [{
-  text: '1. Partner',
-  answer: 'Partner',
+  text: 'Partner',
   value: '1'
 }, {
-  text: '2. Child',
-  answer: 'Child',
+  text: 'Child',
   value: '2'
 }, {
-  text: '3. Other',
-  answer: 'Other',
+  text: 'Other',
   value: '3'
 }, {
   divider: 'or'
 }, {
-  text: '4. Tenant prefers not to say',
-  answer: 'Tenant prefers not to say',
+  text: 'Tenant prefers not to say',
   value: 'prefer-not-to-say'
 }]
