@@ -33,7 +33,7 @@
       actions: actionLinks({
         href: sectionPath + "/income-period",
         visuallyHiddenText: "household’s combined income after tax"
-      }) if not isCompleted
+      })
     }, {
       key: {
         text: "Total household income"
@@ -44,7 +44,7 @@
       actions: actionLinks({
         href: sectionPath + "/income-value",
         visuallyHiddenText: "total household income"
-      }) if not isCompleted
+      })
     }, {
       key: {
         text: "Housing-related benefits received"
@@ -55,7 +55,7 @@
       actions: actionLinks({
         href: sectionPath + "/income-benefits",
         visuallyHiddenText: "housing-related benefits received"
-      }) if not isCompleted
+      })
     }, {
       key: {
         text: "Household income from Universal Credit, state pension or benefits"
@@ -66,7 +66,7 @@
       actions: actionLinks({
         href: sectionPath + "/income-benefits-portion",
         visuallyHiddenText: "household income from Universal Credit, state pension or benefits"
-      }) if not isCompleted
+      })
     }, {
       key: {
         text: "Does the household pay rent or charges?"
@@ -77,7 +77,7 @@
       actions: actionLinks({
         href: sectionPath + "/outgoings-includes-rent",
         visuallyHiddenText: "if the household pay rent or charges"
-      }) if not isCompleted
+      })
     } if isSupported, {
       key: {
         text: "Frequency of household rent or charges"
@@ -88,7 +88,7 @@
       actions: actionLinks({
         href: sectionPath + "/outgoings-period",
         visuallyHiddenText: "frequency of household rent or charges"
-      }) if not isCompleted
+      })
     } if isRenter, {
       key: {
         text: "Care home accommodation"
@@ -99,7 +99,7 @@
       actions: actionLinks({
         href: sectionPath + "/outgoings-includes-care-home",
         visuallyHiddenText: "if care home accommodation"
-      }) if not isCompleted
+      })
     }, {
       key: {
         text: "Care home charges"
@@ -110,7 +110,7 @@
       actions: actionLinks({
         href: sectionPath + "/outgoings-includes-care-home",
         visuallyHiddenText: "care home charges"
-      }) if not isCompleted
+      })
     } if isCareHome, {
       key: {
         text: "Household rent and charges"
@@ -121,7 +121,7 @@
       actions: actionLinks({
         href: sectionPath + "/outgoings-value",
         visuallyHiddenText: "total household rent or charges"
-      }) if not isCompleted
+      })
     } if isRenter and not isCareHome, {
       key: {
         text: "Outstanding amount for basic rent and charges"
@@ -132,7 +132,7 @@
       actions: actionLinks({
         href: sectionPath + "/outgoings-after-benefits",
         visuallyHiddenText: "outstanding amount for basic rent and charges"
-      }) if not isCompleted
+      })
     } if isRenter and hasIncomeBenefits, {
       key: {
         text: "Estimated outstanding amount"
@@ -143,7 +143,7 @@
       actions: actionLinks({
         href: sectionPath + "/outgoings-outstanding",
         visuallyHiddenText: "estimated outstanding amount"
-      }) if not isCompleted
+      })
     } if isRenter and hasIncomeBenefits and hasOutgoingsAfterBenefits]
   }) }}
 {% endblock %}
