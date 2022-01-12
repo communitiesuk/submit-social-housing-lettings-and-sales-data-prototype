@@ -1,0 +1,32 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Was the reason for leaving a direct result of the removal of the spare room subsidy or benefit cap introduced from 2013?" %}
+{% set questionId = "spare-room-subsidy" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: [{
+      text: "Yes - removal of the spare room subsidy",
+      value: "Yes - removal of the spare room subsidy"
+    }, {
+      text: "Yes - benefit cap",
+      value: "Yes - benefit cap"
+    }, {
+      text: "Yes - both",
+      value: "Yes - both"
+    }, {
+      text: "No",
+      value: "No"
+    }, {
+      divider: "or"
+    }, {
+      text: "Don't know",
+      value: "Don't know"
+    }]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Where was the household immediately before this letting?" %}
+{% set questionId = "previous-accommodation" %}
+
+{% block question %}
+  {# Only shown for supported housing renewals #}
+  {{ govukRadios(decorate({
+    formGroup: {
+      classes: "app-form-group--heading-dividers"
+    },
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    hint: {
+      text: "This is where the household was the night before they moved."
+    },
+    items: [{
+      divider: "Social housing"
+    }, {
+      text: "Extra care housing",
+      value: "Extra care housing"
+    } if data.features["2022-23"].on == true, {
+      text: "Fixed-term local authority general needs tenancy",
+      value: "Fixed-term local authority general needs tenancy"
+    }, {
+      text: "Fixed-term private registered provider (PRP) general needs tenancy",
+      value: "Fixed-term private registered provider (PRP) general needs tenancy"
+    }, {
+      text: "Lifetime local authority general needs tenancy",
+      value: "Lifetime local authority general needs tenancy"
+    }, {
+      text: "Lifetime private registered provider (PRP) general needs tenancy",
+      value: "Lifetime private registered provider (PRP) general needs tenancy"
+    }, {
+      text: "Sheltered accommodation",
+      value: "Sheltered accommodation"
+    } if data.features["2022-23"].on != true, {
+      text: "Specialist retirement housing",
+      value: "Specialist retirement housing"
+    } if data.features["2022-23"].on == true, {
+      text: "Supported housing",
+      value: "Supported housing"
+    } if data.features["2022-23"].on != true, {
+      text: "Other supported housing",
+      value: "Other supported housing"
+    } if data.features["2022-23"].on == true, {
+      text: "Private sector tenancy",
+      value: "Private sector tenancy"
+    } if data.features["2022-23"].on != true, {
+      divider: "Owner occupation"
+    }, {
+      text: "Living with friends or family",
+      value: "Living with friends or family"
+    }, {
+      text: "Owner occupation (low-cost home ownership)",
+      value: "Owner occupation (low-cost home ownership)"
+    }, {
+      text: "Owner occupation (private)",
+      value: "Owner occupation (private)"
+    }, {
+      divider: "Temporary accommodation"
+    }, {
+      text: "Bed and breakfast",
+      value: "Bed and breakfast"
+    }, {
+      text: "Direct access hostel",
+      value: "Direct access hostel"
+    }, {
+      text: "Hospital",
+      value: "Hospital"
+    }, {
+      text: "Prison or approved probation hostel",
+      value: "Prison or approved probation hostel"
+    }, {
+      text: "Rough sleeping",
+      value: "Rough sleeping"
+    }, {
+      text: "Other temporary accommodation",
+      value: "Other temporary accommodation"
+    }, {
+      divider: "Other"
+    }, {
+      text: "Children’s home or foster care",
+      value: "Children’s home or foster care"
+    }, {
+      text: "Home Office asylum support",
+      value: "Home Office asylum support"
+    }, {
+      text: "Mobile home or caravan",
+      value: "Mobile home or caravan"
+    }, {
+      text: "Refuge",
+      value: "Refuge"
+    }, {
+      text: "Residential care home",
+      value: "Residential care home"
+    }, {
+      text: "Tied housing or rented with job",
+      value: "Tied housing or rented with job"
+    }, {
+      text: "Other accommodation",
+      value: "Other accommodation"
+    }]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}

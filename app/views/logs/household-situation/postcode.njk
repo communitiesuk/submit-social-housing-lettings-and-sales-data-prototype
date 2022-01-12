@@ -1,0 +1,35 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Do you know the postcode of the household’s last settled home?" %}
+
+{% block question %}
+  {% set postcodeHtml %}
+    {{ govukInput(decorate({
+      label: {
+        text: "Postcode"
+      },
+      classes: "govuk-input--width-5"
+    }, ["logs", log.id, section.id, "postcode"])) }}
+  {% endset %}
+
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    hint: {
+      text: "This is also known as the household’s ‘last settled accommodation’."
+    },
+    items: [{
+      value: "true",
+      text: "Yes",
+      conditional: {
+        html: postcodeHtml
+      }
+    }, {
+      value: "false",
+      text: "No"
+    }]
+  }, ["logs", log.id, section.id, "postcode-known"])) }}
+{% endblock %}

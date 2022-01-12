@@ -10,7 +10,7 @@ export function sections (log) {
   /**
    * Tailor your log
    */
-  const aboutThisLog = {
+  const tailorLog = {
     id: 'tailor-log',
     title: 'Tailor your lettings log',
     group: 'before-you-start',
@@ -92,7 +92,72 @@ export function sections (log) {
   const householdSituation = {
     id: 'household-situation',
     title: 'Household situation',
-    group: 'household'
+    group: 'household',
+    paths: getPaths('household-situation', [
+      'time-lived-in-area',
+      'time-on-waiting-list',
+      'reason-for-leaving-last-settled-home',
+      'previous-accommodation',
+      'previous-homelessness',
+      'postcode',
+      'local-authority',
+      'given-reasonable-preference',
+      'allocation',
+      'referral',
+      'check-your-answers'
+    ]),
+    forks: (sectionPath, keyPathRoot, req) => {
+      const is202223 = req.session.data.features['2022-23'].on === true
+      return [{
+        currentPath: `${sectionPath}/previous-accommodation`,
+        skipTo: is202223 ? `${sectionPath}/previous-homelessness` : `${sectionPath}/spare-room-subsidy`
+      }, {
+        currentPath: `${sectionPath}/postcode`,
+        forkPath: `${sectionPath}/given-reasonable-preference`,
+        storedData: keyPathRoot.concat('postcode-known'),
+        values: ['true']
+      }, {
+        currentPath: `${sectionPath}/given-reasonable-preference`,
+        forkPath: `${sectionPath}/reasonable-preference`,
+        storedData: keyPathRoot.concat('given-reasonable-preference'),
+        values: ['true']
+      }, {
+        currentPath: `${sectionPath}/reasonable-preference`,
+        skipTo: `${sectionPath}/allocation`
+      }]
+    }
+  }
+
+  const householdSituationRenewal = {
+    id: 'household-situation-renewal',
+    title: 'Household situation',
+    group: 'household',
+    paths: getPaths('household-situation-renewal', [
+      'time-lived-in-area',
+      'reason-for-leaving-last-settled-home',
+      'postcode',
+      'local-authority',
+      'given-reasonable-preference',
+      'allocation',
+      'check-your-answers'
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/reason-for-leaving-last-settled-home`,
+      skipTo: isSupportedHousing ? `${sectionPath}/previous-accommodation-renewal` : `${sectionPath}/postcode`
+    }, {
+      currentPath: `${sectionPath}/postcode`,
+      forkPath: `${sectionPath}/given-reasonable-preference`,
+      storedData: keyPathRoot.concat('postcode-known'),
+      values: ['true']
+    }, {
+      currentPath: `${sectionPath}/given-reasonable-preference`,
+      forkPath: `${sectionPath}/reasonable-preference`,
+      storedData: keyPathRoot.concat('given-reasonable-preference'),
+      values: ['true']
+    }, {
+      currentPath: `${sectionPath}/reasonable-preference`,
+      skipTo: `${sectionPath}/allocation`
+    }]
   }
 
   /**
@@ -400,17 +465,15 @@ export function sections (log) {
   }
 
   return [
-    aboutThisLog,
+    tailorLog,
     householdCharacteristics,
-    householdSituation,
+    ...(!isRenewal ? [householdSituation] : [householdSituationRenewal]),
     householdNeeds,
-    ...(!isSupportedHousing ? [tenancyInformation] : []),
-    ...(isSupportedHousing ? [tenancyInformationSupportedHousing] : []),
+    ...(!isSupportedHousing ? [tenancyInformation] : [tenancyInformationSupportedHousing]),
     ...(!isSupportedHousing && !isRenewal ? [propertyInformation] : []),
     ...(!isSupportedHousing && isRenewal ? [propertyInformationRenewal] : []),
     ...(isSupportedHousing && !isRenewal ? [propertyInformationSupportedHousing] : []),
-    ...(!isSupportedHousing ? [finances] : []),
-    ...(isSupportedHousing ? [financesSupportedHousing] : []),
+    ...(!isSupportedHousing ? [finances] : [financesSupportedHousing]),
     declaration
   ]
 }

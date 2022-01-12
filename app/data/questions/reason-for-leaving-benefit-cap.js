@@ -13,8 +13,8 @@ export default [{
 }, {
   divider: 'or'
 }, {
-  text: 'Prefer not to say',
-  value: 'skip'
+  text: 'Tenant prefers not to say',
+  value: 'prefers-not-to-say'
 }, {
   text: 'Don’t know',
   value: 'unknown'

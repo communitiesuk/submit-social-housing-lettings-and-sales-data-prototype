@@ -115,14 +115,16 @@ export const logRoutes = (router) => {
         view = itemId
       }
 
-      // Property, tenancy information and finance sections have variants
-      // that share the same views
+      // Some sections have variants that share common views
       let sectionViewsDir = sectionId
-      if (sectionId.startsWith('property-information')) {
-        sectionViewsDir = 'property-information'
+      if (sectionId.startsWith('household-situation')) {
+        sectionViewsDir = 'household-situation'
       }
       if (sectionId.startsWith('tenancy-information')) {
         sectionViewsDir = 'tenancy-information'
+      }
+      if (sectionId.startsWith('property-information')) {
+        sectionViewsDir = 'property-information'
       }
       if (sectionId.startsWith('finances')) {
         sectionViewsDir = 'finances'

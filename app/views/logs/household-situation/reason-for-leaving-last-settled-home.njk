@@ -1,0 +1,27 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "What is the tenant’s main reason for the household leaving their last settled home?" %}
+{% set questionId = "reason-for-leaving-last-settled-home" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    formGroup: {
+      classes: "app-form-group--heading-dividers"
+    },
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    hint: {
+      text: "The tenant’s ‘last settled home’ is their last long-standing home. For tenants who were in temporary accommodation or sleeping rough, their last settled home is where they were living previously."
+    },
+    items: data.questions[questionId] if log["tailor-log"]["letting-renewal"] != "true" else [{
+      text: "End of assured shorthold tenancy (no fault)",
+      value: "40"
+    }, {
+      text: "End of fixed term tenancy (no fault)",
+      value: "42"
+    }]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}

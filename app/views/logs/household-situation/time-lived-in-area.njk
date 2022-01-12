@@ -1,0 +1,15 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "How long has the household continuously lived in the local authority area for the new letting?" %}
+{% set questionId = "time-lived-in-area" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions[questionId]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}

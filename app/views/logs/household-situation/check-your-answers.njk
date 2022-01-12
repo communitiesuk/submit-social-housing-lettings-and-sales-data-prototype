@@ -1,0 +1,142 @@
+{% extends "layouts/check-answers.njk" %}
+
+{% set hasPostcode = log[section.id]["postcode-known"] == "true" %}
+{% set isRenewal = log["tailor-log"]["letting-renewal"] == "true" %}
+
+{% block checkAnswers %}
+  {{ govukSummaryList({
+    rows: [{
+      key: {
+        text: "Length of time in local authority area"
+      },
+      value: {
+        text: log[section.id]["time-lived-in-area"] | textFromInputValue(data.questions["time-lived-in-area"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/time-lived-in-area",
+        visuallyHiddenText: "length of time in local authority area"
+      })
+    }, {
+      key: {
+        text: "Length of time on local authority waiting list"
+      },
+      value: {
+        text: log[section.id]["time-on-waiting-list"] | textFromInputValue(data.questions["time-on-waiting-list"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/time-on-waiting-list",
+        visuallyHiddenText: "length of time on local authority waiting list"
+      })
+    } if not isRenewal, {
+      key: {
+        text: "Reason for leaving last settled home"
+      },
+      value: {
+        text: log[section.id]["reason-for-leaving-last-settled-home"] | textFromInputValue(data.questions["reason-for-leaving-last-settled-home"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/reason-for-leaving-last-settled-home",
+        visuallyHiddenText: "reason for leaving last settled home"
+      })
+    }, {
+      key: {
+        text: "Where was the household immediately before this letting?"
+      },
+      value: {
+        text: log[section.id]["previous-accommodation"] | textFromInputValue
+      },
+      actions: actionLinks({
+        href: sectionPath + "/previous-accommodation",
+        visuallyHiddenText: "where the household was immediately before this letting"
+      })
+    } if log[section.id]["previous-accommodation"], {
+      key: {
+        text: "Postcode of last settled home"
+      },
+      value: {
+        text: macro.postcodeHtml(log[section.id]["postcode"], "Arun") if hasPostcode else "Not known"
+      },
+      actions: actionLinks({
+        href: sectionPath + "/postcode",
+        visuallyHiddenText: "postcode of last settled home"
+      })
+    }, {
+      key: {
+        text: "Location of last settled home"
+      },
+      value: {
+        text: log[section.id]["local-authority"] | textFromInputValue(data.questions["local-authorities"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/local-authority",
+        visuallyHiddenText: "location of last settled home"
+      })
+    } if not hasPostcode, {
+      key: {
+        text: "Removal of spare room subsidy or benefit cap"
+      },
+      value: {
+        text: log[section.id]["spare-room-subsidy"] | textFromInputValue(data.questions["spare-room-subsidy"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/spare-room-subsidy",
+        visuallyHiddenText: "removal of spare room subsidy or benefit cap"
+      })
+    } if log[section.id]["spare-room-subsidy"], {
+      key: {
+        text: "Household homeless immediately before letting"
+      },
+      value: {
+        text: log[section.id]["previous-homelessness"] | textFromInputValue(data.questions["previous-homelessness"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/previous-homelessness",
+        visuallyHiddenText: "if household was homeless immediately before letting"
+      })
+    } if not isRenewal, {
+      key: {
+        text: "Household given reasonable preference"
+      },
+      value: {
+        text: log[section.id]["given-reasonable-preference"] | textFromInputValue(data.questions["yes-no-unknown"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/given-reasonable-preference",
+        visuallyHiddenText: "if household was given reasonable preference"
+      })
+    }, {
+      key: {
+        text: "Reason for reasonable preference"
+      },
+      value: {
+        text: log[section.id]["reasonable-preference"] | textFromInputValue(data.questions["reasonable-preference"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/reasonable-preference",
+        visuallyHiddenText: "reason for reasonable preference"
+      })
+    }, {
+      key: {
+        text: "Allocation"
+      },
+      value: {
+        text: log[section.id]["allocation"] | textFromInputValue(data.questions["allocation"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/allocation",
+        visuallyHiddenText: "allocation"
+      })
+    }, {
+      key: {
+        text: "Source of referral"
+      },
+      value: {
+        text: log[section.id]["referral"] | textFromInputValue(data.questions["referral"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/referral",
+        visuallyHiddenText: "source of referral"
+      })
+    } if not isRenewal]
+  }) }}
+{% endblock %}
