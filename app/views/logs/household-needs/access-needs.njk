@@ -1,0 +1,18 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Does anybody in the household have any disabled access needs?" %}
+{% set questionId = "access-needs" %}
+
+{% block question %}
+  {{ govukCheckboxes(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    hint: {
+      text: "Select all that apply"
+    },
+    items: data.questions[questionId]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}

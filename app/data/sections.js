@@ -119,7 +119,28 @@ export function sections (log) {
   const householdNeeds = {
     id: 'household-needs',
     title: 'Household needs',
-    group: 'household'
+    group: 'household',
+    paths: getPaths('household-needs', [
+      'armed-forces',
+      'armed-forces-still-serving',
+      'armed-forces-seriously-injured',
+      'pregnant',
+      'access-needs',
+      'health-condition',
+      'health-affects',
+      'check-your-answers'
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/armed-forces`,
+      forkPath: `${sectionPath}/pregnant`,
+      storedData: keyPathRoot.concat('armed-forces'),
+      values: ['false', 'unknown', 'prefers-not-to-say']
+    }, {
+      currentPath: `${sectionPath}/health-condition`,
+      forkPath: `${sectionPath}/check-your-answers`,
+      storedData: keyPathRoot.concat('health-condition'),
+      values: ['false', 'prefers-not-to-say']
+    }]
   }
 
   /**

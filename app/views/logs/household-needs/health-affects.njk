@@ -1,0 +1,18 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "How is the person affected by their condition or illness?" %}
+{% set questionId = "health-affects" %}
+
+{% block question %}
+  {{ govukCheckboxes(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    hint: {
+      text: "Select all that apply"
+    },
+    items: data.questions[questionId]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}
