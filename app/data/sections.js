@@ -16,7 +16,6 @@ export function sections (log) {
     group: 'before-you-start',
     paths: getPaths('tailor-log', [
       'gdpr',
-      'letting-or-sale',
       'organisation',
       'type-of-need',
       'letting-renewal',
