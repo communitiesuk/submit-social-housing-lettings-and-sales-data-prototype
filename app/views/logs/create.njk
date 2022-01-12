@@ -1,0 +1,21 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Create a new " + type + " log" %}
+{% set buttonText = "Continue" %}
+{% set participant = "buyer" if type == "sales" else "tenant" %}
+
+{% block question %}
+  {{ macro.heading(title) }}
+
+  <p>You must show <a href="/public/files/privacy-notice.pdf" target="_blank">the Department for Levelling Up, Housing &amp; Communities (DLUHC) privacy&nbsp;notice</a> (opens in a new tab) to the {{ participant }} before you can create a log.</p>
+
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Has the " + participant + " seen the DLUHC privacy notice?"
+      }
+    },
+    items: data.questions["yes-no"]
+  }, ["seen-privacy-notice"])) }}
+{% endblock %}

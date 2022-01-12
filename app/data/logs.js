@@ -1,13 +1,12 @@
 export default {
   EX001: {
     postCode: 'BN17 6RJ',
+    type: 'letting',
     updated: '2021-07-29',
     updatedBy: 'DPOO1',
     'tailor-log': {
-      gdpr: 'true',
       'organisation-manager': 'CHILD1',
       'organisation-owner': 'PARENT1',
-      'letting-or-sale': 'letting',
       'type-of-need': 'general',
       'letting-renewal': 'true',
       'type-of-rent': 'affordable-rent',
@@ -75,13 +74,12 @@ export default {
   },
   BZ787: {
     postCode: 'AA1 7BB',
+    type: 'letting',
     submitted: '2021-07-29',
     submittedBy: 'DPOO1',
     'tailor-log': {
-      gdpr: 'true',
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
-      'letting-or-sale': 'letting',
       'type-of-need': 'general',
       'letting-renewal': 'false',
       'type-of-rent': 'affordable-rent',
@@ -93,13 +91,12 @@ export default {
   },
   BZ766: {
     postCode: 'BN17 6RB',
+    type: 'letting',
     submitted: '2021-07-29',
     submittedBy: 'DPOO1',
     'tailor-log': {
-      gdpr: 'true',
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
-      'letting-or-sale': 'letting',
       'type-of-need': 'general',
       'letting-renewal': 'true',
       'type-of-rent': 'affordable-rent',
@@ -111,14 +108,13 @@ export default {
   },
   BZ765: {
     postCode: 'BN17 6RC',
+    type: 'letting',
     submitted: '2021-07-26',
     submittedBy: 'DPOO1',
     'tailor-log': {
-      gdpr: 'true',
       schemeId: 'EXAMPLE',
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
-      'letting-or-sale': 'letting',
       'type-of-need': 'supported',
       'letting-renewal': 'false',
       'type-of-rent': 'affordable-rent',
@@ -130,14 +126,13 @@ export default {
   },
   BZ112: {
     postCode: 'BN2 8FG',
+    type: 'letting',
     submitted: '2021-07-25',
     submittedBy: 'DPOO1',
     'tailor-log': {
-      gdpr: 'true',
       schemeId: 'EXAMPLE',
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
-      'letting-or-sale': 'letting',
       'type-of-need': 'supported',
       'letting-renewal': 'true',
       'type-of-rent': 'affordable-rent',

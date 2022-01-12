@@ -8,10 +8,16 @@
 {% block content %}
     {{ macro.heading(title) }}
 
-    {{ govukButton({
-      href: "/logs/new",
-      text: "Create a new log"
-    }) }}
+    <div class="govuk-button-group">
+      {{ govukButton({
+        href: "/logs/create?type=lettings",
+        text: "Create a new lettings log"
+      }) }}
+      {{ govukButton({
+        href: "/logs/create?type=sales",
+        text: "Create a new sales log"
+      }) }}
+    </div>
 
     {%- set incompleteRows = [] -%}
     {% for log in logsIncomplete %}

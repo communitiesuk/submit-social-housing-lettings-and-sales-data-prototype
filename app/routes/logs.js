@@ -27,18 +27,42 @@ export const logRoutes = (router) => {
   })
 
   /**
-   * Create log
+   * Create new log
    */
-  router.get('/logs/new', (req, res) => {
-    const { logs } = req.session.data
-    const logId = utils.generateUniqueId()
+  router.get('/logs/create', (req, res) => {
+    const { type } = req.query
 
-    // Create a new blank log in session data
-    logs[logId] = {
-      updated: new Date().toISOString()
+    res.render('logs/create', {
+      type: type || 'letting'
+    })
+  })
+
+  router.post('/logs/create', (req, res) => {
+    const check = req.session.data['seen-privacy-notice']
+    const { type } = req.query
+
+    if (check === 'true') {
+      const { logs } = req.session.data
+      const logId = utils.generateUniqueId()
+
+      // Create a new blank log in session data
+      logs[logId] = {
+        type,
+        updated: new Date().toISOString()
+      }
+
+      res.redirect(`/logs/${logId}/`)
+    } else {
+      res.redirect(`/logs/cannot-create-log?type=${type}`)
     }
+  })
 
-    res.redirect(`/logs/${logId}/`)
+  router.get('/logs/cannot-create-log', (req, res) => {
+    const { type } = req.query
+
+    res.render('logs/cannot-create-log', {
+      type: type || 'letting'
+    })
   })
 
   /**

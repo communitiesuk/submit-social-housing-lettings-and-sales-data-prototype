@@ -1,7 +1,7 @@
 {% extends "layouts/check-answers.njk" %}
 
-{% set isLet = log[section.id]["letting-or-sale"] == "letting" %}
-{% set isSale = log[section.id]["letting-or-sale"] == "sale" %}
+{% set isLet = log.type == "lettings" %}
+{% set isSale = log.type == "sales" %}
 {% set isSupported = log[section.id]["type-of-need"] == "supported" %}
 {% set isCompleted = log[section.id]["completed"] == "true" %}
 

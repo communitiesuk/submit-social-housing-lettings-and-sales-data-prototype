@@ -12,10 +12,9 @@ export function sections (log) {
    */
   const aboutThisLog = {
     id: 'tailor-log',
-    title: 'Tailor your log',
+    title: 'Tailor your lettings log',
     group: 'before-you-start',
     paths: getPaths('tailor-log', [
-      'gdpr',
       'organisation',
       'type-of-need',
       'letting-renewal',
@@ -26,11 +25,6 @@ export function sections (log) {
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot) => [{
-      currentPath: `${sectionPath}/gdpr`,
-      forkPath: `${sectionPath}/cannot-use-this-service`,
-      storedData: keyPathRoot.concat('gdpr'),
-      values: ['false']
-    }, {
       currentPath: `${sectionPath}/type-of-need`,
       forkPath: `${sectionPath}/scheme`,
       storedData: keyPathRoot.concat('type-of-need'),
@@ -38,17 +32,6 @@ export function sections (log) {
     }, {
       currentPath: `${sectionPath}/scheme`,
       skipTo: `${sectionPath}/letting-renewal`
-    }, {
-      currentPath: `${sectionPath}/letting-or-sale`,
-      forkPath: `${sectionPath}/sale-completion-date`,
-      storedData: keyPathRoot.concat('letting-or-sale'),
-      values: ['sale']
-    }, {
-      currentPath: `${sectionPath}/sale-completion-date`,
-      skipTo: `${sectionPath}/purchaser-code`
-    }, {
-      currentPath: `${sectionPath}/purchaser-code`,
-      skipTo: `${sectionPath}/property-reference`
     }]
   }
 
