@@ -9,17 +9,6 @@
   {{ govukSummaryList({
     rows: [{
       key: {
-        text: "Letting or sale"
-      },
-      value: {
-        text: log[section.id]["letting-or-sale"] | textFromInputValue(data.questions["letting-or-sale"])
-      },
-      actions: actionLinks({
-        href: sectionPath + "/letting-or-sale",
-        visuallyHiddenText: "if letting or sale"
-      }) if not isCompleted
-    }, {
-      key: {
         text: "Owning organisation"
       },
       value: {
