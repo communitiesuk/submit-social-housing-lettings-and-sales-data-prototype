@@ -28,12 +28,6 @@ export const validations = (req) => {
   return {
     logs: {
       'tailor-log': {
-        gdpr: [
-          check(getFieldName('gdpr'))
-            .not()
-            .isEmpty()
-            .withMessage('Select whether the tenant or buyer has seen the notice')
-        ],
         organisation: [
           check(getFieldName('organisation-owner'))
             .not()
@@ -43,12 +37,6 @@ export const validations = (req) => {
             .not()
             .contains('Select…')
             .withMessage('Select the organisation that manages this property')
-        ],
-        'letting-or-sale': [
-          check(getFieldName('letting-or-sale'))
-            .not()
-            .isEmpty()
-            .withMessage('Tell us if it’s a letting or sale')
         ],
         'letting-renewal': [
           check(getFieldName('letting-renewal'))

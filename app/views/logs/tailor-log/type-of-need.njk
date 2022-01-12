@@ -12,9 +12,4 @@
     },
     items: data.questions[questionId]
   }, ["logs", log.id, section.id, questionId])) }}
-
-  {{ govukInput(decorate({
-    type: "hidden",
-    value: "letting"
-  }, ["logs", log.id, section.id, "letting-or-sale"])) }}
 {% endblock %}
