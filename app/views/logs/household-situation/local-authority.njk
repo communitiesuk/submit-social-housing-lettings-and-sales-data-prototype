@@ -1,0 +1,29 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Do you know the local authority for the household’s last settled home?" %}
+{% set questionId = "local-authority-known" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: [{
+      text: "Yes",
+      value: "true",
+      conditional: {
+        html: rigAutocomplete(decorate({
+          label: {
+            text: "Select a local authority"
+          },
+          items: data.questions["local-authorities"]
+        }, ["logs", log.id, section.id, "local-authority"]))
+      }
+    }, {
+      text: "No",
+      value: "false"
+    }]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}

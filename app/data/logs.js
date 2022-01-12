@@ -101,7 +101,7 @@ export default {
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
-      'tenant-code': 'Gen needs/!renewal',
+      'tenant-code': 'Gen needs/renewal',
       'property-reference': 'RT45657',
       completed: 'true'
     }

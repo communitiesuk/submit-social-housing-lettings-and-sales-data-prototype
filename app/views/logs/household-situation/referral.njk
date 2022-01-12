@@ -1,0 +1,57 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "What was the source of referral for this letting?" %}
+{% set questionId = "referral" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: [{
+      text: "Children’s social care",
+      value: "Children’s social care"
+    } if data.features["2022-23"].on == true, {
+      text: "Community learning disability team",
+      value: "Community learning disability team"
+    }, {
+      text: "Community mental health team",
+      value: "Community mental health team"
+    }, {
+      text: "Health service",
+      value: "Health service"
+    }, {
+      text: "Internal transfer",
+      value: "Internal transfer"
+    }, {
+      text: "Nominated by a local housing authority",
+      value: "Nominated by a local housing authority"
+    }, {
+      text: "Referred by local authority housing department",
+      value: "Referred by local authority housing department"
+    } if log["tailor-log"]["type-of-need"] == "supported", {
+      text: "Police, probation or prison",
+      value: "12"
+    }, {
+      text: "Re-located through official housing mobility scheme",
+      value: "Re-located through official housing mobility scheme"
+    }, {
+      text: "Tenant applied directly (no referral or nomination)",
+      value: "Tenant applied directly (no referral or nomination)"
+    }, {
+      text: "Voluntary agency",
+      value: "Voluntary agency"
+    }, {
+      text: "Youth offending team",
+      value: "Youth offending team"
+    }, {
+      text: "Other social landlord",
+      value: "Other social landlord"
+    }, {
+      text: "Other",
+      value: "Other"
+    }]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}

@@ -24,3 +24,30 @@ $govuk-assets-path: "/govuk/assets/";
 .app-\!-colour-muted {
   color: $govuk-secondary-text-colour !important;
 }
+
+.app-form-group--heading-dividers .govuk-radios__divider,
+.app-form-group--heading-dividers .govuk-checkboxes__divider {
+  align-items: center;
+  color: $govuk-secondary-text-colour;
+  display: flex;
+  flex-direction: row;
+  margin-top: govuk-spacing(4);
+  width: 100%;
+
+  &:before,
+  &:after {
+    border-top: 1px solid $govuk-border-colour;
+    content: "";
+    position: relative;
+  }
+
+  &:before {
+    margin-right: govuk-spacing(1);
+    width: 50px;
+  }
+
+  &:after {
+    margin-left: govuk-spacing(1);
+    flex-grow: 1;
+  }
+}
