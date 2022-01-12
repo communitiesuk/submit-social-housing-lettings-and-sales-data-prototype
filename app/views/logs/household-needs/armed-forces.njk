@@ -1,0 +1,18 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Does anybody in the household have links to the UK armed forces?" %}
+{% set questionId = "armed-forces" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    hint: {
+      html: "<p class=\"govuk-hint\">This excludes national service.</p><p class=\"govuk-hint\">If there are several people in the household with links to the UK armed forces, you should answer for the regular. If there’s no regular, answer for the reserve. If there’s no reserve, answer for the spouse or civil partner.</p>"
+    },
+    items: data.questions[questionId]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}

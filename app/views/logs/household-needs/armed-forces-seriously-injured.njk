@@ -1,0 +1,15 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Was the person seriously injured or ill as a result of serving in the UK armed forces?" %}
+{% set questionId = "armed-forces-seriously-injured" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions[questionId]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}

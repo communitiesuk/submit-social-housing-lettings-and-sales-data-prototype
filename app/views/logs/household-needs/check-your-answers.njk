@@ -1,0 +1,93 @@
+{% extends "layouts/check-answers.njk" %}
+
+{% set isArmedForces =
+  (log[section.id]["armed-forces"] !== "false") and
+  (log[section.id]["armed-forces"] !== "unknown") and
+  (log[section.id]["armed-forces"] !== "prefers-not-to-say")
+%}
+{% set hasHealthCondition =
+  (log[section.id]["health-condition"] == "true")
+%}
+
+{% block checkAnswers %}
+  {{ govukSummaryList({
+    rows: [{
+      key: {
+        text: "Household links to UK armed forces"
+      },
+      value: {
+        text: log[section.id]["armed-forces"] | textFromInputValue(data.questions["armed-forces"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/armed-forces",
+        visuallyHiddenText: "household links to UK armed forces"
+      })
+    }, {
+      key: {
+        text: "Person still serving in UK armed forces"
+      },
+      value: {
+        text: log[section.id]["armed-forces-still-serving"] | textFromInputValue(data.questions["armed-forces-still-serving"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/armed-forces-still-serving",
+        visuallyHiddenText: "if person is still serving in UK armed forces"
+      })
+    } if isArmedForces, {
+      key: {
+        text: "Person seriously injured or ill as result of serving in UK armed forces"
+      },
+      value: {
+        text: log[section.id]["armed-forces-seriously-injured"] | textFromInputValue(data.questions["armed-forces-seriously-injured"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/armed-forces-seriously-injured",
+        visuallyHiddenText: "if person seriously injured or ill as result of serving in UK armed forces"
+      })
+    } if isArmedForces, {
+      key: {
+        text: "Anybody in household pregnant"
+      },
+      value: {
+        text: log[section.id]["pregnant"] | textFromInputValue(data.questions["pregnant"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/pregnant",
+        visuallyHiddenText: "if anybody in household pregnant"
+      })
+    }, {
+      key: {
+        text: "Anybody in household with disabled access needs"
+      },
+      value: {
+        text: log[section.id]["access-needs"] | textFromInputValue(data.questions["access-needs"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/access-needs",
+        visuallyHiddenText: "if anybody in household with disabled access needs"
+      })
+    }, {
+      key: {
+        text: "Anybody in household with physical or mental health condition"
+      },
+      value: {
+        text: log[section.id]["health-condition"] | textFromInputValue(data.questions["health-condition"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/health-condition",
+        visuallyHiddenText: "if anybody in household with physical or mental health condition"
+      })
+    }, {
+      key: {
+        text: "How is person affected by condition or illness"
+      },
+      value: {
+        text: log[section.id]["health-affects"] | textFromInputValue(data.questions["health-affects"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/health-affects",
+        visuallyHiddenText: "how person is affected by condition or illness"
+      })
+    } if hasHealthCondition]
+  }) }}
+{% endblock %}
