@@ -135,6 +135,7 @@ export function sections (log) {
     title: 'Tenancy information',
     group: 'tenancy',
     paths: getPaths('tenancy-information', [
+      'is-joint',
       'is-starter',
       'type-of-tenancy',
       'check-your-answers'
@@ -156,6 +157,7 @@ export function sections (log) {
     title: 'Tenancy information',
     group: 'tenancy',
     paths: getPaths('tenancy-information-supported-housing', [
+      'is-joint',
       'is-starter',
       'type-of-tenancy',
       'sheltered-accommodation',
