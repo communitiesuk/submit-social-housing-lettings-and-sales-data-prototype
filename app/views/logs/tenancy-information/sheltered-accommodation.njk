@@ -10,6 +10,23 @@
         text: macro.heading(title, caption)
       }
     },
-    items: data.questions[questionId]
+    items: [{
+      text: "Yes – extra care housing",
+      value: "Yes – extra care housing"
+    }, ({
+      text: "Yes – specialist retirement housing",
+      value: "Yes – specialist retirement housing"
+    } if data.features["2022-23"].on == true else {
+      text: "Yes – sheltered retirement housing",
+      value: "Yes – sheltered retirement housing"
+    }), {
+      text: "No",
+      value: "No"
+    }, {
+      divider: "or"
+    }, {
+      text: "Don’t know",
+      value: "Don’t know"
+    }]
   }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
