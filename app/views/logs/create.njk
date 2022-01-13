@@ -3,6 +3,7 @@
 {% set title = "Create a new " + type + " log" %}
 {% set buttonText = "Continue" %}
 {% set participant = "buyer" if type == "sales" else "tenant" %}
+{% set required = true %}
 
 {% block question %}
   {{ macro.heading(title) }}

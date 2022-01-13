@@ -29,10 +29,16 @@
       {% block interruption %}
       {% endblock %}
 
-      {{ govukButton({
-        classes: "app-button--inverse",
-        text: buttonText
-      }) }}
+      <div class="govuk-button-group">
+        {{ govukButton({
+          classes: "app-button--inverse",
+          text: buttonText
+        }) }}
+
+        {% if required != true %}
+          <a class="govuk-link--inverse" href="{{ paths.next }}">Skip for now</a>
+        {% endif %}
+      </div>
     </div>
   </div>
 {% endblock %}
