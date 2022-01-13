@@ -175,7 +175,7 @@
     text: "Major repairs carried out during void period"
   },
   value: {
-    text: "Yes – Completed on " + log[section.id]["repairs-date"] | textFromInputValue if isRepaired else "No"
+    text: "Yes – completed on " + log[section.id]["repairs-date"] | textFromInputValue if isRepaired else "No"
   },
   actions: actionLinks({
     href: sectionPath + "/repairs",
