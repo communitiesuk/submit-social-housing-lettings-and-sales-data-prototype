@@ -10,6 +10,29 @@
         html: macro.heading(title, caption)
       }
     },
-    items: data.questions["type-of-benefit"]
+    items: [{
+      text: "Housing benefit",
+      value: "Housing benefit"
+    }, {
+      text: "Universal Credit with housing element (excluding housing benefit)" if data.features["2022-23"].on != true else "Universal Credit housing element",
+      value: "Universal Credit with housing element (excluding housing benefit)" if data.features["2022-23"].on != true else "Universal Credit housing element"
+    }, {
+      text: "Universal Credit (without housing element)",
+      value: "Universal Credit (without housing element)"
+    } if data.features["2022-23"].on != true, {
+      text: "Housing benefit and Universal Credit (without housing element)",
+      value: "Housing benefit and Universal Credit (without housing element)"
+    } if data.features["2022-23"].on != true, {
+      text: "None" if data.features["2022-23"].on != true else "Neither",
+      value: "None" if data.features["2022-23"].on != true else "neither"
+    }, {
+      divider: "or"
+    }, {
+      text: "Don’t know",
+      value: "Don’t know"
+    } if data.features["2022-23"].on != true, {
+      text: "Tenant prefers not to say",
+      value: "Tenant prefers not to say"
+    }]
   }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
