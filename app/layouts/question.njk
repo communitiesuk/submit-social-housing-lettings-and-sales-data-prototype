@@ -25,9 +25,15 @@
       {% block question %}
       {% endblock %}
 
-      {{ govukButton({
-        text: buttonText
-      }) }}
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: buttonText
+        }) }}
+
+        {% if required != true %}
+          <a class="govuk-link govuk-link--no-visited-state" href="{{ paths.next }}">Skip for now</a>
+        {% endif %}
+      </div>
     </div>
   </div>
 {% endblock %}
