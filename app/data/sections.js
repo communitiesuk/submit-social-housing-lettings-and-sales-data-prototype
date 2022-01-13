@@ -457,8 +457,8 @@ export function sections (log) {
   }
 
   // Answers to questions in ‘Tailor your log’ affect questions shown in task list
-  let isSupportedHousing
-  let isRenewal
+  let isSupportedHousing = false
+  let isRenewal = false
   if (log['tailor-log']) {
     isSupportedHousing = log['tailor-log']['type-of-need'] === 'supported'
     isRenewal = log['tailor-log']['letting-renewal'] === 'true'
