@@ -7,12 +7,18 @@
 {% block question %}
   {{ macro.heading(title) }}
 
-  <p>You must show <a href="/public/files/privacy-notice.pdf" rel="noreferrer noopener" target="_blank">the Department for Levelling Up, Housing &amp; Communities (DLUHC) privacy&nbsp;notice (opens in a new tab)</a> to the {{ participant }} before you can create a log.</p>
+  <p>When you create a log, we’ll ask different questions in each section based on the answers you give us.</p>
+  <p>This means the questions we ask online won’t always match the paper version. Some may be missing or appear in a different order.</p>
+  <p>You’ll be able to check and review your answers at the end of each log section.</p>
+
+  <h2 class="govuk-heading-m">Privacy notice</h2>
+  <p>You must <a href="/public/files/privacy-notice.pdf" rel="noreferrer noopener" target="_blank">show the Department for Levelling Up, Housing &amp; Communities (DLUHC) privacy&nbsp;notice (opens in a new tab)</a> to the {{ participant }} before you can create a log.</p>
 
   {{ govukRadios(decorate({
+    classes: "govuk-radios--inline",
     fieldset: {
       legend: {
-        classes: "govuk-fieldset__legend--m",
+        classes: "govuk-fieldset__legend--s",
         text: "Has the " + participant + " seen the DLUHC privacy notice?"
       }
     },
