@@ -50,7 +50,7 @@
         text: "Housing-related benefits received"
       },
       value: {
-        text: log[section.id]["income-benefits"] | textFromInputValue(data.questions["type-of-benefit"])
+        text: log[section.id]["income-benefits"] | textFromInputValue
       },
       actions: actionLinks({
         href: sectionPath + "/income-benefits",
