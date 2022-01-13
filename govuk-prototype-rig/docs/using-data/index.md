@@ -61,7 +61,7 @@ Example using the `checked` function in a checkbox component:
     }
   },
   hint: {
-    text: "Select all that apply"
+    text: "Select all that apply."
   },
   items: [{
     value: "Heated seats",

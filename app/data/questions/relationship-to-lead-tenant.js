@@ -4,7 +4,7 @@ export default [{
 }, {
   text: 'Child',
   hint: {
-    text: 'Must be eligible for child benefit, aged under 16 or under 20 if still in full-time education'
+    text: 'Must be eligible for child benefit, aged under 16 or under 20 if still in full-time education.'
   },
   value: '2'
 }, {

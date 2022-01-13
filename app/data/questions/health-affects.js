@@ -1,19 +1,19 @@
 export default [{
   text: 'Behaviours associated with autism spectral disorder (ASD)',
   hint: {
-    text: 'For example, attention deficit hyperactivity disorder (ADHD)'
+    text: 'For example, attention deficit hyperactivity disorder (ADHD).'
   },
   value: '9'
 }, {
   text: 'Dexterity',
   hint: {
-    text: 'For example, lifting and carrying objects or using a keyboard'
+    text: 'For example, lifting and carrying objects or using a keyboard.'
   },
   value: '4'
 }, {
   text: 'Hearing',
   hint: {
-    text: 'For example, deafness or partial hearing'
+    text: 'For example, deafness or partial hearing.'
   },
   value: '2'
 }, {
@@ -25,13 +25,13 @@ export default [{
 }, {
   text: 'Mental health',
   hint: {
-    text: 'For example, depression or anxiety'
+    text: 'For example, depression or anxiety.'
   },
   value: '7'
 }, {
   text: 'Mobility',
   hint: {
-    text: 'For example, walking short distances or climbing stairs'
+    text: 'For example, walking short distances or climbing stairs.'
   },
   value: '3'
 }, {
@@ -40,7 +40,7 @@ export default [{
 }, {
   text: 'Vision',
   hint: {
-    text: 'For example, blindness or partial sight'
+    text: 'For example, blindness or partial sight.'
   },
   value: '1'
 }, {

@@ -6,7 +6,7 @@ export default {
     text: 'Internal transfer',
     value: 'internal-transfer',
     hint: {
-      text: 'Excluding renewals of a fixed-term tenancy'
+      text: 'Excluding renewals of a fixed-term tenancy.'
     }
   }, {
     text: 'Re-let to tenant who occupied same property as temporary accommodation',
