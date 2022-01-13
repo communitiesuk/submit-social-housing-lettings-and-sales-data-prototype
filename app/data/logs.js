@@ -1,7 +1,7 @@
 export default {
   EX001: {
     postCode: 'BN17 6RJ',
-    type: 'letting',
+    type: 'lettings',
     updated: '2021-07-29',
     updatedBy: 'DPOO1',
     'tailor-log': {
@@ -9,7 +9,7 @@ export default {
       'organisation-owner': 'PARENT1',
       'type-of-need': 'general',
       'letting-renewal': 'true',
-      'type-of-rent': 'affordable-rent',
+      'type-of-rent': 'Affordable rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
       'tenant-code': '298739',
       'property-reference': 'RT45657',
@@ -74,7 +74,7 @@ export default {
   },
   BZ787: {
     postCode: 'AA1 7BB',
-    type: 'letting',
+    type: 'lettings',
     submitted: '2021-07-29',
     submittedBy: 'DPOO1',
     'tailor-log': {
@@ -82,7 +82,7 @@ export default {
       'organisation-owner': 'PARENT1',
       'type-of-need': 'general',
       'letting-renewal': 'false',
-      'type-of-rent': 'affordable-rent',
+      'type-of-rent': 'Affordable rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
       'tenant-code': 'Gen needs/!renewal',
       'property-reference': 'RT45657',
@@ -91,7 +91,7 @@ export default {
   },
   BZ766: {
     postCode: 'BN17 6RB',
-    type: 'letting',
+    type: 'lettings',
     submitted: '2021-07-29',
     submittedBy: 'DPOO1',
     'tailor-log': {
@@ -99,7 +99,7 @@ export default {
       'organisation-owner': 'PARENT1',
       'type-of-need': 'general',
       'letting-renewal': 'true',
-      'type-of-rent': 'affordable-rent',
+      'type-of-rent': 'Affordable rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
       'tenant-code': 'Gen needs/!renewal',
       'property-reference': 'RT45657',
@@ -108,7 +108,7 @@ export default {
   },
   BZ765: {
     postCode: 'BN17 6RC',
-    type: 'letting',
+    type: 'lettings',
     submitted: '2021-07-26',
     submittedBy: 'DPOO1',
     'tailor-log': {
@@ -117,7 +117,7 @@ export default {
       'organisation-owner': 'PARENT1',
       'type-of-need': 'supported',
       'letting-renewal': 'false',
-      'type-of-rent': 'affordable-rent',
+      'type-of-rent': 'Affordable rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
       'tenant-code': 'Sup hou/!renewal',
       'property-reference': 'RT45657',
@@ -126,7 +126,7 @@ export default {
   },
   BZ112: {
     postCode: 'BN2 8FG',
-    type: 'letting',
+    type: 'lettings',
     submitted: '2021-07-25',
     submittedBy: 'DPOO1',
     'tailor-log': {
@@ -135,7 +135,7 @@ export default {
       'organisation-owner': 'PARENT1',
       'type-of-need': 'supported',
       'letting-renewal': 'true',
-      'type-of-rent': 'affordable-rent',
+      'type-of-rent': 'Affordable rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
       'tenant-code': 'Sup hou/renewal',
       'property-reference': 'RT45657',

@@ -10,6 +10,31 @@
         html: macro.heading(title, caption)
       }
     },
-    items: data.questions["type-of-rent"]
+    items: [{
+      text: "Affordable rent",
+      value: "Affordable rent"
+    }, {
+      text: "London affordable rent",
+      value: "London affordable rent"
+    }, {
+      text: "London living rent",
+      value: "London living rent"
+    }, {
+      text: "Rent to buy",
+      value: "Rent to buy"
+    }, {
+      text: "Social rent",
+      value: "Social rent"
+    }, {
+      text: "Other intermediate rent product",
+      value: "Other intermediate rent product",
+      conditional: {
+        html: govukInput(decorate({
+          label: {
+            text: "Product name"
+          }
+        }, ["logs", log.id, section.id, "other-rent-product"]))
+      }
+    }]
   }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
