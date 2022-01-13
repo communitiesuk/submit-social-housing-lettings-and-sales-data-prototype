@@ -8,12 +8,57 @@
 {% set questionId = "type-of-tenancy" %}
 
 {% block question %}
+  {% set otherHtml %}
+    {{ govukInput(decorate({
+      label: "Name of tenancy type"
+    }, ["logs", log.id, section.id, "other-type-of-tenancy"])) }}
+  {% endset %}
+
   {{ govukRadios(decorate({
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
       }
     },
-    items: data.questions[questionId]
+    items: [{
+      text: "Fixed term – Assured Shorthold Tenancy (AST)",
+      value: "Fixed term – Assured Shorthold Tenancy (AST)"
+    }, {
+      text: "Fixed term – Secure",
+      value: "Fixed term – Secure"
+    }, {
+      text: "License agreement",
+      value: "License agreement"
+    }, {
+      text: "Lifetime – Secure",
+      value: "Lifetime – Secure"
+    }, {
+      text: "Lifetime – Assured",
+      value: "Lifetime – Assured"
+    }, {
+      text: "Other",
+      value: "Other",
+      conditional: {
+        html: otherHtml
+      }
+    }] if data.features["2022-23"].on == true else [{
+      text: "Assured",
+      value: "Assured"
+    }, {
+      text: "Assured shorthold",
+      value: "Assured"
+    }, {
+      text: "License agreement",
+      value: "License agreement"
+    }, {
+      text: "Secure (including flexible)",
+      value: "Secure (including flexible)"
+    }, {
+      text: "Other",
+      value: "Other",
+      conditional: {
+        html: otherHtml
+      }
+    }]
   }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
