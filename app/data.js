@@ -6,6 +6,12 @@ import schemes from './data/schemes.js'
 import users from './data/users.js'
 
 export default async () => ({
+  features: {
+    '2022-23': {
+      on: true,
+      name: 'Use 2022/23 questions'
+    }
+  },
   logs,
   groups: [{
     id: 'before-you-start',
