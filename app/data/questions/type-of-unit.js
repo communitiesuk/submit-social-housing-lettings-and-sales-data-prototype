@@ -1,24 +1,24 @@
 export default [{
-  text: 'Flat or maisonette',
-  value: 'flat'
-}, {
-  text: 'Shared flat or maisonette',
-  value: 'shared-flat'
-}, {
-  text: 'House',
-  value: 'house'
-}, {
-  text: 'Shared house',
-  value: 'shared-house'
+  text: 'Bedsit',
+  value: 'bedsit'
 }, {
   text: 'Bungalow',
   value: 'bungalow'
 }, {
+  text: 'Flat or maisonette',
+  value: 'flat'
+}, {
+  text: 'House',
+  value: 'house'
+}, {
   text: 'Shared bungalow',
   value: 'shared-bungalow'
 }, {
-  text: 'Bedsit',
-  value: 'bedsit'
+  text: 'Shared flat or maisonette',
+  value: 'shared-flat'
+}, {
+  text: 'Shared house',
+  value: 'shared-house'
 }, {
   divider: 'or'
 }, {

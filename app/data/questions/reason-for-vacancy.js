@@ -1,16 +1,19 @@
 export default {
   relet: [{
-    text: 'Renewal of fixed-term tenancy',
-    value: 'renewal-fixed-term'
-  }, {
     text: 'Internal transfer',
     value: 'internal-transfer',
     hint: {
       text: 'Excluding renewals of a fixed-term tenancy.'
     }
   }, {
+    text: 'Previous tenant died with no succession',
+    value: 'died'
+  }, {
     text: 'Re-let to tenant who occupied same property as temporary accommodation',
     value: 'convert-from-temporary'
+  }, {
+    text: 'Renewal of fixed-term tenancy',
+    value: 'renewal-fixed-term'
   }, {
     text: 'Tenant involved in a succession downsize',
     value: 'downsize'
@@ -32,18 +35,15 @@ export default {
   }, {
     text: 'Tenant was evicted due to anti-social behaviour',
     value: 'anti-social'
-  }, {
-    text: 'Previous tenant died with no succession',
-    value: 'died'
   }],
   'non-relet': [{
-    text: 'First let of new build property',
-    value: 'newprop'
-  }, {
     text: 'First let of conversion, rehabilitation or acquired property',
     value: 'conversion'
   }, {
     text: 'First let of leased property',
     value: 'leased'
+  }, {
+    text: 'First let of new-build property',
+    value: 'newprop'
   }]
 }
