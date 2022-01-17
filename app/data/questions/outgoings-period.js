@@ -1,7 +1,4 @@
 export default [{
-  text: 'Weekly for 52 weeks',
-  value: 'weekly-52'
-}, {
   text: 'Every 2 weeks',
   value: 'fortnightly'
 }, {
@@ -25,4 +22,7 @@ export default [{
 }, {
   text: 'Weekly for 46 weeks',
   value: 'weekly-46'
+}, {
+  text: 'Weekly for 52 weeks',
+  value: 'weekly-52'
 }]

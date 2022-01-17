@@ -32,19 +32,9 @@
   {% endif %}
 {% endmacro %}
 
-{# Answers that may come from a scheme #}
-{% macro schemeAnswer(field) -%}
-  {%- if log["tailor-log"]["type-of-need"] == "supported" -%}
-    {%- set schemeId = log["tailor-log"]["schemeId"] -%}
-    {{ data.schemes[schemeId][field] }}
-  {%- else -%}
-    {{ log[section.id][field] }}
-  {%- endif -%}
-{%- endmacro %}
-
 {# Postcode answer witjh inferred local authority #}
 {% macro postcodeHtml(postcode, localauthority) %}
-  {{ postcode }}
+  {{ postcode | upper }}
   <br><span class="govuk-!-font-weight-regular app-!-colour-muted">{{ localauthority }}</span>
 {% endmacro %}
 

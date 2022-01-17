@@ -25,14 +25,14 @@
   {{ govukSummaryList({
     rows: [{
       key: {
-        text: "Household’s combined income after tax"
+        text: "How often household receives income"
       },
       value: {
         text: log[section.id]["income-period"] | textFromInputValue(data.questions["income-period"])
       },
       actions: actionLinks({
         href: sectionPath + "/income-period",
-        visuallyHiddenText: "household’s combined income after tax"
+        visuallyHiddenText: "how often household receives income"
       })
     }, {
       key: {
@@ -100,7 +100,7 @@
         href: sectionPath + "/outgoings-includes-care-home",
         visuallyHiddenText: "if care home accommodation"
       })
-    }, {
+    } if isSupported, {
       key: {
         text: "Care home charges"
       },

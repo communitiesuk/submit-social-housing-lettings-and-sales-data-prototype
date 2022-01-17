@@ -4,7 +4,7 @@
 {% set questionId = "income-period" %}
 
 {% set incomeHtml %}
-  <p class="govuk-body">You should include any income from:</p>
+  <p class="govuk-body">You should include any income after tax from:</p>
   <ul class="govuk-list govuk-list--bullet">
     <li>employment</li>
     <li>pensions</li>
@@ -32,7 +32,7 @@
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
-        text: "How often does the household receive income after tax?"
+        text: "How often does the household receive income?"
       }
     },
     items: data.questions[questionId]

@@ -31,12 +31,12 @@
 
       <div class="govuk-button-group">
         {{ govukButton({
-          classes: "app-button--inverse",
+          classes: "app-button--inverse govuk-!-margin-bottom-0",
           text: buttonText
         }) }}
 
         {% if required != true %}
-          <a class="govuk-link--inverse" href="{{ paths.next }}">Skip for now</a>
+          <a class="govuk-link govuk-link--inverse" href="{{ paths.next }}">Skip for now</a>
         {% endif %}
       </div>
     </div>

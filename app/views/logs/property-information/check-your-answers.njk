@@ -2,9 +2,29 @@
 
 {% import "macros.njk" as macro %}
 
+{# Some answers may come from a scheme #}
+{% macro schemeAnswer(field) -%}
+  {%- if log["tailor-log"]["type-of-need"] == "supported" -%}
+    {%- set schemeId = log["tailor-log"]["schemeId"] -%}
+    {{ data.schemes[schemeId][field] }}
+  {%- else -%}
+    {{ log[section.id][field] }}
+  {%- endif -%}
+{%- endmacro %}
+
+{# Some answers may come from a scheme #}
+{% macro schemeAnswer(field) -%}
+  {%- if log["tailor-log"]["type-of-need"] == "supported" -%}
+    {%- set schemeId = log["tailor-log"]["schemeId"] -%}
+    {{ data.schemes[schemeId][field] }}
+  {%- else -%}
+    {{ log[section.id][field] }}
+  {%- endif -%}
+{%- endmacro %}
+
 {# set variables to test various user selected data #}
-{% set hasPostcode = macro.schemeAnswer("postcode-known") == "true" %}
-{% set hasLocalAuthority = macro.schemeAnswer("local-authority-known") == "true" %}
+{% set hasPostcode = schemeAnswer("postcode-known") == "true" %}
+{% set hasLocalAuthority = schemeAnswer("local-authority-known") == "true" %}
 {% set isRelet = log[section.id]["is-relet"] == "true" %}
 {% set isNewlet = log[section.id]["is-relet"] == "false" %}
 {% set isRepaired = log[section.id]["repairs"] == "true" %}
@@ -19,7 +39,7 @@
     text: "Postcode"
   },
   value: {
-    text: macro.postcodeHtml(macro.schemeAnswer("postcode"), "Arun") if hasPostcode else "Not known"
+    text: macro.postcodeHtml(schemeAnswer("postcode"), "Arun") if hasPostcode else "Not known"
   },
   actions: actionLinks({
     href: sectionPath + "/postcode",
@@ -32,7 +52,7 @@
     text: "Local authority"
   },
   value: {
-    text: macro.schemeAnswer("local-authorities") | textFromInputValue(data.questions["local-authorities"]) if hasLocalAuthority else "Not known"
+    text: schemeAnswer("local-authorities") | textFromInputValue(data.questions["local-authorities"]) if hasLocalAuthority else "Not known"
   },
   actions: actionLinks({
     href: sectionPath + "/local-authority",
@@ -45,7 +65,7 @@
     text: "Reason you don’t know the postcode or local authority"
   },
   value: {
-    text: macro.schemeAnswer("why-dont-you-know-postcode-or-la")
+    text: schemeAnswer("why-dont-you-know-postcode-or-la")
   },
   actions: actionLinks({
     href: sectionPath + "/why-dont-you-know-postcode-or-la",
@@ -97,7 +117,7 @@
     text: "Type of unit"
   },
   value: {
-    text: macro.schemeAnswer("type-of-unit") | textFromInputValue(data.questions["type-of-unit"])
+    text: schemeAnswer("type-of-unit") | textFromInputValue(data.questions["type-of-unit"])
   },
   actions: actionLinks({
     href: sectionPath + "/type-of-unit",
@@ -110,10 +130,10 @@
     text: "Type of building"
   },
   value: {
-    text: macro.schemeAnswer("type-of-property") | textFromInputValue(data.questions["type-of-property"])
+    text: schemeAnswer("type-of-building") | textFromInputValue(data.questions["type-of-building"])
   },
   actions: actionLinks({
-    href: sectionPath + "/type-of-property",
+    href: sectionPath + "/type-of-building",
     visuallyHiddenText: "type of building"
   }) if not isSupported
 } %}
@@ -123,7 +143,7 @@
     text: "Wheelchair adaptation"
   },
   value: {
-    text: macro.schemeAnswer("is-adapted") | textFromInputValue(data.questions["yes-no"])
+    text: schemeAnswer("is-adapted") | textFromInputValue(data.questions["yes-no"])
   },
   actions: actionLinks({
     href: sectionPath + "/is-adapted",

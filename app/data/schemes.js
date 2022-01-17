@@ -10,7 +10,7 @@ export default {
     units: 6,
     'type-of-registered-home': 'nursing',
     'type-of-unit': 'bungalow',
-    'type-of-property': 'purpose-built',
+    'type-of-building': 'purpose-built',
     'type-of-support': 'high',
     'is-adapted': 'true',
     'client-groups': [

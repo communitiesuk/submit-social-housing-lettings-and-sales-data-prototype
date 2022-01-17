@@ -1,13 +1,24 @@
 {% extends "layouts/check-answers.njk" %}
 
 {% set isFixedTerm =
-  (log[section.id]["type-of-tenancy"] == "fixed-secure") or
-  (log[section.id]["type-of-tenancy"] == "fixed-ast") %}
+  (log[section.id]["type-of-tenancy"] == "Fixed term – Secure") or
+  (log[section.id]["type-of-tenancy"] == "Fixed term – Assured Shorthold Tenancy (AST)") %}
 {% set isSupported = log["tailor-log"]["type-of-need"] == "supported" %}
 
 {% block checkAnswers %}
   {{ govukSummaryList({
     rows: [{
+      key: {
+        text: "Joint tenancy"
+      },
+      value: {
+        html: log[section.id]["is-joint"] | textFromInputValue(data.questions["yes-no"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/is-joint",
+        visuallyHiddenText: "if joint tenancy"
+      })
+    }, {
       key: {
         text: "Starter tenancy"
       },

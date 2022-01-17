@@ -209,7 +209,10 @@ export function sections (log) {
       currentPath: `${sectionPath}/type-of-tenancy`,
       forkPath: `${sectionPath}/fixed-term-length`,
       storedData: keyPathRoot.concat('type-of-tenancy'),
-      values: ['fixed-secure', 'fixed-ast']
+      values: [
+        'Fixed term – Secure',
+        'Fixed term – Assured Shorthold Tenancy (AST)'
+      ]
     }, {
       currentPath: `${sectionPath}/fixed-term-length`,
       skipTo: `${sectionPath}/check-your-answers`
@@ -256,7 +259,7 @@ export function sections (log) {
       'reason-for-vacancy',
       'times-previously-offered',
       'type-of-unit',
-      'type-of-property',
+      'type-of-building',
       'is-adapted',
       'number-of-bedrooms',
       'void-date',
@@ -290,7 +293,7 @@ export function sections (log) {
       'postcode',
       'local-authority',
       'type-of-unit',
-      'type-of-property',
+      'type-of-building',
       'is-adapted',
       'number-of-bedrooms',
       'void-date',

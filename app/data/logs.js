@@ -37,7 +37,7 @@ export default {
     'tenancy-information': {
       'fixed-term-length': 5,
       'is-starter': 'false',
-      'type-of-tenancy': 'fixed-secure',
+      'type-of-tenancy': 'Fixed term – Secure',
       completed: 'true'
     },
     'property-information-renewal': {
@@ -47,7 +47,7 @@ export default {
       'number-of-bedrooms': '2',
       'postcode-known': 'false',
       repairs: 'false',
-      'type-of-property': 'purpose-built',
+      'type-of-building': 'purpose-built',
       'type-of-unit': 'flat',
       'void-date': {
         day: '12',
@@ -59,8 +59,10 @@ export default {
     finances: {
       'income-period': 'weekly',
       'income-value': 250,
-      'income-benefits': 'housing-benefit',
+      'income-benefits': 'Housing benefit',
       'income-benefits-portion': 'some',
+      'outgoings-includes-rent': 'true',
+      'outgoings-includes-care-home': 'false',
       'outgoings-period': 'weekly-50',
       'outgoings-rent': 200,
       'outgoings-service-charge': 15,

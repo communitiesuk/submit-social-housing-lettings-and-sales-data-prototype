@@ -115,7 +115,7 @@
         href: sectionPath + "/reasonable-preference",
         visuallyHiddenText: "reason for reasonable preference"
       })
-    }, {
+    } if log[section.id]["reasonable-preference"] == "true", {
       key: {
         text: "Allocation"
       },

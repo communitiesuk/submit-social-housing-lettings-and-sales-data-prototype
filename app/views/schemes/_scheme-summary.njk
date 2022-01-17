@@ -166,10 +166,10 @@
       text: "Type of building"
     },
     value: {
-      text: scheme["type-of-property"] | textFromInputValue(data.questions["type-of-property"])
+      text: scheme["type-of-building"] | textFromInputValue(data.questions["type-of-building"])
     },
     actions: actionLinks({
-      href: schemePath + "/type-of-property",
+      href: schemePath + "/type-of-building",
       visuallyHiddenText: "type of building"
     }) if not isCompleted
   }, {

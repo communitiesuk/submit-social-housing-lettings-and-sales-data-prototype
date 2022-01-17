@@ -1,7 +1,7 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "What type of building is the property?" %}
-{% if scheme["type-of-property"] %}
+{% if scheme["type-of-building"] %}
   {# Editing an existing scheme #}
   {% set caption = scheme.name %}
   {% set buttonText = "Save changes" %}
@@ -15,6 +15,6 @@
         text: macro.heading(title, caption)
       }
     },
-    items: data.questions["type-of-property"]
-  }, ["schemes", scheme.id, "type-of-property"])) }}
+    items: data.questions["type-of-building"]
+  }, ["schemes", scheme.id, "type-of-building"])) }}
 {% endblock %}

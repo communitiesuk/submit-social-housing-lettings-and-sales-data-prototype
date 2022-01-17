@@ -13,7 +13,7 @@ const getSchemePaths = schemePath => [
   `${schemePath}/intended-stay`,
   `${schemePath}/type-of-unit`,
   `${schemePath}/units`,
-  `${schemePath}/type-of-property`,
+  `${schemePath}/type-of-building`,
   `${schemePath}/is-adapted`,
   `${schemePath}/dates`,
   `${schemePath}/check-your-answers`
