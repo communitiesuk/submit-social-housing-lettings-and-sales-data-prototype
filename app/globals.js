@@ -32,9 +32,8 @@ export default () => {
     }
   }
 
-  globals.nextSection = function (logId) {
-    const { logs } = this.ctx.data
-
+  globals.incompleteSections = function (logId, logsObject = false) {
+    const logs = logsObject || this.ctx.data.logs
     const log = utils.getEntityById(logs, logId)
     const sections = getSections(log)
     const incompleteSections = []
@@ -50,15 +49,18 @@ export default () => {
       }
     }
 
-    return incompleteSections[1]
+    return incompleteSections
   }
 
   globals.taskListSections = function (logId) {
     const { logs, groups } = this.ctx.data
     const log = logs[logId]
+    const incompleteSections = globals.incompleteSections(logId, logs)
+    const canSubmit = incompleteSections[0].id === 'submit'
 
     const taskListItem = (section) => {
       let status
+      let href = section.paths ? `/logs/${log.id}/${section.id}` : false
 
       switch (section.id) {
         case 'tailor-log':
@@ -68,8 +70,9 @@ export default () => {
             status = 'notStarted'
           }
           break
-        case 'declaration':
-          status = 'cannotStart'
+        case 'submit':
+          href = canSubmit ? section.paths : false
+          status = canSubmit ? 'notStarted' : 'cannotStart'
           break
         default:
           if (log['tailor-log']?.completed === 'true') {
@@ -86,12 +89,10 @@ export default () => {
           break
       }
 
-      const href = section.paths ? `/logs/${log.id}/${section.id}` : '#'
-
       return {
         id: section.id,
         text: section.title,
-        href: status !== 'cannotStart' ? href : false,
+        href,
         tag: tagStatuses[status]
       }
     }

@@ -1,6 +1,9 @@
 {% extends "layouts/base.njk" %}
 
 {% set title = "Log " + log.id %}
+{% set incompleteSectionsCount = incompleteSections(log.id) | length %}
+{% set sectionsCount = sections | length %}
+{% set completeSectionsCount = sectionsCount - incompleteSectionsCount %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
@@ -17,13 +20,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <h1 class="govuk-heading-xl">{{ title }}</h1>
+
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">This log is incomplete</h2>
-      <p class="govuk-body govuk-!-margin-bottom-7">
-        You have completed 0 of {{ data.sections | length }} sections.<br>
-        <a href="#{{ nextSection(log.id).id }}" class="govuk-skip-link">Skip to next incomplete section: {{ nextSection(log.id).title }}</a>
-      </p>
+      <p class="govuk-body">You have completed {{ completeSectionsCount }} of {{ sectionsCount }} sections.</p>
+      <p><a href="#{{ incompleteSections(log.id)[0].title | slugify }}" class="app-section-skip-link">Skip to next incomplete section: {{ incompleteSections(log.id)[0].title }}</a></p>
 
       {{ rigTaskList({
+        classes: "govuk-!-margin-top-8",
         disableSectionNumbering: true,
         sections: taskListSections(log.id)
       }) }}

@@ -1,0 +1,23 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Submit " + log.type + " log" %}
+{% set buttonText = "Submit " + log.type + " log" %}
+{% set participant = "buyer" if log.type == "sales" else "tenant" %}
+{% set required = true %}
+
+{% block question %}
+  {{ macro.heading(title) }}
+
+  <p>You must <a href="/public/files/privacy-notice.pdf" rel="noreferrer noopener" target="_blank">show the Department for Levelling Up, Housing &amp; Communities (DLUHC) privacy&nbsp;notice (opens in a new tab)</a> to the {{ participant }} before you can submit this log.</p>
+
+  {{ govukRadios(decorate({
+    classes: "govuk-radios--inline",
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Has the " + participant + " seen the DLUHC privacy notice?"
+      }
+    },
+    items: data.questions["yes-no"]
+  }, ["logs", log.id, section.id, "seen-privacy-notice"])) }}
+{% endblock %}

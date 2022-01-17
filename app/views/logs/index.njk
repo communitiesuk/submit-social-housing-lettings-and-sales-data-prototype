@@ -8,6 +8,11 @@
 {% block content %}
     {{ macro.heading(title) }}
 
+    {{ govukNotificationBanner({
+      text: macro.notificationBannerText(query.success, query.logId),
+      type: "success"
+    }) if query.success }}
+
     <div class="govuk-button-group">
       {{ govukButton({
         href: "/logs/create?type=lettings",

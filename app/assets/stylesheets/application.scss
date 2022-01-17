@@ -25,6 +25,7 @@ $govuk-assets-path: "/govuk/assets/";
   color: $govuk-secondary-text-colour !important;
 }
 
+// Custom form group dividers with headings
 .app-form-group--heading-dividers .govuk-radios__divider,
 .app-form-group--heading-dividers .govuk-checkboxes__divider {
   align-items: center;
@@ -50,4 +51,15 @@ $govuk-assets-path: "/govuk/assets/";
     margin-left: govuk-spacing(1);
     flex-grow: 1;
   }
+}
+
+// Section skip link
+.app-section-skip-link {
+  @include govuk-visually-hidden-focusable;
+  @include govuk-typography-common;
+  @include govuk-link-decoration;
+  @include govuk-link-style-text;
+
+  display: inline-block;
+  padding: govuk-spacing(2) govuk-spacing(3);
 }

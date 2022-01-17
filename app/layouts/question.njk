@@ -4,7 +4,7 @@
   log[section.id][itemId][questionId] or
   log[section.id][questionId] %}
 
-{% set backLink = 'javascript:history.go(-1);' %}
+{% set backLink = "javascript:history.go(-1);" %}
 
 {% if questionId and hasAnsweredQuestion %}
   {% set formAction = formAction or sectionPath + "/check-your-answers" %}
