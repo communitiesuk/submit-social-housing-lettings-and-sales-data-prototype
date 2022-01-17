@@ -1,17 +1,17 @@
 export default [{
-  text: 'Yes – the household has a weekly income',
-  answer: 'The household has a weekly income',
+  text: 'Weekly',
   value: 'weekly'
 }, {
-  text: 'Yes – the household has a monthly income',
-  answer: 'The household has a monthly income',
+  text: 'Monthly',
   value: 'monthly'
 }, {
-  text: 'Yes – the household has a yearly income',
-  answer: 'The household has a yearly income',
+  text: 'Annually',
   value: 'yearly'
 }, {
   divider: 'or'
+}, {
+  text: 'Don’t know',
+  value: 'unknown'
 }, {
   text: 'Tenant prefers not to say',
   value: 'prefers-not-to-say'
