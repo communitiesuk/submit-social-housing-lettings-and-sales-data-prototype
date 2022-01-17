@@ -1,7 +1,7 @@
 {% extends "layouts/base.njk" %}
 
-{% set title = "You cannot create a " + type + " log" %}
-{% set participant = "buyer" if type == "sales" else "tenant" %}
+{% set title = "You cannot create a " + log.type + " log" %}
+{% set participant = "buyer" if log.type == "sales" else "tenant" %}
 
 {% block content %}
   <div class="govuk-grid-row">

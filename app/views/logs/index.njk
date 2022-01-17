@@ -8,6 +8,11 @@
 {% block content %}
     {{ macro.heading(title) }}
 
+    {{ govukNotificationBanner({
+      text: macro.notificationBannerText(query.success, query.logId),
+      type: "success"
+    }) if query.success }}
+
     <div class="govuk-button-group">
       {{ govukButton({
         href: "/logs/create?type=lettings",
@@ -21,15 +26,14 @@
 
     {%- set incompleteRows = [] -%}
     {% for log in logsIncomplete %}
-      {% set logUser = data.users[log.updatedBy].name %}
       {% set row = incompleteRows.push([{
           html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
         }, {
           text: log["tailor-log"]["tenant-code"]
         }, {
-          text: log.postCode
+          text: log.postcode
         }, {
-          html: macro.entityHtml(log.updated | govukDate, false, logUser)
+          html: macro.entityHtml(log.updated | govukDate, false, log.updatedBy.name)
         }, {
           html: "<a href=\"#\">Re-assign</a>"
         } if isCoordinator or isAdmin])
@@ -59,15 +63,14 @@
 
     {%- set summittedRows = [] -%}
     {%- for log in logsSubmitted -%}
-      {% set logUser = data.users[log.submittedBy].name %}
       {%- set row = summittedRows.push([{
           html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
         }, {
           text: log["tailor-log"]["tenant-code"]
         }, {
-          text: log.postCode
+          text: log.postcode
         }, {
-          html: macro.entityHtml(log.submitted | govukDate, false, logUser)
+          html: macro.entityHtml(log.updated | govukDate, false, log.updatedBy.name)
         }])
       -%}
     {%- endfor -%}

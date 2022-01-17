@@ -1,9 +1,12 @@
 export default {
   EX001: {
-    postCode: 'BN17 6RJ',
     type: 'lettings',
+    postcode: 'BN17 6RJ',
+    submitted: true,
     updated: '2021-07-29',
-    updatedBy: 'DPOO1',
+    updatedBy: {
+      name: 'Daisy Perkins'
+    },
     'tailor-log': {
       'organisation-manager': 'CHILD1',
       'organisation-owner': 'PARENT1',
@@ -34,26 +37,39 @@ export default {
       },
       completed: 'true'
     },
-    'tenancy-information': {
-      'fixed-term-length': 5,
-      'is-starter': 'false',
-      'type-of-tenancy': 'Fixed term – Secure',
+    'household-situation-renewal': {
+      allocation: ['cbl'],
+      'given-reasonable-preference': 'false',
+      'local-authority-known': 'false',
+      'postcode-known': 'false',
+      postcode: '',
+      'reason-for-leaving-last-settled-home': '40',
+      'time-lived-in-area': '2',
+      completed: 'true'
+    },
+    'household-needs': {
+      'armed-forces': 'false',
+      pregnant: 'false',
+      'access-needs': ['g'],
+      'health-condition': 'false',
       completed: 'true'
     },
     'property-information-renewal': {
       'is-adapted': 'false',
-      'local-authorities': ['E09000002'],
-      'local-authority-known': 'true',
       'number-of-bedrooms': '2',
-      'postcode-known': 'false',
+      'postcode-known': 'true',
+      postcode: 'BN17 6RJ',
       repairs: 'false',
       'type-of-building': 'purpose-built',
       'type-of-unit': 'flat',
-      'void-date': {
-        day: '12',
-        month: '11',
-        year: '2022'
-      },
+      'void-date': { day: '12', month: '11', year: '2022' },
+      completed: 'true'
+    },
+    'tenancy-information': {
+      'is-joint': 'false',
+      'is-starter': 'false',
+      'type-of-tenancy': 'Fixed term – Assured Shorthold Tenancy (AST)',
+      'fixed-term-length': 5,
       completed: 'true'
     },
     finances: {
@@ -75,10 +91,11 @@ export default {
     }
   },
   BZ787: {
-    postCode: 'AA1 7BB',
     type: 'lettings',
-    submitted: '2021-07-29',
-    submittedBy: 'DPOO1',
+    updated: '2021-07-29',
+    updatedBy: {
+      name: 'Daisy Perkins'
+    },
     'tailor-log': {
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
@@ -92,10 +109,11 @@ export default {
     }
   },
   BZ766: {
-    postCode: 'BN17 6RB',
     type: 'lettings',
-    submitted: '2021-07-29',
-    submittedBy: 'DPOO1',
+    updated: '2021-07-29',
+    updatedBy: {
+      name: 'Daisy Perkins'
+    },
     'tailor-log': {
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
@@ -109,10 +127,11 @@ export default {
     }
   },
   BZ765: {
-    postCode: 'BN17 6RC',
     type: 'lettings',
-    submitted: '2021-07-26',
-    submittedBy: 'DPOO1',
+    updated: '2021-07-29',
+    updatedBy: {
+      name: 'Daisy Perkins'
+    },
     'tailor-log': {
       schemeId: 'EXAMPLE',
       'organisation-manager': 'PARENT1',
@@ -127,10 +146,11 @@ export default {
     }
   },
   BZ112: {
-    postCode: 'BN2 8FG',
     type: 'lettings',
-    submitted: '2021-07-25',
-    submittedBy: 'DPOO1',
+    updated: '2021-07-29',
+    updatedBy: {
+      name: 'Daisy Perkins'
+    },
     'tailor-log': {
       schemeId: 'EXAMPLE',
       'organisation-manager': 'PARENT1',

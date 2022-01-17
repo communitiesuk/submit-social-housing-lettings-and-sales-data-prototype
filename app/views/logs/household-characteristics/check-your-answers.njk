@@ -22,7 +22,7 @@
       actions: actionLinks({
         href: sectionPath + "/number-in-household",
         visuallyHiddenText: "number of people in household"
-      })
+      }) if not log.submitted
     }]
   }) }}
 
@@ -48,7 +48,7 @@
         actions: actionLinks({
           href: sectionPath + "/" + itemId + "/known",
           visuallyHiddenText: "if details are known for " + name
-        })
+        }) if not log.submitted
       } if not isLeadTenant, ({
         key: {
           text: "Relationship to lead tenant"
@@ -59,7 +59,7 @@
         actions: actionLinks({
           href: sectionPath + "/" + itemId + "/relationship-to-lead-tenant",
           visuallyHiddenText: name + "’s relationship to lead tenant"
-        })
+        }) if not log.submitted
       }  if not isLeadTenant) if isKnown, {
         key: {
           text: "Age"
@@ -70,7 +70,7 @@
         actions: actionLinks({
           href: sectionPath + "/" + itemId + "/age",
           visuallyHiddenText: name + "’s age"
-        })
+        }) if not log.submitted
       } if isKnown, {
         key: {
           text: "Gender identity"
@@ -81,7 +81,7 @@
         actions: actionLinks({
           href: sectionPath + "/" + itemId + "/gender",
           visuallyHiddenText: name + "’s gender identity"
-        })
+        }) if not log.submitted
       } if isKnown, {
         key: {
           text: "Nationality"
@@ -92,7 +92,7 @@
         actions: actionLinks({
           href: sectionPath + "/" + itemId + "/nationality",
           visuallyHiddenText: name + "’s nationality"
-        })
+        }) if not log.submitted
       } if isLeadTenant, {
         key: {
           text: "Working situation"
@@ -103,7 +103,7 @@
         actions: actionLinks({
           href: sectionPath + "/" + itemId + "/working-situation",
           visuallyHiddenText: name + "’s working situation"
-        })
+        }) if not log.submitted
       } if isKnown]
     }) }}
   {% endfor %}

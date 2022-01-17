@@ -44,7 +44,7 @@
   actions: actionLinks({
     href: sectionPath + "/postcode",
     visuallyHiddenText: "postcode"
-  }) if not isSupported
+  }) if not isSupported and not log.submitted
 } %}
 
 {% set localAuthorityRow = {
@@ -57,7 +57,7 @@
   actions: actionLinks({
     href: sectionPath + "/local-authority",
     visuallyHiddenText: "local authority"
-  }) if not isSupported
+  }) if not isSupported and not log.submitted
 } if not hasPostcode %}
 
 {% set localAuthorityUnknownRow = {
@@ -70,7 +70,7 @@
   actions: actionLinks({
     href: sectionPath + "/why-dont-you-know-postcode-or-la",
     visuallyHiddenText: "the reason you don't know the postcode or local authority"
-  }) if not isSupported
+  }) if not isSupported and not log.submitted
 } if not hasPostcode and not hasLocalAuthority %}
 
 {% set isReletRow = {
@@ -83,7 +83,7 @@
   actions: actionLinks({
     href: sectionPath + "/is-re-let",
     visuallyHiddenText: "if this is the first time being let as social-housing"
-  })
+  }) if not log.submitted
 } %}
 
 {% set typeOfLetRow = {
@@ -96,7 +96,7 @@
   actions: actionLinks({
     href: sectionPath + "/type-of-let",
     visuallyHiddenText: "the recent let type"
-  })
+  }) if not log.submitted
 } if isRelet %}
 
 {% set reasonForVacancyRow = {
@@ -109,7 +109,7 @@
   actions: actionLinks({
     href: sectionPath + "/reason-for-vacancy",
     visuallyHiddenText: "reason for vacancy"
-  })
+  }) if not log.submitted
 } %}
 
 {% set typeOfUnitRow = {
@@ -122,7 +122,7 @@
   actions: actionLinks({
     href: sectionPath + "/type-of-unit",
     visuallyHiddenText: "type of unit"
-  }) if not isSupported
+  }) if not isSupported and not log.submitted
 } %}
 
 {% set typeOfPropertyRow = {
@@ -135,7 +135,7 @@
   actions: actionLinks({
     href: sectionPath + "/type-of-building",
     visuallyHiddenText: "type of building"
-  }) if not isSupported
+  }) if not isSupported and not log.submitted
 } %}
 
 {% set isAdaptedRow = {
@@ -148,7 +148,7 @@
   actions: actionLinks({
     href: sectionPath + "/is-adapted",
     visuallyHiddenText: "if property has been built or adapted to wheelchair-user standards"
-  }) if not isSupported
+  }) if not isSupported and not log.submitted
 } %}
 
 {% set numberOfBedroomsRow = {
@@ -161,7 +161,7 @@
   actions: actionLinks({
     href: sectionPath + "/number-of-bedrooms",
     visuallyHiddenText: "number of bedrooms"
-  })
+  }) if not log.submitted
 } %}
 
 {% set voidDateRow = {
@@ -174,7 +174,7 @@
   actions: actionLinks({
     href: sectionPath + "/void-date",
     visuallyHiddenText: "void date"
-  })
+  }) if not log.submitted
 } %}
 
 {% set repairsRow = {
@@ -187,7 +187,7 @@
   actions: actionLinks({
     href: sectionPath + "/repairs",
     visuallyHiddenText: "status of major repairs"
-  })
+  }) if not log.submitted
 } if not isNewprop %}
 
 {% set timesOfferedRow = {
@@ -200,7 +200,7 @@
   actions: actionLinks({
     href: sectionPath + "/times-previously-offered",
     visuallyHiddenText: "times previously offered"
-  })
+  }) if not log.submitted
 } %}
 
 {% block checkAnswers %}

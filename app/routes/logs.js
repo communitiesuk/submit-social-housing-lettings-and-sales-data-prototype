@@ -1,7 +1,7 @@
 import { validationResult } from 'express-validator'
 import { wizard } from 'govuk-prototype-rig'
 
-import { sections } from '../data/sections.js'
+import { sections as getSections } from '../data/sections.js'
 import * as utils from '../utils.js'
 import { validations } from '../validations.js'
 
@@ -38,31 +38,18 @@ export const logRoutes = (router) => {
   })
 
   router.post('/logs/create', (req, res) => {
-    const check = req.session.data['seen-privacy-notice']
     const { type } = req.query
+    const { account, logs } = req.session.data
+    const logId = utils.generateUniqueId()
 
-    if (check === 'true') {
-      const { logs } = req.session.data
-      const logId = utils.generateUniqueId()
-
-      // Create a new blank log in session data
-      logs[logId] = {
-        type,
-        updated: new Date().toISOString()
-      }
-
-      res.redirect(`/logs/${logId}/`)
-    } else {
-      res.redirect(`/logs/cannot-create-log?type=${type}`)
+    // Create a new blank log in session data
+    logs[logId] = {
+      type,
+      updated: new Date().toISOString(),
+      updatedBy: account
     }
-  })
 
-  router.get('/logs/cannot-create-log', (req, res) => {
-    const { type } = req.query
-
-    res.render('logs/cannot-create-log', {
-      type: type || 'letting'
-    })
+    res.redirect(`/logs/${logId}/`)
   })
 
   /**
@@ -73,12 +60,32 @@ export const logRoutes = (router) => {
     const { logs } = req.session.data
 
     const log = utils.getEntityById(logs, logId)
+    const sections = getSections(log)
 
     if (log) {
-      res.render('logs/log', { log })
+      res.render('logs/log', { log, sections })
     } else {
       res.redirect('/logs')
     }
+  })
+
+  /**
+   * Submit log
+   */
+  router.post('/logs/:logId/submit/declaration', (req, res, next) => {
+    const { logId } = req.params
+    const { account, logs } = req.session.data
+
+    // Update log with derived and meta data
+    logs[logId].postcode = logs[logId]['property-information']?.postcode ||
+      logs[logId]['property-information-renewal']?.postcode ||
+      logs[logId]['property-information-supported-housing']?.postcode
+    logs[logId].submit.completed = 'true'
+    logs[logId].submitted = true
+    logs[logId].updated = new Date().toISOString()
+    logs[logId].updatedBy = account
+
+    res.redirect(`/logs/?success=submitted-log&logId=${logId}`)
   })
 
   /**
@@ -90,7 +97,7 @@ export const logRoutes = (router) => {
       const { logs } = req.session.data
 
       const log = utils.getEntityById(logs, logId)
-      const section = utils.getById(sections(log), sectionId)
+      const section = utils.getById(getSections(log), sectionId)
 
       if (log[sectionId]) {
         res.redirect(`/logs/${logId}/${sectionId}/check-your-answers`)
@@ -132,7 +139,7 @@ export const logRoutes = (router) => {
 
       const log = utils.getEntityById(logs, logId)
       const logPath = `/logs/${logId}`
-      const section = utils.getById(sections(log), sectionId)
+      const section = utils.getById(getSections(log), sectionId)
       const sectionPath = `/logs/${logId}/${sectionId}`
 
       // Fork if next path is a fork
