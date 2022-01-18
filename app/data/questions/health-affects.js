@@ -1,10 +1,4 @@
 export default [{
-  text: 'Behaviours associated with autism spectral disorder (ASD)',
-  hint: {
-    text: 'For example, attention deficit hyperactivity disorder (ADHD).'
-  },
-  value: '9'
-}, {
   text: 'Dexterity',
   hint: {
     text: 'For example, lifting and carrying objects or using a keyboard.'
@@ -34,6 +28,12 @@ export default [{
     text: 'For example, walking short distances or climbing stairs.'
   },
   value: '3'
+}, {
+  text: 'Social or behavioural developmental disorders',
+  hint: {
+    text: 'For example, Autism Spectrum Disorder (ASD) or Attention Deficit Hyperactivity Disorder (ADHD).'
+  },
+  value: '9'
 }, {
   text: 'Stamina or breathing or fatigue',
   value: '8'
