@@ -97,9 +97,9 @@ export default [{
 }, {
   divider: 'or'
 }, {
-  text: 'Prefer not to say',
-  value: 'skip'
-}, {
   text: 'Don’t know',
   value: 'unknown'
+}, {
+  text: 'Prefer not to say',
+  value: 'skip'
 }]

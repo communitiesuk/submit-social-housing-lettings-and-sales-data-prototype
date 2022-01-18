@@ -26,11 +26,11 @@ export default [{
   text: 'Child under 16',
   value: '9'
 }, {
-  divider: 'or'
-}, {
   text: 'Other',
   value: '0'
 }, {
+  divider: 'or'
+}, {
   text: 'Person prefers not to say',
-  value: '10'
+  value: 'prefers-not-to-say'
 }]

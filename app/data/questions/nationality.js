@@ -44,11 +44,11 @@ export default [{
   text: 'From another European Economic Area (EEA) country',
   value: '11'
 }, {
-  divider: 'or'
-}, {
   text: 'From any other country',
   value: '12'
 }, {
+  divider: 'or'
+}, {
   text: 'Person prefers not to say',
-  value: '13'
+  value: 'prefers-not-to-say'
 }]

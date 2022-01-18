@@ -11,11 +11,11 @@ export default [{
   text: 'Other disabled access needs',
   value: 'f'
 }, {
-  divider: 'or'
-}, {
   text: 'No disabled access needs',
   value: 'g',
   behaviour: 'exclusive'
+}, {
+  divider: 'or'
 }, {
   text: 'Don’t know',
   value: 'unknown',

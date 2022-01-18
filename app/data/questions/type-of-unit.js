@@ -20,8 +20,6 @@ export default [{
   text: 'Shared house',
   value: 'shared-house'
 }, {
-  divider: 'or'
-}, {
   text: 'Other',
   value: 'other'
 }]
