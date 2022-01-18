@@ -356,16 +356,33 @@ export function sections (log) {
       'outgoings-value-check',
       'check-your-answers'
     ]),
-    forks: (sectionPath, keyPathRoot) => [{
+    forks: (sectionPath, keyPathRoot, req) => [{
       currentPath: `${sectionPath}/income-period`,
       forkPath: `${sectionPath}/income-benefits`,
       storedData: keyPathRoot.concat('income-period'),
       values: ['prefers-not-to-say']
     }, {
       currentPath: `${sectionPath}/outgoings-value-check`,
-      forkPath: `${sectionPath}/outgoings-after-benefits`,
-      storedData: keyPathRoot.concat('income-benefits'),
-      excludedValues: ['none', 'unknown', 'prefers-not-to-say']
+      forkPath: (value) => {
+        const { data } = req.session
+        const incomeBenefits = _.get(data, keyPathRoot.concat('income-benefits'))
+        const hasBenefits = !['none', 'unknown', 'prefers-not-to-say'].includes(incomeBenefits)
+        if (value === 'true') {
+          // Value is correct
+          if (hasBenefits) {
+            // Receives benefits
+            return `${sectionPath}/outgoings-after-benefits`
+          } else {
+            // Else
+            return `${sectionPath}/check-your-answers`
+          }
+        } else {
+          // Return to previous question
+          return `${sectionPath}/outgoings-value`
+        }
+      },
+      storedData: keyPathRoot.concat('outgoings-value-correct'),
+      values: ['true', 'false']
     }, {
       currentPath: `${sectionPath}/outgoings-after-benefits`,
       forkPath: (value) => {
@@ -430,9 +447,29 @@ export function sections (log) {
       values: ['true', 'false']
     }, {
       currentPath: `${sectionPath}/outgoings-value-check`,
-      forkPath: `${sectionPath}/outgoings-after-benefits`,
-      storedData: keyPathRoot.concat('income-benefits'),
-      excludedValues: ['none', 'unknown', 'prefers-not-to-say']
+      forkPath: (value) => {
+        console.log('value', value)
+        const { data } = req.session
+        const incomeBenefits = _.get(data, keyPathRoot.concat('income-benefits'))
+        const hasBenefits = !['none', 'unknown', 'prefers-not-to-say'].includes(incomeBenefits)
+        console.log('hasBenefits', hasBenefits)
+        if (value === 'true') {
+          // Value is correct
+          if (hasBenefits) {
+            // Receives benefits
+            console.log('dsfasdaf')
+            return `${sectionPath}/outgoings-after-benefits`
+          } else {
+            // Else
+            return `${sectionPath}/check-your-answers`
+          }
+        } else {
+          // Return to previous question
+          return `${sectionPath}/outgoings-value`
+        }
+      },
+      storedData: keyPathRoot.concat('outgoings-value-correct'),
+      values: ['true', 'false']
     }, {
       currentPath: `${sectionPath}/outgoings-after-benefits`,
       forkPath: (value) => {
