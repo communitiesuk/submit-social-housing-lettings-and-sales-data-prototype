@@ -25,8 +25,6 @@
       text: "European (from any EEA country, excluding Ireland)",
       value: "European (from any EEA country, excluding Ireland)"
     }, {
-      divider: "or"
-    }, {
       text: "Another nationality",
       value: "Another nationality",
       conditional: {
@@ -36,6 +34,8 @@
           }
         }, ["logs", log.id, section.id, itemId, "other-nationality"]))
       }
+    }, {
+      divider: "or"
     }, {
       text: "Tenant prefers not to say",
       value: "Tenant prefers not to say"
