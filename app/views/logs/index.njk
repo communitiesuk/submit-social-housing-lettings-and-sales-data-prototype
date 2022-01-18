@@ -2,7 +2,7 @@
 
 {% set title = "Your logs" %}
 
-{% set logsIncomplete = logs| selectattr("updated") %}
+{% set logsIncomplete = logs| rejectattr("submitted") %}
 {% set logsSubmitted = logs | selectattr("submitted") %}
 
 {% block content %}
