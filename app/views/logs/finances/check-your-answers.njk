@@ -30,21 +30,27 @@
       value: {
         text: log[section.id]["income-period"] | textFromInputValue(data.questions["income-period"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/income-period",
-        visuallyHiddenText: "how often household receives income"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["income-period"] else "Answer",
+          href: sectionPath + "/income-period",
+          visuallyHiddenText: "how often household receives income"
+        }] if not log.submitted
+      }
     }, {
       key: {
         text: "Total household income"
       },
       value: {
-        text: log[section.id]["income-value"] | sterling + " every " + inPeriod
+        text: (log[section.id]["income-value"] | sterling + " every " + inPeriod) if log[section.id]["income-value"] else log[section.id]["income-value"] | textFromInputValue
       },
-      actions: actionLinks({
-        href: sectionPath + "/income-value",
-        visuallyHiddenText: "total household income"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["income-value"] else "Answer",
+          href: sectionPath + "/income-value",
+          visuallyHiddenText: "total household income"
+        }] if not log.submitted
+      }
     }, {
       key: {
         text: "Housing-related benefits received"
@@ -52,10 +58,13 @@
       value: {
         text: log[section.id]["income-benefits"] | textFromInputValue
       },
-      actions: actionLinks({
-        href: sectionPath + "/income-benefits",
-        visuallyHiddenText: "housing-related benefits received"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["income-benefits"] else "Answer",
+          href: sectionPath + "/income-benefits",
+          visuallyHiddenText: "housing-related benefits received"
+        }] if not log.submitted
+      }
     }, {
       key: {
         text: "Household income from Universal Credit, state pension or benefits"
@@ -63,10 +72,13 @@
       value: {
         text: log[section.id]["income-benefits-portion"] | textFromInputValue(data.questions["income-benefits-portion"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/income-benefits-portion",
-        visuallyHiddenText: "household income from Universal Credit, state pension or benefits"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["income-benefits-portion"] else "Answer",
+          href: sectionPath + "/income-benefits-portion",
+          visuallyHiddenText: "household income from Universal Credit, state pension or benefits"
+        }] if not log.submitted
+      }
     }, {
       key: {
         text: "Does the household pay rent or charges?"
@@ -74,10 +86,13 @@
       value: {
         text: log[section.id]["outgoings-includes-rent"] | textFromInputValue(data.questions["yes-no"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/outgoings-includes-rent",
-        visuallyHiddenText: "if the household pay rent or charges"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["outgoings-includes-rent"] else "Answer",
+          href: sectionPath + "/outgoings-includes-rent",
+          visuallyHiddenText: "if the household pay rent or charges"
+        }] if not log.submitted
+      }
     } if isSupported, {
       key: {
         text: "Frequency of household rent or charges"
@@ -85,10 +100,13 @@
       value: {
         text: log[section.id]["outgoings-period"] | textFromInputValue(data.questions["outgoings-period"])
       },
-      actions: actionLinks({
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["outgoings-period"] else "Answer",
         href: sectionPath + "/outgoings-period",
         visuallyHiddenText: "frequency of household rent or charges"
-      }) if not log.submitted
+        }] if not log.submitted
+      }
     } if isRenter, {
       key: {
         text: "Care home accommodation"
@@ -96,10 +114,13 @@
       value: {
         text: log[section.id]["outgoings-includes-care-home"] | textFromInputValue(data.questions["yes-no"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/outgoings-includes-care-home",
-        visuallyHiddenText: "if care home accommodation"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["outgoings-includes-care-home"] else "Answer",
+          href: sectionPath + "/outgoings-includes-care-home",
+          visuallyHiddenText: "if care home accommodation"
+        }] if not log.submitted
+      }
     } if isSupported, {
       key: {
         text: "Care home charges"
@@ -107,10 +128,13 @@
       value: {
         text: log[section.id]["outgoings-care-home"] | sterling
       },
-      actions: actionLinks({
-        href: sectionPath + "/outgoings-includes-care-home",
-        visuallyHiddenText: "care home charges"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["outgoings-care-home"] else "Answer",
+          href: sectionPath + "/outgoings-includes-care-home",
+          visuallyHiddenText: "care home charges"
+        }] if not log.submitted
+      }
     } if isCareHome, {
       key: {
         text: "Household rent and charges"
@@ -118,10 +142,13 @@
       value: {
         text: log[section.id]["outgoings-value"] | sterling + " " + outPeriod
       },
-      actions: actionLinks({
-        href: sectionPath + "/outgoings-value",
-        visuallyHiddenText: "total household rent or charges"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["outgoings-value"] else "Answer",
+          href: sectionPath + "/outgoings-value",
+          visuallyHiddenText: "total household rent or charges"
+        }] if not log.submitted
+      }
     } if isRenter and not isCareHome, {
       key: {
         text: "Outstanding amount for basic rent and charges"
@@ -129,10 +156,13 @@
       value: {
         text: log[section.id]["outgoings-after-benefits"] | textFromInputValue(data.questions["yes-no"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/outgoings-after-benefits",
-        visuallyHiddenText: "outstanding amount for basic rent and charges"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["outgoings-after-benefits"] else "Answer",
+          href: sectionPath + "/outgoings-after-benefits",
+          visuallyHiddenText: "outstanding amount for basic rent and charges"
+        }] if not log.submitted
+      }
     } if isRenter and hasIncomeBenefits, {
       key: {
         text: "Estimated outstanding amount"
@@ -140,10 +170,13 @@
       value: {
         text: log[section.id]["outgoings-outstanding"] | sterling + " " + outPeriod
       },
-      actions: actionLinks({
-        href: sectionPath + "/outgoings-outstanding",
-        visuallyHiddenText: "estimated outstanding amount"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["outgoings-outstanding"] else "Answer",
+          href: sectionPath + "/outgoings-outstanding",
+          visuallyHiddenText: "estimated outstanding amount"
+        }] if not log.submitted
+      }
     } if isRenter and hasIncomeBenefits and hasOutgoingsAfterBenefits]
   }) }}
 {% endblock %}

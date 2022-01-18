@@ -41,10 +41,13 @@
   value: {
     text: macro.postcodeHtml(schemeAnswer("postcode"), "Arun") if hasPostcode else "Not known"
   },
-  actions: actionLinks({
-    href: sectionPath + "/postcode",
-    visuallyHiddenText: "postcode"
-  }) if not isSupported and not log.submitted
+  actions: {
+    items: [{
+      text: "Change" if log[section.id]["postcode"] else "Answer",
+      href: sectionPath + "/postcode",
+      visuallyHiddenText: "postcode"
+    }] if not isSupported and not log.submitted
+  }
 } %}
 
 {% set localAuthorityRow = {
@@ -54,10 +57,13 @@
   value: {
     text: schemeAnswer("local-authorities") | textFromInputValue(data.questions["local-authorities"]) if hasLocalAuthority else "Not known"
   },
-  actions: actionLinks({
-    href: sectionPath + "/local-authority",
-    visuallyHiddenText: "local authority"
-  }) if not isSupported and not log.submitted
+  actions: {
+    items: [{
+      text: "Change" if log[section.id]["local-authorities"] else "Answer",
+      href: sectionPath + "/local-authority",
+      visuallyHiddenText: "local authority"
+    }] if not isSupported and not log.submitted
+  }
 } if not hasPostcode %}
 
 {% set localAuthorityUnknownRow = {
@@ -67,10 +73,13 @@
   value: {
     text: schemeAnswer("why-dont-you-know-postcode-or-la")
   },
-  actions: actionLinks({
-    href: sectionPath + "/why-dont-you-know-postcode-or-la",
-    visuallyHiddenText: "the reason you don't know the postcode or local authority"
-  }) if not isSupported and not log.submitted
+  actions: {
+    items: [{
+      text: "Change" if log[section.id]["why-dont-you-know-postcode-or-la"] else "Answer",
+      href: sectionPath + "/why-dont-you-know-postcode-or-la",
+      visuallyHiddenText: "the reason you don't know the postcode or local authority"
+    }] if not isSupported and not log.submitted
+  }
 } if not hasPostcode and not hasLocalAuthority %}
 
 {% set isReletRow = {
@@ -80,10 +89,13 @@
   value: {
     text: log[section.id]["is-re-let"] | textFromInputValue(data.questions["re-let"])
   },
-  actions: actionLinks({
-    href: sectionPath + "/is-re-let",
-    visuallyHiddenText: "if this is the first time being let as social-housing"
-  }) if not log.submitted
+  actions: {
+    items: [{
+      text: "Change" if log[section.id]["is-re-let"] else "Answer",
+      href: sectionPath + "/is-re-let",
+      visuallyHiddenText: "if this is the first time being let as social-housing"
+    }] if not log.submitted
+  }
 } %}
 
 {% set typeOfLetRow = {
@@ -93,10 +105,13 @@
   value: {
     text: log[section.id]["type-of-let"] | textFromInputValue(data.questions["type-of-let"])
   },
-  actions: actionLinks({
-    href: sectionPath + "/type-of-let",
-    visuallyHiddenText: "the recent let type"
-  }) if not log.submitted
+  actions: {
+    items: [{
+      text: "Change" if log[section.id]["type-of-let"] else "Answer",
+      href: sectionPath + "/type-of-let",
+      visuallyHiddenText: "the recent let type"
+    }] if not log.submitted
+  }
 } if isRelet %}
 
 {% set reasonForVacancyRow = {
@@ -106,10 +121,13 @@
   value: {
     text: log[section.id]["reason-for-vacancy"] | textFromInputValue(data.questions["reason-for-vacancy"][log[section.id]["is-re-let"]])
   },
-  actions: actionLinks({
-    href: sectionPath + "/reason-for-vacancy",
-    visuallyHiddenText: "reason for vacancy"
-  }) if not log.submitted
+  actions: {
+    items: [{
+      text: "Change" if log[section.id]["reason-for-vacancy"] else "Answer",
+      href: sectionPath + "/",
+      visuallyHiddenText: "reason for vacancy"
+    }] if not log.submitted
+  }
 } %}
 
 {% set typeOfUnitRow = {
@@ -119,10 +137,13 @@
   value: {
     text: schemeAnswer("type-of-unit") | textFromInputValue(data.questions["type-of-unit"])
   },
-  actions: actionLinks({
-    href: sectionPath + "/type-of-unit",
-    visuallyHiddenText: "type of unit"
-  }) if not isSupported and not log.submitted
+  actions: {
+    items: [{
+      text: "Change" if log[section.id]["type-of-unit"] else "Answer",
+      href: sectionPath + "/type-of-unit",
+      visuallyHiddenText: "type of unit"
+    }] if not isSupported and not log.submitted
+  }
 } %}
 
 {% set typeOfPropertyRow = {
@@ -132,10 +153,13 @@
   value: {
     text: schemeAnswer("type-of-building") | textFromInputValue(data.questions["type-of-building"])
   },
-  actions: actionLinks({
-    href: sectionPath + "/type-of-building",
-    visuallyHiddenText: "type of building"
-  }) if not isSupported and not log.submitted
+  actions: {
+    items: [{
+      text: "Change" if log[section.id]["type-of-building"] else "Answer",
+      href: sectionPath + "/type-of-building",
+      visuallyHiddenText: "type of building"
+    }] if not isSupported and not log.submitted
+  }
 } %}
 
 {% set isAdaptedRow = {
@@ -145,10 +169,13 @@
   value: {
     text: schemeAnswer("is-adapted") | textFromInputValue(data.questions["yes-no"])
   },
-  actions: actionLinks({
-    href: sectionPath + "/is-adapted",
-    visuallyHiddenText: "if property has been built or adapted to wheelchair-user standards"
-  }) if not isSupported and not log.submitted
+  actions: {
+    items: [{
+      text: "Change" if log[section.id]["is-adapted"] else "Answer",
+      href: sectionPath + "/is-adapted",
+      visuallyHiddenText: "if property has been built or adapted to wheelchair-user standards"
+    }] if not isSupported and not log.submitted
+  }
 } %}
 
 {% set numberOfBedroomsRow = {
@@ -158,10 +185,13 @@
   value: {
     text: log[section.id]["number-of-bedrooms"] | textFromInputValue
   },
-  actions: actionLinks({
-    href: sectionPath + "/number-of-bedrooms",
-    visuallyHiddenText: "number of bedrooms"
-  }) if not log.submitted
+  actions: {
+    items: [{
+      text: "Change" if log[section.id]["number-of-bedrooms"] else "Answer",
+      href: sectionPath + "/number-of-bedrooms",
+      visuallyHiddenText: "number of bedrooms"
+    }] if not log.submitted
+  }
 } %}
 
 {% set voidDateRow = {
@@ -171,10 +201,13 @@
   value: {
     text: log[section.id]["void-date"] | textFromInputValue
   },
-  actions: actionLinks({
-    href: sectionPath + "/void-date",
-    visuallyHiddenText: "void date"
-  }) if not log.submitted
+  actions: {
+    items: [{
+      text: "Change" if log[section.id]["void-date"] else "Answer",
+      href: sectionPath + "/void-date",
+      visuallyHiddenText: "void date"
+    }] if not log.submitted
+  }
 } %}
 
 {% set repairsRow = {
@@ -184,10 +217,13 @@
   value: {
     text: "Yes – completed on " + log[section.id]["repairs-date"] | textFromInputValue if isRepaired else "No"
   },
-  actions: actionLinks({
-    href: sectionPath + "/repairs",
-    visuallyHiddenText: "status of major repairs"
-  }) if not log.submitted
+  actions: {
+    items: [{
+      text: "Change" if log[section.id]["repairs"] else "Answer",
+      href: sectionPath + "/repairs",
+      visuallyHiddenText: "status of major repairs"
+    }] if not log.submitted
+  }
 } if not isNewprop %}
 
 {% set timesOfferedRow = {
@@ -197,10 +233,13 @@
   value: {
     text: log[section.id]["times-previously-offered"] | textFromInputValue
   },
-  actions: actionLinks({
-    href: sectionPath + "/times-previously-offered",
-    visuallyHiddenText: "times previously offered"
-  }) if not log.submitted
+  actions: {
+    items: [{
+      text: "Change" if log[section.id]["times-previously-offered"] else "Answer",
+      href: sectionPath + "/times-previously-offered",
+      visuallyHiddenText: "times previously offered"
+    }] if not log.submitted
+  }
 } %}
 
 {% block checkAnswers %}

@@ -8,6 +8,8 @@ export default [{
   text: 'Non-binary',
   value: 'other'
 }, {
+  divider: 'or'
+}, {
   text: 'Person prefers not to say',
   value: 'prefer-not-to-say'
 }]

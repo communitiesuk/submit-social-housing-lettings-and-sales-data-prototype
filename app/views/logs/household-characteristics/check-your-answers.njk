@@ -19,10 +19,13 @@
       value: {
         text: log[section.id]["number-in-household"] | textFromInputValue
       },
-      actions: actionLinks({
-        href: sectionPath + "/number-in-household",
-        visuallyHiddenText: "number of people in household"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["number-in-household"] else "Answer",
+          href: sectionPath + "/number-in-household",
+          visuallyHiddenText: "number of people in household"
+        }] if not log.submitted
+      }
     }]
   }) }}
 
@@ -43,12 +46,15 @@
           text: "Details known"
         },
         value: {
-          text: "Yes" if isKnown else "No"
+          text: log[section.id][itemId + "-known"] | textFromInputValue(data.questions["yes-no"])
         },
-        actions: actionLinks({
-          href: sectionPath + "/" + itemId + "/known",
-          visuallyHiddenText: "if details are known for " + name
-        }) if not log.submitted
+        actions: {
+          items: [{
+            text: "Change" if log[section.id][itemId + "-known"] else "Answer",
+            href: sectionPath + "/" + itemId + "/known",
+            visuallyHiddenText: "if details are known for " + name
+          }] if not log.submitted
+        }
       } if not isLeadTenant, ({
         key: {
           text: "Relationship to lead tenant"
@@ -56,10 +62,13 @@
         value: {
           text: log[section.id][itemId]["relationship-to-lead-tenant"] | textFromInputValue(data.questions["relationship-to-lead-tenant"])
         },
-        actions: actionLinks({
-          href: sectionPath + "/" + itemId + "/relationship-to-lead-tenant",
-          visuallyHiddenText: name + "’s relationship to lead tenant"
-        }) if not log.submitted
+        actions: {
+          items: [{
+            text: "Change" if log[section.id][itemId]["relationship-to-lead-tenant"] else "Answer",
+            href: sectionPath + "/" + itemId + "/relationship-to-lead-tenant",
+            visuallyHiddenText: name + "’s relationship to lead tenant"
+          }] if not log.submitted
+        }
       }  if not isLeadTenant) if isKnown, {
         key: {
           text: "Age"
@@ -67,10 +76,13 @@
         value: {
           text: age(log[section.id][itemId]["age-known"], log[section.id][itemId]["age"])
         },
-        actions: actionLinks({
-          href: sectionPath + "/" + itemId + "/age",
-          visuallyHiddenText: name + "’s age"
-        }) if not log.submitted
+        actions: {
+          items: [{
+            text: "Change" if log[section.id][itemId]["age-known"] else "Answer",
+            href: sectionPath + "/" + itemId + "/age",
+            visuallyHiddenText: name + "’s age"
+          }] if not log.submitted
+        }
       } if isKnown, {
         key: {
           text: "Gender identity"
@@ -78,10 +90,13 @@
         value: {
           text: log[section.id][itemId]["gender"] | textFromInputValue(data.questions["gender"])
         },
-        actions: actionLinks({
-          href: sectionPath + "/" + itemId + "/gender",
-          visuallyHiddenText: name + "’s gender identity"
-        }) if not log.submitted
+        actions: {
+          items: [{
+            text: "Change" if log[section.id][itemId]["gender"] else "Answer",
+            href: sectionPath + "/" + itemId + "/gender",
+            visuallyHiddenText: name + "’s gender identity"
+          }] if not log.submitted
+        }
       } if isKnown, {
         key: {
           text: "Nationality"
@@ -89,10 +104,13 @@
         value: {
           text: log[section.id][itemId]["nationality"] | textFromInputValue
         },
-        actions: actionLinks({
-          href: sectionPath + "/" + itemId + "/nationality",
-          visuallyHiddenText: name + "’s nationality"
-        }) if not log.submitted
+        actions: {
+          items: [{
+            text: "Change" if log[section.id][itemId]["nationality"] else "Answer",
+            href: sectionPath + "/" + itemId + "/nationality",
+            visuallyHiddenText: name + "’s nationality"
+          }] if not log.submitted
+        }
       } if isLeadTenant, {
         key: {
           text: "Working situation"
@@ -100,10 +118,13 @@
         value: {
           text: log[section.id][itemId]["working-situation"] | textFromInputValue(data.questions["working-situation"])
         },
-        actions: actionLinks({
-          href: sectionPath + "/" + itemId + "/working-situation",
-          visuallyHiddenText: name + "’s working situation"
-        }) if not log.submitted
+        actions: {
+          items: [{
+            text: "Change" if log[section.id][itemId]["working-situation"] else "Answer",
+            href: sectionPath + "/" + itemId + "/working-situation",
+            visuallyHiddenText: name + "’s working situation"
+          }] if not log.submitted
+        }
       } if isKnown]
     }) }}
   {% endfor %}

@@ -12,10 +12,13 @@
       value: {
         text: log[section.id]["time-lived-in-area"] | textFromInputValue(data.questions["time-lived-in-area"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/time-lived-in-area",
-        visuallyHiddenText: "length of time in local authority area"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["time-lived-in-area"] else "Answer",
+          href: sectionPath + "/time-lived-in-area",
+          visuallyHiddenText: "length of time in local authority area"
+        }] if not log.submitted
+      }
     }, {
       key: {
         text: "Length of time on local authority waiting list"
@@ -23,10 +26,13 @@
       value: {
         text: log[section.id]["time-on-waiting-list"] | textFromInputValue(data.questions["time-on-waiting-list"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/time-on-waiting-list",
-        visuallyHiddenText: "length of time on local authority waiting list"
-      })
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["time-on-waiting-list"] else "Answer",
+          href: sectionPath + "/time-on-waiting-list",
+          visuallyHiddenText: "length of time on local authority waiting list"
+        }] if not log.submitted
+      }
     } if not isRenewal, {
       key: {
         text: "Reason for leaving last settled home"
@@ -34,10 +40,13 @@
       value: {
         text: log[section.id]["reason-for-leaving-last-settled-home"] | textFromInputValue(data.questions["reason-for-leaving-last-settled-home"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/reason-for-leaving-last-settled-home",
-        visuallyHiddenText: "reason for leaving last settled home"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["reason-for-leaving-last-settled-home"] else "Answer",
+          href: sectionPath + "/reason-for-leaving-last-settled-home",
+          visuallyHiddenText: "reason for leaving last settled home"
+        }] if not log.submitted
+      }
     }, {
       key: {
         text: "Where was the household immediately before this letting?"
@@ -45,10 +54,13 @@
       value: {
         text: log[section.id]["previous-accommodation"] | textFromInputValue
       },
-      actions: actionLinks({
-        href: sectionPath + "/previous-accommodation",
-        visuallyHiddenText: "where the household was immediately before this letting"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["previous-accommodation"] else "Answer",
+          href: sectionPath + "/previous-accommodation",
+          visuallyHiddenText: "where the household was immediately before this letting"
+        }] if not log.submitted
+      }
     } if log[section.id]["previous-accommodation"], {
       key: {
         text: "Postcode of last settled home"
@@ -56,10 +68,13 @@
       value: {
         text: macro.postcodeHtml(log[section.id]["postcode"], "Arun") if hasPostcode else "Not known"
       },
-      actions: actionLinks({
-        href: sectionPath + "/postcode",
-        visuallyHiddenText: "postcode of last settled home"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["postcode"] else "Answer",
+          href: sectionPath + "/postcode",
+          visuallyHiddenText: "postcode of last settled home"
+        }] if not log.submitted
+      }
     }, {
       key: {
         text: "Location of last settled home"
@@ -67,10 +82,13 @@
       value: {
         text: log[section.id]["local-authority"] | textFromInputValue(data.questions["local-authorities"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/local-authority",
-        visuallyHiddenText: "location of last settled home"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["local-authority"] else "Answer",
+          href: sectionPath + "/local-authority",
+          visuallyHiddenText: "location of last settled home"
+        }] if not log.submitted
+      }
     } if not hasPostcode and not isRenewal, {
       key: {
         text: "Removal of spare room subsidy or benefit cap"
@@ -78,10 +96,13 @@
       value: {
         text: log[section.id]["spare-room-subsidy"] | textFromInputValue(data.questions["spare-room-subsidy"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/spare-room-subsidy",
-        visuallyHiddenText: "removal of spare room subsidy or benefit cap"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["spare-room-subsidy"] else "Answer",
+          href: sectionPath + "/spare-room-subsidy",
+          visuallyHiddenText: "removal of spare room subsidy or benefit cap"
+        }] if not log.submitted
+      }
     } if log[section.id]["spare-room-subsidy"], {
       key: {
         text: "Household homeless immediately before letting"
@@ -89,10 +110,13 @@
       value: {
         text: log[section.id]["previous-homelessness"] | textFromInputValue(data.questions["previous-homelessness"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/previous-homelessness",
-        visuallyHiddenText: "if household was homeless immediately before letting"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["previous-homelessness"] else "Answer",
+          href: sectionPath + "/previous-homelessness",
+          visuallyHiddenText: "if household was homeless immediately before letting"
+        }] if not log.submitted
+      }
     } if not isRenewal, {
       key: {
         text: "Household given reasonable preference"
@@ -100,10 +124,13 @@
       value: {
         text: log[section.id]["given-reasonable-preference"] | textFromInputValue(data.questions["yes-no-unknown"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/given-reasonable-preference",
-        visuallyHiddenText: "if household was given reasonable preference"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["given-reasonable-preference"] else "Answer",
+          href: sectionPath + "/given-reasonable-preference",
+          visuallyHiddenText: "if household was given reasonable preference"
+        }] if not log.submitted
+      }
     }, {
       key: {
         text: "Reason for reasonable preference"
@@ -111,10 +138,13 @@
       value: {
         text: log[section.id]["reasonable-preference"] | textFromInputValue(data.questions["reasonable-preference"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/reasonable-preference",
-        visuallyHiddenText: "reason for reasonable preference"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["reasonable-preference"] else "Answer",
+          href: sectionPath + "/reasonable-preference",
+          visuallyHiddenText: "reason for reasonable preference"
+        }] if not log.submitted
+      }
     } if log[section.id]["reasonable-preference"] == "true", {
       key: {
         text: "Allocation"
@@ -122,10 +152,13 @@
       value: {
         text: log[section.id]["allocation"] | textFromInputValue(data.questions["allocation"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/allocation",
-        visuallyHiddenText: "allocation"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["allocation"] else "Answer",
+          href: sectionPath + "/allocation",
+          visuallyHiddenText: "allocation"
+        }] if not log.submitted
+      }
     }, {
       key: {
         text: "Source of referral"
@@ -133,10 +166,13 @@
       value: {
         text: log[section.id]["referral"] | textFromInputValue(data.questions["referral"])
       },
-      actions: actionLinks({
-        href: sectionPath + "/referral",
-        visuallyHiddenText: "source of referral"
-      }) if not log.submitted
+      actions: {
+        items: [{
+          text: "Change" if log[section.id]["referral"] else "Answer",
+          href: sectionPath + "/referral",
+          visuallyHiddenText: "source of referral"
+        }] if not log.submitted
+      }
     } if not isRenewal]
   }) }}
 {% endblock %}
