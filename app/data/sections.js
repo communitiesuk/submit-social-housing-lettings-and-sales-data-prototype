@@ -456,16 +456,10 @@ export function sections (log) {
   const submission = {
     id: 'submit',
     title: 'Submit lettings log',
-    group: 'submission',
+    group: !log.submitted ? 'submission' : false,
     paths: getPaths('submit', [
       'declaration'
-    ]),
-    forks: (sectionPath, keyPathRoot) => [{
-      currentPath: `${sectionPath}/declaration`,
-      forkPath: `${sectionPath}/cannot-submit-log`,
-      storedData: keyPathRoot.concat('seen-privacy-notice'),
-      values: ['false']
-    }]
+    ])
   }
 
   // Answers to questions in ‘Tailor your log’ affect questions shown in task list
@@ -486,6 +480,6 @@ export function sections (log) {
     ...(!isSupportedHousing && isRenewal ? [propertyInformationRenewal] : []),
     ...(isSupportedHousing && !isRenewal ? [propertyInformationSupportedHousing] : []),
     ...(!isSupportedHousing ? [finances] : [financesSupportedHousing]),
-    ...(!log.submitted ? [submission] : [])
+    submission
   ]
 }

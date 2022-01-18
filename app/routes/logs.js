@@ -74,18 +74,26 @@ export const logRoutes = (router) => {
    */
   router.post('/logs/:logId/submit/declaration', (req, res, next) => {
     const { logId } = req.params
-    const { account, logs } = req.session.data
+    const { account, check, logs } = req.session.data
 
-    // Update log with derived and meta data
-    logs[logId].postcode = logs[logId]['property-information']?.postcode ||
+    const log = utils.getEntityById(logs, logId)
+
+    if (check === 'true') {
+      // Update log with derived and meta data
+      logs[logId].postcode = logs[logId]['property-information']?.postcode ||
       logs[logId]['property-information-renewal']?.postcode ||
       logs[logId]['property-information-supported-housing']?.postcode
-    logs[logId].submit.completed = 'true'
-    logs[logId].submitted = true
-    logs[logId].updated = new Date().toISOString()
-    logs[logId].updatedBy = account
+      logs[logId].submit = {
+        completed: 'true'
+      }
+      logs[logId].submitted = true
+      logs[logId].updated = new Date().toISOString()
+      logs[logId].updatedBy = account
 
-    res.redirect(`/logs/?success=submitted-log&logId=${logId}`)
+      res.redirect(`/logs/?success=submitted-log&logId=${logId}`)
+    } else {
+      res.render('logs/submit/cannot-submit-log', { log })
+    }
   })
 
   /**
@@ -144,7 +152,7 @@ export const logRoutes = (router) => {
 
       // Fork if next path is a fork
       const sectionKeyPath = `logs[${logId}][${sectionId}]`
-      const sectionForks = section.forks
+      const sectionForks = section?.forks
         ? section.forks(sectionPath, sectionKeyPath, req)
         : []
       const fork = sectionForks
