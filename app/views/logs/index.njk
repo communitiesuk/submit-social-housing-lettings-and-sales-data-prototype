@@ -25,7 +25,7 @@
     </div>
 
     {%- set incompleteRows = [] -%}
-    {% for log in logsIncomplete %}
+    {% for log in logsIncomplete | reverse %}
       {% set row = incompleteRows.push([{
           html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
         }, {
@@ -62,7 +62,7 @@
     }) if logsIncomplete }}
 
     {%- set summittedRows = [] -%}
-    {%- for log in logsSubmitted -%}
+    {%- for log in logsSubmitted | reverse -%}
       {%- set row = summittedRows.push([{
           html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
         }, {
