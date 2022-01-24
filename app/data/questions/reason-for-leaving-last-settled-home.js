@@ -108,6 +108,9 @@ export default [{
 }, {
   divider: 'or'
 }, {
+  text: 'Other',
+  value: 'other'
+}, {
   text: 'Don’t know',
   value: 'unknown'
 }, {
