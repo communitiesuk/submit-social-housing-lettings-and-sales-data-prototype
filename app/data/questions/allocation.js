@@ -1,5 +1,5 @@
 export default [{
-  text: 'Choice-Based Lettings (CBL)',
+  text: 'Choice-based lettings (CBL)',
   value: 'cbl'
 }, {
   text: 'Common Allocation Policy (CAP)',
