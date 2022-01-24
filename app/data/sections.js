@@ -349,7 +349,7 @@ export function sections (log) {
     title: 'Income, benefits and outgoings',
     group: 'finances',
     paths: getPaths('finances', [
-      'income-period',
+      'income-known',
       'income-value',
       'income-benefits',
       'income-benefits-portion',
@@ -359,10 +359,10 @@ export function sections (log) {
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot, req) => [{
-      currentPath: `${sectionPath}/income-period`,
+      currentPath: `${sectionPath}/income-known`,
       forkPath: `${sectionPath}/income-benefits`,
-      storedData: keyPathRoot.concat('income-period'),
-      values: ['prefers-not-to-say']
+      storedData: keyPathRoot.concat('income-known'),
+      excludedValues: ['true']
     }, {
       currentPath: `${sectionPath}/outgoings-value-check`,
       forkPath: (value) => {
@@ -407,7 +407,7 @@ export function sections (log) {
     title: 'Income, benefits and outgoings',
     group: 'finances',
     paths: getPaths('finances-supported-housing', [
-      'income-period',
+      'income-known',
       'income-value',
       'income-benefits',
       'income-benefits-portion',
@@ -419,10 +419,10 @@ export function sections (log) {
       'check-your-answers'
     ]),
     forks: (sectionPath, keyPathRoot, req) => [{
-      currentPath: `${sectionPath}/income-period`,
+      currentPath: `${sectionPath}/income-known`,
       forkPath: `${sectionPath}/income-benefits`,
-      storedData: keyPathRoot.concat('income-period'),
-      values: ['prefers-not-to-say']
+      storedData: keyPathRoot.concat('income-known'),
+      excludedValues: ['true']
     }, {
       currentPath: `${sectionPath}/outgoings-includes-rent`,
       forkPath: `${sectionPath}/check-your-answers`,

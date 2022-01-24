@@ -1,0 +1,15 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Do you know the household’s combined income?" %}
+{% set questionId = "income-known" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["yes-no-unknown-prefers-not-to-say"]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}
