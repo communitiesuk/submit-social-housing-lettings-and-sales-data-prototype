@@ -75,8 +75,9 @@ export default {
       completed: 'true'
     },
     finances: {
-      'income-period': 'weekly',
+      'income-known': 'true',
       'income-value': 250,
+      'income-period': 'weekly',
       'income-benefits': 'Housing benefit',
       'income-benefits-portion': 'some',
       'outgoings-includes-rent': 'true',

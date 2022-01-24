@@ -25,16 +25,16 @@
   {{ govukSummaryList({
     rows: [{
       key: {
-        text: "How often household receives income"
+        text: "Do you know the household’s combined income?"
       },
       value: {
-        text: log[section.id]["income-period"] | textFromInputValue(data.questions["income-period"])
+        text: log[section.id]["income-known"] | textFromInputValue(data.questions["yes-no-unknown-prefers-not-to-say"])
       },
       actions: {
         items: [{
-          text: "Change" if log[section.id]["income-period"] else "Answer",
-          href: sectionPath + "/income-period",
-          visuallyHiddenText: "how often household receives income"
+          text: "Change" if log[section.id]["income-known"] else "Answer",
+          href: sectionPath + "/income-known",
+          visuallyHiddenText: "if you know the household’s combined income"
         }] if not log.submitted
       }
     }, {
@@ -51,7 +51,7 @@
           visuallyHiddenText: "total household income"
         }] if not log.submitted
       }
-    }, {
+    } if log[section.id]["income-known"] == "true", {
       key: {
         text: "Housing-related benefits received"
       },
