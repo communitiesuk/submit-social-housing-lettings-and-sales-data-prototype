@@ -1,12 +1,15 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "How many people live in the household?" %}
+{% set title = "How many people live in the household for this letting?" %}
 {% set questionId = "number-in-household" %}
 
 {% block question %}
   {{ govukInput(decorate({
     label: {
       html: macro.heading(title, caption)
+    },
+    hint: {
+      text: "You can provide details for a maximum of 8 people."
     },
     classes: "govuk-input--width-3"
   }, ["logs", log.id, section.id, questionId])) }}

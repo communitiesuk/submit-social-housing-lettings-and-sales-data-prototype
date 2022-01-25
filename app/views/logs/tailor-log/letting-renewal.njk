@@ -1,6 +1,6 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Is this a renewal to the same tenant in the same property?" %}
+{% set title = "Is this letting a renewal?" %}
 {% set questionId = "letting-renewal" %}
 {% set required = true %}
 
@@ -10,6 +10,9 @@
       legend: {
         text: macro.heading(title, caption)
       }
+    },
+    hint: {
+      text: "A renewal is a letting to the same tenant in the same property."
     },
     items: data.questions["yes-no"]
   }, ["logs", log.id, section.id, questionId])) }}

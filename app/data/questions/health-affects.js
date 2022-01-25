@@ -29,9 +29,9 @@ export default [{
   },
   value: '3'
 }, {
-  text: 'Social or behavioural developmental disorders',
+  text: 'Socially or behaviourally',
   hint: {
-    text: 'For example, Autism Spectrum Disorder (ASD) or Attention Deficit Hyperactivity Disorder (ADHD).'
+    text: 'For example, associated with autism spectrum disorder (ASD) which includes Asperger’s or attention deficit hyperactivity disorder (ADHD).'
   },
   value: '9'
 }, {

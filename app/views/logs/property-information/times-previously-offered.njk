@@ -2,9 +2,9 @@
 
 {% set isRelet = log[section.id]["is-relet"] %}
 {% if isRelet == "true" %}
-  {% set title = "How many times has the property been previously offered since becoming available for re-let?" %}
+  {% set title = "Since becoming available for re-let, how many times has the property been previously offered?" %}
 {% else %}
-  {% set title = "How many times has the property been previously offered since becoming available?" %}
+  {% set title = "Since becoming available, how many times has the property been previously offered?" %}
 {% endif %}
 {% set questionId = "times-previously-offered" %}
 
@@ -15,7 +15,7 @@
       html: macro.heading(title, caption)
     },
     hint: {
-      text: "If the property is being offered for let for the first time, enter ‘0’."
+      text: "If the property is being offered for let for the first time, enter 0." if isRelet else "If the property is being let for the first time, enter 0."
     },
     inputmode: "numeric",
     pattern: "[0-9]*"

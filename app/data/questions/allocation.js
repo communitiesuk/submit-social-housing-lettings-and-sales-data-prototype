@@ -7,4 +7,10 @@ export default [{
 }, {
   text: 'Common Housing Register (CHR)',
   value: 'chr'
+}, {
+  divider: 'or'
+}, {
+  text: 'None of these allocation systems',
+  value: 'none',
+  behaviour: 'exclusive'
 }]
