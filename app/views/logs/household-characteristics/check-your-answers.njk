@@ -32,6 +32,7 @@
   {% for i in range(1, householdSize + 1) %}
     {% set itemId = "lead-tenant" if i == 1 else "person-" + i %}
     {% set isLeadTenant = itemId == "lead-tenant" %}
+    {% set ethnicGroupId = log[section.id][itemId]["ethnic-group"] %}
     {% set isKnown = "true" %}
     {% if not isLeadTenant %}
       {% set isKnown = log[section.id][itemId + "-known"] == "true" %}
@@ -99,10 +100,38 @@
         }
       } if isKnown, {
         key: {
+          text: "Ethnic group"
+        },
+        value: {
+          text: log[section.id][itemId]["ethnic-group"] | textFromInputValue | textFromInputValue(data.questions["ethnic-group"])
+        },
+        actions: {
+          items: [{
+            text: "Change" if log[section.id][itemId]["ethnic-group"] else "Answer",
+            href: sectionPath + "/" + itemId + "/ethnic-group",
+            visuallyHiddenText: name + "’s ethnic group"
+          }] if not log.submitted
+        }
+      } if isLeadTenant, {
+        key: {
+          text: "Ethnic background"
+        },
+        value: {
+          text: log[section.id][itemId]["ethnic-background"] | textFromInputValue | textFromInputValue(data.questions["ethnic-background"][ethnicGroupId])
+        },
+        actions: {
+          items: [{
+            text: "Change" if log[section.id][itemId]["ethnic-background"] else "Answer",
+            href: sectionPath + "/" + itemId + "/ethnic-background",
+            visuallyHiddenText: name + "’s ethnic background"
+          }] if not log.submitted
+        }
+      } if isLeadTenant, {
+        key: {
           text: "Nationality"
         },
         value: {
-          text: log[section.id][itemId]["nationality"] | textFromInputValue
+          text: log[section.id][itemId]["nationality"]
         },
         actions: {
           items: [{

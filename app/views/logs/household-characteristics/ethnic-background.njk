@@ -1,0 +1,22 @@
+{% extends "layouts/question.njk" %}
+
+{% set caption = "Lead tenant" %}
+{% set ethnicGroupId = log[section.id][itemId]["ethnic-group"] %}
+{% set ethnicGroup = log[section.id][itemId]["ethnic-group"] | textFromInputValue(data.questions["ethnic-group"]) %}
+{% set title = "Which of the following best describes the lead tenant’s " +  ethnicGroup + " background?" %}
+{% set questionId = "ethnic-background" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--l",
+        html: macro.fieldsetHeading(title, caption)
+      }
+    },
+    hint: {
+      text: "The lead tenant is the person in the household who does the most paid work. If several people do the same paid work, the lead tenant is whoever is the oldest."
+    },
+    items: data.questions[questionId][ethnicGroupId]
+  }, ["logs", log.id, section.id, itemId, questionId])) }}
+{% endblock %}

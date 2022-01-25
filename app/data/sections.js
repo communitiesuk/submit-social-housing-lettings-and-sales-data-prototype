@@ -47,6 +47,8 @@ export function sections (log) {
       // Lead tenant
       'lead-tenant/age',
       'lead-tenant/gender',
+      'lead-tenant/ethnic-group',
+      'lead-tenant/ethnic-background',
       'lead-tenant/nationality',
       'lead-tenant/working-situation',
       // Person 2
