@@ -46,10 +46,4 @@ export default [{
 }, {
   text: 'Other',
   value: '10'
-}, {
-  divider: 'or'
-}, {
-  text: 'Person prefers not to say',
-  value: 'prefers-not-to-say',
-  behaviour: 'exclusive'
 }]
