@@ -23,8 +23,10 @@ export default {
       'lead-tenant': {
         age: 45,
         'age-known': 'true',
+        'ethnic-group': 'white',
+        'ethnic-background': 'white-british',
         gender: 'male',
-        nationality: '1',
+        nationality: 'UK national resident in UK',
         'working-situation': '3'
       },
       'person-2-known': 'true',

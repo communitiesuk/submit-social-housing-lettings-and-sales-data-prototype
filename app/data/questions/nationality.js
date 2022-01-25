@@ -1,54 +1,54 @@
 export default [{
   text: 'UK national resident in UK',
-  value: '1'
+  value: 'UK national resident in UK'
 }, {
   text: 'UK national returning from residence overseas',
-  value: '2'
+  value: 'UK national returning from residence overseas'
 }, {
   text: 'Bulgarian',
-  value: '14'
+  value: 'Bulgarian'
 }, {
   text: 'Croatian',
-  value: '16'
+  value: 'Croatian'
 }, {
   text: 'Czech',
-  value: '3'
+  value: 'Czech'
 }, {
   text: 'Estonian',
-  value: '4'
+  value: 'Estonian'
 }, {
   text: 'Hungarian',
-  value: '5'
+  value: 'Hungarian'
 }, {
   text: 'Irish',
-  value: '17'
+  value: 'Irish'
 }, {
   text: 'Latvian',
-  value: '6'
+  value: 'Latvian'
 }, {
   text: 'Lithuanian',
-  value: '7'
+  value: 'Lithuanian'
 }, {
   text: 'Polish',
-  value: '8'
+  value: 'Polish'
 }, {
   text: 'Romanian',
-  value: '15'
+  value: 'Romanian'
 }, {
   text: 'Slovakian',
-  value: '9'
+  value: 'Slovakian'
 }, {
   text: 'Slovenian',
-  value: '10'
+  value: 'Slovenian'
 }, {
   text: 'From another European Economic Area (EEA) country',
-  value: '11'
+  value: 'From another European Economic Area (EEA) country'
 }, {
   text: 'From any other country',
-  value: '12'
+  value: 'From any other country'
 }, {
   divider: 'or'
 }, {
-  text: 'Person prefers not to say',
-  value: 'prefers-not-to-say'
+  text: 'Tenant prefers not to say',
+  value: 'Tenant prefers not to say'
 }]

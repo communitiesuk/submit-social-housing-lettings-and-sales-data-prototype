@@ -115,5 +115,5 @@ export default [{
   value: 'unknown'
 }, {
   text: 'Tenant prefers not to say',
-  value: 'prefer-not-to-say'
+  value: 'prefers-not-to-say'
 }]

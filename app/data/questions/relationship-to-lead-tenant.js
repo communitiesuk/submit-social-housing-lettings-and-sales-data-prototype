@@ -14,5 +14,5 @@ export default [{
   divider: 'or'
 }, {
   text: 'Person prefers not to say',
-  value: 'prefer-not-to-say'
+  value: 'prefers-not-to-say'
 }]
