@@ -27,7 +27,7 @@ export const validations = (req) => {
    */
   return {
     logs: {
-      'tailor-log': {
+      setup: {
         organisation: [
           check(getFieldName('organisation-owner'))
             .not()

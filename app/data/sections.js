@@ -8,13 +8,13 @@ export function sections (log) {
   }
 
   /**
-   * Tailor your log
+   * Set up your lettings log
    */
-  const tailorLog = {
-    id: 'tailor-log',
-    title: 'Tailor your lettings log',
+  const setup = {
+    id: 'setup',
+    title: 'Set up your lettings log',
     group: 'before-you-start',
-    paths: getPaths('tailor-log', [
+    paths: getPaths('setup', [
       'organisation',
       'type-of-need',
       'letting-renewal',
@@ -504,13 +504,13 @@ export function sections (log) {
   // Answers to questions in ‘Tailor your log’ affect questions shown in task list
   let isSupportedHousing = false
   let isRenewal = false
-  if (log['tailor-log']) {
-    isSupportedHousing = log['tailor-log']['type-of-need'] === 'supported'
-    isRenewal = log['tailor-log']['letting-renewal'] === 'true'
+  if (log.setup) {
+    isSupportedHousing = log.setup['type-of-need'] === 'supported'
+    isRenewal = log.setup['letting-renewal'] === 'true'
   }
 
   return [
-    tailorLog,
+    setup,
     householdCharacteristics,
     ...(!isRenewal ? [householdSituation] : [householdSituationRenewal]),
     householdNeeds,

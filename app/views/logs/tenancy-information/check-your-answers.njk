@@ -3,7 +3,7 @@
 {% set isFixedTerm =
   (log[section.id]["type-of-tenancy"] == "Fixed term – Secure") or
   (log[section.id]["type-of-tenancy"] == "Fixed term – Assured Shorthold Tenancy (AST)") %}
-{% set isSupported = log["tailor-log"]["type-of-need"] == "supported" %}
+{% set isSupported = log["setup"]["type-of-need"] == "supported" %}
 
 {% block checkAnswers %}
   {{ govukSummaryList({

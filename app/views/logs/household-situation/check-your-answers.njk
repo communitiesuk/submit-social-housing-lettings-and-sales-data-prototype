@@ -1,7 +1,7 @@
 {% extends "layouts/check-answers.njk" %}
 
 {% set hasPostcode = log[section.id]["postcode-known"] == "true" %}
-{% set isRenewal = log["tailor-log"]["letting-renewal"] == "true" %}
+{% set isRenewal = log["setup"]["letting-renewal"] == "true" %}
 
 {% block checkAnswers %}
   {{ govukSummaryList({

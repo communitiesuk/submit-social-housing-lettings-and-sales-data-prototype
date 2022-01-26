@@ -7,7 +7,7 @@ export default {
     updatedBy: {
       name: 'Daisy Perkins'
     },
-    'tailor-log': {
+    setup: {
       'organisation-manager': 'CHILD1',
       'organisation-owner': 'PARENT1',
       'type-of-need': 'general',
@@ -98,7 +98,7 @@ export default {
     updatedBy: {
       name: 'Daisy Perkins'
     },
-    'tailor-log': {
+    setup: {
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
       'type-of-need': 'general',
@@ -116,7 +116,7 @@ export default {
     updatedBy: {
       name: 'Daisy Perkins'
     },
-    'tailor-log': {
+    setup: {
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
       'type-of-need': 'general',
@@ -134,7 +134,7 @@ export default {
     updatedBy: {
       name: 'Daisy Perkins'
     },
-    'tailor-log': {
+    setup: {
       schemeId: 'EXAMPLE',
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
@@ -153,7 +153,7 @@ export default {
     updatedBy: {
       name: 'Daisy Perkins'
     },
-    'tailor-log': {
+    setup: {
       schemeId: 'EXAMPLE',
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',

@@ -64,7 +64,7 @@ export default () => {
       let href = section.paths ? `/logs/${log.id}/${section.id}` : false
 
       switch (section.id) {
-        case 'tailor-log':
+        case 'setup':
           if (log[section.id]?.completed === 'true') {
             status = 'completed'
           } else {
@@ -80,7 +80,7 @@ export default () => {
           }
           break
         default:
-          if (log['tailor-log']?.completed === 'true') {
+          if (log.setup?.completed === 'true') {
             if (log[section.id]?.completed === 'true') {
               status = 'completed'
             } else if (log[section.id] === undefined) {

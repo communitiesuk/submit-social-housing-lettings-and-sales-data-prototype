@@ -4,8 +4,8 @@
 
 {# Some answers may come from a scheme #}
 {% macro schemeAnswer(field) -%}
-  {%- if log["tailor-log"]["type-of-need"] == "supported" -%}
-    {%- set schemeId = log["tailor-log"]["schemeId"] -%}
+  {%- if log["setup"]["type-of-need"] == "supported" -%}
+    {%- set schemeId = log["setup"]["schemeId"] -%}
     {{ data.schemes[schemeId][field] }}
   {%- else -%}
     {{ log[section.id][field] }}
@@ -14,8 +14,8 @@
 
 {# Some answers may come from a scheme #}
 {% macro schemeAnswer(field) -%}
-  {%- if log["tailor-log"]["type-of-need"] == "supported" -%}
-    {%- set schemeId = log["tailor-log"]["schemeId"] -%}
+  {%- if log["setup"]["type-of-need"] == "supported" -%}
+    {%- set schemeId = log["setup"]["schemeId"] -%}
     {{ data.schemes[schemeId][field] }}
   {%- else -%}
     {{ log[section.id][field] }}
@@ -29,8 +29,8 @@
 {% set isNewlet = log[section.id]["is-relet"] == "false" %}
 {% set isRepaired = log[section.id]["repairs"] == "true" %}
 {% set isNewprop = log[section.id]["reason-for-non-relet"] == "newprop" %}
-{% set isSupported = log["tailor-log"]["type-of-need"] == "supported" %}
-{% set isRenewal = log["tailor-log"]["letting-renewal"] == "true" %}
+{% set isSupported = log["setup"]["type-of-need"] == "supported" %}
+{% set isRenewal = log["setup"]["letting-renewal"] == "true" %}
 
 {# Answer objects #}
 {# Hardcode `Arun` as LA for now. Maybe add live postcode lookup later. #}

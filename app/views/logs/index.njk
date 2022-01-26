@@ -29,7 +29,7 @@
       {% set row = incompleteRows.push([{
           html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
         }, {
-          text: log["tailor-log"]["tenant-code"]
+          text: log["setup"]["tenant-code"]
         }, {
           text: log.postcode
         }, {
@@ -66,7 +66,7 @@
       {%- set row = summittedRows.push([{
           html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
         }, {
-          text: log["tailor-log"]["tenant-code"]
+          text: log["setup"]["tenant-code"]
         }, {
           text: log.postcode
         }, {
