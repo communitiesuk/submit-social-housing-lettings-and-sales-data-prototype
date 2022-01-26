@@ -37,18 +37,18 @@
         }, ["logs", log.id, section.id, "completed"])) if log }}
 
         <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and return to log"
+          }) }}
+
           {# If this section has not yet been marked as completed, the next incomplete section *is* this current section. #}
           {% set nextSectionIndex = 0 if (log[section.id].completed == "true") else 1 %}
           {{ govukButton({
+            classes: "govuk-button--secondary",
             text: "Save and go to next incomplete section",
             attributes: {
               formaction: logPath + "/" + incompleteSections(log.id)[nextSectionIndex].id
             }
-          }) }}
-
-          {{ govukButton({
-            classes: "govuk-button--secondary",
-            text: "Save and return to log"
           }) }}
         </div>
       {% endif %}
