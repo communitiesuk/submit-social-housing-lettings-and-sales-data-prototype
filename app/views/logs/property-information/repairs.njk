@@ -5,17 +5,17 @@
 
 {% block question %}
   {% set dateHtml %}
-  {{ govukDateInput(decorate({
-    fieldset: {
-      legend: {
-        text: "When were the repairs completed?"
-      }
-    },
-    hint: {
-      text: "For example, 12 11 2020"
-    },
-    items: data.questions["date-full"]
-  }, ["logs", log.id, section.id, "repairs-date"])) }}
+    {{ govukDateInput(decorate({
+      fieldset: {
+        legend: {
+          text: "When were the repairs completed?"
+        }
+      },
+      hint: {
+        text: "For example, 12 11 2020"
+      },
+      items: data.questions["date-full"]
+    }, ["logs", log.id, section.id, "repairs-date"])) }}
   {% endset %}
 
   {{ govukRadios(decorate({
