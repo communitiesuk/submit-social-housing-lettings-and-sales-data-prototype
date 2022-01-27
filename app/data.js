@@ -18,7 +18,7 @@ export default async () => ({
     title: 'Before you start'
   }, {
     id: 'tenancy',
-    title: 'Tenancy and property information'
+    title: 'Property and tenancy information'
   }, {
     id: 'household',
     title: 'About the household'
