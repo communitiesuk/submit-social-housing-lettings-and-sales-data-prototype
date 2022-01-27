@@ -516,8 +516,8 @@ export function sections (log) {
     ...(isSupportedHousing && !isRenewal ? [propertyInformationSupportedHousing] : []),
     ...(!isSupportedHousing ? [tenancyInformation] : [tenancyInformationSupportedHousing]),
     householdCharacteristics,
-    ...(!isRenewal ? [householdSituation] : [householdSituationRenewal]),
     householdNeeds,
+    ...(!isRenewal ? [householdSituation] : [householdSituationRenewal]),
     ...(!isSupportedHousing ? [finances] : [financesSupportedHousing]),
     submission
   ]
