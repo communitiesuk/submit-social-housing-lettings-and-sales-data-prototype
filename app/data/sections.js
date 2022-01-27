@@ -36,6 +36,155 @@ export function sections (log) {
   }
 
   /**
+   * Tenancy information
+   */
+
+  // General needs
+  const tenancyInformation = {
+    id: 'tenancy-information',
+    title: 'Tenancy information',
+    group: 'tenancy',
+    paths: getPaths('tenancy-information', [
+      'is-joint',
+      'is-starter',
+      'type-of-tenancy',
+      'check-your-answers'
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/type-of-tenancy`,
+      forkPath: `${sectionPath}/fixed-term-length`,
+      storedData: keyPathRoot.concat('type-of-tenancy'),
+      values: [
+        'Fixed term – Secure',
+        'Fixed term – Assured Shorthold Tenancy (AST)'
+      ]
+    }, {
+      currentPath: `${sectionPath}/fixed-term-length`,
+      skipTo: `${sectionPath}/check-your-answers`
+    }]
+  }
+
+  // Supported housing
+  const tenancyInformationSupportedHousing = {
+    id: 'tenancy-information-supported-housing',
+    title: 'Tenancy information',
+    group: 'tenancy',
+    paths: getPaths('tenancy-information-supported-housing', [
+      'is-joint',
+      'is-starter',
+      'type-of-tenancy',
+      'sheltered-accommodation',
+      'check-your-answers'
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/type-of-tenancy`,
+      forkPath: `${sectionPath}/fixed-term-length`,
+      storedData: keyPathRoot.concat('type-of-tenancy'),
+      values: ['fixed-secure', 'fixed-ast']
+    }, {
+      currentPath: `${sectionPath}/fixed-term-length`,
+      skipTo: `${sectionPath}/sheltered-accommodation`
+    }]
+  }
+
+  /**
+   * Property information
+   */
+
+  // General needs && not a renewal
+  const propertyInformation = {
+    id: 'property-information',
+    title: 'Property information',
+    group: 'tenancy',
+    paths: getPaths('property-information', [
+      'postcode',
+      'local-authority',
+      'is-re-let',
+      'type-of-let',
+      'reason-for-vacancy',
+      'times-previously-offered',
+      'type-of-unit',
+      'type-of-building',
+      'is-adapted',
+      'number-of-bedrooms',
+      'void-date',
+      'repairs',
+      'check-your-answers'
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/postcode`,
+      forkPath: `${sectionPath}/is-re-let`,
+      storedData: keyPathRoot.concat('postcode-known'),
+      values: ['true']
+    }, {
+      currentPath: `${sectionPath}/is-re-let`,
+      forkPath: `${sectionPath}/reason-for-vacancy`,
+      storedData: keyPathRoot.concat('is-re-let'),
+      values: ['relet']
+    }, {
+      currentPath: `${sectionPath}/void-date`,
+      forkPath: `${sectionPath}/check-your-answers`,
+      storedData: keyPathRoot.concat('reason-for-non-relet'),
+      values: ['newprop']
+    }]
+  }
+
+  // General needs && renewal
+  const propertyInformationRenewal = {
+    id: 'property-information-renewal',
+    title: 'Property information',
+    group: 'tenancy',
+    paths: getPaths('property-information-renewal', [
+      'postcode',
+      'local-authority',
+      'type-of-unit',
+      'type-of-building',
+      'is-adapted',
+      'number-of-bedrooms',
+      'void-date',
+      'repairs',
+      'check-your-answers'
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/postcode`,
+      forkPath: `${sectionPath}/type-of-unit`,
+      storedData: keyPathRoot.concat('postcode-known'),
+      values: ['true']
+    }, {
+      currentPath: `${sectionPath}/reason-for-vacancy-non-relet`,
+      skipTo: `${sectionPath}/times-previously-offered`
+    }, {
+      currentPath: `${sectionPath}/void-date`,
+      forkPath: `${sectionPath}/check-your-answers`,
+      storedData: keyPathRoot.concat('reason-for-non-relet'),
+      values: ['newprop']
+    }]
+  }
+
+  // Supported housing && not a renewal
+  const propertyInformationSupportedHousing = {
+    id: 'property-information-supported-housing',
+    title: 'Property information',
+    group: 'tenancy',
+    paths: getPaths('property-information-supported-housing', [
+      'is-re-let',
+      'type-of-let',
+      'reason-for-vacancy',
+      'is-adapted',
+      'times-previously-offered',
+      'void-date',
+      'repairs',
+      'check-your-answers'
+    ]),
+    forks: (sectionPath, keyPathRoot) => [{
+      currentPath: `${sectionPath}/is-re-let`,
+      forkPath: `${sectionPath}/reason-for-vacancy`,
+      storedData: keyPathRoot.concat('is-re-let'),
+      values: ['relet']
+    }]
+  }
+
+  /**
    * Household characteristics
    */
   const householdCharacteristics = {
@@ -189,155 +338,6 @@ export function sections (log) {
       forkPath: `${sectionPath}/check-your-answers`,
       storedData: keyPathRoot.concat('health-condition'),
       values: ['false', 'prefers-not-to-say']
-    }]
-  }
-
-  /**
-   * Tenancy information
-   */
-
-  // General needs
-  const tenancyInformation = {
-    id: 'tenancy-information',
-    title: 'Tenancy information',
-    group: 'tenancy',
-    paths: getPaths('tenancy-information', [
-      'is-joint',
-      'is-starter',
-      'type-of-tenancy',
-      'check-your-answers'
-    ]),
-    forks: (sectionPath, keyPathRoot) => [{
-      currentPath: `${sectionPath}/type-of-tenancy`,
-      forkPath: `${sectionPath}/fixed-term-length`,
-      storedData: keyPathRoot.concat('type-of-tenancy'),
-      values: [
-        'Fixed term – Secure',
-        'Fixed term – Assured Shorthold Tenancy (AST)'
-      ]
-    }, {
-      currentPath: `${sectionPath}/fixed-term-length`,
-      skipTo: `${sectionPath}/check-your-answers`
-    }]
-  }
-
-  // Supported housing
-  const tenancyInformationSupportedHousing = {
-    id: 'tenancy-information-supported-housing',
-    title: 'Tenancy information',
-    group: 'tenancy',
-    paths: getPaths('tenancy-information-supported-housing', [
-      'is-joint',
-      'is-starter',
-      'type-of-tenancy',
-      'sheltered-accommodation',
-      'check-your-answers'
-    ]),
-    forks: (sectionPath, keyPathRoot) => [{
-      currentPath: `${sectionPath}/type-of-tenancy`,
-      forkPath: `${sectionPath}/fixed-term-length`,
-      storedData: keyPathRoot.concat('type-of-tenancy'),
-      values: ['fixed-secure', 'fixed-ast']
-    }, {
-      currentPath: `${sectionPath}/fixed-term-length`,
-      skipTo: `${sectionPath}/sheltered-accommodation`
-    }]
-  }
-
-  /**
-   * Property information
-   */
-
-  // General needs && not a renewal
-  const propertyInformation = {
-    id: 'property-information',
-    title: 'Property information',
-    group: 'tenancy',
-    paths: getPaths('property-information', [
-      'postcode',
-      'local-authority',
-      'is-re-let',
-      'type-of-let',
-      'reason-for-vacancy',
-      'times-previously-offered',
-      'type-of-unit',
-      'type-of-building',
-      'is-adapted',
-      'number-of-bedrooms',
-      'void-date',
-      'repairs',
-      'check-your-answers'
-    ]),
-    forks: (sectionPath, keyPathRoot) => [{
-      currentPath: `${sectionPath}/postcode`,
-      forkPath: `${sectionPath}/is-re-let`,
-      storedData: keyPathRoot.concat('postcode-known'),
-      values: ['true']
-    }, {
-      currentPath: `${sectionPath}/is-re-let`,
-      forkPath: `${sectionPath}/reason-for-vacancy`,
-      storedData: keyPathRoot.concat('is-re-let'),
-      values: ['relet']
-    }, {
-      currentPath: `${sectionPath}/void-date`,
-      forkPath: `${sectionPath}/check-your-answers`,
-      storedData: keyPathRoot.concat('reason-for-non-relet'),
-      values: ['newprop']
-    }]
-  }
-
-  // General needs && renewal
-  const propertyInformationRenewal = {
-    id: 'property-information-renewal',
-    title: 'Property information',
-    group: 'tenancy',
-    paths: getPaths('property-information-renewal', [
-      'postcode',
-      'local-authority',
-      'type-of-unit',
-      'type-of-building',
-      'is-adapted',
-      'number-of-bedrooms',
-      'void-date',
-      'repairs',
-      'check-your-answers'
-    ]),
-    forks: (sectionPath, keyPathRoot) => [{
-      currentPath: `${sectionPath}/postcode`,
-      forkPath: `${sectionPath}/type-of-unit`,
-      storedData: keyPathRoot.concat('postcode-known'),
-      values: ['true']
-    }, {
-      currentPath: `${sectionPath}/reason-for-vacancy-non-relet`,
-      skipTo: `${sectionPath}/times-previously-offered`
-    }, {
-      currentPath: `${sectionPath}/void-date`,
-      forkPath: `${sectionPath}/check-your-answers`,
-      storedData: keyPathRoot.concat('reason-for-non-relet'),
-      values: ['newprop']
-    }]
-  }
-
-  // Supported housing && not a renewal
-  const propertyInformationSupportedHousing = {
-    id: 'property-information-supported-housing',
-    title: 'Property information',
-    group: 'tenancy',
-    paths: getPaths('property-information-supported-housing', [
-      'is-re-let',
-      'type-of-let',
-      'reason-for-vacancy',
-      'is-adapted',
-      'times-previously-offered',
-      'void-date',
-      'repairs',
-      'check-your-answers'
-    ]),
-    forks: (sectionPath, keyPathRoot) => [{
-      currentPath: `${sectionPath}/is-re-let`,
-      forkPath: `${sectionPath}/reason-for-vacancy`,
-      storedData: keyPathRoot.concat('is-re-let'),
-      values: ['relet']
     }]
   }
 
@@ -511,13 +511,13 @@ export function sections (log) {
 
   return [
     setup,
-    householdCharacteristics,
-    ...(!isRenewal ? [householdSituation] : [householdSituationRenewal]),
-    householdNeeds,
     ...(!isSupportedHousing ? [tenancyInformation] : [tenancyInformationSupportedHousing]),
     ...(!isSupportedHousing && !isRenewal ? [propertyInformation] : []),
     ...(!isSupportedHousing && isRenewal ? [propertyInformationRenewal] : []),
     ...(isSupportedHousing && !isRenewal ? [propertyInformationSupportedHousing] : []),
+    householdCharacteristics,
+    ...(!isRenewal ? [householdSituation] : [householdSituationRenewal]),
+    householdNeeds,
     ...(!isSupportedHousing ? [finances] : [financesSupportedHousing]),
     submission
   ]

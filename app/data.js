@@ -17,11 +17,11 @@ export default async () => ({
     id: 'before-you-start',
     title: 'Before you start'
   }, {
-    id: 'household',
-    title: 'About the household'
-  }, {
     id: 'tenancy',
     title: 'Tenancy and property information'
+  }, {
+    id: 'household',
+    title: 'About the household'
   }, {
     id: 'finances',
     title: 'Finances'
