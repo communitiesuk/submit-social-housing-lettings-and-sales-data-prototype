@@ -511,10 +511,10 @@ export function sections (log) {
 
   return [
     setup,
-    ...(!isSupportedHousing ? [tenancyInformation] : [tenancyInformationSupportedHousing]),
     ...(!isSupportedHousing && !isRenewal ? [propertyInformation] : []),
     ...(!isSupportedHousing && isRenewal ? [propertyInformationRenewal] : []),
     ...(isSupportedHousing && !isRenewal ? [propertyInformationSupportedHousing] : []),
+    ...(!isSupportedHousing ? [tenancyInformation] : [tenancyInformationSupportedHousing]),
     householdCharacteristics,
     ...(!isRenewal ? [householdSituation] : [householdSituationRenewal]),
     householdNeeds,
