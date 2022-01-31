@@ -35,21 +35,15 @@ $govuk-assets-path: "/govuk/assets/";
   margin-top: govuk-spacing(4);
   width: 100%;
 
-  &:before,
-  &:after {
-    border-top: 1px solid $govuk-border-colour;
+  &:before {
+    border-top: 1px dashed $govuk-secondary-text-colour;
     content: "";
     position: relative;
   }
 
   &:before {
-    margin-right: govuk-spacing(1);
-    width: 50px;
-  }
-
-  &:after {
-    margin-left: govuk-spacing(1);
     flex-grow: 1;
+    margin-bottom: govuk-spacing(2);
   }
 }
 

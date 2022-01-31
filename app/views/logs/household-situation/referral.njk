@@ -5,12 +5,35 @@
 
 {% block question %}
   {{ govukRadios(decorate({
+    formGroup: {
+      classes: "app-form-group--heading-dividers"
+    },
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
       }
     },
     items: [{
+      text: "Internal transfer",
+      value: "Internal transfer"
+    }, {
+      text: "Tenant applied directly – no referral or nomination",
+      value: "Tenant applied directly – no referral or nomination"
+    }, {
+      text: "Private registered provider (PRP) lettings only – nominated by a local housing authority",
+      value: "Private registered provider (PRP) lettings only – nominated by a local housing authority"
+    }, {
+      text: "Private registered provider (PRP) supported lettings only – referred by local authority housing department",
+      value: "Private registered provider (PRP) supported lettings only – referred by local authority housing department"
+    } if log.setup["type-of-need"] == "supported", {
+      text: "Re-located through official housing mobility scheme",
+      value: "Re-located through official housing mobility scheme"
+    }, {
+      text: "Other social landlord",
+      value: "Other social landlord"
+    }, {
+      divider: " "
+    }, {
       text: "Children’s social care",
       value: "Children’s social care"
     } if data.features["2022-23"].on == true, {
@@ -23,32 +46,14 @@
       text: "Health service",
       value: "Health service"
     }, {
-      text: "Internal transfer",
-      value: "Internal transfer"
-    }, {
-      text: "Nominated by a local housing authority",
-      value: "Nominated by a local housing authority"
-    }, {
-      text: "Referred by local authority housing department",
-      value: "Referred by local authority housing department"
-    } if log["setup"]["type-of-need"] == "supported", {
       text: "Police, probation or prison",
       value: "12"
-    }, {
-      text: "Re-located through official housing mobility scheme",
-      value: "Re-located through official housing mobility scheme"
-    }, {
-      text: "Tenant applied directly (no referral or nomination)",
-      value: "Tenant applied directly (no referral or nomination)"
     }, {
       text: "Voluntary agency",
       value: "Voluntary agency"
     }, {
       text: "Youth offending team",
       value: "Youth offending team"
-    }, {
-      text: "Other social landlord",
-      value: "Other social landlord"
     }, {
       text: "Other",
       value: "Other"

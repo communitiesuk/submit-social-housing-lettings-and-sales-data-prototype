@@ -6,9 +6,6 @@
 {% block question %}
   {# Only shown for supported housing renewals #}
   {{ govukRadios(decorate({
-    formGroup: {
-      classes: "app-form-group--heading-dividers"
-    },
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
