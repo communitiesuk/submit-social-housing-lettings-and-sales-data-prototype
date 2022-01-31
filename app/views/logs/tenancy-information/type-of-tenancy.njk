@@ -10,7 +10,9 @@
 {% block question %}
   {% set otherHtml %}
     {{ govukInput(decorate({
-      label: "Name of tenancy type"
+      label: {
+        text: "Tenancy type"
+      }
     }, ["logs", log.id, section.id, "other-type-of-tenancy"])) }}
   {% endset %}
 

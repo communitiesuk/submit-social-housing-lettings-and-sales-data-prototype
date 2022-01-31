@@ -23,14 +23,7 @@
       }
     }, {
       text: "No",
-      value: "false",
-      conditional: {
-        html: govukTextarea(decorate({
-          label: {
-            text: "Give a reason why you don’t know the postcode or local authority"
-          }
-        }, ["logs", log.id, section.id, "why-dont-you-know-postcode-or-la"]))
-      }
+      value: "false"
     }]
   }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

@@ -5,7 +5,7 @@ export default [{
   text: 'Common Allocation Policy (CAP)',
   value: 'cap'
 }, {
-  text: 'Common Housing Register (CHR)',
+  text: 'Common housing register (CHR)',
   value: 'chr'
 }, {
   divider: 'or'

@@ -25,4 +25,7 @@ export default [{
 }, {
   text: 'Weekly for 52 weeks',
   value: 'weekly-52'
+}, {
+  text: 'Weekly for 53 weeks',
+  value: 'weekly-53'
 }]
