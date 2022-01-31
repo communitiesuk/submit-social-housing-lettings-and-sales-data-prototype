@@ -29,7 +29,7 @@ export const accountRoutes = (router) => {
 
     // Demo accounts
     switch (account.email) {
-      case 'admin@communities.gov.uk':
+      case 'admin@levellingup.gov.uk':
         req.session.data.account = users.ADMIN
         break
       case 'data.coordinator@owning.gov.uk':

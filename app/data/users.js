@@ -2,7 +2,7 @@ export default {
   // Administrator at DHLUC
   ADMIN: {
     name: 'Gary Meyler',
-    email: 'admin@communities.gov.uk',
+    email: 'admin@levellingup.gov.uk',
     organisationId: 'DLUHC',
     role: 'admin',
     lastActive: '2021-10-24T16:04:34'
