@@ -29,17 +29,8 @@ export const logRoutes = (router) => {
   /**
    * Create new log
    */
-  router.get('/logs/create', (req, res) => {
-    const { type } = req.query
-
-    res.render('logs/create', {
-      type: type || 'letting'
-    })
-  })
-
   router.post('/logs/create', (req, res) => {
-    const { type } = req.query
-    const { account, logs } = req.session.data
+    const { account, logs, type } = req.session.data
     const logId = utils.generateUniqueId()
 
     // Create a new blank log in session data
@@ -72,28 +63,22 @@ export const logRoutes = (router) => {
   /**
    * Submit log
    */
-  router.post('/logs/:logId/submit/declaration', (req, res, next) => {
+  router.post('/logs/:logId/submit/check', (req, res, next) => {
     const { logId } = req.params
-    const { account, check, logs } = req.session.data
+    const { account, logs } = req.session.data
 
-    const log = utils.getEntityById(logs, logId)
-
-    if (check === 'true') {
-      // Update log with derived and meta data
-      logs[logId].postcode = logs[logId]['property-information']?.postcode ||
-      logs[logId]['property-information-renewal']?.postcode ||
-      logs[logId]['property-information-supported-housing']?.postcode
-      logs[logId].submit = {
-        completed: 'true'
-      }
-      logs[logId].submitted = true
-      logs[logId].updated = new Date().toISOString()
-      logs[logId].updatedBy = account
-
-      res.redirect(`/logs/?success=submitted-log&logId=${logId}`)
-    } else {
-      res.render('logs/submit/cannot-submit-log', { log })
+    // Update log with derived and meta data
+    logs[logId].postcode = logs[logId]['property-information']?.postcode ||
+    logs[logId]['property-information-renewal']?.postcode ||
+    logs[logId]['property-information-supported-housing']?.postcode
+    logs[logId].submit = {
+      completed: 'true'
     }
+    logs[logId].submitted = true
+    logs[logId].updated = new Date().toISOString()
+    logs[logId].updatedBy = account
+
+    res.redirect(`/logs/?success=submitted-log&logId=${logId}`)
   })
 
   /**
