@@ -1,6 +1,5 @@
 {% extends "layouts/question.njk" %}
 
-{% set caption = "Lead tenant" %}
 {% set ethnicGroupId = log[section.id][itemId]["ethnic-group"] %}
 {% set ethnicGroup = log[section.id][itemId]["ethnic-group"] | textFromInputValue(data.questions["ethnic-group"]) %}
 {% set title = "Which of the following best describes the lead tenant’s " +  ethnicGroup + " background?" %}

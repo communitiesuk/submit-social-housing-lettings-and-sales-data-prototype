@@ -194,6 +194,7 @@ export function sections (log) {
     paths: getPaths('household-characteristics', [
       'number-in-household',
       // Lead tenant
+      'lead-tenant/privacy-notice',
       'lead-tenant/age',
       'lead-tenant/gender',
       'lead-tenant/ethnic-group',
@@ -494,10 +495,10 @@ export function sections (log) {
    */
   const submission = {
     id: 'submit',
-    title: 'Submit lettings log',
+    title: 'Check and submit lettings log',
     group: !log.submitted ? 'submission' : false,
     paths: getPaths('submit', [
-      'declaration'
+      'check'
     ])
   }
 

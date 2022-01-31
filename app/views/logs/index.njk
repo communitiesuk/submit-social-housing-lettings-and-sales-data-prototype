@@ -1,98 +1,106 @@
-{% extends "layouts/base.njk" %}
+{% extends "layouts/form.njk" %}
 
 {% set title = "Your logs" %}
 
 {% set logsIncomplete = logs| rejectattr("submitted") %}
 {% set logsSubmitted = logs | selectattr("submitted") %}
 
-{% block content %}
-    {{ macro.heading(title) }}
+{% block form %}
+  {{ macro.heading(title) }}
 
-    {{ govukNotificationBanner({
-      text: macro.notificationBannerText(query.success, query.logId),
-      type: "success"
-    }) if query.success }}
+  {{ govukNotificationBanner({
+    text: macro.notificationBannerText(query.success, query.logId),
+    type: "success"
+  }) if query.success }}
 
-    <div class="govuk-button-group">
-      {{ govukButton({
-        href: "/logs/create?type=lettings",
-        text: "Create a new lettings log"
-      }) }}
-      {{ govukButton({
-        href: "/logs/create?type=sales",
-        text: "Create a new sales log"
-      }) }}
-    </div>
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Create a new lettings log",
+      name: "type",
+      value: "lettings",
+      attributes: {
+        formaction: "/logs/create"
+      }
+    }) }}
+    {{ govukButton({
+      text: "Create a new sales log",
+      name: "type",
+      value: "sales",
+      attributes: {
+        formaction: "#"
+      }
+    }) }}
+  </div>
 
-    {%- set incompleteRows = [] -%}
-    {% for log in logsIncomplete | reverse %}
-      {% set row = incompleteRows.push([{
-          html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
-        }, {
-          text: log["setup"]["tenant-code"]
-        }, {
-          text: log.postcode
-        }, {
-          html: macro.entityHtml(log.updated | govukDate, false, log.updatedBy.name)
-        }, {
-          html: "<a href=\"#\">Re-assign</a>"
-        } if isCoordinator or isAdmin])
-      %}
-    {% endfor %}
+  {%- set incompleteRows = [] -%}
+  {% for log in logsIncomplete | reverse %}
+    {% set row = incompleteRows.push([{
+        html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
+      }, {
+        text: log["setup"]["tenant-code"]
+      }, {
+        text: log.postcode
+      }, {
+        html: macro.entityHtml(log.updated | govukDate, false, log.updatedBy.name)
+      }, {
+        html: "<a href=\"#\">Re-assign</a>"
+      } if isCoordinator or isAdmin])
+    %}
+  {% endfor %}
 
-    {{ govukTable({
-      caption: "Logs you need to complete",
-      captionClasses: "govuk-table__caption--m",
-      firstCellIsHeader: true,
-      head: [{
-        text: "Log reference",
-        attributes: { width: "20%" }
-      }, {
-        text: "Tenant code",
-        attributes: { width: "25%" }
-      }, {
-        text: "Postcode",
-        attributes: { width: "20%" }
-      }, {
-        text: "Last changed"
-      }, {
-        text: "Actions"
-      } if isCoordinator or isAdmin],
-      rows: incompleteRows
-    }) if logsIncomplete }}
+  {{ govukTable({
+    caption: "Logs you need to complete",
+    captionClasses: "govuk-table__caption--m",
+    firstCellIsHeader: true,
+    head: [{
+      text: "Log reference",
+      attributes: { width: "20%" }
+    }, {
+      text: "Tenant code",
+      attributes: { width: "25%" }
+    }, {
+      text: "Postcode",
+      attributes: { width: "20%" }
+    }, {
+      text: "Last changed"
+    }, {
+      text: "Actions"
+    } if isCoordinator or isAdmin],
+    rows: incompleteRows
+  }) if logsIncomplete }}
 
-    {%- set summittedRows = [] -%}
-    {%- for log in logsSubmitted | reverse -%}
-      {%- set row = summittedRows.push([{
-          html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
-        }, {
-          text: log["setup"]["tenant-code"]
-        }, {
-          text: log.postcode
-        }, {
-          html: macro.entityHtml(log.updated | govukDate, false, log.updatedBy.name)
-        }])
-      -%}
-    {%- endfor -%}
+  {%- set summittedRows = [] -%}
+  {%- for log in logsSubmitted | reverse -%}
+    {%- set row = summittedRows.push([{
+        html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
+      }, {
+        text: log["setup"]["tenant-code"]
+      }, {
+        text: log.postcode
+      }, {
+        html: macro.entityHtml(log.updated | govukDate, false, log.updatedBy.name)
+      }])
+    -%}
+  {%- endfor -%}
 
-    {{ govukTable({
-      caption: "Logs you’ve submitted",
-      captionClasses: "govuk-table__caption--m",
-      firstCellIsHeader: true,
-      head: [{
-        text: "Log reference",
-        attributes: { width: "20%" }
-      }, {
-        text: "Tenant code",
-        attributes: { width: "25%" }
-      }, {
-        text: "Postcode",
-        attributes: { width: "20%" }
-      }, {
-        text: "Submitted"
-      }],
-      rows: summittedRows
-    }) if logsSubmitted }}
+  {{ govukTable({
+    caption: "Logs you’ve submitted",
+    captionClasses: "govuk-table__caption--m",
+    firstCellIsHeader: true,
+    head: [{
+      text: "Log reference",
+      attributes: { width: "20%" }
+    }, {
+      text: "Tenant code",
+      attributes: { width: "25%" }
+    }, {
+      text: "Postcode",
+      attributes: { width: "20%" }
+    }, {
+      text: "Submitted"
+    }],
+    rows: summittedRows
+  }) if logsSubmitted }}
 
-    <p><a href="#">See all completed logs ({{ logsSubmitted | length }})</a></p>
+  <p><a href="#">See all completed logs ({{ logsSubmitted | length }})</a></p>
 {% endblock %}

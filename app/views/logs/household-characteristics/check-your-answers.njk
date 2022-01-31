@@ -43,6 +43,17 @@
       classes: "govuk-!-margin-bottom-6",
       titleText: name | capitalize,
       rows: [{
+      key: {
+        text: "Seen privacy notice"
+      },
+      value: {
+        text: log[section.id][itemId]["privacy-notice"] | textFromInputValue(data.questions["yes-unknown"])
+      },
+      actions: actionLinks({
+        href: sectionPath + "/" + itemId + "/privacy-notice",
+        visuallyHiddenText: "if seen privacy notice"
+      })
+    } if isLeadTenant, {
         key: {
           text: "Details known"
         },
@@ -103,7 +114,7 @@
           text: "Ethnic group"
         },
         value: {
-          text: log[section.id][itemId]["ethnic-group"] | textFromInputValue | textFromInputValue(data.questions["ethnic-group"])
+          html: log[section.id][itemId]["ethnic-group"] | textFromInputValue(data.questions["ethnic-group"])
         },
         actions: {
           items: [{
@@ -117,7 +128,7 @@
           text: "Ethnic background"
         },
         value: {
-          text: log[section.id][itemId]["ethnic-background"] | textFromInputValue | textFromInputValue(data.questions["ethnic-background"][ethnicGroupId])
+          text: log[section.id][itemId]["ethnic-background"] | textFromInputValue(data.questions["ethnic-background"][ethnicGroupId])
         },
         actions: {
           items: [{
@@ -131,7 +142,7 @@
           text: "Nationality"
         },
         value: {
-          text: log[section.id][itemId]["nationality"]
+          text: log[section.id][itemId]["nationality"] | textFromInputValue
         },
         actions: {
           items: [{
