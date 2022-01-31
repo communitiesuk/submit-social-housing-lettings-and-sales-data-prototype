@@ -101,3 +101,41 @@
     None
   {% endif %}
 {% endmacro %}
+
+{# Collection resources #}
+{% from "components/document-list/macro.njk" import appDocumentList %}
+{% macro collectionResouces(classes) %}
+  {{ appDocumentList({
+    classes: classes,
+    items: [{
+      href: "/public/files/privacy-notice.pdf",
+      text: "DLUHC privacy notice",
+      metadata: "PDF, 116 KB, 2 pages",
+      description: "You must show this privacy notice to tenants and buyers before you can submit logs containing information about them."
+    }, {
+      href: "/public/files/paper-form-social-housing-letting.pdf",
+      text: "Lettings log for tenants",
+      metadata: "PDF, 251 KB, 2 pages"
+    }, {
+      href: "#",
+      text: "Lettings eCORE specification",
+      metadata: "CSV, 32 KB"
+    }, {
+      href: "#",
+      text: "Lettings eCORE template",
+      metadata: "CSV, 12 KB"
+    }, {
+      href: "#",
+      text: "Sales log for buyers",
+      metadata: "PDF, 251 KB, 2 pages"
+    }, {
+      href: "#",
+      text: "Sales eCORE specification",
+      metadata: "CSV, 27 KB"
+    }, {
+      href: "#",
+      text: "Sales eCORE template",
+      metadata: "CSV, 9 KB"
+    }]
+  }) }}
+{% endmacro %}
