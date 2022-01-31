@@ -1,5 +1,7 @@
 {% extends "layouts/base.njk" %}
 
+{% import "macros.njk" as macro %}
+
 {% block content %}
   <h1 class="govuk-heading-xl govuk-!-width-two-thirds">{{ serviceName }}</h1>
 
@@ -11,7 +13,6 @@
       <ul class="govuk-list govuk-list--bullet">
         <li>upload data for multiple lettings and sales</li>
         <li>transfer data using an API</li>
-        <li><a href="/public/files/paper-form-social-housing-letting.pdf">download a copy of the 2021 to 2022 lettings log as a PDF</a> (2MB)</li>
       </ul>
       <p>The data will be used to update the national record for social housing. It will also help to inform policy about the cost of social housing and what type of housing needs to be built.</p>
       <p>This service is only for social housing in England.</p>
@@ -30,15 +31,10 @@
     </div>
 
     <div class="govuk-grid-column-one-third">
-      {{ rigRelatedNavigation({
-        sections: [{
-          title: "Related content",
-          items: [{
-            href: "#",
-            text: "How to submit social housing lettings and sales data (CORE)"
-          }]
-        }]
-      }) }}
+      <div class="app-card">
+        <h2 class="govuk-heading-s">2022/23 collection resources</h2>
+        {{ macro.collectionResouces("app-document-list--small") }}
+      </div>
     </div>
   </div>
 {% endblock %}
