@@ -91,6 +91,9 @@ export default {
       'outgoings-after-benefits': 'true',
       'outgoings-outstanding': 15,
       completed: 'true'
+    },
+    submit: {
+      confirmed: 'true'
     }
   },
   BZ787: {

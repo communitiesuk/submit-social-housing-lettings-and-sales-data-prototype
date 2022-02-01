@@ -194,7 +194,6 @@ export function sections (log) {
     paths: getPaths('household-characteristics', [
       'number-in-household',
       // Lead tenant
-      'lead-tenant/privacy-notice',
       'lead-tenant/age',
       'lead-tenant/gender',
       'lead-tenant/ethnic-group',
@@ -495,11 +494,12 @@ export function sections (log) {
    */
   const submission = {
     id: 'submit',
-    title: 'Check and submit lettings log',
+    title: 'Submit your lettings log',
     group: !log.submitted ? 'submission' : false,
-    paths: getPaths('submit', [
-      'check'
-    ])
+    paths: [
+      `${logPath}/submit/confirm`,
+      '/logs'
+    ]
   }
 
   // Answers to questions in ‘Tailor your log’ affect questions shown in task list

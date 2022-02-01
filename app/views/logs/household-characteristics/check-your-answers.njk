@@ -43,17 +43,6 @@
       classes: "govuk-!-margin-bottom-6",
       titleText: name | capitalize,
       rows: [{
-      key: {
-        text: "Seen privacy notice"
-      },
-      value: {
-        text: log[section.id][itemId]["privacy-notice"] | textFromInputValue(data.questions["yes-unknown"])
-      },
-      actions: actionLinks({
-        href: sectionPath + "/" + itemId + "/privacy-notice",
-        visuallyHiddenText: "if seen privacy notice"
-      })
-    } if isLeadTenant, {
         key: {
           text: "Details known"
         },

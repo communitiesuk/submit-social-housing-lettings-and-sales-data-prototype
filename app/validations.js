@@ -78,18 +78,25 @@ export const validations = (req) => {
             .isEmpty()
             .withMessage('Enter the purchaser code')
         ]
+      },
+      'household-characteristics': {
+        'number-in-household': [
+          check(getFieldName('number-in-household'))
+            .not()
+            .isEmpty()
+            .withMessage('Enter the number of people who live in the household'),
+          check(getFieldName('number-in-household'))
+            .isInt({ min: 1, max: 8 })
+            .withMessage('You must enter a number between 1 and 8')
+        ]
+      },
+      submit: {
+        confirm: [
+          check(getFieldName('confirmed'))
+            .equals('true')
+            .withMessage('You must show the DLUHC privacy notice to the tenant before you can submit this log.')
+        ]
       }
-    },
-    'household-characteristics': {
-      'number-in-household': [
-        check(getFieldName('number-in-household'))
-          .not()
-          .isEmpty()
-          .withMessage('Enter the number of people who live in the household'),
-        check(getFieldName('number-in-household'))
-          .isInt({ min: 1, max: 8 })
-          .withMessage('You must enter a number between 1 and 8')
-      ]
     }
   }
 }
