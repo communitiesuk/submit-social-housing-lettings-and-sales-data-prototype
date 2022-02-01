@@ -93,7 +93,11 @@ export const logRoutes = (router) => {
       const section = utils.getById(getSections(log), sectionId)
 
       if (log[sectionId]) {
-        res.redirect(`/logs/${logId}/${sectionId}/check-your-answers`)
+        if (sectionId === 'submit') {
+          res.redirect(`/logs/${logId}/submit/confirm`)
+        } else {
+          res.redirect(`/logs/${logId}/${sectionId}/check-your-answers`)
+        }
       } else {
         res.redirect(section.paths[0])
       }

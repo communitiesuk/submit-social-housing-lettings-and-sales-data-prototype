@@ -92,7 +92,7 @@ export const validations = (req) => {
       },
       submit: {
         confirm: [
-          check(getFieldName('confirmed'))
+          check(getFieldName('completed'))
             .equals('true')
             .withMessage('You must show the DLUHC privacy notice to the tenant before you can submit this log.')
         ]

@@ -93,7 +93,7 @@ export default {
       completed: 'true'
     },
     submit: {
-      confirmed: 'true'
+      completed: 'true'
     }
   },
   BZ787: {

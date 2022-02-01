@@ -75,7 +75,7 @@ export default () => {
           if (log[section.id]?.completed === 'true') {
             status = 'completed'
           } else {
-            href = canSubmit ? section.paths : false
+            href = canSubmit ? section.paths[0] : false
             status = canSubmit ? 'notStarted' : 'cannotStart'
           }
           break

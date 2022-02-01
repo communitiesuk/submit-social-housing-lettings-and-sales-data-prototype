@@ -496,10 +496,9 @@ export function sections (log) {
     id: 'submit',
     title: 'Submit your lettings log',
     group: !log.submitted ? 'submission' : false,
-    paths: [
-      `${logPath}/submit/confirm`,
-      '/logs'
-    ]
+    paths: getPaths('submit', [
+      'confirm'
+    ]).concat(`/logs?success=submitted-log&logId=${log.id}`)
   }
 
   // Answers to questions in ‘Tailor your log’ affect questions shown in task list
