@@ -10,11 +10,11 @@
 {% else %}
   {% set period = "every week" %}
 {% endif %}
-{% set title = "Value for rent is outside of the expected range" %}
+{% set title = "Rent value outside the expected range" %}
 {% set questionId = "outgoings-value-correct" %}
 
 {% block interruption %}
-  <p class="govuk-body">The maximum rent for a property in the South East is £150 {{ period }}.</p>
+  <p class="govuk-body">The maximum rent for a property in south-east England is £150 {{ period }}.</p>
   <p class="govuk-body">You entered <strong>{{ log[section.id]["outgoings-rent"] | sterling }} {{ period }}</strong></p>
   {{ govukRadios(decorate({
     fieldset: {
