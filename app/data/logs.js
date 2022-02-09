@@ -1,7 +1,6 @@
 export default {
   EX001: {
     type: 'lettings',
-    postcode: 'BN17 6RJ',
     status: 'submitted',
     updated: '2021-07-29',
     updatedBy: {
@@ -15,7 +14,7 @@ export default {
       'type-of-rent': 'Affordable Rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
       'tenant-code': '298739',
-      'property-reference': 'RT45657',
+      'property-reference': 'P001234',
       completed: 'true'
     },
     'household-characteristics': {
@@ -109,8 +108,8 @@ export default {
       'letting-renewal': 'false',
       'type-of-rent': 'Affordable Rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
-      'tenant-code': 'Gen needs/!renewal',
-      'property-reference': 'RT45657',
+      'tenant-code': 'GN',
+      'property-reference': 'P004321',
       completed: 'true'
     }
   },
@@ -127,8 +126,8 @@ export default {
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
-      'tenant-code': 'Gen needs/renewal',
-      'property-reference': 'RT45657',
+      'tenant-code': 'GN-R',
+      'property-reference': 'P005678',
       completed: 'true'
     }
   },
@@ -146,8 +145,8 @@ export default {
       'letting-renewal': 'false',
       'type-of-rent': 'Affordable Rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
-      'tenant-code': 'Sup hou/!renewal',
-      'property-reference': 'RT45657',
+      'tenant-code': 'SH',
+      'property-reference': 'P008765',
       completed: 'true'
     }
   },
@@ -165,8 +164,8 @@ export default {
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',
       'letting-start-date': { day: '12', month: '1', year: '2021' },
-      'tenant-code': 'Sup hou/renewal',
-      'property-reference': 'RT45657',
+      'tenant-code': 'SH-R',
+      'property-reference': 'P04565',
       completed: 'true'
     },
     'property-information-supported-housing-renewal': {
