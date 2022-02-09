@@ -10,6 +10,7 @@ $govuk-assets-path: "/govuk/assets/";
 @import "govuk-prototype-rig/rig/all";
 
 // Import app components
+$app-assets-path: '/public/';
 @import "../app/components/all";
 
 // GOV.UK Notify email (used for prototyping emails sent by GOV.UK Notify)
@@ -19,6 +20,11 @@ $govuk-assets-path: "/govuk/assets/";
 @import "./govuk-publishing-components";
 
 // Overrides
+.govuk-tag {
+  white-space: nowrap;
+}
+
+// App utilities
 .app-\!-colour-muted {
   color: $govuk-secondary-text-colour !important;
 }

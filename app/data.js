@@ -13,6 +13,11 @@ export default async () => ({
     }
   },
   logs,
+  filter: {
+    collection: ['2022/23'],
+    show: ['mine'],
+    status: ['complete', 'incomplete']
+  },
   groups: [{
     id: 'before-you-start',
     title: 'Before you start'

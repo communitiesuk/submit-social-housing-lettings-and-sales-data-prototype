@@ -1,0 +1,76 @@
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+<div class="app-filter">
+  <div class="app-filter__header">
+    <h2 class="govuk-heading-m">{{ params.title }}</h2>
+  </div>
+
+  <div class="app-filter__content">
+    {{ govukRadios(decorate({
+      formGroup: {
+        classes: "app-filter__group"
+      },
+      classes: "govuk-radios--small",
+      fieldset: {
+        legend: {
+          classes: "govuk-fieldset__legend--s",
+          text: "Show"
+        }
+      },
+      items: [{
+        text: "All logs",
+        value: "all"
+      }, {
+        text: "My logs",
+        value: "mine"
+      }]
+    }, ["filter", "show"])) }}
+
+    {{ govukCheckboxes(decorate({
+      formGroup: {
+        classes: "app-filter__group"
+      },
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          classes: "govuk-fieldset__legend--s",
+          text: "Collection year"
+        }
+      },
+      items: [{
+        text: "2022/23",
+        value: "2022/23"
+      }, {
+        text: "2021/22",
+        value: "2021/22"
+      }]
+    }, ["filter", "collection"])) }}
+
+    {{ govukCheckboxes(decorate({
+      formGroup: {
+        classes: "app-filter__group"
+      },
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          classes: "govuk-fieldset__legend--s",
+          text: "Status"
+        }
+      },
+      items: [{
+        text: "Complete",
+        value: "complete"
+      }, {
+        text: "In progress",
+        value: "incomplete"
+      }]
+    }, ["filter", "status"])) }}
+
+    {{ govukButton({
+      classes: "govuk-!-margin-bottom-0",
+      text: "Apply filters"
+    }) }}
+  </div>
+</div>

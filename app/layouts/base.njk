@@ -1,8 +1,9 @@
 {% extends "rig/template.njk" %}
 
 {% from "components/document-list/macro.njk" import appDocumentList %}
+{% from "components/filter/macro.njk" import appFilter with context %}
 {% from "components/output/macro.njk" import appOutput %}
-{% from "components/pagination/macro.njk" import appPagination %}
+{% from "components/pagination/macro.njk" import appPagination with context %}
 {% from "components/sub-navigation/macro.njk" import appSubNavigation %}
 
 {% import "macros.njk" as macro %}
@@ -19,6 +20,7 @@
 {% endblock %}
 
 {% set bodyAttributes = {"data-module": "edge"} %}
+{% set bodyClasses = "app-template--wide" %}
 
 {% block header %}
   {{ govukHeader({
