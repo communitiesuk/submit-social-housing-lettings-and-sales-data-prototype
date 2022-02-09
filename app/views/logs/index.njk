@@ -2,112 +2,105 @@
 
 {% import "macros.njk" as macro %}
 
-{% set title = "Your logs" %}
-
-{% set logsIncomplete = logs| rejectattr("submitted") %}
-{% set logsSubmitted = logs | selectattr("submitted") %}
+{% set title = "Logs" %}
+{% set typeName = type | capitalize %}
 
 {% block form %}
-  {{ macro.heading(title) }}
-
   {{ govukNotificationBanner({
     text: macro.notificationBannerText(query.success, query.logId),
     type: "success"
   }) if query.success }}
 
-  {{ govukDetails({
-    summaryText: "2022/23 collection resources",
-    html: macro.collectionResouces()
-  }) }}
+  {{ macro.heading(title) }}
 
+  {{ appSubNavigation({
+      items: [{
+      href: "/logs?type=lettings",
+      text: "Lettings",
+      active: type == "lettings"
+    }, {
+      href: "/logs?type=sales",
+      text: "Sales",
+      active: type == "sales"
+    }]
+  }) }}
+  <h2 class="govuk-visually-hidden">{{ typeName }}</h2>
   <div class="govuk-button-group">
     {{ govukButton({
-      text: "Create a new lettings log",
+      text: "Create a new " + type + " log",
       name: "type",
-      value: "lettings",
+      value: type,
       attributes: {
         formaction: "/logs/create"
       }
     }) }}
-    {{ govukButton({
-      text: "Create a new sales log",
-      name: "type",
-      value: "sales",
-      attributes: {
-        formaction: "#"
-      }
-    }) }}
+    <a class="govuk-link govuk-link--no-visited-state" href="#">Upload logs</a>
   </div>
 
-  {%- set incompleteRows = [] -%}
-  {% for log in logsIncomplete | reverse %}
-    {% set row = incompleteRows.push([{
+  {%- set logRows = [] -%}
+  {% set logs = logs | where("type", type) %}
+  {% for log in logs | reverse %}
+    {% set row = logRows.push([{
         html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
       }, {
-        text: log["setup"]["tenant-code"]
+        classes: "app-!-font-tabular",
+        text: (log.setup["tenant-code"] or "—") + " / " + (log.setup["property-reference"] or "—")
       }, {
-        text: log.postcode
+        text: log.setup["letting-start-date"] | textFromInputValue
       }, {
-        html: macro.entityHtml(log.updated | govukDate, false, log.updatedBy.name)
+        html: log.updated | govukDate + " by " + log.updatedBy.name
       }, {
-        html: "<a href=\"#\">Re-assign</a>"
-      } if isCoordinator or isAdmin])
+        html: govukTag({
+          classes: "govuk-tag--blue" if not log.status,
+          text: log.status if log.status else "In progress"
+        })
+      }])
     %}
   {% endfor %}
 
-  {{ govukTable({
-    caption: "Logs you need to complete",
-    captionClasses: "govuk-table__caption--m",
-    firstCellIsHeader: true,
-    head: [{
-      text: "Log reference",
-      attributes: { width: "20%" }
-    }, {
-      text: "Tenant code",
-      attributes: { width: "25%" }
-    }, {
-      text: "Postcode",
-      attributes: { width: "20%" }
-    }, {
-      text: "Last changed"
-    }, {
-      text: "Actions"
-    } if isCoordinator or isAdmin],
-    rows: incompleteRows
-  }) if logsIncomplete }}
-
-  {%- set summittedRows = [] -%}
-  {%- for log in logsSubmitted | reverse -%}
-    {%- set row = summittedRows.push([{
-        html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
+  {% if logs | length > 0 %}
+    {{ govukTable({
+      caption: "Showing 1 to " + logs | length + " of 56 logs",
+      captionClasses: "govuk-!-font-weight-regular govuk-!-margin-bottom-2",
+      firstCellIsHeader: true,
+      head: [{
+        text: "Log"
       }, {
-        text: log["setup"]["tenant-code"]
+        text: "Tenant / Property"
       }, {
-        text: log.postcode
+        text: "Tenancy starts"
       }, {
-        html: macro.entityHtml(log.updated | govukDate, false, log.updatedBy.name)
-      }])
-    -%}
-  {%- endfor -%}
+        text: "Updated"
+      }, {
+        text: "Status"
+      }],
+      rows: logRows
+    }) }}
 
-  {{ govukTable({
-    caption: "Logs you’ve submitted",
-    captionClasses: "govuk-table__caption--m",
-    firstCellIsHeader: true,
-    head: [{
-      text: "Log reference",
-      attributes: { width: "20%" }
-    }, {
-      text: "Tenant code",
-      attributes: { width: "25%" }
-    }, {
-      text: "Postcode",
-      attributes: { width: "20%" }
-    }, {
-      text: "Submitted"
-    }],
-    rows: summittedRows
-  }) if logsSubmitted }}
-
-  <p><a href="#">See all completed logs ({{ logsSubmitted | length }})</a></p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {{ appPagination({
+          selected: 0,
+          items: [
+            "/?type=" + type + "page=1",
+            "/?type=" + type + "page=2",
+            "/?type=" + type + "page=3",
+            "/?type=" + type + "page=4",
+            "/?type=" + type + "page=5"
+          ],
+          next: {
+            href: "/?type=" + type + "page=3",
+            text: "Next"
+          }
+        }) }}
+      </div>
+      <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+        <p class="govuk-body">
+          <a class="govuk-link govuk-link--no-visited-state" href="#" download>Download logs (CSV)</a>
+        </p>
+      </div>
+    <div>
+  {% else %}
+    <p class="govuk-body">No {{ type }} logs found.</p>
+  {% endif %}
 {% endblock %}

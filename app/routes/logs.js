@@ -11,6 +11,7 @@ export const logRoutes = (router) => {
    */
   router.get('/logs', (req, res) => {
     let { account, logs } = req.session.data
+    const type = req.query.type || 'lettings'
 
     // Convert organisations to array
     logs = utils.objectToArray(logs)
@@ -21,7 +22,8 @@ export const logRoutes = (router) => {
     } else {
       res.render('logs/index', {
         query: req.query,
-        logs
+        logs,
+        type
       })
     }
   })

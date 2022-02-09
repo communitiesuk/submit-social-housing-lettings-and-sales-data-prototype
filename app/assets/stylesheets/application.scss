@@ -23,6 +23,10 @@ $govuk-assets-path: "/govuk/assets/";
   color: $govuk-secondary-text-colour !important;
 }
 
+.app-\!-font-tabular {
+  @include govuk-font($size: false, $tabular: true);
+}
+
 // Custom form group dividers with headings
 .app-form-group--heading-dividers .govuk-radios__divider,
 .app-form-group--heading-dividers .govuk-checkboxes__divider {
