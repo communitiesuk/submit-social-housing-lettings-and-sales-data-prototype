@@ -25,82 +25,96 @@
     }]
   }) }}
   <h2 class="govuk-visually-hidden">{{ typeName }}</h2>
-  <div class="govuk-button-group">
-    {{ govukButton({
-      text: "Create a new " + type + " log",
-      name: "type",
-      value: type,
-      attributes: {
-        formaction: "/logs/create"
-      }
-    }) }}
-    <a class="govuk-link govuk-link--no-visited-state" href="#">Upload logs</a>
-  </div>
 
-  {%- set logRows = [] -%}
-  {% set logs = logs | where("type", type) %}
-  {% for log in logs | reverse %}
-    {% set row = logRows.push([{
-        html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
-      }, {
-        classes: "app-!-font-tabular",
-        text: (log.setup["tenant-code"] or "—") + " / " + (log.setup["property-reference"] or "—")
-      }, {
-        text: log.setup["letting-start-date"] | textFromInputValue
-      }, {
-        html: log.updated | govukDate + " by " + log.updatedBy.name
-      }, {
-        html: govukTag({
-          classes: "govuk-tag--blue" if not log.status,
-          text: log.status if log.status else "In progress"
-        })
-      }])
-    %}
-  {% endfor %}
+  <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      {{ appFilter({
+        title: "Filters"
+      }) }}
+    </div>
 
-  {% if logs | length > 0 %}
-    {{ govukTable({
-      caption: "Showing 1 to " + logs | length + " of 56 logs",
-      captionClasses: "govuk-!-font-weight-regular govuk-!-margin-bottom-2",
-      firstCellIsHeader: true,
-      head: [{
-        text: "Log"
-      }, {
-        text: "Tenant / Property"
-      }, {
-        text: "Tenancy starts"
-      }, {
-        text: "Updated"
-      }, {
-        text: "Status"
-      }],
-      rows: logRows
-    }) }}
-
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        {{ appPagination({
-          selected: 0,
-          items: [
-            "/?type=" + type + "page=1",
-            "/?type=" + type + "page=2",
-            "/?type=" + type + "page=3",
-            "/?type=" + type + "page=4",
-            "/?type=" + type + "page=5"
-          ],
-          next: {
-            href: "/?type=" + type + "page=3",
-            text: "Next"
+    <div class="app-filter-layout__content">
+      <div class="govuk-button-group app-filter-toggle">
+        {{ govukButton({
+          text: "Create a new " + type + " log",
+          name: "type",
+          value: type,
+          attributes: {
+            formaction: "/logs/create"
           }
         }) }}
+        <a class="govuk-link govuk-link--no-visited-state" href="#">
+          Upload logs
+        </a>
       </div>
-      <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+
+      {%- set logRows = [] -%}
+      {% set logs = logs | where("type", type) %}
+      {% for log in logs | reverse %}
+        {% set row = logRows.push([{
+            html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
+          }, {
+            classes: "app-!-font-tabular",
+            text: (log.setup["tenant-code"] or "—") + " / " + (log.setup["property-reference"] or "—")
+          }, {
+            text: log.setup["letting-start-date"] | textFromInputValue
+          }, {
+            html: macro.entityHtml(log.updated | govukDate, false, log.updatedBy.name)
+          }, {
+            html: govukTag({
+              classes: "govuk-tag--blue" if not log.status,
+              text: log.status if log.status else "In progress"
+            })
+          }])
+        %}
+      {% endfor %}
+
+      {% if logs | length > 0 %}
+        {{ govukTable({
+          caption: "56 logs",
+          captionClasses: "govuk-visually-hidden",
+          firstCellIsHeader: true,
+          head: [{
+            text: "Log"
+          }, {
+            text: "Tenant / Property"
+          }, {
+            text: "Tenancy starts"
+          }, {
+            text: "Updated"
+          }, {
+            text: "Status"
+          }],
+          rows: logRows
+        }) }}
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            {{ appPagination({
+              selected: 0,
+              items: [
+                "/?type=" + type + "page=1",
+                "/?type=" + type + "page=2",
+                "/?type=" + type + "page=3",
+                "/?type=" + type + "page=4",
+                "/?type=" + type + "page=5"
+              ],
+              next: {
+                href: "/?type=" + type + "page=3",
+                text: "Next"
+              }
+            }) }}
+          </div>
+          <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+            <p>Showing <b>1</b> to <b>{{ logs | length }}</b> of <b>56</b> results</p>
+          </div>
+        </div>
         <p class="govuk-body">
           <a class="govuk-link govuk-link--no-visited-state" href="#" download>Download logs (CSV)</a>
         </p>
-      </div>
-    <div>
-  {% else %}
-    <p class="govuk-body">No {{ type }} logs found.</p>
-  {% endif %}
+      {% else %}
+        <p class="govuk-body">No {{ type }} logs found.</p>
+      {% endif %}
+    </div>
+  </div>
 {% endblock %}
