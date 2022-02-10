@@ -26,7 +26,7 @@
   {{ govukHeader({
     homepageUrl: "/",
     serviceName: serviceName,
-    serviceUrl: "/logs"  if data.account.token else "/",
+    serviceUrl: "/logs"  if data.token else "/",
     containerClasses: "govuk-width-container",
     navigation: [{
       href: "/logs/",
@@ -51,7 +51,7 @@
     }, {
       href: "/account/sign-out",
       text: "Sign out"
-    }] if data.account.token
+    }] if data.token
   }) }}
 {% endblock %}
 

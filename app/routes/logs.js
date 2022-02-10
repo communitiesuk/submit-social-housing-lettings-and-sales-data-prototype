@@ -10,16 +10,28 @@ export const logRoutes = (router) => {
    * List logs
    */
   router.get('/logs', (req, res) => {
-    let { logs } = req.session.data
+    let { account, logs, users } = req.session.data
     const type = req.query.type || 'lettings'
 
-    // Convert organisations to array
+    // Get current user
+    const usersArray = utils.objectToArray(users)
+
+    let currentUser = usersArray.find(user => user.id === 'DP001')
+    if (account) {
+      currentUser = usersArray.find(user => user.email === account.email)
+    }
+
+    // Convert logs to array
     logs = utils.objectToArray(logs)
+    const updatedBy = req.session.user || req.query.user || currentUser.id
+    logs = logs.filter(log => log.updatedBy === updatedBy)
 
     res.render('logs/index', {
       query: req.query,
       logs,
-      type
+      type,
+      users,
+      currentUser
     })
   })
 

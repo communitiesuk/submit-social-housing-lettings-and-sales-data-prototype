@@ -16,6 +16,7 @@ export const accountRoutes = (router) => {
   router.get('/account/sign-out', (req, res) => {
     if (req.session.data.account) {
       delete req.session.data.account
+      delete req.session.data.token
     }
 
     res.redirect('/account/sign-in')
@@ -33,19 +34,19 @@ export const accountRoutes = (router) => {
         req.session.data.account = users.ADMIN
         break
       case 'data.coordinator@owning.gov.uk':
-        req.session.data.account = users.DCOO1
+        req.session.data.account = users.DC001
         break
       case 'data.provider@owning.gov.uk':
-        req.session.data.account = users.DPOO1
+        req.session.data.account = users.DP001
         break
       case 'data.coordinator@managing.org.uk':
-        req.session.data.account = users.DCMO1
+        req.session.data.account = users.DCM01
         break
       default:
-        req.session.data.account = users.DPMO1
+        req.session.data.account = users.DPM01
     }
 
-    req.session.data.account.token = true
+    req.session.data.token = true
 
     res.redirect('/logs')
   })

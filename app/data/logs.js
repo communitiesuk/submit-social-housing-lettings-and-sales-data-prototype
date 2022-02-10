@@ -3,9 +3,7 @@ export default {
     type: 'lettings',
     status: 'submitted',
     updated: '2021-07-29',
-    updatedBy: {
-      name: 'Daisy Perkins'
-    },
+    updatedBy: 'DP001',
     setup: {
       'organisation-manager': 'CHILD1',
       'organisation-owner': 'PARENT1',
@@ -98,9 +96,7 @@ export default {
   BZ787: {
     type: 'lettings',
     updated: '2021-07-29',
-    updatedBy: {
-      name: 'Daisy Perkins'
-    },
+    updatedBy: 'DP001',
     setup: {
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
@@ -116,9 +112,7 @@ export default {
   BZ766: {
     type: 'lettings',
     updated: '2021-07-29',
-    updatedBy: {
-      name: 'Daisy Perkins'
-    },
+    updatedBy: 'DP001',
     setup: {
       'organisation-manager': 'PARENT1',
       'organisation-owner': 'PARENT1',
@@ -134,9 +128,7 @@ export default {
   BZ765: {
     type: 'lettings',
     updated: '2021-07-29',
-    updatedBy: {
-      name: 'Daisy Perkins'
-    },
+    updatedBy: 'DC001',
     setup: {
       schemeId: 'EXAMPLE',
       'organisation-manager': 'PARENT1',
@@ -153,9 +145,7 @@ export default {
   BZ112: {
     type: 'lettings',
     updated: '2021-07-29',
-    updatedBy: {
-      name: 'Daisy Perkins'
-    },
+    updatedBy: 'DP001',
     setup: {
       schemeId: 'EXAMPLE',
       'organisation-manager': 'PARENT1',

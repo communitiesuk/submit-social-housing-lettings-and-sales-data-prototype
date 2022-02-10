@@ -59,7 +59,7 @@
           }, {
             text: log.setup["letting-start-date"] | textFromInputValue
           }, {
-            html: macro.entityHtml(log.updated | govukDate, false, log.updatedBy.name)
+            html: macro.entityHtml(log.updated | govukDate, false, users[log.updatedBy].name)
           }, {
             html: govukTag({
               classes: "govuk-tag--blue" if not log.status,
