@@ -5,7 +5,6 @@
 .app-filter-layout__filter {
   @include govuk-media-query(desktop) {
     float: left;
-    margin-right: govuk-spacing(6);
     min-width: govuk-grid-width("one-quarter");
   }
 }

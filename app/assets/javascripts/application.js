@@ -16,7 +16,7 @@ GOVUKPrototypeRig.Output = Output
 
 // Filter toggle
 const filterToggleButton = new FilterToggleButton({
-  bigModeMediaQuery: '(min-width: 48.063em)',
+  bigModeMediaQuery: '(min-width: 48.0625em)',
   startHidden: false,
   toggleButton: {
     container: document.querySelector('.app-filter-toggle'),
