@@ -70,23 +70,25 @@
       {% endfor %}
 
       {% if logs | length > 0 %}
-        {{ govukTable({
-          caption: "56 logs",
-          captionClasses: "govuk-visually-hidden",
-          firstCellIsHeader: true,
-          head: [{
-            text: "Log"
-          }, {
-            text: "Tenant / Property"
-          }, {
-            text: "Tenancy starts"
-          }, {
-            text: "Updated"
-          }, {
-            text: "Status"
-          }],
-          rows: logRows
-        }) }}
+        <section class="app-table-group" tabindex="0" aria-labelledby="logs">
+          {{ govukTable({
+            caption: "56 logs",
+            captionClasses: "govuk-visually-hidden",
+            firstCellIsHeader: true,
+            head: [{
+              text: "Log"
+            }, {
+              text: "Tenant / Property"
+            }, {
+              text: "Tenancy starts"
+            }, {
+              text: "Updated"
+            }, {
+              text: "Status"
+            }],
+            rows: logRows
+          }) | replace("<caption ", "<caption id=\"logs\"") }}
+        </section>
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
