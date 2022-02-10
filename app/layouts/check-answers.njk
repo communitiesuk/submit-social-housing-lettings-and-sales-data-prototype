@@ -25,7 +25,7 @@
       {% block checkAnswers %}
       {% endblock %}
 
-      {% if log.submitted %}
+      {% if log.status == "submitted" %}
         {{ govukButton({
           text: "Return to log"
         }) }}

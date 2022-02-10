@@ -4,6 +4,7 @@
 {% set isSale = log.type == "sales" %}
 {% set isSupported = log[section.id]["type-of-need"] == "supported" %}
 {% set isCompleted = log[section.id]["completed"] == "true" %}
+{% set logSubmitted = log.status == "submitted" %}
 
 {% block checkAnswers %}
   {{ govukSummaryList({
@@ -94,7 +95,7 @@
       actions: actionLinks({
         href: sectionPath + "/tenant-code",
         visuallyHiddenText: "tenant code"
-      }) if not log.submitted
+      }) if not logSubmitted
     } if isLet, {
       key: {
         text: "Sale completion date"
@@ -116,7 +117,7 @@
       actions: actionLinks({
         href: sectionPath + "/purchaser-code",
         visuallyHiddenText: "purchaser code"
-      }) if not log.submitted
+      }) if not logSubmitted
     } if isSale, {
       key: {
         text: "Property reference"
@@ -127,7 +128,7 @@
       actions: actionLinks({
         href: sectionPath + "/property-reference",
         visuallyHiddenText: "property reference"
-      }) if not log.submitted
+      }) if not logSubmitted
     }]
   }) }}
 

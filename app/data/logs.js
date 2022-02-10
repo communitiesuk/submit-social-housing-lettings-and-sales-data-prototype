@@ -2,7 +2,7 @@ export default {
   EX001: {
     type: 'lettings',
     postcode: 'BN17 6RJ',
-    submitted: true,
+    status: 'submitted',
     updated: '2021-07-29',
     updatedBy: {
       name: 'Daisy Perkins'

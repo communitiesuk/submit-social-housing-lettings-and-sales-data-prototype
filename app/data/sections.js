@@ -495,7 +495,7 @@ export function sections (log) {
   const submission = {
     id: 'submit',
     title: 'Submit your lettings log',
-    group: !log.submitted ? 'submission' : false,
+    group: log.status !== 'submitted' ? 'submission' : false,
     paths: getPaths('submit', [
       'confirm'
     ]).concat(`/logs?success=submitted-log&logId=${log.id}`)

@@ -21,7 +21,7 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-      {% if log.submitted %}
+      {% if log.status == "submitted" %}
         {{ govukTag({
           classes: "govuk-tag--green",
           text: "Submitted"

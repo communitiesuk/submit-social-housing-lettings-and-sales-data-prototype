@@ -8,6 +8,7 @@
 {% set hasHealthCondition =
   (log[section.id]["health-condition"] == "true")
 %}
+{% set logSubmitted = log.status == "submitted" %}
 
 {% block checkAnswers %}
   {{ govukSummaryList({
@@ -23,7 +24,7 @@
           text: "Change" if log[section.id]["armed-forces"] else "Answer",
           href: sectionPath + "/armed-forces",
           visuallyHiddenText: "household links to UK armed forces"
-        }] if not log.submitted
+        }] if not logSubmitted
       }
     }, {
       key: {
@@ -37,7 +38,7 @@
           text: "Change" if log[section.id]["armed-forces-still-serving"] else "Answer",
           href: sectionPath + "/armed-forces-still-serving",
           visuallyHiddenText: "if person is still serving in UK armed forces"
-        }] if not log.submitted
+        }] if not logSubmitted
       }
     } if isArmedForces, {
       key: {
@@ -51,7 +52,7 @@
           text: "Change" if log[section.id]["armed-forces-seriously-injured"] else "Answer",
           href: sectionPath + "/armed-forces-seriously-injured",
           visuallyHiddenText: "if person seriously injured or ill as result of serving in UK armed forces"
-        }] if not log.submitted
+        }] if not logSubmitted
       }
     } if isArmedForces, {
       key: {
@@ -65,7 +66,7 @@
           text: "Change" if log[section.id]["pregnant"] else "Answer",
           href: sectionPath + "/pregnant",
           visuallyHiddenText: "if anybody in household pregnant"
-        }] if not log.submitted
+        }] if not logSubmitted
       }
     }, {
       key: {
@@ -79,7 +80,7 @@
           text: "Change" if log[section.id]["access-needs"] else "Answer",
           href: sectionPath + "/access-needs",
           visuallyHiddenText: "if anybody in household with disabled access needs"
-        }] if not log.submitted
+        }] if not logSubmitted
       }
     }, {
       key: {
@@ -93,7 +94,7 @@
           text: "Change" if log[section.id]["health-condition"] else "Answer",
           href: sectionPath + "/health-condition",
           visuallyHiddenText: "if anybody in household with physical or mental health condition"
-        }] if not log.submitted
+        }] if not logSubmitted
       }
     }, {
       key: {
@@ -107,7 +108,7 @@
           text: "Change" if log[section.id]["health-affects"] else "Answer",
           href: sectionPath + "/health-affects",
           visuallyHiddenText: "how person is affected by condition or illness"
-        }] if not log.submitted
+        }] if not logSubmitted
       }
     } if hasHealthCondition]
   }) }}

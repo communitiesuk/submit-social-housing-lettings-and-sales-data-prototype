@@ -74,7 +74,7 @@ export const logRoutes = (router) => {
     logs[logId].submit = {
       completed: 'true'
     }
-    logs[logId].submitted = true
+    logs[logId].status = 'submitted'
     logs[logId].updated = new Date().toISOString()
     logs[logId].updatedBy = account
 
