@@ -501,7 +501,7 @@ export function sections (log) {
     ]).concat(`/logs?success=submitted-log&logId=${log.id}`)
   }
 
-  // Answers to questions in ‘Tailor your log’ affect questions shown in task list
+  // Answers in ’Set up your log’ affect questions shown in task list
   let isSupportedHousing = false
   let isRenewal = false
   if (log.setup) {
