@@ -18,8 +18,6 @@ $govuk-assets-path: "/govuk/assets/";
 // GOV.UK Publishing Components (used for prototyping pages that exist on GOV.UK)
 @import "./govuk-publishing-components";
 
-// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-
 // Overrides
 .app-\!-colour-muted {
   color: $govuk-secondary-text-colour !important;
@@ -45,15 +43,4 @@ $govuk-assets-path: "/govuk/assets/";
     flex-grow: 1;
     margin-bottom: govuk-spacing(2);
   }
-}
-
-// Section skip link
-.app-section-skip-link {
-  @include govuk-visually-hidden-focusable;
-  @include govuk-typography-common;
-  @include govuk-link-decoration;
-  @include govuk-link-style-text;
-
-  display: inline-block;
-  padding: govuk-spacing(2) govuk-spacing(3);
 }
