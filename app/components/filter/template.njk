@@ -24,9 +24,9 @@
         value: "all"
       }, {
         text: "My logs",
-        value: "mine"
+        value: currentUser.id
       }]
-    }, ["filter", "show"])) }}
+    }, "user")) }}
 
     {{ govukCheckboxes(decorate({
       formGroup: {
@@ -46,7 +46,7 @@
         text: "2021/22",
         value: "2021/22"
       }]
-    }, ["filter", "collection"])) }}
+    }, ["collection"])) }}
 
     {{ govukCheckboxes(decorate({
       formGroup: {
