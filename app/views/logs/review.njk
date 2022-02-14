@@ -1,0 +1,57 @@
+{% extends "layouts/form.njk" %}
+
+{% set title = "Review " + log.type + " log" %}
+{% set participant = "buyer" if log.type == "sales" else "tenant" %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [{
+      href: "/logs",
+      text: "Logs"
+    }, {
+      href: "/logs/" + log.id,
+      text: "Log " + log.id
+    }, {
+      text: title
+    }]
+  }) }}
+{% endblock %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters-from-desktop">
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList(errors)
+      }) if errors }}
+
+      {{ macro.heading(title) }}
+
+      {% for group in data.groups %}
+        <h2 class="govuk-heading-m">{{ group.title }}</h2>
+        {% for section in sections | where("group", group.id) %}
+          {% set sectionPath = "/logs/" + log.id + "/" + section.id %}
+          {% if section.id != "household-characteristics" %}
+            <div class="rig-summary-card govuk-!-margin-bottom-6">
+              <div class="rig-summary-card__header">
+                <h3 class="rig-summary-card__title">{{ section.title }}</h3>
+              </div>
+              <div class="rig-summary-card__body">
+          {% endif %}
+              {% include "logs/" + section.id + "/_answers.njk" ignore missing %}
+          {% if section.id != "household-characteristics" %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Submit " + log.type + " log"
+        }) }}
+        <a class="govuk-link" href="/logs/{{ log.id }}">Return to log</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

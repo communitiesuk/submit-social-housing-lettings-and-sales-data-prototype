@@ -30,9 +30,6 @@ export default async () => ({
   }, {
     id: 'finances',
     title: 'Finances'
-  }, {
-    id: 'submission',
-    title: 'Submission'
   }],
   questions: await questions(),
   organisations,

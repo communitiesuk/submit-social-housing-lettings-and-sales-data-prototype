@@ -6,6 +6,10 @@ export const getById = (items, id) => {
   return items.find(item => item.id === id)
 }
 
+export const getByPath = (items, path) => {
+  return items.find(item => item.path === path)
+}
+
 export const getEntityById = (items, id) => {
   for (const [key, value] of Object.entries(items)) {
     value.id = key

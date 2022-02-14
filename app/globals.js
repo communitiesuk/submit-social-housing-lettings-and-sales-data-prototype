@@ -61,7 +61,7 @@ export default () => {
 
     const taskListItem = (section) => {
       let status
-      let href = section.paths ? `/logs/${log.id}/${section.id}` : false
+      let href = section.paths ? `/logs/${log.id}/${section.path}` : false
 
       switch (section.id) {
         case 'setup':
@@ -105,14 +105,7 @@ export default () => {
 
     let taskListSections = []
     for (const group of groups) {
-      let titleHtml = false
-      if (group.id === 'household') {
-        titleHtml = `<h2 class="rig-task-list__section-heading">About the household</h2>
-        <p>Make sure the tenant has seen <a href="/public/files/privacy-notice.pdf">the Department for Levelling Up, Housing &amp; Communities (DLUHC) privacy notice</a> before completing this section.</p>`
-      }
-
       taskListSections.push({
-        titleHtml,
         titleText: group.title,
         items: getSections(log)
           .filter(section => section.group === group.id)

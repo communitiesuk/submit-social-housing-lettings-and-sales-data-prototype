@@ -37,6 +37,13 @@
         disableSectionNumbering: true,
         sections: taskListSections(log.id)
       }) }}
+
+      <h2 class="govuk-heading-m">Review and submit</h2>
+      <p>Review your answers and submit this log to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities.</p>
+      {{ govukButton({
+        href: "/logs/" + log.id + "/review",
+        text: "Review " + log.type + " log"
+      }) }}
     </div>
   </div>
 {% endblock %}

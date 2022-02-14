@@ -3,8 +3,8 @@ import _ from 'lodash'
 export function sections (log) {
   const logPath = `/logs/${log.id}`
 
-  const getPaths = (sectionId, paths) => {
-    return paths.map(path => `${logPath}/${sectionId}/${path}`)
+  const getPaths = (sectionPathId, paths) => {
+    return paths.map(path => `${logPath}/${sectionPathId}/${path}`)
   }
 
   /**
@@ -13,6 +13,7 @@ export function sections (log) {
   const setup = {
     id: 'setup',
     title: 'Set up this lettings log',
+    path: 'setup',
     group: 'before-you-start',
     paths: getPaths('setup', [
       'organisation',
@@ -42,6 +43,7 @@ export function sections (log) {
   // General needs
   const tenancyInformation = {
     id: 'tenancy-information',
+    path: 'tenancy-information',
     title: 'Tenancy information',
     group: 'tenancy',
     paths: getPaths('tenancy-information', [
@@ -66,7 +68,8 @@ export function sections (log) {
 
   // Supported housing
   const tenancyInformationSupportedHousing = {
-    id: 'tenancy-information-supported-housing',
+    id: 'tenancy-information',
+    path: 'tenancy-information-supported-housing',
     title: 'Tenancy information',
     group: 'tenancy',
     paths: getPaths('tenancy-information-supported-housing', [
@@ -94,6 +97,7 @@ export function sections (log) {
   // General needs && not a renewal
   const propertyInformation = {
     id: 'property-information',
+    path: 'property-information',
     title: 'Property information',
     group: 'tenancy',
     paths: getPaths('property-information', [
@@ -131,7 +135,8 @@ export function sections (log) {
 
   // General needs && renewal
   const propertyInformationRenewal = {
-    id: 'property-information-renewal',
+    id: 'property-information',
+    path: 'property-information-renewal',
     title: 'Property information',
     group: 'tenancy',
     paths: getPaths('property-information-renewal', [
@@ -163,7 +168,8 @@ export function sections (log) {
 
   // Supported housing && not a renewal
   const propertyInformationSupportedHousing = {
-    id: 'property-information-supported-housing',
+    id: 'property-information',
+    path: 'property-information-supported-housing',
     title: 'Property information',
     group: 'tenancy',
     paths: getPaths('property-information-supported-housing', [
@@ -189,9 +195,11 @@ export function sections (log) {
    */
   const householdCharacteristics = {
     id: 'household-characteristics',
+    path: 'household-characteristics',
     title: 'Household characteristics',
     group: 'household',
     paths: getPaths('household-characteristics', [
+      'privacy-notice',
       'number-in-household',
       // Lead tenant
       'lead-tenant/age',
@@ -242,6 +250,7 @@ export function sections (log) {
    */
   const householdSituation = {
     id: 'household-situation',
+    path: 'household-situation',
     title: 'Household situation',
     group: 'household',
     paths: getPaths('household-situation', [
@@ -280,7 +289,8 @@ export function sections (log) {
   }
 
   const householdSituationRenewal = {
-    id: 'household-situation-renewal',
+    id: 'household-situation',
+    path: 'household-situation-renewal',
     title: 'Household situation',
     group: 'household',
     paths: getPaths('household-situation-renewal', [
@@ -316,6 +326,7 @@ export function sections (log) {
    */
   const householdNeeds = {
     id: 'household-needs',
+    path: 'household-needs',
     title: 'Household needs',
     group: 'household',
     paths: getPaths('household-needs', [
@@ -346,6 +357,7 @@ export function sections (log) {
    */
   const finances = {
     id: 'finances',
+    path: 'finances',
     title: 'Income, benefits and outgoings',
     group: 'finances',
     paths: getPaths('finances', [
@@ -403,7 +415,8 @@ export function sections (log) {
   }
 
   const financesSupportedHousing = {
-    id: 'finances-supported-housing',
+    id: 'finances',
+    path: 'finances-supported-housing',
     title: 'Income, benefits and outgoings',
     group: 'finances',
     paths: getPaths('finances-supported-housing', [
@@ -486,18 +499,6 @@ export function sections (log) {
     }]
   }
 
-  /**
-   * Submission
-   */
-  const submission = {
-    id: 'submit',
-    title: 'Submit this lettings log',
-    group: log.status !== 'submitted' ? 'submission' : false,
-    paths: getPaths('submit', [
-      'confirm'
-    ]).concat(`/logs?success=submitted-log&logId=${log.id}`)
-  }
-
   // Answers in ’Set up this log’ affect questions shown in task list
   let isSupportedHousing = false
   let isRenewal = false
@@ -515,7 +516,6 @@ export function sections (log) {
     householdCharacteristics,
     householdNeeds,
     ...(!isRenewal ? [householdSituation] : [householdSituationRenewal]),
-    ...(!isSupportedHousing ? [finances] : [financesSupportedHousing]),
-    submission
+    ...(!isSupportedHousing ? [finances] : [financesSupportedHousing])
   ]
 }

@@ -88,40 +88,73 @@ export const logRoutes = (router) => {
   /**
    * Submit log
    */
-  router.post('/logs/:logId/submit/check', (req, res, next) => {
+  router.get('/logs/:logId/review', (req, res, next) => {
     const { logId } = req.params
     const { account, logs } = req.session.data
+    const log = utils.getEntityById(logs, logId)
+    const sections = getSections(log)
 
-    // Update log with derived and meta data
-    logs[logId].postcode = logs[logId]['property-information']?.postcode ||
-    logs[logId]['property-information-renewal']?.postcode ||
-    logs[logId]['property-information-supported-housing']?.postcode
-    logs[logId].submit = {
-      completed: 'true'
+    res.render('logs/review', { account, log, logs, sections })
+  })
+
+  /**
+   * Submit log
+   */
+  router.post('/logs/:logId/review', (req, res, next) => {
+    const { logId } = req.params
+    const { account, logs } = req.session.data
+    const log = utils.getEntityById(logs, logId)
+    const sections = getSections(log)
+
+    const privacyNotice = logs[logId]?.['household-characteristics']?.['privacy-notice'] !== undefined
+    const numberInHousehold = logs[logId]?.['household-characteristics']?.['number-in-household'] !== undefined
+
+    if (privacyNotice && numberInHousehold) {
+      // Update log with derived and meta data
+      logs[logId].postcode = logs[logId]['property-information']?.postcode ||
+      logs[logId]['property-information-renewal']?.postcode ||
+      logs[logId]['property-information-supported-housing']?.postcode
+      logs[logId].status = 'submitted'
+      logs[logId].updated = new Date().toISOString()
+      logs[logId].updatedBy = account
+
+      return res.redirect(`/logs/?success=submitted-log&logId=${logId}`)
     }
-    logs[logId].status = 'submitted'
-    logs[logId].updated = new Date().toISOString()
-    logs[logId].updatedBy = account
 
-    res.redirect(`/logs/?success=submitted-log&logId=${logId}`)
+    const errors = {
+      'privacy-notice': !privacyNotice
+        ? {
+            msg: 'Select if the tenant has seen the DLUHC privacy notice',
+            param: 'privacy-notice'
+          }
+        : {},
+      'number-in-household': !numberInHousehold
+        ? {
+            msg: 'Enter the number of people who live in the household',
+            param: 'number-in-household'
+          }
+        : {}
+    }
+
+    return res.render('logs/review', { account, errors, log, logs, sections })
   })
 
   /**
    * View log section
    */
-  router.get('/logs/:logId/:sectionId', (req, res, next) => {
+  router.get('/logs/:logId/:sectionPathId', (req, res, next) => {
     try {
-      const { logId, sectionId } = req.params
+      const { logId, sectionPathId } = req.params
       const { logs } = req.session.data
 
       const log = utils.getEntityById(logs, logId)
-      const section = utils.getById(getSections(log), sectionId)
+      const section = utils.getByPath(getSections(log), sectionPathId)
 
-      if (log[sectionId]) {
-        if (sectionId === 'submit') {
+      if (log[sectionPathId]) {
+        if (sectionPathId === 'submit') {
           res.redirect(`/logs/${logId}/submit/confirm`)
         } else {
-          res.redirect(`/logs/${logId}/${sectionId}/check-your-answers`)
+          res.redirect(`/logs/${logId}/${sectionPathId}/check-your-answers`)
         }
       } else {
         res.redirect(section.paths[0])
@@ -134,9 +167,9 @@ export const logRoutes = (router) => {
   /**
    * View log section question
    */
-  router.all('/logs/:logId/:sectionId/:itemId?/:view?', async (req, res, next) => {
+  router.all('/logs/:logId/:sectionPathId/:itemId?/:view?', async (req, res, next) => {
     try {
-      let { logId, sectionId, itemId, view } = req.params
+      let { logId, sectionPathId, itemId, view } = req.params
       const { logs } = req.session.data
 
       // If there’s no :view param, use :itemId param for view
@@ -145,24 +178,24 @@ export const logRoutes = (router) => {
       }
 
       // Some sections have variants that share common views
-      let sectionViewsDir = sectionId
-      if (sectionId.startsWith('household-situation')) {
-        sectionViewsDir = 'household-situation'
+      let sectionId = sectionPathId
+      if (sectionPathId.startsWith('household-situation')) {
+        sectionId = 'household-situation'
       }
       if (sectionId.startsWith('tenancy-information')) {
-        sectionViewsDir = 'tenancy-information'
+        sectionId = 'tenancy-information'
       }
       if (sectionId.startsWith('property-information')) {
-        sectionViewsDir = 'property-information'
+        sectionId = 'property-information'
       }
       if (sectionId.startsWith('finances')) {
-        sectionViewsDir = 'finances'
+        sectionId = 'finances'
       }
 
       const log = utils.getEntityById(logs, logId)
       const logPath = `/logs/${logId}`
       const section = utils.getById(getSections(log), sectionId)
-      const sectionPath = `/logs/${logId}/${sectionId}`
+      const sectionPath = `/logs/${logId}/${sectionPathId}`
 
       // Fork if next path is a fork
       const sectionKeyPath = `logs[${logId}][${sectionId}]`
@@ -207,10 +240,10 @@ export const logRoutes = (router) => {
           fork ? res.redirect(fork) : res.redirect(next)
         } else {
           renderOptions = { ...renderOptions, ...{ errors: errors.mapped() } }
-          res.render(`logs/${sectionViewsDir}/${view}`, renderOptions)
+          res.render(`logs/${sectionId}/${view}`, renderOptions)
         }
       } else {
-        res.render(`logs/${sectionViewsDir}/${view}`, renderOptions)
+        res.render(`logs/${sectionId}/${view}`, renderOptions)
       }
     } catch (error) {
       next(error)

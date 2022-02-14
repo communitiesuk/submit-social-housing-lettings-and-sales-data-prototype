@@ -1,0 +1,23 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Department for Levelling Up, Housing & Communities privacy notice" %}
+{% set questionId = "privacy-notice" %}
+
+{% block question %}
+  {{ macro.heading(title, caption ) }}
+
+  <p>Make sure the tenant has seen <a href="/public/files/privacy-notice.pdf">the Department for Levelling Up, Housing &amp; Communities (DLUHC) privacy notice</a> before submitting this log.</p>
+
+  {{ govukCheckboxes(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-visually-hidden",
+        text: "Confirmation"
+      }
+    },
+    items: [{
+      value: "true",
+      text: "The tenant has seen the DLUHC privacy notice"
+    }]
+  }, ["logs", log.id, section.id, questionId])) }}
+{% endblock %}

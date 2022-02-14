@@ -30,7 +30,7 @@
           text: buttonText
         }) }}
 
-        {% if required != true %}
+        {% if required != true and not hasAnsweredQuestion %}
           <a class="govuk-link govuk-link--no-visited-state" href="{{ paths.next }}">Skip for now</a>
         {% endif %}
       </div>
