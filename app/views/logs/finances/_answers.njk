@@ -1,0 +1,187 @@
+{% set inPeriod = log[section.id]["income-period"] | replace("ly", "") %}
+{% set outgoingsPeriod = log[section.id]["outgoings-period"] %}
+{% if outgoingsPeriod == "fortnightly" %}
+  {% set outPeriod = "every 2 weeks" %}
+{% elif outgoingsPeriod == "every-4-weeks" %}
+  {% set outPeriod = "every 4 weeks" %}
+{% elif outgoingsPeriod == "monthly" %}
+  {% set outPeriod = "every month" %}
+{% else %}
+  {% set outPeriod = "every week" %}
+{% endif %}
+{% set hasIncomeBenefits =
+  (log[section.id]["income-benefits"] !== "none") and
+  (log[section.id]["income-benefits"] !== "unknown") and
+  (log[section.id]["income-benefits"] !== "prefers-not-to-say")
+%}
+{% set hasOutgoingsAfterBenefits =
+  log[section.id]["outgoings-after-benefits"] == "true"
+%}
+{% set isSupported =
+  log["setup"]["type-of-need"] == "supported"
+%}
+{% set isRenter =
+  log[section.id]["outgoings-includes-rent"] == "true" | string
+%}
+{% set isCareHome =
+  log[section.id]["outgoings-includes-care-home"] == "true" | string
+%}
+{% set logSubmitted = log.status == "submitted" %}
+
+{{ govukSummaryList({
+  rows: [{
+    key: {
+      text: "Do you know the household’s combined income?"
+    },
+    value: {
+      text: log[section.id]["income-known"] | textFromInputValue(data.questions["yes-no-prefers-not-to-say"])
+    },
+    actions: {
+      items: [{
+        text: "Change" if log[section.id]["income-known"] else "Answer",
+        href: sectionPath + "/income-known",
+        visuallyHiddenText: "if you know the household’s combined income"
+      }] if not logSubmitted
+    }
+  }, {
+    key: {
+      text: "Total household income"
+    },
+    value: {
+      text: (log[section.id]["income-value"] | sterling + " every " + inPeriod) if log[section.id]["income-value"] else log[section.id]["income-value"] | textFromInputValue
+    },
+    actions: {
+      items: [{
+        text: "Change" if log[section.id]["income-value"] else "Answer",
+        href: sectionPath + "/income-value",
+        visuallyHiddenText: "total household income"
+      }] if not logSubmitted
+    }
+  } if log[section.id]["income-known"] == "true", {
+    key: {
+      text: "Housing-related benefits received"
+    },
+    value: {
+      text: log[section.id]["income-benefits"] | textFromInputValue
+    },
+    actions: {
+      items: [{
+        text: "Change" if log[section.id]["income-benefits"] else "Answer",
+        href: sectionPath + "/income-benefits",
+        visuallyHiddenText: "housing-related benefits received"
+      }] if not logSubmitted
+    }
+  }, {
+    key: {
+      text: "Household income from Universal Credit, state pension or benefits"
+    },
+    value: {
+      text: log[section.id]["income-benefits-portion"] | textFromInputValue(data.questions["income-benefits-portion"])
+    },
+    actions: {
+      items: [{
+        text: "Change" if log[section.id]["income-benefits-portion"] else "Answer",
+        href: sectionPath + "/income-benefits-portion",
+        visuallyHiddenText: "household income from Universal Credit, state pension or benefits"
+      }] if not logSubmitted
+    }
+  }, {
+    key: {
+      text: "Does the household pay rent or charges?"
+    },
+    value: {
+      text: log[section.id]["outgoings-includes-rent"] | textFromInputValue(data.questions["yes-no"])
+    },
+    actions: {
+      items: [{
+        text: "Change" if log[section.id]["outgoings-includes-rent"] else "Answer",
+        href: sectionPath + "/outgoings-includes-rent",
+        visuallyHiddenText: "if the household pay rent or charges"
+      }] if not logSubmitted
+    }
+  } if isSupported, {
+    key: {
+      text: "Frequency of household rent or charges"
+    },
+    value: {
+      text: log[section.id]["outgoings-period"] | textFromInputValue(data.questions["outgoings-period"])
+    },
+    actions: {
+      items: [{
+        text: "Change" if log[section.id]["outgoings-period"] else "Answer",
+      href: sectionPath + "/outgoings-period",
+      visuallyHiddenText: "frequency of household rent or charges"
+      }] if not logSubmitted
+    }
+  } if isRenter, {
+    key: {
+      text: "Care home accommodation"
+    },
+    value: {
+      text: log[section.id]["outgoings-includes-care-home"] | textFromInputValue(data.questions["yes-no"])
+    },
+    actions: {
+      items: [{
+        text: "Change" if log[section.id]["outgoings-includes-care-home"] else "Answer",
+        href: sectionPath + "/outgoings-includes-care-home",
+        visuallyHiddenText: "if care home accommodation"
+      }] if not logSubmitted
+    }
+  } if isSupported, {
+    key: {
+      text: "Care home charges"
+    },
+    value: {
+      text: log[section.id]["outgoings-care-home"] | sterling
+    },
+    actions: {
+      items: [{
+        text: "Change" if log[section.id]["outgoings-care-home"] else "Answer",
+        href: sectionPath + "/outgoings-includes-care-home",
+        visuallyHiddenText: "care home charges"
+      }] if not logSubmitted
+    }
+  } if isCareHome, {
+    key: {
+      text: "Household rent and charges"
+    },
+    value: {
+      text: log[section.id]["outgoings-value"] | sterling + " " + outPeriod
+    },
+    actions: {
+      items: [{
+        text: "Change" if log[section.id]["outgoings-value"] else "Answer",
+        href: sectionPath + "/outgoings-value",
+        visuallyHiddenText: "total household rent or charges"
+      }] if not logSubmitted
+    }
+  } if isRenter and not isCareHome, {
+    key: {
+      text: "Outstanding amount for basic rent and charges"
+    },
+    value: {
+      text: log[section.id]["outgoings-after-benefits"] | textFromInputValue(data.questions["yes-no"])
+    },
+    actions: {
+      items: [{
+        text: "Change" if log[section.id]["outgoings-after-benefits"] else "Answer",
+        href: sectionPath + "/outgoings-after-benefits",
+        visuallyHiddenText: "outstanding amount for basic rent and charges"
+      }] if not logSubmitted
+    }
+  } if isRenter and hasIncomeBenefits, {
+    key: {
+      text: "Estimated outstanding amount"
+    },
+    value: {
+      text: log[section.id]["outgoings-outstanding"] | sterling + " " + outPeriod
+    },
+    actions: {
+      items: [{
+        text: "Change" if log[section.id]["outgoings-outstanding"] else "Answer",
+        href: sectionPath + "/outgoings-outstanding",
+        visuallyHiddenText: "estimated outstanding amount"
+      }] if not logSubmitted
+    }
+  } if isRenter and hasIncomeBenefits and hasOutgoingsAfterBenefits]
+}) }}

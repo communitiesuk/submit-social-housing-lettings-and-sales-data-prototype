@@ -1,0 +1,144 @@
+{% set isLet = log.type == "lettings" %}
+{% set isSale = log.type == "sales" %}
+{% set isSupported = log[section.id]["type-of-need"] == "supported" %}
+{% set isCompleted = log[section.id]["completed"] == "true" %}
+{% set logSubmitted = log.status == "submitted" %}
+
+{{ govukSummaryList({
+  rows: [{
+    key: {
+      text: "Owning organisation"
+    },
+    value: {
+      text: data.organisations[log[section.id]["organisation-owner"]].name | textFromInputValue
+    },
+    actions: actionLinks({
+      href: sectionPath + "/organisation",
+      visuallyHiddenText: "owning organisation"
+    }) if not logSubmitted
+  } if isLet, {
+    key: {
+      text: "Managing organisation"
+    },
+    value: {
+      text: data.organisations[log[section.id]["organisation-manager"]].name | textFromInputValue
+    },
+    actions: actionLinks({
+      href: sectionPath + "/organisation",
+      visuallyHiddenText: "managing organisation"
+    }) if not logSubmitted
+  } if isLet, {
+    key: {
+      text: "Needs type"
+    },
+    value: {
+      text: log[section.id]["type-of-need"] | textFromInputValue(data.questions["type-of-need"])
+    },
+    actions: actionLinks({
+      href: sectionPath + "/type-of-need",
+      visuallyHiddenText: "needs type"
+    }) if not logSubmitted
+  } if isLet, {
+    key: {
+      text: "Supported housing scheme"
+    },
+    value: {
+      text: data.schemes[log[section.id]["schemeId"]].name
+    },
+    actions: actionLinks({
+      href: sectionPath + "/scheme",
+      visuallyHiddenText: "supported housing scheme"
+    }) if not logSubmitted
+  } if isSupported, {
+    key: {
+      text: "Property renewal"
+    },
+    value: {
+      text: log[section.id]["letting-renewal"] | textFromInputValue(data.questions["yes-no"])
+    },
+    actions: actionLinks({
+      href: sectionPath + "/letting-renewal",
+      visuallyHiddenText: "if renewal"
+    }) if not logSubmitted
+  } if isLet, {
+    key: {
+      text: "Tenacy start date"
+    },
+    value: {
+      text: log[section.id]["letting-start-date"] | textFromInputValue
+    },
+    actions: actionLinks({
+      href: sectionPath + "/letting-start-date",
+      visuallyHiddenText: "tenacy start date"
+    }) if not logSubmitted
+  } if isLet, {
+    key: {
+      text: "Rent type"
+    },
+    value: {
+      text: log[section.id]["type-of-rent"] | textFromInputValue(data.questions["type-of-rent"])
+    },
+    actions: actionLinks({
+      href: sectionPath + "/type-of-rent",
+      visuallyHiddenText: "rent type"
+    }) if not logSubmitted
+  } if isLet, {
+    key: {
+      text: "Tenant code"
+    },
+    value: {
+      text: log[section.id]["tenant-code"] | textFromInputValue
+    },
+    actions: actionLinks({
+      href: sectionPath + "/tenant-code",
+      visuallyHiddenText: "tenant code"
+    }) if not logSubmitted
+  } if isLet, {
+    key: {
+      text: "Sale completion date"
+    },
+    value: {
+      text: log[section.id]["sale-completion-date"] | textFromInputValue
+    },
+    actions: actionLinks({
+      href: sectionPath + "/sale-completion-date",
+      visuallyHiddenText: "sale completion date"
+    }) if not logSubmitted
+  } if isSale, {
+    key: {
+      text: "Purchaser code"
+    },
+    value: {
+      text: log[section.id]["purchaser-code"] | textFromInputValue
+    },
+    actions: actionLinks({
+      href: sectionPath + "/purchaser-code",
+      visuallyHiddenText: "purchaser code"
+    }) if not logSubmitted
+  } if isSale, {
+    key: {
+      text: "Property reference"
+    },
+    value: {
+      text: log[section.id]["property-reference"] | textFromInputValue
+    },
+    actions: actionLinks({
+      href: sectionPath + "/property-reference",
+      visuallyHiddenText: "property reference"
+    }) if not logSubmitted
+  }]
+}) }}
+
+{# Allow all sections to be edited, for now.
+  {% if isCompleted %}
+    {{ govukDetails({
+      summaryText: "Why can’t I change some of these answers?",
+      html: 'We ask different questions about this log based on the answers you give us. If you want to change any information, you must <a href="#">delete this log and create a new one</a>.'
+    }) }}
+  {% else %}
+    {{ govukWarningText({
+      text: "You won’t be able to change some of these answers after you’ve saved them.",
+      iconFallbackText: "Warning"
+    }) }}
+  {% endif %}
+#}

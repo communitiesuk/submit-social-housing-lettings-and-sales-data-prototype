@@ -3,7 +3,7 @@ import validator from 'express-validator'
 const { check } = validator
 
 export const validations = (req) => {
-  const { logId, sectionId } = req.params
+  const { logId, sectionPathId } = req.params
 
   /**
    * Get field name to validate
@@ -14,7 +14,7 @@ export const validations = (req) => {
    * @example getFieldName('full-name') => account.full-name
    */
   const getFieldName = (fieldName) => {
-    const sectionKey = `logs[${logId}][${sectionId}]`
+    const sectionKey = `logs[${logId}][${sectionPathId}]`
     const fieldKey = `${sectionKey}[${fieldName}]`
     const fieldKeyPath = _.toPath(fieldKey).join('.')
     return fieldKeyPath
@@ -88,13 +88,11 @@ export const validations = (req) => {
           check(getFieldName('number-in-household'))
             .isInt({ min: 1, max: 8 })
             .withMessage('You must enter a number between 1 and 8')
-        ]
-      },
-      submit: {
-        confirm: [
-          check(getFieldName('completed'))
+        ],
+        'privacy-notice': [
+          check(getFieldName('privacy-notice'))
             .equals('true')
-            .withMessage('You must show the DLUHC privacy notice to the tenant before you can submit this log.')
+            .withMessage('Select if the tenant has seen the DLUHC privacy notice')
         ]
       }
     }

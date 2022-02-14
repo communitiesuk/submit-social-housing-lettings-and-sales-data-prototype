@@ -90,6 +90,7 @@ export default {
     },
     'household-characteristics': {
       'number-in-household': 2,
+      'privacy-notice': 'true',
       'lead-tenant': {
         age: 45,
         'age-known': 'true',
@@ -109,7 +110,7 @@ export default {
       },
       completed: 'true'
     },
-    'household-situation-renewal': {
+    'household-situation': {
       allocation: ['cbl'],
       'given-reasonable-preference': 'false',
       'local-authority-known': 'false',
@@ -126,7 +127,7 @@ export default {
       'health-condition': 'false',
       completed: 'true'
     },
-    'property-information-renewal': {
+    'property-information': {
       'is-adapted': 'false',
       'number-of-bedrooms': '2',
       'postcode-known': 'true',
@@ -160,9 +161,6 @@ export default {
       'outgoings-value': 215,
       'outgoings-after-benefits': 'true',
       'outgoings-outstanding': 15,
-      completed: 'true'
-    },
-    submit: {
       completed: 'true'
     }
   },
