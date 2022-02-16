@@ -23,6 +23,26 @@ export const logRoutes = (router) => {
 
     // Convert logs to array
     logs = utils.objectToArray(logs)
+
+    // Calculate log completion
+    for (const log of logs) {
+      const sections = getSections(log)
+
+      let incompleteSections = 0
+      for (const section of sections) {
+        if (log[section.id]?.completed === 'true') {
+          incompleteSections = incompleteSections + 1
+        }
+      }
+
+      const progress = incompleteSections / sections.length
+
+      log.progress = Number(progress).toLocaleString(undefined, {
+        style: 'percent'
+      })
+    }
+
+    // Filter: updated by current user
     const updatedBy = req.session.user || req.query.user || currentUser.id
     logs = logs.filter(log => log.updatedBy === updatedBy)
 

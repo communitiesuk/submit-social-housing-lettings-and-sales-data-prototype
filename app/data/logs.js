@@ -1,7 +1,80 @@
 export default {
+  A0001: {
+    type: 'lettings',
+    created: '2021-07-15',
+    updated: '2021-07-19',
+    updatedBy: 'DP001',
+    status: 'submitted',
+    setup: {
+      'letting-start-date': { day: '12', month: '6', year: '2022' },
+      'tenant-code': '298736',
+      'property-reference': 'P004321'
+    }
+  },
+  A0002: {
+    type: 'lettings',
+    created: '2021-07-15',
+    updated: '2021-07-19',
+    updatedBy: 'DP001',
+    status: 'submitted',
+    setup: {
+      'letting-start-date': { day: '12', month: '6', year: '2022' },
+      'tenant-code': '298736',
+      'property-reference': 'P004321'
+    }
+  },
+  A0003: {
+    type: 'lettings',
+    created: '2021-07-16',
+    updated: '2021-07-19',
+    updatedBy: 'DP001',
+    status: 'submitted',
+    setup: {
+      'letting-start-date': { day: '12', month: '6', year: '2022' },
+      'tenant-code': '298736',
+      'property-reference': 'P004321'
+    }
+  },
+  A0004: {
+    type: 'lettings',
+    created: '2021-07-11',
+    updated: '2021-07-12',
+    updatedBy: 'DP001',
+    status: 'submitted',
+    setup: {
+      'letting-start-date': { day: '12', month: '6', year: '2022' },
+      'tenant-code': '298736',
+      'property-reference': 'P004321'
+    }
+  },
+  A0005: {
+    type: 'lettings',
+    created: '2021-07-10',
+    updated: '2021-07-12',
+    updatedBy: 'DP001',
+    status: 'submitted',
+    setup: {
+      'letting-start-date': { day: '12', month: '6', year: '2022' },
+      'tenant-code': '298736',
+      'property-reference': 'P004321'
+    }
+  },
+  A0006: {
+    type: 'lettings',
+    created: '2021-06-18',
+    updated: '2021-06-24',
+    updatedBy: 'DP001',
+    status: 'submitted',
+    setup: {
+      'letting-start-date': { day: '12', month: '6', year: '2022' },
+      'tenant-code': '298736',
+      'property-reference': 'P004321'
+    }
+  },
   EX001: {
     type: 'lettings',
-    status: 'submitted',
+    status: 'completed',
+    created: '2021-07-27',
     updated: '2021-07-29',
     updatedBy: 'DP001',
     setup: {
@@ -95,6 +168,7 @@ export default {
   },
   BZ787: {
     type: 'lettings',
+    created: '2021-07-26',
     updated: '2021-07-29',
     updatedBy: 'DP001',
     setup: {
@@ -103,7 +177,7 @@ export default {
       'type-of-need': 'general',
       'letting-renewal': 'false',
       'type-of-rent': 'Affordable Rent',
-      'letting-start-date': { day: '12', month: '1', year: '2021' },
+      'letting-start-date': { day: '12', month: '6', year: '2021' },
       'tenant-code': 'GN',
       'property-reference': 'P004321',
       completed: 'true'
@@ -111,6 +185,7 @@ export default {
   },
   BZ766: {
     type: 'lettings',
+    created: '2021-07-25',
     updated: '2021-07-29',
     updatedBy: 'DP001',
     setup: {
@@ -119,7 +194,7 @@ export default {
       'type-of-need': 'general',
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',
-      'letting-start-date': { day: '12', month: '1', year: '2021' },
+      'letting-start-date': { day: '12', month: '6', year: '2021' },
       'tenant-code': 'GN-R',
       'property-reference': 'P005678',
       completed: 'true'
@@ -127,6 +202,7 @@ export default {
   },
   BZ765: {
     type: 'lettings',
+    created: '2021-07-20',
     updated: '2021-07-29',
     updatedBy: 'DC001',
     setup: {
@@ -136,7 +212,7 @@ export default {
       'type-of-need': 'supported',
       'letting-renewal': 'false',
       'type-of-rent': 'Affordable Rent',
-      'letting-start-date': { day: '12', month: '1', year: '2021' },
+      'letting-start-date': { day: '12', month: '6', year: '2021' },
       'tenant-code': 'SH',
       'property-reference': 'P008765',
       completed: 'true'
@@ -144,7 +220,8 @@ export default {
   },
   BZ112: {
     type: 'lettings',
-    updated: '2021-07-29',
+    created: '2021-08-19',
+    updated: '2021-08-29',
     updatedBy: 'DP001',
     setup: {
       schemeId: 'EXAMPLE',
@@ -153,7 +230,7 @@ export default {
       'type-of-need': 'supported',
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',
-      'letting-start-date': { day: '12', month: '1', year: '2021' },
+      'letting-start-date': { day: '12', month: '6', year: '2021' },
       'tenant-code': 'SH-R',
       'property-reference': 'P04565',
       completed: 'true'
