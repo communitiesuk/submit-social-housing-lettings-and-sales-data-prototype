@@ -14,9 +14,9 @@ export default async () => ({
   },
   logs,
   filter: {
+    user: ['DP001'],
     collection: ['2022/23'],
-    show: ['mine'],
-    status: ['complete', 'incomplete']
+    status: ['complete', 'incomplete', 'submitted']
   },
   groups: [{
     id: 'before-you-start',

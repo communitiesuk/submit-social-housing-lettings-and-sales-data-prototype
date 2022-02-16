@@ -13,7 +13,7 @@
 
   {{ macro.heading(title) }}
 
-  {{ appSubNavigation({
+  {# appSubNavigation({
       items: [{
       href: "/logs?type=lettings",
       text: "Lettings",
@@ -23,7 +23,7 @@
       text: "Sales",
       active: type == "sales"
     }]
-  }) }}
+  }) #}
   <h2 class="govuk-visually-hidden">{{ typeName }}</h2>
 
   <div class="app-filter-layout">
@@ -55,65 +55,83 @@
             html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
           }, {
             classes: "app-!-font-tabular",
-            text: (log.setup["tenant-code"] or "—") + " / " + (log.setup["property-reference"] or "—")
+            text: log.setup["tenant-code"] or "—"
+          }, {
+            classes: "app-!-font-tabular",
+            text: log.setup["property-reference"] or "—"
           }, {
             text: log.setup["letting-start-date"] | textFromInputValue
           }, {
-            html: macro.entityHtml(log.updated | govukDate, false, users[log.updatedBy].name)
+            html: log.created | govukDate
           }, {
             html: govukTag({
-              classes: "govuk-tag--blue" if not log.status,
-              text: log.status if log.status else "In progress"
-            })
+              classes: "govuk-tag--blue" if log.status == "completed",
+              text: log.status
+            }) if log.status else log.progress + " complete"
           }])
         %}
       {% endfor %}
 
       {% if logs | length > 0 %}
-        <section class="app-table-group" tabindex="0" aria-labelledby="logs">
-          {{ govukTable({
-            caption: "56 logs",
-            captionClasses: "govuk-visually-hidden",
-            firstCellIsHeader: true,
-            head: [{
-              text: "Log"
-            }, {
-              text: "Tenant / Property"
-            }, {
-              text: "Tenancy starts"
-            }, {
-              text: "Updated"
-            }, {
-              text: "Status"
-            }],
-            rows: logRows
-          }) | replace("<caption ", "<caption id=\"logs\"") }}
-        </section>
-
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
-            {{ appPagination({
-              selected: 0,
-              items: [
-                "/?type=" + type + "page=1",
-                "/?type=" + type + "page=2",
-                "/?type=" + type + "page=3",
-                "/?type=" + type + "page=4",
-                "/?type=" + type + "page=5"
-              ],
-              next: {
-                href: "/?type=" + type + "page=3",
-                text: "Next"
-              }
+        <figure class="app-figure">
+          <figcaption id="logs" class="app-figure__caption">
+            <span class="govuk-!-margin-right-4">
+              <b>56</b> logs found of <b>217</b> total logs
+            </span>
+            <a class="govuk-link govuk-link--no-visited-state" href="#" download>Download (CSV)</a>
+          </figcaption>
+          <div class="app-table-group" tabindex="0" aria-labelledby="logs">
+            {{ govukTable({
+              firstCellIsHeader: true,
+              head: [{
+                text: "Log"
+              }, {
+                text: "Tenant"
+              }, {
+                text: "Property"
+              }, {
+                text: "Tenancy starts"
+              }, {
+                text: "Log created"
+              }, {
+                text: "Status"
+              }],
+              rows: logRows
             }) }}
           </div>
-          <div class="govuk-grid-column-one-third govuk-!-text-align-right">
-            <p>Showing <b>1</b> to <b>{{ logs | length }}</b> of <b>56</b> results</p>
-          </div>
-        </div>
-        <p class="govuk-body">
-          <a class="govuk-link govuk-link--no-visited-state" href="#" download>Download logs (CSV)</a>
-        </p>
+        </figure>
+
+        {{ appPagination({
+          items: [{
+            href: "/?type=" + type + "page=1",
+            text: "1"
+          }, {
+            href: "/?type=" + type + "page=2",
+            text: "2",
+            current: "true"
+          }, {
+            href: "/?type=" + type + "page=3",
+            text: "3"
+          }, {
+            href: "/?type=" + type + "page=4",
+            text: "4"
+          }, {
+            href: "/?type=" + type + "page=5",
+            text: "5"
+          }],
+          next: {
+            href: "/?type=" + type + "page=3"
+          },
+          previous: {
+            href: "/?type=" + type + "page=1"
+          },
+          results: {
+            to: logs | length,
+            from: 1,
+            count: 56,
+            type: "logs"
+          }
+        }) }}
       {% else %}
         <p class="govuk-body">No {{ type }} logs found.</p>
       {% endif %}

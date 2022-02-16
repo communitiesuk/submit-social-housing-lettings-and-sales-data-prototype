@@ -23,10 +23,10 @@
         text: "All logs",
         value: "all"
       }, {
-        text: "My logs",
+        text: "Logs you started",
         value: currentUser.id
       }]
-    }, "user")) }}
+    }, ["filter", "user"])) }}
 
     {{ govukCheckboxes(decorate({
       formGroup: {
@@ -46,7 +46,7 @@
         text: "2021/22",
         value: "2021/22"
       }]
-    }, ["collection"])) }}
+    }, ["filter", "collection"])) }}
 
     {{ govukCheckboxes(decorate({
       formGroup: {
@@ -60,11 +60,14 @@
         }
       },
       items: [{
-        text: "Complete",
-        value: "complete"
-      }, {
         text: "In progress",
         value: "incomplete"
+      }, {
+        text: "Completed",
+        value: "complete"
+      }, {
+        text: "Submitted",
+        value: "submitted"
       }]
     }, ["filter", "status"])) }}
 

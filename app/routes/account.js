@@ -43,7 +43,7 @@ export const accountRoutes = (router) => {
         req.session.data.account = users.DCM01
         break
       default:
-        req.session.data.account = users.DPM01
+        req.session.data.account = users.DP001
     }
 
     req.session.data.token = true
