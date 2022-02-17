@@ -35,11 +35,7 @@ export const logRoutes = (router) => {
         }
       }
 
-      const progress = incompleteSections / sections.length
-
-      log.progress = Number(progress).toLocaleString(undefined, {
-        style: 'percent'
-      })
+      log.progress = `${incompleteSections} of ${sections.length} sections`
     }
 
     // Filter: updated by current user

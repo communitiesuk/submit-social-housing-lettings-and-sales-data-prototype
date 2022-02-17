@@ -67,7 +67,7 @@
             html: govukTag({
               classes: "govuk-tag--blue" if log.status == "completed",
               text: log.status
-            }) if log.status else log.progress + " complete"
+            }) if log.status else log.progress
           }])
         %}
       {% endfor %}
@@ -94,7 +94,7 @@
               }, {
                 text: "Log created"
               }, {
-                text: "Status"
+                text: "Completed"
               }],
               rows: logRows
             }) }}
