@@ -1,6 +1,6 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Submit your " + log.type + " log" %}
+{% set title = "Submit this " + log.type + " log" %}
 {% set participant = "buyer" if log.type == "sales" else "tenant" %}
 {% set buttonText = "Submit " + log.type + " log" %}
 {% set required = true %}

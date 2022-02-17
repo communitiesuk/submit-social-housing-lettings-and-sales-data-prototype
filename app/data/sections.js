@@ -8,11 +8,11 @@ export function sections (log) {
   }
 
   /**
-   * Set up your lettings log
+   * Set up this lettings log
    */
   const setup = {
     id: 'setup',
-    title: 'Set up your lettings log',
+    title: 'Set up this lettings log',
     group: 'before-you-start',
     paths: getPaths('setup', [
       'organisation',
@@ -494,14 +494,14 @@ export function sections (log) {
    */
   const submission = {
     id: 'submit',
-    title: 'Submit your lettings log',
+    title: 'Submit this lettings log',
     group: log.status !== 'submitted' ? 'submission' : false,
     paths: getPaths('submit', [
       'confirm'
     ]).concat(`/logs?success=submitted-log&logId=${log.id}`)
   }
 
-  // Answers in ’Set up your log’ affect questions shown in task list
+  // Answers in ’Set up this log’ affect questions shown in task list
   let isSupportedHousing = false
   let isRenewal = false
   if (log.setup) {
