@@ -46,6 +46,10 @@
         {% endfor %}
       {% endfor %}
 
+      {{ govukInsetText({
+        text: "You can submit changes to this log until the close of the current collection year, 31 March 2022."
+      }) }}
+
       <div class="govuk-button-group">
         {{ govukButton({
           text: "Submit " + log.type + " log"
