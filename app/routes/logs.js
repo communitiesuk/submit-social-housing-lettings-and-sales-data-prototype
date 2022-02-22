@@ -39,8 +39,8 @@ export const logRoutes = (router) => {
     }
 
     // Filter: updated by current user
-    const updatedBy = req.session.user || req.query.user || currentUser.id
-    logs = logs.filter(log => log.updatedBy === updatedBy)
+    // const updatedBy = req.session.user || req.query.user || currentUser.id
+    // logs = logs.filter(log => log.updatedBy === updatedBy)
 
     res.render('logs/index', {
       query: req.query,
