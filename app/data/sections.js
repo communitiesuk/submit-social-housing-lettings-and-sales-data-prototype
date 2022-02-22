@@ -450,16 +450,13 @@ export function sections (log) {
     }, {
       currentPath: `${sectionPath}/outgoings-value-check`,
       forkPath: (value) => {
-        console.log('value', value)
         const { data } = req.session
         const incomeBenefits = _.get(data, keyPathRoot.concat('income-benefits'))
         const hasBenefits = !['none', 'unknown', 'prefers-not-to-say'].includes(incomeBenefits)
-        console.log('hasBenefits', hasBenefits)
         if (value === 'true') {
           // Value is correct
           if (hasBenefits) {
             // Receives benefits
-            console.log('dsfasdaf')
             return `${sectionPath}/outgoings-after-benefits`
           } else {
             // Else
