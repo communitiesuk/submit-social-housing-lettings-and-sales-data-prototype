@@ -12,7 +12,7 @@
       }
     },
     hint: {
-      text: "For example, 12 11 2020."
+      text: "The tenancy must start on or after 1 April 2022 to be within the current collection window." if data.features["2022-23"] else "The tenancy must start on or after 1 April 2021 to be within the current collection window."
     },
     items: data.questions["date-full"]
   }, ["logs", log.id, section.id, questionId])) }}
