@@ -1,4 +1,4 @@
-export const FilterToggleButton = class {
+class FilterToggleButton {
   constructor (options) {
     this.options = options
     this.container = this.options.toggleButton.container
@@ -110,3 +110,27 @@ export const FilterToggleButton = class {
     }
   }
 }
+
+export default function () {
+  this.start = (element) => {
+    const filterToggleButton = new FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.0625em)',
+      closeButton: {
+        container: element.querySelector('.app-filter__header'),
+        text: 'Close'
+      },
+      filter: {
+        container: element.querySelector('.app-filter-layout__filter')
+      },
+      startHidden: false,
+      toggleButton: {
+        container: element.querySelector('.app-filter-toggle'),
+        showText: 'Show filters',
+        hideText: 'Hide filters',
+        classes: 'govuk-button--secondary'
+      }
+    })
+
+    filterToggleButton.init()
+  }
+};
