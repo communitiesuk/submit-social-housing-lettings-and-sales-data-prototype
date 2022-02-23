@@ -1,6 +1,5 @@
 import schemes from '../schemes.js'
 import clientGroups from './client-groups.js'
-import * as utils from '../../utils.js'
 
 const _getClientGroups = (groups) => {
   if (Array.isArray(clientGroups)) {
@@ -16,12 +15,18 @@ const _getClientGroups = (groups) => {
 }
 
 // Convert schemes to array
-let allSchemes = utils.objectToArray(schemes)
+const schemeItems = []
 
-allSchemes = allSchemes.map(scheme => {
-  const clientGroups = _getClientGroups(scheme['client-groups'])
-  scheme.hint = `${scheme.postcode}<br>${clientGroups}`
-  return scheme
+Object.entries(schemes).forEach(([key, value]) => {
+  schemeItems.push({
+    text: value.name,
+    value: value.id,
+    attributes: {
+      'data-append': value.postcode,
+      'data-hint': _getClientGroups(value['client-groups']),
+      'data-synonyms': value.postcode
+    }
+  })
 })
 
-export default allSchemes
+export default schemeItems

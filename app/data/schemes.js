@@ -26,5 +26,18 @@ export default {
     'end-date-known': 'false',
     'sp-grant': 'false',
     completed: 'true'
+  },
+  1: {
+    organisationId: 'PARENT1',
+    name: 'Westminster homelessness',
+    postcode: 'SW6 1AA',
+    'client-groups': [
+      'homeless-families'
+    ],
+    'start-date': {
+      day: 1,
+      month: 3,
+      year: 2019
+    }
   }
 }
