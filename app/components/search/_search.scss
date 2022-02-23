@@ -1,0 +1,14 @@
+.app-search {
+  position: relative;
+}
+
+.app-search__input {
+  padding-left: govuk-spacing(7);
+}
+
+.app-search__icon {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: govuk-spacing(2);
+}

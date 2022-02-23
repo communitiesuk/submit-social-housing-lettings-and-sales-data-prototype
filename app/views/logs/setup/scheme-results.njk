@@ -1,0 +1,28 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Select a scheme" %}
+{% set buttonText = "Continue" %}
+{% set questionId = "scheme" %}
+
+{% block question %}
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
+    },
+    items: data.questions.scheme
+  }, ["logs", log.id, section.id, questionId])) }}
+
+  <p class="govuk-body">or</p>
+
+  {{ appSearch(decorate({
+    label: {
+      classes: "govuk-label--m",
+      text: "Try another search"
+    },
+    hint: {
+      text: "Enter scheme name or postcode"
+    }
+  }, ["logs", log.id, section.id, "scheme-query"])) }}
+{% endblock %}

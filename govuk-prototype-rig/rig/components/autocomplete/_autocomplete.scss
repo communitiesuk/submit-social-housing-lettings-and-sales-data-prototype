@@ -9,6 +9,20 @@
   font-family: inherit;
 }
 
+.autocomplete__option__append {
+  font-weight: bold;
+}
+
+.autocomplete__option__hint {
+  display: block;
+  color: $govuk-secondary-text-colour;
+
+  .autocomplete__option--focused &,
+  .autocomplete__option:hover & {
+    color: govuk-colour("white");
+  }
+}
+
 // Style the autocomplete if there’s an error
 .govuk-form-group--error {
   .autocomplete__input {
