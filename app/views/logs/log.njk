@@ -22,16 +22,18 @@
       <h1 class="govuk-heading-xl">{{ title }}</h1>
 
       {% if log.status == "submitted" %}
-        <h2 class="govuk-heading-s govuk-!-margin-bottom-2">This log was submitted to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities on {{ log.updated | govukDate }} </h2>
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-2">This log was submitted to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities on {{ log.updated | govukDate }}</h2>
         <p class="govuk-body">You can make changes and re-submit this log.</p>
       {% else %}
-        {% if incompleteSectionsCount > 0 %}
+        {% if completeSectionsCount == 0 %}
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">This log has not been started</h2>
+        {% elif incompleteSectionsCount > 0 %}
           <h2 class="govuk-heading-s govuk-!-margin-bottom-2">This log is incomplete</h2>
+          <p class="govuk-body">You have completed {{ completeSectionsCount }} of {{ sectionsCount }} sections.</p>
+          <p><a href="#{{ incompleteSections(log.id)[0].title | slugify }}" class="app-section-skip-link">Skip to next incomplete section: {{ incompleteSections(log.id)[0].title }}</a></p>
         {% else %}
           <h2 class="govuk-heading-s govuk-!-margin-bottom-2">This log is ready to submit to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities</h2>
         {% endif %}
-        <p class="govuk-body">You have completed {{ completeSectionsCount }} of {{ sectionsCount }} sections.</p>
-        <p><a href="#{{ incompleteSections(log.id)[0].title | slugify }}" class="app-section-skip-link">Skip to next incomplete section: {{ incompleteSections(log.id)[0].title }}</a></p>
       {% endif %}
 
       {{ rigTaskList({
@@ -40,12 +42,14 @@
         sections: taskListSections(log.id)
       }) }}
 
-      <h2 class="govuk-heading-m">Review and submit</h2>
-      <p>Review your answers and submit this log to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities.</p>
-      {{ govukButton({
-        href: "/logs/" + log.id + "/review",
-        text: "Review " + log.type + " log"
-      }) }}
+      {% if completeSectionsCount != 0 %}
+        <h2 class="govuk-heading-m">Review and submit</h2>
+        <p>Review your answers and submit this log to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities.</p>
+        {{ govukButton({
+          href: "/logs/" + log.id + "/review",
+          text: "Review " + log.type + " log"
+        }) }}
+      {% endif %}
     </div>
   </div>
 {% endblock %}
