@@ -22,17 +22,22 @@
       <h1 class="govuk-heading-xl">{{ title }}</h1>
 
       {% if log.status == "submitted" %}
-        <h2 class="govuk-heading-s govuk-!-margin-bottom-2">This log was submitted to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities on {{ log.updated | govukDate }}</h2>
-        <p class="govuk-body">You can make changes and re-submit this log.</p>
+        <p class="govuk-body">
+          {{ govukTag({
+            classes: "govuk-tag--" + data.statuses[log.status].colour,
+            text: data.statuses[log.status].text
+          }) }}
+        </p>
+        <p class="govuk-body">This log was submitted to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities on {{ log.updated | govukDate }}.</p>
+        <p class="govuk-body">You can still make changes and re-submit this log.</p>
       {% else %}
         {% if completeSectionsCount == 0 %}
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">This log has not been started</h2>
+          <p class="govuk-body">This log has not been started.</p>
         {% elif incompleteSectionsCount > 0 %}
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">This log is incomplete</h2>
           <p class="govuk-body">You have completed {{ completeSectionsCount }} of {{ sectionsCount }} sections.</p>
-          <p><a href="#{{ incompleteSections(log.id)[0].title | slugify }}" class="app-section-skip-link">Skip to next incomplete section: {{ incompleteSections(log.id)[0].title }}</a></p>
+          <p class="govuk-body"><a href="#{{ incompleteSections(log.id)[0].title | slugify }}" class="app-section-skip-link">Skip to next incomplete section: {{ incompleteSections(log.id)[0].title }}</a></p>
         {% else %}
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">This log is ready to submit to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities</h2>
+          <p class="govuk-body">This log is ready to submit to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities.</p>
         {% endif %}
       {% endif %}
 

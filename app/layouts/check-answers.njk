@@ -2,6 +2,7 @@
 
 {% set title = title or "Check your answers" %}
 {% set formAction = logPath %}
+{% set logArchived = log.status == "archived" %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({

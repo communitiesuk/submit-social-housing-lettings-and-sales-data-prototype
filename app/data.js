@@ -16,7 +16,7 @@ export default async () => ({
   filter: {
     user: ['DP001'],
     collection: ['2022/23'],
-    status: ['complete', 'incomplete', 'submitted']
+    status: ['complete', 'incomplete', 'submitted', 'archived']
   },
   groups: [{
     id: 'before-you-start',
@@ -35,5 +35,41 @@ export default async () => ({
   organisations,
   roles,
   schemes,
+  statuses: {
+    archived: {
+      id: 'archived',
+      text: 'Archived',
+      colour: 'orange'
+    },
+    notStarted: {
+      id: 'notStarted',
+      text: 'Not started',
+      colour: 'grey',
+      canStart: true
+    },
+    inProgress: {
+      id: 'inProgress',
+      text: 'In progress',
+      colour: 'blue',
+      canStart: true
+    },
+    completed: {
+      id: 'completed',
+      text: 'Completed',
+      colour: 'blue',
+      canStart: true
+    },
+    submitted: {
+      id: 'completed',
+      text: 'Submitted',
+      colour: 'green',
+      canStart: true
+    },
+    cannotStart: {
+      id: 'cannotStart',
+      text: 'Cannot start yet',
+      colour: 'grey'
+    }
+  },
   users
 })

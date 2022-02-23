@@ -79,9 +79,13 @@ export const logRoutes = (router) => {
     const sections = getSections(log)
 
     if (log) {
-      res.render('logs/log', { log, sections })
+      if (log.status === 'archived') {
+        return res.render('logs/review', { log, sections })
+      }
+
+      return res.render('logs/log', { log, sections })
     } else {
-      res.redirect('/logs')
+      return res.redirect('/logs')
     }
   })
 

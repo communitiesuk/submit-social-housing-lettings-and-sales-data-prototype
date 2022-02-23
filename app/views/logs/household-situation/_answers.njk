@@ -1,6 +1,5 @@
 {% set hasPostcode = log[section.id]["postcode-known"] == "true" %}
 {% set isRenewal = log["setup"]["letting-renewal"] == "true" %}
-{% set logSubmitted = log.status == "submitted" %}
 
 {{ govukSummaryList({
   rows: [{
@@ -15,7 +14,7 @@
         text: "Change" if log[section.id]["time-lived-in-area"] else "Answer",
         href: sectionPath + "/time-lived-in-area",
         visuallyHiddenText: "length of time in local authority area"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   }, {
     key: {
@@ -29,7 +28,7 @@
         text: "Change" if log[section.id]["time-on-waiting-list"] else "Answer",
         href: sectionPath + "/time-on-waiting-list",
         visuallyHiddenText: "length of time on local authority waiting list"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   } if not isRenewal, {
     key: {
@@ -43,7 +42,7 @@
         text: "Change" if log[section.id]["reason-for-leaving-last-settled-home"] else "Answer",
         href: sectionPath + "/reason-for-leaving-last-settled-home",
         visuallyHiddenText: "reason for leaving last settled home"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   }, {
     key: {
@@ -57,7 +56,7 @@
         text: "Change" if log[section.id]["previous-accommodation"] else "Answer",
         href: sectionPath + "/previous-accommodation",
         visuallyHiddenText: "where the household was immediately before this letting"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   } if log[section.id]["previous-accommodation"], {
     key: {
@@ -71,7 +70,7 @@
         text: "Change" if log[section.id]["postcode"] else "Answer",
         href: sectionPath + "/postcode",
         visuallyHiddenText: "postcode of last settled home"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   }, {
     key: {
@@ -85,7 +84,7 @@
         text: "Change" if log[section.id]["local-authority"] else "Answer",
         href: sectionPath + "/local-authority",
         visuallyHiddenText: "location of last settled home"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   } if not hasPostcode and not isRenewal, {
     key: {
@@ -99,7 +98,7 @@
         text: "Change" if log[section.id]["spare-room-subsidy"] else "Answer",
         href: sectionPath + "/spare-room-subsidy",
         visuallyHiddenText: "removal of spare room subsidy or benefit cap"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   } if log[section.id]["spare-room-subsidy"], {
     key: {
@@ -113,7 +112,7 @@
         text: "Change" if log[section.id]["previous-homelessness"] else "Answer",
         href: sectionPath + "/previous-homelessness",
         visuallyHiddenText: "if household was homeless immediately before letting"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   } if not isRenewal, {
     key: {
@@ -127,7 +126,7 @@
         text: "Change" if log[section.id]["given-reasonable-preference"] else "Answer",
         href: sectionPath + "/given-reasonable-preference",
         visuallyHiddenText: "if household was given reasonable preference"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   }, {
     key: {
@@ -141,7 +140,7 @@
         text: "Change" if log[section.id]["reasonable-preference"] else "Answer",
         href: sectionPath + "/reasonable-preference",
         visuallyHiddenText: "reason for reasonable preference"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   } if log[section.id]["reasonable-preference"] == "true", {
     key: {
@@ -155,7 +154,7 @@
         text: "Change" if log[section.id]["allocation"] else "Answer",
         href: sectionPath + "/allocation",
         visuallyHiddenText: "allocation"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   }, {
     key: {
@@ -169,7 +168,7 @@
         text: "Change" if log[section.id]["referral"] else "Answer",
         href: sectionPath + "/referral",
         visuallyHiddenText: "source of referral"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   } if not isRenewal]
 }) }}

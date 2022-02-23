@@ -65,8 +65,8 @@
             html: log.created | govukDate
           }, {
             html: govukTag({
-              classes: "govuk-tag--blue" if log.status == "completed",
-              text: log.status
+              classes: "govuk-tag--" + data.statuses[log.status].colour,
+              text: data.statuses[log.status].text
             }) if log.status else log.progress
           }])
         %}

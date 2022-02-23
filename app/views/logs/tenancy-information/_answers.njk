@@ -2,7 +2,6 @@
 (log[section.id]["type-of-tenancy"] == "Fixed term – Secure") or
 (log[section.id]["type-of-tenancy"] == "Fixed term – Assured Shorthold Tenancy (AST)") %}
 {% set isSupported = log["setup"]["type-of-need"] == "supported" %}
-{% set logSubmitted = log.status == "submitted" %}
 
 {{ govukSummaryList({
   rows: [{
@@ -17,7 +16,7 @@
         text: "Change" if log[section.id]["is-joint"] else "Answer",
         href: sectionPath + "/is-joint",
         visuallyHiddenText: "if joint tenancy"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   }, {
     key: {
@@ -31,7 +30,7 @@
         text: "Change" if log[section.id]["is-starter"] else "Answer",
         href: sectionPath + "/is-starter",
         visuallyHiddenText: "if starter tenancy"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   }, {
     key: {
@@ -45,7 +44,7 @@
         text: "Change" if log[section.id]["type-of-tenancy"] else "Answer",
         href: sectionPath + "/type-of-tenancy",
         visuallyHiddenText: "type of tenancy"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   }, {
     key: {
@@ -59,7 +58,7 @@
         text: "Change" if log[section.id]["fixed-term-length"] else "Answer",
         href: sectionPath + "/fixed-term-length",
         visuallyHiddenText: "length of fixed-term tenancy"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   } if isFixedTerm, {
     key: {
@@ -73,7 +72,7 @@
         text: "Change" if log[section.id]["sheltered-accommodation"] else "Answer",
         href: sectionPath + "/sheltered-accommodation",
         visuallyHiddenText: "if sheltered accommodation"
-      }] if not logSubmitted
+      }] if not logArchived
     }
   } if isSupported]
 }) }}

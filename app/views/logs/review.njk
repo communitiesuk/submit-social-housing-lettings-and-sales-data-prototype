@@ -1,11 +1,21 @@
 {% extends "layouts/form.njk" %}
 
-{% set title = "Review " + log.type + " log" %}
+{% set logArchived = log.status == "archived" %}
+{% if logArchived %}
+  {% set title = "Log " + log.id %}
+{% else %}
+  {% set title = "Review " + log.type + " log" %}
+{% endif %}
 {% set participant = "buyer" if log.type == "sales" else "tenant" %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
     items: [{
+      href: "/logs",
+      text: "Logs"
+    }, {
+      text: title
+    }] if logArchived else [{
       href: "/logs",
       text: "Logs"
     }, {
@@ -25,7 +35,17 @@
         errorList: errorList(errors)
       }) if errors }}
 
-      {{ macro.heading(title) }}
+      {{ macro.heading(title, false, "xl") }}
+
+      {% if logArchived %}
+        <p class="govuk-body">
+          {{ govukTag({
+            classes: "govuk-tag--" + data.statuses[log.status].colour,
+            text: data.statuses[log.status].text
+          }) }}
+        </p>
+        <p class="govuk-body">This log was submitted to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities on {{ log.updated | govukDate }}.</p>
+      {% endif %}
 
       {% for group in data.groups %}
         <h2 class="govuk-heading-m">{{ group.title }}</h2>
@@ -46,16 +66,22 @@
         {% endfor %}
       {% endfor %}
 
-      {{ govukInsetText({
-        text: "You can submit changes to this log until the close of the current collection year, 31 March 2022."
-      }) }}
-
-      <div class="govuk-button-group">
-        {{ govukButton({
-          text: "Submit " + log.type + " log"
+      {% if logArchived %}
+        <p class="govuk-body">
+          <a class="govuk-link govuk-link--no-visited-state" href="/logs">Return to logs</a>
+        </p>
+      {% else %}
+        {{ govukInsetText({
+          text: "You can submit changes to this log until the close of the current collection year, 31 March 2022."
         }) }}
-        <a class="govuk-link" href="/logs/{{ log.id }}">Return to log</a>
-      </div>
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Submit " + log.type + " log"
+          }) }}
+          <a class="govuk-link govuk-link--no-visited-state" href="/logs/{{ log.id }}">Return to log</a>
+        </div>
+      {% endif %}
     </div>
   </div>
 {% endblock %}

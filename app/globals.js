@@ -1,36 +1,14 @@
 import { sections as getSections } from './data/sections.js'
+import data from './data.js'
 import * as utils from './utils.js'
+
+const sessionData = await data() // eslint-disable-line
 
 /**
  * Prototype specific global functions for use in Nunjucks templates.
  */
 export default () => {
   const globals = {}
-
-  const tagStatuses = {
-    notStarted: {
-      id: 'notStarted',
-      text: 'Not started',
-      colour: 'grey',
-      canStart: true
-    },
-    inProgress: {
-      id: 'inProgress',
-      text: 'In progress',
-      colour: 'blue',
-      canStart: true
-    },
-    completed: {
-      id: 'completed',
-      text: 'Completed',
-      canStart: true
-    },
-    cannotStart: {
-      id: 'cannotStart',
-      text: 'Cannot start yet',
-      colour: 'grey'
-    }
-  }
 
   globals.incompleteSections = function (logId, logsObject = false) {
     const logs = logsObject || this.ctx.data.logs
@@ -99,7 +77,7 @@ export default () => {
         id: section.id,
         text: section.title,
         href,
-        tag: tagStatuses[status]
+        tag: sessionData.statuses[status]
       }
     }
 
