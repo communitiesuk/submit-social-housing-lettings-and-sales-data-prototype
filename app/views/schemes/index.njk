@@ -36,7 +36,7 @@
       }, {
         html: scheme["client-groups"] | textFromInputValue(data.questions["client-groups"]) | replace(",", "<br>")
       }, {
-        html: (scheme["start-date"] | textFromInputValue) + (" to " + (scheme["end-date"] | textFromInputValue) if scheme["end-date"])
+        html: (scheme["start-date"] | govukDate) + (" to <br>" + (scheme["end-date"] | govukDate) if scheme["end-date"])
       }])
     %}
   {% endfor %}
@@ -45,13 +45,10 @@
     {{ govukTable({
       firstCellIsHeader: true,
       head: [{
-        classes: "govuk-!-width-one-quarter",
         text: "Name"
       }, {
-        classes: "govuk-!-width-one-half",
         text: "Client groups"
       }, {
-        classes: "govuk-!-width-one-quarter",
         text: "Open from"
       }],
       rows: schemeRows

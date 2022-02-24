@@ -11,11 +11,15 @@
     "build-assets": "rollup --config --silent",
     "watch-assets": "rollup --config --silent --watch",
     "serve": "govuk-prototype-rig",
+    "prestart": "npm run generate-datasets",
     "start": "npm-run-all --serial build-assets serve",
     "dev": "npm-run-all --parallel watch-assets serve",
-    "lint": "standard && stylelint 'app/**/*.scss'"
+    "lint": "standard && stylelint 'app/**/*.scss'",
+    "generate-datasets": "npm run generate-schemes",
+    "generate-schemes": "node ./scripts/generate-schemes.js"
   },
   "dependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.7",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.5",
     "govuk-prototype-rig": "file:govuk-prototype-rig",

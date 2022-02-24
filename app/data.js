@@ -1,9 +1,11 @@
+import { createRequire } from 'node:module'
 import logs from './data/logs.js'
 import questions from './data/questions.js'
 import organisations from './data/organisations.js'
 import roles from './data/roles.js'
-import schemes from './data/schemes.js'
 import users from './data/users.js'
+
+const require = createRequire(import.meta.url)
 
 export default async () => ({
   features: {
@@ -34,7 +36,7 @@ export default async () => ({
   questions: await questions(),
   organisations,
   roles,
-  schemes,
+  schemes: require('./datasets/generated/schemes.json'),
   statuses: {
     archived: {
       id: 'archived',

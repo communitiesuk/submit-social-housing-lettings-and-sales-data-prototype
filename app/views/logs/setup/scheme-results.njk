@@ -2,7 +2,7 @@
 
 {% set title = "Select a scheme" %}
 {% set buttonText = "Continue" %}
-{% set questionId = "scheme" %}
+{% set questionId = "schemeId" %}
 
 {% block question %}
   {{ govukRadios(decorate({
@@ -10,6 +10,9 @@
       legend: {
         html: macro.heading(title, caption)
       }
+    },
+    hint: {
+      text: "Schemes found matching ‘"+ data.schemes[log[section.id].schemeId].name + "’"
     },
     items: data.questions.scheme
   }, ["logs", log.id, section.id, questionId])) }}

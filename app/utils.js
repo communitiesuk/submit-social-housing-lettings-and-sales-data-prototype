@@ -1,3 +1,17 @@
+import { writeFile } from 'node:fs/promises'
+
+export const generateDataset = (generator, fileName) => {
+  const filePath = `./app/datasets/generated/${fileName}.json`
+  const fileData = JSON.stringify(generator, null, 2)
+
+  try {
+    writeFile(filePath, fileData)
+    console.info(`Data generated: ${filePath}`)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export const generateUniqueId = () => {
   return (Number(new Date())).toString(36).slice(-5).toUpperCase()
 }
