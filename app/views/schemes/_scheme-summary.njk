@@ -194,7 +194,7 @@
       text: "Scheme dates"
     },
     value: {
-      html: (scheme["start-date"] | textFromInputValue) + (" to " + (scheme["end-date"] | textFromInputValue) if scheme["end-date-known"] == "true")
+      html: (scheme["start-date"] | govukDate) + (" to " + (scheme["end-date"] | govukDate) if scheme["end-date-known"] == "true")
     },
     actions: actionLinks({
       href: schemePath + "/dates",
