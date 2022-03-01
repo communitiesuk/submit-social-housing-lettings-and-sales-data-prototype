@@ -15,7 +15,8 @@
     "start": "npm-run-all --serial build-assets serve",
     "dev": "npm-run-all --parallel watch-assets serve",
     "lint": "standard && stylelint 'app/**/*.scss'",
-    "generate-datasets": "npm run generate-schemes",
+    "generate-datasets": "npm run generate-schemes && npm run generate-organisations",
+    "generate-organisations": "node ./scripts/generate-organisations.js",
     "generate-schemes": "node ./scripts/generate-schemes.js"
   },
   "dependencies": {

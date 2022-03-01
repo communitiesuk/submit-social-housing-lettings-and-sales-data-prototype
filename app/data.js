@@ -1,7 +1,6 @@
 import { createRequire } from 'node:module'
 import logs from './data/logs.js'
 import questions from './data/questions.js'
-import organisations from './data/organisations.js'
 import roles from './data/roles.js'
 import users from './data/users.js'
 
@@ -34,7 +33,7 @@ export default async () => ({
     title: 'Finances'
   }],
   questions: await questions(),
-  organisations,
+  organisations: require('./datasets/generated/organisations.json'),
   roles,
   schemes: require('./datasets/generated/schemes.json'),
   statuses: {
