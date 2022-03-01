@@ -9009,7 +9009,28 @@ export default {
     name: 'Two Saints Limited',
     'registration-date': '1990-03-19',
     designation: 'Non-profit',
-    'corporate-form': 'Registered society'
+    'corporate-form': 'Registered society',
+    address: 'Fareham House, 69 High Street, Fareham, Hampshire. PO16 7BB',
+    tel: '01329 234600',
+    areas: [
+      'E06000036',
+      'E06000037',
+      'E06000038',
+      'E06000039',
+      'E06000040',
+      'E06000041',
+      'E06000043',
+      'E06000044',
+      'E06000045',
+      'E06000046',
+      'E07000223',
+      'E07000224',
+      'E07000225',
+      'E07000226',
+      'E07000227',
+      'E07000228',
+      'E07000229'
+    ]
   },
   LH4297: {
     name: 'Tyne Housing Association Limited',

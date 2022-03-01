@@ -1,13 +1,14 @@
 import { faker } from '@faker-js/faker'
 import { generateDataset } from '../app/utils.js'
 import localAuthorities from '../app/datasets/local-authorities.js'
+import seedSchemes from '../app/datasets/seed-schemes.js'
 
 faker.locale = 'en_GB'
 
 const generateSchemes = () => {
   const schemes = {}
 
-  for (let i = 1; i <= 100; i++) {
+  Object.entries(seedSchemes).forEach(([key, value]) => {
     const id = faker.datatype.uuid()
     const preset = faker.datatype.number({ min: 1, max: 6 })
 
@@ -153,13 +154,33 @@ const generateSchemes = () => {
     // Scheme
     schemes[id] = {
       id,
-      organisationId: faker.helpers.randomize([
-        'PARENT1'
-      ]),
-      name,
+      organisationId: value.organisationId,
+      name: value.name,
       'local-authority': faker.helpers.randomize(localAuthorities),
       'postcode-known': 'true',
-      postcode: faker.address.zipCode(),
+      postcode: faker.helpers.randomize([
+        'BN1',
+        'BN5',
+        'BN6',
+        'BN11',
+        'BN12',
+        'BN14',
+        'BN15',
+        'GU15',
+        'RH10',
+        'RG1',
+        'RG9',
+        'RG10',
+        'RG11',
+        'RG12',
+        'RG40',
+        'RG42',
+        'PO1',
+        'SO1',
+        'SL0',
+        'SL1',
+        'SL3'
+      ]) + ' 1AA',
       confidential: faker.datatype.boolean().toString(),
       type,
       units: faker.datatype.number({ max: 20 }),
@@ -192,7 +213,7 @@ const generateSchemes = () => {
       'end-date': hasEndDate ? faker.date.future() : false,
       completed: 'true'
     }
-  }
+  })
 
   return schemes
 }
