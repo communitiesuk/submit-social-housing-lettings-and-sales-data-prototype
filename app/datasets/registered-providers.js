@@ -9007,7 +9007,7 @@ export default {
   },
   LH3904: {
     // name: 'Two Saints Limited',
-    name: 'KFHS Homes Limited',
+    name: 'Own Homes Limited',
     'registration-date': '1990-03-19',
     designation: 'Non-profit',
     'corporate-form': 'Registered society',

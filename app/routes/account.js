@@ -11,10 +11,27 @@ export const accountRoutes = (router) => {
   })
 
   /**
-   * Redirect to logs page if visit home page and signed in
+   * Prefill login with a demo account email address
    */
   router.get('/start/?:organisationId', (req, res) => {
-    req.session.data.organisationId = req.params.organisationId
+    req.session.data.account = {}
+
+    switch (req.params.organisationId) {
+      case 'admin':
+        req.session.data.account.email = 'admin@levellingup.gov.uk'
+        break
+      case 'data-coordinator':
+        req.session.data.account.email = 'data.coordinator@owning.org.uk'
+        break
+      case 'data-provider':
+        req.session.data.account.email = 'data.provider@owning.org.uk'
+        break
+      case 'data-coordinator-agent':
+        req.session.data.account.email = 'data.coordinator@managing.org.uk'
+        break
+      default:
+        req.session.data.account.email = 'data.provider@managing.org.uk'
+    }
 
     res.render('index')
   })
@@ -35,17 +52,17 @@ export const accountRoutes = (router) => {
    * Sign in
    */
   router.post('/account/sign-in', (req, res) => {
-    const { account, organisationId, users } = req.session.data
+    const { account, users } = req.session.data
 
     // Demo accounts
     switch (account.email) {
       case 'admin@levellingup.gov.uk':
         req.session.data.account = users.ADMIN
         break
-      case 'data.coordinator@owning.gov.uk':
+      case 'data.coordinator@owning.org.uk':
         req.session.data.account = users.DC001
         break
-      case 'data.provider@owning.gov.uk':
+      case 'data.provider@owning.org.uk':
         req.session.data.account = users.DP001
         break
       case 'data.coordinator@managing.org.uk':
@@ -56,9 +73,6 @@ export const accountRoutes = (router) => {
     }
 
     req.session.data.token = true
-
-    // If organisation ID set, use that instead of that in user account
-    req.session.data.account.organisationId = organisationId || req.session.data.account.organisationId
 
     res.redirect('/logs')
   })

@@ -10,7 +10,7 @@ export default {
   // Data coordinator at owning organisation
   DC001: {
     name: 'Delia Cross',
-    email: 'data.coordinator@kfhs-homes.org.uk',
+    email: 'data.coordinator@owning.org.uk',
     organisationId: 'LH3904',
     role: 'coordinator',
     lastActive: '2021-10-24T16:04:34',
@@ -19,7 +19,7 @@ export default {
   // Data provider at owning organisation
   DP001: {
     name: 'Daisy Perkins',
-    email: 'data.provider@kfhs-homes.org.uk',
+    email: 'data.provider@owning.org.uk',
     organisationId: 'LH3904',
     role: 'provider',
     invitedById: 'DC001'
