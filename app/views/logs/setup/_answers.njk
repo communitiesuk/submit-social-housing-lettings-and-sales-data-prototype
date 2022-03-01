@@ -3,6 +3,16 @@
 {% set isSupported = log[section.id]["type-of-need"] == "supported" %}
 {% set isCompleted = log[section.id]["completed"] == "true" %}
 
+{%- if log[section.id].schemeId -%}
+  {%- set schemeHtml %}
+  {{ data.schemes[log[section.id].schemeId[1]].name }}<br>
+  <span class="app-!-colour-muted">
+  {{ data.schemes[log[section.id].schemeId[1]]["local-authority"].name }}<br>
+  {{ data.schemes[log[section.id].schemeId[1]].postcode }}
+  </span>
+  {%- endset %}
+{%- endif -%}
+
 {{ govukSummaryList({
   rows: [{
     key: {
@@ -42,7 +52,7 @@
       text: "Supported housing scheme"
     },
     value: {
-      text: log[section.id].schemeId[0]
+      html: schemeHtml
     },
     actions: actionLinks({
       href: sectionPath + "/scheme",
