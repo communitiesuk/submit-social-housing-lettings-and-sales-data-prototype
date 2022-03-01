@@ -34,8 +34,15 @@ export const schemeRoutes = (router) => {
     let { organisations, schemes } = req.session.data
     const { organisationId } = req.params
 
-    // Convert schemes to array
-    schemes = utils.objectToArray(schemes)
+    // Convert schemes to sorted array
+    schemes = utils.objectToArray(schemes).sort((a, b) => {
+      const fa = a.name.toLowerCase()
+      const fb = b.name.toLowerCase()
+
+      if (fa < fb) { return -1 }
+      if (fa > fb) { return 1 }
+      return 0
+    })
 
     // If path is scoped to organisation, only show schemes in that organisation
     // or any of its children
@@ -53,11 +60,21 @@ export const schemeRoutes = (router) => {
       schemes = schemes.filter(scheme => organisationRelationships.includes(scheme.organisationId))
     }
 
+    // Pagination
+    const page = parseInt(req.query.page) || 1
+    const limit = parseInt(req.query.limit) || 20
+    const skip = (page - 1) * limit
+    const results = schemes.slice(skip, skip + limit)
+
     res.render('schemes/index', {
       query: req.query,
       organisation,
       organisationPath,
-      schemes
+      schemes,
+      page,
+      limit,
+      skip,
+      results
     })
   })
 

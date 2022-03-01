@@ -1,6 +1,7 @@
 {% extends "layouts/base.njk" %}
 
 {% import "macros.njk" as macro %}
+{% from "macros.njk" import organisationNavigation with context %}
 
 {% set title = organisation.name if isAdmin else "Your organisation" %}
 
@@ -18,7 +19,7 @@
 {% block content %}
   {{ macro.heading(title) }}
 
-  {{ macro.organisationNavigation(organisationPath, "Details", isOwningOrg) }}
+  {{ organisationNavigation(organisationPath, "Details", isOwningOrg) }}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">

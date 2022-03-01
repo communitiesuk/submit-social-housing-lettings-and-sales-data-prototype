@@ -83,7 +83,7 @@
       href: organisationPath + "/schemes",
       text: "Schemes",
       active: section == "Schemes"
-    } if isOwningOrg == true]
+    } if isOwningOrg == true or isAdmin]
   }) }}
   <h2 class="govuk-visually-hidden">{{ section }}</h2>
 {% endmacro %}
