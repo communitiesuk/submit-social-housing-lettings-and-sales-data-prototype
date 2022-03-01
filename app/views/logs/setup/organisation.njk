@@ -1,25 +1,33 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Organisation details" %}
+{% set title = "Which organisation manages this property?" if isOwningOrg else "Organisation details" %}
 {% set questionId = "organisation-owner" %}
-{% set required = true %}
 
 {% block question %}
-  {{ macro.heading(title, caption) }}
+  {% if isOwningOrg %}
+    {{ govukSelect(decorate({
+      label: {
+        html: macro.heading(title, caption)
+      },
+      items: managingOrganisations | optionItems
+    }, ["logs", log.id, section.id, "organisation-manager"])) }}
+  {% else %}
+    {{ macro.heading(title, caption) }}
 
-  {{ govukSelect(decorate({
-    label: {
-      classes: "govuk-label--m",
-      text: "Which organisation owns this property?"
-    },
-    items: data.questions.organisation.owning | optionItems
-  }, ["logs", log.id, section.id, questionId])) }}
+    {{ govukSelect(decorate({
+      label: {
+        classes: "govuk-label--m",
+        text: "Which organisation owns this property?"
+      },
+      items: owningOrganisations | optionItems
+    }, ["logs", log.id, section.id, questionId])) }}
 
-  {{ govukSelect(decorate({
-    label: {
-      classes: "govuk-label--m",
-      text: "Which organisation manages this property?"
-    },
-    items: data.questions.organisation.managing | optionItems
-  }, ["logs", log.id, section.id, "organisation-manager"])) }}
+    {{ govukSelect(decorate({
+      label: {
+        classes: "govuk-label--m",
+        text: "Which organisation manages this property?"
+      },
+      items: managingOrganisations | optionItems
+    }, ["logs", log.id, section.id, "organisation-manager"])) }}
+  {% endif %}
 {% endblock %}

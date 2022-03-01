@@ -174,7 +174,7 @@ export const logRoutes = (router) => {
   router.all('/logs/:logId/:sectionPathId/:itemId?/:view?', async (req, res, next) => {
     try {
       let { logId, sectionPathId, itemId, view } = req.params
-      const { logs } = req.session.data
+      const { account, logs, organisations } = req.session.data
 
       // If there’s no :view param, use :itemId param for view
       if (!view) {
@@ -215,6 +215,18 @@ export const logRoutes = (router) => {
         ? wizard.nextAndBackPaths(section.paths, req)
         : []
 
+      // Organisation data
+      const organisationId = account?.organisationId || 'LH3904'
+      const organisation = utils.getEntityById(organisations, organisationId)
+      const childOrganisations = organisation.children || []
+      const userOrganisations = organisationId.concat(childOrganisations)
+
+      const managingOrganisations = Object.values(organisations)
+        .filter(org => userOrganisations.includes(org.id))
+
+      const owningOrganisations = managingOrganisations
+        .filter(org => org.stock)
+
       // Common render options, shared between normal and validated view
       let renderOptions = {
         caption: section.title,
@@ -223,6 +235,8 @@ export const logRoutes = (router) => {
         section,
         sectionPath,
         itemId,
+        managingOrganisations,
+        owningOrganisations,
         paths
       }
 

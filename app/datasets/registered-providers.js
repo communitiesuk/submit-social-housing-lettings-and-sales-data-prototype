@@ -9006,11 +9006,13 @@ export default {
     'corporate-form': 'Charitable company'
   },
   LH3904: {
-    name: 'Two Saints Limited',
+    // name: 'Two Saints Limited',
+    name: 'KFHS Homes Limited',
     'registration-date': '1990-03-19',
     designation: 'Non-profit',
     'corporate-form': 'Registered society',
-    address: 'Fareham House, 69 High Street, Fareham, Hampshire. PO16 7BB',
+    // address: 'Fareham House, 69 High Street, Fareham, Hampshire. PO16 7BB',
+    address: 'Fairview House, 18 Water Street, Fareham, Hampshire. PO16 7BB',
     tel: '01329 234600',
     areas: [
       'E06000036',
