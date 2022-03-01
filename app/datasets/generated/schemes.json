@@ -1,0 +1,2995 @@
+{
+  "e4768ebd-e515-4a96-8b9f-aca8e0fc1ca9": {
+    "id": "e4768ebd-e515-4a96-8b9f-aca8e0fc1ca9",
+    "organisationId": "PARENT1",
+    "name": "Aurelietown Care",
+    "local-authority": {
+      "uid": 116,
+      "gss": "S12000019",
+      "name": "Midlothian"
+    },
+    "postcode-known": "true",
+    "postcode": "VA1 8FL",
+    "confidential": "false",
+    "type": "older-people",
+    "units": 1,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "true",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-12-14T12:17:08.888Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "ed32cd48-3714-4b73-9d4f-5711ac213a4e": {
+    "id": "ed32cd48-3714-4b73-9d4f-5711ac213a4e",
+    "organisationId": "PARENT1",
+    "name": "South Carmela",
+    "local-authority": {
+      "uid": 13,
+      "gss": "E06000012",
+      "name": "North East Lincolnshire"
+    },
+    "postcode-known": "true",
+    "postcode": "KL70 0SG",
+    "confidential": "true",
+    "type": "foyer",
+    "units": 1,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "mental-health",
+      "young-leaving-care",
+      "young-at-risk",
+      "teenage-parents"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2022-02-06T15:56:16.959Z",
+    "end-date-known": "true",
+    "end-date": "2022-03-03T21:01:51.619Z",
+    "completed": "true"
+  },
+  "d71fed1c-bd73-4009-a44b-878cfb4a059a": {
+    "id": "d71fed1c-bd73-4009-a44b-878cfb4a059a",
+    "organisationId": "PARENT1",
+    "name": "MacGyvermouth",
+    "local-authority": {
+      "uid": 270,
+      "gss": "E07000087",
+      "name": "Fareham"
+    },
+    "postcode-known": "true",
+    "postcode": "OL8 6NA",
+    "confidential": "true",
+    "type": "older-people",
+    "units": 2,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-08-01T04:14:43.410Z",
+    "end-date-known": "true",
+    "end-date": "2022-12-15T12:27:08.483Z",
+    "completed": "true"
+  },
+  "d75e919e-3050-4ee1-9ae3-9adedf9f753d": {
+    "id": "d75e919e-3050-4ee1-9ae3-9adedf9f753d",
+    "organisationId": "PARENT1",
+    "name": "Port Velda Care",
+    "local-authority": {
+      "uid": 336,
+      "gss": "E09000006",
+      "name": "Bromley"
+    },
+    "postcode-known": "true",
+    "postcode": "WC34 8KO",
+    "confidential": "false",
+    "type": "other",
+    "units": 7,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "converted",
+    "type-of-support": "high",
+    "is-adapted": "true",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-10-09T04:13:45.910Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "dc8b6140-9cbf-43d1-80d1-052ca4627096": {
+    "id": "dc8b6140-9cbf-43d1-80d1-052ca4627096",
+    "organisationId": "PARENT1",
+    "name": "Jeanetteland House",
+    "local-authority": {
+      "uid": 91,
+      "gss": "E08000010",
+      "name": "Wigan"
+    },
+    "postcode-known": "true",
+    "postcode": "ZZ8 8TH",
+    "confidential": "true",
+    "type": "direct-access-hostel",
+    "units": 2,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "rough-sleepers"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-05-18T23:29:29.435Z",
+    "end-date-known": "true",
+    "end-date": "2022-05-09T01:57:27.946Z",
+    "completed": "true"
+  },
+  "7e77a37a-d307-4e21-824a-b8c245ad55ad": {
+    "id": "7e77a37a-d307-4e21-824a-b8c245ad55ad",
+    "organisationId": "PARENT1",
+    "name": "Pflugerville Close",
+    "local-authority": {
+      "uid": 220,
+      "gss": "E07000151",
+      "name": "Daventry"
+    },
+    "postcode-known": "true",
+    "postcode": "SU0 2CU",
+    "confidential": "true",
+    "type": "other",
+    "units": 5,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "true",
+    "client-groups": [
+      "drugs"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "false",
+    "start-date": "2021-07-22T12:59:37.324Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "1301c812-4280-48ef-8700-c387826f089b": {
+    "id": "1301c812-4280-48ef-8700-c387826f089b",
+    "organisationId": "PARENT1",
+    "name": "Jenningsborough House",
+    "local-authority": {
+      "uid": 158,
+      "gss": "W06000009",
+      "name": "Pembrokeshire"
+    },
+    "postcode-known": "true",
+    "postcode": "MY91 0FR",
+    "confidential": "true",
+    "type": "foyer",
+    "units": 19,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "young-leaving-care"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "true",
+    "start-date": "2021-05-01T17:55:48.123Z",
+    "end-date-known": "true",
+    "end-date": "2022-12-27T01:52:29.757Z",
+    "completed": "true"
+  },
+  "055469a4-93b9-48d0-9545-34c0a38d201e": {
+    "id": "055469a4-93b9-48d0-9545-34c0a38d201e",
+    "organisationId": "PARENT1",
+    "name": "East Abigaleborough",
+    "local-authority": {
+      "uid": 133,
+      "gss": "S12000042",
+      "name": "Dundee City"
+    },
+    "postcode-known": "true",
+    "postcode": "OE8 5ZI",
+    "confidential": "true",
+    "type": "other",
+    "units": 17,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "purpose-built",
+    "type-of-support": "nursing",
+    "is-adapted": "false",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-07-20T15:34:32.872Z",
+    "end-date-known": "true",
+    "end-date": "2022-09-20T14:27:16.648Z",
+    "completed": "true"
+  },
+  "de24c076-ad3f-4cc8-8661-509901a3c2ce": {
+    "id": "de24c076-ad3f-4cc8-8661-509901a3c2ce",
+    "organisationId": "PARENT1",
+    "name": "Columbus Independent Living",
+    "local-authority": {
+      "uid": 24,
+      "gss": "E06000023",
+      "name": "Bristol, City of"
+    },
+    "postcode-known": "true",
+    "postcode": "HT44 6MX",
+    "confidential": "true",
+    "type": "other",
+    "units": 5,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "learning-disabilities"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "true",
+    "start-date": "2021-09-12T05:16:07.272Z",
+    "end-date-known": "true",
+    "end-date": "2022-08-25T15:24:34.190Z",
+    "completed": "true"
+  },
+  "b9375723-89df-43bd-be6c-e509b4b430c0": {
+    "id": "b9375723-89df-43bd-be6c-e509b4b430c0",
+    "organisationId": "PARENT1",
+    "name": "Lake Caleighmouth Independent Living",
+    "local-authority": {
+      "uid": 324,
+      "gss": "E07000145",
+      "name": "Great Yarmouth"
+    },
+    "postcode-known": "true",
+    "postcode": "PT63 9DP",
+    "confidential": "true",
+    "type": "other",
+    "units": 5,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "mental-health",
+      "young-at-risk",
+      "learning-disabilities"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "true",
+    "start-date": "2021-04-25T19:37:54.314Z",
+    "end-date-known": "true",
+    "end-date": "2022-12-06T04:28:22.402Z",
+    "completed": "true"
+  },
+  "cec518a3-f86b-45a5-ae94-00c68bc7c0ad": {
+    "id": "cec518a3-f86b-45a5-ae94-00c68bc7c0ad",
+    "organisationId": "PARENT1",
+    "name": "East Bridget Supported Living",
+    "local-authority": {
+      "uid": 230,
+      "gss": "E07000167",
+      "name": "Ryedale"
+    },
+    "postcode-known": "true",
+    "postcode": "WQ6 5VW",
+    "confidential": "false",
+    "type": "other",
+    "units": 12,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "young-at-risk"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "true",
+    "start-date": "2021-06-05T19:51:53.615Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "2b8103e5-6219-44b0-b638-d81ab0d8b81b": {
+    "id": "2b8103e5-6219-44b0-b638-d81ab0d8b81b",
+    "organisationId": "PARENT1",
+    "name": "Homenickchester Center",
+    "local-authority": {
+      "uid": 161,
+      "gss": "E07000033",
+      "name": "Bolsover"
+    },
+    "postcode-known": "true",
+    "postcode": "CK1 3PU",
+    "confidential": "true",
+    "type": "foyer",
+    "units": 20,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "young-at-risk",
+      "teenage-parents"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2021-11-01T13:28:25.495Z",
+    "end-date-known": "true",
+    "end-date": "2022-03-27T10:59:20.279Z",
+    "completed": "true"
+  },
+  "b0d09416-b4cc-4b23-83b3-7fdc55a90e0f": {
+    "id": "b0d09416-b4cc-4b23-83b3-7fdc55a90e0f",
+    "organisationId": "PARENT1",
+    "name": "Mylesbury Care",
+    "local-authority": {
+      "uid": 169,
+      "gss": "E07000037",
+      "name": "High Peak"
+    },
+    "postcode-known": "true",
+    "postcode": "NI9 9QB",
+    "confidential": "false",
+    "type": "older-people",
+    "units": 9,
+    "type-of-registered-home": "nursing",
+    "type-of-unit": "bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "true",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-03-17T03:31:51.708Z",
+    "end-date-known": "true",
+    "end-date": "2022-05-21T03:56:57.380Z",
+    "completed": "true"
+  },
+  "c9d7ce29-7e89-43ec-9ce4-964bd9f12659": {
+    "id": "c9d7ce29-7e89-43ec-9ce4-964bd9f12659",
+    "organisationId": "PARENT1",
+    "name": "Sadyeshire House",
+    "local-authority": {
+      "uid": 119,
+      "gss": "S12000023",
+      "name": "Orkney Islands"
+    },
+    "postcode-known": "true",
+    "postcode": "QU13 8HP",
+    "confidential": "false",
+    "type": "direct-access-hostel",
+    "units": 19,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "homeless-families",
+      "homeless-individuals"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-10-19T00:16:43.760Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "3f8e07f0-5d36-4289-8763-27339134ce38": {
+    "id": "3f8e07f0-5d36-4289-8763-27339134ce38",
+    "organisationId": "PARENT1",
+    "name": "York Independent Living",
+    "local-authority": {
+      "uid": 26,
+      "gss": "E06000025",
+      "name": "South Gloucestershire"
+    },
+    "postcode-known": "true",
+    "postcode": "GK5 5SM",
+    "confidential": "true",
+    "type": "other",
+    "units": 14,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "young-at-risk",
+      "mental-health"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "true",
+    "start-date": "2021-06-30T13:30:29.720Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "d05a7b20-c6f9-4d3d-a84e-d7fca50ed2d7": {
+    "id": "d05a7b20-c6f9-4d3d-a84e-d7fca50ed2d7",
+    "organisationId": "PARENT1",
+    "name": "Agustinmouth Care",
+    "local-authority": {
+      "uid": 341,
+      "gss": "E09000011",
+      "name": "Greenwich"
+    },
+    "postcode-known": "true",
+    "postcode": "IU3 5TY",
+    "confidential": "true",
+    "type": "other",
+    "units": 5,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "nursing",
+    "is-adapted": "true",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-12-13T15:45:10.494Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "8d0d71ac-690a-4844-b155-2457748d5b37": {
+    "id": "8d0d71ac-690a-4844-b155-2457748d5b37",
+    "organisationId": "PARENT1",
+    "name": "Lake Yessenia Nursing Home",
+    "local-authority": {
+      "uid": 259,
+      "gss": "E07000207",
+      "name": "Elmbridge"
+    },
+    "postcode-known": "true",
+    "postcode": "ZE58 6OA",
+    "confidential": "true",
+    "type": "other",
+    "units": 14,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "converted",
+    "type-of-support": "high",
+    "is-adapted": "false",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-04-02T05:19:24.530Z",
+    "end-date-known": "true",
+    "end-date": "2022-09-25T09:59:08.098Z",
+    "completed": "true"
+  },
+  "f160e742-da1e-4620-9af4-85f1b0556fed": {
+    "id": "f160e742-da1e-4620-9af4-85f1b0556fed",
+    "organisationId": "PARENT1",
+    "name": "Gaylordborough Care",
+    "local-authority": {
+      "uid": 170,
+      "gss": "W06000015",
+      "name": "Cardiff"
+    },
+    "postcode-known": "true",
+    "postcode": "ZS6 8LW",
+    "confidential": "true",
+    "type": "other",
+    "units": 1,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "converted",
+    "type-of-support": "nursing",
+    "is-adapted": "true",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "false",
+    "start-date": "2022-02-03T23:26:07.973Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "840cefc3-af08-4482-9e61-1cf9fded5209": {
+    "id": "840cefc3-af08-4482-9e61-1cf9fded5209",
+    "organisationId": "PARENT1",
+    "name": "Danielfort Center",
+    "local-authority": {
+      "uid": 209,
+      "gss": "E07000081",
+      "name": "Gloucester"
+    },
+    "postcode-known": "true",
+    "postcode": "NW55 7TL",
+    "confidential": "true",
+    "type": "other",
+    "units": 17,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "high",
+    "is-adapted": "false",
+    "client-groups": [
+      "domestic-violence",
+      "offenders",
+      "refugees",
+      "hiv-aids",
+      "drugs",
+      "alcohol"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2021-08-29T17:24:34.370Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "082a8e95-6e60-455d-958d-e3d28a1f22cc": {
+    "id": "082a8e95-6e60-455d-958d-e3d28a1f22cc",
+    "organisationId": "PARENT1",
+    "name": "Hannahview",
+    "local-authority": {
+      "uid": 206,
+      "gss": "E07000078",
+      "name": "Cheltenham"
+    },
+    "postcode-known": "true",
+    "postcode": "AX6 1UD",
+    "confidential": "true",
+    "type": "other",
+    "units": 18,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "converted",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "young-at-risk",
+      "mental-health",
+      "learning-disabilities"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2022-02-25T11:21:05.634Z",
+    "end-date-known": "true",
+    "end-date": "2022-07-21T06:02:09.418Z",
+    "completed": "true"
+  },
+  "92d7cf84-f72b-4e6d-9e30-c9d26882a613": {
+    "id": "92d7cf84-f72b-4e6d-9e30-c9d26882a613",
+    "organisationId": "PARENT1",
+    "name": "O'Connellshire House",
+    "local-authority": {
+      "uid": 152,
+      "gss": "W06000005",
+      "name": "Flintshire"
+    },
+    "postcode-known": "true",
+    "postcode": "LW0 4NF",
+    "confidential": "false",
+    "type": "direct-access-hostel",
+    "units": 9,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "homeless-families",
+      "homeless-individuals",
+      "rough-sleepers"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-09-12T22:25:34.203Z",
+    "end-date-known": "true",
+    "end-date": "2022-05-20T13:45:13.099Z",
+    "completed": "true"
+  },
+  "90824981-60e8-4870-9f9d-d154aa7d8273": {
+    "id": "90824981-60e8-4870-9f9d-d154aa7d8273",
+    "organisationId": "PARENT1",
+    "name": "New Vaughnshire Care",
+    "local-authority": {
+      "uid": 30,
+      "gss": "E06000031",
+      "name": "Peterborough"
+    },
+    "postcode-known": "true",
+    "postcode": "PS57 6BX",
+    "confidential": "true",
+    "type": "other",
+    "units": 9,
+    "type-of-registered-home": "false",
+    "type-of-unit": "house",
+    "type-of-building": "converted",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2022-02-28T18:33:52.792Z",
+    "end-date-known": "true",
+    "end-date": "2022-07-17T04:40:30.450Z",
+    "completed": "true"
+  },
+  "5f8a5a05-a3bf-4edd-a294-a95d9975e875": {
+    "id": "5f8a5a05-a3bf-4edd-a294-a95d9975e875",
+    "organisationId": "PARENT1",
+    "name": "Burnsville House",
+    "local-authority": {
+      "uid": 257,
+      "gss": "E07000202",
+      "name": "Ipswich"
+    },
+    "postcode-known": "true",
+    "postcode": "IP03 8WI",
+    "confidential": "true",
+    "type": "other",
+    "units": 9,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "converted",
+    "type-of-support": "high",
+    "is-adapted": "false",
+    "client-groups": [
+      "refugees",
+      "drugs"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-09-29T07:35:18.150Z",
+    "end-date-known": "true",
+    "end-date": "2022-04-02T17:15:34.136Z",
+    "completed": "true"
+  },
+  "eb3b9884-3fbd-4cb6-80b9-cf63113ff971": {
+    "id": "eb3b9884-3fbd-4cb6-80b9-cf63113ff971",
+    "organisationId": "PARENT1",
+    "name": "North Maudiestad Foyer",
+    "local-authority": {
+      "uid": 268,
+      "gss": "E07000216",
+      "name": "Waverley"
+    },
+    "postcode-known": "true",
+    "postcode": "IR0 8CR",
+    "confidential": "true",
+    "type": "foyer",
+    "units": 8,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "mental-health",
+      "young-at-risk",
+      "teenage-parents"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "true",
+    "start-date": "2021-09-20T09:31:38.522Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "6ad0968e-1cd1-455c-8d31-80a8c271022f": {
+    "id": "6ad0968e-1cd1-455c-8d31-80a8c271022f",
+    "organisationId": "PARENT1",
+    "name": "Schummhaven Nursing Home",
+    "local-authority": {
+      "uid": 48,
+      "gss": "E06000050",
+      "name": "Cheshire West and Chester"
+    },
+    "postcode-known": "true",
+    "postcode": "EP10 5WS",
+    "confidential": "true",
+    "type": "older-people",
+    "units": 17,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "true",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "false",
+    "start-date": "2021-05-31T07:18:52.694Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "d4602672-3720-4e88-bb0d-a81436c2cf0e": {
+    "id": "d4602672-3720-4e88-bb0d-a81436c2cf0e",
+    "organisationId": "PARENT1",
+    "name": "Montgomery Independent Living",
+    "local-authority": {
+      "uid": 39,
+      "gss": "E06000040",
+      "name": "Windsor and Maidenhead"
+    },
+    "postcode-known": "true",
+    "postcode": "GH89 0TC",
+    "confidential": "false",
+    "type": "other",
+    "units": 3,
+    "type-of-registered-home": "false",
+    "type-of-unit": "house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "learning-disabilities"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "true",
+    "start-date": "2021-03-30T11:36:03.584Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "9cf242e6-2968-462d-a2f3-0131f14366e7": {
+    "id": "9cf242e6-2968-462d-a2f3-0131f14366e7",
+    "organisationId": "PARENT1",
+    "name": "Bartolettiview Care",
+    "local-authority": {
+      "uid": 4,
+      "gss": "E06000003",
+      "name": "Redcar and Cleveland"
+    },
+    "postcode-known": "true",
+    "postcode": "TW36 5DV",
+    "confidential": "true",
+    "type": "other",
+    "units": 10,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "nursing",
+    "is-adapted": "false",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "false",
+    "start-date": "2021-09-27T09:38:12.021Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "e348cc98-4cd8-49cc-94f8-c844313da6be": {
+    "id": "e348cc98-4cd8-49cc-94f8-c844313da6be",
+    "organisationId": "PARENT1",
+    "name": "Oakland",
+    "local-authority": {
+      "uid": 184,
+      "gss": "W06000023",
+      "name": "Powys"
+    },
+    "postcode-known": "true",
+    "postcode": "IJ62 7IX",
+    "confidential": "true",
+    "type": "other",
+    "units": 7,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "purpose-built",
+    "type-of-support": "nursing",
+    "is-adapted": "false",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-11-01T15:36:20.828Z",
+    "end-date-known": "true",
+    "end-date": "2022-10-24T21:48:57.824Z",
+    "completed": "true"
+  },
+  "a8bc139a-6125-4f06-ac2d-7b5efcf3c8fc": {
+    "id": "a8bc139a-6125-4f06-ac2d-7b5efcf3c8fc",
+    "organisationId": "PARENT1",
+    "name": "Federal Way Independent Living",
+    "local-authority": {
+      "uid": 255,
+      "gss": "E07000199",
+      "name": "Tamworth"
+    },
+    "postcode-known": "true",
+    "postcode": "NK09 0LK",
+    "confidential": "true",
+    "type": "other",
+    "units": 0,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "mental-health"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "true",
+    "start-date": "2021-10-09T12:04:04.487Z",
+    "end-date-known": "true",
+    "end-date": "2023-02-11T03:27:35.860Z",
+    "completed": "true"
+  },
+  "2ad56cb3-d32e-4dbe-ab34-ace046a8502b": {
+    "id": "2ad56cb3-d32e-4dbe-ab34-ace046a8502b",
+    "organisationId": "PARENT1",
+    "name": "Port Kailynmouth Nursing Home",
+    "local-authority": {
+      "uid": 172,
+      "gss": "W06000016",
+      "name": "Rhondda Cynon Taf"
+    },
+    "postcode-known": "true",
+    "postcode": "PU9 2XX",
+    "confidential": "false",
+    "type": "older-people",
+    "units": 11,
+    "type-of-registered-home": "personal",
+    "type-of-unit": "shared-house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "true",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-08-17T02:08:10.441Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "a5b6eac5-b16f-4e7a-819c-a00473b4a77b": {
+    "id": "a5b6eac5-b16f-4e7a-819c-a00473b4a77b",
+    "organisationId": "PARENT1",
+    "name": "North Samantha House",
+    "local-authority": {
+      "uid": 156,
+      "gss": "W06000008",
+      "name": "Ceredigion"
+    },
+    "postcode-known": "true",
+    "postcode": "KI5 9TI",
+    "confidential": "true",
+    "type": "foyer",
+    "units": 19,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "teenage-parents",
+      "mental-health",
+      "young-leaving-care"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "true",
+    "start-date": "2022-02-27T08:36:48.345Z",
+    "end-date-known": "true",
+    "end-date": "2022-12-16T16:24:05.762Z",
+    "completed": "true"
+  },
+  "95db5178-68bb-4f95-8241-e70f35552962": {
+    "id": "95db5178-68bb-4f95-8241-e70f35552962",
+    "organisationId": "PARENT1",
+    "name": "Elviston",
+    "local-authority": {
+      "uid": 240,
+      "gss": "E07000177",
+      "name": "Cherwell"
+    },
+    "postcode-known": "true",
+    "postcode": "EB1 7UK",
+    "confidential": "true",
+    "type": "other",
+    "units": 1,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "true",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "false",
+    "start-date": "2021-03-28T03:50:12.330Z",
+    "end-date-known": "true",
+    "end-date": "2022-07-09T00:11:12.710Z",
+    "completed": "true"
+  },
+  "ad6074de-04dd-44a6-81a5-87f7a43a04dd": {
+    "id": "ad6074de-04dd-44a6-81a5-87f7a43a04dd",
+    "organisationId": "PARENT1",
+    "name": "North Orie Nursing Home",
+    "local-authority": {
+      "uid": 103,
+      "gss": "E08000023",
+      "name": "South Tyneside"
+    },
+    "postcode-known": "true",
+    "postcode": "YW15 4VF",
+    "confidential": "false",
+    "type": "other",
+    "units": 13,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "converted",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-12-31T13:01:16.496Z",
+    "end-date-known": "true",
+    "end-date": "2023-02-11T08:28:32.034Z",
+    "completed": "true"
+  },
+  "fb631a19-0ba0-4317-9e24-50aea1c0973d": {
+    "id": "fb631a19-0ba0-4317-9e24-50aea1c0973d",
+    "organisationId": "PARENT1",
+    "name": "West Lomashire Center",
+    "local-authority": {
+      "uid": 63,
+      "gss": "E07000224",
+      "name": "Arun"
+    },
+    "postcode-known": "true",
+    "postcode": "NF22 6HQ",
+    "confidential": "true",
+    "type": "other",
+    "units": 3,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "alcohol",
+      "refugees",
+      "offenders",
+      "hiv-aids",
+      "drugs"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2022-01-18T11:40:46.282Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "512caf1c-8a50-4c90-9863-9c352d5cb68c": {
+    "id": "512caf1c-8a50-4c90-9863-9c352d5cb68c",
+    "organisationId": "PARENT1",
+    "name": "Bonita Springs Close",
+    "local-authority": {
+      "uid": 274,
+      "gss": "E07000091",
+      "name": "New Forest"
+    },
+    "postcode-known": "true",
+    "postcode": "CW4 3RE",
+    "confidential": "false",
+    "type": "other",
+    "units": 15,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "alcohol",
+      "domestic-violence",
+      "offenders"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "true",
+    "start-date": "2021-12-28T09:47:42.438Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "c3005bde-2450-457c-ac0f-bc217e60e0e5": {
+    "id": "c3005bde-2450-457c-ac0f-bc217e60e0e5",
+    "organisationId": "PARENT1",
+    "name": "Lake Christopstad Care",
+    "local-authority": {
+      "uid": 93,
+      "gss": "E08000012",
+      "name": "Liverpool"
+    },
+    "postcode-known": "true",
+    "postcode": "VT47 6OF",
+    "confidential": "false",
+    "type": "older-people",
+    "units": 7,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "true",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-04-10T14:16:32.956Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "a8764172-14ad-45cb-8087-b371811e3b6f": {
+    "id": "a8764172-14ad-45cb-8087-b371811e3b6f",
+    "organisationId": "PARENT1",
+    "name": "Fadelbury House",
+    "local-authority": {
+      "uid": 16,
+      "gss": "E06000015",
+      "name": "Derby"
+    },
+    "postcode-known": "true",
+    "postcode": "GI40 0NU",
+    "confidential": "true",
+    "type": "foyer",
+    "units": 1,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "teenage-parents",
+      "mental-health",
+      "young-leaving-care"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "true",
+    "start-date": "2021-07-19T12:14:55.837Z",
+    "end-date-known": "true",
+    "end-date": "2022-04-12T22:21:50.509Z",
+    "completed": "true"
+  },
+  "357ddc33-7931-4011-b575-8da0411aa194": {
+    "id": "357ddc33-7931-4011-b575-8da0411aa194",
+    "organisationId": "PARENT1",
+    "name": "Ontario Center",
+    "local-authority": {
+      "uid": 108,
+      "gss": "E08000028",
+      "name": "Sandwell"
+    },
+    "postcode-known": "true",
+    "postcode": "OL20 7XM",
+    "confidential": "true",
+    "type": "direct-access-hostel",
+    "units": 1,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "rough-sleepers",
+      "homeless-individuals",
+      "homeless-families"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-09-18T20:12:25.334Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "8d86057c-89d0-4101-857e-fa47605e2114": {
+    "id": "8d86057c-89d0-4101-857e-fa47605e2114",
+    "organisationId": "PARENT1",
+    "name": "Tremblayview Center",
+    "local-authority": {
+      "uid": 208,
+      "gss": "E07000080",
+      "name": "Forest of Dean"
+    },
+    "postcode-known": "true",
+    "postcode": "NE18 2OD",
+    "confidential": "true",
+    "type": "foyer",
+    "units": 2,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "young-leaving-care",
+      "young-at-risk",
+      "mental-health",
+      "teenage-parents"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "true",
+    "start-date": "2021-12-18T19:15:54.828Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "8288fbdc-b303-4c53-aab0-793ee33ee867": {
+    "id": "8288fbdc-b303-4c53-aab0-793ee33ee867",
+    "organisationId": "PARENT1",
+    "name": "Kunzehaven",
+    "local-authority": {
+      "uid": 144,
+      "gss": "W06000001",
+      "name": "Isle of Anglesey"
+    },
+    "postcode-known": "true",
+    "postcode": "GN2 7BN",
+    "confidential": "true",
+    "type": "other",
+    "units": 16,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "converted",
+    "type-of-support": "high",
+    "is-adapted": "true",
+    "client-groups": [
+      "hiv-aids"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2021-12-27T23:38:24.264Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "da24d823-b0b5-476e-90f9-5ea284304987": {
+    "id": "da24d823-b0b5-476e-90f9-5ea284304987",
+    "organisationId": "PARENT1",
+    "name": "Modestaview",
+    "local-authority": {
+      "uid": 81,
+      "gss": "E07000246",
+      "name": "Somerset West and Taunton"
+    },
+    "postcode-known": "true",
+    "postcode": "HE11 2ND",
+    "confidential": "false",
+    "type": "direct-access-hostel",
+    "units": 19,
+    "type-of-registered-home": "false",
+    "type-of-unit": "house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "homeless-individuals",
+      "homeless-families"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-08-17T18:42:52.446Z",
+    "end-date-known": "true",
+    "end-date": "2022-09-13T16:37:18.858Z",
+    "completed": "true"
+  },
+  "648d4937-a2dc-4805-adc4-261202e66ffb": {
+    "id": "648d4937-a2dc-4805-adc4-261202e66ffb",
+    "organisationId": "PARENT1",
+    "name": "Lake Hiramstad",
+    "local-authority": {
+      "uid": 226,
+      "gss": "E07000163",
+      "name": "Craven"
+    },
+    "postcode-known": "true",
+    "postcode": "BE78 6NG",
+    "confidential": "false",
+    "type": "older-people",
+    "units": 11,
+    "type-of-registered-home": "false",
+    "type-of-unit": "house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2022-02-16T01:48:19.590Z",
+    "end-date-known": "true",
+    "end-date": "2022-06-06T09:04:01.500Z",
+    "completed": "true"
+  },
+  "a3c258b5-fae3-492d-b55b-ae771631098e": {
+    "id": "a3c258b5-fae3-492d-b55b-ae771631098e",
+    "organisationId": "PARENT1",
+    "name": "Neldafort",
+    "local-authority": {
+      "uid": 13,
+      "gss": "E06000012",
+      "name": "North East Lincolnshire"
+    },
+    "postcode-known": "true",
+    "postcode": "FD24 6QM",
+    "confidential": "true",
+    "type": "other",
+    "units": 2,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "learning-disabilities"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "true",
+    "start-date": "2021-12-25T11:43:19.591Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "b1d98401-f58e-4023-9d64-c238f22933ae": {
+    "id": "b1d98401-f58e-4023-9d64-c238f22933ae",
+    "organisationId": "PARENT1",
+    "name": "North Francisca",
+    "local-authority": {
+      "uid": 168,
+      "gss": "W06000014",
+      "name": "Vale of Glamorgan"
+    },
+    "postcode-known": "true",
+    "postcode": "RN3 3AM",
+    "confidential": "false",
+    "type": "foyer",
+    "units": 15,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "teenage-parents"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "true",
+    "start-date": "2021-09-16T04:44:43.954Z",
+    "end-date-known": "true",
+    "end-date": "2022-07-06T18:50:55.277Z",
+    "completed": "true"
+  },
+  "079aa0bb-5b10-445f-a206-ef89763afe6a": {
+    "id": "079aa0bb-5b10-445f-a206-ef89763afe6a",
+    "organisationId": "PARENT1",
+    "name": "Friedrichtown Care",
+    "local-authority": {
+      "uid": 308,
+      "gss": "E07000129",
+      "name": "Blaby"
+    },
+    "postcode-known": "true",
+    "postcode": "DN8 4SU",
+    "confidential": "true",
+    "type": "older-people",
+    "units": 14,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "true",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-12-26T06:46:21.351Z",
+    "end-date-known": "true",
+    "end-date": "2022-09-03T09:45:41.862Z",
+    "completed": "true"
+  },
+  "95ead1e7-3dda-4ad0-b8fc-c00d1f2356af": {
+    "id": "95ead1e7-3dda-4ad0-b8fc-c00d1f2356af",
+    "organisationId": "PARENT1",
+    "name": "Pagacburgh Care",
+    "local-authority": {
+      "uid": 330,
+      "gss": "E08000037",
+      "name": "Gateshead"
+    },
+    "postcode-known": "true",
+    "postcode": "GV6 0NH",
+    "confidential": "false",
+    "type": "older-people",
+    "units": 5,
+    "type-of-registered-home": "personal",
+    "type-of-unit": "bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-08-18T09:59:44.667Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "807abb61-755d-405a-8da3-10876031b0cd": {
+    "id": "807abb61-755d-405a-8da3-10876031b0cd",
+    "organisationId": "PARENT1",
+    "name": "New Rhettport House",
+    "local-authority": {
+      "uid": 25,
+      "gss": "E06000024",
+      "name": "North Somerset"
+    },
+    "postcode-known": "true",
+    "postcode": "AQ4 3RN",
+    "confidential": "true",
+    "type": "other",
+    "units": 12,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-05-22T23:54:10.560Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "08bae5f5-6d7f-48be-8e63-ee10c8ff7dbb": {
+    "id": "08bae5f5-6d7f-48be-8e63-ee10c8ff7dbb",
+    "organisationId": "PARENT1",
+    "name": "South Stanford Care",
+    "local-authority": {
+      "uid": 302,
+      "gss": "E07000123",
+      "name": "Preston"
+    },
+    "postcode-known": "true",
+    "postcode": "GM5 1FO",
+    "confidential": "false",
+    "type": "other",
+    "units": 5,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "learning-disabilities"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "true",
+    "start-date": "2022-01-07T09:22:27.836Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "32e0313e-4b07-4c4e-a8f3-932eb2eb7cd1": {
+    "id": "32e0313e-4b07-4c4e-a8f3-932eb2eb7cd1",
+    "organisationId": "PARENT1",
+    "name": "Fannymouth Supported Living",
+    "local-authority": {
+      "uid": 257,
+      "gss": "E07000202",
+      "name": "Ipswich"
+    },
+    "postcode-known": "true",
+    "postcode": "PM0 6ME",
+    "confidential": "true",
+    "type": "other",
+    "units": 17,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "converted",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "mental-health",
+      "learning-disabilities"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "true",
+    "start-date": "2021-09-28T14:32:05.575Z",
+    "end-date-known": "true",
+    "end-date": "2022-07-10T17:16:55.274Z",
+    "completed": "true"
+  },
+  "82097f6e-64b0-4595-9a43-dfc8aeee0f9b": {
+    "id": "82097f6e-64b0-4595-9a43-dfc8aeee0f9b",
+    "organisationId": "PARENT1",
+    "name": "Norwoodfurt",
+    "local-authority": {
+      "uid": 176,
+      "gss": "W06000019",
+      "name": "Blaenau Gwent"
+    },
+    "postcode-known": "true",
+    "postcode": "CC3 6VP",
+    "confidential": "false",
+    "type": "other",
+    "units": 5,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "domestic-violence"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "true",
+    "start-date": "2021-11-10T01:29:01.494Z",
+    "end-date-known": "true",
+    "end-date": "2022-08-21T10:41:53.550Z",
+    "completed": "true"
+  },
+  "2dd97451-c76a-4e5c-a5b1-43dc1a75c0c0": {
+    "id": "2dd97451-c76a-4e5c-a5b1-43dc1a75c0c0",
+    "organisationId": "PARENT1",
+    "name": "Lake Monique House",
+    "local-authority": {
+      "uid": 142,
+      "gss": "S12000050",
+      "name": "North Lanarkshire"
+    },
+    "postcode-known": "true",
+    "postcode": "LR4 9CG",
+    "confidential": "false",
+    "type": "other",
+    "units": 7,
+    "type-of-registered-home": "false",
+    "type-of-unit": "house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "true",
+    "client-groups": [
+      "hiv-aids",
+      "alcohol",
+      "offenders",
+      "domestic-violence",
+      "refugees"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-04-21T05:18:34.954Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "8fc87fba-48b9-4bd6-aebb-6162b5630da0": {
+    "id": "8fc87fba-48b9-4bd6-aebb-6162b5630da0",
+    "organisationId": "PARENT1",
+    "name": "Santee Center",
+    "local-authority": {
+      "uid": 89,
+      "gss": "E08000008",
+      "name": "Tameside"
+    },
+    "postcode-known": "true",
+    "postcode": "SG0 2FB",
+    "confidential": "false",
+    "type": "foyer",
+    "units": 19,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "mental-health",
+      "young-at-risk"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2021-03-27T00:55:31.712Z",
+    "end-date-known": "true",
+    "end-date": "2022-09-14T02:04:26.351Z",
+    "completed": "true"
+  },
+  "640f8d13-5839-4002-9ddc-4315b36bedb7": {
+    "id": "640f8d13-5839-4002-9ddc-4315b36bedb7",
+    "organisationId": "PARENT1",
+    "name": "Cassinside Center",
+    "local-authority": {
+      "uid": 8,
+      "gss": "E06000007",
+      "name": "Warrington"
+    },
+    "postcode-known": "true",
+    "postcode": "OO14 2ZZ",
+    "confidential": "false",
+    "type": "other",
+    "units": 18,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "converted",
+    "type-of-support": "high",
+    "is-adapted": "true",
+    "client-groups": [
+      "domestic-violence",
+      "alcohol",
+      "hiv-aids",
+      "offenders",
+      "drugs",
+      "refugees"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-04-17T05:07:27.415Z",
+    "end-date-known": "true",
+    "end-date": "2022-11-02T14:17:09.917Z",
+    "completed": "true"
+  },
+  "01b3379b-8ab2-45bd-ae86-9a961b1702dc": {
+    "id": "01b3379b-8ab2-45bd-ae86-9a961b1702dc",
+    "organisationId": "PARENT1",
+    "name": "Nelliefort House",
+    "local-authority": {
+      "uid": 328,
+      "gss": "E08000035",
+      "name": "Leeds"
+    },
+    "postcode-known": "true",
+    "postcode": "XT32 9NC",
+    "confidential": "false",
+    "type": "other",
+    "units": 20,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "domestic-violence",
+      "alcohol",
+      "hiv-aids",
+      "refugees",
+      "offenders"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-10-30T15:22:38.936Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "4a568c94-c909-4633-a5dd-e26415742fb1": {
+    "id": "4a568c94-c909-4633-a5dd-e26415742fb1",
+    "organisationId": "PARENT1",
+    "name": "San Antonio Care",
+    "local-authority": {
+      "uid": 29,
+      "gss": "E06000030",
+      "name": "Swindon"
+    },
+    "postcode-known": "true",
+    "postcode": "GP49 3AR",
+    "confidential": "true",
+    "type": "other",
+    "units": 16,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "young-at-risk",
+      "learning-disabilities",
+      "mental-health"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "true",
+    "start-date": "2021-08-27T23:54:26.282Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "c8946576-d7c2-4d9b-a4a1-a2f3f0b353cc": {
+    "id": "c8946576-d7c2-4d9b-a4a1-a2f3f0b353cc",
+    "organisationId": "PARENT1",
+    "name": "Kautzerville",
+    "local-authority": {
+      "uid": 148,
+      "gss": "W06000003",
+      "name": "Conwy"
+    },
+    "postcode-known": "true",
+    "postcode": "EE86 4XF",
+    "confidential": "true",
+    "type": "direct-access-hostel",
+    "units": 7,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "homeless-families"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "false",
+    "start-date": "2021-04-01T17:25:09.934Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "ab336da8-7fdf-4698-8144-debd7aa10644": {
+    "id": "ab336da8-7fdf-4698-8144-debd7aa10644",
+    "organisationId": "PARENT1",
+    "name": "Ernserport Point",
+    "local-authority": {
+      "uid": 21,
+      "gss": "E06000020",
+      "name": "Telford and Wrekin"
+    },
+    "postcode-known": "true",
+    "postcode": "UQ60 2LC",
+    "confidential": "true",
+    "type": "older-people",
+    "units": 15,
+    "type-of-registered-home": "personal",
+    "type-of-unit": "shared-house",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "true",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-12-11T10:18:00.720Z",
+    "end-date-known": "true",
+    "end-date": "2023-02-16T16:12:38.401Z",
+    "completed": "true"
+  },
+  "fa44284c-8462-49a6-ae71-c12fc780130e": {
+    "id": "fa44284c-8462-49a6-ae71-c12fc780130e",
+    "organisationId": "PARENT1",
+    "name": "West Shawnaborough",
+    "local-authority": {
+      "uid": 21,
+      "gss": "E06000020",
+      "name": "Telford and Wrekin"
+    },
+    "postcode-known": "true",
+    "postcode": "JI05 2SA",
+    "confidential": "false",
+    "type": "direct-access-hostel",
+    "units": 4,
+    "type-of-registered-home": "false",
+    "type-of-unit": "house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "homeless-families",
+      "rough-sleepers"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-09-27T10:17:37.572Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "0462c893-c75a-4b5c-b927-7d88b6acc5ac": {
+    "id": "0462c893-c75a-4b5c-b927-7d88b6acc5ac",
+    "organisationId": "PARENT1",
+    "name": "East Jordynton",
+    "local-authority": {
+      "uid": 346,
+      "gss": "E09000016",
+      "name": "Havering"
+    },
+    "postcode-known": "true",
+    "postcode": "ND42 8YM",
+    "confidential": "true",
+    "type": "direct-access-hostel",
+    "units": 3,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "rough-sleepers"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-07-22T09:21:29.899Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "4f49f830-d871-4987-a19a-5effc993bf11": {
+    "id": "4f49f830-d871-4987-a19a-5effc993bf11",
+    "organisationId": "PARENT1",
+    "name": "Alenemouth Independent Living",
+    "local-authority": {
+      "uid": 144,
+      "gss": "W06000001",
+      "name": "Isle of Anglesey"
+    },
+    "postcode-known": "true",
+    "postcode": "QP70 0DR",
+    "confidential": "false",
+    "type": "other",
+    "units": 18,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "learning-disabilities",
+      "mental-health"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "true",
+    "start-date": "2021-09-16T05:55:25.282Z",
+    "end-date-known": "true",
+    "end-date": "2022-10-27T10:42:17.612Z",
+    "completed": "true"
+  },
+  "8f876866-67dd-495f-b6ce-3cb475554c5e": {
+    "id": "8f876866-67dd-495f-b6ce-3cb475554c5e",
+    "organisationId": "PARENT1",
+    "name": "West Okey Foyer",
+    "local-authority": {
+      "uid": 114,
+      "gss": "S12000017",
+      "name": "Highland"
+    },
+    "postcode-known": "true",
+    "postcode": "BX75 1QI",
+    "confidential": "false",
+    "type": "foyer",
+    "units": 18,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "young-leaving-care",
+      "mental-health",
+      "young-at-risk",
+      "teenage-parents"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2022-02-26T21:08:27.064Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "ed635bd9-f54c-4c10-af63-c8cc2f320d38": {
+    "id": "ed635bd9-f54c-4c10-af63-c8cc2f320d38",
+    "organisationId": "PARENT1",
+    "name": "Flaviofort Point",
+    "local-authority": {
+      "uid": 280,
+      "gss": "E07000098",
+      "name": "Hertsmere"
+    },
+    "postcode-known": "true",
+    "postcode": "UD03 2JD",
+    "confidential": "false",
+    "type": "other",
+    "units": 17,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-05-23T01:50:59.455Z",
+    "end-date-known": "true",
+    "end-date": "2022-04-23T08:22:52.471Z",
+    "completed": "true"
+  },
+  "f858bd39-be7b-4343-bc61-4593b1e52633": {
+    "id": "f858bd39-be7b-4343-bc61-4593b1e52633",
+    "organisationId": "PARENT1",
+    "name": "Smithville Center",
+    "local-authority": {
+      "uid": 137,
+      "gss": "E07000008",
+      "name": "Cambridge"
+    },
+    "postcode-known": "true",
+    "postcode": "QJ29 4NJ",
+    "confidential": "true",
+    "type": "foyer",
+    "units": 5,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "mental-health",
+      "teenage-parents"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2021-03-18T11:12:00.554Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "c1412d46-d02f-4058-87e1-b1833f8d9b63": {
+    "id": "c1412d46-d02f-4058-87e1-b1833f8d9b63",
+    "organisationId": "PARENT1",
+    "name": "Schimmelton",
+    "local-authority": {
+      "uid": 73,
+      "gss": "E07000238",
+      "name": "Wychavon"
+    },
+    "postcode-known": "true",
+    "postcode": "XR62 0ME",
+    "confidential": "true",
+    "type": "other",
+    "units": 11,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "converted",
+    "type-of-support": "high",
+    "is-adapted": "false",
+    "client-groups": [
+      "hiv-aids",
+      "domestic-violence"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2021-03-07T22:59:12.139Z",
+    "end-date-known": "true",
+    "end-date": "2022-10-16T19:26:05.598Z",
+    "completed": "true"
+  },
+  "61664310-2411-453b-af81-934f2bb927bd": {
+    "id": "61664310-2411-453b-af81-934f2bb927bd",
+    "organisationId": "PARENT1",
+    "name": "East Georgette",
+    "local-authority": {
+      "uid": 263,
+      "gss": "E07000211",
+      "name": "Reigate and Banstead"
+    },
+    "postcode-known": "true",
+    "postcode": "YN5 4EC",
+    "confidential": "false",
+    "type": "other",
+    "units": 6,
+    "type-of-registered-home": "false",
+    "type-of-unit": "house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "true",
+    "client-groups": [
+      "refugees",
+      "drugs",
+      "domestic-violence",
+      "offenders"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "true",
+    "start-date": "2021-06-10T19:07:10.620Z",
+    "end-date-known": "true",
+    "end-date": "2022-05-03T19:57:31.443Z",
+    "completed": "true"
+  },
+  "57abfc51-21af-442d-a38e-54a6db0a963c": {
+    "id": "57abfc51-21af-442d-a38e-54a6db0a963c",
+    "organisationId": "PARENT1",
+    "name": "New Manleyshire",
+    "local-authority": {
+      "uid": 166,
+      "gss": "W06000013",
+      "name": "Bridgend"
+    },
+    "postcode-known": "true",
+    "postcode": "EG00 7QD",
+    "confidential": "false",
+    "type": "foyer",
+    "units": 16,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "young-leaving-care",
+      "young-at-risk"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2021-06-09T02:08:48.052Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "ab910be3-c8a8-4811-a958-2ef4322f8ca3": {
+    "id": "ab910be3-c8a8-4811-a958-2ef4322f8ca3",
+    "organisationId": "PARENT1",
+    "name": "Lake Charlotteberg",
+    "local-authority": {
+      "uid": 21,
+      "gss": "E06000020",
+      "name": "Telford and Wrekin"
+    },
+    "postcode-known": "true",
+    "postcode": "WJ12 7IG",
+    "confidential": "true",
+    "type": "other",
+    "units": 6,
+    "type-of-registered-home": "false",
+    "type-of-unit": "house",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "young-at-risk"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "true",
+    "start-date": "2021-06-26T05:58:00.533Z",
+    "end-date-known": "true",
+    "end-date": "2022-07-17T10:26:02.993Z",
+    "completed": "true"
+  },
+  "473a37ac-7e6c-471f-844c-16bf011c636f": {
+    "id": "473a37ac-7e6c-471f-844c-16bf011c636f",
+    "organisationId": "PARENT1",
+    "name": "West Kyliemouth",
+    "local-authority": {
+      "uid": 127,
+      "gss": "S12000035",
+      "name": "Argyll and Bute"
+    },
+    "postcode-known": "true",
+    "postcode": "OC09 4UY",
+    "confidential": "true",
+    "type": "other",
+    "units": 6,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "converted",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "learning-disabilities",
+      "young-at-risk"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "true",
+    "start-date": "2022-01-05T11:09:42.780Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "317e01d8-b066-47ca-9947-8f56d9f090db": {
+    "id": "317e01d8-b066-47ca-9947-8f56d9f090db",
+    "organisationId": "PARENT1",
+    "name": "Bountiful Care",
+    "local-authority": {
+      "uid": 27,
+      "gss": "E06000026",
+      "name": "Plymouth"
+    },
+    "postcode-known": "true",
+    "postcode": "KM5 7NX",
+    "confidential": "false",
+    "type": "other",
+    "units": 15,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "false",
+    "start-date": "2021-06-19T08:12:36.317Z",
+    "end-date-known": "true",
+    "end-date": "2023-02-18T23:46:52.003Z",
+    "completed": "true"
+  },
+  "c90e95c7-62ac-4863-8715-1d93fcd8f9b1": {
+    "id": "c90e95c7-62ac-4863-8715-1d93fcd8f9b1",
+    "organisationId": "PARENT1",
+    "name": "Sanfordstad",
+    "local-authority": {
+      "uid": 69,
+      "gss": "E07000234",
+      "name": "Bromsgrove"
+    },
+    "postcode-known": "true",
+    "postcode": "CQ13 1UJ",
+    "confidential": "true",
+    "type": "direct-access-hostel",
+    "units": 16,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "homeless-individuals",
+      "rough-sleepers"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-11-20T19:26:25.575Z",
+    "end-date-known": "true",
+    "end-date": "2022-12-31T22:01:12.734Z",
+    "completed": "true"
+  },
+  "1c7ac46f-163b-449f-9a2f-91e3816971cb": {
+    "id": "1c7ac46f-163b-449f-9a2f-91e3816971cb",
+    "organisationId": "PARENT1",
+    "name": "New Ben Point",
+    "local-authority": {
+      "uid": 195,
+      "gss": "E07000067",
+      "name": "Braintree"
+    },
+    "postcode-known": "true",
+    "postcode": "HZ5 3ES",
+    "confidential": "true",
+    "type": "foyer",
+    "units": 13,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "mental-health",
+      "young-leaving-care"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2021-04-22T12:16:30.567Z",
+    "end-date-known": "true",
+    "end-date": "2023-01-19T18:54:14.717Z",
+    "completed": "true"
+  },
+  "94e0b834-7a1b-4b21-8ec0-7791f277b3f5": {
+    "id": "94e0b834-7a1b-4b21-8ec0-7791f277b3f5",
+    "organisationId": "PARENT1",
+    "name": "Kansas City Center",
+    "local-authority": {
+      "uid": 244,
+      "gss": "E07000181",
+      "name": "West Oxfordshire"
+    },
+    "postcode-known": "true",
+    "postcode": "TO26 9VT",
+    "confidential": "false",
+    "type": "other",
+    "units": 14,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "high",
+    "is-adapted": "false",
+    "client-groups": [
+      "alcohol",
+      "drugs",
+      "hiv-aids"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-12-30T13:44:03.012Z",
+    "end-date-known": "true",
+    "end-date": "2023-01-02T20:26:43.391Z",
+    "completed": "true"
+  },
+  "8c734572-e1b0-4633-b92a-c2f5f6dfe4f1": {
+    "id": "8c734572-e1b0-4633-b92a-c2f5f6dfe4f1",
+    "organisationId": "PARENT1",
+    "name": "Herminaville Center",
+    "local-authority": {
+      "uid": 179,
+      "gss": "E07000042",
+      "name": "Mid Devon"
+    },
+    "postcode-known": "true",
+    "postcode": "FR4 9ZU",
+    "confidential": "false",
+    "type": "direct-access-hostel",
+    "units": 13,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "homeless-families"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-10-15T06:58:21.277Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "9e748619-c781-4d12-bd04-56b817bf6d6a": {
+    "id": "9e748619-c781-4d12-bd04-56b817bf6d6a",
+    "organisationId": "PARENT1",
+    "name": "Madera",
+    "local-authority": {
+      "uid": 307,
+      "gss": "E07000128",
+      "name": "Wyre"
+    },
+    "postcode-known": "true",
+    "postcode": "FN13 8ZW",
+    "confidential": "true",
+    "type": "older-people",
+    "units": 20,
+    "type-of-registered-home": "personal",
+    "type-of-unit": "bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "medium",
+    "is-adapted": "true",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2022-01-09T11:31:40.267Z",
+    "end-date-known": "true",
+    "end-date": "2022-09-22T15:50:44.194Z",
+    "completed": "true"
+  },
+  "0b51e513-a69e-40f5-945e-14b2935d2e02": {
+    "id": "0b51e513-a69e-40f5-945e-14b2935d2e02",
+    "organisationId": "PARENT1",
+    "name": "Hyattport",
+    "local-authority": {
+      "uid": 198,
+      "gss": "E07000070",
+      "name": "Chelmsford"
+    },
+    "postcode-known": "true",
+    "postcode": "MQ8 0EH",
+    "confidential": "false",
+    "type": "other",
+    "units": 10,
+    "type-of-registered-home": "false",
+    "type-of-unit": "house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "mental-health",
+      "learning-disabilities"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "true",
+    "start-date": "2021-09-22T17:08:15.932Z",
+    "end-date-known": "true",
+    "end-date": "2022-09-03T11:01:14.946Z",
+    "completed": "true"
+  },
+  "d86e120a-7f16-49d5-9a13-fc7cb71a5d03": {
+    "id": "d86e120a-7f16-49d5-9a13-fc7cb71a5d03",
+    "organisationId": "PARENT1",
+    "name": "Ismaelburgh",
+    "local-authority": {
+      "uid": 299,
+      "gss": "E07000120",
+      "name": "Hyndburn"
+    },
+    "postcode-known": "true",
+    "postcode": "JJ0 0WC",
+    "confidential": "true",
+    "type": "older-people",
+    "units": 2,
+    "type-of-registered-home": "part-registered",
+    "type-of-unit": "bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-12-25T04:47:01.657Z",
+    "end-date-known": "true",
+    "end-date": "2022-04-30T12:16:36.094Z",
+    "completed": "true"
+  },
+  "186a60c4-4052-4400-908e-ae35a7044be6": {
+    "id": "186a60c4-4052-4400-908e-ae35a7044be6",
+    "organisationId": "PARENT1",
+    "name": "Roswell House",
+    "local-authority": {
+      "uid": 378,
+      "gss": "S12000010",
+      "name": "East Lothian"
+    },
+    "postcode-known": "true",
+    "postcode": "OJ38 6WO",
+    "confidential": "true",
+    "type": "direct-access-hostel",
+    "units": 10,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "rough-sleepers"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-05-08T03:09:02.472Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "765e7e1f-5e51-4fec-9195-45d3344aad04": {
+    "id": "765e7e1f-5e51-4fec-9195-45d3344aad04",
+    "organisationId": "PARENT1",
+    "name": "Lake Kelsie Close",
+    "local-authority": {
+      "uid": 23,
+      "gss": "E06000022",
+      "name": "Bath and North East Somerset"
+    },
+    "postcode-known": "true",
+    "postcode": "SW4 1YJ",
+    "confidential": "true",
+    "type": "other",
+    "units": 9,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "converted",
+    "type-of-support": "medium",
+    "is-adapted": "true",
+    "client-groups": [
+      "hiv-aids",
+      "offenders",
+      "alcohol"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-10-31T22:40:07.603Z",
+    "end-date-known": "true",
+    "end-date": "2022-05-13T10:22:52.792Z",
+    "completed": "true"
+  },
+  "97a65e21-c4ae-4e25-a7a8-e781b937ecf6": {
+    "id": "97a65e21-c4ae-4e25-a7a8-e781b937ecf6",
+    "organisationId": "PARENT1",
+    "name": "North Laurynside Nursing Home",
+    "local-authority": {
+      "uid": 336,
+      "gss": "E09000006",
+      "name": "Bromley"
+    },
+    "postcode-known": "true",
+    "postcode": "VO17 1ZK",
+    "confidential": "true",
+    "type": "other",
+    "units": 5,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "converted",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-12-27T10:49:31.243Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "80fbf92c-e25a-49cf-a8db-dd53f8b97086": {
+    "id": "80fbf92c-e25a-49cf-a8db-dd53f8b97086",
+    "organisationId": "PARENT1",
+    "name": "South Faustoberg Close",
+    "local-authority": {
+      "uid": 294,
+      "gss": "E07000115",
+      "name": "Tonbridge and Malling"
+    },
+    "postcode-known": "true",
+    "postcode": "SX9 9YI",
+    "confidential": "true",
+    "type": "other",
+    "units": 2,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "converted",
+    "type-of-support": "high",
+    "is-adapted": "true",
+    "client-groups": [
+      "drugs",
+      "refugees",
+      "alcohol"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-06-03T08:49:12.613Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "b023eb79-bc21-4750-8224-8f7432400bf6": {
+    "id": "b023eb79-bc21-4750-8224-8f7432400bf6",
+    "organisationId": "PARENT1",
+    "name": "New Brandyn Care",
+    "local-authority": {
+      "uid": 179,
+      "gss": "E07000042",
+      "name": "Mid Devon"
+    },
+    "postcode-known": "true",
+    "postcode": "WX01 6ON",
+    "confidential": "false",
+    "type": "older-people",
+    "units": 2,
+    "type-of-registered-home": "personal",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-04-14T10:22:05.878Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "bfde13cd-8b01-4b2f-b46e-57453e779869": {
+    "id": "bfde13cd-8b01-4b2f-b46e-57453e779869",
+    "organisationId": "PARENT1",
+    "name": "Sawaynberg Supported Living",
+    "local-authority": {
+      "uid": 114,
+      "gss": "S12000017",
+      "name": "Highland"
+    },
+    "postcode-known": "true",
+    "postcode": "GH8 8MS",
+    "confidential": "false",
+    "type": "other",
+    "units": 7,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "learning-disabilities",
+      "young-at-risk"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "true",
+    "start-date": "2022-02-12T10:05:06.472Z",
+    "end-date-known": "true",
+    "end-date": "2023-01-19T13:30:27.227Z",
+    "completed": "true"
+  },
+  "fde68306-58f6-4769-bab8-ff6a352e9b66": {
+    "id": "fde68306-58f6-4769-bab8-ff6a352e9b66",
+    "organisationId": "PARENT1",
+    "name": "Hickletown Center",
+    "local-authority": {
+      "uid": 300,
+      "gss": "E07000121",
+      "name": "Lancaster"
+    },
+    "postcode-known": "true",
+    "postcode": "EW40 4HI",
+    "confidential": "true",
+    "type": "other",
+    "units": 18,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "purpose-built",
+    "type-of-support": "high",
+    "is-adapted": "false",
+    "client-groups": [
+      "hiv-aids",
+      "offenders"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "true",
+    "start-date": "2021-11-27T02:57:48.029Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "7e8fceca-8739-4975-88b8-a6115f3382fa": {
+    "id": "7e8fceca-8739-4975-88b8-a6115f3382fa",
+    "organisationId": "PARENT1",
+    "name": "Santa Barbara Supported Living",
+    "local-authority": {
+      "uid": 10,
+      "gss": "E06000009",
+      "name": "Blackpool"
+    },
+    "postcode-known": "true",
+    "postcode": "KA8 2XV",
+    "confidential": "false",
+    "type": "other",
+    "units": 9,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "learning-disabilities",
+      "young-at-risk"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "true",
+    "start-date": "2021-09-25T04:05:41.518Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "09e6479e-4d4a-42b8-9ac0-dd8a31af797b": {
+    "id": "09e6479e-4d4a-42b8-9ac0-dd8a31af797b",
+    "organisationId": "PARENT1",
+    "name": "Kansas City Nursing Home",
+    "local-authority": {
+      "uid": 38,
+      "gss": "E06000039",
+      "name": "Slough"
+    },
+    "postcode-known": "true",
+    "postcode": "NU4 4FW",
+    "confidential": "false",
+    "type": "other",
+    "units": 19,
+    "type-of-registered-home": "false",
+    "type-of-unit": "house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "nursing",
+    "is-adapted": "false",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "false",
+    "start-date": "2021-05-21T11:36:19.079Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "164c729e-e296-4b04-ada8-b85206e1ad3f": {
+    "id": "164c729e-e296-4b04-ada8-b85206e1ad3f",
+    "organisationId": "PARENT1",
+    "name": "Lenexa Nursing Home",
+    "local-authority": {
+      "uid": 6,
+      "gss": "E06000005",
+      "name": "Darlington"
+    },
+    "postcode-known": "true",
+    "postcode": "ZW3 9KH",
+    "confidential": "false",
+    "type": "older-people",
+    "units": 11,
+    "type-of-registered-home": "nursing",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "true",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-06-12T01:09:26.726Z",
+    "end-date-known": "true",
+    "end-date": "2022-11-26T07:28:04.075Z",
+    "completed": "true"
+  },
+  "bbffc5a0-dd13-42e6-ab3a-3b89db4621f2": {
+    "id": "bbffc5a0-dd13-42e6-ab3a-3b89db4621f2",
+    "organisationId": "PARENT1",
+    "name": "Bednarville Close",
+    "local-authority": {
+      "uid": 2,
+      "gss": "S12000013",
+      "name": "Na h-Eileanan Siar"
+    },
+    "postcode-known": "true",
+    "postcode": "WX6 5BS",
+    "confidential": "true",
+    "type": "other",
+    "units": 19,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "true",
+    "client-groups": [
+      "offenders",
+      "alcohol"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2021-03-15T17:39:03.204Z",
+    "end-date-known": "true",
+    "end-date": "2022-03-23T11:04:45.486Z",
+    "completed": "true"
+  },
+  "c7d3817e-ee11-429c-9f58-e95d70fb4548": {
+    "id": "c7d3817e-ee11-429c-9f58-e95d70fb4548",
+    "organisationId": "PARENT1",
+    "name": "Schinnerhaven",
+    "local-authority": {
+      "uid": 144,
+      "gss": "W06000001",
+      "name": "Isle of Anglesey"
+    },
+    "postcode-known": "true",
+    "postcode": "MV90 6PR",
+    "confidential": "false",
+    "type": "other",
+    "units": 5,
+    "type-of-registered-home": "false",
+    "type-of-unit": "house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "young-at-risk",
+      "mental-health"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "true",
+    "start-date": "2021-09-24T17:58:48.646Z",
+    "end-date-known": "true",
+    "end-date": "2022-05-22T04:52:01.567Z",
+    "completed": "true"
+  },
+  "3ee56513-399e-4550-99e3-70713b2b7ea1": {
+    "id": "3ee56513-399e-4550-99e3-70713b2b7ea1",
+    "organisationId": "PARENT1",
+    "name": "Canton Point",
+    "local-authority": {
+      "uid": 58,
+      "gss": "E07000219",
+      "name": "Nuneaton and Bedworth"
+    },
+    "postcode-known": "true",
+    "postcode": "SU72 3KB",
+    "confidential": "false",
+    "type": "older-people",
+    "units": 11,
+    "type-of-registered-home": "nursing",
+    "type-of-unit": "bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "older-people"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "false",
+    "start-date": "2022-01-08T05:19:19.049Z",
+    "end-date-known": "true",
+    "end-date": "2022-07-09T09:20:31.762Z",
+    "completed": "true"
+  },
+  "26db7e10-9aa4-4e45-a367-95cdb962d422": {
+    "id": "26db7e10-9aa4-4e45-a367-95cdb962d422",
+    "organisationId": "PARENT1",
+    "name": "Daughertychester House",
+    "local-authority": {
+      "uid": 354,
+      "gss": "E09000024",
+      "name": "Merton"
+    },
+    "postcode-known": "true",
+    "postcode": "OG7 8NW",
+    "confidential": "true",
+    "type": "other",
+    "units": 15,
+    "type-of-registered-home": "false",
+    "type-of-unit": "flat",
+    "type-of-building": "converted",
+    "type-of-support": "high",
+    "is-adapted": "true",
+    "client-groups": [
+      "domestic-violence",
+      "refugees"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-12-13T06:57:33.026Z",
+    "end-date-known": "true",
+    "end-date": "2022-06-29T18:05:24.023Z",
+    "completed": "true"
+  },
+  "76a31528-c8ca-4e4f-a23d-950c395ed88d": {
+    "id": "76a31528-c8ca-4e4f-a23d-950c395ed88d",
+    "organisationId": "PARENT1",
+    "name": "New Hope Center",
+    "local-authority": {
+      "uid": 306,
+      "gss": "E07000127",
+      "name": "West Lancashire"
+    },
+    "postcode-known": "true",
+    "postcode": "YM34 1VM",
+    "confidential": "true",
+    "type": "foyer",
+    "units": 12,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "young-at-risk",
+      "young-leaving-care"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2021-07-03T12:33:53.097Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "4c62eaa2-db0e-44f0-b480-b3e4d871e9e0": {
+    "id": "4c62eaa2-db0e-44f0-b480-b3e4d871e9e0",
+    "organisationId": "PARENT1",
+    "name": "Hilllborough",
+    "local-authority": {
+      "uid": 354,
+      "gss": "E09000024",
+      "name": "Merton"
+    },
+    "postcode-known": "true",
+    "postcode": "ZY6 8QN",
+    "confidential": "true",
+    "type": "direct-access-hostel",
+    "units": 15,
+    "type-of-registered-home": "false",
+    "type-of-unit": "bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "rough-sleepers",
+      "homeless-individuals",
+      "homeless-families"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "false",
+    "start-date": "2021-05-05T23:09:10.707Z",
+    "end-date-known": "true",
+    "end-date": "2023-02-16T17:08:44.997Z",
+    "completed": "true"
+  },
+  "85ab7cda-857e-4327-be8f-7603539d48d1": {
+    "id": "85ab7cda-857e-4327-be8f-7603539d48d1",
+    "organisationId": "PARENT1",
+    "name": "South Bertrand Foyer",
+    "local-authority": {
+      "uid": 142,
+      "gss": "S12000050",
+      "name": "North Lanarkshire"
+    },
+    "postcode-known": "true",
+    "postcode": "AO4 0ZE",
+    "confidential": "false",
+    "type": "foyer",
+    "units": 5,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "converted",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "young-leaving-care",
+      "young-at-risk",
+      "mental-health"
+    ],
+    "intended-stay": "medium",
+    "sp-grant": "true",
+    "start-date": "2022-01-15T18:30:55.610Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "c3549201-ed1b-484d-80a8-f30fb47d3f05": {
+    "id": "c3549201-ed1b-484d-80a8-f30fb47d3f05",
+    "organisationId": "PARENT1",
+    "name": "East Vicenta Point",
+    "local-authority": {
+      "uid": 67,
+      "gss": "E07000228",
+      "name": "Mid Sussex"
+    },
+    "postcode-known": "true",
+    "postcode": "VA3 9QV",
+    "confidential": "true",
+    "type": "foyer",
+    "units": 13,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-flat",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "mental-health"
+    ],
+    "intended-stay": "short",
+    "sp-grant": "true",
+    "start-date": "2021-03-29T06:45:30.443Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "04568b0a-1460-4063-b07d-13e92f19006c": {
+    "id": "04568b0a-1460-4063-b07d-13e92f19006c",
+    "organisationId": "PARENT1",
+    "name": "Schultzchester Center",
+    "local-authority": {
+      "uid": 170,
+      "gss": "W06000015",
+      "name": "Cardiff"
+    },
+    "postcode-known": "true",
+    "postcode": "YH62 2BA",
+    "confidential": "true",
+    "type": "other",
+    "units": 5,
+    "type-of-registered-home": "false",
+    "type-of-unit": "house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "medium",
+    "is-adapted": "false",
+    "client-groups": [
+      "refugees"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-09-11T01:23:29.258Z",
+    "end-date-known": "true",
+    "end-date": "2022-04-12T19:02:34.114Z",
+    "completed": "true"
+  },
+  "fdec7f51-324c-4c85-8a39-b7fe0d1d2643": {
+    "id": "fdec7f51-324c-4c85-8a39-b7fe0d1d2643",
+    "organisationId": "PARENT1",
+    "name": "Norwalk Center",
+    "local-authority": {
+      "uid": 220,
+      "gss": "E07000151",
+      "name": "Daventry"
+    },
+    "postcode-known": "true",
+    "postcode": "HI94 0XN",
+    "confidential": "false",
+    "type": "other",
+    "units": 16,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "drugs",
+      "offenders",
+      "refugees",
+      "alcohol",
+      "domestic-violence",
+      "hiv-aids"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2022-01-28T15:40:45.705Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "1aad3dac-28b7-4f23-9246-257d7c58c2e3": {
+    "id": "1aad3dac-28b7-4f23-9246-257d7c58c2e3",
+    "organisationId": "PARENT1",
+    "name": "Lake Bessie House",
+    "local-authority": {
+      "uid": 182,
+      "gss": "W06000022",
+      "name": "Newport"
+    },
+    "postcode-known": "true",
+    "postcode": "UJ5 9QZ",
+    "confidential": "true",
+    "type": "direct-access-hostel",
+    "units": 18,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "homeless-individuals",
+      "rough-sleepers",
+      "homeless-families"
+    ],
+    "intended-stay": "very-short",
+    "sp-grant": "false",
+    "start-date": "2021-05-26T13:32:00.816Z",
+    "end-date-known": "true",
+    "end-date": "2023-01-29T06:02:48.546Z",
+    "completed": "true"
+  },
+  "eaeb0423-1af2-4ba6-af26-13ddd15e50e5": {
+    "id": "eaeb0423-1af2-4ba6-af26-13ddd15e50e5",
+    "organisationId": "PARENT1",
+    "name": "Auburn",
+    "local-authority": {
+      "uid": 349,
+      "gss": "E09000019",
+      "name": "Islington"
+    },
+    "postcode-known": "true",
+    "postcode": "ZE9 4DC",
+    "confidential": "true",
+    "type": "other",
+    "units": 14,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-bungalow",
+    "type-of-building": "purpose-built",
+    "type-of-support": "high",
+    "is-adapted": "true",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-09-15T07:53:58.067Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "8df977e5-63b0-47cc-9e3e-77ef5476aab1": {
+    "id": "8df977e5-63b0-47cc-9e3e-77ef5476aab1",
+    "organisationId": "PARENT1",
+    "name": "Schummburgh Center",
+    "local-authority": {
+      "uid": 76,
+      "gss": "E07000241",
+      "name": "Welwyn Hatfield"
+    },
+    "postcode-known": "true",
+    "postcode": "YO72 8RF",
+    "confidential": "false",
+    "type": "direct-access-hostel",
+    "units": 7,
+    "type-of-registered-home": "false",
+    "type-of-unit": "shared-house",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "rough-sleepers",
+      "homeless-individuals"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-11-02T10:53:51.363Z",
+    "end-date-known": "false",
+    "end-date": false,
+    "completed": "true"
+  },
+  "2d475d5a-1446-4b10-882c-cdb1dff838a0": {
+    "id": "2d475d5a-1446-4b10-882c-cdb1dff838a0",
+    "organisationId": "PARENT1",
+    "name": "East Khalid House",
+    "local-authority": {
+      "uid": 299,
+      "gss": "E07000120",
+      "name": "Hyndburn"
+    },
+    "postcode-known": "true",
+    "postcode": "UZ7 0CS",
+    "confidential": "false",
+    "type": "other",
+    "units": 10,
+    "type-of-registered-home": "false",
+    "type-of-unit": "other",
+    "type-of-building": "purpose-built",
+    "type-of-support": "low",
+    "is-adapted": "false",
+    "client-groups": [
+      "physical-disabilities"
+    ],
+    "intended-stay": "permanent",
+    "sp-grant": "false",
+    "start-date": "2021-12-11T14:09:12.334Z",
+    "end-date-known": "true",
+    "end-date": "2022-06-22T20:29:58.196Z",
+    "completed": "true"
+  }
+}
