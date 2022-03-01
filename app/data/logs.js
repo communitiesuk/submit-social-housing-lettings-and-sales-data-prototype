@@ -79,7 +79,7 @@ export default {
     updatedBy: 'DP001',
     setup: {
       'organisation-manager': 'CHILD1',
-      'organisation-owner': 'PARENT1',
+      'organisation-owner': 'LH3904',
       'type-of-need': 'general',
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',
@@ -172,7 +172,7 @@ export default {
     updatedBy: 'DP001',
     setup: {
       'organisation-manager': 'CHILD1',
-      'organisation-owner': 'PARENT1',
+      'organisation-owner': 'LH3904',
       'type-of-need': 'general',
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',
@@ -263,8 +263,8 @@ export default {
     updated: '2021-07-29',
     updatedBy: 'DP001',
     setup: {
-      'organisation-manager': 'PARENT1',
-      'organisation-owner': 'PARENT1',
+      'organisation-manager': 'LH3904',
+      'organisation-owner': 'LH3904',
       'type-of-need': 'general',
       'letting-renewal': 'false',
       'type-of-rent': 'Affordable Rent',
@@ -280,8 +280,8 @@ export default {
     updated: '2021-07-29',
     updatedBy: 'DP001',
     setup: {
-      'organisation-manager': 'PARENT1',
-      'organisation-owner': 'PARENT1',
+      'organisation-manager': 'LH3904',
+      'organisation-owner': 'LH3904',
       'type-of-need': 'general',
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',
@@ -298,8 +298,8 @@ export default {
     updatedBy: 'DC001',
     setup: {
       schemeId: 'EXAMPLE',
-      'organisation-manager': 'PARENT1',
-      'organisation-owner': 'PARENT1',
+      'organisation-manager': 'LH3904',
+      'organisation-owner': 'LH3904',
       'type-of-need': 'supported',
       'letting-renewal': 'false',
       'type-of-rent': 'Affordable Rent',
@@ -316,8 +316,8 @@ export default {
     updatedBy: 'DP001',
     setup: {
       schemeId: 'EXAMPLE',
-      'organisation-manager': 'PARENT1',
-      'organisation-owner': 'PARENT1',
+      'organisation-manager': 'LH3904',
+      'organisation-owner': 'LH3904',
       'type-of-need': 'supported',
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',

@@ -102,7 +102,7 @@ export const schemeRoutes = (router) => {
     const scheme = utils.getEntityById(schemes, schemeId)
     const schemePath = `/schemes/${schemeId}`
 
-    const organisationId = account?.organisationId || 'PARENT1'
+    const organisationId = account?.organisationId || 'LH3904'
     const organisation = utils.getEntityById(organisations, organisationId)
     const organisationPath = `/organisations/${organisationId}`
 

@@ -9030,7 +9030,12 @@ export default {
       'E07000227',
       'E07000228',
       'E07000229'
-    ]
+    ],
+    parents: [],
+    children: [
+      'LH2429'
+    ],
+    stock: true
   },
   LH4297: {
     name: 'Tyne Housing Association Limited',

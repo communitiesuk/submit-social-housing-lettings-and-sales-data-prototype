@@ -11,6 +11,15 @@ export const accountRoutes = (router) => {
   })
 
   /**
+   * Redirect to logs page if visit home page and signed in
+   */
+  router.get('/start/?:organisationId', (req, res) => {
+    req.session.data.organisationId = req.params.organisationId
+
+    res.render('index')
+  })
+
+  /**
    * Sign out
    */
   router.get('/account/sign-out', (req, res) => {
@@ -26,7 +35,7 @@ export const accountRoutes = (router) => {
    * Sign in
    */
   router.post('/account/sign-in', (req, res) => {
-    const { account, users } = req.session.data
+    const { account, organisationId, users } = req.session.data
 
     // Demo accounts
     switch (account.email) {
@@ -47,6 +56,9 @@ export const accountRoutes = (router) => {
     }
 
     req.session.data.token = true
+
+    // If organisation ID set, use that instead of that in user account
+    req.session.data.account.organisationId = organisationId || req.session.data.account.organisationId
 
     res.redirect('/logs')
   })

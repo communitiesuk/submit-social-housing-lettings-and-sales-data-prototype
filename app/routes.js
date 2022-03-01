@@ -16,7 +16,7 @@ router.all('*', (req, res, next) => {
     res.locals.isCoordinator = data.account.role === 'coordinator'
 
     // TODO: Better way of determining owning organisation
-    res.locals.isOwningOrg = data.account.organisationId === 'PARENT1'
+    res.locals.isOwningOrg = data.account.organisationId === 'LH3904'
   }
 
   // Set active section

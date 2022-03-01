@@ -30,19 +30,25 @@ const generateOrganisations = () => {
       areas: value.areas
         ? value.areas
         : faker.random.arrayElements(localAuthorities.map(area => area.gss), 3),
-      parents: (value.designation !== 'Local authority')
-        ? faker.random.arrayElements(
-            Object.keys(registeredProviders),
-            2
-          )
-        : false,
-      children: stock
-        ? faker.random.arrayElements(
-            Object.keys(registeredProviders),
-            3
-          )
-        : false,
-      stock
+      parents: value.parents
+        ? value.parents
+        : (value.designation !== 'Local authority')
+            ? faker.random.arrayElements(
+                Object.keys(registeredProviders),
+                2
+              )
+            : false,
+      children: value.children
+        ? value.children
+        : stock
+          ? faker.random.arrayElements(
+              Object.keys(registeredProviders),
+              3
+            )
+          : false,
+      stock: value.stock
+        ? value.stock
+        : stock
     }
   })
 
@@ -56,18 +62,6 @@ const generateOrganisations = () => {
     stock: false
   }
 
-  organisations.PARENT1 = {
-    id: 'PARENT1',
-    name: 'Example District Council',
-    address: 'County Hall, Exemplar. EX1 1NG',
-    tel: '01234 567890',
-    type: 'Local authority',
-    areas: ['E07000220'],
-    parents: [],
-    children: ['CHILD1', 'CHILD2'],
-    stock: true
-  }
-
   organisations.CHILD1 = {
     id: 'CHILD1',
     name: 'Housing Management Limited',
@@ -75,7 +69,7 @@ const generateOrganisations = () => {
     tel: '01432 098765',
     type: 'Housing association',
     areas: ['E07000220', 'E07000218', 'E07000221'],
-    parents: ['PARENT1'],
+    parents: ['LH3904'],
     stock: false
   }
 
@@ -86,7 +80,7 @@ const generateOrganisations = () => {
     tel: '01432 980111',
     type: 'Housing association',
     areas: ['E07000218', 'E07000221'],
-    parents: ['PARENT1'],
+    parents: ['LH3904'],
     stock: false
   }
 
