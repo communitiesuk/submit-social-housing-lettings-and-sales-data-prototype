@@ -1,21 +1,20 @@
-import organisations from '../../data/organisations.js'
-import * as utils from '../../utils.js'
+import { createRequire } from 'node:module'
 
-// Convert organisations to array
-const allOrganisations = utils.objectToArray(organisations)
+const require = createRequire(import.meta.url)
+const organisations = require('../../datasets/generated/organisations.json')
 
 // Only show organisations that a user has a relationship with
 // TODO: Get this array from session data
 const userOrganisations = ['PARENT1', 'CHILD1', 'CHILD2']
 
-const availableOrganisations = allOrganisations
+const availableOrganisations = Object.values(organisations)
   .filter(org => userOrganisations.includes(org.id))
 
 const owningOrganisations = availableOrganisations
   .filter(org => org.stock)
 
 export default {
-  all: allOrganisations,
+  all: organisations,
   owning: owningOrganisations,
   managing: availableOrganisations
 }
