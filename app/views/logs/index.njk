@@ -80,7 +80,9 @@
             </span>
             <a class="govuk-link govuk-link--no-visited-state" href="#" download>Download (CSV)</a>
           </figcaption>
-          <div class="app-table-group" tabindex="0" aria-labelledby="logs">
+          {% call appTableGroup({
+            labelledby: "logs"
+          }) %}
             {{ govukTable({
               firstCellIsHeader: true,
               head: [{
@@ -98,7 +100,7 @@
               }],
               rows: logRows
             }) }}
-          </div>
+          {% endcall %}
         </figure>
 
         {{ appPagination({

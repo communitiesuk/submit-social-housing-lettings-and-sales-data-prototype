@@ -9,12 +9,7 @@
     <div class="govuk-grid-column-three-quarters-from-desktop">
       {{ macro.heading(title, caption) }}
 
-      {% include "schemes/_scheme-summary.njk" %}
-
-      {{ govukWarningText({
-        text: "You won’t be able to change some of these answers after you’ve saved them.",
-        iconFallbackText: "Warning"
-      }) }}
+      {% include "schemes/_answers.njk" %}
 
       {{ govukButton(decorate({
         text: "Save and continue",
