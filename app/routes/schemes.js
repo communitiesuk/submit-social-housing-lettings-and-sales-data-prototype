@@ -120,6 +120,12 @@ export const schemeRoutes = (router) => {
       })
     )
 
+    // Calculate back and next paths
+    const schemePaths = getSchemePaths(schemePath)
+    const paths = schemePaths
+      ? wizard.nextAndBackPaths(schemePaths, req)
+      : []
+
     if (scheme) {
       res.render(`schemes/${view}`, {
         query: req.query,
@@ -131,7 +137,8 @@ export const schemeRoutes = (router) => {
         organisationPath,
         scheme,
         schemes,
-        schemePath
+        schemePath,
+        paths
       })
     } else {
       res.redirect('/schemes')
