@@ -61,6 +61,8 @@ export const logRoutes = (router) => {
     // Create a new blank log in session data
     logs[logId] = {
       type,
+      created: new Date().toISOString(),
+      createdBy: account,
       updated: new Date().toISOString(),
       updatedBy: account
     }
