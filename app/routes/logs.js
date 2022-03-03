@@ -104,6 +104,13 @@ export const logRoutes = (router) => {
   })
 
   /**
+   * Confirm changing answer that has dependency
+   */
+  router.get('/logs/:logId/confirm-change-answer', (req, res, next) => {
+    res.render('logs/confirm-change-answer')
+  })
+
+  /**
    * Submit log
    */
   router.post('/logs/:logId/review', (req, res, next) => {
