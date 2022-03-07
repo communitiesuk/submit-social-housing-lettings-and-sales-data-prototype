@@ -237,6 +237,7 @@ export const logRoutes = (router) => {
         section,
         sectionPath,
         itemId,
+        organisationId,
         managingOrganisations,
         owningOrganisations,
         paths

@@ -15,4 +15,10 @@
     showNoOptionsFound: true,
     items: data.questions.scheme
   }, ["logs", log.id, section.id, questionId])) }}
+
+  {% if isOwningOrg == true or isAdmin %}
+    <p class="govuk-body govuk-!-margin-bottom-6">
+      or <a class="govuk-link" href="/organisations/{{ organisationId }}/schemes">create a new supported housing scheme</a>.
+    </p>
+  {% endif %}
 {% endblock %}
