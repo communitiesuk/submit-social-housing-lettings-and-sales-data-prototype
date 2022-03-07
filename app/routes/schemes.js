@@ -36,6 +36,11 @@ export const schemeRoutes = (router) => {
 
     // Convert schemes to sorted array
     schemes = utils.objectToArray(schemes).sort((a, b) => {
+      // If name not provided, don’t sort
+      if (!a.name || !b.name) {
+        return 0
+      }
+
       const fa = a.name.toLowerCase()
       const fb = b.name.toLowerCase()
 
