@@ -4,11 +4,14 @@
 {% set questionId = "reasonable-preference" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukCheckboxes(decorate({
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
       }
+    },
+    hint: {
+      text: "Select all that apply."
     },
     items: data.questions[questionId]
   }, ["logs", log.id, section.id, questionId])) }}

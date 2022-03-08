@@ -18,9 +18,6 @@
       text: "This is where the household was the night before they moved."
     },
     items: [{
-      text: "Extra care housing",
-      value: "Extra care housing"
-    } if data.features["2022-23"].on == true, {
       text: "Fixed-term local authority general needs tenancy",
       value: "Fixed-term local authority general needs tenancy"
     }, {
@@ -33,6 +30,9 @@
       text: "Lifetime private registered provider (PRP) general needs tenancy",
       value: "Lifetime private registered provider (PRP) general needs tenancy"
     }, {
+      text: "Extra care housing",
+      value: "Extra care housing"
+    } if data.features["2022-23"].on == true, {
       text: "Sheltered accommodation",
       value: "Sheltered accommodation"
     } if data.features["2022-23"].on != true, {

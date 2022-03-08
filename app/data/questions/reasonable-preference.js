@@ -14,5 +14,6 @@ export default [{
   divider: 'or'
 }, {
   text: 'Don’t know',
-  value: 'unknown'
+  value: 'unknown',
+  behaviour: 'exclusive'
 }]
