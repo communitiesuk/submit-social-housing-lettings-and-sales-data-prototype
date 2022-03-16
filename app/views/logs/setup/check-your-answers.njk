@@ -1,5 +1,9 @@
 {% extends "layouts/check-answers.njk" %}
 
 {% block checkAnswers %}
+  {{ govukInsetText({
+    text: "Changing these answers may remove answers given to questions in other sections."
+  }) if log[section.id]["completed"] == "true" }}
+
   {% include "logs/setup/_answers.njk" %}
 {% endblock %}
