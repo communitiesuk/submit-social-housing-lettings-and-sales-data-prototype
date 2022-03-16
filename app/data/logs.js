@@ -73,7 +73,7 @@ export default {
   },
   EX001: {
     type: 'lettings',
-    status: 'completed',
+    // status: 'completed',
     created: '2021-07-27',
     updated: '2021-07-29',
     updatedBy: 'DP001',
@@ -89,8 +89,8 @@ export default {
       completed: 'true'
     },
     'household-characteristics': {
-      'number-in-household': 2,
-      'privacy-notice': 'true',
+      // 'number-in-household': 2,
+      // 'privacy-notice': 'true',
       'lead-tenant': {
         age: 45,
         'age-known': 'true',
