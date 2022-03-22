@@ -21,25 +21,28 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
       {{ macro.heading(title, caption) }}
 
-      {{ govukInput(decorate({
+      {{ govukInput({
+        decorate: ["users", user.id, "name"],
         label: {
           text: "Name"
         },
         spellcheck: false
-      }, ["users", user.id, "name"])) }}
+      }) }}
 
-      {{ govukInput(decorate({
+      {{ govukInput({
+        decorate: ["users", user.id, "email"],
         label: {
           text: "Email address"
         },
         spellcheck: false
-      }, ["users", user.id, "email"])) }}
+      }) }}
 
       {% if not user.invitedById %}
-        {{ govukInput(decorate({
+        {{ govukInput({
+          decorate: ["users", user.id, "invitedById"],
           type: "hidden",
           value: data.account.name
-        }, ["users", user.id, "invitedById"])) }}
+        }) }}
       {% endif %}
 
       {{ govukButton({

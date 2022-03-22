@@ -9,12 +9,13 @@
 {% endif %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "intended-stay"],
     fieldset: {
       legend: {
         html: macro.heading(title, caption)
       }
     },
     items: data.questions["intended-stay"]
-  }, ["schemes", scheme.id, "intended-stay"])) }}
+  }) }}
 {% endblock %}

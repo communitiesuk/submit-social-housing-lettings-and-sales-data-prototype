@@ -4,7 +4,8 @@
 {% set questionId = "given-reasonable-preference" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
@@ -14,5 +15,5 @@
       text: "Households may be given ‘reasonable preference’ for social housing, also known as ‘priority need’, by the local authority."
     },
     items: data.questions["yes-no-unknown"]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

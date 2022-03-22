@@ -3,12 +3,13 @@
 {% set title = "What type was the property most recently let as?" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, "type-of-let"],
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
       }
     },
     items: data.questions["type-of-let"]
-  }, ["logs", log.id, section.id, "type-of-let"])) }}
+  }) }}
 {% endblock %}

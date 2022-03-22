@@ -13,7 +13,8 @@
 {% set title = "Is this accommodation a care home?" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, "outgoings-includes-care-home"],
     fieldset: {
       legend: {
         html: macro.heading(title, caption)
@@ -23,7 +24,8 @@
       value: "true",
       text: "Yes",
       conditional: {
-        html: govukInput(decorate({
+        html: govukInput({
+          decorate: ["logs", log.id, section.id, "outgoings-care-home"],
           classes: "govuk-input--width-5",
           label: {
             text: "How much does the household pay each " + period + "?"
@@ -36,11 +38,11 @@
           suffix: {
             text: period
           }
-        }, ["logs", log.id, section.id, "outgoings-care-home"]))
+        })
       }
     }, {
       value: "false",
       text: "No"
     }]
-  }, ["logs", log.id, section.id, "outgoings-includes-care-home"])) }}
+  }) }}
 {% endblock %}

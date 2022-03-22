@@ -3,12 +3,13 @@
 {% set title = "Does the household pay rent or other charges for the accommodation?" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, "outgoings-includes-rent"],
     fieldset: {
       legend: {
         html: macro.heading(title, caption)
       }
     },
     items: data.questions["yes-no"]
-  }, ["logs", log.id, section.id, "outgoings-includes-rent"])) }}
+  }) }}
 {% endblock %}

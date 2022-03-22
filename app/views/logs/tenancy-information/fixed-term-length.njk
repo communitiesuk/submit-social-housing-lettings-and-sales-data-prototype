@@ -4,7 +4,8 @@
 {% set questionId = "fixed-term-length" %}
 
 {% block question %}
-  {{ govukInput(decorate({
+  {{ govukInput({
+    decorate: ["logs", log.id, section.id, questionId],
     classes: "govuk-input--width-2",
     label: {
       text: macro.heading(title, caption)
@@ -12,5 +13,5 @@
     hint: {
       text: "Not including the starter or introductory period."
     } if log[section.id]["is-starter"] == "true"
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

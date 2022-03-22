@@ -6,7 +6,8 @@
 
 {% block question %}
   {{ macro.heading("You have given us details for " + (personInt - 1) + " of " + householdSize + " people in the household") }}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
@@ -17,5 +18,5 @@
       text: "You must provide details for everyone in the household if you know them."
     },
     items: data.questions["yes-no"]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

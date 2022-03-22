@@ -4,7 +4,8 @@
 {% set questionId = "local-authority-known" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
@@ -14,7 +15,8 @@
       text: "Yes",
       value: "true",
       conditional: {
-        html: appAutocomplete(decorate({
+        html: appAutocomplete({
+          decorate: ["logs", log.id, section.id, "local-authority"],
           label: {
             text: "Select a local authority"
           },
@@ -22,11 +24,11 @@
             text: "Select ‘Northern Ireland’, ‘Scotland’, ‘Wales’ or ‘Outside the UK’ if the household’s last settled home was outside England."
           },
           items: data.questions["local-authorities"]
-        }, ["logs", log.id, section.id, "local-authority"]))
+        })
       }
     }, {
       text: "No",
       value: "false"
     }]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

@@ -4,15 +4,17 @@
 
 {% block question %}
   {% set postcodeHtml %}
-    {{ govukInput(decorate({
+    {{ govukInput({
+      decorate: ["logs", log.id, section.id, "postcode"],
       label: {
         text: "Postcode"
       },
       classes: "govuk-input--width-5"
-    }, ["logs", log.id, section.id, "postcode"])) }}
+    }) }}
   {% endset %}
 
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, "postcode-known"],
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
@@ -28,5 +30,5 @@
       value: "false",
       text: "No"
     }]
-  }, ["logs", log.id, section.id, "postcode-known"])) }}
+  }) }}
 {% endblock %}

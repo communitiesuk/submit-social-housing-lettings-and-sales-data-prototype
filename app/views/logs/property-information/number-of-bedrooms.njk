@@ -4,7 +4,8 @@
 {% set questionId = "number-of-bedrooms" %}
 
 {% block question %}
-  {{ govukInput(decorate({
+  {{ govukInput({
+    decorate: ["logs", log.id, section.id, questionId],
     classes: "govuk-input--width-2",
     label: {
       html: macro.heading(title, caption)
@@ -14,5 +15,5 @@
     },
     inputmode: "numeric",
     pattern: "[0-9]*"
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

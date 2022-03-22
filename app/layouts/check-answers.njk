@@ -32,10 +32,11 @@
         }) }}
       {% else %}
         {# Mark section as complete if checking answers for a log section #}
-        {{ govukInput(decorate({
+        {{ govukInput({
+          decorate: ["logs", log.id, section.id, "completed"],
           value: "true",
           type: "hidden"
-        }, ["logs", log.id, section.id, "completed"])) if log }}
+        }) if log }}
 
         <div class="govuk-button-group">
           {{ govukButton({

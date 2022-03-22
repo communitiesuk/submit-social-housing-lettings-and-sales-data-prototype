@@ -9,7 +9,8 @@
 {% set questionId = "void-date" %}
 
 {% block question %}
-  {{ govukDateInput(decorate({
+  {{ govukDateInput({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
@@ -19,5 +20,5 @@
       text: "For example, 12 11 2020."
     },
     items: data.questions["date-full"]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

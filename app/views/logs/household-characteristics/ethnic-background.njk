@@ -6,7 +6,8 @@
 {% set questionId = "ethnic-background" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, itemId, questionId],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--l",
@@ -17,5 +18,5 @@
       text: "The lead tenant is the person in the household who does the most paid work. If several people do the same paid work, the lead tenant is whoever is the oldest."
     },
     items: data.questions[questionId][ethnicGroupId]
-  }, ["logs", log.id, section.id, itemId, questionId])) }}
+  }) }}
 {% endblock %}

@@ -5,7 +5,8 @@
 
 {% block question %}
   {# Only shown for supported housing renewals #}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     formGroup: {
       classes: "app-form-group--heading-dividers"
     },
@@ -102,5 +103,5 @@
       text: "Other accommodation",
       value: "Other accommodation"
     }]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

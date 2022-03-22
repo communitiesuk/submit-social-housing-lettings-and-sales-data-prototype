@@ -8,7 +8,8 @@
 
   <p>Make sure the tenant has seen <a href="/public/files/privacy-notice.pdf">the Department for Levelling Up, Housing &amp; Communities (DLUHC) privacy notice</a> before submitting this log.</p>
 
-  {{ govukCheckboxes(decorate({
+  {{ govukCheckboxes({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         classes: "govuk-visually-hidden",
@@ -24,5 +25,5 @@
         message: "Select if the tenant has seen the DLUHC privacy notice"
       }
     }
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

@@ -11,20 +11,23 @@
 {% block question %}
   {{ macro.heading(title, caption) }}
 
-  {{ govukInput(decorate({
+  {{ govukInput({
+    decorate: ["schemes", scheme.id, "organisationId"],
     value: organisationId,
     type: "hidden"
-  }, ["schemes", scheme.id, "organisationId"])) }}
+  }) }}
 
-  {{ govukInput(decorate({
+  {{ govukInput({
+    decorate: ["schemes", scheme.id, "name"],
     label: {
       classes: "govuk-label--m",
       text: "Scheme name"
     },
     spellcheck: false
-  }, ["schemes", scheme.id, "name"])) }}
+  }) }}
 
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "type"],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
@@ -32,9 +35,10 @@
       }
     },
     items: data.questions["type-of-scheme"]
-  }, ["schemes", scheme.id, "type"])) }}
+  }) }}
 
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "confidential"],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
@@ -42,9 +46,10 @@
       }
     },
     items: data.questions["yes-no"]
-  }, ["schemes", scheme.id, "confidential"])) }}
+  }) }}
 
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "sp-grant"],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
@@ -52,5 +57,5 @@
       }
     },
     items: data.questions["yes-no"]
-  }, ["schemes", scheme.id, "sp-grant"])) }}
+  }) }}
 {% endblock %}

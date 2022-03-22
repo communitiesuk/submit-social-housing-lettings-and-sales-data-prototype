@@ -11,7 +11,8 @@
 {% block question %}
   {{ macro.heading(title, caption) }}
 
-  {{ govukDateInput(decorate({
+  {{ govukDateInput({
+    decorate: ["schemes", scheme.id, "start-date"],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
@@ -22,9 +23,10 @@
       text: "For example, 12 11 2020."
     },
     items: data.questions["date-full"]
-  }, ["schemes", scheme.id, "start-date"])) }}
+  }) }}
 
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "end-date-known"],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
@@ -35,7 +37,8 @@
       text: "Yes",
       value: "true",
       conditional: {
-        html: govukDateInput(decorate({
+        html: govukDateInput({
+          decorate: ["schemes", scheme.id, "end-date"],
           fieldset: {
             legend: {
               classes: "govuk-fieldset__legend--s",
@@ -46,11 +49,11 @@
             text: "For example, 12 11 2020."
           },
           items: data.questions["date-full"]
-        }, ["schemes", scheme.id, "end-date"]))
+        })
       }
     }, {
       text: "No",
       value: "false"
     }]
-  }, ["schemes", scheme.id, "end-date-known"])) }}
+  }) }}
 {% endblock %}

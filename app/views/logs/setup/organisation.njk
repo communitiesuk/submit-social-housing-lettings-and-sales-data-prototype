@@ -5,7 +5,8 @@
 
 {% block question %}
   {% if isOwningOrg %}
-    {{ govukSelect(decorate({
+    {{ govukSelect({
+      decorate: ["logs", log.id, section.id, "organisation-manager"],
       label: {
         html: macro.heading(title, caption)
       },
@@ -15,11 +16,12 @@
           message: "Select the organisation that owns this property"
         }
       }
-    }, ["logs", log.id, section.id, "organisation-manager"])) }}
+    }) }}
   {% else %}
     {{ macro.heading(title, caption) }}
 
-    {{ govukSelect(decorate({
+    {{ govukSelect({
+      decorate: ["logs", log.id, section.id, questionId],
       label: {
         classes: "govuk-label--m",
         text: "Which organisation owns this property?"
@@ -30,14 +32,15 @@
           message: "Select the organisation that manages this property"
         }
       }
-    }, ["logs", log.id, section.id, questionId])) }}
+    }) }}
 
-    {{ govukSelect(decorate({
+    {{ govukSelect({
+      decorate: ["logs", log.id, section.id, "organisation-manager"],
       label: {
         classes: "govuk-label--m",
         text: "Which organisation manages this property?"
       },
       items: managingOrganisations | optionItems
-    }, ["logs", log.id, section.id, "organisation-manager"])) }}
+    }) }}
   {% endif %}
 {% endblock %}

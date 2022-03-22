@@ -4,7 +4,8 @@
 {% set questionId = "number-in-household" %}
 
 {% block question %}
-  {{ govukInput(decorate({
+  {{ govukInput({
+    decorate: ["logs", log.id, section.id, questionId],
     classes: "govuk-input--width-3",
     label: {
       html: macro.heading(title, caption)
@@ -20,5 +21,5 @@
         message: "You must enter a number between 1 and 8"
       }
     }
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

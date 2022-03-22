@@ -5,7 +5,8 @@
 
 {% block question %}
   {% set dateHtml %}
-    {{ govukDateInput(decorate({
+    {{ govukDateInput({
+      decorate: ["logs", log.id, section.id, "repairs-date"],
       fieldset: {
         legend: {
           text: "When were the repairs completed?"
@@ -15,10 +16,11 @@
         text: "For example, 12 11 2020"
       },
       items: data.questions["date-full"]
-    }, ["logs", log.id, section.id, "repairs-date"])) }}
+    }) }}
   {% endset %}
 
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--l",
@@ -38,5 +40,5 @@
       text: "No",
       value: "false"
     }]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

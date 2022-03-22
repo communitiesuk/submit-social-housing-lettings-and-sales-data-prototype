@@ -5,7 +5,8 @@
 {% set required = true %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
@@ -20,5 +21,5 @@
         message: "Select yes if this is a renewal to the same tenant in the same property"
       }
     }
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

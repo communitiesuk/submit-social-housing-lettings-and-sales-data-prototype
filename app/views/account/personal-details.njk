@@ -9,21 +9,23 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
       {{ macro.heading(title) }}
 
-      {{ govukInput(decorate({
+      {{ govukInput({
+        decorate: ["account", "name"],
         label: {
           text: "Name"
         },
         autocomplete: "name",
         spellcheck: false
-      }, ["account", "name"])) }}
+      }) }}
 
-      {{ govukInput(decorate({
+      {{ govukInput({
+        decorate: ["account", "email"],
         label: {
           text: "Email address"
         },
         autocomplete: "email",
         spellcheck: false
-      }, ["account", "email"])) }}
+      }) }}
 
       {{ govukButton({
         text: "Save changes"

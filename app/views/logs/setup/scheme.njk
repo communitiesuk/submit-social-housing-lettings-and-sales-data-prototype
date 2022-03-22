@@ -4,7 +4,8 @@
 {% set questionId = "schemeId" %}
 
 {% block question %}
-  {{ appAutocomplete(decorate({
+  {{ appAutocomplete({
+    decorate: ["logs", log.id, section.id, questionId],
     label: {
       html: macro.heading(title, caption)
     },
@@ -14,7 +15,7 @@
     allowEmpty: true,
     showNoOptionsFound: true,
     items: data.questions.scheme
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 
   {# if isOwningOrg == true or isAdmin %}
     <p class="govuk-body govuk-!-margin-bottom-6">

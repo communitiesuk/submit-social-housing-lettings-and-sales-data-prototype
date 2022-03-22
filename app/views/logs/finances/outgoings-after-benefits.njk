@@ -3,7 +3,8 @@
 {% set title = "After the household has received any housing-related benefits, will they still need to pay for rent and charges?" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, "outgoings-after-benefits"],
     fieldset: {
       legend: {
         html: macro.heading(title, caption)
@@ -13,5 +14,5 @@
       text: "Also known as the ‘outstanding amount’."
     },
     items: data.questions["yes-no"]
-  }, ["logs", log.id, section.id, "outgoings-after-benefits"])) }}
+  }) }}
 {% endblock %}

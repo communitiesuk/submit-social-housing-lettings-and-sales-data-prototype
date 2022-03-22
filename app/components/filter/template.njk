@@ -8,7 +8,8 @@
   </div>
 
   <div class="app-filter__content">
-    {{ govukRadios(decorate({
+    {{ govukRadios({
+      decorate: ["filter", "user"],
       formGroup: {
         classes: "app-filter__group"
       },
@@ -26,9 +27,10 @@
         text: "Logs you’ve started",
         value: currentUser.id
       }]
-    }, ["filter", "user"])) }}
+    }) }}
 
-    {{ govukCheckboxes(decorate({
+    {{ govukCheckboxes({
+      decorate: ["filter", "collection"],
       formGroup: {
         classes: "app-filter__group"
       },
@@ -46,9 +48,10 @@
         text: "2021/22",
         value: "2021/22"
       }]
-    }, ["filter", "collection"])) }}
+    }) }}
 
-    {{ govukCheckboxes(decorate({
+    {{ govukCheckboxes({
+      decorate: ["filter", "status"],
       formGroup: {
         classes: "app-filter__group"
       },
@@ -72,7 +75,7 @@
         text: "Archived",
         value: "archived"
       }]
-    }, ["filter", "status"])) }}
+    }) }}
 
     {{ govukButton({
       classes: "govuk-!-margin-bottom-0",

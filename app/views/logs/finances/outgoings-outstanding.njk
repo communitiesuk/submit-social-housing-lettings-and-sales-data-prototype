@@ -14,7 +14,8 @@
 {% set questionId = "outgoings-outstanding" %}
 
 {% block question %}
-  {{ govukInput(decorate({
+  {{ govukInput({
+    decorate: ["logs", log.id, section.id, questionId],
     classes: "govuk-input--width-5",
     label: {
       html: macro.heading(title, caption)
@@ -30,5 +31,5 @@
     suffix: {
       text: period
     }
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

@@ -4,12 +4,13 @@
 {% set questionId = "income-known" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         html: macro.heading(title, caption)
       }
     },
     items: data.questions["yes-no-prefers-not-to-say"]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

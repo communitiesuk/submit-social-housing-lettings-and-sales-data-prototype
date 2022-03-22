@@ -10,7 +10,8 @@
 {% set questionId = "age-known" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, itemId, questionId]
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--l",
@@ -24,16 +25,17 @@
       value: "true",
       text: "Yes",
       conditional: {
-        html: govukInput(decorate({
+        html: govukInput({
+          decorate: ["logs", log.id, section.id, itemId, "age"]
           classes: "govuk-input--width-3",
           label: {
             text: "Age"
           }
-        }, ["logs", log.id, section.id, itemId, "age"]))
+        })
       }
     }, {
       value: "false",
       text: "No"
     }]
-  }, ["logs", log.id, section.id, itemId, questionId])) }}
+  }) }}
 {% endblock %}

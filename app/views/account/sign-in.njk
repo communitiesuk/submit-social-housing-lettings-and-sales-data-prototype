@@ -12,13 +12,14 @@
 
       {{ macro.heading(title) }}
 
-      {{ govukInput(decorate({
+      {{ govukInput({
+        decorate: ["account", "email"],
         label: {
           text: "Email address"
         },
         autocomplete: "email",
         spellcheck: false
-      }, ["account", "email"])) }}
+      }) }}
 
       {{ govukInput({
         label: {

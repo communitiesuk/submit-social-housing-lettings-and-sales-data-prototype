@@ -19,7 +19,8 @@
       html: macro.heading(title, caption)
     }
   }) %}
-    {{ govukInput(decorate({
+    {{ govukInput({
+      decorate: ["logs", log.id, section.id, "outgoings-rent"],
       classes: "govuk-input--width-5",
       label: {
         classes: "govuk-label--m",
@@ -36,9 +37,10 @@
       suffix: {
         text: period
       }
-    }, ["logs", log.id, section.id, "outgoings-rent"])) }}
+    }) }}
 
-    {{ govukInput(decorate({
+    {{ govukInput({
+      decorate: ["logs", log.id, section.id, "outgoings-service-charge"],
       classes: "govuk-input--width-5",
       label: {
         classes: "govuk-label--m",
@@ -55,9 +57,10 @@
       suffix: {
         text: period
       }
-    }, ["logs", log.id, section.id, "outgoings-service-charge"])) }}
+    }) }}
 
-    {{ govukInput(decorate({
+    {{ govukInput({
+      decorate: ["logs", log.id, section.id, "outgoings-personal-charge"],
       classes: "govuk-input--width-5",
       label: {
         classes: "govuk-label--m",
@@ -74,9 +77,10 @@
       suffix: {
         text: period
       }
-    }, ["logs", log.id, section.id, "outgoings-personal-charge"])) }}
+    }) }}
 
-    {{ govukInput(decorate({
+    {{ govukInput({
+      decorate: ["logs", log.id, section.id, "outgoings-support-charge"],
       classes: "govuk-input--width-5",
       label: {
         classes: "govuk-label--m",
@@ -93,11 +97,12 @@
       suffix: {
         text: period
       }
-    }, ["logs", log.id, section.id, "outgoings-support-charge"])) }}
+    }) }}
 
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
 
-    {{ govukInput(decorate({
+    {{ govukInput({
+      decorate: ["logs", log.id, section.id, questionId],
       classes: "govuk-input--width-5",
       label: {
         classes: "govuk-label--m",
@@ -119,6 +124,6 @@
           "logs-" + log.id + "-" + section.id + "-outgoings-personal-charge " +
           "logs-" + log.id + "-" + section.id + "-outgoings-support-charge"
       }
-    }, ["logs", log.id, section.id, questionId])) }}
+    }) }}
   {% endcall %}
 {% endblock %}

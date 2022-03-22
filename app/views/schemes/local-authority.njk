@@ -9,7 +9,8 @@
 {% endif %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "local-authority-known"],
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
@@ -19,16 +20,17 @@
       text: "Yes",
       value: "true",
       conditional: {
-        html: appAutocomplete(decorate({
+        html: appAutocomplete({
+          decorate: ["schemes", scheme.id, "local-authority"],
           label: {
             text: "Select a local authority"
           },
           items: data.questions["local-authorities"]
-        }, ["schemes", scheme.id, "local-authority"]))
+        })
       }
     }, {
       text: "No",
       value: "false"
     }]
-  }, ["schemes", scheme.id, "local-authority-known"])) }}
+  })) }}
 {% endblock %}

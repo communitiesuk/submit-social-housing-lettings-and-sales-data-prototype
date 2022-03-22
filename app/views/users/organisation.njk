@@ -16,14 +16,15 @@
 {% block form %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      {{ govukRadios(decorate({
+      {{ govukRadios({
+        decorate: ["users", user.id, "organisationId"],
         fieldset: {
           legend: {
             html: macro.heading(title, user.name)
           }
         },
         items: (allOrganisations if isAdmin else managedOrganisations) | optionItems("name", "id")
-      }, ["users", user.id, "organisationId"])) }}
+      }) }}
 
       {{ govukButton({
         text: buttonText

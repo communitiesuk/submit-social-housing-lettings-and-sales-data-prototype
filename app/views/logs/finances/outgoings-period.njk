@@ -4,12 +4,13 @@
 {% set questionId = "outgoings-period" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         html: macro.heading(title, caption)
       }
     },
     items: data.questions[questionId]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

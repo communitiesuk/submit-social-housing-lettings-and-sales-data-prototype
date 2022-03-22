@@ -28,7 +28,7 @@
   {% set addItem = items.push(item) %}
 {% endfor %}
 
-{{ govukSelect({
+{{ govukSelect(decorate({
   id: params.id,
   name: params.name,
   items: items,
@@ -46,4 +46,4 @@
     "data-show-all-values": params.showAllValues,
     "data-show-no-options-found": params.showNoOptionsFound
   }
-}) }}
+}, params.decorate)) }}

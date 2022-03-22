@@ -9,12 +9,13 @@
 {% endif %}
 
 {% block question %}
-  {{ govukCheckboxes(decorate({
+  {{ govukCheckboxes({
+    decorate: ["schemes", scheme.id, "client-groups"],
     fieldset: {
       legend: {
         html: macro.heading(title, caption)
       }
     },
     items: data.questions["client-groups"]
-  }, ["schemes", scheme.id, "client-groups"])) }}
+  }) }}
 {% endblock %}

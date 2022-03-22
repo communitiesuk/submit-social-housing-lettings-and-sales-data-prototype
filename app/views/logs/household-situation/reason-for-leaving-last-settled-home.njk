@@ -4,7 +4,8 @@
 {% set questionId = "reason-for-leaving-last-settled-home" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     formGroup: {
       classes: "app-form-group--heading-dividers"
     },
@@ -127,11 +128,12 @@
       text: "Other",
       value: "other",
       conditional: {
-        html: govukInput(decorate({
+        html: govukInput({
+          decorate: ["logs", log.id, section.id, "other-reason-for-leaving-last-settled-home"],
           label: {
             text: "What is the reason?"
           }
-        }, ["logs", log.id, section.id, "other-reason-for-leaving-last-settled-home"] ))
+        })
       }
     }, {
       text: "Don’t know",
@@ -146,5 +148,5 @@
       text: "End of fixed term tenancy (no fault)",
       value: "42"
     }]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

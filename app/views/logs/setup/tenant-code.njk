@@ -5,7 +5,8 @@
 {% set required = true %}
 
 {% block question %}
-  {{ govukInput(decorate({
+  {{ govukInput({
+    decorate: ["logs", log.id, section.id, questionId],
     classes: "govuk-input--width-10",
     label: {
       html: macro.heading(title, caption)
@@ -13,5 +14,5 @@
     hint: {
       text: "This is how you usually refer to this tenancy on your own systems."
     }
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

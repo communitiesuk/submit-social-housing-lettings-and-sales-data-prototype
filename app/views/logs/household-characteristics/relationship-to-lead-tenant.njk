@@ -6,7 +6,8 @@
 {% set questionId = "relationship-to-lead-tenant" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, itemId, questionId],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--l",
@@ -14,5 +15,5 @@
       }
     },
     items: data.questions[questionId]
-  }, ["logs", log.id, section.id, itemId, questionId])) }}
+  }) }}
 {% endblock %}

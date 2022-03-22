@@ -39,7 +39,8 @@
         </ul>
       {% endset %}
 
-      {{ govukRadios(decorate({
+      {{ govukRadios({
+        decorate: ["users", user.id, "role"],
         fieldset: {
           legend: {
             html: macro.heading(title, user.name)
@@ -73,7 +74,7 @@
             html: dataProviderPermissionsHintHtml
           }
         }]
-      }, ["users", user.id, "role"])) }}
+      }) }}
 
       {{ govukButton({
         text: buttonText

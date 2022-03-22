@@ -4,7 +4,8 @@
 {% set questionId = "previous-homelessness" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
@@ -26,5 +27,5 @@
       text: "Other homeless - not found statutorily homeless but considered homeless by landlord",
       value: "Other homeless - not found statutorily homeless but considered homeless by landlord"
     }]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

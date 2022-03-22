@@ -4,7 +4,8 @@
 {% set questionId = "health-affects" %}
 
 {% block question %}
-  {{ govukCheckboxes(decorate({
+  {{ govukCheckboxes({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
@@ -14,5 +15,5 @@
       text: "Select all that apply."
     },
     items: data.questions[questionId]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

@@ -4,7 +4,8 @@
 {% set questionId = "income-benefits" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         html: macro.heading(title, caption)
@@ -34,5 +35,5 @@
       text: "Tenant prefers not to say",
       value: "Tenant prefers not to say"
     } if data.features["2022-23"].on != true]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

@@ -10,16 +10,17 @@
 {% set questionId = "gender" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
-  fieldset: {
-    legend: {
-      classes: "govuk-fieldset__legend--l",
-      html: macro.fieldsetHeading(title, caption)
-    }
-  },
-  hint: {
-    text: "The lead tenant is the person in the household who does the most paid work. If several people do the same paid work, the lead tenant is whoever is the oldest."
-  } if isLeadTenant,
-  items: data.questions[questionId]
-}, ["logs", log.id, section.id, itemId, questionId])) }}
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, itemId, questionId],
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--l",
+        html: macro.fieldsetHeading(title, caption)
+      }
+    },
+    hint: {
+      text: "The lead tenant is the person in the household who does the most paid work. If several people do the same paid work, the lead tenant is whoever is the oldest."
+    } if isLeadTenant,
+    items: data.questions[questionId]
+  }) }}
 {% endblock %}

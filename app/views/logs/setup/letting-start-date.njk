@@ -5,7 +5,8 @@
 {% set required = true %}
 
 {% block question %}
-  {{ govukDateInput(decorate({
+  {{ govukDateInput({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
@@ -23,5 +24,5 @@
         message: "Tenancy start date should be a valid date"
       }
     }
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

@@ -5,7 +5,8 @@
 {% set questionId = "schemeId" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         html: macro.heading(title, caption)
@@ -15,11 +16,12 @@
       text: "Schemes found matching ‘"+ data.schemes[log[section.id].schemeId].name + "’"
     },
     items: data.questions.scheme
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 
   <p class="govuk-body">or</p>
 
-  {{ appSearch(decorate({
+  {{ appSearch({
+    decorate: ["logs", log.id, section.id, "scheme-query"],
     label: {
       classes: "govuk-label--m",
       text: "Try another search"
@@ -27,5 +29,5 @@
     hint: {
       text: "Enter scheme name or postcode"
     }
-  }, ["logs", log.id, section.id, "scheme-query"])) }}
+  }) }}
 {% endblock %}

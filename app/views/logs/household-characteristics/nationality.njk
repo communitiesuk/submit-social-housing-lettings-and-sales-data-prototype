@@ -5,7 +5,8 @@
 {% set questionId = "nationality" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, itemId, questionId],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--l",
@@ -28,11 +29,12 @@
       text: "Any other country",
       value: "Any other country",
       conditional: {
-        html: govukInput(decorate({
+        html: govukInput({
+          decorate: ["logs", log.id, section.id, itemId, "other-nationality"],
           label: {
             text: "Nationality"
           }
-        }, ["logs", log.id, section.id, itemId, "other-nationality"]))
+        })
       }
     }, {
       divider: "or"
@@ -40,5 +42,5 @@
       text: "Tenant prefers not to say",
       value: "Tenant prefers not to say"
     }] if (data.features["2022-23"].on == true) else data.questions[questionId]
-  }, ["logs", log.id, section.id, itemId, questionId])) }}
+  }) }}
 {% endblock %}

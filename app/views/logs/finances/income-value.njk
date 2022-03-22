@@ -28,7 +28,8 @@
     html: incomeHtml
   }) }}
 
-  {{ govukInput(decorate({
+  {{ govukInput({
+    decorate: ["logs", log.id, section.id, questionId],
     classes: "govuk-input--width-5",
     label: {
       classes: "govuk-label--m",
@@ -39,9 +40,10 @@
     prefix: {
       text: "£"
     }
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, "income-period"],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
@@ -49,5 +51,5 @@
       }
     },
     items: data.questions["income-period"]
-  }, ["logs", log.id, section.id, "income-period"])) }}
+  }) }}
 {% endblock %}

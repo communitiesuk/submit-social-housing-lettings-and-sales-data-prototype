@@ -4,7 +4,8 @@
 {% set questionId = "sheltered-accommodation" %}
 
 {% block question %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
@@ -28,5 +29,5 @@
       text: "Don’t know",
       value: "Don’t know"
     }]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

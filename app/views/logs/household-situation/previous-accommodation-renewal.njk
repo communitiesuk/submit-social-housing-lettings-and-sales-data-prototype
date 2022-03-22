@@ -5,7 +5,8 @@
 
 {% block question %}
   {# Only shown for supported housing renewals #}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
         text: macro.heading(title, caption)
@@ -42,5 +43,5 @@
       text: "Supported housing",
       value: "Supported housing"
     }]
-  }, ["logs", log.id, section.id, questionId])) }}
+  }) }}
 {% endblock %}

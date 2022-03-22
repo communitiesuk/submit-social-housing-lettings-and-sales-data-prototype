@@ -10,15 +10,17 @@
 
       <p>You have been invited to create an account with the email address <strong>jane.doe@example.gov.uk</strong>.</p>
 
-      {{ govukInput(decorate({
+      {{ govukInput({
+        decorate: ["account", "name"],
         type: "hidden",
         value: "Janina Doe"
-      }, ["account", "name"])) }}
+      }) }}
 
-      {{ govukInput(decorate({
+      {{ govukInput({
+        decorate: ["account", "email"],
         type: "hidden",
         value: "janina.doe@example.gov.uk"
-      }, ["account", "email"])) }}
+      }) }}
 
       {{ govukInput({
         label: {
@@ -40,10 +42,11 @@
         }]
       }) }}
 
-      {{ govukInput(decorate({
+      {{ govukInput({
+        decorate: ["token"],
         type: "hidden",
         value: "true"
-      }, ["token"])) }}
+      }) }}
 
       {{ govukButton({
         text: "Create account"
