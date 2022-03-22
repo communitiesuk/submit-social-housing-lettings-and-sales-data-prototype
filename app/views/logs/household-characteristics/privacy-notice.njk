@@ -18,6 +18,11 @@
     items: [{
       value: "true",
       text: "The tenant has seen the DLUHC privacy notice"
-    }]
+    }],
+    validate: {
+      presence: {
+        message: "Select if the tenant has seen the DLUHC privacy notice"
+      }
+    }
   }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

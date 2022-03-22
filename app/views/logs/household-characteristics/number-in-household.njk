@@ -5,12 +5,20 @@
 
 {% block question %}
   {{ govukInput(decorate({
+    classes: "govuk-input--width-3",
     label: {
       html: macro.heading(title, caption)
     },
     hint: {
       text: "You can provide details for a maximum of 8 people."
     },
-    classes: "govuk-input--width-3"
+    validate: {
+      numericality: {
+        onlyInteger: true,
+        greaterThan: 0,
+        lessThanOrEqualTo: 8,
+        message: "You must enter a number between 1 and 8"
+      }
+    }
   }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

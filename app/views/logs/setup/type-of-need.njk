@@ -11,6 +11,11 @@
         html: macro.heading(title, caption)
       }
     },
-    items: data.questions[questionId]
+    items: data.questions[questionId],
+    validate: {
+      presence: {
+        message: "Select the type of need"
+      }
+    }
   }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

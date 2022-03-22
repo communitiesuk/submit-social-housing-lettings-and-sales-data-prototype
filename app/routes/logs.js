@@ -1,9 +1,6 @@
-import { validationResult } from 'express-validator'
 import { wizard } from '../wizard.js'
-
 import { sections as getSections } from '../data/sections.js'
 import * as utils from '../utils.js'
-import { validations } from '../validations.js'
 
 export const logRoutes = (router) => {
   /**
@@ -236,42 +233,26 @@ export const logRoutes = (router) => {
       const owningOrganisations = managingOrganisations
         .filter(org => org.stock)
 
-      // Common render options, shared between normal and validated view
-      let renderOptions = {
-        caption: section.title,
-        log,
-        logPath,
-        section,
-        sectionPath,
-        itemId,
-        organisationId,
-        managingOrganisations,
-        owningOrganisations,
-        paths
-      }
-
       if (req.method === 'POST') {
-        // Check if any fields on the page require validation
-        const fieldsToValidate = validations(req).logs[sectionId]?.[view]
-        if (fieldsToValidate) {
-          await Promise.all(fieldsToValidate.map(validation => validation.run(req)))
-        }
+        // If next path is empty, this is the last path so redirect to check answers page
+        const next = paths.next !== ''
+          ? paths.next
+          : `${sectionPath}/check-your-answers`
 
-        // Check if we have any validation errors
-        const errors = validationResult(req)
-        if (errors.isEmpty()) {
-          // If next path is empty, this is the last path so redirect to check answers page
-          const next = paths.next !== ''
-            ? paths.next
-            : `${sectionPath}/check-your-answers`
-
-          fork ? res.redirect(fork) : res.redirect(next)
-        } else {
-          renderOptions = { ...renderOptions, ...{ errors: errors.mapped() } }
-          res.render(`logs/${sectionId}/${view}`, renderOptions)
-        }
+        fork ? res.redirect(fork) : res.redirect(next)
       } else {
-        res.render(`logs/${sectionId}/${view}`, renderOptions)
+        res.render(`logs/${sectionId}/${view}`, {
+          caption: section.title,
+          log,
+          logPath,
+          section,
+          sectionPath,
+          itemId,
+          organisationId,
+          managingOrganisations,
+          owningOrganisations,
+          paths
+        })
       }
     } catch (error) {
       next(error)

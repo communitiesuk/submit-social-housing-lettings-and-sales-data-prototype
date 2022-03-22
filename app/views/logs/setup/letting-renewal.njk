@@ -14,6 +14,11 @@
     hint: {
       text: "A renewal is a letting to the same tenant in the same property."
     },
-    items: data.questions["yes-no"]
+    items: data.questions["yes-no"],
+    validate: {
+      presence: {
+        message: "Select yes if this is a renewal to the same tenant in the same property"
+      }
+    }
   }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
