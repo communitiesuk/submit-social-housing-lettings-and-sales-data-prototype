@@ -6,7 +6,7 @@
 {% set hasLocalAuthority = scheme["local-authority-known"] == "true" %}
 {% set localAuthority = localAuthorities | where("gss", scheme["local-authority"]) | first %}
 
-{{ rigSummaryCard({
+{{ xGovukSummaryCard({
   classes: "govuk-!-margin-bottom-6",
   titleText: "Scheme details",
   rows: [{
@@ -78,7 +78,7 @@
   } if not hasPostcode]
 }) }}
 
-{{ rigSummaryCard({
+{{ xGovukSummaryCard({
   classes: "govuk-!-margin-bottom-6",
   titleText: "Clients",
   rows: [{
@@ -128,7 +128,7 @@
   }]
 }) }}
 
-{{ rigSummaryCard({
+{{ xGovukSummaryCard({
   classes: "govuk-!-margin-bottom-6",
   titleText: "Property information",
   rows: [{
@@ -178,7 +178,7 @@
   }]
 }) }}
 
-{{ rigSummaryCard({
+{{ xGovukSummaryCard({
   classes: "govuk-!-margin-bottom-6",
   titleText: "Dates",
   rows: [{

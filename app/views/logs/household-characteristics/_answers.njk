@@ -22,7 +22,7 @@
   {{ log[section.id]["number-in-household"] | textFromInputValue }}
 {% endset %}
 
-{{ rigSummaryCard({
+{{ xGovukSummaryCard({
   classes: "govuk-!-margin-bottom-6",
   rows: [{
     key: {
@@ -67,7 +67,7 @@
   {% endif %}
   {% set name = "lead tenant" if isLeadTenant else "person " + i %}
 
-  {{ rigSummaryCard({
+  {{ xGovukSummaryCard({
     classes: "govuk-!-margin-bottom-6",
     titleText: name | capitalize,
     rows: [{
