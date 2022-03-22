@@ -1,30 +1,48 @@
 import { wizard } from 'govuk-prototype-rig'
-
 import * as utils from '../utils.js'
 import localAuthorities from '../datasets/local-authorities.js'
 
-const getSchemePaths = schemePath => [
-  `${schemePath}/details`,
-  `${schemePath}/postcode`,
-  `${schemePath}/local-authority`,
-  `${schemePath}/client-groups`,
-  `${schemePath}/type-of-registered-home`,
-  `${schemePath}/type-of-support`,
-  `${schemePath}/intended-stay`,
-  `${schemePath}/type-of-unit`,
-  `${schemePath}/units`,
-  `${schemePath}/type-of-building`,
-  `${schemePath}/is-adapted`,
-  `${schemePath}/dates`,
-  `${schemePath}/check-your-answers`
-]
+const getSchemePaths = (req) => {
+  const { schemeId } = req.params
+  const schemePath = `/schemes/${schemeId}/`
 
-const getSchemeForks = (schemePath, schemeKeyPath) => [{
-  currentPath: `${schemePath}/postcode`,
-  forkPath: `${schemePath}/client-groups`,
-  storedData: schemeKeyPath.concat('postcode-known'),
-  values: ['true']
-}]
+  const journey = {
+    [`${schemePath}details`]: {},
+    [`${schemePath}postcode`]: {
+      [`${schemePath}local-authority`]: {
+        data: `schemes.${schemeId}['postcode-known']`,
+        value: 'false'
+      }
+    },
+    [`${schemePath}client-groups`]: {},
+    [`${schemePath}type-of-registered-home`]: {},
+    [`${schemePath}type-of-support`]: {},
+    [`${schemePath}intended-stay`]: {},
+    [`${schemePath}type-of-unit`]: {},
+    [`${schemePath}units`]: {},
+    [`${schemePath}type-of-building`]: {},
+    [`${schemePath}is-adapted`]: {},
+    [`${schemePath}dates`]: {},
+    [`${schemePath}check-your-answers`]: {}
+  }
+  return wizard(journey, req)
+}
+
+const getSortedSchemes = (schemes) => {
+  return utils.objectToArray(schemes).sort((a, b) => {
+    // If name not provided, don’t sort
+    if (!a.name || !b.name) {
+      return 0
+    }
+
+    const fa = a.name.toLowerCase()
+    const fb = b.name.toLowerCase()
+
+    if (fa < fb) { return -1 }
+    if (fa > fb) { return 1 }
+    return 0
+  })
+}
 
 export const schemeRoutes = (router) => {
   /**
@@ -33,21 +51,6 @@ export const schemeRoutes = (router) => {
   router.all('/organisations/:organisationId/schemes', (req, res) => {
     let { organisations, schemes } = req.session.data
     const { organisationId } = req.params
-
-    // Convert schemes to sorted array
-    schemes = utils.objectToArray(schemes).sort((a, b) => {
-      // If name not provided, don’t sort
-      if (!a.name || !b.name) {
-        return 0
-      }
-
-      const fa = a.name.toLowerCase()
-      const fb = b.name.toLowerCase()
-
-      if (fa < fb) { return -1 }
-      if (fa > fb) { return 1 }
-      return 0
-    })
 
     // If path is scoped to organisation, only show schemes in that organisation
     // or any of its children
@@ -62,7 +65,11 @@ export const schemeRoutes = (router) => {
         ...(organisation.children ? organisation.children : [])
       ]
 
-      schemes = schemes.filter(scheme => organisationRelationships.includes(scheme.organisationId))
+      // Filter schemes by current organisation
+      schemes = getSortedSchemes(schemes)
+      schemes = schemes.filter(scheme =>
+        organisationRelationships.includes(scheme.organisationId)
+      )
     }
 
     // Pagination
@@ -97,6 +104,14 @@ export const schemeRoutes = (router) => {
   })
 
   /**
+   * Scheme
+   */
+  router.all('/schemes/:schemeId/:view?', (req, res, next) => {
+    res.locals.paths = getSchemePaths(req)
+    next()
+  })
+
+  /**
    * View scheme
    */
   router.get('/schemes/:schemeId/:view?', (req, res) => {
@@ -125,12 +140,6 @@ export const schemeRoutes = (router) => {
       })
     )
 
-    // Calculate back and next paths
-    const schemePaths = getSchemePaths(schemePath)
-    const paths = schemePaths
-      ? wizard.nextAndBackPaths(schemePaths, req)
-      : []
-
     if (scheme) {
       res.render(`schemes/${view}`, {
         query: req.query,
@@ -142,8 +151,7 @@ export const schemeRoutes = (router) => {
         organisationPath,
         scheme,
         schemes,
-        schemePath,
-        paths
+        schemePath
       })
     } else {
       res.redirect('/schemes')
@@ -166,33 +174,6 @@ export const schemeRoutes = (router) => {
    * Update scheme
    */
   router.post('/schemes/:schemeId/:view?', (req, res) => {
-    const { schemeId, view } = req.params
-
-    const schemePath = `/schemes/${schemeId}`
-
-    // Redirect to scheme if no view provided
-    if (!view) {
-      return res.redirect(schemePath)
-    }
-
-    // Fork if next path is a fork
-    const schemeKeyPath = `schemes[${schemeId}]`
-    const schemeForks = getSchemeForks(schemePath, schemeKeyPath)
-    const fork = schemeForks
-      ? wizard.nextForkPath(schemeForks, req)
-      : false
-
-    // Calculate back and next paths
-    const schemePaths = getSchemePaths(schemePath)
-    const paths = schemePaths
-      ? wizard.nextAndBackPaths(schemePaths, req)
-      : []
-
-    // If next path is empty, this is the last path so redirect to scheme page
-    const next = paths.next !== ''
-      ? paths.next
-      : `${schemePaths}/check-your-answers`
-
-    fork ? res.redirect(fork) : res.redirect(next)
+    res.redirect(res.locals.paths.next)
   })
 }
