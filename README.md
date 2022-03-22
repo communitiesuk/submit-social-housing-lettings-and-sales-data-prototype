@@ -1,6 +1,6 @@
 # Submit social housing lettings and sales data (CORE) prototype
 
-This prototype is based on the [GOV.UK Prototype Rig](https://govuk-prototype-rig.herokuapp.com).
+> This prototype is built using the [GOV.UK Prototype Rig](https://x-govuk.github.io/govuk-prototype-rig/).
 
 ## Requirements
 
@@ -9,7 +9,7 @@ This prototype is based on the [GOV.UK Prototype Rig](https://govuk-prototype-ri
 ## Installation
 
 1. Clone this repository:\
-`git clone git@github.com:paulrobertlloyd/core-prototype.git`
+`git clone git@github.com:communitiesuk/submit-social-housing-lettings-and-sales-data-prototype.git`
 
 2. Install the dependencies:\
 `npm install`
