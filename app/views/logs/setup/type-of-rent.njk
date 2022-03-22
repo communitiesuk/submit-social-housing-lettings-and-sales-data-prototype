@@ -33,9 +33,19 @@
         html: govukInput(decorate({
           label: {
             text: "Product name"
+          },
+          validate: {
+            presence: {
+              message: "Enter the product name"
+            }
           }
         }, ["logs", log.id, section.id, "other-rent-product"]))
       }
-    }]
+    }],
+    validate: {
+      presence: {
+        message: "Select the type of rent"
+      }
+    }
   }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}

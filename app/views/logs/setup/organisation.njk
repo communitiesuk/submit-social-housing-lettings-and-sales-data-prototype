@@ -9,7 +9,12 @@
       label: {
         html: macro.heading(title, caption)
       },
-      items: managingOrganisations | optionItems
+      items: managingOrganisations | optionItems,
+      validate: {
+        presence: {
+          message: "Select the organisation that owns this property"
+        }
+      }
     }, ["logs", log.id, section.id, "organisation-manager"])) }}
   {% else %}
     {{ macro.heading(title, caption) }}
@@ -19,7 +24,12 @@
         classes: "govuk-label--m",
         text: "Which organisation owns this property?"
       },
-      items: owningOrganisations | optionItems
+      items: owningOrganisations | optionItems,
+      validate: {
+        presence: {
+          message: "Select the organisation that manages this property"
+        }
+      }
     }, ["logs", log.id, section.id, questionId])) }}
 
     {{ govukSelect(decorate({

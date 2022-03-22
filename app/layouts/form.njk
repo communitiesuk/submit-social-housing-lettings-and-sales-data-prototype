@@ -1,7 +1,7 @@
 {% extends "layouts/base.njk" %}
 
 {% block content %}
-  <form action="{{ formAction }}" method="post" novalidate>
+  <form action="{{ formAction }}" method="post" novalidate data-validate>
     {% block form %}
     {% endblock %}
   </form>
