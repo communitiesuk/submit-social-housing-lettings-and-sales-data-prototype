@@ -8,10 +8,12 @@ import GOVUKFrontend from 'govuk-frontend'
 import GOVUKPrototypeComponents from 'govuk-prototype-components'
 
 // Add app components to Rig
+import Autocomplete from '../../components/autocomplete/autocomplete'
 import FilterLayout from '../../components/filter-layout/filter-layout.js'
 import Output from '../../components/output/output.js'
 
 // Add app components to GOVUKPrototypeRig object
+GOVUKPrototypeComponents.Autocomplete = Autocomplete
 GOVUKPrototypeComponents.Output = Output
 GOVUKPrototypeComponents.FilterLayout = FilterLayout
 
