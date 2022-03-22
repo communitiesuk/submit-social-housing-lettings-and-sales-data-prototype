@@ -1,12 +1,7 @@
 {
   "name": "core-prototype",
-  "description": "Prototype for the ‘Submit social housing lettings and sales data (CORE)’ service",
   "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "engines": {
-    "node": ">=16.0.0"
-  },
+  "description": "Prototype for the ‘Submit social housing lettings and sales data (CORE)’ service",
   "scripts": {
     "build-assets": "rollup --config --silent",
     "watch-assets": "rollup --config --silent --watch",
@@ -36,6 +31,11 @@
     "stylelint": "^13.13.1",
     "stylelint-config-gds": "^0.1.0"
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "private": true,
+  "type": "module",
   "stylelint": {
     "extends": "stylelint-config-gds/scss"
   }
