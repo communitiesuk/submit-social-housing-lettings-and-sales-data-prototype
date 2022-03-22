@@ -1,6 +1,6 @@
 {
   "name": "core-prototype",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Prototype for the ‘Submit social housing lettings and sales data (CORE)’ service",
   "scripts": {
     "build-assets": "rollup --config --silent",
@@ -36,6 +36,10 @@
   },
   "private": true,
   "type": "module",
+  "prototype": {
+    "serviceName": "Submit social housing lettings and sales data (CORE)",
+    "templateExtension": "njk"
+  },
   "stylelint": {
     "extends": "stylelint-config-gds/scss"
   }
