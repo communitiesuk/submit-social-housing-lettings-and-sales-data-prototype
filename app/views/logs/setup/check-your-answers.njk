@@ -2,7 +2,7 @@
 
 {% block checkAnswers %}
   {{ govukInsetText({
-    text: "Changing these answers may remove answers given to questions in other sections."
+    text: "Changing these answers might remove answers you’ve already given in other sections."
   }) if log[section.id]["completed"] == "true" }}
 
   {% include "logs/setup/_answers.njk" %}
