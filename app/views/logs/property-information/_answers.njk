@@ -16,7 +16,7 @@
 {% set isRelet = log[section.id]["is-relet"] == "true" %}
 {% set isNewlet = log[section.id]["is-relet"] == "false" %}
 {% set isRepaired = log[section.id]["repairs"] == "true" %}
-{% set isNewprop = log[section.id]["reason-for-non-relet"] == "newprop" %}
+{% set isNewprop = log[section.id]["reason-for-vacancy"] == "newprop" %}
 {% set isSupported = log["setup"]["type-of-need"] == "supported" %}
 {% set isRenewal = log["setup"]["letting-renewal"] == "true" %}
 

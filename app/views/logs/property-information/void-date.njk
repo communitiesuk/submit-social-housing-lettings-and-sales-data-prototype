@@ -1,6 +1,6 @@
 {% extends "layouts/question.njk" %}
 
-{% set isNewprop = log[section.id]["reason-for-non-relet"] == "newprop" %}
+{% set isNewprop = log[section.id]["reason-for-vacancy"] == "newprop" %}
 {% if isNewprop %}
   {% set title = "What is the new-build handover date?" %}
 {% else %}

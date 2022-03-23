@@ -128,7 +128,7 @@ export function sections (log) {
     }, {
       currentPath: `${sectionPath}/void-date`,
       forkPath: `${sectionPath}/check-your-answers`,
-      storedData: keyPathRoot.concat('reason-for-non-relet'),
+      storedData: keyPathRoot.concat('reason-for-vacancy'),
       values: ['newprop']
     }]
   }
@@ -161,7 +161,7 @@ export function sections (log) {
     }, {
       currentPath: `${sectionPath}/void-date`,
       forkPath: `${sectionPath}/check-your-answers`,
-      storedData: keyPathRoot.concat('reason-for-non-relet'),
+      storedData: keyPathRoot.concat('reason-for-vacancy'),
       values: ['newprop']
     }]
   }
