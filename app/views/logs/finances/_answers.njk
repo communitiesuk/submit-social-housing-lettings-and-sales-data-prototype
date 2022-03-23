@@ -10,9 +10,10 @@
   {% set outPeriod = "every week" %}
 {% endif %}
 {% set hasIncomeBenefits =
-  (log[section.id]["income-benefits"] !== "none") and
-  (log[section.id]["income-benefits"] !== "unknown") and
-  (log[section.id]["income-benefits"] !== "prefers-not-to-say")
+  (log[section.id]["income-benefits"] !== "None") and
+  (log[section.id]["income-benefits"] !== "Neither") and
+  (log[section.id]["income-benefits"] !== "Don’t know") and
+  (log[section.id]["income-benefits"] !== "Tenant prefers not to say")
 %}
 {% set hasOutgoingsAfterBenefits =
   log[section.id]["outgoings-after-benefits"] == "true"
@@ -21,7 +22,7 @@
   log["setup"]["type-of-need"] == "supported"
 %}
 {% set isRenter =
-  log[section.id]["outgoings-includes-rent"] == "true" | string
+  (log[section.id]["outgoings-includes-rent"] == "true" | string) or not isSupported
 %}
 {% set isCareHome =
   log[section.id]["outgoings-includes-care-home"] == "true" | string
