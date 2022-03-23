@@ -1,4 +1,4 @@
-import { wizard } from '../wizard.js'
+import { wizard } from 'govuk-prototype-rig'
 import { sections as getSections } from '../data/sections.js'
 import * as utils from '../utils.js'
 
@@ -150,24 +150,40 @@ export const logRoutes = (router) => {
   })
 
   /**
+   * Log section
+   */
+  router.all('/logs/:logId/:sectionId/:itemId?/:view?', (req, res, next) => {
+    const { logId, sectionId } = req.params
+    const { logs } = req.session.data
+
+    const log = utils.getEntityById(logs, logId)
+    const section = utils.getById(getSections(log), sectionId)
+
+    res.locals.paths = wizard(section.paths, req)
+
+    next()
+  })
+
+  /**
    * View log section
    */
-  router.get('/logs/:logId/:sectionPathId', (req, res, next) => {
+  router.get('/logs/:logId/:sectionId', (req, res, next) => {
     try {
-      const { logId, sectionPathId } = req.params
+      const { logId, sectionId } = req.params
       const { logs } = req.session.data
 
       const log = utils.getEntityById(logs, logId)
-      const section = utils.getByPath(getSections(log), sectionPathId)
+      const section = utils.getById(getSections(log), sectionId)
 
-      if (log[sectionPathId]) {
-        if (sectionPathId === 'submit') {
+      if (log[sectionId]) {
+        if (sectionId === 'submit') {
           res.redirect(`/logs/${logId}/submit/confirm`)
         } else {
-          res.redirect(`/logs/${logId}/${sectionPathId}/check-your-answers`)
+          res.redirect(`/logs/${logId}/${sectionId}/check-your-answers`)
         }
       } else {
-        res.redirect(section.paths[0])
+        const firstQuestion = Object.keys(section.paths)[0]
+        res.redirect(firstQuestion)
       }
     } catch (error) {
       next(error)
@@ -175,11 +191,11 @@ export const logRoutes = (router) => {
   })
 
   /**
-   * View log section question
+   * Log section question
    */
-  router.all('/logs/:logId/:sectionPathId/:itemId?/:view?', async (req, res, next) => {
+  router.get('/logs/:logId/:sectionId/:itemId?/:view?', async (req, res, next) => {
     try {
-      let { logId, sectionPathId, itemId, view } = req.params
+      let { logId, sectionId, itemId, view } = req.params
       const { account, logs, organisations } = req.session.data
 
       // If there’s no :view param, use :itemId param for view
@@ -187,39 +203,10 @@ export const logRoutes = (router) => {
         view = itemId
       }
 
-      // Some sections have variants that share common views
-      let sectionId = sectionPathId
-      if (sectionPathId.startsWith('household-situation')) {
-        sectionId = 'household-situation'
-      }
-      if (sectionId.startsWith('tenancy-information')) {
-        sectionId = 'tenancy-information'
-      }
-      if (sectionId.startsWith('property-information')) {
-        sectionId = 'property-information'
-      }
-      if (sectionId.startsWith('finances')) {
-        sectionId = 'finances'
-      }
-
       const log = utils.getEntityById(logs, logId)
       const logPath = `/logs/${logId}`
       const section = utils.getById(getSections(log), sectionId)
-      const sectionPath = `/logs/${logId}/${sectionPathId}`
-
-      // Fork if next path is a fork
-      const sectionKeyPath = `logs[${logId}][${sectionId}]`
-      const sectionForks = section?.forks
-        ? section.forks(sectionPath, sectionKeyPath, req)
-        : []
-      const fork = sectionForks
-        ? wizard.nextForkPath(sectionForks, req)
-        : false
-
-      // Calculate back and next paths
-      const paths = section.paths
-        ? wizard.nextAndBackPaths(section.paths, req)
-        : []
+      const sectionPath = `/logs/${logId}/${sectionId}`
 
       // Organisation data
       const organisationId = account?.organisationId || 'LH3904'
@@ -233,29 +220,35 @@ export const logRoutes = (router) => {
       const owningOrganisations = managingOrganisations
         .filter(org => org.stock)
 
-      if (req.method === 'POST') {
-        // If next path is empty, this is the last path so redirect to check answers page
-        const next = paths.next !== ''
-          ? paths.next
-          : `${sectionPath}/check-your-answers`
-
-        fork ? res.redirect(fork) : res.redirect(next)
-      } else {
-        res.render(`logs/${sectionId}/${view}`, {
-          caption: section.title,
-          log,
-          logPath,
-          section,
-          sectionPath,
-          itemId,
-          organisationId,
-          managingOrganisations,
-          owningOrganisations,
-          paths
-        })
-      }
+      res.render(`logs/${sectionId}/${view}`, {
+        caption: section.title,
+        log,
+        logPath,
+        section,
+        sectionPath,
+        itemId,
+        organisationId,
+        managingOrganisations,
+        owningOrganisations
+      })
     } catch (error) {
+      console.error(error)
       next(error)
     }
+  })
+
+  /**
+   * Update log section question
+   */
+  router.post('/logs/:logId/:sectionId/:itemId?/:view?', (req, res) => {
+    const { logId, sectionId } = req.params
+
+    // If next is empty, reached last path so redirect to check your answers
+    const sectionPath = `/logs/${logId}/${sectionId}`
+    const next = res.locals.paths.next !== ''
+      ? res.locals.paths.next
+      : `${sectionPath}/check-your-answers`
+
+    res.redirect(next)
   })
 }

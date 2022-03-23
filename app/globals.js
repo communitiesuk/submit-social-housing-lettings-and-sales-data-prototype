@@ -19,7 +19,7 @@ export default () => {
     for (const section of sections) {
       // Get sections that are not complete
       // Only return sections with paths (i.e. sections in the prototype)
-      if (log[section.id]?.completed !== 'true' && section.paths) {
+      if (log[section.id]?.completed !== 'true') {
         incompleteSections.push({
           id: section.id,
           title: section.title
@@ -83,7 +83,7 @@ export default () => {
 
     const taskListItem = (section) => {
       let status
-      let href = section.paths ? `/logs/${log.id}/${section.path}` : false
+      let href = `/logs/${log.id}/${section.id}`
 
       switch (section.id) {
         case 'setup':
