@@ -1,0 +1,26 @@
+$link-spacing: govuk-spacing(1);
+$vertical-gap: govuk-spacing(3);
+$horizontal-gap: govuk-spacing(3);
+
+.app-input-group {
+  @include govuk-responsive-margin(6, "bottom", $adjustment: $vertical-gap * -1);
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+
+  .govuk-form-group {
+    margin-bottom: $vertical-gap;
+  }
+
+  .govuk-link {
+    @include govuk-font($size: 19, $line-height: 19px);
+    display: inline-block;
+    margin-top: $link-spacing;
+    margin-bottom: $link-spacing + $vertical-gap;
+  }
+
+  .govuk-form-group,
+  .govuk-link {
+    margin-right: $horizontal-gap;
+  }
+}
