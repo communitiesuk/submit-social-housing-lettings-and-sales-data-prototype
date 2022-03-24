@@ -1,11 +1,12 @@
 {% extends "layouts/base.njk" %}
 
 {% import "macros.njk" as macro %}
+{% from "macros.njk" import organisationNavigation with context %}
 
 {% if activeSection == "users" %}
   {% set title = "Users" %}
 {% else %}
-  {% set title = organisation.name if isAdmin else "Your organisation" %}
+  {% set title = organisation.name %}
 {% endif %}
 
 {% block pageNavigation %}
@@ -31,12 +32,12 @@
 
   {{ macro.heading(title) }}
 
-  {{ macro.organisationNavigation(organisationPath, "Users", isOwningOrg) if isAdmin and activeSection != "users" }}
+  {{ organisationNavigation(organisationPath, "Users", isOwningOrg) if activeSection != "users" }}
 
   {{ govukButton({
     href: "/users/new",
     text: "Invite user"
-  }) }}
+  }) if isAdmin or isCoordinator }}
 
   {% set userRows = [] %}
   {% for user in users %}

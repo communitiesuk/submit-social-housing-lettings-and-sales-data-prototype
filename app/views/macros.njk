@@ -45,8 +45,10 @@
   {% elif user.lastActive %}
     {{ user.lastActive | govukDate }}
   {% else %}
-    Not logged in yet<br>
-    <a href="/organisations/{{ user.organisationId }}/users?success=reinvited&#38;userId={{ user.id }}">Resend invitation email</a>
+    Not logged in yet
+    {% if isAdmin or isCoordinator %}
+      <br><a href="/organisations/{{ user.organisationId }}/users?success=reinvited&#38;userId={{ user.id }}">Resend invitation email</a>
+    {% endif %}
   {% endif %}
 {% endmacro %}
 
@@ -71,18 +73,22 @@
 {% macro organisationNavigation(organisationPath, section, isOwningOrg) %}
   {{ appSubNavigation({
       items: [{
-      href: organisationPath,
-      text: "Details",
-      active: section == "Details"
-    }, {
-      href: organisationPath + "/users",
-      text: "Users",
-      active: section == "Users"
+      href: "/logs",
+      text: "Logs",
+      active: section == "Logs"
     }, {
       href: organisationPath + "/schemes",
       text: "Schemes",
       active: section == "Schemes"
-    } if isOwningOrg == true or isAdmin]
+    } if (isOwningOrg == true and isCoordinator) or isAdmin, {
+      href: organisationPath + "/users",
+      text: "Users",
+      active: section == "Users"
+    }, {
+      href: organisationPath,
+      text: "About this organisation",
+      active: section == "Details"
+    }]
   }) }}
   <h2 class="govuk-visually-hidden">{{ section }}</h2>
 {% endmacro %}

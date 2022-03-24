@@ -32,10 +32,6 @@
     serviceUrl: "/logs"  if data.token else "/",
     containerClasses: "govuk-width-container",
     navigation: [{
-      href: "/logs/",
-      text: "Logs",
-      active: activeSection == "logs"
-    }, {
       href: "/organisations/",
       text: "Organisations",
       active: activeSection == "organisations"
@@ -44,10 +40,6 @@
       text: "Users",
       active: activeSection == "users"
     } if isAdmin, {
-      href: "/organisations/" + data.account.organisationId,
-      text: "Your organisation",
-      active: activeSection == "organisations"
-    } if isCoordinator, {
       href: "/account/",
       text: "Your account",
       active: activeSection == "account"

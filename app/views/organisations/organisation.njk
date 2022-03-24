@@ -3,7 +3,7 @@
 {% import "macros.njk" as macro %}
 {% from "macros.njk" import organisationNavigation with context %}
 
-{% set title = organisation.name if isAdmin else "Your organisation" %}
+{% set title = organisation.name %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({

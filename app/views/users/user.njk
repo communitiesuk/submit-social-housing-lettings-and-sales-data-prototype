@@ -3,6 +3,7 @@
 {% import "macros.njk" as macro %}
 
 {% set title = user.name or user.email %}
+{% set canAdminUsers = isAdmin or isCoordinator %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
@@ -60,7 +61,7 @@
           actions: actionLinks({
             href: userPath + "/personal-details",
             visuallyHiddenText: "name"
-          }) if not user.deactivated
+          }) if canAdminUsers and not user.deactivated
         }, {
           key: {
             text: "Email address"
@@ -71,7 +72,7 @@
           actions: actionLinks({
             href: userPath + "/personal-details",
             visuallyHiddenText: "email address"
-          }) if not user.deactivated
+          }) if canAdminUsers and not user.deactivated
         }, {
           key: {
             text: "Organisation"
@@ -82,7 +83,7 @@
           actions: actionLinks({
             href: userPath + "/organisation",
             visuallyHiddenText: "organisation"
-          } if isCoordinator or isAdmin) if not user.deactivated
+          }) if canAdminUsers and not user.deactivated
         }, {
           key: {
             text: "Role"
@@ -93,7 +94,7 @@
           actions: actionLinks({
             href: userPath + "/role",
             visuallyHiddenText: "role"
-          } if isCoordinator or isAdmin) if not user.deactivated
+          }) if canAdminUsers and not user.deactivated
         }, {
           key: {
             text: "Last logged in"
