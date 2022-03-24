@@ -35,6 +35,8 @@
     {% set row = schemeRows.push([{
         html: macro.entityHtml(scheme.name, schemePath, scheme.postcode or scheme["local-authority"])
       }, {
+        html: organisations[scheme.agentId].name
+      }, {
         html: scheme["client-groups"] | textFromInputValue(data.questions["client-groups"]) | replace(",", "<br>")
       }, {
         html: (scheme["start-date"] | govukDate) + (" to <br>" + (scheme["end-date"] | govukDate) if scheme["end-date"])
@@ -50,6 +52,8 @@
         firstCellIsHeader: true,
         head: [{
           text: "Name"
+        }, {
+          text: "Managing agent"
         }, {
           text: "Client groups"
         }, {

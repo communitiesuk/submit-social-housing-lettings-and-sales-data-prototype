@@ -27,6 +27,19 @@
   }) }}
 
   {{ govukRadios({
+    decorate: ["schemes", scheme.id, "agentId"],
+    fieldset: {
+      legend: {
+        classes: "govuk-label--m",
+        text: "Which organisation will manage this scheme?"
+      }
+    },
+    allowEmpty: true,
+    showNoOptionsFound: true,
+    items: managedOrganisations | optionItems
+  }) }}
+
+  {{ govukRadios({
     decorate: ["schemes", scheme.id, "type"],
     fieldset: {
       legend: {

@@ -22,6 +22,17 @@
     })
   }, {
     key: {
+      text: "Managing agent"
+    },
+    value: {
+      text: organisations[scheme.agentId].name
+    },
+    actions: actionLinks({
+      href: schemePath + "/details",
+      visuallyHiddenText: "managing agent"
+    })
+  }, {
+    key: {
       text: "Type of scheme"
     },
     value: {
@@ -41,17 +52,6 @@
     actions: actionLinks({
       href: schemePath + "/details",
       visuallyHiddenText: "if confidential"
-    })
-  }, {
-    key: {
-      text: "Includes Supporting People grant"
-    },
-    value: {
-      text: scheme["sp-grant"] | textFromInputValue(data.questions["yes-no"])
-    },
-    actions: actionLinks({
-      href: schemePath + "/details",
-      visuallyHiddenText: "if includes Supporting People grant"
     })
   }, {
     key: {

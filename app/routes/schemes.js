@@ -80,6 +80,7 @@ export const schemeRoutes = (router) => {
 
     res.render('schemes/index', {
       query: req.query,
+      organisations,
       organisation,
       organisationPath,
       schemes,
@@ -144,6 +145,7 @@ export const schemeRoutes = (router) => {
       res.render(`schemes/${view}`, {
         query: req.query,
         localAuthorities,
+        organisations,
         allOrganisations,
         managedOrganisations,
         organisation,

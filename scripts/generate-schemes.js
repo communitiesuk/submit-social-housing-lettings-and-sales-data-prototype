@@ -155,6 +155,11 @@ const generateSchemes = () => {
     schemes[id] = {
       id,
       organisationId: value.organisationId,
+      agentId: faker.helpers.randomize([
+        'CHILD1',
+        'CHILD2',
+        value.organisationId
+      ]),
       name: value.name,
       'local-authority': faker.helpers.randomize(localAuthorities),
       'postcode-known': 'true',
