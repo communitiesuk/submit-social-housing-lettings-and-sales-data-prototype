@@ -1,6 +1,6 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Does this scheme use a registered care home?" %}
+{% set title = "Does this service use a registered care home?" %}
 {% if scheme["type-of-registered-home"] %}
   {# Editing an existing scheme #}
   {% set caption = scheme.name %}

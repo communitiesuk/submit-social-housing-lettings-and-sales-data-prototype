@@ -1,6 +1,6 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Scheme details" %}
+{% set title = "Service details" %}
 {% if scheme.name %}
   {# Editing an existing scheme #}
   {% set caption = scheme.name %}
@@ -21,7 +21,7 @@
     decorate: ["schemes", scheme.id, "name"],
     label: {
       classes: "govuk-label--m",
-      text: "Scheme name"
+      text: "Service name"
     },
     spellcheck: false
   }) }}
@@ -31,7 +31,7 @@
     fieldset: {
       legend: {
         classes: "govuk-label--m",
-        text: "Which organisation will manage this scheme?"
+        text: "Which organisation manages this service?"
       }
     },
     allowEmpty: true,
@@ -44,7 +44,7 @@
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
-        text: "Type of scheme"
+        text: "Type of service"
       }
     },
     items: data.questions["type-of-scheme"]
@@ -55,7 +55,7 @@
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
-        text: "Does this scheme contain confidential information?"
+        text: "Does this service contain confidential information?"
       }
     },
     items: data.questions["yes-no"]

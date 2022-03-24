@@ -3,7 +3,7 @@
 {% import "macros.njk" as macro %}
 {% from "macros.njk" import organisationNavigation with context %}
 
-{% set title = organisation.name %}
+{% set title = "Supported services" %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
@@ -14,19 +14,19 @@
       href: organisationPath,
       text: organisation.name
     }, {
-      text: "Schemes"
+      text: title
     }]
   }) if isAdmin and activeSection != "users" }}
 {% endblock %}
 
 {% block content %}
-  {{ macro.heading(title) }}
+  {{ macro.heading(organisation.name) }}
 
-  {{ organisationNavigation(organisationPath, "Schemes", isOwningOrg) }}
+  {{ organisationNavigation(organisationPath, title, isOwningOrg) }}
 
   {{ govukButton({
     href: "/schemes/new",
-    text: "New supported housing scheme"
+    text: "Create a new supported service"
   }) }}
 
   {% set schemeRows = [] %}
@@ -51,7 +51,7 @@
 
   {% if schemes.length %}
     {% call appTableGroup({
-      labelledby: "schemes"
+      labelledby: "services"
     }) %}
       {{ govukTable({
         firstCellIsHeader: true,
@@ -67,6 +67,6 @@
     {% endcall %}
     {{ appPagination(pages(page, limit, schemes.length)) }}
   {% else %}
-    <p class="govuk-body">No supported housing schemes have been created yet.</p>
+    <p class="govuk-body">No supported housing services have been created yet.</p>
   {% endif %}
 {% endblock %}

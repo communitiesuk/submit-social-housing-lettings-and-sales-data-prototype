@@ -8,7 +8,7 @@
 
 {{ xGovukSummaryCard({
   classes: "govuk-!-margin-bottom-6",
-  titleText: "Scheme details",
+  titleText: "Service details",
   rows: [{
     key: {
       text: "Name"
@@ -33,14 +33,14 @@
     })
   }, {
     key: {
-      text: "Type of scheme"
+      text: "Type of service"
     },
     value: {
       text: scheme.type | textFromInputValue(data.questions["type-of-scheme"])
     },
     actions: actionLinks({
       href: schemePath + "/details",
-      visuallyHiddenText: "type of scheme"
+      visuallyHiddenText: "type of service"
     })
   }, {
     key: {
@@ -58,7 +58,7 @@
       text: "Locations"
     },
     value: {
-      html: scheme.postcodes | join("<br>")
+      html: scheme.postcodes | join("<br>") if scheme.postcodes
     },
     actions: actionLinks({
       href: schemePath + "/postcodes",
@@ -172,14 +172,14 @@
   titleText: "Dates",
   rows: [{
     key: {
-      text: "Scheme dates"
+      text: "Operating dates"
     },
     value: {
       html: (scheme["start-date"] | govukDate) + (" to " + (scheme["end-date"] | govukDate) if scheme["end-date-known"] == "true")
     },
     actions: actionLinks({
       href: schemePath + "/dates",
-      visuallyHiddenText: "scheme dates"
+      visuallyHiddenText: "service dates"
     })
   }]
 }) }}
