@@ -47,15 +47,4 @@
     },
     items: data.questions["yes-no"]
   }) }}
-
-  {{ govukRadios({
-    decorate: ["schemes", scheme.id, "sp-grant"],
-    fieldset: {
-      legend: {
-        classes: "govuk-fieldset__legend--m",
-        text: "Does this scheme include a Supporting People grant?"
-      }
-    },
-    items: data.questions["yes-no"]
-  }) }}
 {% endblock %}
