@@ -1,40 +1,118 @@
 {% extends "layouts/base.njk" %}
 
-{% import "macros.njk" as macro %}
+{% set title = serviceName + " prototype" %}
 
-{% block content %}
-  <h1 class="govuk-heading-xl govuk-!-width-two-thirds">{{ serviceName }}</h1>
+{% block main %}
+  {{ xGovukMasthead({
+    classes: "x-govuk-masthead--large",
+    title: {
+      html: title | noOrphans
+    },
+    startButton: {
+      href: "/start",
+      text: "View prototype"
+    }
+  }) }}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <p>Use this service to submit social housing lettings and sales data to the Department for Levelling Up, Housing and Communities (DLUHC).</p>
-      <p>We’ll ask you questions about a letting or sale, like details about the household or property. Your answers will create a log that you can submit directly to us.</p>
-      <p>Your organisation can also:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>upload data for multiple lettings and sales</li>
-        <li>transfer data using an API</li>
-      </ul>
-      <p>The data will be used to update the national record for social housing. It will also help to inform policy about the cost of social housing and what type of housing needs to be built.</p>
-      <p>This service is only for social housing in England.</p>
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">Demo accounts</h2>
+          <form action="/account/sign-in" method="post">
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">DLUHC/Helpdesk</h3>
+            <p>A CORE aministrator at DLUHC or a helpdesk agent can manage all information held by the service.</p>
+            <div class="govuk-button-group">
+              {{ govukButton(decorate({
+                classes: "govuk-button--secondary",
+                text: "Sign in as an administrator",
+                value: "admin@levellingup.gov.uk"
+              }, ["account", "email"])) }}
+            </div>
 
-      {{ govukButton({
-        href: "/account/sign-in",
-        text: "Start now",
-        isStartButton: true
-      }) }}
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Organisation that holds its own stock</h3>
+            <p>A data coordinator can manage details about this organisation and manage case logs the organisation is responsible for. A data provider can only submit and view case logs.</p>
+            <div class="govuk-button-group">
+              {{ govukButton(decorate({
+                classes: "govuk-button--secondary",
+                text: "Sign in as a data coordinator",
+                value: "data.coordinator@owning.org.uk"
+              }, ["account", "email"])) }}
 
-      <h2 class="govuk-heading-m">Before you start</h2>
-      <p>Use your account details to sign in.</p>
-      <p>If you need to set up a new account, speak to your organisation’s CORE data coordinator. If you don’t know who that is, <a href="https://digital.dclg.gov.uk/jira/servicedesk/customer/portal/4/group/21">contact the helpdesk</a>.</p>
-      <p>You can <a href="https://digital.dclg.gov.uk/jira/servicedesk/customer/portal/4/group/21">request an account</a> if your organisation doesn’t have one.</p>
-      <p><a href="#">Read our data sharing agreement</a>.</p>
-    </div>
+              {{ govukButton(decorate({
+                classes: "govuk-button--secondary",
+                text: "Sign in as a data provider",
+                value: "data.provider@owning.org.uk"
+              }, ["account", "email"])) }}
+            </div>
 
-    <div class="govuk-grid-column-one-third">
-      <div class="app-card">
-        <h2 class="govuk-heading-s">2022/23 collection resources</h2>
-        {{ macro.collectionResouces("app-document-list--small") }}
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Organisation that manages stock on behalf of an owning organisation</h3>
+            <p>A data coordinator can manage details about this organisation and manage case logs the organisation is responsible for. A data provider can only submit and view case logs.</p>
+            <div class="govuk-button-group">
+              {{ govukButton(decorate({
+                classes: "govuk-button--secondary",
+                text: "Sign in as a data coordinator",
+                value: "data.coordinator@managing.org.uk"
+              }, ["account", "email"])) }}
+
+              {{ govukButton(decorate({
+                classes: "govuk-button--secondary",
+                text: "Sign in as a data provider",
+                value: "data.provider@managing.org.uk"
+              }, ["account", "email"])) }}
+            </div>
+          </form>
+
+          <hr class="govuk-section-break govuk-section-break--l">
+
+          <h2 class="govuk-heading-m govuk-!-font-size-27">Example GOV.UK guidance pages</h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="/guidance">Collection: Social housing lettings</a></li>
+          </ul>
+        </div>
+
+        <div class="govuk-grid-column-one-third-from-desktop">
+          {{ xGovukRelatedNavigation({
+            sections: [{
+              title: "Related links",
+              subsections: [{
+                title: "Team resources",
+                items: [{
+                  text: "Design history",
+                  href: "https://core-design-history.netlify.app"
+                }, {
+                  text: "Confluence",
+                  href: "https://digital.dclg.gov.uk/confluence/display/MC/DLUHC-+CLDC+Home"
+                }, {
+                  text: "JIRA",
+                  href: "https://digital.dclg.gov.uk/jira/secure/RapidBoard.jspa?projectKey=CLDC&rapidView=152"
+                }]
+              }, {
+                title: "Live service",
+                items: [{
+                  text: "Staging",
+                  href: "https://dluhc-core-staging.london.cloudapps.digital"
+                }, {
+                  text: "Production",
+                  href: "https://dluhc-core-production.london.cloudapps.digital"
+                }]
+              }, {
+                title: "GitHub repositories",
+                items: [{
+                  text: "Design history",
+                  href: "https://github.com/roobottom/core-design-history"
+                }, {
+                  text: "Live service",
+                  href: "https://github.com/communitiesuk/submit-social-housing-lettings-and-sales-data"
+                }, {
+                  text: "Prototype",
+                  href: "https://github.com/communitiesuk/submit-social-housing-lettings-and-sales-data-prototype"
+                }]
+              }]
+            }]
+          }) }}
+        </div>
       </div>
-    </div>
+    </main>
   </div>
 {% endblock %}
