@@ -27,6 +27,15 @@
     text: "Create a new supported service"
   }) }}
 
+  {{ appSearch({
+    decorate: ["logs", log.id, section.id, "scheme-query"],
+    classes: "govuk-!-margin-bottom-4",
+    label: {
+      classes: "govuk-!-margin-bottom-2",
+      text: "Search by service name or postcode"
+    }
+  }) }}
+
   {% set schemeRows = [] %}
   {% for scheme in results %}
     {% set schemePath = "/schemes/" + scheme.id %}
@@ -47,23 +56,36 @@
     %}
   {% endfor %}
 
-  {% if schemes.length %}
-    {% call appTableGroup({
-      labelledby: "services"
+  {% set captionHtml %}
+    <span class="govuk-!-margin-right-4">
+      <b>56</b> services found of <b>{{ schemes.length }}</b> total services
+    </span>
+  {% endset %}
+
+  {% if schemes | length > 0 %}
+    {% call appFigure ({
+      id: "services",
+      caption: {
+        html: captionHtml
+      }
     }) %}
-      {{ govukTable({
-        firstCellIsHeader: true,
-        head: [{
-          text: "Name"
-        }, {
-          text: "Managing agent"
-        }, {
-          text: "Open from"
-        }],
-        rows: schemeRows
-      }) }}
+      {% call appTableGroup({
+        labelledby: "services"
+      }) %}
+        {{ govukTable({
+          firstCellIsHeader: true,
+          head: [{
+            text: "Name"
+          }, {
+            text: "Managing agent"
+          }, {
+            text: "Open from"
+          }],
+          rows: schemeRows
+        }) }}
+      {% endcall %}
+      {{ appPagination(pages(page, limit, schemes.length)) }}
     {% endcall %}
-    {{ appPagination(pages(page, limit, schemes.length)) }}
   {% else %}
     <p class="govuk-body">No supported housing services have been created yet.</p>
   {% endif %}
