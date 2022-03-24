@@ -25,21 +25,16 @@
 {% set bodyAttributes = {"data-module": "edge"} %}
 {% set bodyClasses = "app-template--wide" %}
 
+{% set homepageUrl = "/organisations" if isAdmin else "/logs" %}
+
 {% block header %}
   {{ govukHeader({
-    homepageUrl: "/",
-    serviceName: serviceName,
-    serviceUrl: "/logs"  if data.token else "/",
+    classes: "app-header",
+    homepageUrl: homepageUrl if data.token else "/",
+    productName: serviceName,
     containerClasses: "govuk-width-container",
+    navigationClasses: "govuk-header__navigation--end",
     navigation: [{
-      href: "/organisations/",
-      text: "Organisations",
-      active: activeSection == "organisations"
-    } if isAdmin, {
-      href: "/users/",
-      text: "Users",
-      active: activeSection == "users"
-    } if isAdmin, {
       href: "/account/",
       text: "Your account",
       active: activeSection == "account"
