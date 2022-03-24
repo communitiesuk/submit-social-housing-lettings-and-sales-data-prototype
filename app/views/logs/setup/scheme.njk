@@ -1,6 +1,6 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Which scheme does this log relate to?" %}
+{% set title = "Which service does this log relate to?" %}
 {% set questionId = "schemeId" %}
 
 {% block question %}
@@ -10,7 +10,7 @@
       html: macro.heading(title, caption)
     },
     hint: {
-      text: "Enter scheme name or postcode"
+      text: "Enter service name or postcode"
     },
     allowEmpty: true,
     showNoOptionsFound: true,
@@ -19,7 +19,7 @@
 
   {% if isOwningOrg == true or isAdmin %}
     <p class="govuk-body govuk-!-margin-bottom-6">
-      or <a class="govuk-link" href="/organisations/{{ organisationId }}/schemes">create a new supported housing scheme</a>.
+      or <a class="govuk-link" href="/organisations/{{ organisationId }}/schemes">create a new supported housing service</a>.
     </p>
   {% endif %}
 {% endblock %}
