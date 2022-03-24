@@ -11,7 +11,10 @@ export const logRoutes = (router) => {
     const type = req.query.type || 'lettings'
 
     // Get current organisation
-    const organisationId = req.params.organisationId || account.organisationId
+    const organisationId = req.params?.organisationId ||
+      account?.organisationId ||
+      'LH3904'
+
     const organisation = organisations[organisationId]
     const organisationPath = `/organisations/${organisationId}`
 
