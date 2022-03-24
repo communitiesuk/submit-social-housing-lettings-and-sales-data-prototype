@@ -32,12 +32,17 @@
   {% set schemeRows = [] %}
   {% for scheme in results %}
     {% set schemePath = "/schemes/" + scheme.id %}
+    {% set schemeLocation %}
+      {% if scheme.postcodes | length > 1 %}
+        {{ scheme.postcodes | length }} properties
+      {% else %}
+        {{ scheme.postcodes | first }}
+      {% endif %}
+    {% endset %}
     {% set row = schemeRows.push([{
-        html: macro.entityHtml(scheme.name, schemePath, scheme.postcode or scheme["local-authority"])
+        html: macro.entityHtml(scheme.name, schemePath, schemeLocation)
       }, {
         html: organisations[scheme.agentId].name
-      }, {
-        html: scheme["client-groups"] | textFromInputValue(data.questions["client-groups"]) | replace(",", "<br>")
       }, {
         html: (scheme["start-date"] | govukDate) + (" to <br>" + (scheme["end-date"] | govukDate) if scheme["end-date"])
       }])
@@ -54,8 +59,6 @@
           text: "Name"
         }, {
           text: "Managing agent"
-        }, {
-          text: "Client groups"
         }, {
           text: "Open from"
         }],

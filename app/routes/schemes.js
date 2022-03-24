@@ -8,12 +8,7 @@ const getSchemePaths = (req) => {
 
   const journey = {
     [`${schemePath}details`]: {},
-    [`${schemePath}postcode`]: {
-      [`${schemePath}local-authority`]: {
-        data: `schemes.${schemeId}['postcode-known']`,
-        value: 'false'
-      }
-    },
+    [`${schemePath}postcodes`]: {},
     [`${schemePath}client-groups`]: {},
     [`${schemePath}type-of-registered-home`]: {},
     [`${schemePath}type-of-support`]: {},

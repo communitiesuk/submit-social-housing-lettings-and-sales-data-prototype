@@ -55,27 +55,16 @@
     })
   }, {
     key: {
-      text: "Postcode"
+      text: "Locations"
     },
     value: {
-      html: macro.entityHtml(scheme.postcode, false, localAuthority.name) if hasPostcode else "Not known"
+      html: scheme.postcodes | join("<br>")
     },
     actions: actionLinks({
-      href: schemePath + "/postcode",
-      visuallyHiddenText: "postcode"
+      href: schemePath + "/postcodes",
+      visuallyHiddenText: "postcodes"
     })
-  }, {
-    key: {
-      text: "Local authority"
-    },
-    value: {
-      text: scheme["local-authority"] | textFromInputValue(data.questions["local-authorities"]) if hasLocalAuthority else "Not known"
-    },
-    actions: actionLinks({
-      href: schemePath + "/local-authority",
-      visuallyHiddenText: "local authority"
-    })
-  } if not hasPostcode]
+  }]
 }) }}
 
 {{ xGovukSummaryCard({

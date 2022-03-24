@@ -18,9 +18,8 @@ const generateSchemes = () => {
       case 1:
         // Rough sleepers
         name = `${faker.address.city()}${faker.helpers.randomize([
-          '',
           ' Center',
-          ' House'
+          ' Action on Homelessness'
         ])}`
         type = 'direct-access-hostel'
         spGrant = 'false'
@@ -35,10 +34,8 @@ const generateSchemes = () => {
       case 2:
         // Young people
         name = `${faker.address.city()}${faker.helpers.randomize([
-          '',
           ' Center',
           ' Foyer',
-          ' House',
           ' Point'
         ])}`
         type = 'foyer'
@@ -54,10 +51,9 @@ const generateSchemes = () => {
       case 3:
         // Older people
         name = `${faker.address.city()}${faker.helpers.randomize([
-          '',
           ' Care',
-          ' Nursing Home',
-          ' Point'
+          ' Nursing',
+          ' Support'
         ])}`
         type = 'older-people'
         spGrant = 'false'
@@ -77,7 +73,6 @@ const generateSchemes = () => {
       case 4:
         // Mental health
         name = `${faker.address.city()}${faker.helpers.randomize([
-          '',
           ' Care',
           ' Independent Living',
           ' Point',
@@ -99,11 +94,9 @@ const generateSchemes = () => {
       case 5:
         // Physical health
         name = `${faker.address.city()}${faker.helpers.randomize([
-          '',
           ' Care',
           ' House',
-          ' Nursing Home',
-          ' Point'
+          ' Nursing'
         ])}`
         type = 'other'
         spGrant = 'false'
@@ -120,7 +113,6 @@ const generateSchemes = () => {
       case 6:
         // Other
         name = `${faker.address.city()}${faker.helpers.randomize([
-          '',
           ' Center',
           ' Close',
           ' House'
@@ -152,32 +144,32 @@ const generateSchemes = () => {
         'CHILD2',
         value.organisationId
       ]),
-      name: value.name,
+      name,
       'local-authority': faker.helpers.randomize(localAuthorities),
       'postcode-known': 'true',
-      postcode: faker.helpers.randomize([
-        'BN1',
-        'BN5',
-        'BN6',
-        'BN11',
-        'BN12',
-        'BN14',
-        'BN15',
-        'GU15',
-        'RH10',
-        'RG1',
-        'RG9',
-        'RG10',
-        'RG11',
-        'RG12',
-        'RG40',
-        'RG42',
-        'PO1',
-        'SO1',
-        'SL0',
-        'SL1',
-        'SL3'
-      ]) + ' 1AA',
+      postcodes: faker.random.arrayElements([
+        'BN1 1AA',
+        'BN5 1AA',
+        'BN6 1AA',
+        'BN11 1AA',
+        'BN12 1AA',
+        'BN14 1AA',
+        'BN15 1AA',
+        'GU15 1AA',
+        'RH10 1AA',
+        'RG1 1AA',
+        'RG9 1AA',
+        'RG10 1AA',
+        'RG11 1AA',
+        'RG12 1AA',
+        'RG40 1AA',
+        'RG42 1AA',
+        'PO1 1AA',
+        'SO1 1AA',
+        'SL0 1AA',
+        'SL1 1AA',
+        'SL3 1AA'
+      ]),
       confidential: faker.datatype.boolean().toString(),
       type,
       units: faker.datatype.number({ max: 20 }),
