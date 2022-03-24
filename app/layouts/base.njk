@@ -5,6 +5,7 @@
 {% from "components/filter/macro.njk" import appFilter with context %}
 {% from "components/output/macro.njk" import appOutput %}
 {% from "components/pagination/macro.njk" import appPagination with context %}
+{% from "components/primary-navigation/macro.njk" import appPrimaryNavigation %}
 {% from "components/search/macro.njk" import appSearch %}
 {% from "components/sub-navigation/macro.njk" import appSubNavigation %}
 {% from "components/table-group/macro.njk" import appTableGroup %}
@@ -43,18 +44,39 @@
       text: "Sign out"
     }] if data.token
   }) }}
+
+  {{ govukPhaseBanner({
+    classes: "govuk-width-container",
+    tag: {
+      text: "Prototype"
+    },
+    text: "This is a prototype of a new service. Some parts may not work yet."
+  }) if data.token }}
+
+  {{ appPrimaryNavigation({
+    items: [{
+      href: "/logs",
+      text: "Logs",
+      active: activeSection == "logs"
+    }, {
+      href: organisationPath + "/schemes",
+      text: "Supported services",
+      active: activeSection == "schemes"
+    } if (isOwningOrg == true and isCoordinator) or isAdmin, {
+      href: organisationPath + "/users",
+      text: "Users",
+      active: activeSection == "users"
+    }, {
+      href: organisationPath,
+      text: "About your organisation",
+      active: activeSection == "organisation"
+    }]
+  }) if data.token and not isAdmin }}
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
 {% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "Prototype"
-    },
-    text: "This is a prototype of a new service. Some parts may not work yet."
-  }) }}
-
   {% block pageNavigation %}
     {{ govukBackLink({
       href: backLink

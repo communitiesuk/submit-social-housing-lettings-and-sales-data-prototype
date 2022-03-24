@@ -1,4 +1,6 @@
 .app-header {
+  border-bottom: govuk-spacing(2) solid $govuk-brand-colour;
+
   .govuk-header__logo {
     @include govuk-media-query ($from: desktop) {
       width: 60%;

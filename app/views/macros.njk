@@ -68,29 +68,30 @@
   {% endif %}
 {% endmacro %}
 
-{# Organisation macros #}
+{# Admin macros #}
 {% from "components/sub-navigation/macro.njk" import appSubNavigation %}
-{% macro organisationNavigation(organisationPath, section, isOwningOrg) %}
+{% macro adminNavigation(title) %}
+  {{ heading(organisation.name) }}
   {{ appSubNavigation({
       items: [{
-      href: "/logs",
+      href: organisationPath + "/logs",
       text: "Logs",
-      active: section == "Logs"
+      active: activeSection == "logs"
     }, {
       href: organisationPath + "/schemes",
       text: "Supported services",
-      active: section == "Supported services"
-    } if (isOwningOrg == true and isCoordinator) or isAdmin, {
+      active: activeSection == "schemes"
+    }, {
       href: organisationPath + "/users",
       text: "Users",
-      active: section == "Users"
+      active: activeSection == "users"
     }, {
       href: organisationPath,
       text: "About this organisation",
-      active: section == "Details"
+      active: activeSection == "organisation"
     }]
   }) }}
-  <h2 class="govuk-visually-hidden">{{ section }}</h2>
+  <h2 class="govuk-visually-hidden">{{ title }}</h2>
 {% endmacro %}
 
 {% macro organisationRelationshipHtml(organisations, organisation, type) %}

@@ -1,7 +1,7 @@
 {% extends "layouts/form.njk" %}
 
 {% import "macros.njk" as macro %}
-{% from "macros.njk" import organisationNavigation with context %}
+{% from "macros.njk" import adminNavigation with context %}
 
 {% set title = "Logs" %}
 {% set typeName = type | capitalize %}
@@ -17,7 +17,7 @@
     }, {
       text: title
     }]
-  }) if isAdmin and activeSection != "users" }}
+  }) if isAdmin }}
 {% endblock %}
 
 {% block form %}
@@ -26,11 +26,10 @@
     type: "success"
   }) if query.success }}
 
-  {{ macro.heading(organisation.name) }}
+  {{ adminNavigation(title) if isAdmin else macro.heading(title) }}
 
-  {{ organisationNavigation(organisationPath, title, isOwningOrg) }}
-
-  {# appSubNavigation({
+  <!--
+  {{ appSubNavigation({
       items: [{
       href: "/logs?type=lettings",
       text: "Lettings",
@@ -40,10 +39,25 @@
       text: "Sales",
       active: type == "sales"
     }]
-  }) #}
+  }) }}
   <h2 class="govuk-visually-hidden">{{ typeName }}</h2>
+  -->
 
   <div class="app-filter-layout" data-module="filter-layout">
+    <div class="govuk-button-group app-filter-toggle">
+      {{ govukButton({
+        text: "Create a new " + type + " log",
+        name: "type",
+        value: type,
+        attributes: {
+          formaction: "/logs/create"
+        }
+      }) }}
+      <a class="govuk-link govuk-link--no-visited-state" href="#">
+        Upload logs
+      </a>
+    </div>
+
     <div class="app-filter-layout__filter">
       {{ appFilter({
         title: "Filters"
@@ -51,20 +65,6 @@
     </div>
 
     <div class="app-filter-layout__content">
-      <div class="govuk-button-group app-filter-toggle">
-        {{ govukButton({
-          text: "Create a new " + type + " log",
-          name: "type",
-          value: type,
-          attributes: {
-            formaction: "/logs/create"
-          }
-        }) }}
-        <a class="govuk-link govuk-link--no-visited-state" href="#">
-          Upload logs
-        </a>
-      </div>
-
       {%- set logRows = [] -%}
       {% set logs = logs | where("type", type) %}
       {% for log in logs | reverse %}

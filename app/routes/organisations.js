@@ -42,6 +42,7 @@ export const organisationRoutes = (router) => {
     const organisationPath = `/organisations/${organisationId}`
 
     if (organisation) {
+      res.locals.activeSection = 'organisation'
       res.render(`organisations/${view}`, {
         query: req.query,
         localAuthorities,

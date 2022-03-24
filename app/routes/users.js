@@ -4,7 +4,7 @@ export const userRoutes = (router) => {
   /**
    * Only admin users can view all users
    */
-  router.all('/users', (req, res, next) => {
+  router.get('/users', (req, res, next) => {
     const { data } = req.session
     const { organisationId } = data.account
 
@@ -41,6 +41,7 @@ export const userRoutes = (router) => {
       users = users.filter(user => organisationRelationships.includes(user.organisationId))
     }
 
+    res.locals.activeSection = 'users'
     res.render('users/index', {
       query: req.query,
       organisation,
