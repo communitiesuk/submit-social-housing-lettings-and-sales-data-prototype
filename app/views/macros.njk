@@ -18,8 +18,7 @@
   {{ (object + " has been deactivated.") if success == "deactivated" }}
   {{ "User has been deleted." if success == "deleted" }}
   {{ ("An invitation to submit CORE data has been resent to " + object + ".") if success == "reinvited" }}
-  {{ ("Scheme has been submitted for approval") if success == "submitted" }}
-  {{ ("Log " + object + " has been submitted") if success == "submitted-log" }}
+  {{ ("Log " + object + " has been submitted") if success == "submitted" }}
 {% endmacro %}
 
 {% macro entityHtml(title, href, caption) %}

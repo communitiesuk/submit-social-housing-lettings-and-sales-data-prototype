@@ -128,7 +128,7 @@ export const logRoutes = (router) => {
       logs[logId].updated = new Date().toISOString()
       logs[logId].updatedBy = account
 
-      return res.redirect(`/logs/?success=submitted-log&logId=${logId}`)
+      return res.redirect(`/logs/?success=submitted&logId=${logId}`)
     }
 
     const errors = {
