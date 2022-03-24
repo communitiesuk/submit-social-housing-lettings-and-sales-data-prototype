@@ -1,9 +1,24 @@
 {% extends "layouts/form.njk" %}
 
 {% import "macros.njk" as macro %}
+{% from "macros.njk" import organisationNavigation with context %}
 
 {% set title = "Logs" %}
 {% set typeName = type | capitalize %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [{
+      href: "/organisations",
+      text: "Organisations"
+    }, {
+      href: organisationPath,
+      text: organisation.name
+    }, {
+      text: title
+    }]
+  }) if isAdmin and activeSection != "users" }}
+{% endblock %}
 
 {% block form %}
   {{ govukNotificationBanner({
@@ -11,7 +26,9 @@
     type: "success"
   }) if query.success }}
 
-  {{ macro.heading(title) }}
+  {{ macro.heading(organisation.name) }}
+
+  {{ organisationNavigation(organisationPath, title, isOwningOrg) }}
 
   {# appSubNavigation({
       items: [{

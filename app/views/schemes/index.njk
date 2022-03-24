@@ -1,8 +1,9 @@
 {% extends "layouts/base.njk" %}
 
 {% import "macros.njk" as macro %}
+{% from "macros.njk" import organisationNavigation with context %}
 
-{% set title = organisation.name if isAdmin else "Your organisation" %}
+{% set title = organisation.name %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
@@ -21,7 +22,7 @@
 {% block content %}
   {{ macro.heading(title) }}
 
-  {{ macro.organisationNavigation(organisationPath, "Schemes", isOwningOrg) }}
+  {{ organisationNavigation(organisationPath, "Schemes", isOwningOrg) }}
 
   {{ govukButton({
     href: "/schemes/new",

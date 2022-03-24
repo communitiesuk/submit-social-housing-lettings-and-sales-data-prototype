@@ -74,7 +74,11 @@ export const accountRoutes = (router) => {
 
     req.session.data.token = true
 
-    res.redirect('/logs')
+    if (req.session.data.account.role === 'admin') {
+      res.redirect('/organisations')
+    } else {
+      res.redirect('/logs')
+    }
   })
 
   /**

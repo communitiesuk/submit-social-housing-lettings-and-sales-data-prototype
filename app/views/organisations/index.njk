@@ -23,7 +23,7 @@
   {%- set organisationRows = [] -%}
   {% for organisation in organisations %}
     {% set row = organisationRows.push([{
-        html: "<a href=\"/organisations/" + organisation.id + "\">" + organisation.name + "</a>" + ("<br><span class=\"govuk-!-font-weight-regular app-!-colour-muted\">Deactivated</span>" if organisation.deactivated)
+        html: "<a href=\"/organisations/" + organisation.id + "/logs\">" + organisation.name + "</a>" + ("<br><span class=\"govuk-!-font-weight-regular app-!-colour-muted\">Deactivated</span>" if organisation.deactivated)
       }, {
         text: organisation.id
       }, {
