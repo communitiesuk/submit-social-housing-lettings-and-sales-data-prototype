@@ -22,12 +22,6 @@ router.all('*', (req, res, next) => {
   // Set active section
   if (req.path.startsWith('/account')) {
     res.locals.activeSection = 'account'
-  } else if (req.path.startsWith('/logs')) {
-    res.locals.activeSection = 'logs'
-  } else if (req.path.startsWith('/organisations')) {
-    res.locals.activeSection = 'organisations'
-  } else if (req.path.startsWith('/users')) {
-    res.locals.activeSection = 'users'
   }
 
   next()

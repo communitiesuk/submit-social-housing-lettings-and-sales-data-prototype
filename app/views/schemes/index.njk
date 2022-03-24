@@ -1,7 +1,7 @@
 {% extends "layouts/base.njk" %}
 
 {% import "macros.njk" as macro %}
-{% from "macros.njk" import organisationNavigation with context %}
+{% from "macros.njk" import adminNavigation with context %}
 
 {% set title = "Supported services" %}
 
@@ -16,13 +16,11 @@
     }, {
       text: title
     }]
-  }) if isAdmin and activeSection != "users" }}
+  }) if isAdmin }}
 {% endblock %}
 
 {% block content %}
-  {{ macro.heading(organisation.name) }}
-
-  {{ organisationNavigation(organisationPath, title, isOwningOrg) }}
+  {{ adminNavigation(title) if isAdmin else macro.heading(title) }}
 
   {{ govukButton({
     href: "/schemes/new",

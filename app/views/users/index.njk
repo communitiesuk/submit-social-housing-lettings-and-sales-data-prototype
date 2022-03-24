@@ -1,13 +1,9 @@
 {% extends "layouts/base.njk" %}
 
 {% import "macros.njk" as macro %}
-{% from "macros.njk" import organisationNavigation with context %}
+{% from "macros.njk" import adminNavigation with context %}
 
-{% if activeSection == "users" %}
-  {% set title = "Users" %}
-{% else %}
-  {% set title = organisation.name %}
-{% endif %}
+{% set title = "Users" %}
 
 {% block pageNavigation %}
   {{ govukBreadcrumbs({
@@ -18,9 +14,9 @@
       href: organisationPath,
       text: organisation.name
     }, {
-      text: "Users"
+      text: title
     }]
-  }) if isAdmin and activeSection != "users" }}
+  }) if isAdmin }}
 {% endblock %}
 
 {% block content %}
@@ -30,9 +26,7 @@
     type: "success"
   }) if query.success }}
 
-  {{ macro.heading(title) }}
-
-  {{ organisationNavigation(organisationPath, "Users", isOwningOrg) if activeSection != "users" }}
+  {{ adminNavigation(title) if isAdmin else macro.heading(title) }}
 
   {{ govukButton({
     href: "/users/new",

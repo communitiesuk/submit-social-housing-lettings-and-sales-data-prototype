@@ -73,6 +73,7 @@ export const schemeRoutes = (router) => {
     const skip = (page - 1) * limit
     const results = schemes.slice(skip, skip + limit)
 
+    res.locals.activeSection = 'schemes'
     res.render('schemes/index', {
       query: req.query,
       organisations,
