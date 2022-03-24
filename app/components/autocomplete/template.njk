@@ -1,4 +1,4 @@
-{% from "govuk/components/select/macro.njk" import govukSelect as source %}
+{% from "govuk/components/select/macro.njk" import govukSelect with context %}
 
 {# Only select the first item if a value hasn’t already been given #}
 {% set selectFirstItem = true %}
@@ -28,7 +28,7 @@
   {% set addItem = items.push(item) %}
 {% endfor %}
 
-{{ source(decorate({
+{{ govukSelect({
   id: params.id,
   name: params.name,
   items: items,
@@ -46,4 +46,4 @@
     "data-show-all-values": params.showAllValues,
     "data-show-no-options-found": params.showNoOptionsFound
   }
-}, params.decorate)) }}
+}) }}

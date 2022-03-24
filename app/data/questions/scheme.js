@@ -25,12 +25,12 @@ Object.entries(schemes).forEach(([key, value]) => {
     text: value.name,
     value: value.id,
     hint: {
-      text: `${value.postcode}, ${value['local-authority'].name}`
+      text: `${value.postcodes.length} properties, ${value['local-authority'].name}`
     },
     attributes: {
       'data-append': value.postcode,
       'data-hint': _getClientGroups(value['client-groups']),
-      'data-synonyms': value.postcode
+      'data-synonyms': value.postcodes
     }
   })
 })
