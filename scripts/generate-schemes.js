@@ -26,8 +26,7 @@ const generateSchemes = () => {
         spGrant = 'false'
         clientGroups = faker.random.arrayElements([
           'homeless-families',
-          'homeless-individuals',
-          'rough-sleepers'
+          'homeless-individuals'
         ])
         typeOfRegisteredHome = 'false'
         typeOfSupport = 'low'
@@ -45,8 +44,6 @@ const generateSchemes = () => {
         type = 'foyer'
         spGrant = 'true'
         clientGroups = faker.random.arrayElements([
-          'mental-health',
-          'teenage-parents',
           'young-at-risk',
           'young-leaving-care'
         ])
@@ -90,8 +87,7 @@ const generateSchemes = () => {
         spGrant = 'true'
         clientGroups = faker.random.arrayElements([
           'learning-disabilities',
-          'mental-health',
-          'young-at-risk'
+          'mental-health'
         ])
         typeOfRegisteredHome = 'false'
         typeOfSupport = faker.helpers.randomize([
@@ -132,12 +128,8 @@ const generateSchemes = () => {
         type = 'other'
         spGrant = faker.datatype.boolean().toString()
         clientGroups = faker.random.arrayElements([
-          'offenders',
-          'domestic-violence',
           'alcohol',
-          'drugs',
-          'hiv-aids',
-          'refugees'
+          'drugs'
         ])
         typeOfRegisteredHome = 'false'
         typeOfSupport = faker.helpers.randomize([
