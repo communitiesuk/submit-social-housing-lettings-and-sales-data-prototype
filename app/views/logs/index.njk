@@ -65,6 +65,15 @@
     </div>
 
     <div class="app-filter-layout__content">
+      {{ appSearch({
+        decorate: ["logs", log.id, section.id, "scheme-query"],
+        classes: "govuk-!-margin-bottom-4",
+        label: {
+          classes: "govuk-!-margin-bottom-2",
+          text: "Search by tenant code or property reference"
+        }
+      }) }}
+
       {%- set logRows = [] -%}
       {% set logs = logs | where("type", type) %}
       {% for log in logs | reverse %}
@@ -89,14 +98,20 @@
         %}
       {% endfor %}
 
+      {% set captionHtml %}
+        <span class="govuk-!-margin-right-4">
+          <b>56</b> logs found of <b>217</b> total logs
+        </span>
+        <a class="govuk-link govuk-link--no-visited-state" href="#" download>Download (CSV)</a>
+      {% endset %}
+
       {% if logs | length > 0 %}
-        <figure class="app-figure">
-          <figcaption id="logs" class="app-figure__caption">
-            <span class="govuk-!-margin-right-4">
-              <b>56</b> logs found of <b>217</b> total logs
-            </span>
-            <a class="govuk-link govuk-link--no-visited-state" href="#" download>Download (CSV)</a>
-          </figcaption>
+        {% call appFigure ({
+          id: "logs",
+          caption: {
+            html: captionHtml
+          }
+        }) %}
           {% call appTableGroup({
             labelledby: "logs"
           }) %}
@@ -118,7 +133,7 @@
               rows: logRows
             }) }}
           {% endcall %}
-        </figure>
+        {% endcall %}
 
         {{ appPagination({
           items: [{
