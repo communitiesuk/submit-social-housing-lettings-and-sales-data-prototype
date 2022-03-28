@@ -3,8 +3,13 @@ export const accountRoutes = (router) => {
    * Redirect to logs page if visit home page and signed in
    */
   router.get('/', (req, res) => {
-    if (req.session.data.account) {
-      res.redirect('/logs')
+    const { account } = req.session.data
+
+    if (account) {
+      const homePage = res.locals.isAdmin
+        ? '/organisations'
+        : `/organisations/${account.organisationId}/logs`
+      res.redirect(homePage)
     } else {
       res.render('index')
     }
@@ -52,7 +57,7 @@ export const accountRoutes = (router) => {
    * Sign in
    */
   router.post('/account/sign-in', (req, res) => {
-    const { account, users } = req.session.data
+    const { account, organisations, users } = req.session.data
 
     // Demo accounts
     switch (account.email) {
@@ -68,17 +73,16 @@ export const accountRoutes = (router) => {
       case 'data.coordinator@managing.org.uk':
         req.session.data.account = users.DCM01
         break
+      case 'data.provider@managing.org.uk':
+        req.session.data.account = users.DPM01
+        break
       default:
         req.session.data.account = users.DP001
     }
 
     req.session.data.token = true
 
-    if (req.session.data.account.role === 'admin') {
-      res.redirect('/organisations')
-    } else {
-      res.redirect('/logs')
-    }
+    res.redirect('/')
   })
 
   /**

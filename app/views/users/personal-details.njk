@@ -12,7 +12,7 @@
   {% set caption = false %}
   {% set title = "Invite a user to submit CORE data" %}
   {% set buttonText = "Continue" %}
-  {% set backLink = "/users" if activeSection == "users" else organisationPath %}
+  {% set backLink = "javascript:history.go(-1);" %}
   {% set formAction = userPath + "/organisation" %}
 {% endif %}
 

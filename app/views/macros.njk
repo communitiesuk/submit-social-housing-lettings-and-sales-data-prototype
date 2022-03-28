@@ -71,24 +71,24 @@
 {# Admin macros #}
 {% from "components/sub-navigation/macro.njk" import appSubNavigation %}
 {% macro adminNavigation(title) %}
-  {{ heading(organisation.name) }}
+  {{ heading(thisOrganisation.name) }}
   {{ appSubNavigation({
       items: [{
-      href: organisationPath + "/logs",
+      href: thisOrganisationPath + "/logs",
       text: "Logs",
-      active: activeSection == "logs"
+      active: path.startsWith(thisOrganisationPath + "/logs")
     }, {
-      href: organisationPath + "/schemes",
+      href: thisOrganisationPath + "/schemes",
       text: "Supported services",
-      active: activeSection == "schemes"
+      active: path.startsWith(thisOrganisationPath + "/schemes")
     }, {
-      href: organisationPath + "/users",
+      href: thisOrganisationPath + "/users",
       text: "Users",
-      active: activeSection == "users"
+      active: path.startsWith(thisOrganisationPath + "/users")
     }, {
-      href: organisationPath,
+      href: thisOrganisationPath,
       text: "About this organisation",
-      active: activeSection == "organisation"
+      active: path == thisOrganisationPath
     }]
   }) }}
   <h2 class="govuk-visually-hidden">{{ title }}</h2>

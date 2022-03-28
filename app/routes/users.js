@@ -2,14 +2,11 @@ import * as utils from '../utils.js'
 
 export const userRoutes = (router) => {
   /**
-   * Only admin users can view all users
+   * List all users (admin only)
    */
   router.get('/users', (req, res, next) => {
-    const { data } = req.session
-    const { organisationId } = data.account
-
     if (!res.locals.isAdmin) {
-      return res.redirect(`/organisations/${organisationId}/users`)
+      return res.redirect(`${res.locals.userOrganisationPath}/users`)
     }
 
     next()
@@ -22,30 +19,25 @@ export const userRoutes = (router) => {
     let { organisations, users } = req.session.data
     const { organisationId } = req.params
 
-    // Convert users to array
+    // Get users as array
     users = utils.objectToArray(users)
 
-    // If path is scoped to organisation, only show users in that organisation
-    // or any of its children
-    let organisation
-    let organisationPath = ''
+    // Scope users to organisation
     if (organisationId) {
-      organisation = utils.getEntityById(organisations, organisationId)
-      organisationPath = `/organisations/${organisationId}`
-
+      const organisation = organisations[organisationId]
       const organisationRelationships = [
         organisationId,
         ...(organisation.children ? organisation.children : [])
       ]
 
-      users = users.filter(user => organisationRelationships.includes(user.organisationId))
+      // Only return users with a relationship with organisation
+      users = users.filter(user => organisationRelationships
+        .includes(user.organisationId)
+      )
     }
 
-    res.locals.activeSection = 'users'
     res.render('users/index', {
       query: req.query,
-      organisation,
-      organisationPath,
       users
     })
   })
@@ -57,7 +49,6 @@ export const userRoutes = (router) => {
     const { users } = req.session.data
     const userId = utils.generateUniqueId()
 
-    // Create a new blank user in session data
     users[userId] = {}
 
     res.redirect(`/users/${userId}/personal-details`)
@@ -73,8 +64,10 @@ export const userRoutes = (router) => {
 
     const user = utils.getEntityById(users, userId)
     const userPath = `/users/${userId}`
-    const organisation = utils.getEntityById(organisations, account.organisationId)
-    const organisationPath = `/organisations/${account.organisationId}`
+
+    // Get organisation that user belongs to
+    const organisationId = account.organisationId
+    const organisation = utils.getEntityById(organisations, organisationId)
 
     // Admin can add users to any organisation
     const allOrganisations = utils.objectToArray(organisations)
@@ -83,7 +76,7 @@ export const userRoutes = (router) => {
     const managedOrganisations = [organisation].concat(
       allOrganisations.filter(organisation => {
         if (organisation.parents) {
-          return organisation.parents.includes(account.organisationId)
+          return organisation.parents.includes(organisationId)
         }
 
         return false
@@ -95,8 +88,6 @@ export const userRoutes = (router) => {
         query: req.query,
         allOrganisations,
         managedOrganisations,
-        organisation,
-        organisationPath,
         user,
         users,
         userPath

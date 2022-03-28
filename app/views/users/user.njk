@@ -5,31 +5,6 @@
 {% set title = user.name or user.email %}
 {% set canAdminUsers = isAdmin or isCoordinator %}
 
-{% block pageNavigation %}
-  {{ govukBreadcrumbs({
-    items: [{
-      href: "/organisations",
-      text: "Organisations"
-    }, {
-      href: organisationPath,
-      text: organisation.name
-    }, {
-      href: organisationPath + "/users",
-      text: "Users"
-    }, {
-      text: title
-    }] if isAdmin else [{
-      href: organisationPath,
-      text: organisation.name
-    }, {
-      href: organisationPath + "/users",
-      text: "Users"
-    }, {
-      text: title
-    }]
-  }) }}
-{% endblock %}
-
 {% block content %}
   {{ macro.heading(title) }}
 

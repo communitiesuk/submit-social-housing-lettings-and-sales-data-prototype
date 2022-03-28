@@ -23,47 +23,40 @@ const getSchemePaths = (req) => {
   return wizard(journey, req)
 }
 
-const getSortedSchemes = (schemes) => {
-  return utils.objectToArray(schemes).sort((a, b) => {
-    // If name not provided, don’t sort
-    if (!a.name || !b.name) {
-      return 0
+export const schemeRoutes = (router) => {
+  /**
+   * List all schemes (admin only)
+   */
+  router.get('/schemes', (req, res, next) => {
+    if (!res.locals.isAdmin) {
+      return res.redirect(`${res.locals.userOrganisationPath}/schemes`)
     }
 
-    const fa = a.name.toLowerCase()
-    const fb = b.name.toLowerCase()
-
-    if (fa < fb) { return -1 }
-    if (fa > fb) { return 1 }
-    return 0
+    next()
   })
-}
 
-export const schemeRoutes = (router) => {
   /**
    * List schemes
    */
-  router.all('/organisations/:organisationId/schemes', (req, res) => {
+  router.get(['/schemes', '/organisations/:organisationId/schemes'], (req, res) => {
     let { organisations, schemes } = req.session.data
     const { organisationId } = req.params
 
-    // If path is scoped to organisation, only show schemes in that organisation
-    // or any of its children
-    let organisation
-    let organisationPath = ''
-    if (organisationId) {
-      organisation = utils.getEntityById(organisations, organisationId)
-      organisationPath = `/organisations/${organisationId}`
+    // Get schemes as array sorted by scheme name
+    schemes = utils.objectToArray(schemes)
+    schemes = utils.sortArray(schemes, 'name')
 
+    // Scope schemes to organisation
+    if (organisationId) {
+      const organisation = organisations[organisationId]
       const organisationRelationships = [
         organisationId,
         ...(organisation.children ? organisation.children : [])
       ]
 
-      // Filter schemes by current organisation
-      schemes = getSortedSchemes(schemes)
-      schemes = schemes.filter(scheme =>
-        organisationRelationships.includes(scheme.organisationId)
+      // Only return users with a relationship with organisation
+      schemes = schemes.filter(user => organisationRelationships
+        .includes(user.organisationId)
       )
     }
 
@@ -73,12 +66,9 @@ export const schemeRoutes = (router) => {
     const skip = (page - 1) * limit
     const results = schemes.slice(skip, skip + limit)
 
-    res.locals.activeSection = 'schemes'
     res.render('schemes/index', {
       query: req.query,
       organisations,
-      organisation,
-      organisationPath,
       schemes,
       page,
       limit,
@@ -112,16 +102,16 @@ export const schemeRoutes = (router) => {
    * View scheme
    */
   router.get('/schemes/:schemeId/:view?', (req, res) => {
-    const { account, organisations, schemes } = req.session.data
+    const { organisations, schemes } = req.session.data
     const { schemeId } = req.params
     const view = req.params.view ? req.params.view : 'scheme'
 
     const scheme = utils.getEntityById(schemes, schemeId)
     const schemePath = `/schemes/${schemeId}`
 
-    const organisationId = account?.organisationId || 'LH3904'
+    // Get organisation that own schemes
+    const organisationId = scheme.organisationId
     const organisation = utils.getEntityById(organisations, organisationId)
-    const organisationPath = `/organisations/${organisationId}`
 
     // Admin can add schemes to any organisation
     const allOrganisations = utils.objectToArray(organisations)
@@ -146,7 +136,6 @@ export const schemeRoutes = (router) => {
         managedOrganisations,
         organisation,
         organisationId,
-        organisationPath,
         scheme,
         schemes,
         schemePath

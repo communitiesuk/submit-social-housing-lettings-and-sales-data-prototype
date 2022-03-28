@@ -3,17 +3,14 @@ import localAuthorities from '../datasets/local-authorities.js'
 
 export const organisationRoutes = (router) => {
   /**
-   * List organisations
+   * List organisations (admins only)
    */
   router.all('/organisations', (req, res) => {
-    let { organisations } = req.session.data
-
-    // Convert organisations to array
-    organisations = utils.objectToArray(organisations)
+    const { organisations } = req.session.data
 
     res.render('organisations/index', {
       query: req.query,
-      organisations
+      organisations: utils.objectToArray(organisations)
     })
   })
 
@@ -39,16 +36,13 @@ export const organisationRoutes = (router) => {
     const view = req.params.view ? req.params.view : 'organisation'
 
     const organisation = organisations[organisationId]
-    const organisationPath = `/organisations/${organisationId}`
 
     if (organisation) {
-      res.locals.activeSection = 'organisation'
       res.render(`organisations/${view}`, {
         query: req.query,
         localAuthorities,
         organisation,
-        organisations,
-        organisationPath
+        organisations
       })
     } else {
       res.redirect('/organisations')
@@ -62,8 +56,6 @@ export const organisationRoutes = (router) => {
     const { organisations } = req.session.data
     const { organisationId, view } = req.params
 
-    const organisationPath = `/organisations/${organisationId}`
-
     // Deactivate user
     if (view === 'deactivate') {
       organisations[organisationId].deactivated = true
@@ -74,6 +66,6 @@ export const organisationRoutes = (router) => {
       organisations[organisationId].deactivated = false
     }
 
-    res.redirect(organisationPath)
+    res.redirect(res.locals.thisOrganisationPath)
   })
 }

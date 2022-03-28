@@ -4,29 +4,20 @@
 {% from "macros.njk" import adminNavigation with context %}
 
 {% set title = "Users" %}
-
-{% block pageNavigation %}
-  {{ govukBreadcrumbs({
-    items: [{
-      href: "/organisations",
-      text: "Organisations"
-    }, {
-      href: organisationPath,
-      text: organisation.name
-    }, {
-      text: title
-    }]
-  }) if isAdmin }}
-{% endblock %}
+{% set isGlobalView = isAdmin and path.startsWith("/users") %}
+{% set deactivatedUser = users | where("id", query.userId) | first %}
 
 {% block content %}
-  {% set deactivatedUser = users | where("id", query.userId) | first %}
   {{ govukNotificationBanner({
     text: macro.notificationBannerText(query.success, deactivatedUser.name),
     type: "success"
   }) if query.success }}
 
-  {{ adminNavigation(title) if isAdmin else macro.heading(title) }}
+  {% if isGlobalView %}
+    {{ macro.heading(title) }}
+  {% else %}
+    {{ adminNavigation(title) if isAdmin else macro.heading(title) }}
+  {% endif %}
 
   {{ govukButton({
     href: "/users/new",
