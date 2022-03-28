@@ -35,6 +35,10 @@
   &:hover {
     border-bottom-color: $govuk-link-hover-colour;
   }
+
+  &:active {
+    border-bottom-color: $govuk-link-active-colour;
+  }
 }
 
 .app-primary-navigation__item--align-right {
