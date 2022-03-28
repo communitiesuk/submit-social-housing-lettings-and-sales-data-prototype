@@ -72,6 +72,17 @@
           }) if canAdminUsers and not user.deactivated
         }, {
           key: {
+            text: "Data protection officer"
+          },
+          value: {
+            text: user.dpo | textFromInputValue(data.questions["yes-no"])
+          },
+          actions: actionLinks({
+            href: userPath + "/role",
+            visuallyHiddenText: "role"
+          }) if canAdminUsers and not user.deactivated
+        }, {
+          key: {
             text: "Last logged in"
           },
           value: {

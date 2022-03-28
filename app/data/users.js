@@ -1,11 +1,12 @@
 export default {
-  // Administrator at DHLUC
+  // Administrator at DLUHC
   ADMIN: {
     name: 'Gary Meyler',
     email: 'admin@levellingup.gov.uk',
     organisationId: 'DLUHC',
     role: 'admin',
-    lastActive: '2021-10-24T16:04:34'
+    lastActive: '2021-10-24T16:04:34',
+    dpo: 'true'
   },
   // Data coordinator at owning organisation
   DC001: {
@@ -14,7 +15,8 @@ export default {
     organisationId: 'LH3904',
     role: 'coordinator',
     lastActive: '2021-10-24T16:04:34',
-    invitedById: 'ADMIN'
+    invitedById: 'ADMIN',
+    dpo: 'true'
   },
   // Data provider at owning organisation
   DP001: {
@@ -22,7 +24,8 @@ export default {
     email: 'data.provider@owning.org.uk',
     organisationId: 'LH3904',
     role: 'provider',
-    invitedById: 'DC001'
+    invitedById: 'DC001',
+    dpo: 'false'
   },
   // Data provider at managing organisation
   DCM01: {
@@ -31,7 +34,8 @@ export default {
     organisationId: 'CHILD1',
     role: 'coordinator',
     lastActive: '2021-08-09T12:24:12',
-    invitedById: 'DC001'
+    invitedById: 'DC001',
+    dpo: 'true'
   },
   DPM01: {
     name: 'Sally Jones',
@@ -39,7 +43,8 @@ export default {
     organisationId: 'CHILD1',
     role: 'provider',
     lastActive: '2021-09-02T13:04:18',
-    invitedById: 'DCM01'
+    invitedById: 'DCM01',
+    dpo: 'false'
   },
   DPM02: {
     name: 'David Smith',
@@ -47,6 +52,7 @@ export default {
     organisationId: 'CHILD2',
     role: 'provider',
     lastActive: '2021-10-01T11:04:18',
-    invitedById: 'DC001'
+    invitedById: 'DC001',
+    dpo: 'false'
   }
 }

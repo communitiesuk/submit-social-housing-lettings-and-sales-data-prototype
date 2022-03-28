@@ -76,6 +76,24 @@
         }]
       }) }}
 
+      {{ govukRadios({
+        decorate: ["users", user.id, "dpo"],
+        classes: "govuk-radios--inline",
+        fieldset: {
+          legend: {
+            classes: "govuk-fieldset__legend--m",
+            text: "Is this user also your organisation’s data protection officer?"
+          }
+        },
+        items: [{
+          value: "true",
+          text: "Yes"
+        }, {
+          value: "false",
+          text: "No"
+        }]
+      }) }}
+
       {{ govukButton({
         text: buttonText
       }) }}
