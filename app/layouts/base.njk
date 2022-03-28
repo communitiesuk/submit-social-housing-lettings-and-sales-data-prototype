@@ -18,10 +18,15 @@
   <script src="/public/javascripts/application.js" defer></script>
 {% endblock %}
 
+{# Pagination #}
+{% set pageNumber = pagination.current %}
+{% set pageCount = pagination.items | length %}
+
 {% block pageTitle %}
   {{- "Error: " if errors -}}
-  {{- title + " - " if title -}}
-  {{- serviceName + " - GOV.UK" -}}
+  {{- title if title -}}
+  {{- " (page " + pageNumber + " of " + pageCount + ")" if pageCount > 1 -}}
+  {{- " - " + serviceName + " - GOV.UK" -}}
 {% endblock %}
 
 {% set bodyAttributes = {"data-module": "edge"} %}
@@ -58,6 +63,10 @@
       text: "Organisations",
       active: path.startsWith("/organisations")
     }, {
+      href: "/logs",
+      text: "All logs",
+      active: path.startsWith("/logs")
+    }, {
       href: "/schemes",
       text: "All supported services",
       active: path.startsWith("/schemes")
@@ -65,10 +74,6 @@
       href: "/users",
       text: "All users",
       active: path.startsWith("/users")
-    }, {
-      href: "/logs",
-      text: "All logs",
-      active: path.startsWith("/logs")
     }] if isAdmin else [{
       href: userOrganisationPath + "/logs",
       text: "Logs",

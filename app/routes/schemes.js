@@ -65,15 +65,17 @@ export const schemeRoutes = (router) => {
     const limit = parseInt(req.query.limit) || 20
     const skip = (page - 1) * limit
     const results = schemes.slice(skip, skip + limit)
+    const pagination = utils.getPaginationItems(
+      page,
+      limit,
+      schemes.length
+    )
 
     res.render('schemes/index', {
       query: req.query,
       organisations,
-      schemes,
-      page,
-      limit,
-      skip,
-      results
+      results,
+      pagination
     })
   })
 

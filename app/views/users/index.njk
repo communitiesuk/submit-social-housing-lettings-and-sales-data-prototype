@@ -25,8 +25,19 @@
     text: "Invite user"
   }) if isAdmin or isCoordinator }}
 
+  {{ appSearch({
+    decorate: "q",
+    classes: "govuk-!-margin-bottom-4",
+    label: {
+      classes: "govuk-!-margin-bottom-2",
+      text: "Search by name or email address"
+    }
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
   {% set userRows = [] %}
-  {% for user in users %}
+  {% for user in results %}
     {% set userPath = "/users/" + user.id %}
     {% set userOrganisation = data.organisations[user.organisationId].name %}
     {% set userRole = data.roles[user.role].name %}
@@ -40,18 +51,43 @@
     %}
   {% endfor %}
 
-  {{ govukTable({
-    firstCellIsHeader: true,
-    head: [{
-      classes: "govuk-!-width-one-quarter",
-      text: "Name and email address"
-    }, {
-      classes: "govuk-!-width-one-half",
-      text: "Organisation and role"
-    }, {
-      classes: "govuk-!-width-one-quarter",
-      text: "Last logged in"
-    }],
-    rows: userRows
-  }) }}
+  {% set captionHtml %}
+    <span class="govuk-!-margin-right-4">
+      {% if q %}<b>56</b> users found of{% endif %}
+      <b>{{ pagination.results.count }}</b> total users
+    </span>
+  {% endset %}
+
+  {% if results.length %}
+    {% call appFigure ({
+      id: "users",
+      caption: {
+        html: captionHtml
+      }
+    }) %}
+      {% call appTableGroup({
+        labelledby: "users"
+      }) %}
+        {{ govukTable({
+          firstCellIsHeader: true,
+          head: [{
+            classes: "govuk-!-width-one-quarter",
+            text: "Name and email address"
+          }, {
+            classes: "govuk-!-width-one-half",
+            text: "Organisation and role"
+          }, {
+            classes: "govuk-!-width-one-quarter",
+            text: "Last logged in"
+          }],
+          rows: userRows
+        }) }}
+      {% endcall %}
+      {{ appPagination(pagination) }}
+    {% endcall %}
+  {% else %}
+    <p class="govuk-body">
+      <strong>No users found</strong>
+    </p>
+  {% endif %}
 {% endblock %}

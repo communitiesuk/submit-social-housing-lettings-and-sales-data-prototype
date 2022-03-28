@@ -6,11 +6,25 @@ export const organisationRoutes = (router) => {
    * List organisations (admins only)
    */
   router.all('/organisations', (req, res) => {
-    const { organisations } = req.session.data
+    let { organisations } = req.session.data
+
+    organisations = utils.objectToArray(organisations)
+
+    // Pagination
+    const page = parseInt(req.query.page) || 1
+    const limit = parseInt(req.query.limit) || 100
+    const skip = (page - 1) * limit
+    const results = organisations.slice(skip, skip + limit)
+    const pagination = utils.getPaginationItems(
+      page,
+      limit,
+      organisations.length
+    )
 
     res.render('organisations/index', {
       query: req.query,
-      organisations: utils.objectToArray(organisations)
+      results,
+      pagination
     })
   })
 

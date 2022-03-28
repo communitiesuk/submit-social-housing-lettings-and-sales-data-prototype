@@ -25,13 +25,15 @@
   }) }}
 
   {{ appSearch({
-    decorate: ["logs", log.id, section.id, "scheme-query"],
+    decorate: "q",
     classes: "govuk-!-margin-bottom-4",
     label: {
       classes: "govuk-!-margin-bottom-2",
       text: "Search by service name or postcode"
     }
   }) }}
+
+  <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
 
   {% set schemeRows = [] %}
   {% for scheme in results %}
@@ -55,11 +57,12 @@
 
   {% set captionHtml %}
     <span class="govuk-!-margin-right-4">
-      <b>56</b> services found of <b>{{ schemes.length }}</b> total services
+      {% if q %}<b>56</b> services found of{% endif %}
+      <b>{{ pagination.results.count }}</b> total services
     </span>
   {% endset %}
 
-  {% if schemes | length > 0 %}
+  {% if results.length %}
     {% call appFigure ({
       id: "services",
       caption: {
@@ -81,9 +84,11 @@
           rows: schemeRows
         }) }}
       {% endcall %}
-      {{ appPagination(pages(page, limit, schemes.length)) }}
+      {{ appPagination(pagination) }}
     {% endcall %}
   {% else %}
-    <p class="govuk-body">No supported housing services have been created yet.</p>
+    <p class="govuk-body">
+      <strong>No supported housing services found</strong>
+    </p>
   {% endif %}
 {% endblock %}

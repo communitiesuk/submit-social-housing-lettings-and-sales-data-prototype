@@ -58,7 +58,7 @@
 
     <div class="app-filter-layout__content">
       {{ appSearch({
-        decorate: ["logs", log.id, section.id, "scheme-query"],
+        decorate: "q",
         classes: "govuk-!-margin-bottom-4",
         label: {
           classes: "govuk-!-margin-bottom-2",
@@ -66,9 +66,10 @@
         }
       }) }}
 
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
       {%- set logRows = [] -%}
-      {% set logs = logs | where("type", type) %}
-      {% for log in logs | reverse %}
+      {% for log in results | reverse %}
         {% set row = logRows.push([{
             html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
           }, {
@@ -92,12 +93,13 @@
 
       {% set captionHtml %}
         <span class="govuk-!-margin-right-4">
-          <b>56</b> logs found of <b>217</b> total logs
+          {% if q %}<b>56</b> logs found of{% endif %}
+          <b>{{ pagination.results.count }}</b> total logs
         </span>
         <a class="govuk-link govuk-link--no-visited-state" href="#" download>Download (CSV)</a>
       {% endset %}
 
-      {% if logs | length > 0 %}
+      {% if results.length %}
         {% call appFigure ({
           id: "logs",
           caption: {
@@ -126,40 +128,11 @@
             }) }}
           {% endcall %}
         {% endcall %}
-
-        {{ appPagination({
-          items: [{
-            href: "/?type=" + type + "page=1",
-            text: "1"
-          }, {
-            href: "/?type=" + type + "page=2",
-            text: "2",
-            current: "true"
-          }, {
-            href: "/?type=" + type + "page=3",
-            text: "3"
-          }, {
-            href: "/?type=" + type + "page=4",
-            text: "4"
-          }, {
-            href: "/?type=" + type + "page=5",
-            text: "5"
-          }],
-          next: {
-            href: "/?type=" + type + "page=3"
-          },
-          previous: {
-            href: "/?type=" + type + "page=1"
-          },
-          results: {
-            to: logs | length,
-            from: 1,
-            count: 56,
-            type: "logs"
-          }
-        }) }}
+        {{ appPagination(pagination) }}
       {% else %}
-        <p class="govuk-body">No {{ type }} logs found.</p>
+        <p class="govuk-body">
+          <strong>No {{ type }} logs found</strong>
+        </p>
       {% endif %}
     </div>
   </div>

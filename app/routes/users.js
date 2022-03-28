@@ -36,9 +36,22 @@ export const userRoutes = (router) => {
       )
     }
 
+    // Pagination
+    const page = parseInt(req.query.page) || 1
+    const limit = parseInt(req.query.limit) || 100
+    const skip = (page - 1) * limit
+    const results = users.slice(skip, skip + limit)
+    const pagination = utils.getPaginationItems(
+      page,
+      limit,
+      users.length
+    )
+
     res.render('users/index', {
       query: req.query,
-      users
+      users,
+      results,
+      pagination
     })
   })
 

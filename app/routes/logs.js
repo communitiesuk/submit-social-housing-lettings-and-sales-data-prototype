@@ -31,10 +31,25 @@ export const logRoutes = (router) => {
     // const updatedBy = req.session.user || req.query.user || currentUser.id
     // logs = logs.filter(log => log.updatedBy === updatedBy)
 
+    // Filter: type of log
+    logs.filter(log => log.type === type)
+
+    // Pagination
+    const page = parseInt(req.query.page) || 1
+    const limit = parseInt(req.query.limit) || 50
+    const skip = (page - 1) * limit
+    const results = logs.slice(skip, skip + limit)
+    const pagination = utils.getPaginationItems(
+      page,
+      limit,
+      logs.length
+    )
+
     res.render('logs/index', {
       query: req.query,
-      logs,
       type,
+      results,
+      pagination,
       users
     })
   })

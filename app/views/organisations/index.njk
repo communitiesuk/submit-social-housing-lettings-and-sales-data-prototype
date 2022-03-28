@@ -17,11 +17,22 @@
       href: "#",
       text: "Create a new organisation"
     }) }}
-    <p><a href="#">Merge organisations</a></p>
+    <a class="govuk-link" href="#">Merge organisations</a>
   </div>
 
+  {{ appSearch({
+    decorate: "q",
+    classes: "govuk-!-margin-bottom-4",
+    label: {
+      classes: "govuk-!-margin-bottom-2",
+      text: "Search by organisation name or registration number"
+    }
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
   {%- set organisationRows = [] -%}
-  {% for organisation in organisations %}
+  {% for organisation in results %}
     {% set row = organisationRows.push([{
         html: "<a href=\"/organisations/" + organisation.id + "/logs\">" + organisation.name + "</a>" + ("<br><span class=\"govuk-!-font-weight-regular app-!-colour-muted\">Deactivated</span>" if organisation.deactivated)
       }, {
@@ -32,18 +43,43 @@
     %}
   {% endfor %}
 
-  {{ govukTable({
-    firstCellIsHeader: true,
-    head: [{
-      classes: "govuk-!-width-one-half",
-      text: "Name"
-    }, {
-      classes: "govuk-!-width-one-quarter",
-      text: "Registration number"
-    }, {
-      classes: "govuk-!-width-one-quarter",
-      text: "Type"
-    }],
-    rows: organisationRows
-  }) }}
+  {% set captionHtml %}
+    <span class="govuk-!-margin-right-4">
+      {% if q %}<b>56</b> organisations found of{% endif %}
+      <b>{{ pagination.results.count }}</b> total organisations
+    </span>
+  {% endset %}
+
+  {% if results.length %}
+    {% call appFigure ({
+      id: "organisations",
+      caption: {
+        html: captionHtml
+      }
+    }) %}
+      {% call appTableGroup({
+        labelledby: "organisations"
+      }) %}
+        {{ govukTable({
+          firstCellIsHeader: true,
+          head: [{
+            classes: "govuk-!-width-one-half",
+            text: "Name"
+          }, {
+            classes: "govuk-!-width-one-quarter",
+            text: "Registration number"
+          }, {
+            classes: "govuk-!-width-one-quarter",
+            text: "Type"
+          }],
+          rows: organisationRows
+        }) }}
+      {% endcall %}
+      {{ appPagination(pagination) }}
+    {% endcall %}
+  {% else %}
+    <p class="govuk-body">
+      <strong>No organisations found</strong>
+    </p>
+  {% endif %}
 {% endblock %}
