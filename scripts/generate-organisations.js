@@ -48,7 +48,8 @@ const generateOrganisations = () => {
           : false,
       stock: value.stock
         ? value.stock
-        : stock
+        : stock,
+      signedDSA: faker.date.recent()
     }
   })
 

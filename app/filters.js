@@ -68,6 +68,12 @@ export default (env) => {
     return filtered
   }
 
+  filters.ordinal = (number) => {
+    const s = ['th', 'st', 'nd', 'rd']
+    const v = number % 100
+    return number + (s[(v - 20) % 10] || s[v] || s[0])
+  }
+
   filters.optionItems = (array, text, value, hint = false) => {
     text = text || 'name'
     value = value || 'id'
