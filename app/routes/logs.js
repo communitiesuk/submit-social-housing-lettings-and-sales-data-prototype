@@ -8,6 +8,7 @@ export const logRoutes = (router) => {
    */
   router.get(['/logs', '/organisations/:organisationId/logs'], (req, res) => {
     let { logs, users } = req.session.data
+    const { organisationId } = req.params
     const type = req.query.type || 'lettings'
 
     // Convert logs to array
@@ -33,6 +34,14 @@ export const logRoutes = (router) => {
 
     // Filter: type of log
     logs.filter(log => log.type === type)
+
+    // Filter: organisation’s logs (if scoped to organisation)
+    if (organisationId) {
+      logs = logs.filter(log => {
+        return log.setup['organisation-manager'] === organisationId ||
+          log.setup['organisation-owner'] === organisationId
+      })
+    }
 
     // Pagination
     const page = parseInt(req.query.page) || 1
