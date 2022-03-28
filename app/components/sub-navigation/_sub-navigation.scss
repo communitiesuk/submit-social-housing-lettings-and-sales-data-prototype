@@ -46,6 +46,14 @@
     border-bottom: 4px solid $govuk-link-colour;
     padding-left: govuk-spacing(3);
   }
+
+  &:hover {
+    border-color: $govuk-link-hover-colour;
+  }
+
+  &:active {
+    border-color: $govuk-link-active-colour;
+  }
 }
 
 .app-sub-navigation__link {
@@ -53,10 +61,6 @@
   @include govuk-link-style-no-visited-state;
   @include govuk-link-style-no-underline;
   @include govuk-typography-weight-bold;
-
-  &:not(:focus):hover {
-    color: $govuk-link-colour;
-  }
 
   // Extend the touch area of the link to the list
   &:after {
