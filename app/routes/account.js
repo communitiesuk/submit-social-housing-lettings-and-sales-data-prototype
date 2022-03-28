@@ -57,7 +57,7 @@ export const accountRoutes = (router) => {
    * Sign in
    */
   router.post('/account/sign-in', (req, res) => {
-    const { account, organisations, users } = req.session.data
+    const { account, users } = req.session.data
 
     // Demo accounts
     switch (account.email) {
