@@ -63,17 +63,17 @@
       text: "Organisations",
       active: path.startsWith("/organisations")
     }, {
+      href: "/users",
+      text: "Users",
+      active: path.startsWith("/users")
+    }, {
       href: "/logs",
-      text: "All logs",
+      text: "Logs",
       active: path.startsWith("/logs")
     }, {
       href: "/schemes",
-      text: "All supported services",
+      text: "Supported services",
       active: path.startsWith("/schemes")
-    }, {
-      href: "/users",
-      text: "All users",
-      active: path.startsWith("/users")
     }] if isAdmin else [{
       href: userOrganisationPath + "/logs",
       text: "Logs",
