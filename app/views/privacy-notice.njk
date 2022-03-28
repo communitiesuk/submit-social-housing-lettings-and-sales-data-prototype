@@ -1,9 +1,8 @@
-{% extends "layouts/base.njk" %}
-
-{% import "macros.njk" as macro %}
+{% extends "layouts/content.njk" %}
 
 {% set title = "Privacy notice" %}
-{% set body %}Social housing lettings and sales data is collected on behalf of the Department for Levelling Up, Housing & Communities (DLUHC) for research and statistical purposes only. Data providers do not require the consent of tenants to provide the information, but tenants have the right to know how and for what purpose your data is being collected, held and used.
+
+{% set markdown %}Social housing lettings and sales data is collected on behalf of the Department for Levelling Up, Housing & Communities (DLUHC) for research and statistical purposes only. Data providers do not require the consent of tenants to provide the information, but tenants have the right to know how and for what purpose your data is being collected, held and used.
 
 The processing must have a lawful basis. In this case the processing is necessary for the performance of a task carried out in the public interest to meet a function of the Crown, a Minister of the Crown, or a government department.
 
@@ -33,13 +32,3 @@ The detail level data is anonymised and protected to minimise the risk of identi
 If you are unhappy with any aspect of this privacy notice, or how your personal information is being processed, contact the Department Data Protection Officer at: <dataprotection@communities.gsi.gov.uk>.
 
 If you are still not happy, you have the right to lodge a complaint with the Information Commissioner’s Office (ICO) at [ico.org.uk/concerns](https://ico.org.uk/concerns).{% endset %}
-
-{% block content %}
-  <h1 class="govuk-heading-xl govuk-!-width-two-thirds">{{ title }}</h1>
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      {{ body | govukMarkdown | safe }}
-    </div>
-  </div>
-{% endblock %}

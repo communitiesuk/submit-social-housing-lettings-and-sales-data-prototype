@@ -1,0 +1,15 @@
+{% extends "layouts/base.njk" %}
+
+{% import "macros.njk" as macro %}
+
+{% set headingSize = headingSize or "xl" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ macro.heading(title, caption, headingSize) }}
+
+      {% block body %}{{ markdown | govukMarkdown | safe }}{% endblock %}
+    </div>
+  </div>
+{% endblock %}

@@ -113,6 +113,17 @@
             href: "#",
             visuallyHiddenText: "child organisations"
           }) if isAdmin
+        }, {
+          key: {
+            text: "Data sharing agreement"
+          },
+          value: {
+            html: "Signed on " + (organisation.signedDSA | govukDate ) if organisation.signedDSA else "Not yet signed"
+          },
+          actions: actionLinks({
+            text: "View agreement",
+            href: thisOrganisationPath + "/data-sharing-agreement"
+          })
         }]
       }) }}
     </div>
