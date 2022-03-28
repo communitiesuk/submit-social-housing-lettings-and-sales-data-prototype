@@ -49,41 +49,9 @@ const generateOrganisations = () => {
       stock: value.stock
         ? value.stock
         : stock,
-      signedDSA: faker.date.recent()
+      signedDSA: faker.date.past(3)
     }
   })
-
-  organisations.DLUHC = {
-    id: 'DLUHC',
-    name: 'Department for Levelling Up, Housing & Communities',
-    address: '2 Marsham Street, London. SW1P 4DF',
-    tel: '0303 444 1209',
-    type: 'Not applicable',
-    areas: [],
-    stock: false
-  }
-
-  organisations.CHILD1 = {
-    id: 'CHILD1',
-    name: 'Housing Management Limited',
-    address: '34 High Street, Exemplar. EX2 2AG',
-    tel: '01432 098765',
-    type: 'Housing association',
-    areas: ['E07000220', 'E07000218', 'E07000221'],
-    parents: ['LH3904'],
-    stock: false
-  }
-
-  organisations.CHILD2 = {
-    id: 'CHILD2',
-    name: 'Homes Charity CIC',
-    address: '123a Sandsford Road, Exemplar. EX32 5HC',
-    tel: '01432 980111',
-    type: 'Housing association',
-    areas: ['E07000218', 'E07000221'],
-    parents: ['LH3904'],
-    stock: false
-  }
 
   return organisations
 }

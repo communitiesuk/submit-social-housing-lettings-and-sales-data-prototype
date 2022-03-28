@@ -224,7 +224,7 @@ export const logRoutes = (router) => {
       const sectionPath = `/logs/${logId}/${sectionId}`
 
       // Organisation data
-      const organisationId = account?.organisationId || 'LH3904'
+      const organisationId = account?.organisationId || 'PARENT1'
       const organisation = utils.getEntityById(organisations, organisationId)
       const childOrganisations = organisation.children || []
       const userOrganisations = organisationId.concat(childOrganisations)

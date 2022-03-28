@@ -12,7 +12,7 @@ export default {
   DC001: {
     name: 'Delia Cross',
     email: 'data.coordinator@owning.org.uk',
-    organisationId: 'LH3904',
+    organisationId: 'PARENT1',
     role: 'coordinator',
     lastActive: '2021-10-24T16:04:34',
     invitedById: 'ADMIN',
@@ -22,7 +22,7 @@ export default {
   DP001: {
     name: 'Daisy Perkins',
     email: 'data.provider@owning.org.uk',
-    organisationId: 'LH3904',
+    organisationId: 'PARENT1',
     role: 'provider',
     invitedById: 'DC001',
     dpo: 'false'

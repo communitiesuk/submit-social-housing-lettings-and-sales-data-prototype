@@ -18,7 +18,7 @@ router.all('*', (req, res, next) => {
     res.locals.userOrganisationPath = `/organisations/${account.organisationId}`
 
     // TODO: Better way of determining owning organisation
-    res.locals.isOwningOrg = account.organisationId === 'LH3904'
+    res.locals.isOwningOrg = account.organisationId === 'PARENT1'
   }
 
   // Provide current path

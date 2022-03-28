@@ -1,4 +1,81 @@
 export default {
+  DLUHC: {
+    name: 'Department for Levelling Up, Housing & Communities',
+    address: '2 Marsham Street, London. SW1P 4DF',
+    tel: '0303 444 1209',
+    type: 'Not applicable',
+    areas: [],
+    stock: false
+  },
+  PARENT1: { // Example parent organisation
+    name: 'Own Homes Limited',
+    'registration-date': '2021-10-04',
+    designation: 'Non-profit',
+    'corporate-form': 'Company',
+    address: 'Fairview House, 18 Water Street, Fareham, Hampshire. PO16 7BB',
+    tel: '01329 234600',
+    areas: [
+      'E06000036',
+      'E06000037',
+      'E06000038',
+      'E06000039',
+      'E06000040',
+      'E06000041',
+      'E06000043',
+      'E06000044',
+      'E06000045',
+      'E06000046',
+      'E07000223',
+      'E07000224',
+      'E07000225',
+      'E07000226',
+      'E07000227',
+      'E07000228',
+      'E07000229'
+    ],
+    parents: [],
+    children: [
+      'CHILD1',
+      'CHILD2'
+    ],
+    stock: true
+  },
+  CHILD1: { // Example child organisation
+    name: 'Housing Management Limited',
+    'registration-date': '2021-10-04',
+    designation: 'Non-profit',
+    'corporate-form': 'Company',
+    address: '34 High Street, Exemplar. EX2 2AG',
+    tel: '01432 098765',
+    areas: [
+      'E07000220',
+      'E07000218',
+      'E07000221'
+    ],
+    parents: [
+      'PARENT1'
+    ],
+    children: [
+      'CHILD2'
+    ],
+    stock: true
+  },
+  CHILD2: { // Example child organisation that is also a parent
+    name: 'Homes Charity CIC',
+    'registration-date': '2021-10-04',
+    designation: 'Non-profit',
+    'corporate-form': 'Charitable company',
+    address: '123a Sandsford Road, Exemplar. EX32 5HC',
+    tel: '01432 980111',
+    areas: [
+      'E07000218',
+      'E07000221'
+    ],
+    parents: [
+      'PARENT1'
+    ],
+    stock: false
+  },
   4568: {
     name: 'Bolton at Home Limited',
     'registration-date': '2011-02-08',
@@ -9005,39 +9082,11 @@ export default {
     designation: 'Non-profit',
     'corporate-form': 'Charitable company'
   },
-  LH3904: {
-    // name: 'Two Saints Limited',
-    name: 'Own Homes Limited',
+  EX0001: {
+    name: 'Two Saints Limited',
     'registration-date': '1990-03-19',
     designation: 'Non-profit',
-    'corporate-form': 'Registered society',
-    // address: 'Fareham House, 69 High Street, Fareham, Hampshire. PO16 7BB',
-    address: 'Fairview House, 18 Water Street, Fareham, Hampshire. PO16 7BB',
-    tel: '01329 234600',
-    areas: [
-      'E06000036',
-      'E06000037',
-      'E06000038',
-      'E06000039',
-      'E06000040',
-      'E06000041',
-      'E06000043',
-      'E06000044',
-      'E06000045',
-      'E06000046',
-      'E07000223',
-      'E07000224',
-      'E07000225',
-      'E07000226',
-      'E07000227',
-      'E07000228',
-      'E07000229'
-    ],
-    parents: [],
-    children: [
-      'LH2429'
-    ],
-    stock: true
+    'corporate-form': 'Registered society'
   },
   LH4297: {
     name: 'Tyne Housing Association Limited',
