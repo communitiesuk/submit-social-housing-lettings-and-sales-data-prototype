@@ -1,7 +1,7 @@
 {% extends "layouts/form.njk" %}
 
 {% set title = "Are you sure you want to deactivate this organisation?" %}
-{% set backLink = organisationPath %}
+{% set backLink = thisOrganisationPath %}
 
 {% block form %}
   <div class="govuk-grid-row">
@@ -13,7 +13,7 @@
         text: "I’m sure — deactivate this organisation"
       }) }}
 
-      <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="{{ organisationPath }}">No - I’ve changed my mind</a></p>
+      <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="{{ thisOrganisationPath }}">No - I’ve changed my mind</a></p>
     </div>
   </div>
 {% endblock %}

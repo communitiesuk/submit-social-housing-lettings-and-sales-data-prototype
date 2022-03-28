@@ -5,20 +5,6 @@
 
 {% set title = "About this organisation" if isAdmin else "About your organisation" %}
 
-{% block pageNavigation %}
-  {{ govukBreadcrumbs({
-    items: [{
-      href: "/organisations",
-      text: "Organisations"
-    }, {
-      href: organisationPath,
-      text: organisation.name
-    }, {
-      text: title
-    }]
-  }) if isAdmin }}
-{% endblock %}
-
 {% block content %}
   {{ adminNavigation(title) if isAdmin else macro.heading(title) }}
 
@@ -28,12 +14,12 @@
         <p class="govuk-button-group">
           <span class="app-!-colour-muted govuk-!-margin-right-2">This organisation has been deactivated.</span>
           {% if isAdmin %}
-            <a class="govuk-link" href="{{ organisationPath }}/reactivate">Reactivate organisation</a>
+            <a class="govuk-link" href="{{ thisOrganisationPath }}/reactivate">Reactivate organisation</a>
           {% endif %}
         </p>
       {% elif isAdmin %}
         <p class="govuk-button-group">
-          <a class="govuk-link" href="{{ organisationPath }}/deactivate">Deactivate organisation</a>
+          <a class="govuk-link" href="{{ thisOrganisationPath }}/deactivate">Deactivate organisation</a>
         </p>
       {% endif %}
 

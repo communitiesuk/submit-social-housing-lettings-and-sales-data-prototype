@@ -7,22 +7,36 @@ import { userRoutes } from './routes/users.js'
 
 const router = express.Router()
 
+// Set account locals
 router.all('*', (req, res, next) => {
-  const { data } = req.session
+  const { account } = req.session.data
 
   // Set state
-  if (data && data.account) {
-    res.locals.isAdmin = data.account.role === 'admin'
-    res.locals.isCoordinator = data.account.role === 'coordinator'
+  if (account) {
+    res.locals.isAdmin = account.role === 'admin'
+    res.locals.isCoordinator = account.role === 'coordinator'
+    res.locals.userOrganisationPath = `/organisations/${account.organisationId}`
 
     // TODO: Better way of determining owning organisation
-    res.locals.isOwningOrg = data.account.organisationId === 'LH3904'
+    res.locals.isOwningOrg = account.organisationId === 'LH3904'
   }
 
-  // Set active section
-  if (req.path.startsWith('/account')) {
-    res.locals.activeSection = 'account'
-  }
+  // Provide current path
+  res.locals.path = req.path
+
+  next()
+})
+
+// Set organisation locals
+router.get([
+  '/organisations/:organisationId',
+  '/organisations/:organisationId/*'
+], (req, res, next) => {
+  const { organisations } = req.session.data
+  const { organisationId } = req.params
+
+  res.locals.thisOrganisation = organisations[organisationId]
+  res.locals.thisOrganisationPath = `/organisations/${organisationId}`
 
   next()
 })
@@ -31,6 +45,6 @@ accountRoutes(router)
 logRoutes(router)
 schemeRoutes(router)
 userRoutes(router)
-organisationRoutes(router) // Must come after scheme and user routes
+organisationRoutes(router) // Must come after log, scheme and user routes
 
 export default router

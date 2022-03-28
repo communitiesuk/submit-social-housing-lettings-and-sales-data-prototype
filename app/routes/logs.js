@@ -7,16 +7,8 @@ export const logRoutes = (router) => {
    * List logs
    */
   router.get(['/logs', '/organisations/:organisationId/logs'], (req, res) => {
-    let { account, logs, organisations, users } = req.session.data
+    let { logs, users } = req.session.data
     const type = req.query.type || 'lettings'
-
-    // Get current organisation
-    const organisationId = req.params?.organisationId ||
-      account?.organisationId ||
-      'LH3904'
-
-    const organisation = organisations[organisationId]
-    const organisationPath = `/organisations/${organisationId}`
 
     // Convert logs to array
     logs = utils.objectToArray(logs)
@@ -39,14 +31,11 @@ export const logRoutes = (router) => {
     // const updatedBy = req.session.user || req.query.user || currentUser.id
     // logs = logs.filter(log => log.updatedBy === updatedBy)
 
-    res.locals.activeSection = 'logs'
     res.render('logs/index', {
       query: req.query,
       logs,
       type,
-      users,
-      organisation,
-      organisationPath
+      users
     })
   })
 

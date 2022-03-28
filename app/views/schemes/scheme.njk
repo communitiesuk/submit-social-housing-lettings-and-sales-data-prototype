@@ -5,31 +5,6 @@
 {% set title = scheme.name %}
 {% set formAction = schemePath %}
 
-{% block pageNavigation %}
-  {{ govukBreadcrumbs({
-    items: [{
-      href: "/organisations",
-      text: "Organisations"
-    }, {
-      href: organisationPath,
-      text: organisation.name
-    }, {
-      href: organisationPath + "/schemes",
-      text: "Supported services"
-    }, {
-      text: title
-    }] if isAdmin else [{
-      href: organisationPath,
-      text: organisation.name
-    }, {
-      href: organisationPath + "/schemes",
-      text: "Supported services"
-    }, {
-      text: title
-    }]
-  }) }}
-{% endblock %}
-
 {% block form %}
   {{ govukNotificationBanner({
     text: macro.notificationBannerText(query.success),

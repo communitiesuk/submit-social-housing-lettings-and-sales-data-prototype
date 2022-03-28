@@ -27,19 +27,17 @@
 {% set bodyAttributes = {"data-module": "edge"} %}
 {% set bodyClasses = "app-template--wide" %}
 
-{% set homepageUrl = "/organisations" if isAdmin else "/logs" %}
-
 {% block header %}
   {{ govukHeader({
     classes: "app-header",
-    homepageUrl: homepageUrl if data.token else "/",
+    homepageUrl: "/",
     productName: serviceName,
     containerClasses: "govuk-width-container",
     navigationClasses: "govuk-header__navigation--end",
     navigation: [{
       href: "/account/",
       text: "Your account",
-      active: activeSection == "account"
+      active: path.startsWith("/account")
     }, {
       href: "/account/sign-out",
       text: "Sign out"
@@ -56,23 +54,42 @@
 
   {{ appPrimaryNavigation({
     items: [{
+      href: "/organisations",
+      text: "Organisations",
+      active: path.startsWith("/organisations")
+    }, {
+      href: "/schemes",
+      text: "All supported services",
+      active: path.startsWith("/schemes")
+    }, {
+      href: "/users",
+      text: "All users",
+      active: path.startsWith("/users")
+    }, {
       href: "/logs",
+      text: "All logs",
+      active: path.startsWith("/logs")
+    }] if isAdmin else [{
+      href: userOrganisationPath + "/logs",
       text: "Logs",
-      active: activeSection == "logs"
+      active: path.startsWith(userOrganisationPath + "/logs") or
+        path.startsWith("/logs")
     }, {
-      href: organisationPath + "/schemes",
+      href: userOrganisationPath + "/schemes",
       text: "Supported services",
-      active: activeSection == "schemes"
-    } if (isOwningOrg == true and isCoordinator) or isAdmin, {
-      href: organisationPath + "/users",
+      active: path.startsWith(userOrganisationPath + "/schemes") or
+        path.startsWith("/schemes")
+    } if (isOwningOrg == true and isCoordinator), {
+      href: userOrganisationPath + "/users",
       text: "Users",
-      active: activeSection == "users"
+      active: path.startsWith(userOrganisationPath + "/users") or
+        path.startsWith("/users")
     }, {
-      href: organisationPath,
+      href: userOrganisationPath,
       text: "About your organisation",
-      active: activeSection == "organisation"
+      active: path == userOrganisationPath
     }]
-  }) if data.token and not isAdmin }}
+  }) if data.token }}
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}

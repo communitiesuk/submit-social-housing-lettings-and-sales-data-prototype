@@ -1,8 +1,8 @@
 {% extends "layouts/form.njk" %}
 
 {% set title = "Check your answers before submitting" %}
-{% set backLink = 'javascript:history.go(-1);' %}
-{% set formAction = organisationPath + "/schemes/?success=submitted" %}
+{% set backLink = "javascript:history.go(-1);" %}
+{% set formAction = userOrganisationPath + "/schemes/?success=submitted" %}
 
 {% block form %}
   <div class="govuk-grid-row">

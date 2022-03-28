@@ -39,3 +39,19 @@ export const objectToArray = (object) => {
   ))
   return objArray
 }
+
+export const sortArray = (array, key) => {
+  return array.sort((a, b) => {
+    // If key not provided, don’t sort
+    if (!a[key] || !b[key]) {
+      return 0
+    }
+
+    const fa = a[key].toLowerCase()
+    const fb = b[key].toLowerCase()
+
+    if (fa < fb) { return -1 }
+    if (fa > fb) { return 1 }
+    return 0
+  })
+}

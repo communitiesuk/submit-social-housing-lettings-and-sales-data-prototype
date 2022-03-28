@@ -4,23 +4,19 @@
 {% from "macros.njk" import adminNavigation with context %}
 
 {% set title = "Supported services" %}
-
-{% block pageNavigation %}
-  {{ govukBreadcrumbs({
-    items: [{
-      href: "/organisations",
-      text: "Organisations"
-    }, {
-      href: organisationPath,
-      text: organisation.name
-    }, {
-      text: title
-    }]
-  }) if isAdmin }}
-{% endblock %}
+{% set isGlobalView = isAdmin and path.startsWith("/schemes") %}
 
 {% block content %}
-  {{ adminNavigation(title) if isAdmin else macro.heading(title) }}
+  {{ govukNotificationBanner({
+    text: macro.notificationBannerText(query.success, query.logId),
+    type: "success"
+  }) if query.success }}
+
+  {% if isGlobalView %}
+    {{ macro.heading(title) }}
+  {% else %}
+    {{ adminNavigation(title) if isAdmin else macro.heading(title) }}
+  {% endif %}
 
   {{ govukButton({
     href: "/schemes/new",
