@@ -27,7 +27,7 @@
         text: "Logs you’ve started",
         value: data.account.id
       }]
-    }) }}
+    }) if not isAdmin }}
 
     {{ govukCheckboxes({
       decorate: ["filter", "collection"],
@@ -65,9 +65,6 @@
       items: [{
         text: "In progress",
         value: "incomplete"
-      }, {
-        text: "Completed",
-        value: "complete"
       }, {
         text: "Submitted",
         value: "submitted"
