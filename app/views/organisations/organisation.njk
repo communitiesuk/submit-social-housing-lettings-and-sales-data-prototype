@@ -4,9 +4,10 @@
 {% from "macros.njk" import adminNavigation with context %}
 
 {% set title = "About this organisation" if isAdmin else "About your organisation" %}
+{% set caption = thisOrganisation.name %}
 
 {% block content %}
-  {{ adminNavigation(title) if isAdmin else macro.heading(title) }}
+  {{ adminNavigation(title) if isAdmin else macro.heading(title, caption) }}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">

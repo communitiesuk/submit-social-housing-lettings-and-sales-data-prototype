@@ -4,6 +4,7 @@
 {% from "macros.njk" import adminNavigation with context %}
 
 {% set title = "Supported services" %}
+{% set caption = thisOrganisation.name %}
 {% set isGlobalView = isAdmin and path.startsWith("/schemes") %}
 
 {% block content %}
@@ -15,7 +16,7 @@
   {% if isGlobalView %}
     {{ macro.heading(title) }}
   {% else %}
-    {{ adminNavigation(title) if isAdmin else macro.heading(title) }}
+    {{ adminNavigation(title) if isAdmin else macro.heading(title, caption) }}
   {% endif %}
 
   {{ govukButton({
