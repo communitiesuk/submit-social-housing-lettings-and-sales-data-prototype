@@ -54,7 +54,7 @@
       }, {
         html: organisations[scheme.agentId].name
       }, {
-        html: (scheme["start-date"] | govukDate) + (" to <br>" + (scheme["end-date"] | govukDate) if scheme["end-date"])
+        html: (scheme["start-date"] | textFromInputValue | govukDate) + (" to <br>" + (scheme["end-date"] | textFromInputValue | govukDate) if scheme["end-date"])
       }])
     %}
   {% endfor %}

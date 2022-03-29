@@ -171,7 +171,7 @@
     text: "Build handover date?" if isNewprop else "Void or renewal date"
   },
   value: {
-    text: log[section.id]["void-date"] | textFromInputValue
+    text: log[section.id]["void-date"] | textFromInputValue | govukDate
   },
   actions: {
     items: [{
