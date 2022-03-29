@@ -39,13 +39,17 @@
   {% for scheme in results %}
     {% set schemePath = "/schemes/" + scheme.id %}
     {% set schemeLocation %}
-      {% if scheme.postcodes | length > 1 %}
-        {{ scheme.postcodes | length }} properties
+      {% if scheme.properties | length > 1 %}
+        {{ scheme.properties | length }} properties
       {% else %}
-        {{ scheme.postcodes | first }}
+        {{ scheme.properties[0].address }}
       {% endif %}
     {% endset %}
     {% set row = schemeRows.push([{
+        classes: "govuk-!-text-align-left",
+        text: scheme.id,
+        format: "numeric"
+      }, {
         html: macro.entityHtml(scheme.name, schemePath, schemeLocation)
       }, {
         html: organisations[scheme.agentId].name
@@ -73,8 +77,9 @@
         labelledby: "services"
       }) %}
         {{ govukTable({
-          firstCellIsHeader: true,
           head: [{
+            text: "Code"
+          }, {
             text: "Name"
           }, {
             text: "Managing agent"

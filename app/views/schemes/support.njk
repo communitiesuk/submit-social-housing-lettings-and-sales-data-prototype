@@ -1,0 +1,35 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "What type of support is provided by this service?" %}
+{% if scheme["type-of-support"] %}
+  {# Editing an existing scheme #}
+  {% set caption = scheme.name %}
+  {% set buttonText = "Save changes" %}
+  {% set formAction = schemePath %}
+{% endif %}
+
+{% block question %}
+  {{ macro.heading(title, caption) }}
+
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "intended-stay"],
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Intended length of stay"
+      }
+    },
+    items: data.questions["intended-stay"]
+  }) }}
+
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "type-of-support"],
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Level of support given"
+      }
+    },
+    items: data.questions["type-of-support"]
+  }) }}
+{% endblock %}

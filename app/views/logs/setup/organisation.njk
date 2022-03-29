@@ -5,15 +5,17 @@
 
 {% block question %}
   {% if isOwningOrg %}
-    {{ govukSelect({
+    {{ govukRadios({
       decorate: ["logs", log.id, section.id, "organisation-manager"],
-      label: {
-        html: macro.heading(title, caption)
+      fieldset: {
+        legend: {
+          html: macro.heading(title, caption)
+        }
       },
       items: managingOrganisations | optionItems,
       validate: {
         presence: {
-          message: "Select the organisation that owns this property"
+          message: "Select the organisation that manages this property"
         }
       }
     }) }}

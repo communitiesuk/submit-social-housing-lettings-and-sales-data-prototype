@@ -3,15 +3,30 @@
 {% set isSupported = log[section.id]["type-of-need"] == "supported" %}
 {% set isCompleted = log[section.id]["completed"] == "true" %}
 
-{%- if log[section.id].schemeId -%}
-  {%- set schemeHtml %}
-  {{ data.schemes[log[section.id].schemeId[1]].name }}<br>
-  <span class="app-!-colour-muted">
-  {{ data.schemes[log[section.id].schemeId[1]]["local-authority"].name }}<br>
-  {{ data.schemes[log[section.id].schemeId[1]].postcode }}
-  </span>
-  {%- endset %}
-{%- endif -%}
+{%- set schemeHtml %}
+  {%- if log[section.id].schemeId -%}
+    {% set schemedId = log[section.id].schemeId[1] %}
+    {{ data.schemes[schemedId].name }}<br>
+    <span class="app-!-colour-muted">
+    {{ data.schemes[schemedId]["client-groups"] | textFromInputValue(data.questions["client-groups"]) | replace(",", "<br>") | safe }}
+    </span>
+  {% else %}
+    <span class="app-!-colour-muted">You didn’t answer this question</span>
+  {%- endif -%}
+{%- endset %}
+
+{%- set schemePropertyHtml %}
+  {%- if log[section.id].schemePropertyId -%}
+    {% set schemedId = log[section.id].schemeId[1] %}
+    {% set schemedPropertyId = log[section.id].schemePropertyId %}
+    {{ data.schemes[schemedId].properties[schemedPropertyId].address }}<br>
+    <span class="app-!-colour-muted">
+   {{ data.schemes[schemedId].properties[schemedPropertyId].postcode }}<br>{{ data.schemes[schemedId].properties[schemedPropertyId]["local-authority"].name }}
+    </span>
+  {% else %}
+    <span class="app-!-colour-muted">You didn’t answer this question</span>
+  {%- endif -%}
+{%- endset %}
 
 {{ govukSummaryList({
   rows: [{
@@ -25,7 +40,7 @@
       href: sectionPath + "/organisation",
       visuallyHiddenText: "owning organisation"
     }) if not logArchived
-  } if isLet, {
+  } if isLet and not isOwningOrg, {
     key: {
       text: "Managing organisation"
     },
@@ -57,6 +72,17 @@
     actions: actionLinks({
       href: sectionPath + "/scheme",
       visuallyHiddenText: "service name"
+    }) if not logArchived
+  } if isSupported, {
+    key: {
+      text: "Supported property"
+    },
+    value: {
+      html: schemePropertyHtml
+    },
+    actions: actionLinks({
+      href: sectionPath + "/scheme-property",
+      visuallyHiddenText: "supported property"
     }) if not logArchived
   } if isSupported, {
     key: {

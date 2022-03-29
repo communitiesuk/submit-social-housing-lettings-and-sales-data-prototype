@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import * as utils from './utils.js'
 
 /**
  * Prototype specific filters for use in Nunjucks templates.
@@ -78,10 +79,14 @@ export default (env) => {
     text = text || 'name'
     value = value || 'id'
 
+    if (!Array.isArray(array)) {
+      array = utils.objectToArray(array)
+    }
+
     if (array.length > 1) {
       array = array.sort((a, b) => {
-        const fa = a.name.toLowerCase()
-        const fb = b.name.toLowerCase()
+        const fa = a[text].toLowerCase()
+        const fb = b[text].toLowerCase()
 
         if (fa < fb) { return -1 }
         if (fa > fb) { return 1 }

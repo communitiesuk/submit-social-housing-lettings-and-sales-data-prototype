@@ -1,0 +1,17 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Which property is this log for?" %}
+{% set schemeId = data.logs[log.id].setup.schemeId[1] %}
+{% set questionId = "schemePropertyId" %}
+
+{% block question %}
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
+    },
+    items: data.schemes[schemeId].properties | optionItems("address", "id", "postcode")
+  }) }}
+{% endblock %}
