@@ -46,7 +46,7 @@
         text: "Confidential"
       },
       value: {
-        text: scheme.confidential | textFromInputValue(data.questions["yes-no"])
+        text: "Yes" if scheme.confidential else "No"
       },
       actions: actionLinks({
         href: schemePath + "/details",
@@ -101,7 +101,7 @@
         text: "Operating dates"
       },
       value: {
-        html: (scheme["start-date"] | govukDate) + (" to " + (scheme["end-date"] | govukDate) if scheme["end-date-known"] == "true")
+        html: (scheme["start-date"] | textFromInputValue | govukDate) + (" to " + (scheme["end-date"] | textFromInputValue | govukDate) if scheme["end-date-known"] == "true")
       },
       actions: actionLinks({
         href: schemePath + "/dates",

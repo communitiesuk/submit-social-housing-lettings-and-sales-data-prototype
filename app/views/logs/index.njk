@@ -79,7 +79,7 @@
             classes: "app-!-font-tabular",
             text: log.setup["property-reference"] or "—"
           }, {
-            text: log.setup["letting-start-date"] | textFromInputValue
+            text: log.setup["letting-start-date"] | textFromInputValue | govukDate
           }, {
             html: log.created | govukDate
           }, {

@@ -18,7 +18,6 @@ export default (env) => {
    */
   filters.textFromInputValue = (value, questions) => {
     const safe = env.getFilter('safe')
-    const govukDate = env.getFilter('govukDate')
     const isoDateFromDateInput = env.getFilter('isoDateFromDateInput')
 
     const noValueProvidedText = safe('<span class="app-!-colour-muted">You didn’t answer this question</span>')
@@ -52,8 +51,8 @@ export default (env) => {
     // Dates
     // (We’ll assume only dates are objects, for now)
     if (typeof value === 'object' && !Array.isArray(value)) {
-      const date = govukDate(isoDateFromDateInput(value))
-      return date !== 'Invalid DateTime' ? date : noValueProvidedText
+      const date = isoDateFromDateInput(value)
+      return date !== 'Invalid DateTime' ? date : false
     }
 
     return value
