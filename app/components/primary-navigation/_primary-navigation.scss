@@ -30,7 +30,7 @@
 }
 
 .app-primary-navigation__item--current {
-  border-bottom: 4px solid $govuk-link-colour;
+  border-bottom: $govuk-border-width-narrow solid $govuk-link-colour;
 
   &:hover {
     border-bottom-color: $govuk-link-hover-colour;

@@ -211,7 +211,7 @@ export const logRoutes = (router) => {
   router.get('/logs/:logId/:sectionId/:itemId?/:view?', async (req, res, next) => {
     try {
       let { logId, sectionId, itemId, view } = req.params
-      const { account, logs, organisations } = req.session.data
+      let { account, logs, schemes, organisations } = req.session.data
 
       // If there’s no :view param, use :itemId param for view
       if (!view) {

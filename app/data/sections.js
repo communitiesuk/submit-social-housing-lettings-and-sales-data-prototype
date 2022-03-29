@@ -26,6 +26,7 @@ export function sections (log) {
         }
       },
       [`${logPath}setup/scheme`]: {},
+      [`${logPath}setup/scheme-property`]: {},
       [`${logPath}setup/letting-renewal`]: {},
       [`${logPath}setup/letting-start-date`]: {},
       [`${logPath}setup/type-of-rent`]: {},

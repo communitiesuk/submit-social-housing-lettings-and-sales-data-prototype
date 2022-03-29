@@ -8,16 +8,15 @@ const getSchemePaths = (req) => {
 
   const journey = {
     [`${schemePath}details`]: {},
-    [`${schemePath}postcodes`]: {},
     [`${schemePath}client-groups`]: {},
+    [`${schemePath}support`]: {},
     [`${schemePath}type-of-registered-home`]: {},
-    [`${schemePath}type-of-support`]: {},
-    [`${schemePath}intended-stay`]: {},
-    [`${schemePath}type-of-unit`]: {},
-    [`${schemePath}units`]: {},
-    [`${schemePath}type-of-building`]: {},
-    [`${schemePath}is-adapted`]: {},
+    // [`${schemePath}type-of-unit`]: {},
+    // [`${schemePath}units`]: {},
+    // [`${schemePath}type-of-building`]: {},
+    // [`${schemePath}is-adapted`]: {},
     [`${schemePath}dates`]: {},
+    [`${schemePath}properties`]: {},
     [`${schemePath}check-your-answers`]: {}
   }
   return wizard(journey, req)
@@ -83,11 +82,14 @@ export const schemeRoutes = (router) => {
    * Create scheme
    */
   router.get('/schemes/new', (req, res) => {
-    const { schemes } = req.session.data
+    const { account, schemes } = req.session.data
     const schemeId = utils.generateUniqueId()
 
     // Create a new blank scheme in session data
-    schemes[schemeId] = {}
+    // Assign to user’s organisation (only DC at owning organisation can create)
+    schemes[schemeId] = {
+      organisationId: account.organisationId
+    }
 
     res.redirect(`/schemes/${schemeId}/details`)
   })
@@ -111,7 +113,7 @@ export const schemeRoutes = (router) => {
     const scheme = utils.getEntityById(schemes, schemeId)
     const schemePath = `/schemes/${schemeId}`
 
-    // Get organisation that own schemes
+    // Get organisation that owns scheme
     const organisationId = scheme.organisationId
     const organisation = utils.getEntityById(organisations, organisationId)
 

@@ -23,7 +23,7 @@
 
 {% macro entityHtml(title, href, caption) %}
   {% if href %}
-    <a href="{{ href }}">{{ title }}</a>
+    <a class="govuk-link govuk-!-font-weight-bold" href="{{ href }}">{{ title }}</a>
   {% else %}
     {{ title }}
   {% endif %}

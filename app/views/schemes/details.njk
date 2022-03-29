@@ -1,11 +1,13 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Service details" %}
 {% if scheme.name %}
   {# Editing an existing scheme #}
   {% set caption = scheme.name %}
+  {% set title = "Service details" %}
   {% set buttonText = "Save changes" %}
   {% set formAction = schemePath %}
+{% else %}
+  {% set title = "Create a new supported service" %}
 {% endif %}
 
 {% block question %}
@@ -19,11 +21,22 @@
 
   {{ govukInput({
     decorate: ["schemes", scheme.id, "name"],
+    formGroup: {
+      classes: "govuk-!-margin-bottom-4"
+    },
     label: {
       classes: "govuk-label--m",
       text: "Service name"
     },
     spellcheck: false
+  }) }}
+
+  {{ govukCheckboxes({
+    decorate: ["schemes", scheme.id, "confidential"],
+    items: [{
+      value: "true",
+      text: "This service contains confidential information"
+    }]
   }) }}
 
   {{ govukRadios({
@@ -44,20 +57,9 @@
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
-        text: "Type of service"
+        text: "What is this type of service?"
       }
     },
     items: data.questions["type-of-scheme"]
-  }) }}
-
-  {{ govukRadios({
-    decorate: ["schemes", scheme.id, "confidential"],
-    fieldset: {
-      legend: {
-        classes: "govuk-fieldset__legend--m",
-        text: "Does this service contain confidential information?"
-      }
-    },
-    items: data.questions["yes-no"]
   }) }}
 {% endblock %}

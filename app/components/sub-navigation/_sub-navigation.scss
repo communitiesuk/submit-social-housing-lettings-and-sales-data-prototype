@@ -38,12 +38,12 @@
 
 .app-sub-navigation__item--current {
   @include govuk-media-query($until: tablet) {
-    border-left: 4px solid $govuk-link-colour;
+    border-left: $govuk-border-width-narrow solid $govuk-link-colour;
     padding-left: 11px;
   }
 
   @include govuk-media-query($from: tablet) {
-    border-bottom: 4px solid $govuk-link-colour;
+    border-bottom: $govuk-border-width-narrow solid $govuk-link-colour;
     padding-left: govuk-spacing(3);
   }
 

@@ -6,182 +6,192 @@
 {% set hasLocalAuthority = scheme["local-authority-known"] == "true" %}
 {% set localAuthority = localAuthorities | where("gss", scheme["local-authority"]) | first %}
 
-{{ xGovukSummaryCard({
-  classes: "govuk-!-margin-bottom-6",
-  titleText: "Service details",
-  rows: [{
-    key: {
-      text: "Name"
-    },
-    value: {
-      text: scheme.name
-    },
-    actions: actionLinks({
-      href: schemePath + "/details",
-      visuallyHiddenText: "name"
-    })
-  }, {
-    key: {
-      text: "Managing agent"
-    },
-    value: {
-      text: organisations[scheme.agentId].name
-    },
-    actions: actionLinks({
-      href: schemePath + "/details",
-      visuallyHiddenText: "managing agent"
-    })
-  }, {
-    key: {
-      text: "Type of service"
-    },
-    value: {
-      text: scheme.type | textFromInputValue(data.questions["type-of-scheme"])
-    },
-    actions: actionLinks({
-      href: schemePath + "/details",
-      visuallyHiddenText: "type of service"
-    })
-  }, {
-    key: {
-      text: "Confidential"
-    },
-    value: {
-      text: scheme.confidential | textFromInputValue(data.questions["yes-no"])
-    },
-    actions: actionLinks({
-      href: schemePath + "/details",
-      visuallyHiddenText: "if confidential"
-    })
-  }, {
-    key: {
-      text: "Locations"
-    },
-    value: {
-      html: scheme.postcodes | join("<br>") if scheme.postcodes
-    },
-    actions: actionLinks({
-      href: schemePath + "/postcodes",
-      visuallyHiddenText: "postcodes"
-    })
-  }]
-}) }}
+{% set detailsHtml %}
+  {{ govukSummaryList({
+    rows: [{
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: scheme.name
+      },
+      actions: actionLinks({
+        href: schemePath + "/details",
+        visuallyHiddenText: "name"
+      })
+    }, {
+      key: {
+        text: "Managing agent"
+      },
+      value: {
+        text: organisations[scheme.agentId].name
+      },
+      actions: actionLinks({
+        href: schemePath + "/details",
+        visuallyHiddenText: "managing agent"
+      })
+    }, {
+      key: {
+        text: "Type of service"
+      },
+      value: {
+        text: scheme.type | textFromInputValue(data.questions["type-of-scheme"])
+      },
+      actions: actionLinks({
+        href: schemePath + "/details",
+        visuallyHiddenText: "type of service"
+      })
+    }, {
+      key: {
+        text: "Confidential"
+      },
+      value: {
+        text: scheme.confidential | textFromInputValue(data.questions["yes-no"])
+      },
+      actions: actionLinks({
+        href: schemePath + "/details",
+        visuallyHiddenText: "if confidential"
+      })
+    }, {
+      key: {
+        text: "Client groups"
+      },
+      value: {
+        html: scheme["client-groups"] | textFromInputValue(data.questions["client-groups"]) | replace(",", "<br>")
+      },
+      actions: actionLinks({
+        href: schemePath + "/client-groups",
+        visuallyHiddenText: "client groups"
+      })
+    }, {
+      key: {
+        text: "Level of support given"
+      },
+      value: {
+        text: scheme["type-of-support"] | textFromInputValue(data.questions["type-of-support"])
+      },
+      actions: actionLinks({
+        href: schemePath + "/type-of-support",
+        visuallyHiddenText: "type of support"
+      })
+    }, {
+      key: {
+        text: "Registered care home"
+      },
+      value: {
+        text: scheme["type-of-registered-home"] | textFromInputValue(data.questions["type-of-registered-home"])
+      },
+      actions: actionLinks({
+        href: schemePath + "/type-of-registered-home",
+        visuallyHiddenText: "registered care home"
+      })
+    }, {
+      key: {
+        text: "Intended length of stay"
+      },
+      value: {
+        text: scheme["intended-stay"] | textFromInputValue(data.questions["intended-stay"])
+      },
+      actions: actionLinks({
+        href: schemePath + "/intended-stay",
+        visuallyHiddenText: "intended length of stay"
+      })
+    }, {
+      key: {
+        text: "Operating dates"
+      },
+      value: {
+        html: (scheme["start-date"] | govukDate) + (" to " + (scheme["end-date"] | govukDate) if scheme["end-date-known"] == "true")
+      },
+      actions: actionLinks({
+        href: schemePath + "/dates",
+        visuallyHiddenText: "service dates"
+      })
+    }]
+  }) }}
+{% endset %}
 
-{{ xGovukSummaryCard({
-  classes: "govuk-!-margin-bottom-6",
-  titleText: "Clients",
-  rows: [{
-    key: {
-      text: "Client groups"
-    },
-    value: {
-      html: scheme["client-groups"] | textFromInputValue(data.questions["client-groups"]) | replace(",", "<br>")
-    },
-    actions: actionLinks({
-      href: schemePath + "/client-groups",
-      visuallyHiddenText: "client groups"
-    })
-  }, {
-    key: {
-      text: "Registered care home"
-    },
-    value: {
-      text: scheme["type-of-registered-home"] | textFromInputValue(data.questions["type-of-registered-home"])
-    },
-    actions: actionLinks({
-      href: schemePath + "/type-of-registered-home",
-      visuallyHiddenText: "registered care home"
-    })
-  }, {
-    key: {
-      text: "Level of support given"
-    },
-    value: {
-      text: scheme["type-of-support"] | textFromInputValue(data.questions["type-of-support"])
-    },
-    actions: actionLinks({
-      href: schemePath + "/type-of-support",
-      visuallyHiddenText: "type of support"
-    })
-  }, {
-    key: {
-      text: "Intended length of stay"
-    },
-    value: {
-      text: scheme["intended-stay"] | textFromInputValue(data.questions["intended-stay"])
-    },
-    actions: actionLinks({
-      href: schemePath + "/intended-stay",
-      visuallyHiddenText: "intended length of stay"
-    })
-  }]
-}) }}
+{% set propertiesHtml %}
+  {% for id, property in scheme.properties %}
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-2">{{ property.address }}</h2>
+    {{ govukSummaryList({
+      classes: "govuk-!-margin-bottom-9" if not loop.last else "",
+      rows: [{
+        key: {
+          text: "Postcode"
+        },
+        value: {
+          text: macro.postcodeHtml(property.postcode, property["local-authority"].name) if property.postcode else "Not known"
+        },
+        actions: actionLinks({
+          href: schemePath + "/properties#" + id,
+          visuallyHiddenText: "postcode"
+        })
+      }, {
+        key: {
+          text: "Type of unit"
+        },
+        value: {
+          text: property["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"])
+        },
+        actions: actionLinks({
+          href: schemePath + "/properties#" + id,
+          visuallyHiddenText: "type of unit"
+        })
+      }, {
+        key: {
+          text: "Number of units"
+        },
+        value: {
+          text: property.units
+        },
+        actions: actionLinks({
+          href: schemePath + "/properties#" + id,
+          visuallyHiddenText: "number of units"
+        })
+      }, {
+        key: {
+          text: "Type of building"
+        },
+        value: {
+          text: property["type-of-building"] | textFromInputValue(data.questions["type-of-building"])
+        },
+        actions: actionLinks({
+          href: schemePath + "/properties#" + id,
+          visuallyHiddenText: "type of building"
+        })
+      }, {
+        key: {
+          text: "Wheelchair adaptation"
+        },
+        value: {
+          text: property["is-adapted"] | textFromInputValue(data.questions["yes-no"])
+        },
+        actions: actionLinks({
+          href: schemePath + "/properties#" + id,
+          visuallyHiddenText: "if property has been built or adapted to wheelchair-user standards"
+        })
+      }]
+    }) }}
+  {% endfor %}
+{% endset %}
 
-{{ xGovukSummaryCard({
-  classes: "govuk-!-margin-bottom-6",
-  titleText: "Property information",
-  rows: [{
-    key: {
-      text: "Type of unit"
-    },
-    value: {
-      text: scheme["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"])
-    },
-    actions: actionLinks({
-      href: schemePath + "/type-of-unit",
-      visuallyHiddenText: "type of unit"
-    })
-  }, {
-    key: {
-      text: "Number of units"
-    },
-    value: {
-      text: scheme.units
-    },
-    actions: actionLinks({
-      href: schemePath + "/units",
-      visuallyHiddenText: "number of units"
-    })
-  }, {
-    key: {
-      text: "Type of building"
-    },
-    value: {
-      text: scheme["type-of-building"] | textFromInputValue(data.questions["type-of-building"])
-    },
-    actions: actionLinks({
-      href: schemePath + "/type-of-building",
-      visuallyHiddenText: "type of building"
-    })
-  }, {
-    key: {
-      text: "Wheelchair adaptation"
-    },
-    value: {
-      text: scheme["is-adapted"] | textFromInputValue(data.questions["yes-no"])
-    },
-    actions: actionLinks({
-      href: schemePath + "/is-adapted",
-      visuallyHiddenText: "if property has been built or adapted to wheelchair-user standards"
-    })
-  }]
-}) }}
-
-{{ xGovukSummaryCard({
-  classes: "govuk-!-margin-bottom-6",
-  titleText: "Dates",
-  rows: [{
-    key: {
-      text: "Operating dates"
-    },
-    value: {
-      html: (scheme["start-date"] | govukDate) + (" to " + (scheme["end-date"] | govukDate) if scheme["end-date-known"] == "true")
-    },
-    actions: actionLinks({
-      href: schemePath + "/dates",
-      visuallyHiddenText: "service dates"
-    })
-  }]
+{{ govukTabs({
+  items: [
+    {
+      label: "Service details",
+      id: "details",
+      panel: {
+        html: detailsHtml
+      }
+    }, {
+      label: "Properties",
+      id: "properties",
+      panel: {
+        html: propertiesHtml
+      }
+    }
+  ]
 }) }}
 
 {# Allow all answers to be edited, for now.

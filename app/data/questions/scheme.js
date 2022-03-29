@@ -21,16 +21,28 @@ const _getClientGroups = (groups) => {
 const schemeItems = []
 
 Object.entries(schemes).forEach(([key, value]) => {
+  // Show number of properties/property postcode as hint text
+  const propertyCount = Object.entries(value.properties).length
+  const hintText = propertyCount > 1
+    ? `${propertyCount} properties`
+    : `${value.properties[0].address}`
+
+  // Add postcodes to search synonyms
+  const synonyms = []
+  Object.values(value.properties).map(property => {
+    return synonyms.push(property.postcode)
+  })
+
   schemeItems.push({
     text: value.name,
     value: value.id,
     hint: {
-      text: `${value.postcodes.length} properties, ${value['local-authority'].name}`
+      text: hintText
     },
     attributes: {
-      'data-append': value.postcode,
+      'data-append': hintText,
       'data-hint': _getClientGroups(value['client-groups']),
-      'data-synonyms': value.postcodes
+      'data-synonyms': synonyms
     }
   })
 })

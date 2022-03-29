@@ -1,0 +1,95 @@
+{% extends "layouts/question.njk" %}
+
+{% set bodyAttributes = {"data-module": "add-another"} %}
+
+{% set title = "What properties accomodate this service?" %}
+{% if scheme.properties %}
+  {# Editing an existing scheme #}
+  {% set caption = scheme.name %}
+  {% set buttonText = "Save changes" %}
+  {% set formAction = schemePath %}
+{% endif %}
+
+{% block question %}
+  <h1 class="govuk-heading-l app-add-another__heading" tabindex="-1">
+    {{ title }}
+  </h1>
+
+  {% macro item(id) %}
+    {% call govukFieldset({
+      attributes: {
+        id: id
+      },
+      classes: "app-add-another__item",
+      legend: {
+        classes: "govuk-fieldset__legend--m app-add-another__title",
+        text: "Property"
+      }
+    }) %}
+      {{ govukInput({
+        decorate: ["schemes", scheme.id, "properties", id, "postcode"],
+        classes: "govuk-input--width-5",
+        label: {
+          classes: "govuk-label--m",
+          text: "Postcode"
+        }
+      }) }}
+
+      {{ govukSelect({
+        decorate: ["schemes", scheme.id, "properties", id, "type-of-unit"],
+        label: {
+          classes: "govuk-label--m",
+          text: "Type of unit"
+        },
+        items: data.questions["type-of-unit"]
+      }) }}
+
+      {{ govukInput({
+        decorate: ["schemes", scheme.id, "properties", id, "units"],
+        classes: "govuk-input--width-2",
+        label: {
+          classes: "govuk-label--m",
+          text: "Number of units"
+        },
+        inputmode: "numeric",
+        pattern: "[0-9]*",
+        spellcheck: false
+      }) }}
+
+      {{ govukRadios({
+        decorate: ["schemes", scheme.id, "properties", id, "type-of-building"],
+        fieldset: {
+          legend: {
+            classes: "govuk-fieldset__legend--m",
+            text: "Type of building"
+          }
+        },
+        items: data.questions["type-of-building"]
+      }) }}
+
+      {{ govukRadios({
+        decorate: ["schemes", scheme.id, "properties", id, "is-adapted"],
+        fieldset: {
+          legend: {
+            classes: "govuk-fieldset__legend--m",
+            text: "Property is built or adapted to wheelchair-user standards"
+          }
+        },
+        items: data.questions["yes-no"]
+      }) }}
+    {% endcall %}
+  {% endmacro %}
+
+  {% if scheme.properties %}
+    {% for id, property in scheme.properties %}
+      {{ item(loop.index0)}}
+    {% endfor %}
+  {% else %}
+    {{ item(0)}}
+  {% endif %}
+
+  {{ govukButton({
+    classes: "govuk-button--secondary app-add-another__add-button",
+    text: "Add another property"
+  }) }}
+{% endblock %}
