@@ -1,0 +1,98 @@
+{% extends "layouts/question.njk" %}
+
+{% set formAction = schemePath %}
+{% if scheme.properties[itemId] %}
+  {# Editing an existing scheme #}
+  {% set title = "Property details" %}
+  {% set caption = scheme.name %}
+  {% set hasAnsweredQuestion = true %}
+{% else %}
+  {% set title = "Add a property" %}
+{% endif %}
+
+{% block question %}
+  {{ macro.heading(title, caption) }}
+
+  {{ govukInput({
+    decorate: ["schemes", scheme.id, "properties", itemId, "postcode"],
+    classes: "govuk-input--width-5",
+    label: {
+      classes: "govuk-label--m",
+      text: "What is the postcode for this property?"
+    }
+  }) }}
+
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "properties", itemId, "type-of-unit"],
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "What type of unit is the property?"
+      }
+    },
+    items: data.questions["type-of-unit"]
+  }) }}
+
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "properties", itemId, "registered-home"],
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Is this property a registered care home?"
+      }
+    },
+    items: data.questions["registered-home"]
+  }) }}
+
+  {{ govukInput({
+    decorate: ["schemes", scheme.id, "properties", itemId, "units"],
+    classes: "govuk-input--width-2",
+    label: {
+      classes: "govuk-label--m",
+      text: "Number of units"
+    },
+    inputmode: "numeric",
+    pattern: "[0-9]*",
+    spellcheck: false
+  }) }}
+
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "properties", itemId, "type-of-building"],
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "What type of building is the property?"
+      }
+    },
+    items: data.questions["type-of-building"]
+  }) }}
+
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "properties", itemId, "is-adapted"],
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Is the property built or adapted to wheelchair-user standards?"
+      }
+    },
+    items: data.questions["yes-no"]
+  }) }}
+{% endblock %}
+
+{% block buttonGroup %}
+  {{ govukButton({
+    text: buttonText
+  }) }}
+
+  {% if not hasAnsweredQuestion %}
+    {% set thisInt = itemId | replace("p", "") | int %}
+    {% set nextItemId = "p" + (thisInt + 1) %}
+    {{ govukButton({
+      classes: "govuk-button--secondary",
+      text: "Add another property",
+      attributes: {
+        formaction: paths.current | replace(itemId, nextItemId)
+      }
+    }) }}
+  {% endif %}
+{% endblock %}

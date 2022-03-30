@@ -42,7 +42,7 @@
       {% if scheme.properties | length > 1 %}
         {{ scheme.properties | length }} properties
       {% else %}
-        {{ scheme.properties[0].address }}
+        {{ scheme.properties.p1.address }}, {{ scheme.properties.p1.postcode }}
       {% endif %}
     {% endset %}
     {% set row = schemeRows.push([{
@@ -84,7 +84,7 @@
           }, {
             text: "Managing agent"
           }, {
-            text: "Open from"
+            text: "Operating dates"
           }],
           rows: schemeRows
         }) }}

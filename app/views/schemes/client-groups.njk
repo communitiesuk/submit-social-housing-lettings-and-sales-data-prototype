@@ -4,7 +4,7 @@
 {% if scheme["client-groups"] %}
   {# Editing an existing scheme #}
   {% set caption = scheme.name %}
-  {% set buttonText = "Save changes" %}
+  {% set hasAnsweredQuestion = true %}
   {% set formAction = schemePath %}
 {% endif %}
 

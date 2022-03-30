@@ -18,10 +18,10 @@
 {%- set schemePropertyHtml %}
   {%- if log[section.id].schemePropertyId -%}
     {% set schemedId = log[section.id].schemeId[1] %}
-    {% set schemedPropertyId = log[section.id].schemePropertyId %}
-    {{ data.schemes[schemedId].properties[schemedPropertyId].address }}<br>
+    {% set itemId = log[section.id].schemePropertyId %}
+    {{ data.schemes[schemedId].properties[itemId].address }}<br>
     <span class="app-!-colour-muted">
-   {{ data.schemes[schemedId].properties[schemedPropertyId].postcode }}<br>{{ data.schemes[schemedId].properties[schemedPropertyId]["local-authority"].name }}
+      {{ data.schemes[schemedId].properties[itemId].postcode }}<br>{{ data.schemes[schemedId].properties[itemId]["local-authority"].name }}
     </span>
   {% else %}
     <span class="app-!-colour-muted">You didn’t answer this question</span>
