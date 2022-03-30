@@ -34,7 +34,7 @@
 
 {% block header %}
   {{ govukHeader({
-    classes: "app-header",
+    classes: "app-header" + (" app-header--orange" if isAdmin),
     homepageUrl: "/",
     productName: serviceName,
     containerClasses: "govuk-width-container",
@@ -52,7 +52,8 @@
   {{ govukPhaseBanner({
     classes: "govuk-width-container",
     tag: {
-      text: "Prototype"
+      classes: "govuk-tag--orange" if isAdmin,
+      text: "Support prototype" if isAdmin else "Prototype"
     },
     text: "This is a prototype of a new service. Some parts may not work yet."
   }) if data.token }}

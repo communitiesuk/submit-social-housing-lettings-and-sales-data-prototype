@@ -1,5 +1,5 @@
 export default {
-  // Administrator at DLUHC
+  // Customer support agent at DLUHC
   ADMIN: {
     name: 'Gary Meyler',
     email: 'admin@levellingup.gov.uk',

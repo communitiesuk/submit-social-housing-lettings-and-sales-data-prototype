@@ -1,6 +1,6 @@
 export default {
   admin: {
-    name: 'Administrator'
+    name: 'Customer support agent'
   },
   coordinator: {
     name: 'Data coordinator'
