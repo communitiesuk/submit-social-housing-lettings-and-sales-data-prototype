@@ -110,9 +110,9 @@
 
 {# Collection resources #}
 {% from "components/document-list/macro.njk" import appDocumentList %}
-{% macro collectionResouces(classes) %}
+{% macro collectionResouces() %}
+  <h2 class="govuk-heading-s">2022/23 collection resources</h2>
   {{ appDocumentList({
-    classes: classes,
     items: [{
       href: "/public/files/privacy-notice.pdf",
       text: "DLUHC privacy notice",

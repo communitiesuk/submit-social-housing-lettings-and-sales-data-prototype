@@ -1,14 +1,10 @@
 .app-document-list {
-  @include govuk-text-colour;
-  margin-top: 0;
-  @include govuk-responsive-margin(4, "bottom");
-  padding-left: 0;
-  list-style-type: none;
+  list-style: none;
+  padding: 0;
 }
 
 .app-document-list__item {
   margin-bottom: govuk-spacing(4);
-  max-width: 30em;
 
   &:last-child {
     border-bottom: 0;
@@ -18,12 +14,8 @@
 }
 
 .app-document-list__item-title {
-  @include govuk-font($size: 19, $weight: "bold");
+  @include govuk-font($size: 16, $weight: "bold");
   margin: 0 0 govuk-spacing(1);
-
-  .app-document-list--small & {
-    @include govuk-font($size: 16, $weight: "bold");
-  }
 }
 
 .app-document-list__item-metadata {
@@ -31,21 +23,13 @@
   margin: 0;
 }
 
-.app-document-list__item-description[class] {
-  @include govuk-font($size: 19);
+.app-document-list__item-description {
+  @include govuk-font($size: 16);
   margin: govuk-spacing(1) 0;
-
-  .app-document-list--small & {
-    @include govuk-font($size: 16);
-  }
 }
 
 .app-document-list__item-metadata {
-  @include govuk-font($size: 19);
+  @include govuk-font($size: 16);
   color: $govuk-secondary-text-colour;
   margin: 0;
-
-  .app-document-list--small & {
-    @include govuk-font($size: 16);
-  }
 }
