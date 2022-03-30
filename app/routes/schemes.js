@@ -32,7 +32,7 @@ export const schemeRoutes = (router) => {
   /**
    * List schemes
    */
-  router.get(['/schemes', '/organisations/:organisationId/schemes'], (req, res) => {
+  router.all(['/schemes', '/organisations/:organisationId/schemes'], (req, res) => {
     let { organisations, schemes } = req.session.data
     const { organisationId } = req.params
 
@@ -170,7 +170,7 @@ export const schemeRoutes = (router) => {
 
     delete schemes[schemeId]
 
-    res.redirect('/schemes?success=deleted')
+    res.redirect(`/schemes?success=deleted&schemeId=${schemeId}`)
   })
 
   /**

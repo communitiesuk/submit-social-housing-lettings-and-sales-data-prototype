@@ -114,12 +114,12 @@ export const userRoutes = (router) => {
    * Delete user
    */
   router.post('/users/:userId/delete', (req, res) => {
-    const { users } = req.session.data
+    const { account, users } = req.session.data
     const { userId } = req.params
 
     delete users[userId]
 
-    res.redirect('/users?success=deleted')
+    res.redirect(`/organisations/${account.organisationId}/users?success=deleted`)
   })
 
   /**
@@ -134,13 +134,13 @@ export const userRoutes = (router) => {
     // Deactivate user
     if (view === 'deactivate') {
       users[userId].deactivated = true
-      return res.redirect(userPath)
+      return res.redirect(`${userPath}?success=deactivated&userId=${userId}`)
     }
 
     // Reactivate user
     if (view === 'reactivate') {
       users[userId].deactivated = false
-      return res.redirect(userPath)
+      return res.redirect(`${userPath}?success=reactivated&userId=${userId}`)
     }
 
     next()

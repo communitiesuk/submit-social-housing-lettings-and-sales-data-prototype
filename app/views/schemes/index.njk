@@ -9,9 +9,14 @@
 
 {% block content %}
   {{ govukNotificationBanner({
-    text: macro.notificationBannerText(query.success, query.logId),
+    text: data.schemes[query.schemeId].name + " service has been created.",
     type: "success"
-  }) if query.success }}
+  }) if query.success == "created" }}
+
+  {{ govukNotificationBanner({
+    text: data.schemes[query.schemeId].name + " service has been deleted.",
+    type: "success"
+  }) if query.success == "deleted" }}
 
   {% if isGlobalView %}
     {{ macro.heading(title) }}

@@ -10,9 +10,9 @@
 
 {% block form %}
   {{ govukNotificationBanner({
-    text: macro.notificationBannerText(query.success, query.logId),
+    text: "Log " + query.logId + " has been submitted",
     type: "success"
-  }) if query.success }}
+  }) if query.success == "submitted" }}
 
   {% if isGlobalView %}
     {{ macro.heading(title) }}

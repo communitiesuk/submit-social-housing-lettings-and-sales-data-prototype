@@ -6,13 +6,23 @@
 {% set title = "Users" %}
 {% set caption = thisOrganisation.name %}
 {% set isGlobalView = isAdmin and path.startsWith("/users") %}
-{% set deactivatedUser = users | where("id", query.userId) | first %}
+{% set notificationUser = users | where("id", query.userId) | first %}
 
 {% block content %}
   {{ govukNotificationBanner({
-    text: macro.notificationBannerText(query.success, deactivatedUser.name),
+    text: "An invitation to submit CORE data has been sent to " + notificationUser.name + ".",
     type: "success"
-  }) if query.success }}
+  }) if query.success == "invited" }}
+
+  {{ govukNotificationBanner({
+    text: "An invitation to submit CORE data has been resent to " + notificationUser.name + ".",
+    type: "success"
+  }) if query.success == "reinvited" }}
+
+  {{ govukNotificationBanner({
+    text: "User has been deleted.",
+    type: "success"
+  }) if query.success == "deleted" }}
 
   {% if isGlobalView %}
     {{ macro.heading(title) }}

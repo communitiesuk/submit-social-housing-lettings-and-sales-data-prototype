@@ -13,14 +13,6 @@
 </h{{ headingLevel }}>
 {% endmacro %}
 
-{% macro notificationBannerText(success, object) %}
-  {{ (object + " has been invited to submit CORE data.") if success == "invited" }}
-  {{ (object + " has been deactivated.") if success == "deactivated" }}
-  {{ "User has been deleted." if success == "deleted" }}
-  {{ ("An invitation to submit CORE data has been resent to " + object + ".") if success == "reinvited" }}
-  {{ ("Log " + object + " has been submitted") if success == "submitted" }}
-{% endmacro %}
-
 {% macro entityHtml(title, href, caption) %}
   {% if href %}
     <a class="govuk-link govuk-!-font-weight-bold" href="{{ href }}">{{ title }}</a>

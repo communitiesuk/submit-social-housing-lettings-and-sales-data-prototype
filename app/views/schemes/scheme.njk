@@ -6,11 +6,6 @@
 {% set formAction = schemePath %}
 
 {% block form %}
-  {{ govukNotificationBanner({
-    text: macro.notificationBannerText(query.success),
-    type: "success"
-  }) if query.success }}
-
   {{ macro.heading(title) }}
 
   <div class="govuk-grid-row">
