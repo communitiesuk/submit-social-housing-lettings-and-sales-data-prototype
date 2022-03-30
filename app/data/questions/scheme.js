@@ -25,7 +25,7 @@ Object.entries(schemes).forEach(([key, value]) => {
   const propertyCount = Object.entries(value.properties).length
   const hintText = propertyCount > 1
     ? `${propertyCount} properties`
-    : `${value.properties[0].address}`
+    : `${value.properties.p1.address}`
 
   // Add postcodes to search synonyms
   const synonyms = []

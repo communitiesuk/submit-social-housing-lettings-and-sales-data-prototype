@@ -10,13 +10,8 @@ const getSchemePaths = (req) => {
     [`${schemePath}details`]: {},
     [`${schemePath}client-groups`]: {},
     [`${schemePath}support`]: {},
-    [`${schemePath}type-of-registered-home`]: {},
-    // [`${schemePath}type-of-unit`]: {},
-    // [`${schemePath}units`]: {},
-    // [`${schemePath}type-of-building`]: {},
-    // [`${schemePath}is-adapted`]: {},
     [`${schemePath}dates`]: {},
-    [`${schemePath}properties`]: {},
+    [`${schemePath}property/p1`]: {},
     [`${schemePath}check-your-answers`]: {}
   }
   return wizard(journey, req)
@@ -97,7 +92,7 @@ export const schemeRoutes = (router) => {
   /**
    * Scheme
    */
-  router.all('/schemes/:schemeId/:view?', (req, res, next) => {
+  router.all('/schemes/:schemeId/:view?/:itemId?', (req, res, next) => {
     res.locals.paths = getSchemePaths(req)
     next()
   })
@@ -105,9 +100,9 @@ export const schemeRoutes = (router) => {
   /**
    * View scheme
    */
-  router.get('/schemes/:schemeId/:view?', (req, res) => {
+  router.get('/schemes/:schemeId/:view?/:itemId?', (req, res) => {
     const { organisations, schemes } = req.session.data
-    const { schemeId } = req.params
+    const { itemId, schemeId } = req.params
     const view = req.params.view ? req.params.view : 'scheme'
 
     const scheme = utils.getEntityById(schemes, schemeId)
@@ -140,6 +135,7 @@ export const schemeRoutes = (router) => {
         managedOrganisations,
         organisation,
         organisationId,
+        itemId,
         scheme,
         schemes,
         schemePath

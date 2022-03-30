@@ -36,7 +36,7 @@ const generateSchemes = () => {
     const preset = faker.datatype.number({ min: 1, max: 6 })
 
     // Scheme values
-    let name, clientGroups, type, typeOfRegisteredHome, typeOfSupport, spGrant
+    let name, clientGroups, type, typeOfSupport
     switch (preset) {
       case 1:
         // Rough sleepers
@@ -45,9 +45,7 @@ const generateSchemes = () => {
           ' Action on Homelessness'
         ])}`
         type = 'direct-access-hostel'
-        spGrant = 'false'
         clientGroups = ['homeless-families', 'homeless-individuals']
-        typeOfRegisteredHome = 'false'
         typeOfSupport = 'low'
         break
       case 2:
@@ -58,9 +56,7 @@ const generateSchemes = () => {
           ' Point'
         ])}`
         type = 'foyer'
-        spGrant = 'true'
         clientGroups = ['young-at-risk', 'young-leaving-care']
-        typeOfRegisteredHome = 'false'
         typeOfSupport = 'low'
         break
       case 3:
@@ -71,14 +67,7 @@ const generateSchemes = () => {
           ' Support'
         ])}`
         type = 'older-people'
-        spGrant = 'false'
         clientGroups = ['older-people']
-        typeOfRegisteredHome = faker.random.arrayElement([
-          'nursing',
-          'personal',
-          'part-registered',
-          'false'
-        ])
         typeOfSupport = faker.random.arrayElement([
           'low',
           'medium'
@@ -93,9 +82,7 @@ const generateSchemes = () => {
           ' Supported Living'
         ])}`
         type = 'other'
-        spGrant = 'true'
         clientGroups = ['learning-disabilities', 'mental-health']
-        typeOfRegisteredHome = 'false'
         typeOfSupport = faker.random.arrayElement([
           'low',
           'medium'
@@ -109,9 +96,7 @@ const generateSchemes = () => {
           ' Nursing'
         ])}`
         type = 'other'
-        spGrant = 'false'
         clientGroups = ['physical-disabilities']
-        typeOfRegisteredHome = 'false'
         typeOfSupport = faker.random.arrayElement([
           'nursing',
           'low',
@@ -127,9 +112,7 @@ const generateSchemes = () => {
           ' House'
         ])}`
         type = 'other'
-        spGrant = faker.datatype.boolean().toString()
         clientGroups = ['alcohol', 'drugs']
-        typeOfRegisteredHome = 'false'
         typeOfSupport = faker.random.arrayElements([
           'low',
           'medium',
@@ -145,7 +128,11 @@ const generateSchemes = () => {
       const properties = {}
 
       for (let i = 0; i < count; i++) {
-        properties[i] = {
+        // Use string for object name
+        // Using integer means form gets submitted as an array and deletes
+        // other objects
+        const id = `p${i + 1}`
+        properties[id] = {
           postcode: faker.address.zipCode(),
           address: `${faker.datatype.number({ min: 1, max: 201 })} ${faker.random.arrayElement(streetNames)}`,
           'local-authority': faker.random.arrayElement(localAuthorities),
@@ -158,6 +145,12 @@ const generateSchemes = () => {
             'shared-flat',
             'shared-house',
             'other'
+          ]),
+          'registered-home': faker.random.arrayElement([
+            'nursing',
+            'personal',
+            'part-registered',
+            'false'
           ]),
           'is-adapted': faker.datatype.boolean().toString(),
           'type-of-building': faker.random.arrayElement([
@@ -188,14 +181,12 @@ const generateSchemes = () => {
       type,
       'client-groups': clientGroups,
       'type-of-support': typeOfSupport,
-      'type-of-registered-home': typeOfRegisteredHome,
       'intended-stay': faker.random.arrayElement([
         'very-short',
         'short',
         'medium',
         'permanent'
       ]),
-      'sp-grant': spGrant,
       'start-date': faker.date.past(),
       'end-date-known': hasEndDate.toString(),
       'end-date': hasEndDate ? faker.date.future() : false,

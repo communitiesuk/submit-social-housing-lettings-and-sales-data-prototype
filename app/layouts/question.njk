@@ -1,6 +1,6 @@
 {% extends "layouts/form.njk" %}
 
-{% set hasAnsweredQuestion =
+{% set hasAnsweredQuestion = hasAnsweredQuestion or
   log[section.id][itemId][questionId] or
   log[section.id][questionId] %}
 
@@ -26,9 +26,11 @@
       {% endblock %}
 
       <div class="govuk-button-group">
-        {{ govukButton({
-          text: buttonText
-        }) }}
+        {% block buttonGroup %}
+          {{ govukButton({
+            text: buttonText
+          }) }}
+        {% endblock %}
 
         {% if required != true and not hasAnsweredQuestion %}
           <a class="govuk-link govuk-link--no-visited-state" href="{{ paths.next }}">Skip for now</a>
