@@ -4,8 +4,9 @@
   {# Editing an existing scheme #}
   {% set caption = scheme.name %}
   {% set title = "Service details" %}
-  {% set hasAnsweredQuestion = true %}
   {% set formAction = schemePath %}
+  {% set hasAnsweredQuestion = true %}
+  {% set buttonText = "Continue" %}
 {% else %}
   {% set title = "Create a new supported service" %}
 {% endif %}

@@ -4,8 +4,9 @@
 {% if scheme["start-date"] %}
   {# Editing an existing scheme #}
   {% set caption = scheme.name %}
-  {% set hasAnsweredQuestion = true %}
   {% set formAction = schemePath %}
+  {% set hasAnsweredQuestion = true %}
+  {% set buttonText = "Continue" %}
 {% endif %}
 
 {% block question %}

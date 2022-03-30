@@ -179,7 +179,7 @@ export const schemeRoutes = (router) => {
   router.post('/schemes/:schemeId/:view?', (req, res) => {
     const next = res.locals.paths.next && res.locals.paths.next !== ''
       ? res.locals.paths.next
-      : `/schemes/${req.params.schemeId}/check-your-answers`
+      : `/schemes/${req.params.schemeId}/check-your-answers?update=true`
 
     res.redirect(next)
   })

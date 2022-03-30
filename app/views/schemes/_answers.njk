@@ -15,6 +15,17 @@
       })
     }, {
       key: {
+        text: "Confidential"
+      },
+      value: {
+        text: "Yes" if scheme.confidential else "No"
+      },
+      actions: actionLinks({
+        href: schemePath + "/details",
+        visuallyHiddenText: "if confidential"
+      })
+    }, {
+      key: {
         text: "Managing agent"
       },
       value: {
@@ -37,17 +48,6 @@
       })
     }, {
       key: {
-        text: "Confidential"
-      },
-      value: {
-        text: "Yes" if scheme.confidential else "No"
-      },
-      actions: actionLinks({
-        href: schemePath + "/details",
-        visuallyHiddenText: "if confidential"
-      })
-    }, {
-      key: {
         text: "Client groups"
       },
       value: {
@@ -65,8 +65,8 @@
         text: scheme["type-of-support"] | textFromInputValue(data.questions["type-of-support"])
       },
       actions: actionLinks({
-        href: schemePath + "/type-of-support",
-        visuallyHiddenText: "type of support"
+        href: schemePath + "/support",
+        visuallyHiddenText: "level of support"
       })
     }, {
       key: {
@@ -76,7 +76,7 @@
         text: scheme["intended-stay"] | textFromInputValue(data.questions["intended-stay"])
       },
       actions: actionLinks({
-        href: schemePath + "/intended-stay",
+        href: schemePath + "/support",
         visuallyHiddenText: "intended length of stay"
       })
     }, {

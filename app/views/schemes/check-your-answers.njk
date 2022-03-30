@@ -1,8 +1,13 @@
 {% extends "layouts/form.njk" %}
 
-{% set title = "Check your answers before creating this service" %}
+{% if query.update %}
+  {% set title = "Check your changes before updating this service" %}
+{% else %}
+  {% set title = "Check your answers before creating this service" %}
+{% endif %}
 {% set backLink = "javascript:history.go(-1);" %}
 {% set formAction = userOrganisationPath + "/schemes/?success=created&schemeId=" + scheme.id %}
+{% set logsAffected = 123 %}
 
 {% block form %}
   <div class="govuk-grid-row">
@@ -11,10 +16,53 @@
 
       {% include "schemes/_answers.njk" %}
 
-      {{ govukButton(decorate({
-        text: "Save and continue",
-        value: "true"
-      }, ["schemes", scheme.id, "completed"])) }}
+      {% if query.update %}
+        {{ govukRadios({
+          decorate: ["schemes", scheme.id, "correction"],
+          fieldset: {
+            legend: {
+              classes: "govuk-fieldset__legend--m",
+              html: "Which logs do you want to update?"
+            }
+          },
+          items: [{
+            text: "All logs",
+            value: "true",
+            hint: {
+              text: logsAffected + " incomplete and submitted logs for the current collection period."
+            }
+          }, {
+            text: "Only logs for tenancies starting after a certain date",
+            value: "false",
+            conditional: {
+              html: govukDateInput({
+                decorate: ["schemes", scheme.id, "change-date"],
+                fieldset: {
+                  legend: {
+                    classes: "govuk-fieldset__legend--s",
+                    text: "When does this change take effect?"
+                  }
+                },
+                hint: {
+                  text: "For example, 12 11 2020."
+                },
+                items: data.questions["date-full"]
+              })
+            }
+          }]
+        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Update service"
+          }) }}
+          <a class="govuk-link" href="{{ userOrganisationPath }}/schemes/">Cancel</a>
+        </div>
+      {% else %}
+        {{ govukButton(decorate({
+          text: "Create service",
+          value: "true"
+        }, ["schemes", scheme.id, "completed"])) }}
+      {% endif %}
     </div>
   </div>
 {% endblock %}
