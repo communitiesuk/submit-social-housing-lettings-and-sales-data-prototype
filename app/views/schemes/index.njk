@@ -38,23 +38,32 @@
   {% set schemeRows = [] %}
   {% for scheme in results %}
     {% set schemePath = "/schemes/" + scheme.id %}
-    {% set schemeLocation %}
-      {% if scheme.properties | length > 1 %}
-        {{ scheme.properties | length }} properties
+    {% set schemePropertyCount = scheme.properties | length %}
+    {% set schemeDescription %}
+      {% if schemePropertyCount > 1 %}
+        {{ schemePropertyCount }} properties
       {% else %}
         {{ scheme.properties.p1.address }}, {{ scheme.properties.p1.postcode }}
       {% endif %}
+    {% endset %}
+    {% set addPropertyHtml %}
+      <a class="govuk-link govuk-link--no-visited-state" href="{{ schemePath }}/property/new">
+        Add a property
+        <span class="govuk-visually-hidden">to {{ scheme.name }}</span>
+      </a>
     {% endset %}
     {% set row = schemeRows.push([{
         classes: "govuk-!-text-align-left",
         text: scheme.id,
         format: "numeric"
       }, {
-        html: macro.entityHtml(scheme.name, schemePath, schemeLocation)
+        html: macro.entityHtml(scheme.name, schemePath, schemeDescription)
       }, {
         html: organisations[scheme.agentId].name
       }, {
         html: (scheme["start-date"] | textFromInputValue | govukDate) + (" to <br>" + (scheme["end-date"] | textFromInputValue | govukDate) if scheme["end-date"])
+      }, {
+        html: addPropertyHtml
       }])
     %}
   {% endfor %}
@@ -85,6 +94,8 @@
             text: "Managing agent"
           }, {
             text: "Operating dates"
+          }, {
+            text: "Actions"
           }],
           rows: schemeRows
         }) }}

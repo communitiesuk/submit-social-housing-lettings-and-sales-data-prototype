@@ -166,18 +166,14 @@ const generateSchemes = () => {
     // Scheme
     schemes[id] = {
       id,
+      name,
+      confidential: faker.datatype.boolean().toString(),
       organisationId: value.organisationId,
       agentId: faker.random.arrayElement([
         'CHILD1',
         'CHILD2',
         value.organisationId
       ]),
-      name,
-      properties: generateProperties(faker.datatype.number({
-        min: 1,
-        max: 9
-      })),
-      confidential: faker.datatype.boolean().toString(),
       type,
       'client-groups': clientGroups,
       'type-of-support': typeOfSupport,
@@ -190,7 +186,10 @@ const generateSchemes = () => {
       'start-date': faker.date.past(),
       'end-date-known': hasEndDate.toString(),
       'end-date': hasEndDate ? faker.date.future() : false,
-      completed: 'true'
+      properties: generateProperties(faker.datatype.number({
+        min: 1,
+        max: 9
+      }))
     }
   })
 

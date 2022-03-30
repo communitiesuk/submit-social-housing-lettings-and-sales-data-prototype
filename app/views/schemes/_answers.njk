@@ -144,17 +144,17 @@
           visuallyHiddenText: "type of building"
         })
       }, {
-      key: {
-        text: "Registered care home"
-      },
-      value: {
-        text: property["registered-home"] | textFromInputValue(data.questions["registered-home"])
-      },
-      actions: actionLinks({
-        href: schemePath + "/property/" + itemId,
-        visuallyHiddenText: "if property is a registered care home"
-      })
-    }, {
+        key: {
+          text: "Registered care home"
+        },
+        value: {
+          text: property["registered-home"] | textFromInputValue(data.questions["registered-home"])
+        },
+        actions: actionLinks({
+          href: schemePath + "/property/" + itemId,
+          visuallyHiddenText: "if property is a registered care home"
+        })
+      }, {
         key: {
           text: "Wheelchair adaptation"
         },
@@ -168,6 +168,12 @@
       }]
     }) }}
   {% endfor %}
+
+  {{ govukButton({
+    classes: "govuk-button--secondary",
+    text: "Add another property",
+    href: schemePath + "/property/new"
+  }) }}
 {% endset %}
 
 {{ govukTabs({

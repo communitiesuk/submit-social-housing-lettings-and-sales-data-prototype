@@ -98,6 +98,22 @@ export const schemeRoutes = (router) => {
   })
 
   /**
+   * Create property
+   */
+  router.get('/schemes/:schemeId/property/new', (req, res) => {
+    const { schemes } = req.session.data
+    const { schemeId } = req.params
+
+    const scheme = utils.getEntityById(schemes, schemeId)
+    const schemePath = `/schemes/${schemeId}`
+
+    const schemePropertyCount = Object.entries(scheme.properties).length
+    const nextItemId = `p${schemePropertyCount + 1}`
+
+    res.redirect(`${schemePath}/property/${nextItemId}`)
+  })
+
+  /**
    * View scheme
    */
   router.get('/schemes/:schemeId/:view?/:itemId?', (req, res) => {
