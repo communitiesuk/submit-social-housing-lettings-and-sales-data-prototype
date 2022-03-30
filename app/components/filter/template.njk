@@ -8,71 +8,7 @@
   </div>
 
   <div class="app-filter__content">
-    {{ govukRadios({
-      decorate: ["filter", "user"],
-      formGroup: {
-        classes: "app-filter__group"
-      },
-      classes: "govuk-radios--small",
-      fieldset: {
-        legend: {
-          classes: "govuk-fieldset__legend--s",
-          text: "Show"
-        }
-      },
-      items: [{
-        text: "All logs",
-        value: "all"
-      }, {
-        text: "Logs you’ve started",
-        value: data.account.id
-      }]
-    }) if not isAdmin }}
-
-    {{ govukCheckboxes({
-      decorate: ["filter", "collection"],
-      formGroup: {
-        classes: "app-filter__group"
-      },
-      classes: "govuk-checkboxes--small",
-      fieldset: {
-        legend: {
-          classes: "govuk-fieldset__legend--s",
-          text: "Collection year"
-        }
-      },
-      items: [{
-        text: "2022/23",
-        value: "2022/23"
-      }, {
-        text: "2021/22",
-        value: "2021/22"
-      }]
-    }) }}
-
-    {{ govukCheckboxes({
-      decorate: ["filter", "status"],
-      formGroup: {
-        classes: "app-filter__group"
-      },
-      classes: "govuk-checkboxes--small",
-      fieldset: {
-        legend: {
-          classes: "govuk-fieldset__legend--s",
-          text: "Status"
-        }
-      },
-      items: [{
-        text: "In progress",
-        value: "incomplete"
-      }, {
-        text: "Submitted",
-        value: "submitted"
-      }, {
-        text: "Archived",
-        value: "archived"
-      }]
-    }) }}
+    {{ caller() }}
 
     {{ govukButton({
       classes: "govuk-!-margin-bottom-0",

@@ -51,9 +51,11 @@
     </div>
 
     <div class="app-filter-layout__filter">
-      {{ appFilter({
+      {% call appFilter({
         title: "Filters"
-      }) }}
+      }) %}
+        {% include "logs/_filters.njk" %}
+      {% endcall %}
     </div>
 
     <div class="app-filter-layout__content">

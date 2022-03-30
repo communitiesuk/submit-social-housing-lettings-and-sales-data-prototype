@@ -81,7 +81,7 @@
       })
     }, {
       key: {
-        text: "Operating dates"
+        text: "Operation dates"
       },
       value: {
         html: (scheme["start-date"] | textFromInputValue | govukDate) + (" to " + (scheme["end-date"] | textFromInputValue | govukDate) if scheme["end-date-known"] == "true")

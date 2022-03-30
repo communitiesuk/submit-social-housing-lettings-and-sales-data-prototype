@@ -19,92 +19,104 @@
     {{ adminNavigation(title) if isAdmin else macro.heading(title, caption) }}
   {% endif %}
 
-  {{ govukButton({
-    href: "/schemes/new",
-    text: "Create a new supported service"
-  }) }}
+  <div class="app-filter-layout" data-module="filter-layout">
+    <div class="govuk-button-group app-filter-toggle">
+      {{ govukButton({
+        href: "/schemes/new",
+        text: "Create a new supported service"
+      }) }}
+    </div>
 
-  {{ appSearch({
-    decorate: "q",
-    classes: "govuk-!-margin-bottom-4",
-    label: {
-      classes: "govuk-!-margin-bottom-2",
-      text: "Search by service name or postcode"
-    }
-  }) }}
-
-  <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
-
-  {% set schemeRows = [] %}
-  {% for scheme in results %}
-    {% set schemePath = "/schemes/" + scheme.id %}
-    {% set schemePropertyCount = scheme.properties | length %}
-    {% set schemeDescription %}
-      {% if schemePropertyCount > 1 %}
-        {{ schemePropertyCount }} properties
-      {% else %}
-        {{ scheme.properties.p1.address }}, {{ scheme.properties.p1.postcode }}
-      {% endif %}
-    {% endset %}
-    {% set addPropertyHtml %}
-      <a class="govuk-link govuk-link--no-visited-state" href="{{ schemePath }}/property/new">
-        Add a property
-        <span class="govuk-visually-hidden">to {{ scheme.name }}</span>
-      </a>
-    {% endset %}
-    {% set row = schemeRows.push([{
-        classes: "govuk-!-text-align-left",
-        text: scheme.id,
-        format: "numeric"
-      }, {
-        html: macro.entityHtml(scheme.name, schemePath, schemeDescription)
-      }, {
-        html: organisations[scheme.agentId].name
-      }, {
-        html: (scheme["start-date"] | textFromInputValue | govukDate) + (" to <br>" + (scheme["end-date"] | textFromInputValue | govukDate) if scheme["end-date"])
-      }, {
-        html: addPropertyHtml
-      }])
-    %}
-  {% endfor %}
-
-  {% set captionHtml %}
-    <span class="govuk-!-margin-right-4">
-      {% if q %}<b>56</b> services found of{% endif %}
-      <b>{{ pagination.results.count }}</b> total services
-    </span>
-  {% endset %}
-
-  {% if results.length %}
-    {% call appFigure ({
-      id: "services",
-      caption: {
-        html: captionHtml
-      }
-    }) %}
-      {% call appTableGroup({
-        labelledby: "services"
+    <div class="app-filter-layout__filter">
+      {% call appFilter({
+        title: "Filters"
       }) %}
-        {{ govukTable({
-          head: [{
-            text: "Code"
-          }, {
-            text: "Name"
-          }, {
-            text: "Managing agent"
-          }, {
-            text: "Operating dates"
-          }, {
-            text: "Actions"
-          }],
-          rows: schemeRows
-        }) }}
+        {% include "schemes/_filters.njk" %}
       {% endcall %}
-      {{ appPagination(pagination) }}
-    {% endcall %}
-  {% else %}
-    <p class="govuk-body">
-      <strong>No supported housing services found</strong>
-    </p>
-  {% endif %}
+    </div>
+
+    <div class="app-filter-layout__content">
+      {{ appSearch({
+        decorate: "q",
+        classes: "govuk-!-margin-bottom-4",
+        label: {
+          classes: "govuk-!-margin-bottom-2",
+          text: "Search by service name or postcode"
+        }
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+      {% set schemeRows = [] %}
+      {% for scheme in results %}
+        {% set schemePath = "/schemes/" + scheme.id %}
+        {% set schemePropertyCount = scheme.properties | length %}
+        {% set schemeDescription %}
+          {% if schemePropertyCount > 1 %}
+            {{ schemePropertyCount }} properties
+          {% else %}
+            {{ scheme.properties.p1.address }}, {{ scheme.properties.p1.postcode }}
+          {% endif %}
+        {% endset %}
+        {% set addPropertyHtml %}
+          <a class="govuk-link govuk-link--no-visited-state" href="{{ schemePath }}/property/new">Add property
+            <span class="govuk-visually-hidden">to {{ scheme.name }}</span>
+          </a>
+        {% endset %}
+        {% set row = schemeRows.push([{
+            classes: "govuk-!-text-align-left",
+            text: scheme.id,
+            format: "numeric"
+          }, {
+            classes: "govuk-!-width-one-quarter",
+            html: macro.entityHtml(scheme.name, schemePath, schemeDescription)
+          }, {
+            html: organisations[scheme.agentId].name
+          }, {
+            classes: "app-table-group__header--no-wrap",
+            html: (scheme["start-date"] | textFromInputValue | govukDate("truncate")) + (" to <br>" + (scheme["end-date"] | textFromInputValue | govukDate("truncate")) if scheme["end-date"])
+          }])
+        %}
+      {% endfor %}
+
+      {% set captionHtml %}
+        <span class="govuk-!-margin-right-4">
+          {% if q %}<b>56</b> services found of{% endif %}
+          <b>{{ pagination.results.count }}</b> total services
+        </span>
+      {% endset %}
+
+      {% if results.length %}
+        {% call appFigure ({
+          id: "services",
+          caption: {
+            html: captionHtml
+          }
+        }) %}
+          {% call appTableGroup({
+            labelledby: "services"
+          }) %}
+            {{ govukTable({
+              head: [{
+                text: "Code"
+              }, {
+                classes: "govuk-!-width-one-third",
+                text: "Name"
+              }, {
+                text: "Managing agent"
+              }, {
+                text: "Operation dates"
+              }],
+              rows: schemeRows
+            }) }}
+          {% endcall %}
+          {{ appPagination(pagination) }}
+        {% endcall %}
+      {% else %}
+        <p class="govuk-body">
+          <strong>No supported housing services found</strong>
+        </p>
+      {% endif %}
+    </div>
+  </div>
 {% endblock %}
