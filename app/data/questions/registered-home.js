@@ -5,8 +5,11 @@ export default [{
   text: 'Yes – registered care home providing personal care',
   value: 'personal'
 }, {
-  text: 'Yes – part registered care home',
-  value: 'part-registered'
+  text: 'Yes – part registered as a care home',
+  value: 'part-registered',
+  hint: {
+    text: 'A proportion of units are registered as being a care home.'
+  }
 }, {
   text: 'No',
   value: 'false'

@@ -48,6 +48,28 @@
       })
     }, {
       key: {
+        html: "Registered as a care home" | noOrphans
+      },
+      value: {
+        text: scheme["registered-home"] | textFromInputValue(data.questions["registered-home"])
+      },
+      actions: actionLinks({
+        href: schemePath + "/details",
+        visuallyHiddenText: "if service is a registered as a care home"
+      })
+    }, {
+      key: {
+        html: "Total number of units or bedspaces" | noOrphans
+      },
+      value: {
+        text: scheme.units
+      },
+      actions: actionLinks({
+        href: schemePath + "/details",
+        visuallyHiddenText: "total number of units or bedspaces"
+      })
+    }, {
+      key: {
         text: "Client groups"
       },
       value: {
@@ -70,7 +92,7 @@
       })
     }, {
       key: {
-        text: "Intended length of stay"
+        html: "Intended length of stay" | noOrphans
       },
       value: {
         text: scheme["intended-stay"] | textFromInputValue(data.questions["intended-stay"])
@@ -123,17 +145,6 @@
         })
       }, {
         key: {
-          text: "Number of units"
-        },
-        value: {
-          text: property.units
-        },
-        actions: actionLinks({
-          href: schemePath + "/property/" + itemId,
-          visuallyHiddenText: "number of units"
-        })
-      }, {
-        key: {
           text: "Type of building"
         },
         value: {
@@ -142,17 +153,6 @@
         actions: actionLinks({
           href: schemePath + "/property/" + itemId,
           visuallyHiddenText: "type of building"
-        })
-      }, {
-        key: {
-          text: "Registered care home"
-        },
-        value: {
-          text: property["registered-home"] | textFromInputValue(data.questions["registered-home"])
-        },
-        actions: actionLinks({
-          href: schemePath + "/property/" + itemId,
-          visuallyHiddenText: "if property is a registered care home"
         })
       }, {
         key: {

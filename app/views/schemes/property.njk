@@ -34,29 +34,6 @@
   }) }}
 
   {{ govukRadios({
-    decorate: ["schemes", scheme.id, "properties", itemId, "registered-home"],
-    fieldset: {
-      legend: {
-        classes: "govuk-fieldset__legend--m",
-        text: "Is this property a registered care home?"
-      }
-    },
-    items: data.questions["registered-home"]
-  }) }}
-
-  {{ govukInput({
-    decorate: ["schemes", scheme.id, "properties", itemId, "units"],
-    classes: "govuk-input--width-2",
-    label: {
-      classes: "govuk-label--m",
-      text: "Number of units"
-    },
-    inputmode: "numeric",
-    pattern: "[0-9]*",
-    spellcheck: false
-  }) }}
-
-  {{ govukRadios({
     decorate: ["schemes", scheme.id, "properties", itemId, "type-of-building"],
     fieldset: {
       legend: {

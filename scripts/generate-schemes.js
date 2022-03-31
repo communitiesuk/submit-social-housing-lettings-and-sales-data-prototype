@@ -136,7 +136,6 @@ const generateSchemes = () => {
           postcode: faker.address.zipCode(),
           address: `${faker.datatype.number({ min: 1, max: 201 })} ${faker.random.arrayElement(streetNames)}`,
           'local-authority': faker.random.arrayElement(localAuthorities),
-          units: faker.datatype.number({ min: 1, max: 20 }),
           'type-of-unit': faker.random.arrayElement([
             'bungalow',
             'flat',
@@ -144,12 +143,6 @@ const generateSchemes = () => {
             'house',
             'shared-flat',
             'shared-house-or-hostel'
-          ]),
-          'registered-home': faker.random.arrayElement([
-            'nursing',
-            'personal',
-            'part-registered',
-            'false'
           ]),
           'is-adapted': faker.datatype.boolean().toString(),
           'type-of-building': faker.random.arrayElement([
@@ -174,6 +167,12 @@ const generateSchemes = () => {
         value.organisationId
       ]),
       type,
+      'registered-home': faker.random.arrayElement([
+        'nursing',
+        'personal',
+        'part-registered',
+        'false'
+      ]),
       'client-groups': clientGroups,
       'type-of-support': typeOfSupport,
       'intended-stay': faker.random.arrayElement([
@@ -190,6 +189,12 @@ const generateSchemes = () => {
         max: 9
       }))
     }
+
+    const schemePropertyCount = Object.entries(schemes[id].properties).length
+    schemes[id].units = faker.datatype.number({
+      min: schemePropertyCount,
+      max: schemePropertyCount + 20
+    })
   })
 
   return schemes

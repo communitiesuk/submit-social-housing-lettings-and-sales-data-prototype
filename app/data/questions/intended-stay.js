@@ -1,13 +1,25 @@
 export default [{
   text: 'Very short stay',
-  value: 'very-short'
+  value: 'very-short',
+  hint: {
+    text: 'Up to one month.'
+  }
 }, {
   text: 'Short stay',
-  value: 'short'
+  value: 'short',
+  hint: {
+    text: 'Up to one year.'
+  }
 }, {
   text: 'Medium stay',
-  value: 'medium'
+  value: 'medium',
+  hint: {
+    text: 'More than one year but with an expectation to move on.'
+  }
 }, {
   text: 'Permanent',
-  value: 'permanent'
+  value: 'permanent',
+  hint: {
+    text: 'Provides a home for life with no requirement for the tenant to move.'
+  }
 }]
