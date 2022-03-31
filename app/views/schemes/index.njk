@@ -3,7 +3,7 @@
 {% import "macros.njk" as macro %}
 {% from "macros.njk" import adminNavigation with context %}
 
-{% set title = "Supported services" %}
+{% set title = "Supported housing services" %}
 {% set caption = thisOrganisation.name %}
 {% set isGlobalView = isAdmin and path.startsWith("/schemes") %}
 
@@ -28,7 +28,7 @@
     <div class="govuk-button-group app-filter-toggle">
       {{ govukButton({
         href: "/schemes/new",
-        text: "Create a new supported service"
+        text: "Create a new supported housing service"
       }) }}
     </div>
 
