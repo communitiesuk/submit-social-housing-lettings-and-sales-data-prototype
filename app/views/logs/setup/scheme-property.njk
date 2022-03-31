@@ -1,7 +1,7 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Which property is this log for?" %}
 {% set schemeId = data.logs[log.id].setup.schemeId[1] %}
+{% set title = "Which property used by " + data.schemes[schemeId].name + " is this log for?" %}
 {% set questionId = "schemePropertyId" %}
 
 {% block question %}
