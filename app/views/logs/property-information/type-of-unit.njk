@@ -2,6 +2,7 @@
 
 {% set title = "What type of unit is the property?" %}
 {% set questionId = "type-of-unit" %}
+{% set needsType = log["setup"]["type-of-need"] %}
 
 {% block question %}
   {{ govukRadios({
@@ -11,6 +12,6 @@
         text: macro.heading(title, caption)
       }
     },
-    items: data.questions[questionId]
+    items: data.questions[questionId][needsType]
   }) }}
 {% endblock %}

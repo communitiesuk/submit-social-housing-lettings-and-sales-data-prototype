@@ -115,7 +115,7 @@
           text: "Type of unit"
         },
         value: {
-          text: property["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"])
+          text: property["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported)
         },
         actions: actionLinks({
           href: schemePath + "/property/" + itemId,

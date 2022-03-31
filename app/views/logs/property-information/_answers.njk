@@ -1,8 +1,9 @@
 {% import "macros.njk" as macro %}
 
 {# Some answers may come from a scheme #}
+{% set needsType = log["setup"]["type-of-need"] %}
 {% macro schemeAnswer(sectionId, field) -%}
-  {%- if log.setup["type-of-need"] == "supported" -%}
+  {%- if needsType == "supported" -%}
     {%- set schemeId = log["setup"]["schemeId"] -%}
     {{ data.schemes[schemeId][field] }}
   {%- else -%}
@@ -17,7 +18,7 @@
 {% set isNewlet = log[section.id]["is-relet"] == "false" %}
 {% set isRepaired = log[section.id]["repairs"] == "true" %}
 {% set isNewprop = log[section.id]["reason-for-vacancy"] == "newprop" %}
-{% set isSupported = log["setup"]["type-of-need"] == "supported" %}
+{% set isSupported = needsType == "supported" %}
 {% set isRenewal = log["setup"]["letting-renewal"] == "true" %}
 
 {# Answer objects #}
@@ -107,7 +108,7 @@
     text: "Type of unit"
   },
   value: {
-    text: schemeAnswer(section.id, "type-of-unit") | textFromInputValue(data.questions["type-of-unit"])
+    text: schemeAnswer(section.id, "type-of-unit") | textFromInputValue(data.questions["type-of-unit"][needsType])
   },
   actions: {
     items: [{

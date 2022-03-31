@@ -140,11 +140,10 @@ const generateSchemes = () => {
           'type-of-unit': faker.random.arrayElement([
             'bungalow',
             'flat',
+            'flat-common-facilities',
             'house',
-            'shared-bungalow',
             'shared-flat',
-            'shared-house',
-            'other'
+            'shared-house-or-hostel'
           ]),
           'registered-home': faker.random.arrayElement([
             'nursing',
