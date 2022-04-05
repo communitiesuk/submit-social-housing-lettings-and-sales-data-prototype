@@ -2,13 +2,13 @@ export default [{
   text: 'Low level',
   value: 'low',
   hint: {
-    text: 'Visiting staff once a week, fortnightly or less.'
+    text: 'Staff visiting once a week, fortnightly or less.'
   }
 }, {
   text: 'Medium level',
   value: 'medium',
   hint: {
-    text: 'Staff on site during the day or make frequent visits, with some out of hours cover.'
+    text: 'Staff on site daily or making frequent visits with some out-of-hours cover.'
   }
 }, {
   text: 'High level',
