@@ -9,12 +9,12 @@
 
 {% block content %}
   {{ govukNotificationBanner({
-    text: data.schemes[query.schemeId].name + " service has been created.",
+    text: data.schemes[query.schemeId].name + " has been created.",
     type: "success"
   }) if query.success == "created" }}
 
   {{ govukNotificationBanner({
-    text: data.schemes[query.schemeId].name + " service has been deleted.",
+    text: data.schemes[query.schemeId].name + " has been deleted.",
     type: "success"
   }) if query.success == "deleted" }}
 
@@ -46,7 +46,7 @@
         classes: "govuk-!-margin-bottom-4",
         label: {
           classes: "govuk-!-margin-bottom-2",
-          text: "Search by service name or postcode"
+          text: "Search by service name, code or postcode"
         }
       }) }}
 
@@ -110,7 +110,7 @@
               }, {
                 text: "Managing agent"
               }, {
-                text: "Operation dates"
+                text: "Dates active"
               }],
               rows: schemeRows
             }) }}

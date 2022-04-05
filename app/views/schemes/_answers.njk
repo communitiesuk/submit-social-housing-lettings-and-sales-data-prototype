@@ -15,7 +15,7 @@
       })
     }, {
       key: {
-        text: "Confidential"
+        text: "Confidential information"
       },
       value: {
         text: "Yes" if scheme.confidential else "No"
@@ -48,7 +48,7 @@
       })
     }, {
       key: {
-        html: "Registered as a care home" | noOrphans
+        html: "Registered under Care Standards Act 2000" | noOrphans
       },
       value: {
         text: scheme["registered-home"] | textFromInputValue(data.questions["registered-home"])
@@ -59,14 +59,14 @@
       })
     }, {
       key: {
-        html: "Total number of units or bedspaces" | noOrphans
+        html: "Total number of units or bedrooms" | noOrphans
       },
       value: {
         text: scheme.units
       },
       actions: actionLinks({
         href: schemePath + "/details",
-        visuallyHiddenText: "total number of units or bedspaces"
+        visuallyHiddenText: "total number of units or bedrooms"
       })
     }, {
       key: {
@@ -103,14 +103,14 @@
       })
     }, {
       key: {
-        text: "Operation dates"
+        text: "Dates of scheme"
       },
       value: {
         html: (scheme["start-date"] | textFromInputValue | govukDate) + (" to " + (scheme["end-date"] | textFromInputValue | govukDate) if scheme["end-date-known"] == "true")
       },
       actions: actionLinks({
         href: schemePath + "/dates",
-        visuallyHiddenText: "service dates"
+        visuallyHiddenText: "dates of scheme"
       })
     }]
   }) }}
