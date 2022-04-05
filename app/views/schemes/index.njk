@@ -9,12 +9,12 @@
 
 {% block content %}
   {{ govukNotificationBanner({
-    text: data.schemes[query.schemeId].name + " service has been created.",
+    text: data.schemes[query.schemeId].name + " has been created.",
     type: "success"
   }) if query.success == "created" }}
 
   {{ govukNotificationBanner({
-    text: data.schemes[query.schemeId].name + " service has been deleted.",
+    text: data.schemes[query.schemeId].name + " has been deleted.",
     type: "success"
   }) if query.success == "deleted" }}
 
