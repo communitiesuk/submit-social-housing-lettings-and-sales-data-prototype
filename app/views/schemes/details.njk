@@ -8,7 +8,7 @@
   {% set hasAnsweredQuestion = true %}
   {% set buttonText = "Continue" %}
 {% else %}
-  {% set title = "Create a new supported service" %}
+  {% set title = "Create a new supported housing service" %}
 {% endif %}
 
 {% block question %}
@@ -78,9 +78,12 @@
   {{ govukInput({
     decorate: ["schemes", scheme.id, "properties", itemId, "units"],
     classes: "govuk-input--width-2",
+    hint: {
+      text: "Do not include units or bedrooms for wardens, managers, volunteers or sleep-in staff."
+    },
     label: {
       classes: "govuk-label--m",
-      text: "Total number of units or bedspaces"
+      text: "Total number of units or bedrooms"
     },
     inputmode: "numeric",
     pattern: "[0-9]*",
