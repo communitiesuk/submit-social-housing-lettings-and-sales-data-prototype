@@ -1,7 +1,7 @@
 export default {
   "1000": {
     "id": 1000,
-    "name": "Lake Maceyland Action on Homeless",
+    "name": "Lake View Action on Homeless",
     "confidential": "false",
     "organisationId": "PARENT1",
     "agentId": "CHILD1",
@@ -106,7 +106,7 @@ export default {
   },
   "1001": {
     "id": 1001,
-    "name": "Lake Maceyland Independent Living",
+    "name": "Lake View Independent Living",
     "confidential": "true",
     "organisationId": "PARENT1",
     "agentId": "CHILD2",
@@ -175,7 +175,7 @@ export default {
   },
   "1002": {
     "id": 1002,
-    "name": "Lake Maceyland Care",
+    "name": "Lake View Care",
     "confidential": "true",
     "organisationId": "PARENT1",
     "agentId": "CHILD2",
@@ -231,7 +231,7 @@ export default {
   },
   "1003": {
     "id": 1003,
-    "name": "Lake Maceyland Foyer",
+    "name": "Lake View Foyer",
     "confidential": "false",
     "organisationId": "PARENT1",
     "agentId": "PARENT1",
