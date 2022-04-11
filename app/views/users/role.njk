@@ -94,6 +94,27 @@
         }]
       }) }}
 
+      {{ govukRadios({
+        decorate: ["users", user.id, "keycontact"],
+        classes: "govuk-radios--inline",
+        fieldset: {
+          legend: {
+            classes: "govuk-fieldset__legend--m",
+            text: "Is this user the key contact for CORE?"
+          }
+        },
+        hint: {
+          text: "This is the person responsible for sharing information about CORE within your organisation"
+        },
+        items: [{
+          value: "true",
+          text: "Yes"
+        }, {
+          value: "false",
+          text: "No"
+        }]
+      }) }}
+
       {{ govukButton({
         text: buttonText
       }) }}
