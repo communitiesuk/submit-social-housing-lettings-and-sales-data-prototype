@@ -15,13 +15,12 @@
       text: "Yes",
       value: "true",
       conditional: {
-        html: appAutocomplete({
-          decorate: ["logs", log.id, section.id, "local-authorities"],
+        html: appAutocomplete(decorate({
           label: {
             text: "Select a local authority"
           },
           items: data.questions["local-authorities"]
-        })
+        }, ["logs", log.id, section.id, "local-authorities"]))
       }
     }, {
       text: "No",

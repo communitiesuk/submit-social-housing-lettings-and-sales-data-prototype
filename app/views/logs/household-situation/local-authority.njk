@@ -15,8 +15,7 @@
       text: "Yes",
       value: "true",
       conditional: {
-        html: appAutocomplete({
-          decorate: ["logs", log.id, section.id, "local-authority"],
+        html: appAutocomplete(decorate({
           label: {
             text: "Select a local authority"
           },
@@ -24,7 +23,7 @@
             text: "Select ‘Northern Ireland’, ‘Scotland’, ‘Wales’ or ‘Outside the UK’ if the household’s last settled home was outside England."
           },
           items: data.questions["local-authorities"]
-        })
+        }, ["logs", log.id, section.id, "local-authority"]))
       }
     }, {
       text: "No",
