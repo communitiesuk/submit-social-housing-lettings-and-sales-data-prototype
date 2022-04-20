@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { sections as getSections } from './data/sections.js'
 import data from './data.js'
 import * as utils from './utils.js'
@@ -9,6 +10,30 @@ const sessionData = await data() // eslint-disable-line
  */
 export default () => {
   const globals = {}
+
+  /**
+   * Transform errors provided by express-validator into an array that can be
+   * consumed by the error summary component.
+   *
+   * If a field has multiple errors, return only the first error.
+   *
+   * @param {Object} errorMap - Mapped error response from express-validator
+   * @returns {Array} List of errors
+   */
+  globals.errorList = function (errorMap) {
+    const errorList = []
+    const fieldsWithErrors = Object.entries(errorMap)
+
+    for (const fieldError of fieldsWithErrors) {
+      const fieldErrorId = _.toPath(fieldError[1].param).join('-')
+      errorList.push({
+        text: fieldError[1].msg,
+        href: `#${fieldErrorId}`
+      })
+    }
+
+    return errorList
+  }
 
   globals.incompleteSections = function (logId, logsObject = false) {
     const logs = logsObject || this.ctx.data.logs
