@@ -1,15 +1,13 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "What is the local authority for the property?" %}
-{% set questionId = "local-authority-known" %}
+{% set questionId = "local-authorities" %}
 
 {% block question %}
-  {{
-    appAutocomplete(decorate({
-      label: {
-        text: macro.heading(title, caption)
-      },
-      items: data.questions["local-authorities"]
-    }, ["logs", log.id, section.id, "local-authorities"]))
-  }}
+  {{ appAutocomplete(decorate({
+    label: {
+      text: macro.heading(title, caption)
+    },
+    items: data.questions[questionId]
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
