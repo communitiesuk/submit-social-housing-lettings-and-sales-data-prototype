@@ -13,7 +13,6 @@
 
 {# set variables to test various user selected data #}
 {% set hasPostcode = schemeAnswer(section.id, "postcode-known") == "true" %}
-{% set hasLocalAuthority = schemeAnswer(section.id, "local-authority-known") == "true" %}
 {% set isRelet = log[section.id]["is-relet"] == "true" %}
 {% set isNewlet = log[section.id]["is-relet"] == "false" %}
 {% set isRepaired = log[section.id]["repairs"] == "true" %}
@@ -44,7 +43,7 @@
     text: "Local authority"
   },
   value: {
-    text: schemeAnswer(section.id, "local-authorities") | textFromInputValue(data.questions["local-authorities"]) if hasLocalAuthority else "Not known"
+    text: schemeAnswer(section.id, "local-authorities") if log[section.id]["local-authorities"] else "Not known"
   },
   actions: {
     items: [{

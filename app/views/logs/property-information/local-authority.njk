@@ -4,12 +4,10 @@
 {% set questionId = "local-authority-known" %}
 
 {% block question %}
-  {{
-    appAutocomplete(decorate({
-      label: {
-        text: macro.heading(title, caption)
-      },
-      items: data.questions["local-authorities"]
-    }, ["logs", log.id, section.id, "local-authorities"]))
-  }}
+  {{ appAutocomplete(decorate({
+    label: {
+      text: macro.heading(title, caption)
+    },
+    items: data.questions[questionId]
+  }, ["logs", log.id, section.id, questionId])) }}
 {% endblock %}
