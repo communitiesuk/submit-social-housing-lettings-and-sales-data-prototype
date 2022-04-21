@@ -5,6 +5,17 @@
 {% set sectionsCount = sections | length %}
 {% set completeSectionsCount = sectionsCount - incompleteSectionsCount %}
 
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [{
+      href: "/logs",
+      text: "Logs"
+    }, {
+      text: title
+    }]
+  }) }}
+{% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
@@ -17,8 +28,15 @@
             text: data.statuses[log.status].text
           }) }}
         </p>
-        <p class="govuk-body">This log was submitted to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities on {{ log.updated | govukDate }}.</p>
-        <p class="govuk-body">You can still make changes and re-submit this log.</p>
+        <p class="govuk-body">This log was submitted to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities on {{ log.updated | govukDate }} as part of the 2021/22 collection period.</p>
+      {% elif incompleteSectionsCount == 0 %}
+        <p class="govuk-body">
+          {{ govukTag({
+            classes: "govuk-tag--" + data.statuses.completed.colour,
+            text: data.statuses.completed.text
+          }) }}
+        </p>
+        <p class="govuk-body">You can <a href="/logs/{{ log.id }}/review">review and make changes to this log</a> until 31 June 2022.</p>
       {% else %}
         {% if completeSectionsCount == 0 %}
           <p class="govuk-body">This log has not been started.</p>
@@ -36,14 +54,14 @@
         sections: taskListSections(log.id)
       }) }}
 
-      {% if completeSectionsCount != 0 %}
+      {# if completeSectionsCount != 0 %}
         <h2 class="govuk-heading-m">Review and submit</h2>
         <p>Review your answers and submit this log to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities.</p>
         {{ govukButton({
           href: "/logs/" + log.id + "/review",
           text: "Review " + log.type + " log"
         }) }}
-      {% endif %}
+      {% endif #}
     </div>
   </div>
 {% endblock %}

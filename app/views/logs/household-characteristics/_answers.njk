@@ -37,7 +37,7 @@
         text: "Change" if log[section.id]["privacy-notice"] else "Answer",
         href: sectionPath + "/privacy-notice",
         visuallyHiddenText: "if tenant has seen the DLUHC privacy notice"
-      }] if not logArchived
+      }] if not logSubmitted
     }
   }, {
     key: {
@@ -52,7 +52,7 @@
         text: "Change" if log[section.id]["number-in-household"] else "Answer",
         href: sectionPath + "/number-in-household",
         visuallyHiddenText: "number of people in household"
-      }] if not logArchived
+      }] if not logSubmitted
     }
   }]
 }) }}
@@ -82,7 +82,7 @@
           text: "Change" if log[section.id][itemId + "-known"] else "Answer",
           href: sectionPath + "/" + itemId + "/known",
           visuallyHiddenText: "if details are known for " + name
-        }] if not logArchived
+        }] if not logSubmitted
       }
     } if not isLeadTenant, ({
       key: {
@@ -96,7 +96,7 @@
           text: "Change" if log[section.id][itemId]["relationship-to-lead-tenant"] else "Answer",
           href: sectionPath + "/" + itemId + "/relationship-to-lead-tenant",
           visuallyHiddenText: name + "’s relationship to lead tenant"
-        }] if not logArchived
+        }] if not logSubmitted
       }
     } if not isLeadTenant) if isKnown, {
       key: {
@@ -110,7 +110,7 @@
           text: "Change" if log[section.id][itemId]["age-known"] else "Answer",
           href: sectionPath + "/" + itemId + "/age",
           visuallyHiddenText: name + "’s age"
-        }] if not logArchived
+        }] if not logSubmitted
       }
     } if isKnown, {
       key: {
@@ -124,7 +124,7 @@
           text: "Change" if log[section.id][itemId]["gender"] else "Answer",
           href: sectionPath + "/" + itemId + "/gender",
           visuallyHiddenText: name + "’s gender identity"
-        }] if not logArchived
+        }] if not logSubmitted
       }
     } if isKnown, {
       key: {
@@ -138,7 +138,7 @@
           text: "Change" if log[section.id][itemId]["ethnic-group"] else "Answer",
           href: sectionPath + "/" + itemId + "/ethnic-group",
           visuallyHiddenText: name + "’s ethnic group"
-        }] if not logArchived
+        }] if not logSubmitted
       }
     } if isLeadTenant, {
       key: {
@@ -152,7 +152,7 @@
           text: "Change" if log[section.id][itemId]["ethnic-background"] else "Answer",
           href: sectionPath + "/" + itemId + "/ethnic-background",
           visuallyHiddenText: name + "’s ethnic background"
-        }] if not logArchived
+        }] if not logSubmitted
       }
     } if isLeadTenant, {
       key: {
@@ -166,7 +166,7 @@
           text: "Change" if log[section.id][itemId]["nationality"] else "Answer",
           href: sectionPath + "/" + itemId + "/nationality",
           visuallyHiddenText: name + "’s nationality"
-        }] if not logArchived
+        }] if not logSubmitted
       }
     } if isLeadTenant, {
       key: {
@@ -180,7 +180,7 @@
           text: "Change" if log[section.id][itemId]["working-situation"] else "Answer",
           href: sectionPath + "/" + itemId + "/working-situation",
           visuallyHiddenText: name + "’s working situation"
-        }] if not logArchived
+        }] if not logSubmitted
       }
     } if isKnown]
   }) }}

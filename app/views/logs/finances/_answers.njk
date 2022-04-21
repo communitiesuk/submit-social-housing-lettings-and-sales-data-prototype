@@ -41,7 +41,7 @@
         text: "Change" if log[section.id]["income-known"] else "Answer",
         href: sectionPath + "/income-known",
         visuallyHiddenText: "if you know the household’s combined income"
-      }] if not logArchived
+      }] if not logSubmitted
     }
   }, {
     key: {
@@ -55,7 +55,7 @@
         text: "Change" if log[section.id]["income-value"] else "Answer",
         href: sectionPath + "/income-value",
         visuallyHiddenText: "total household income"
-      }] if not logArchived
+      }] if not logSubmitted
     }
   } if log[section.id]["income-known"] == "true", {
     key: {
@@ -69,7 +69,7 @@
         text: "Change" if log[section.id]["income-benefits"] else "Answer",
         href: sectionPath + "/income-benefits",
         visuallyHiddenText: "housing-related benefits received"
-      }] if not logArchived
+      }] if not logSubmitted
     }
   }, {
     key: {
@@ -83,7 +83,7 @@
         text: "Change" if log[section.id]["income-benefits-portion"] else "Answer",
         href: sectionPath + "/income-benefits-portion",
         visuallyHiddenText: "household income from Universal Credit, state pension or benefits"
-      }] if not logArchived
+      }] if not logSubmitted
     }
   }, {
     key: {
@@ -97,7 +97,7 @@
         text: "Change" if log[section.id]["outgoings-includes-rent"] else "Answer",
         href: sectionPath + "/outgoings-includes-rent",
         visuallyHiddenText: "if the household pay rent or charges"
-      }] if not logArchived
+      }] if not logSubmitted
     }
   } if isSupported, {
     key: {
@@ -111,7 +111,7 @@
         text: "Change" if log[section.id]["outgoings-period"] else "Answer",
       href: sectionPath + "/outgoings-period",
       visuallyHiddenText: "frequency of household rent or charges"
-      }] if not logArchived
+      }] if not logSubmitted
     }
   } if isRenter, {
     key: {
@@ -125,7 +125,7 @@
         text: "Change" if log[section.id]["outgoings-includes-care-home"] else "Answer",
         href: sectionPath + "/outgoings-includes-care-home",
         visuallyHiddenText: "if care home accommodation"
-      }] if not logArchived
+      }] if not logSubmitted
     }
   } if isSupported, {
     key: {
@@ -139,7 +139,7 @@
         text: "Change" if log[section.id]["outgoings-care-home"] else "Answer",
         href: sectionPath + "/outgoings-includes-care-home",
         visuallyHiddenText: "care home charges"
-      }] if not logArchived
+      }] if not logSubmitted
     }
   } if isCareHome, {
     key: {
@@ -153,7 +153,7 @@
         text: "Change" if log[section.id]["outgoings-value"] else "Answer",
         href: sectionPath + "/outgoings-value",
         visuallyHiddenText: "total household rent or charges"
-      }] if not logArchived
+      }] if not logSubmitted
     }
   } if isRenter and not isCareHome, {
     key: {
@@ -167,7 +167,7 @@
         text: "Change" if log[section.id]["outgoings-after-benefits"] else "Answer",
         href: sectionPath + "/outgoings-after-benefits",
         visuallyHiddenText: "outstanding amount for basic rent and charges"
-      }] if not logArchived
+      }] if not logSubmitted
     }
   } if isRenter and hasIncomeBenefits, {
     key: {
@@ -181,7 +181,7 @@
         text: "Change" if log[section.id]["outgoings-outstanding"] else "Answer",
         href: sectionPath + "/outgoings-outstanding",
         visuallyHiddenText: "estimated outstanding amount"
-      }] if not logArchived
+      }] if not logSubmitted
     }
   } if isRenter and hasIncomeBenefits and hasOutgoingsAfterBenefits]
 }) }}

@@ -1,10 +1,10 @@
 export default {
   A0001: {
     type: 'lettings',
+    status: 'submitted',
     created: '2021-07-15',
     updated: '2021-07-19',
     updatedBy: 'DP001',
-    status: 'submitted',
     setup: {
       'letting-start-date': { day: '12', month: '6', year: '2022' },
       'tenant-code': '298736',
@@ -16,7 +16,6 @@ export default {
     created: '2021-07-15',
     updated: '2021-07-19',
     updatedBy: 'DP001',
-    status: 'submitted',
     setup: {
       'letting-start-date': { day: '12', month: '6', year: '2022' },
       'tenant-code': '298736',
@@ -28,7 +27,6 @@ export default {
     created: '2021-07-16',
     updated: '2021-07-19',
     updatedBy: 'DP001',
-    status: 'submitted',
     setup: {
       'letting-start-date': { day: '12', month: '6', year: '2022' },
       'tenant-code': '298736',
@@ -40,7 +38,6 @@ export default {
     created: '2021-07-11',
     updated: '2021-07-12',
     updatedBy: 'DP001',
-    status: 'submitted',
     setup: {
       'letting-start-date': { day: '12', month: '6', year: '2022' },
       'tenant-code': '298736',
@@ -52,7 +49,6 @@ export default {
     created: '2021-07-10',
     updated: '2021-07-12',
     updatedBy: 'DP001',
-    status: 'submitted',
     setup: {
       'letting-start-date': { day: '12', month: '6', year: '2022' },
       'tenant-code': '298736',
@@ -64,7 +60,6 @@ export default {
     created: '2021-06-18',
     updated: '2021-06-24',
     updatedBy: 'DP001',
-    status: 'submitted',
     setup: {
       'letting-start-date': { day: '12', month: '6', year: '2022' },
       'tenant-code': '298736',
@@ -73,7 +68,6 @@ export default {
   },
   EX001: {
     type: 'lettings',
-    // status: 'completed',
     created: '2021-07-27',
     updated: '2021-07-29',
     updatedBy: 'DP001',
@@ -89,8 +83,8 @@ export default {
       completed: 'true'
     },
     'household-characteristics': {
-      // 'number-in-household': 2,
-      // 'privacy-notice': 'true',
+      'number-in-household': 2,
+      'privacy-notice': 'true',
       'lead-tenant': {
         age: 45,
         'age-known': 'true',
@@ -166,7 +160,6 @@ export default {
   },
   EX002: {
     type: 'lettings',
-    status: 'archived',
     created: '2021-07-27',
     updated: '2021-07-29',
     updatedBy: 'DP001',

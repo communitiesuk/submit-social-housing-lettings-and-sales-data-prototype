@@ -17,7 +17,7 @@ export default async () => ({
   filter: {
     user: ['DP001'],
     collection: ['2022/23'],
-    status: ['complete', 'incomplete', 'submitted', 'archived']
+    status: ['complete', 'incomplete', 'submitted']
   },
   groups: [{
     id: 'before-you-start',
@@ -37,11 +37,6 @@ export default async () => ({
   roles,
   schemes: require('./datasets/generated/schemes.json'),
   statuses: {
-    archived: {
-      id: 'archived',
-      text: 'Archived',
-      colour: 'orange'
-    },
     notStarted: {
       id: 'notStarted',
       text: 'Not started',
@@ -51,7 +46,7 @@ export default async () => ({
     inProgress: {
       id: 'inProgress',
       text: 'In progress',
-      colour: 'blue',
+      colour: 'grey',
       canStart: true
     },
     completed: {
