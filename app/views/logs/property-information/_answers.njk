@@ -34,7 +34,7 @@
       text: "Change" if log[section.id]["postcode"] else "Answer",
       href: sectionPath + "/postcode",
       visuallyHiddenText: "postcode"
-    }] if not isSupported and not logArchived
+    }] if not isSupported and not logSubmitted
   }
 } %}
 
@@ -50,7 +50,7 @@
       text: "Change" if log[section.id]["local-authorities"] else "Answer",
       href: sectionPath + "/local-authority",
       visuallyHiddenText: "local authority"
-    }] if not isSupported and not logArchived
+    }] if not isSupported and not logSubmitted
   }
 } if not hasPostcode %}
 
@@ -66,7 +66,7 @@
       text: "Change" if log[section.id]["is-re-let"] else "Answer",
       href: sectionPath + "/is-re-let",
       visuallyHiddenText: "if this is the first time being let as social-housing"
-    }] if not logArchived
+    }] if not logSubmitted
   }
 } %}
 
@@ -82,7 +82,7 @@
       text: "Change" if log[section.id]["type-of-let"] else "Answer",
       href: sectionPath + "/type-of-let",
       visuallyHiddenText: "the recent let type"
-    }] if not logArchived
+    }] if not logSubmitted
   }
 } if isRelet %}
 
@@ -98,7 +98,7 @@
       text: "Change" if log[section.id]["reason-for-vacancy"] else "Answer",
       href: sectionPath + "/reason-for-vacancy",
       visuallyHiddenText: "reason for vacancy"
-    }] if not logArchived
+    }] if not logSubmitted
   }
 } %}
 
@@ -114,7 +114,7 @@
       text: "Change" if log[section.id]["type-of-unit"] else "Answer",
       href: sectionPath + "/type-of-unit",
       visuallyHiddenText: "type of unit"
-    }] if not isSupported and not logArchived
+    }] if not isSupported and not logSubmitted
   }
 } %}
 
@@ -130,7 +130,7 @@
       text: "Change" if log[section.id]["type-of-building"] else "Answer",
       href: sectionPath + "/type-of-building",
       visuallyHiddenText: "type of building"
-    }] if not isSupported and not logArchived
+    }] if not isSupported and not logSubmitted
   }
 } %}
 
@@ -146,7 +146,7 @@
       text: "Change" if log[section.id]["is-adapted"] else "Answer",
       href: sectionPath + "/is-adapted",
       visuallyHiddenText: "if property has been built or adapted to wheelchair-user standards"
-    }] if not isSupported and not logArchived
+    }] if not isSupported and not logSubmitted
   }
 } %}
 
@@ -162,7 +162,7 @@
       text: "Change" if log[section.id]["number-of-bedrooms"] else "Answer",
       href: sectionPath + "/number-of-bedrooms",
       visuallyHiddenText: "number of bedrooms"
-    }] if not logArchived
+    }] if not logSubmitted
   }
 } %}
 
@@ -178,7 +178,7 @@
       text: "Change" if log[section.id]["void-date"] else "Answer",
       href: sectionPath + "/void-date",
       visuallyHiddenText: "void date"
-    }] if not logArchived
+    }] if not logSubmitted
   }
 } %}
 
@@ -194,7 +194,7 @@
       text: "Change" if log[section.id]["repairs"] else "Answer",
       href: sectionPath + "/repairs",
       visuallyHiddenText: "status of major repairs"
-    }] if not logArchived
+    }] if not logSubmitted
   }
 } if not isNewprop %}
 
@@ -210,7 +210,7 @@
       text: "Change" if log[section.id]["times-previously-offered"] else "Answer",
       href: sectionPath + "/times-previously-offered",
       visuallyHiddenText: "times previously offered"
-    }] if not logArchived
+    }] if not logSubmitted
   }
 } %}
 

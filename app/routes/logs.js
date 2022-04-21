@@ -18,14 +18,20 @@ export const logRoutes = (router) => {
     for (const log of logs) {
       const sections = getSections(log)
 
-      let incompleteSections = 0
+      let completedSections = 0
       for (const section of sections) {
         if (log[section.id]?.completed === 'true') {
-          incompleteSections = incompleteSections + 1
+          completedSections = completedSections + 1
         }
       }
 
-      log.progress = `${incompleteSections} of ${sections.length} sections`
+      if (completedSections === sections.length) {
+        log.status = 'completed'
+      }
+
+      log.progress = `${completedSections} of ${sections.length} sections`
+
+      console.log(log.id, log.status)
     }
 
     // Filter: updated by current user
@@ -93,7 +99,7 @@ export const logRoutes = (router) => {
     const sections = getSections(log)
 
     if (log) {
-      if (log.status === 'archived') {
+      if (log.status === 'submitted') {
         return res.render('logs/review', { log, sections })
       }
 

@@ -1,7 +1,7 @@
 {% extends "layouts/form.njk" %}
 
-{% set logArchived = log.status == "archived" %}
-{% if logArchived %}
+{% set logSubmitted = log.status == "submitted" %}
+{% if logSubmitted %}
   {% set title = "Log " + log.id %}
 {% else %}
   {% set title = "Review " + log.type + " log" %}
@@ -15,7 +15,7 @@
       text: "Logs"
     }, {
       text: title
-    }] if logArchived else [{
+    }] if logSubmitted else [{
       href: "/logs",
       text: "Logs"
     }, {
@@ -35,16 +35,18 @@
         errorList: errorList(errors)
       }) if errors }}
 
-      {{ macro.heading(title, false, "xl") }}
+      {{ macro.heading(title) }}
 
-      {% if logArchived %}
+      {% if logSubmitted %}
         <p class="govuk-body">
           {{ govukTag({
             classes: "govuk-tag--" + data.statuses[log.status].colour,
             text: data.statuses[log.status].text
           }) }}
         </p>
-        <p class="govuk-body">This log was submitted to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities on {{ log.updated | govukDate }}.</p>
+        <p class="govuk-body">This log was submitted to the Department of Levelling Up, Housing&nbsp;&amp;&nbsp;Communities on {{ log.updated | govukDate }} as part of the 2021/22 collection period.</p>
+      {% else %}
+        <p class="govuk-body">You can review and make changes to this log until 31 June 2022.</p>
       {% endif %}
 
       {% for group in data.groups %}
@@ -66,7 +68,7 @@
         {% endfor %}
       {% endfor %}
 
-      {% if logArchived %}
+      {# if logSubmitted %}
         <p class="govuk-body">
           <a class="govuk-link govuk-link--no-visited-state" href="/logs">Return to logs</a>
         </p>
@@ -81,7 +83,7 @@
           }) }}
           <a class="govuk-link govuk-link--no-visited-state" href="/logs/{{ log.id }}">Return to log</a>
         </div>
-      {% endif %}
+      {% endif #}
     </div>
   </div>
 {% endblock %}
