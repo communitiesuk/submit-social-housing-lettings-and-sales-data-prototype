@@ -1,15 +1,8 @@
-.app-document-list {
-  list-style: none;
-  padding: 0;
-}
-
 .app-document-list__item {
   margin-bottom: govuk-spacing(4);
 
   &:last-child {
-    border-bottom: 0;
     margin-bottom: 0;
-    padding-bottom: 0;
   }
 }
 
@@ -26,6 +19,6 @@
 .app-document-list__item-metadata {
   @include govuk-font($size: 16);
   color: $govuk-secondary-text-colour;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }

@@ -1,19 +1,19 @@
 {% if params.items.length > 0 %}
-  <ol class="app-document-list{%- if params.classes %} {{ params.classes }}{% endif %}">
+  <dl class="app-document-list{%- if params.classes %} {{ params.classes }}{% endif %}">
   {% for item in params.items %}
-    <li class="app-document-list__item">
-      <h2 class="app-document-list__item-title">
+    <div class="app-document-list__item">
+      <dt class="app-document-list__item-title">
         <a class="govuk-link" href="{{ item.href }}">{{ item.text }}</a>
-      </h2>
+      </dt>
       {% if item.description %}
-      <p class="app-document-list__item-description">{{ item.description }}</p>
+      <dd class="app-document-list__item-description">{{ item.description }}</dd>
       {% endif %}
       {% if item.metadata %}
-        <p class="app-document-list__item-metadata">{{ item.metadata }}</p>
+        <dd class="app-document-list__item-metadata">{{ item.metadata }}</dd>
       {% endif %}
-    </li>
+    </div>
   {% endfor %}
-  </ol>
+  </dl>
 {% else %}
   <p class="govuk-body">No documents found.</p>
 {% endif %}
