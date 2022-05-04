@@ -4,8 +4,9 @@ import clientGroups from './client-groups.js'
 const require = createRequire(import.meta.url)
 const schemes = require('../../datasets/generated/schemes.json')
 
-const _getClientGroups = (groups) => {
+const _getClientGroups = (data) => {
   if (Array.isArray(clientGroups)) {
+    const groups = [data.clientGroup1].concat(data.clientGroup2)
     const items = []
     groups.forEach(item => {
       item = String(item)
@@ -41,7 +42,7 @@ Object.entries(schemes).forEach(([key, value]) => {
     },
     attributes: {
       'data-append': hintText,
-      'data-hint': _getClientGroups(value['client-groups']),
+      'data-hint': _getClientGroups(value),
       'data-synonyms': synonyms
     }
   })

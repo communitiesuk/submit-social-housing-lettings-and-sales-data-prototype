@@ -8,7 +8,8 @@ const getSchemePaths = (req) => {
 
   const journey = {
     [`${schemePath}details`]: {},
-    [`${schemePath}client-groups`]: {},
+    [`${schemePath}primary-client-group`]: {},
+    [`${schemePath}secondary-client-group`]: {},
     [`${schemePath}support`]: {},
     [`${schemePath}dates`]: {},
     [`${schemePath}property/p1`]: {},
