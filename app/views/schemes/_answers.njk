@@ -112,17 +112,6 @@
         href: schemePath + "/support",
         visuallyHiddenText: "intended length of stay"
       })
-    }, {
-      key: {
-        text: "Dates of scheme"
-      },
-      value: {
-        html: (scheme["start-date"] | textFromInputValue | govukDate) + (" to " + (scheme["end-date"] | textFromInputValue | govukDate) if scheme["end-date-known"] == "true")
-      },
-      actions: actionLinks({
-        href: schemePath + "/dates",
-        visuallyHiddenText: "dates of scheme"
-      })
     }]
   }) }}
 {% endset %}

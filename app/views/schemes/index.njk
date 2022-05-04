@@ -73,13 +73,9 @@
             text: scheme.id,
             format: "numeric"
           }, {
-            classes: "govuk-!-width-one-quarter",
-            html: macro.entityHtml(scheme.name, schemePath, schemeDescription)
+            html: macro.entityHtml(scheme.name, schemePath, scheme["primary-client-group"] | textFromInputValue(data.questions["client-groups"]))
           }, {
             html: organisations[scheme.agentId].name
-          }, {
-            classes: "app-table-group__header--no-wrap",
-            html: (scheme["start-date"] | textFromInputValue | govukDate("truncate")) + (" to <br>" + (scheme["end-date"] | textFromInputValue | govukDate("truncate")) if scheme["end-date"])
           }])
         %}
       {% endfor %}
@@ -105,12 +101,9 @@
               head: [{
                 text: "Code"
               }, {
-                classes: "govuk-!-width-one-third",
-                text: "Name"
+                text: "Service"
               }, {
                 text: "Managing agent"
-              }, {
-                text: "Dates active"
               }],
               rows: schemeRows
             }) }}

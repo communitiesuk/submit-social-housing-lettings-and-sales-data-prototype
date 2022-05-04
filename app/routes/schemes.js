@@ -11,7 +11,6 @@ const getSchemePaths = (req) => {
     [`${schemePath}primary-client-group`]: {},
     [`${schemePath}secondary-client-group`]: {},
     [`${schemePath}support`]: {},
-    [`${schemePath}dates`]: {},
     [`${schemePath}property/p1`]: {},
     [`${schemePath}check-your-answers`]: {}
   }
