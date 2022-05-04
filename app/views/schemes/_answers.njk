@@ -118,7 +118,7 @@
 
 {% set propertiesHtml %}
   {% for itemId, property in scheme.properties %}
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-2">{{ property.address }}</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-2 app-!-font-tabular">{{ scheme.id }}-{{ property.postcode | replace(" ", "") }}</h2>
     {{ govukSummaryList({
       classes: "govuk-!-margin-bottom-9" if not loop.last else "",
       rows: [{
