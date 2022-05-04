@@ -4,6 +4,14 @@
   {{ govukSummaryList({
     rows: [{
       key: {
+        text: "Group code"
+      },
+      value: {
+        classes: "app-!-font-tabular",
+        text: "S" + scheme.id
+      }
+    }, {
+      key: {
         text: "Name"
       },
       value: {
@@ -118,10 +126,17 @@
 
 {% set propertiesHtml %}
   {% for itemId, property in scheme.properties %}
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-2 app-!-font-tabular">{{ scheme.id }}-{{ property.postcode | replace(" ", "") }}</h2>
     {{ govukSummaryList({
       classes: "govuk-!-margin-bottom-9" if not loop.last else "",
       rows: [{
+        key: {
+          text: "Scheme code"
+        },
+        value: {
+          classes: "app-!-font-tabular",
+          text: "P" + scheme.id + "-" + property.postcode | replace(" ", "")
+        }
+      }, {
         key: {
           text: "Postcode"
         },

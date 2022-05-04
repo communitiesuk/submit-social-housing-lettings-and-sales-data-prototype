@@ -70,7 +70,7 @@
         {% endset %}
         {% set row = schemeRows.push([{
             classes: "govuk-!-text-align-left",
-            text: scheme.id,
+            text: "S" + scheme.id,
             format: "numeric"
           }, {
             html: macro.entityHtml(scheme.name, schemePath, scheme["primary-client-group"] | textFromInputValue(data.questions["client-groups"]))
@@ -99,7 +99,7 @@
           }) %}
             {{ govukTable({
               head: [{
-                text: "Code"
+                text: "Group code"
               }, {
                 text: "Service"
               }, {
