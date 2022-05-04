@@ -70,14 +70,25 @@
       })
     }, {
       key: {
-        text: "Client groups"
+        text: "Primary client group"
       },
       value: {
-        html: scheme["client-groups"] | textFromInputValue(data.questions["client-groups"]) | replace(",", "<br>")
+        html: scheme["primary-client-group"] | textFromInputValue(data.questions["client-groups"])
       },
       actions: actionLinks({
-        href: schemePath + "/client-groups",
-        visuallyHiddenText: "client groups"
+        href: schemePath + "/primary-client-group",
+        visuallyHiddenText: "primary client group"
+      })
+    }, {
+      key: {
+        text: "Secondary client group"
+      },
+      value: {
+        html: (scheme["secondary-client-group"] | textFromInputValue(data.questions["client-groups"])) if scheme["has-secondary-client-group"] else "None"
+      },
+      actions: actionLinks({
+        href: schemePath + "/secondary-client-group",
+        visuallyHiddenText: "secondary client group"
       })
     }, {
       key: {

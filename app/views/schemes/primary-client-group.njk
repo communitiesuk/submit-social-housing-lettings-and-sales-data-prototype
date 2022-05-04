@@ -1,7 +1,7 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "What client groups is this service for?" %}
-{% if scheme["client-groups"] %}
+{% set title = "What client group is this service for?" %}
+{% if scheme["primary-client-group"] %}
   {# Editing an existing scheme #}
   {% set caption = scheme.name %}
   {% set formAction = schemePath %}
@@ -10,15 +10,12 @@
 {% endif %}
 
 {% block question %}
-  {{ govukCheckboxes({
-    decorate: ["schemes", scheme.id, "client-groups"],
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "primary-client-group"],
     fieldset: {
       legend: {
         html: macro.heading(title, caption)
       }
-    },
-    hint: {
-      text: "Select up to 2 client groups."
     },
     items: data.questions["client-groups"]
   }) }}

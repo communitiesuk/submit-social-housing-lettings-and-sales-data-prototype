@@ -37,7 +37,7 @@ const generateSchemes = () => {
     const preset = faker.datatype.number({ min: 1, max: 6 })
 
     // Scheme values
-    let name, clientGroups, type, typeOfSupport
+    let name, clientGroup1, clientGroup2, type, typeOfSupport
     switch (preset) {
       case 1:
         // Rough sleepers
@@ -46,7 +46,8 @@ const generateSchemes = () => {
           ' Action on Homelessness'
         ])}`
         type = 'direct-access-hostel'
-        clientGroups = ['homeless-families', 'homeless-individuals']
+        clientGroup1 = 'homeless-families'
+        clientGroup2 = 'homeless-individuals'
         typeOfSupport = 'low'
         break
       case 2:
@@ -57,7 +58,8 @@ const generateSchemes = () => {
           ' Point'
         ])}`
         type = 'foyer'
-        clientGroups = ['young-at-risk', 'young-leaving-care']
+        clientGroup1 = 'young-at-risk'
+        clientGroup2 = 'young-leaving-care'
         typeOfSupport = 'low'
         break
       case 3:
@@ -68,7 +70,8 @@ const generateSchemes = () => {
           ' Support'
         ])}`
         type = 'older-people'
-        clientGroups = ['older-people']
+        clientGroup1 = 'older-people'
+        clientGroup2 = 'false'
         typeOfSupport = faker.random.arrayElement([
           'low',
           'medium'
@@ -83,7 +86,8 @@ const generateSchemes = () => {
           ' Supported Living'
         ])}`
         type = 'other'
-        clientGroups = ['learning-disabilities', 'mental-health']
+        clientGroup1 = 'learning-disabilities'
+        clientGroup2 = 'mental-health'
         typeOfSupport = faker.random.arrayElement([
           'low',
           'medium'
@@ -97,7 +101,8 @@ const generateSchemes = () => {
           ' Nursing'
         ])}`
         type = 'other'
-        clientGroups = ['physical-disabilities']
+        clientGroup1 = 'physical-disabilities'
+        clientGroup2 = 'false'
         typeOfSupport = faker.random.arrayElement([
           'nursing',
           'low',
@@ -113,7 +118,8 @@ const generateSchemes = () => {
           ' House'
         ])}`
         type = 'other'
-        clientGroups = ['alcohol', 'drugs']
+        clientGroup1 = 'alcohol'
+        clientGroup2 = 'drugs'
         typeOfSupport = faker.random.arrayElements([
           'low',
           'medium',
@@ -174,7 +180,9 @@ const generateSchemes = () => {
         'part-registered',
         'false'
       ]),
-      'client-groups': clientGroups,
+      'primary-client-group': clientGroup1,
+      'has-secondary-client-group': clientGroup2 !== 'false',
+      'secondary-client-group': clientGroup2,
       'type-of-support': typeOfSupport,
       'intended-stay': faker.random.arrayElement([
         'very-short',
