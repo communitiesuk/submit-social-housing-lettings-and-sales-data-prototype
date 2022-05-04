@@ -4,7 +4,7 @@
 {% if scheme["primary-client-group"] %}
   {# Editing an existing scheme #}
   {% set caption = scheme.name %}
-  {% set formAction = schemePath %}
+  {% set formAction = schemePath + "/update-your-answers" %}
   {% set hasAnsweredQuestion = true %}
   {% set buttonText = "Continue" %}
 {% endif %}

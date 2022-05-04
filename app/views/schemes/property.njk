@@ -5,6 +5,7 @@
   {# Editing an existing scheme #}
   {% set title = "Property details" %}
   {% set caption = scheme.name %}
+  {% set formAction = schemePath + "/update-your-answers" %}
   {% set hasAnsweredQuestion = true %}
 {% else %}
   {% set title = "Add a property" %}

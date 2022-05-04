@@ -115,6 +115,23 @@ export const schemeRoutes = (router) => {
   })
 
   /**
+   * View updated scheme
+   */
+  router.all('/schemes/:schemeId/update-your-answers', (req, res) => {
+    const { organisations, schemes } = req.session.data
+    const { schemeId } = req.params
+    const scheme = utils.getEntityById(schemes, schemeId)
+    const schemePath = `/schemes/${schemeId}`
+
+    res.render('schemes/check-your-answers', {
+      organisations,
+      scheme,
+      schemePath,
+      updateAnswers: true
+    })
+  })
+
+  /**
    * View scheme
    */
   router.get('/schemes/:schemeId/:view?/:itemId?', (req, res) => {
@@ -180,7 +197,7 @@ export const schemeRoutes = (router) => {
   router.post('/schemes/:schemeId/:view?', (req, res) => {
     const next = res.locals.paths.next && res.locals.paths.next !== ''
       ? res.locals.paths.next
-      : `/schemes/${req.params.schemeId}/check-your-answers?update=true`
+      : `/schemes/${req.params.schemeId}/check-your-answers`
 
     res.redirect(next)
   })

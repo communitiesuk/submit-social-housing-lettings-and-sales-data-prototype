@@ -1,6 +1,6 @@
 {% extends "layouts/form.njk" %}
 
-{% if query.update %}
+{% if updateAnswers %}
   {% set title = "Check your changes before updating this service" %}
 {% else %}
   {% set title = "Check your answers before creating this service" %}
@@ -16,7 +16,7 @@
 
       {% include "schemes/_answers.njk" %}
 
-      {% if query.update %}
+      {% if updateAnswers %}
         {{ govukRadios({
           decorate: ["schemes", scheme.id, "correction"],
           fieldset: {
