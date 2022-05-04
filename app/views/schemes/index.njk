@@ -9,9 +9,9 @@
 
 {% block content %}
   {{ govukNotificationBanner({
-    text: data.schemes[query.schemeId].name + " has been created.",
+    text: data.schemes[query.schemeId].name + " has been published.",
     type: "success"
-  }) if query.success == "created" }}
+  }) if query.success == "published" }}
 
   {{ govukNotificationBanner({
     text: data.schemes[query.schemeId].name + " has been deleted.",
@@ -28,7 +28,7 @@
     <div class="govuk-button-group app-filter-toggle">
       {{ govukButton({
         href: "/schemes/new",
-        text: "Create a new supported housing service"
+        text: "Publish a new supported housing service"
       }) }}
     </div>
 
@@ -63,11 +63,7 @@
             {{ scheme.properties.p1.address }}, {{ scheme.properties.p1.postcode }}
           {% endif %}
         {% endset %}
-        {% set addPropertyHtml %}
-          <a class="govuk-link govuk-link--no-visited-state" href="{{ schemePath }}/property/new">Add property
-            <span class="govuk-visually-hidden">to {{ scheme.name }}</span>
-          </a>
-        {% endset %}
+        {% set schemePath = schemePath + "/check-your-answers" if scheme.status == "draft" else schemePath %}
         {% set row = schemeRows.push([{
             classes: "govuk-!-text-align-left",
             text: "S" + scheme.id,
@@ -76,6 +72,11 @@
             html: macro.entityHtml(scheme.name, schemePath, scheme["primary-client-group"] | textFromInputValue(data.questions["client-groups"]))
           }, {
             html: organisations[scheme.agentId].name
+          }, {
+            html: govukTag({
+              classes: "govuk-tag--" + data.statuses[scheme.status].colour,
+              text: data.statuses[scheme.status].text
+            })
           }])
         %}
       {% endfor %}
@@ -104,6 +105,8 @@
                 text: "Service"
               }, {
                 text: "Managing agent"
+              }, {
+                text: "Status"
               }],
               rows: schemeRows
             }) }}

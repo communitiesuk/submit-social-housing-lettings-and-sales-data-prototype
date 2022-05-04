@@ -1,3 +1,24 @@
+{{ govukRadios({
+  decorate: ["filter", "status"],
+  formGroup: {
+    classes: "app-filter__group"
+  },
+  classes: "govuk-radios--small",
+  fieldset: {
+    legend: {
+      classes: "govuk-fieldset__legend--s",
+      text: "Status"
+    }
+  },
+  items: [{
+    "text": "Published",
+    "value": "published"
+  }, {
+    "text": "Draft",
+    "value": "draft"
+  }]
+}) }}
+
 {{ govukCheckboxes({
   decorate: ["filter", "user"],
   formGroup: {
