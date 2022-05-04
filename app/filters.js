@@ -58,11 +58,21 @@ export default (env) => {
     return value
   }
 
-  filters.where = (array, key, compare) => {
+  filters.selectwhere = (array, key, compare) => {
     compare = [].concat(compare) // Force to Array
 
     const filtered = array.filter(item => {
       return compare.includes(_.get(item, key))
+    })
+
+    return filtered
+  }
+
+  filters.rejectwhere = (array, key, compare) => {
+    compare = [].concat(compare) // Force to Array
+
+    const filtered = array.filter(item => {
+      return !compare.includes(_.get(item, key))
     })
 
     return filtered
