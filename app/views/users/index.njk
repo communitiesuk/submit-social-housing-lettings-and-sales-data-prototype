@@ -6,7 +6,7 @@
 {% set title = "Users" %}
 {% set caption = thisOrganisation.name %}
 {% set isGlobalView = isAdmin and path.startsWith("/users") %}
-{% set notificationUser = users | where("id", query.userId) | first %}
+{% set notificationUser = users | selectwhere("id", query.userId) | first %}
 
 {% block content %}
   {{ govukNotificationBanner({

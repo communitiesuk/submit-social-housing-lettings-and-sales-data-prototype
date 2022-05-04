@@ -48,12 +48,12 @@
   {% if areas | length > 1 %}
     <ul class="govuk-list govuk-list--bullet">
     {% for gss in areas %}
-      {% set localAuthority = localAuthorities | where("gss", gss) | first %}
+      {% set localAuthority = localAuthorities | selectwhere("gss", gss) | first %}
       <li>{{ localAuthority.name }}</li>
     {% endfor %}
     </ul>
   {% elif areas | length == 1 %}
-    {% set localAuthority = localAuthorities | where("gss", areas[0]) | first %}
+    {% set localAuthority = localAuthorities | selectwhere("gss", areas[0]) | first %}
     {{ localAuthority.name }}
   {% else %}
     None

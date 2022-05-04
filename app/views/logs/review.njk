@@ -51,7 +51,7 @@
 
       {% for group in data.groups %}
         <h2 class="govuk-heading-m">{{ group.title }}</h2>
-        {% for section in sections | where("group", group.id) %}
+        {% for section in sections | selectwhere("group", group.id) %}
           {% set sectionPath = "/logs/" + log.id + "/" + section.id %}
           {% if section.id != "household-characteristics" %}
             <div class="x-govuk-summary-card govuk-!-margin-bottom-6">
