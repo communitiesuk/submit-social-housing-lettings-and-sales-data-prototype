@@ -65,7 +65,7 @@
   }) }}
 
   {{ govukRadios({
-    decorate: ["schemes", scheme.id, "properties", itemId, "registered-home"],
+    decorate: ["schemes", scheme.id, "registered-home"],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
@@ -76,7 +76,7 @@
   }) }}
 
   {{ govukInput({
-    decorate: ["schemes", scheme.id, "properties", itemId, "units"],
+    decorate: ["schemes", scheme.id, "units"],
     classes: "govuk-input--width-2",
     hint: {
       text: "Do not include units or bedrooms for wardens, managers, volunteers or sleep-in staff."
