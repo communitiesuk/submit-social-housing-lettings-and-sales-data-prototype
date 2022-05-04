@@ -3,10 +3,10 @@
 {% if updateAnswers %}
   {% set title = "Check your changes before updating this service" %}
 {% else %}
-  {% set title = "Check your answers before creating this service" %}
+  {% set title = "Check your answers before publishing this service" %}
 {% endif %}
 {% set backLink = "javascript:history.go(-1);" %}
-{% set formAction = userOrganisationPath + "/schemes/?success=created&schemeId=" + scheme.id %}
+{% set formAction = userOrganisationPath + "/schemes/?success=published&schemeId=" + scheme.id %}
 {% set logsAffected = 123 %}
 
 {% block form %}
@@ -15,7 +15,6 @@
       {{ macro.heading(title, caption) }}
 
       {% include "schemes/_answers.njk" %}
-
       {% if updateAnswers %}
         {{ govukRadios({
           decorate: ["schemes", scheme.id, "correction"],
@@ -51,6 +50,7 @@
             }
           }]
         }) }}
+
         <div class="govuk-button-group">
           {{ govukButton({
             text: "Update service"
@@ -58,10 +58,18 @@
           <a class="govuk-link" href="{{ userOrganisationPath }}/schemes/">Cancel</a>
         </div>
       {% else %}
-        {{ govukButton(decorate({
-          text: "Create service",
-          value: "true"
-        }, ["schemes", scheme.id, "completed"])) }}
+        <div class="govuk-button-group">
+          {{ govukButton(decorate({
+            text: "Publish service",
+            value: "published"
+          }, ["schemes", scheme.id, "status"])) }}
+
+          {{ govukButton(decorate({
+            classes: "govuk-button--secondary",
+            text: "Save as draft",
+            value: "draft"
+          }, ["schemes", scheme.id, "status"])) }}
+        </div>
       {% endif %}
     </div>
   </div>

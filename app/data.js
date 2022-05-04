@@ -37,6 +37,11 @@ export default async () => ({
   roles,
   schemes: require('./datasets/generated/schemes.json'),
   statuses: {
+    draft: {
+      id: 'draft',
+      text: 'Draft',
+      colour: 'grey'
+    },
     notStarted: {
       id: 'notStarted',
       text: 'Not started',
@@ -54,6 +59,11 @@ export default async () => ({
       text: 'Completed',
       colour: 'blue',
       canStart: true
+    },
+    published: {
+      id: 'published',
+      text: 'Published',
+      colour: 'green'
     },
     submitted: {
       id: 'completed',

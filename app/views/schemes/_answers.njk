@@ -3,6 +3,16 @@
 {% set detailsHtml %}
   {{ govukSummaryList({
     rows: [{
+        key: {
+          text: "Status"
+        },
+        value: {
+          html: govukTag({
+            classes: "govuk-tag--" + data.statuses[scheme.status].colour,
+            text: data.statuses[scheme.status].text
+          })
+        }
+      }, {
       key: {
         text: "Group code"
       },
