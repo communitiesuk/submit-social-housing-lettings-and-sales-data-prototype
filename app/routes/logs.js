@@ -30,8 +30,6 @@ export const logRoutes = (router) => {
       }
 
       log.progress = `${completedSections} of ${sections.length} sections`
-
-      console.log(log.id, log.status)
     }
 
     // Filter: updated by current user
