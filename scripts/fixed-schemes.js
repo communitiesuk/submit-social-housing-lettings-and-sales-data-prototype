@@ -11,9 +11,6 @@ export default {
     'secondary-client-group': 'homeless-individuals',
     'type-of-support': 'low',
     'intended-stay': 'very-short',
-    'start-date': '2021-12-11T15:32:17.300Z',
-    'end-date-known': 'true',
-    'end-date': '2022-05-17T09:33:24.772Z',
     properties: {
       p1: {
         postcode: 'JD7 2VS',
@@ -114,9 +111,6 @@ export default {
     'secondary-client-group': 'mental-health',
     'type-of-support': 'low',
     'intended-stay': 'medium',
-    'start-date': '2021-05-14T20:11:17.603Z',
-    'end-date-known': 'true',
-    'end-date': '2022-12-04T08:32:48.745Z',
     properties: {
       p1: {
         postcode: 'JV77 4MP',
@@ -181,9 +175,6 @@ export default {
     'secondary-client-group': 'false',
     'type-of-support': 'nursing',
     'intended-stay': 'medium',
-    'start-date': '2022-01-23T16:09:25.397Z',
-    'end-date-known': 'true',
-    'end-date': '2022-12-21T01:39:47.417Z',
     properties: {
       p1: {
         postcode: 'LK19 5UR',
@@ -236,9 +227,6 @@ export default {
     'secondary-client-group': 'young-leaving-care',
     'type-of-support': 'low',
     'intended-stay': 'permanent',
-    'start-date': '2022-03-11T03:21:27.915Z',
-    'end-date-known': 'true',
-    'end-date': '2023-01-08T09:25:41.589Z',
     properties: {
       p1: {
         postcode: 'ML35 8GQ',

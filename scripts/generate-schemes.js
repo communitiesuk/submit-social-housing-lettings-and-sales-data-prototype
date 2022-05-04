@@ -190,9 +190,6 @@ const generateSchemes = () => {
         'medium',
         'permanent'
       ]),
-      'start-date': faker.date.past(),
-      'end-date-known': hasEndDate.toString(),
-      'end-date': hasEndDate ? faker.date.future() : false,
       properties: generateProperties(faker.datatype.number({
         min: 1,
         max: 9
