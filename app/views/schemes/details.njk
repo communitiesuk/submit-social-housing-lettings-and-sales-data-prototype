@@ -40,7 +40,8 @@
     }]
   }) }}
 
-  {{ govukRadios({
+  {# Ideally show radio options if number of organisations is less than 10 #}
+  {# govukRadios({
     decorate: ["schemes", scheme.id, "agentId"],
     fieldset: {
       legend: {
@@ -51,7 +52,20 @@
     allowEmpty: true,
     showNoOptionsFound: true,
     items: managedOrganisations | optionItems
-  }) }}
+  }) #}
+
+  {{ appAutocomplete(decorate({
+    label: {
+      classes: "govuk-label--m",
+      html: "Which organisation manages this service?"
+    },
+    hint: {
+      text: "Enter organisation name"
+    },
+    allowEmpty: true,
+    showNoOptionsFound: true,
+    items: managedOrganisations | optionItems
+  }, ["schemes", scheme.id, "agentId"])) }}
 
   {{ govukRadios({
     decorate: ["schemes", scheme.id, "type"],
