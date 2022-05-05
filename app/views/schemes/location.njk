@@ -1,56 +1,56 @@
 {% extends "layouts/question.njk" %}
 
 {% set formAction = schemePath %}
-{% if scheme.properties[itemId] %}
+{% if scheme.locations[itemId] %}
   {# Editing an existing scheme #}
-  {% set title = "Property details" %}
+  {% set title = "Location details" %}
   {% set caption = scheme.name %}
   {% set formAction = schemePath + "/update-your-answers" %}
   {% set hasAnsweredQuestion = true %}
 {% else %}
-  {% set title = "Add a property" %}
+  {% set title = "Add a location" %}
 {% endif %}
 
 {% block question %}
   {{ macro.heading(title, caption) }}
 
   {{ govukInput({
-    decorate: ["schemes", scheme.id, "properties", itemId, "postcode"],
+    decorate: ["schemes", scheme.id, "locations", itemId, "postcode"],
     classes: "govuk-input--width-5",
     label: {
       classes: "govuk-label--m",
-      text: "What is the postcode for this property?"
+      text: "Postcode for this location?"
     }
   }) }}
 
   {{ govukRadios({
-    decorate: ["schemes", scheme.id, "properties", itemId, "type-of-unit"],
+    decorate: ["schemes", scheme.id, "locations", itemId, "type-of-unit"],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
-        text: "What type of unit is the property?"
+        text: "What type of unit is commonly used at this location?"
       }
     },
     items: data.questions["type-of-unit"].supported
   }) }}
 
   {{ govukRadios({
-    decorate: ["schemes", scheme.id, "properties", itemId, "type-of-building"],
+    decorate: ["schemes", scheme.id, "locations", itemId, "type-of-building"],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
-        text: "What type of building is the property?"
+        text: "What type of building is commonly used at this location?"
       }
     },
     items: data.questions["type-of-building"]
   }) }}
 
   {{ govukRadios({
-    decorate: ["schemes", scheme.id, "properties", itemId, "is-adapted"],
+    decorate: ["schemes", scheme.id, "locations", itemId, "is-adapted"],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
-        text: "Is the property built or adapted to wheelchair-user standards?"
+        text: "Are the properties at this location commonly built or adapted to wheelchair-user standards?"
       }
     },
     hint: {
@@ -66,11 +66,11 @@
   }) }}
 
   {% if not hasAnsweredQuestion %}
-    {% set thisInt = itemId | replace("p", "") | int %}
-    {% set nextItemId = "p" + (thisInt + 1) %}
+    {% set thisInt = itemId | replace("l", "") | int %}
+    {% set nextItemId = "l" + (thisInt + 1) %}
     {{ govukButton({
       classes: "govuk-button--secondary",
-      text: "Add another property",
+      text: "Add another location",
       attributes: {
         formaction: paths.current | replace(itemId, nextItemId)
       }

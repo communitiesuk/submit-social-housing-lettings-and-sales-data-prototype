@@ -1,4 +1,4 @@
-{% set propertiesCount = scheme.properties | length %}
+{% set locationsCount = scheme.locations | length %}
 
 {% set detailsHtml %}
   {{ govukSummaryList({
@@ -134,8 +134,8 @@
   }) }}
 {% endset %}
 
-{% set propertiesHtml %}
-  {% for itemId, property in scheme.properties %}
+{% set locationsHtml %}
+  {% for itemId, location in scheme.locations %}
     {{ govukSummaryList({
       classes: "govuk-!-margin-bottom-9" if not loop.last else "",
       rows: [{
@@ -144,17 +144,17 @@
         },
         value: {
           classes: "app-!-font-tabular",
-          text: "P" + scheme.id + "-" + property.postcode | replace(" ", "")
+          text: "P" + scheme.id + "-" + location.postcode | replace(" ", "")
         }
       }, {
         key: {
           text: "Postcode"
         },
         value: {
-          text: macro.postcodeHtml(property.postcode, property["local-authority"].name) if property.postcode else "Not known"
+          text: macro.postcodeHtml(location.postcode, location["local-authority"].name) if location.postcode else "Not known"
         },
         actions: actionLinks({
-          href: schemePath + "/property/" + itemId,
+          href: schemePath + "/location/" + itemId,
           visuallyHiddenText: "postcode"
         })
       }, {
@@ -162,10 +162,10 @@
           text: "Type of unit"
         },
         value: {
-          text: property["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported)
+          text: location["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported)
         },
         actions: actionLinks({
-          href: schemePath + "/property/" + itemId,
+          href: schemePath + "/location/" + itemId,
           visuallyHiddenText: "type of unit"
         })
       }, {
@@ -173,10 +173,10 @@
           text: "Type of building"
         },
         value: {
-          text: property["type-of-building"] | textFromInputValue(data.questions["type-of-building"])
+          text: location["type-of-building"] | textFromInputValue(data.questions["type-of-building"])
         },
         actions: actionLinks({
-          href: schemePath + "/property/" + itemId,
+          href: schemePath + "/location/" + itemId,
           visuallyHiddenText: "type of building"
         })
       }, {
@@ -184,11 +184,11 @@
           text: "Wheelchair adaptation"
         },
         value: {
-          text: property["is-adapted"] | textFromInputValue(data.questions["yes-no"])
+          text: location["is-adapted"] | textFromInputValue(data.questions["yes-no"])
         },
         actions: actionLinks({
-          href: schemePath + "/property/" + itemId,
-          visuallyHiddenText: "if property has been built or adapted to wheelchair-user standards"
+          href: schemePath + "/location/" + itemId,
+          visuallyHiddenText: "if location has been built or adapted to wheelchair-user standards"
         })
       }]
     }) }}
@@ -196,8 +196,8 @@
 
   {{ govukButton({
     classes: "govuk-button--secondary",
-    text: "Add another property",
-    href: schemePath + "/property/new"
+    text: "Add another location",
+    href: schemePath + "/location/new"
   }) }}
 {% endset %}
 
@@ -210,10 +210,10 @@
         html: detailsHtml
       }
     }, {
-      label: propertiesCount + " properties" if propertiesCount > 1 else "Property details",
-      id: "properties",
+      label: locationsCount + " locations" if locationsCount > 1 else "Location",
+      id: "locations",
       panel: {
-        html: propertiesHtml
+        html: locationsHtml
       }
     }
   ]

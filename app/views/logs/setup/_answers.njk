@@ -15,13 +15,13 @@
   {%- endif -%}
 {%- endset %}
 
-{%- set schemePropertyHtml %}
-  {%- if log[section.id].schemePropertyId -%}
+{%- set schemeLocationHtml %}
+  {%- if log[section.id].schemeLocationId -%}
     {% set schemedId = log[section.id].schemeId[1] %}
-    {% set itemId = log[section.id].schemePropertyId %}
-    {{ data.schemes[schemedId].properties[itemId].address }}<br>
+    {% set itemId = log[section.id].schemeLocationId %}
+    {{ data.schemes[schemedId].locations[itemId].address }}<br>
     <span class="app-!-colour-muted">
-      {{ data.schemes[schemedId].properties[itemId].postcode }}<br>{{ data.schemes[schemedId].properties[itemId]["local-authority"].name }}
+      {{ data.schemes[schemedId].locations[itemId].postcode }}<br>{{ data.schemes[schemedId].locations[itemId]["local-authority"].name }}
     </span>
   {% else %}
     <span class="app-!-colour-muted">You didn’t answer this question</span>
@@ -75,14 +75,14 @@
     }) if not logSubmitted
   } if isSupported, {
     key: {
-      text: "Supported property"
+      text: "Supported location"
     },
     value: {
-      html: schemePropertyHtml
+      html: schemeLocationHtml
     },
     actions: actionLinks({
-      href: sectionPath + "/scheme-property",
-      visuallyHiddenText: "supported property"
+      href: sectionPath + "/scheme-location",
+      visuallyHiddenText: "supported location"
     }) if not logSubmitted
   } if isSupported, {
     key: {

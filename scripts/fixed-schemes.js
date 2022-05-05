@@ -12,8 +12,8 @@ export default {
     'secondary-client-group': 'homeless-individuals',
     'type-of-support': 'low',
     'intended-stay': 'very-short',
-    properties: {
-      p1: {
+    locations: {
+      l1: {
         postcode: 'JD7 2VS',
         address: '104 Smithy Lane',
         'local-authority': {
@@ -25,7 +25,7 @@ export default {
         'is-adapted': 'false',
         'type-of-building': 'purpose-built'
       },
-      p2: {
+      l2: {
         postcode: 'SE06 3EP',
         address: '110 James Street',
         'local-authority': {
@@ -37,7 +37,7 @@ export default {
         'is-adapted': 'false',
         'type-of-building': 'converted'
       },
-      p3: {
+      l3: {
         postcode: 'CW5 2HL',
         address: '145 Broadway',
         'local-authority': {
@@ -49,7 +49,7 @@ export default {
         'is-adapted': 'false',
         'type-of-building': 'converted'
       },
-      p4: {
+      l4: {
         postcode: 'FY85 7DB',
         address: '76 Smithy Lane',
         'local-authority': {
@@ -61,7 +61,7 @@ export default {
         'is-adapted': 'false',
         'type-of-building': 'purpose-built'
       },
-      p5: {
+      l5: {
         postcode: 'KD65 0OZ',
         address: '182 Martin Close',
         'local-authority': {
@@ -73,7 +73,7 @@ export default {
         'is-adapted': 'false',
         'type-of-building': 'converted'
       },
-      p6: {
+      l6: {
         postcode: 'QJ8 6YA',
         address: '9 Middle Road',
         'local-authority': {
@@ -85,7 +85,7 @@ export default {
         'is-adapted': 'true',
         'type-of-building': 'purpose-built'
       },
-      p7: {
+      l7: {
         postcode: 'BM4 3VQ',
         address: '144 Taylor Street',
         'local-authority': {
@@ -113,8 +113,8 @@ export default {
     'secondary-client-group': 'mental-health',
     'type-of-support': 'low',
     'intended-stay': 'medium',
-    properties: {
-      p1: {
+    locations: {
+      l1: {
         postcode: 'JV77 4MP',
         address: '107 Woodstock Road',
         'local-authority': {
@@ -126,7 +126,7 @@ export default {
         'is-adapted': 'false',
         'type-of-building': 'converted'
       },
-      p2: {
+      l2: {
         postcode: 'GS79 9ZI',
         address: '28 Rectory Road',
         'local-authority': {
@@ -138,7 +138,7 @@ export default {
         'is-adapted': 'false',
         'type-of-building': 'converted'
       },
-      p3: {
+      l3: {
         postcode: 'UF7 4ER',
         address: '50 West Way',
         'local-authority': {
@@ -150,7 +150,7 @@ export default {
         'is-adapted': 'true',
         'type-of-building': 'converted'
       },
-      p4: {
+      l4: {
         postcode: 'II29 6DU',
         address: '140 Back Street',
         'local-authority': {
@@ -178,8 +178,8 @@ export default {
     'secondary-client-group': 'false',
     'type-of-support': 'nursing',
     'intended-stay': 'medium',
-    properties: {
-      p1: {
+    locations: {
+      l1: {
         postcode: 'LK19 5UR',
         address: '55 West Way',
         'local-authority': {
@@ -191,7 +191,7 @@ export default {
         'is-adapted': 'true',
         'type-of-building': 'purpose-built'
       },
-      p2: {
+      l2: {
         postcode: 'RG66 2WR',
         address: '92 Tudor Road',
         'local-authority': {
@@ -203,7 +203,7 @@ export default {
         'is-adapted': 'false',
         'type-of-building': 'purpose-built'
       },
-      p3: {
+      l3: {
         postcode: 'ZB2 8AP',
         address: '19 Back Street',
         'local-authority': {
@@ -231,8 +231,8 @@ export default {
     'secondary-client-group': 'young-leaving-care',
     'type-of-support': 'low',
     'intended-stay': 'permanent',
-    properties: {
-      p1: {
+    locations: {
+      l1: {
         postcode: 'ML35 8GQ',
         address: '86 Middle Road',
         'local-authority': {
@@ -244,7 +244,7 @@ export default {
         'is-adapted': 'false',
         'type-of-building': 'purpose-built'
       },
-      p2: {
+      l2: {
         postcode: 'YN3 2AR',
         address: '138 Fairway',
         'local-authority': {
@@ -256,7 +256,7 @@ export default {
         'is-adapted': 'true',
         'type-of-building': 'converted'
       },
-      p3: {
+      l3: {
         postcode: 'BJ5 1IM',
         address: '181 Poplar Drive',
         'local-authority': {
@@ -268,7 +268,7 @@ export default {
         'is-adapted': 'false',
         'type-of-building': 'purpose-built'
       },
-      p4: {
+      l4: {
         postcode: 'EK86 2NV',
         address: '15 Charlotte Street',
         'local-authority': {
@@ -280,7 +280,7 @@ export default {
         'is-adapted': 'true',
         'type-of-building': 'converted'
       },
-      p5: {
+      l5: {
         postcode: 'HC6 4FP',
         address: '73 Charlotte Street',
         'local-authority': {
@@ -292,7 +292,7 @@ export default {
         'is-adapted': 'false',
         'type-of-building': 'purpose-built'
       },
-      p6: {
+      l6: {
         postcode: 'HE0 4UE',
         address: '91 Smithy Lane',
         'local-authority': {

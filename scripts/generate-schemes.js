@@ -130,16 +130,16 @@ const generateSchemes = () => {
     // Scheme date
     const hasEndDate = faker.datatype.boolean()
 
-    // Scheme property
-    const generateProperties = (count) => {
-      const properties = {}
+    // Scheme locations
+    const generateLocations = (count) => {
+      const locations = {}
 
       for (let i = 0; i < count; i++) {
         // Use string for object name
         // Using integer means form gets submitted as an array and deletes
         // other objects
-        const id = `p${i + 1}`
-        properties[id] = {
+        const id = `l${i + 1}`
+        locations[id] = {
           postcode: faker.address.zipCode(),
           address: `${faker.datatype.number({ min: 1, max: 201 })} ${faker.random.arrayElement(streetNames)}`,
           'local-authority': faker.random.arrayElement(localAuthorities),
@@ -159,7 +159,7 @@ const generateSchemes = () => {
         }
       }
 
-      return properties
+      return locations
     }
 
     // Scheme
@@ -191,16 +191,16 @@ const generateSchemes = () => {
         'medium',
         'permanent'
       ]),
-      properties: generateProperties(faker.datatype.number({
+      locations: generateLocations(faker.datatype.number({
         min: 1,
         max: 9
       }))
     }
 
-    const schemePropertyCount = Object.entries(schemes[id].properties).length
+    const schemeLocationCount = Object.entries(schemes[id].locations).length
     schemes[id].units = faker.datatype.number({
-      min: schemePropertyCount,
-      max: schemePropertyCount + 20
+      min: schemeLocationCount,
+      max: schemeLocationCount + 20
     })
   })
 
