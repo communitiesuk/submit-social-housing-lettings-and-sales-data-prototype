@@ -5,17 +5,15 @@ const require = createRequire(import.meta.url)
 const schemes = require('../../datasets/generated/schemes.json')
 
 const _getClientGroups = (data) => {
-  if (Array.isArray(clientGroups)) {
-    const groups = [data.clientGroup1].concat(data.clientGroup2)
-    const items = []
-    groups.forEach(item => {
-      item = String(item)
-      const question = clientGroups.find(question => question.value === item)
-      const text = question ? question.text : item
-      items.push(text)
-    })
-    return items.join(', ')
+  const primaryClientGroup = clientGroups.find(question => question.value === data['primary-client-group']).text
+
+  if (data['secondary-client-group'] !== 'false') {
+    const secondaryClientGroup = clientGroups.find(question => question.value === data['secondary-client-group']).text
+
+    return `${primaryClientGroup}<br>${secondaryClientGroup}`
   }
+
+  return primaryClientGroup
 }
 
 // Convert schemes to array
