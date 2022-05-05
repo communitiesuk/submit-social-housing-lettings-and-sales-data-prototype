@@ -1,9 +1,10 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "What support does this service provide?" %}
+{% set caption = scheme.name %}
+
 {% if scheme["type-of-support"] %}
   {# Editing an existing scheme #}
-  {% set caption = scheme.name %}
   {% set formAction = schemePath + "/update-your-answers" %}
   {% set hasAnsweredQuestion = true %}
   {% set buttonText = "Continue" %}
