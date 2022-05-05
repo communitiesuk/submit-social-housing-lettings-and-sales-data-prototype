@@ -9,7 +9,7 @@
 
 {% block content %}
   {{ govukNotificationBanner({
-    text: data.schemes[query.schemeId].name + " has been created and can now be edited by your organisation.",
+    text: data.schemes[query.schemeId].name + " has been created and can now be used by your organisation.",
     type: "success"
   }) if query.success == "created" }}
 
