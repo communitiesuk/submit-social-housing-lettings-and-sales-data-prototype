@@ -58,22 +58,25 @@
     },
     items: data.questions["yes-no"]
   }) }}
-{% endblock %}
 
-{% block buttonGroup %}
-  {{ govukButton({
-    text: buttonText
+  <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+  {{ govukRadios({
+    decorate: "add-another-location",
+    classes: "govuk-radios--inline",
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Do you want to add another location?"
+      }
+    },
+    items: data.questions["yes-no"]
   }) }}
 
-  {% if not hasAnsweredQuestion %}
-    {% set thisInt = itemId | replace("l", "") | int %}
-    {% set nextItemId = "l" + (thisInt + 1) %}
-    {{ govukButton({
-      classes: "govuk-button--secondary",
-      text: "Add another location",
-      attributes: {
-        formaction: paths.current | replace(itemId, nextItemId)
-      }
-    }) }}
-  {% endif %}
+  {% set thisInt = itemId | replace("l", "") | int %}
+  {{ govukInput({
+    decorate: "next-item-id",
+    value: "l" + (thisInt + 1),
+    type: "hidden"
+  }) }}
 {% endblock %}

@@ -194,6 +194,14 @@ export const schemeRoutes = (router) => {
    * Update scheme
    */
   router.post('/schemes/:schemeId/:view?', (req, res) => {
+    // Add another location
+    if (req.body['add-another-location'] === 'true') {
+      const { schemeId } = req.params
+      const itemId = req.body['next-item-id']
+
+      res.locals.paths.next = `/schemes/${schemeId}/location/${itemId}`
+    }
+
     const next = res.locals.paths.next && res.locals.paths.next !== ''
       ? res.locals.paths.next
       : `/schemes/${req.params.schemeId}/check-your-answers`
