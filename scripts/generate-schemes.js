@@ -127,9 +127,6 @@ const generateSchemes = () => {
         ])
     }
 
-    // Scheme date
-    const hasEndDate = faker.datatype.boolean()
-
     // Scheme locations
     const generateLocations = (count) => {
       const locations = {}
