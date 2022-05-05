@@ -8,7 +8,10 @@
     {% set schemedId = log[section.id].schemeId[1] %}
     {{ data.schemes[schemedId].name }}<br>
     <span class="app-!-colour-muted">
-    {{ data.schemes[schemedId]["client-groups"] | textFromInputValue(data.questions["client-groups"]) | replace(",", "<br>") | safe }}
+    {{ data.schemes[schemedId]["primary-client-group"] | textFromInputValue(data.questions["client-groups"]) }}
+    {% if data.schemes[schemedId]["secondary-client-group"] != "false" %}
+      <br>{{ data.schemes[schemedId]["secondary-client-group"] | textFromInputValue(data.questions["client-groups"]) }}
+    {% endif %}
     </span>
   {% else %}
     <span class="app-!-colour-muted">You didn’t answer this question</span>
