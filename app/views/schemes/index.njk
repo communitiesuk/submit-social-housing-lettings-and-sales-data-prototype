@@ -9,9 +9,9 @@
 
 {% block content %}
   {{ govukNotificationBanner({
-    text: data.schemes[query.schemeId].name + " has been published.",
+    text: data.schemes[query.schemeId].name + " has been created and can now be edited by your organisation.",
     type: "success"
-  }) if query.success == "published" }}
+  }) if query.success == "created" }}
 
   {{ govukNotificationBanner({
     text: data.schemes[query.schemeId].name + " has been deleted.",
@@ -28,9 +28,15 @@
     <div class="govuk-button-group app-filter-toggle">
       {{ govukButton({
         href: "/schemes/new",
-        text: "Publish a new supported housing service"
+        text: "Create a new supported housing service"
       }) }}
     </div>
+
+    {{ govukDetails({
+      classes: "govuk-!-width-two-thirds",
+      summaryText: "What is a supported housing service?",
+      text: "A supported housing service provides shared or self-contained housing for a particular client group, for example younger or vulnerable people. A single service can contain multiple units, for example bedrooms in shared houses or a bungalow with 3 bedrooms."
+    }) }}
 
     <div class="app-filter-layout__filter">
       {% call appFilter({
@@ -63,13 +69,13 @@
             {{ scheme.locations.l1.address }}, {{ scheme.locations.l1.postcode }}
           {% endif %}
         {% endset %}
-        {% set schemePath = schemePath + "/check-your-answers" if scheme.status == "draft" else schemePath %}
+        {% set schemePath = schemePath + "/check-your-answers" if scheme.status == "inProgress" else schemePath %}
         {% set row = schemeRows.push([{
             classes: "govuk-!-text-align-left",
             text: "S" + scheme.id,
             format: "numeric"
           }, {
-            html: macro.entityHtml(scheme.name, schemePath, scheme["primary-client-group"] | textFromInputValue(data.questions["client-groups"]))
+            html: macro.entityHtml(scheme.name, schemePath, scheme["primary-client-group"] | textFromInputValue(data.questions["client-groups"]) if scheme["primary-client-group"] else false)
           }, {
             html: organisations[scheme.agentId].name
           }, {

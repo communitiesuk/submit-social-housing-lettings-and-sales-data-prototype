@@ -2,7 +2,7 @@ export default {
   1000: {
     id: 1000,
     name: 'Lake View Action on Homeless',
-    status: 'draft',
+    status: 'active',
     confidential: 'false',
     organisationId: 'PARENT1',
     agentId: 'CHILD1',
@@ -103,7 +103,7 @@ export default {
   1001: {
     id: 1001,
     name: 'Lake View Independent Living',
-    status: 'draft',
+    status: 'active',
     confidential: 'true',
     organisationId: 'PARENT1',
     agentId: 'CHILD2',
@@ -168,7 +168,7 @@ export default {
   1002: {
     id: 1002,
     name: 'Lake View Care',
-    status: 'draft',
+    status: 'active',
     confidential: 'true',
     organisationId: 'PARENT1',
     agentId: 'CHILD2',
@@ -221,7 +221,7 @@ export default {
   1003: {
     id: 1003,
     name: 'Lake View Foyer',
-    status: 'draft',
+    status: 'active',
     confidential: 'false',
     organisationId: 'PARENT1',
     agentId: 'PARENT1',

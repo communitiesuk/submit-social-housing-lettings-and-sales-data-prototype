@@ -1,9 +1,9 @@
-{{ govukRadios({
+{{ govukCheckboxes({
   decorate: ["filter", "status"],
   formGroup: {
     classes: "app-filter__group"
   },
-  classes: "govuk-radios--small",
+  classes: "govuk-checkboxes--small",
   fieldset: {
     legend: {
       classes: "govuk-fieldset__legend--s",
@@ -11,11 +11,14 @@
     }
   },
   items: [{
-    "text": "Published",
-    "value": "published"
+    "text": "In progress",
+    "value": "In progress"
   }, {
-    "text": "Draft",
-    "value": "draft"
+    "text": "Active",
+    "value": "active"
+  }, {
+    "text": "Inactive",
+    "value": "inactive"
   }]
 }) }}
 
