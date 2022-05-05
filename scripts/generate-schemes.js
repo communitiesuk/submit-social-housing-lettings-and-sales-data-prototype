@@ -163,7 +163,10 @@ const generateSchemes = () => {
     schemes[id] = {
       id,
       name,
-      status: 'published',
+      status: faker.random.arrayElement([
+        'active',
+        'inactive'
+      ]),
       confidential: faker.datatype.boolean().toString(),
       organisationId: value.organisationId,
       agentId: faker.random.arrayElement([

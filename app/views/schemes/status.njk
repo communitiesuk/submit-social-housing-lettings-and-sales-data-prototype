@@ -1,0 +1,29 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "What is the status of this service?" %}
+{% set caption = scheme.name %}
+
+{% if scheme["primary-client-group"] %}
+  {# Editing an existing scheme #}
+  {% set formAction = schemePath + "/update-your-answers" %}
+  {% set hasAnsweredQuestion = true %}
+  {% set buttonText = "Continue" %}
+{% endif %}
+
+{% block question %}
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "status"],
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
+    },
+    items: [{
+      "text": "Active",
+      "value": "active"
+    }, {
+      "text": "Inactive",
+      "value": "inactive"
+    }]
+  }) }}
+{% endblock %}

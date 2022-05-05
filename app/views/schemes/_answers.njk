@@ -3,16 +3,6 @@
 {% set detailsHtml %}
   {{ govukSummaryList({
     rows: [{
-        key: {
-          text: "Status"
-        },
-        value: {
-          html: govukTag({
-            classes: "govuk-tag--" + data.statuses[scheme.status].colour,
-            text: data.statuses[scheme.status].text
-          })
-        }
-      }, {
       key: {
         text: "Group code"
       },
@@ -20,6 +10,20 @@
         classes: "app-!-font-tabular",
         text: "S" + scheme.id
       }
+    }, {
+      key: {
+        text: "Status"
+      },
+      value: {
+        html: govukTag({
+          classes: "govuk-tag--" + data.statuses[scheme.status].colour,
+          text: data.statuses[scheme.status].text
+        })
+      },
+      actions: actionLinks({
+        href: schemePath + "/status",
+        visuallyHiddenText: "status"
+      }) if scheme.status != "inProgress"
     }, {
       key: {
         text: "Name"
@@ -102,7 +106,7 @@
         text: "Secondary client group"
       },
       value: {
-        html: (scheme["secondary-client-group"] | textFromInputValue(data.questions["client-groups"])) if scheme["has-secondary-client-group"] else "None"
+        html: (scheme["secondary-client-group"] | textFromInputValue(data.questions["client-groups"])) if scheme["has-secondary-client-group"] !== "false" else "None"
       },
       actions: actionLinks({
         href: schemePath + "/secondary-client-group",
@@ -145,7 +149,7 @@
         },
         value: {
           classes: "app-!-font-tabular",
-          text: "P" + scheme.id + "-" + location.postcode | replace(" ", "")
+          text: "S" + scheme.id + "-" + location.postcode | replace(" ", "")
         }
       }, {
         key: {
@@ -197,7 +201,7 @@
 
   {{ govukButton({
     classes: "govuk-button--secondary",
-    text: "Add another location",
+    text: "Add another location" if locationsCount > 1 else "Add a location",
     href: schemePath + "/location/new"
   }) }}
 {% endset %}

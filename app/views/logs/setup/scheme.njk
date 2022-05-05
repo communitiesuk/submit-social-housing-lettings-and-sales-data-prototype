@@ -19,6 +19,6 @@
   {% if isOwningOrg == true or isAdmin %}
     <p class="govuk-body govuk-!-margin-bottom-6">or <a class="govuk-link" href="/schemes/new">create a new supported housing service</a>.</p>
   {% else %}
-    <p class="govuk-body govuk-!-margin-bottom-6">If you can’t find a service, or are unsure which one to choose, contact a data coordinator within your organisation.</p>
+    <p class="govuk-body govuk-!-margin-bottom-6">If you can’t find the supported housing service you’re looking for or not sure which to choose, contact a data coordinator at {{ data.organisations[log[section.id]["organisation-owner"]].name | textFromInputValue }}.</p>
   {% endif %}
 {% endblock %}

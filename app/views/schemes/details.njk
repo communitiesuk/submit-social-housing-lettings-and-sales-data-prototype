@@ -29,6 +29,9 @@
       classes: "govuk-label--m",
       text: "Service name"
     },
+    hint: {
+      text: "This is how you’ll refer to this supported housing service within your organisation. For example, the name could relate to the address or location. You’ll be able to see the client group when selecting it."
+    },
     spellcheck: false
   }) }}
 
@@ -93,11 +96,11 @@
     decorate: ["schemes", scheme.id, "units"],
     classes: "govuk-input--width-2",
     hint: {
-      text: "Do not include units or bedrooms for wardens, managers, volunteers or sleep-in staff."
+      text: "For example, a unit can be a bedroom in a shared house or flat, or a house with 4 bedrooms. Do not include bedrooms used for wardens, managers, volunteers or sleep-in staff."
     },
     label: {
       classes: "govuk-label--m",
-      text: "Total number of units or bedrooms"
+      text: "Total number of units"
     },
     inputmode: "numeric",
     pattern: "[0-9]*",

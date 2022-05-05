@@ -83,6 +83,7 @@ export const schemeRoutes = (router) => {
     // Create a new blank scheme in session data
     // Assign to user’s organisation (only DC at owning organisation can create)
     schemes[schemeId] = {
+      status: 'inProgress',
       organisationId: account.organisationId
     }
 
