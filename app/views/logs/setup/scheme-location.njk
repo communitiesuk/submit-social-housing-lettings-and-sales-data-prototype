@@ -1,8 +1,8 @@
 {% extends "layouts/question.njk" %}
 
 {% set schemeId = data.logs[log.id].setup.schemeId[1] %}
-{% set title = "Which property used by " + data.schemes[schemeId].name + " is this log for?" %}
-{% set questionId = "schemePropertyId" %}
+{% set title = "Which location used by " + data.schemes[schemeId].name + " is this log for?" %}
+{% set questionId = "schemeLocationId" %}
 
 {% block question %}
   {{ govukRadios({
@@ -12,6 +12,6 @@
         html: macro.heading(title, caption)
       }
     },
-    items: data.schemes[schemeId].properties | optionItems("address", "id", "postcode")
+    items: data.schemes[schemeId].locations | optionItems("address", "id", "postcode")
   }) }}
 {% endblock %}

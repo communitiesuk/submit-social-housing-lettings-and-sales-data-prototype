@@ -22,16 +22,16 @@ const _getClientGroups = (data) => {
 const schemeItems = []
 
 Object.entries(schemes).forEach(([key, value]) => {
-  // Show number of properties/property postcode as hint text
-  const schemePropertyCount = Object.entries(value.properties).length
-  const hintText = schemePropertyCount > 1
-    ? `${schemePropertyCount} properties`
-    : `${value.properties.p1.address}`
+  // Show number of locations postcode as hint text
+  const schemeLocationCount = Object.entries(value.locations).length
+  const hintText = schemeLocationCount > 1
+    ? `${schemeLocationCount} locations`
+    : `${value.locations.l1.address}`
 
   // Add postcodes to search synonyms
   const synonyms = []
-  Object.values(value.properties).map(property => {
-    return synonyms.push(property.postcode)
+  Object.values(value.locations).map(location => {
+    return synonyms.push(location.postcode)
   })
 
   schemeItems.push({

@@ -11,7 +11,7 @@ const getSchemePaths = (req) => {
     [`${schemePath}primary-client-group`]: {},
     [`${schemePath}secondary-client-group`]: {},
     [`${schemePath}support`]: {},
-    [`${schemePath}property/p1`]: {},
+    [`${schemePath}location/l1`]: {},
     [`${schemePath}check-your-answers`]: {}
   }
   return wizard(journey, req)
@@ -98,19 +98,19 @@ export const schemeRoutes = (router) => {
   })
 
   /**
-   * Create property
+   * Create location
    */
-  router.get('/schemes/:schemeId/property/new', (req, res) => {
+  router.get('/schemes/:schemeId/location/new', (req, res) => {
     const { schemes } = req.session.data
     const { schemeId } = req.params
 
     const scheme = utils.getEntityById(schemes, schemeId)
     const schemePath = `/schemes/${schemeId}`
 
-    const schemePropertyCount = Object.entries(scheme.properties).length
-    const nextItemId = `p${schemePropertyCount + 1}`
+    const schemeLocationCount = Object.entries(scheme.locations).length
+    const nextItemId = `l${schemeLocationCount + 1}`
 
-    res.redirect(`${schemePath}/property/${nextItemId}`)
+    res.redirect(`${schemePath}/location/${nextItemId}`)
   })
 
   /**
