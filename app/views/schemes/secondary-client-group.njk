@@ -1,9 +1,10 @@
 {% extends "layouts/question.njk" %}
 
 {% set title = "Does this service cater for another client group?" %}
+{% set caption = scheme.name %}
+
 {% if scheme["secondary-client-group"] %}
   {# Editing an existing scheme #}
-  {% set caption = scheme.name %}
   {% set formAction = schemePath + "/update-your-answers" %}
   {% set hasAnsweredQuestion = true %}
   {% set buttonText = "Continue" %}
