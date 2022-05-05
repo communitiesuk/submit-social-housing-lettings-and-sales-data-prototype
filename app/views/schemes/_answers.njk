@@ -219,13 +219,3 @@
     }
   ]
 }) }}
-
-{# Allow all answers to be edited, for now.
-  {{ govukDetails({
-    summaryText: "Why can’t I change some of these answers?",
-    html: "We ask different questions in logs based on the answers you give us."
-  }) if isCompleted else govukWarningText({
-    text: "You won’t be able to change some of these answers after you’ve saved them.",
-    iconFallbackText: "Warning"
-  }) }}
-#}
