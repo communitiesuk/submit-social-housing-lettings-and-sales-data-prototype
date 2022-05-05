@@ -138,7 +138,7 @@ const generateSchemes = () => {
         const id = `l${i + 1}`
         locations[id] = {
           postcode: faker.address.zipCode(),
-          address: `${faker.datatype.number({ min: 1, max: 201 })} ${faker.random.arrayElement(streetNames)}`,
+          address: `${faker.random.arrayElement(streetNames)}, ${faker.address.city()}`,
           'local-authority': faker.random.arrayElement(localAuthorities),
           'type-of-unit': faker.random.arrayElement([
             'bungalow',
