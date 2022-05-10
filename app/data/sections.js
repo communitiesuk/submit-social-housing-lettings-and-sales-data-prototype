@@ -268,6 +268,13 @@ export function sections (log) {
       [`${logPath}household-needs/armed-forces-still-serving`]: {},
       [`${logPath}household-needs/armed-forces-seriously-injured`]: {},
       [`${logPath}household-needs/pregnant`]: {},
+      [`${logPath}household-needs/has-access-needs`]: {
+        // SKIP: Don’t ask about access needs if nobody has them
+        [`${logPath}household-needs/health-condition`]: {
+          data: `logs.${logId}['household-needs']['has-access-needs']`,
+          values: ['false', 'unknown']
+        }
+      },
       [`${logPath}household-needs/access-needs`]: {},
       [`${logPath}household-needs/health-condition`]: {
         // SKIP: Don’t need to ask about affects of any health condition

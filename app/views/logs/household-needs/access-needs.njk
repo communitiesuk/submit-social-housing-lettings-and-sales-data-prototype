@@ -1,19 +1,30 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Does anybody in the household have any disabled access needs?" %}
+{% set title = "Disabled access needs" %}
 {% set questionId = "access-needs" %}
 
 {% block question %}
-  {{ govukCheckboxes({
+  {{ macro.heading(title, caption) }}
+
+  {{ govukRadios({
     decorate: ["logs", log.id, section.id, questionId],
     fieldset: {
       legend: {
-        text: macro.heading(title, caption)
+        classes: "govuk-fieldset__legend--m",
+        text: "What type of access need do they have?"
       }
     },
-    hint: {
-      text: "Select all that apply."
-    },
     items: data.questions[questionId]
+  }) }}
+
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, "other-access-needs"],
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Do they have any other access needs?"
+      }
+    },
+    items: data.questions["yes-no"]
   }) }}
 {% endblock %}

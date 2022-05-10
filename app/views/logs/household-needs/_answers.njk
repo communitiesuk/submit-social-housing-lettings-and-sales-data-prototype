@@ -6,6 +6,9 @@
 {% set hasHealthCondition =
   (log[section.id]["health-condition"] == "true")
 %}
+{% set hasAccessNeeds =
+  (log[section.id]["has-access-needs"] == "true")
+%}
 
 {{ govukSummaryList({
   rows: [{
@@ -66,7 +69,21 @@
     }
   }, {
     key: {
-      text: "Anybody in household with disabled access needs"
+      text: "Anybody with disabled access needs"
+    },
+    value: {
+      text: log[section.id]["has-access-needs"] | textFromInputValue(data.questions["yes-no-unknown"])
+    },
+    actions: {
+      items: [{
+        text: "Change" if log[section.id]["has-access-needs"] else "Answer",
+        href: sectionPath + "/has-access-needs",
+        visuallyHiddenText: "if anybody in household has disabled access needs"
+      }] if not logSubmitted
+    }
+  }, {
+    key: {
+      text: "Disabled access needs"
     },
     value: {
       text: log[section.id]["access-needs"] | textFromInputValue(data.questions["access-needs"])
@@ -75,10 +92,24 @@
       items: [{
         text: "Change" if log[section.id]["access-needs"] else "Answer",
         href: sectionPath + "/access-needs",
-        visuallyHiddenText: "if anybody in household with disabled access needs"
+        visuallyHiddenText: "disabled access needs"
       }] if not logSubmitted
     }
-  }, {
+  } if hasAccessNeeds, {
+    key: {
+      text: "Other disabled access needs"
+    },
+    value: {
+      text: log[section.id]["other-access-needs"] | textFromInputValue(data.questions["yes-no"])
+    },
+    actions: {
+      items: [{
+        text: "Change" if log[section.id]["other-access-needs"] else "Answer",
+        href: sectionPath + "/access-needs",
+        visuallyHiddenText: "if other disabled access needs"
+      }] if not logSubmitted
+    }
+  } if hasAccessNeeds, {
     key: {
       text: "Anybody in household with physical or mental health condition"
     },

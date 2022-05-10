@@ -117,7 +117,7 @@ export default {
     'household-needs': {
       'armed-forces': 'false',
       pregnant: 'false',
-      'access-needs': ['g'],
+      'has-access-needs': 'false',
       'health-condition': 'false',
       completed: 'true'
     },
@@ -209,7 +209,7 @@ export default {
     'household-needs': {
       'armed-forces': 'false',
       pregnant: 'false',
-      'access-needs': ['g'],
+      'has-access-needs': 'false',
       'health-condition': 'false',
       completed: 'true'
     },

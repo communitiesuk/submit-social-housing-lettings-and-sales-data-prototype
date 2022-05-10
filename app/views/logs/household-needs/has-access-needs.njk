@@ -1,0 +1,16 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Does anybody in the household have any disabled access needs?" %}
+{% set questionId = "has-access-needs" %}
+
+{% block question %}
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, "has-access-needs"],
+    fieldset: {
+      legend: {
+        text: macro.heading(title, caption)
+      }
+    },
+    items: data.questions["yes-no-unknown"]
+  }) }}
+{% endblock %}
