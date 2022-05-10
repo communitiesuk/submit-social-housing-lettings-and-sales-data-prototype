@@ -14,7 +14,7 @@ const cleanseOption = (option) => {
   option.clean = {
     name: clean(option.name),
     nameWithoutStopWords: stopWords(option.name),
-    synonyms: synonyms,
+    synonyms,
     synonymsWithoutStopWords: synonyms.map(stopWords),
     boost: (option.boost || 1)
   }

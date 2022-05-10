@@ -34,17 +34,17 @@ const generateOrganisations = () => {
         ? value.parents
         : (value.designation !== 'Local authority')
             ? faker.random.arrayElements(
-                Object.keys(registeredProviders),
-                2
-              )
+              Object.keys(registeredProviders),
+              2
+            )
             : false,
       children: value.children
         ? value.children
         : stock
           ? faker.random.arrayElements(
-              Object.keys(registeredProviders),
-              3
-            )
+            Object.keys(registeredProviders),
+            3
+          )
           : false,
       stock: value.stock
         ? value.stock
