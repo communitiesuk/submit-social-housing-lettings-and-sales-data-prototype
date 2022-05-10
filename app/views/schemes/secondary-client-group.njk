@@ -1,6 +1,6 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Does this service cater for another client group?" %}
+{% set title = "Does this service provide for another client group?" %}
 {% set caption = scheme.name %}
 
 {% if scheme["secondary-client-group"] %}
@@ -32,7 +32,7 @@
           fieldset: {
             legend: {
               classes: "govuk-fieldset__legend--m",
-              text: "What is the second client group?"
+              text: "What is the other client group?"
             }
           },
           items: data.questions["client-groups"] | rejectwhere("value", scheme["primary-client-group"])
