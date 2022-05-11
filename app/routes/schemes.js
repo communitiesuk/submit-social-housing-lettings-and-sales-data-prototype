@@ -83,7 +83,7 @@ export const schemeRoutes = (router) => {
     // Create a new blank scheme in session data
     // Assign to user’s organisation (only DC at owning organisation can create)
     schemes[schemeId] = {
-      status: 'inProgress',
+      created: new Date().toISOString(),
       organisationId: account.organisationId
     }
 
@@ -180,27 +180,72 @@ export const schemeRoutes = (router) => {
   })
 
   /**
+   * Confirm delete location
+   */
+  router.get('/schemes/:schemeId/location/:itemId/delete', (req, res) => {
+    const { schemes } = req.session.data
+    const { schemeId, itemId } = req.params
+
+    const location = schemes[schemeId].locations[itemId]
+    const locationsPath = `/schemes/${schemeId}/locations`
+
+    res.render('schemes/delete-location', {
+      location,
+      locationsPath
+    })
+  })
+
+  /**
+   * Delete location
+   */
+  router.post('/schemes/:schemeId/location/:itemId/delete', (req, res) => {
+    const { schemes } = req.session.data
+    const { schemeId, itemId } = req.params
+
+    delete schemes[schemeId].locations[itemId]
+
+    res.redirect(`/schemes/${schemeId}/locations?success=deleted`)
+  })
+
+  /**
    * Delete scheme
    */
   router.post('/schemes/:schemeId/delete', (req, res) => {
-    const { schemes } = req.session.data
+    const { account, schemes } = req.session.data
     const { schemeId } = req.params
 
     delete schemes[schemeId]
 
-    res.redirect(`/schemes?success=deleted&schemeId=${schemeId}`)
+    res.redirect(`/organisations/${account.organisationId}/schemes?success=deleted`)
   })
 
   /**
    * Update scheme
    */
   router.post('/schemes/:schemeId/:view?', (req, res) => {
+    const { schemes } = req.session.data
+    const { schemeId, view } = req.params
+
+    const schemePath = `/schemes/${schemeId}`
+
     // Add another location
     if (req.body['add-another-location'] === 'true') {
       const { schemeId } = req.params
       const itemId = req.body['next-item-id']
 
       res.locals.paths.next = `/schemes/${schemeId}/location/${itemId}`
+    }
+
+    // Deactivate scheme
+    if (view === 'deactivate') {
+      schemes[schemeId].deactivated = true
+      return res.redirect(`${schemePath}?success=deactivated&schemeId=${schemeId}`)
+    }
+
+    // Reactivate scheme
+    if (view === 'reactivate') {
+      schemes[schemeId].deactivated = false
+      return res.redirect(`${schemePath}?success=reactivated&schemeId=${schemeId}`)
     }
 
     const next = res.locals.paths.next && res.locals.paths.next !== ''

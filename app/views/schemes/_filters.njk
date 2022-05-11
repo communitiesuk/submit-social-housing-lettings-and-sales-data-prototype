@@ -1,5 +1,4 @@
 {{ govukCheckboxes({
-  decorate: ["filter", "status"],
   formGroup: {
     classes: "app-filter__group"
   },
@@ -11,14 +10,9 @@
     }
   },
   items: [{
-    "text": "In progress",
-    "value": "In progress"
-  }, {
-    "text": "Active",
-    "value": "active"
-  }, {
-    "text": "Inactive",
-    "value": "inactive"
+    text: "Show deactivated services",
+    value: "active",
+    checked: "true"
   }]
 }) }}
 
