@@ -1,0 +1,54 @@
+{% extends "layouts/form.njk" %}
+
+{% import "macros.njk" as macro %}
+
+{% set title = scheme.name %}
+{% set formAction = schemePath %}
+{% set locationsCount = scheme.locations | length %}
+
+{% block form %}
+  {{ govukNotificationBanner({
+    text: scheme.name + " has been deactivated.",
+    type: "success"
+  }) if query.success == "deactivated" }}
+
+  {{ govukNotificationBanner({
+    text: scheme.name + " has been reactivated.",
+    type: "success"
+  }) if query.success == "reactivated" }}
+
+  {{ macro.heading(title) }}
+
+  {% if scheme.deactivated %}
+    <p class="govuk-button-group">
+      <span class="app-!-colour-muted govuk-!-margin-right-2">This service has been deactivated.</span>
+      {% if isCoordinator or isAdmin %}
+        <a class="govuk-link" href="{{ schemePath }}/reactivate">Reactivate service</a>
+        <a class="govuk-link" href="{{ schemePath }}/delete">Delete service</a>
+      {% endif %}
+    </p>
+  {% elif isCoordinator or isAdmin %}
+    <p class="govuk-button-group">
+      <a class="govuk-link" href="{{ schemePath }}/deactivate">Deactivate service</a>
+      <a class="govuk-link" href="{{ schemePath }}/delete">Delete service</a>
+    </p>
+  {% endif %}
+
+  {{ appSubNavigation({
+    items: [{
+      text: "Service",
+      href: schemePath,
+      active: section == "scheme"
+    }, {
+      text: locationsCount + " locations" if locationsCount > 1 else "Location",
+      href: schemePath + "/locations",
+      active: section == "locations"
+    }]
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      {% block sectionContent %}{% endblock %}
+    </div>
+  </div>
+{% endblock %}

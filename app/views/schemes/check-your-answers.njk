@@ -15,6 +15,7 @@
       {{ macro.heading(title, caption) }}
 
       {% include "schemes/_answers.njk" %}
+
       {% if updateAnswers %}
         {{ govukRadios({
           decorate: ["schemes", scheme.id, "correction"],

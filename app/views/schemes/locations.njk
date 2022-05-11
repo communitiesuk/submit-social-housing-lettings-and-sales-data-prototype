@@ -1,14 +1,23 @@
-{% set locationsCount = scheme.locations | length %}
+{% extends "schemes/_scheme-layout.njk" %}
 
-{% set detailsHtml %}
-  {% include "schemes/_scheme-answers.njk" %}
-{% endset %}
+{% set section = "locations" %}
 
-{% set locationsHtml %}
+{% block sectionContent %}
+  {{ govukButton({
+    classes: "govuk-button--secondary",
+    text: "Add another location" if locationsCount > 1 else "Add a location",
+    href: schemePath + "/location/new"
+  }) if not scheme.deactivated }}
+
   {% for itemId, location in scheme.locations %}
-    <h2 class="govuk-heading-m">{{ location.address }}</h2>
-    {{ govukSummaryList({
-      classes: "govuk-!-margin-bottom-9" if not loop.last else "",
+    {{ xGovukSummaryCard({
+      titleText: location.address,
+      actions: actionLinks({
+        href: schemePath + "/location/" + itemId + "/delete",
+        text: "Delete",
+        visuallyHiddenText: location.address
+      }) if not scheme.deactivated,
+      classes: "govuk-!-margin-bottom-6",
       rows: [{
         key: {
           text: "Scheme code"
@@ -27,7 +36,7 @@
         actions: actionLinks({
           href: schemePath + "/location/" + itemId,
           visuallyHiddenText: "postcode"
-        })
+        }) if not scheme.deactivated
       }, {
         key: {
           text: "Type of unit"
@@ -38,7 +47,7 @@
         actions: actionLinks({
           href: schemePath + "/location/" + itemId,
           visuallyHiddenText: "type of unit"
-        })
+        }) if not scheme.deactivated
       }, {
         key: {
           text: "Type of building"
@@ -49,7 +58,7 @@
         actions: actionLinks({
           href: schemePath + "/location/" + itemId,
           visuallyHiddenText: "type of building"
-        })
+        }) if not scheme.deactivated
       }, {
         key: {
           text: "Wheelchair adaptation"
@@ -60,32 +69,8 @@
         actions: actionLinks({
           href: schemePath + "/location/" + itemId,
           visuallyHiddenText: "if location has been built or adapted to wheelchair-user standards"
-        })
+        }) if not scheme.deactivated
       }]
     }) }}
   {% endfor %}
-
-  {{ govukButton({
-    classes: "govuk-button--secondary",
-    text: "Add another location" if locationsCount > 1 else "Add a location",
-    href: schemePath + "/location/new"
-  }) }}
-{% endset %}
-
-{{ govukTabs({
-  items: [
-    {
-      label: "Service",
-      id: "details",
-      panel: {
-        html: detailsHtml
-      }
-    }, {
-      label: locationsCount + " locations" if locationsCount > 1 else "Location",
-      id: "locations",
-      panel: {
-        html: locationsHtml
-      }
-    }
-  ]
-}) }}
+{% endblock %}

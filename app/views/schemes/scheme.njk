@@ -1,16 +1,7 @@
-{% extends "layouts/form.njk" %}
+{% extends "schemes/_scheme-layout.njk" %}
 
-{% import "macros.njk" as macro %}
+{% set section = "scheme" %}
 
-{% set title = scheme.name %}
-{% set formAction = schemePath %}
-
-{% block form %}
-  {{ macro.heading(title) }}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-three-quarters">
-      {% include "schemes/_answers.njk" %}
-    </div>
-  </div>
+{% block sectionContent %}
+  {% include "schemes/_scheme-answers.njk" %}
 {% endblock %}

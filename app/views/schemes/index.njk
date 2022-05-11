@@ -79,10 +79,8 @@
           }, {
             html: organisations[scheme.agentId].name
           }, {
-            html: govukTag({
-              classes: "govuk-tag--" + data.statuses[scheme.status].colour,
-              text: data.statuses[scheme.status].text
-            })
+            classes: "app-!-no-wrap",
+            text: scheme.created | govukDate("truncate")
           }])
         %}
       {% endfor %}
@@ -112,7 +110,7 @@
               }, {
                 text: "Managing agent"
               }, {
-                text: "Status"
+                text: "Created"
               }],
               rows: schemeRows
             }) }}
