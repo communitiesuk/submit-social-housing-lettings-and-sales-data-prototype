@@ -4,9 +4,9 @@
   {# Editing an existing scheme #}
   {% set caption = scheme.name %}
   {% set title = "Service details" %}
+  {% set buttonText = "Continue" %}
   {% set formAction = schemePath + "/update-your-answers" %}
   {% set hasAnsweredQuestion = true %}
-  {% set buttonText = "Continue" %}
 {% else %}
   {% set title = "Create a new supported housing service" %}
 {% endif %}

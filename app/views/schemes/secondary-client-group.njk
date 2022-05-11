@@ -5,9 +5,9 @@
 
 {% if scheme["secondary-client-group"] %}
   {# Editing an existing scheme #}
+  {% set buttonText = "Continue" %}
   {% set formAction = schemePath + "/update-your-answers" %}
   {% set hasAnsweredQuestion = true %}
-  {% set buttonText = "Continue" %}
 {% endif %}
 
 {% block question %}
