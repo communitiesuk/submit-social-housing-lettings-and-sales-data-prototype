@@ -182,7 +182,7 @@ const generateSchemes = () => {
         'false'
       ]),
       'primary-client-group': clientGroup1,
-      'has-secondary-client-group': clientGroup2 !== 'false',
+      'has-secondary-client-group': clientGroup2 === 'false' ? 'false' : 'true',
       'secondary-client-group': clientGroup2,
       'type-of-support': typeOfSupport,
       'intended-stay': faker.random.arrayElement([
