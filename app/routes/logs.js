@@ -239,6 +239,11 @@ export const logRoutes = (router) => {
       const owningOrganisations = managingOrganisations
         .filter(org => org.stock)
 
+      const allRentPeriods = req.session.data['rent-periods']
+      const organisationRentPeriodValues = organisation['rent-periods']
+      const rentPeriods = allRentPeriods.filter(period =>
+        organisationRentPeriodValues.includes(period.value))
+
       res.render(`logs/${sectionId}/${view}`, {
         caption: section.title,
         log,
@@ -248,7 +253,8 @@ export const logRoutes = (router) => {
         itemId,
         organisationId,
         managingOrganisations,
-        owningOrganisations
+        owningOrganisations,
+        rentPeriods
       })
     } catch (error) {
       console.error(error)
