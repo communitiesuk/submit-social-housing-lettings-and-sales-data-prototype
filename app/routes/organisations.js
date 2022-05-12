@@ -51,10 +51,16 @@ export const organisationRoutes = (router) => {
 
     const organisation = organisations[organisationId]
 
+    const allRentPeriods = req.session.data['rent-periods']
+    const organisationRentPeriodValues = organisation['rent-periods']
+    const rentPeriods = allRentPeriods.filter(period =>
+      organisationRentPeriodValues.includes(period.value))
+
     if (organisation) {
       res.render(`organisations/${view}`, {
         query: req.query,
         localAuthorities,
+        rentPeriods,
         organisation,
         organisations
       })
@@ -80,6 +86,6 @@ export const organisationRoutes = (router) => {
       organisations[organisationId].deactivated = false
     }
 
-    res.redirect(res.locals.thisOrganisationPath)
+    res.redirect(`/organisations/${organisationId}`)
   })
 }

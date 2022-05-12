@@ -25,11 +25,16 @@
       {% endif %}
 
 {% set outgoingPeriodsHtml %}
-<ul class="govuk-list govuk-list--bullet">
-{% for period in data.questions["outgoings-period"] %}
-  <li>{{ period.text }}</li>
-{% endfor %}
-</ul>
+  {% if rentPeriods.length > 1 %}
+    <ul class="govuk-list govuk-list--bullet">
+    {% for period in rentPeriods %}
+      <li>{{ period.text }}</li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    {% set period = rentPeriods | first %}
+    {{ period.text }}
+  {% endif %}
 {% endset %}
 
       {{ govukSummaryList({
@@ -85,7 +90,7 @@
             html: outgoingPeriodsHtml
           },
           actions: actionLinks({
-            href: "#",
+            href: thisOrganisationPath + "/rent-periods",
             visuallyHiddenText: "rent periods"
           }) if isAdmin or isCoordinator
         }, {
