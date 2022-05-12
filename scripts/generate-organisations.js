@@ -29,11 +29,11 @@ const generateOrganisations = () => {
         : 'Housing association',
       areas: value.areas
         ? value.areas
-        : faker.random.arrayElements(localAuthorities.map(area => area.gss), 3),
+        : faker.helpers.arrayElements(localAuthorities.map(area => area.gss), 3),
       parents: value.parents
         ? value.parents
         : (value.designation !== 'Local authority')
-            ? faker.random.arrayElements(
+            ? faker.helpers.arrayElements(
               Object.keys(registeredProviders),
               2
             )
@@ -41,7 +41,7 @@ const generateOrganisations = () => {
       children: value.children
         ? value.children
         : stock
-          ? faker.random.arrayElements(
+          ? faker.helpers.arrayElements(
             Object.keys(registeredProviders),
             3
           )

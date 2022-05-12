@@ -41,7 +41,7 @@ const generateSchemes = () => {
     switch (preset) {
       case 1:
         // Rough sleepers
-        name = `${faker.address.city()}${faker.random.arrayElement([
+        name = `${faker.address.city()}${faker.helpers.arrayElement([
           ' Center',
           ' Action on Homelessness'
         ])}`
@@ -52,7 +52,7 @@ const generateSchemes = () => {
         break
       case 2:
         // Young people
-        name = `${faker.address.city()}${faker.random.arrayElement([
+        name = `${faker.address.city()}${faker.helpers.arrayElement([
           ' Center',
           ' Foyer',
           ' Point'
@@ -64,7 +64,7 @@ const generateSchemes = () => {
         break
       case 3:
         // Older people
-        name = `${faker.address.city()}${faker.random.arrayElement([
+        name = `${faker.address.city()}${faker.helpers.arrayElement([
           ' Care',
           ' Nursing',
           ' Support'
@@ -72,14 +72,14 @@ const generateSchemes = () => {
         type = 'older-people'
         clientGroup1 = 'older-people'
         clientGroup2 = 'false'
-        typeOfSupport = faker.random.arrayElement([
+        typeOfSupport = faker.helpers.arrayElement([
           'low',
           'medium'
         ])
         break
       case 4:
         // Mental health
-        name = `${faker.address.city()}${faker.random.arrayElement([
+        name = `${faker.address.city()}${faker.helpers.arrayElement([
           ' Care',
           ' Independent Living',
           ' Point',
@@ -88,14 +88,14 @@ const generateSchemes = () => {
         type = 'other'
         clientGroup1 = 'learning-disabilities'
         clientGroup2 = 'mental-health'
-        typeOfSupport = faker.random.arrayElement([
+        typeOfSupport = faker.helpers.arrayElement([
           'low',
           'medium'
         ])
         break
       case 5:
         // Physical health
-        name = `${faker.address.city()}${faker.random.arrayElement([
+        name = `${faker.address.city()}${faker.helpers.arrayElement([
           ' Care',
           ' House',
           ' Nursing'
@@ -103,7 +103,7 @@ const generateSchemes = () => {
         type = 'other'
         clientGroup1 = 'physical-disabilities'
         clientGroup2 = 'false'
-        typeOfSupport = faker.random.arrayElement([
+        typeOfSupport = faker.helpers.arrayElement([
           'nursing',
           'low',
           'medium',
@@ -112,7 +112,7 @@ const generateSchemes = () => {
         break
       case 6:
         // Other
-        name = `${faker.address.city()}${faker.random.arrayElement([
+        name = `${faker.address.city()}${faker.helpers.arrayElement([
           ' Center',
           ' Close',
           ' House'
@@ -120,7 +120,7 @@ const generateSchemes = () => {
         type = 'other'
         clientGroup1 = 'alcohol'
         clientGroup2 = 'drugs'
-        typeOfSupport = faker.random.arrayElements([
+        typeOfSupport = faker.helpers.arrayElements([
           'low',
           'medium',
           'high'
@@ -138,9 +138,9 @@ const generateSchemes = () => {
         const id = `l${i + 1}`
         locations[id] = {
           postcode: faker.address.zipCode(),
-          address: `${faker.random.arrayElement(streetNames)}, ${faker.address.city()}`,
-          'local-authority': faker.random.arrayElement(localAuthorities),
-          'type-of-unit': faker.random.arrayElement([
+          address: `${faker.helpers.arrayElement(streetNames)}, ${faker.address.city()}`,
+          'local-authority': faker.helpers.arrayElement(localAuthorities),
+          'type-of-unit': faker.helpers.arrayElement([
             'bungalow',
             'flat',
             'flat-common-facilities',
@@ -149,7 +149,7 @@ const generateSchemes = () => {
             'shared-house-or-hostel'
           ]),
           'is-adapted': faker.datatype.boolean().toString(),
-          'type-of-building': faker.random.arrayElement([
+          'type-of-building': faker.helpers.arrayElement([
             'converted',
             'purpose-built'
           ])
@@ -163,17 +163,17 @@ const generateSchemes = () => {
     schemes[id] = {
       id,
       created: faker.date.past(),
-      deactivated: faker.random.boolean(),
+      deactivated: faker.datatype.boolean(),
       name,
       confidential: faker.datatype.boolean().toString(),
       organisationId: value.organisationId,
-      agentId: faker.random.arrayElement([
+      agentId: faker.helpers.arrayElement([
         'CHILD1',
         'CHILD2',
         value.organisationId
       ]),
       type,
-      'registered-home': faker.random.arrayElement([
+      'registered-home': faker.helpers.arrayElement([
         'nursing',
         'personal',
         'part-registered',
@@ -183,7 +183,7 @@ const generateSchemes = () => {
       'has-secondary-client-group': clientGroup2 === 'false' ? 'false' : 'true',
       'secondary-client-group': clientGroup2,
       'type-of-support': typeOfSupport,
-      'intended-stay': faker.random.arrayElement([
+      'intended-stay': faker.helpers.arrayElement([
         'very-short',
         'short',
         'medium',
