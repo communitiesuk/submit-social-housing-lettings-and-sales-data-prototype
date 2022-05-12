@@ -1,0 +1,18 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Which rent periods does your organisation use?" %}
+{% set caption = thisOrganisation.name %}
+{% set buttonText = "Save changes" %}
+{% set required = true %}
+
+{% block question %}
+  {{ govukCheckboxes({
+    decorate: ["organisations", thisOrganisation.id, "rent-periods"],
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
+    },
+    items: data["rent-periods"]
+  }) }}
+{% endblock %}

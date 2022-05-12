@@ -30,6 +30,18 @@ const generateOrganisations = () => {
       areas: value.areas
         ? value.areas
         : faker.helpers.arrayElements(localAuthorities.map(area => area.gss), 3),
+      'rent-periods': faker.helpers.arrayElements([
+        'fortnightly',
+        'every-4-weeks',
+        'monthly',
+        'weekly-50',
+        'weekly-49',
+        'weekly-48',
+        'weekly-47',
+        'weekly-46',
+        'weekly-52',
+        'weekly-53'
+      ]),
       parents: value.parents
         ? value.parents
         : (value.designation !== 'Local authority')
