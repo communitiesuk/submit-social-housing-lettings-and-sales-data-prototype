@@ -1,5 +1,6 @@
 import * as utils from '../utils.js'
 import localAuthorities from '../datasets/local-authorities.js'
+import { organisationSettings as getOrganisationSettings } from '../data/organisation-settings.js'
 
 export const organisationRoutes = (router) => {
   /**
@@ -50,18 +51,14 @@ export const organisationRoutes = (router) => {
     const view = req.params.view ? req.params.view : 'organisation'
 
     const organisation = organisations[organisationId]
-
-    const allRentPeriods = req.session.data['rent-periods']
-    const organisationRentPeriodValues = organisation['rent-periods']
-    const rentPeriods = allRentPeriods.filter(period =>
-      organisationRentPeriodValues.includes(period.value))
+    const organisationSettings = getOrganisationSettings(organisation)
 
     if (organisation) {
       res.render(`organisations/${view}`, {
         query: req.query,
         localAuthorities,
-        rentPeriods,
         organisation,
+        organisationSettings,
         organisations
       })
     } else {

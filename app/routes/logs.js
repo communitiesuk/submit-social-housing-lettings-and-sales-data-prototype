@@ -1,5 +1,6 @@
 import { wizard } from 'govuk-prototype-rig'
 import { sections as getSections } from '../data/sections.js'
+import { organisationSettings as getOrganisationSettings } from '../data/organisation-settings.js'
 import * as utils from '../utils.js'
 
 export const logRoutes = (router) => {
@@ -239,10 +240,7 @@ export const logRoutes = (router) => {
       const owningOrganisations = managingOrganisations
         .filter(org => org.stock)
 
-      const allRentPeriods = req.session.data['rent-periods']
-      const organisationRentPeriodValues = organisation['rent-periods']
-      const rentPeriods = allRentPeriods.filter(period =>
-        organisationRentPeriodValues.includes(period.value))
+      const organisationSettings = getOrganisationSettings(organisation)
 
       res.render(`logs/${sectionId}/${view}`, {
         caption: section.title,
@@ -254,7 +252,7 @@ export const logRoutes = (router) => {
         organisationId,
         managingOrganisations,
         owningOrganisations,
-        rentPeriods
+        organisationSettings
       })
     } catch (error) {
       console.error(error)

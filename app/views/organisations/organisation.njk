@@ -25,14 +25,14 @@
       {% endif %}
 
 {% set outgoingPeriodsHtml %}
-  {% if rentPeriods.length > 1 %}
+  {% if organisationSettings.rentPeriods.length > 1 %}
     <ul class="govuk-list govuk-list--bullet">
-    {% for period in rentPeriods %}
+    {% for period in organisationSettings.rentPeriods %}
       <li>{{ period.text }}</li>
     {% endfor %}
     </ul>
   {% else %}
-    {% set period = rentPeriods | first %}
+    {% set period = organisationSettings.rentPeriods | first %}
     {{ period.text }}
   {% endif %}
 {% endset %}
