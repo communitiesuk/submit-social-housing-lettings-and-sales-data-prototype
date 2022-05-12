@@ -34,7 +34,7 @@ export default async () => ({
   }],
   questions: await questions(),
   organisations: require('./datasets/generated/organisations.json'),
-  'rent-periods': [{
+  rentPeriods: [{
     text: 'Every 2 weeks',
     value: 'fortnightly'
   }, {
