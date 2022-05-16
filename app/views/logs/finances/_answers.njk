@@ -171,7 +171,7 @@
     }
   } if isRenter and hasIncomeBenefits, {
     key: {
-      text: "Do you know the outstanding amount?"
+      text: "Can you estimate the outstanding amount?"
     },
     value: {
       text: log[section.id]["outgoings-outstanding-known"] | textFromInputValue(data.questions["yes-no"])
@@ -180,7 +180,7 @@
       items: [{
         text: "Change" if log[section.id]["outgoings-outstanding-known"] else "Answer",
         href: sectionPath + "/outgoings-outstanding",
-        visuallyHiddenText: "if you know the outstanding amount"
+        visuallyHiddenText: "if you can estimate the outstanding amount"
       }] if not logSubmitted
     }
   } if isRenter and hasIncomeBenefits and hasOutgoingsAfterBenefits, {

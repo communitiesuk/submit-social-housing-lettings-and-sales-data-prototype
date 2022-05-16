@@ -10,7 +10,7 @@
 {% else %}
   {% set period = "every week" %}
 {% endif %}
-{% set title = "Do you know the outstanding amount?" %}
+{% set title = "Can you estimate the outstanding amount?" %}
 {% set questionId = "outgoings-outstanding" %}
 
 {% block question %}
@@ -21,6 +21,9 @@
         html: macro.heading(title, caption)
       }
     },
+    hint: {
+      text: "You only need to give an approximate figure."
+    },
     items: [{
       text: "Yes",
       value: "true",
@@ -30,10 +33,7 @@
           classes: "govuk-input--width-5",
           label: {
             classes: "govuk-label--m",
-            text: "What do you expect the outstanding amount to be?"
-          },
-          hint: {
-            text: "Give an estimated amount if you don't know the exact figure."
+            text: "Estimated outstanding amount"
           },
           inputmode: "numeric",
           pattern: "[0-9]*",
