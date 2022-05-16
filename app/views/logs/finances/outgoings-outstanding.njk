@@ -10,26 +10,44 @@
 {% else %}
   {% set period = "every week" %}
 {% endif %}
-{% set title = "What do you expect the outstanding amount to be?" %}
+{% set title = "Do you know the outstanding amount?" %}
 {% set questionId = "outgoings-outstanding" %}
 
 {% block question %}
-  {{ govukInput({
-    decorate: ["logs", log.id, section.id, questionId],
-    classes: "govuk-input--width-5",
-    label: {
-      html: macro.heading(title, caption)
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, "outgoings-outstanding-known"],
+    fieldset: {
+      legend: {
+        html: macro.heading(title, caption)
+      }
     },
-    hint: {
-      text: "Give an estimated amount if you don't know the exact figure."
-    },
-    inputmode: "numeric",
-    pattern: "[0-9]*",
-    prefix: {
-      text: "£"
-    },
-    suffix: {
-      text: period
-    }
+    items: [{
+      text: "Yes",
+      value: "true",
+      conditional: {
+        html: govukInput({
+          decorate: ["logs", log.id, section.id, questionId],
+          classes: "govuk-input--width-5",
+          label: {
+            classes: "govuk-label--m",
+            text: "What do you expect the outstanding amount to be?"
+          },
+          hint: {
+            text: "Give an estimated amount if you don't know the exact figure."
+          },
+          inputmode: "numeric",
+          pattern: "[0-9]*",
+          prefix: {
+            text: "£"
+          },
+          suffix: {
+            text: period
+          }
+        })
+      }
+    }, {
+      text: "No",
+      value: "false"
+    }]
   }) }}
 {% endblock %}
