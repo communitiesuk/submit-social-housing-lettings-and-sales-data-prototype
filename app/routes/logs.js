@@ -59,8 +59,12 @@ export const logRoutes = (router) => {
       logs.length
     )
 
+    // Search query
+    const q = req.query.q || req.body.q
+
     res.render('logs/index', {
       query: req.query,
+      q,
       type,
       results,
       pagination,

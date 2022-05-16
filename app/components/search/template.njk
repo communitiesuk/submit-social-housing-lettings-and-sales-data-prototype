@@ -3,9 +3,9 @@
 
 <div class="app-search {%- if params.classes %} {{ params.classes }}{% endif -%}">
   {{ govukInput({
-    decorate: params.decorate,
-    id: params.id,
-    name: params.name,
+    id: "q",
+    name: "q",
+    value: q,
     type: "search",
     items: items,
     describedBy: params.describedBy,

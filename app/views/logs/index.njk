@@ -60,11 +60,10 @@
 
     <div class="app-filter-layout__content">
       {{ appSearch({
-        decorate: "q",
         classes: "govuk-!-margin-bottom-4",
         label: {
           classes: "govuk-!-margin-bottom-2",
-          text: "Search by tenant code or property reference"
+          text: "Search by log ID, tenant code, property reference or postcode"
         }
       }) }}
 
@@ -94,10 +93,7 @@
       {% endfor %}
 
       {% set captionHtml %}
-        <span class="govuk-!-margin-right-4">
-          {% if q %}<b>56</b> logs found of{% endif %}
-          <b>{{ pagination.results.count }}</b> total logs
-        </span>
+        {{ macro.tableCaption("logs", pagination.results.count, q) }}
         <a class="govuk-link govuk-link--no-visited-state" href="#" download>Download (CSV)</a>
       {% endset %}
 

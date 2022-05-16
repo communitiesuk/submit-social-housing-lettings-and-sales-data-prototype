@@ -47,8 +47,12 @@ export const userRoutes = (router) => {
       users.length
     )
 
+    // Search query
+    const q = req.query.q || req.body.q
+
     res.render('users/index', {
       query: req.query,
+      q,
       users,
       results,
       pagination

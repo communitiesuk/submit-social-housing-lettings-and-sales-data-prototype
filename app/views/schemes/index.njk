@@ -1,4 +1,4 @@
-{% extends "layouts/base.njk" %}
+{% extends "layouts/form.njk" %}
 
 {% import "macros.njk" as macro %}
 {% from "macros.njk" import adminNavigation with context %}
@@ -7,7 +7,7 @@
 {% set caption = thisOrganisation.name %}
 {% set isGlobalView = isAdmin and path.startsWith("/schemes") %}
 
-{% block content %}
+{% block form %}
   {{ govukNotificationBanner({
     text: data.schemes[query.schemeId].name + " has been created and can now be used by your organisation.",
     type: "success"
@@ -48,7 +48,6 @@
 
     <div class="app-filter-layout__content">
       {{ appSearch({
-        decorate: "q",
         classes: "govuk-!-margin-bottom-4",
         label: {
           classes: "govuk-!-margin-bottom-2",
@@ -85,18 +84,11 @@
         %}
       {% endfor %}
 
-      {% set captionHtml %}
-        <span class="govuk-!-margin-right-4">
-          {% if q %}<b>56</b> services found of{% endif %}
-          <b>{{ pagination.results.count }}</b> total services
-        </span>
-      {% endset %}
-
       {% if results.length %}
         {% call appFigure ({
           id: "services",
           caption: {
-            html: captionHtml
+            html: macro.tableCaption("services", pagination.results.count, q)
           }
         }) %}
           {% call appTableGroup({

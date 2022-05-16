@@ -22,8 +22,12 @@ export const organisationRoutes = (router) => {
       organisations.length
     )
 
+    // Search query
+    const q = req.query.q || req.body.q
+
     res.render('organisations/index', {
       query: req.query,
+      q,
       results,
       pagination
     })

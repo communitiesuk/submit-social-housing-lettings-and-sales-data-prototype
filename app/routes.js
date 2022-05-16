@@ -28,7 +28,7 @@ router.all('*', (req, res, next) => {
 })
 
 // Set organisation locals
-router.get([
+router.all([
   '/organisations/:organisationId',
   '/organisations/:organisationId/*'
 ], (req, res, next) => {

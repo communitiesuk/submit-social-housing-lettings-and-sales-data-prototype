@@ -65,8 +65,12 @@ export const schemeRoutes = (router) => {
       schemes.length
     )
 
+    // Search query
+    const q = req.query.q || req.body.q
+
     res.render('schemes/index', {
       query: req.query,
+      q,
       organisations,
       results,
       pagination

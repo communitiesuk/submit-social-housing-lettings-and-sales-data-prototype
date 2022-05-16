@@ -1,10 +1,10 @@
-{% extends "layouts/base.njk" %}
+{% extends "layouts/form.njk" %}
 
 {% import "macros.njk" as macro %}
 
 {% set title = "Organisations" %}
 
-{% block content %}
+{% block form %}
   {{ govukNotificationBanner({
     text: macro.notificationBannerText(query.success, "Organisation"),
     type: "success"
@@ -21,12 +21,14 @@
   </div>
 
   {{ appSearch({
-    decorate: "q",
     classes: "govuk-!-margin-bottom-4",
     label: {
       classes: "govuk-!-margin-bottom-2",
-      text: "Search by organisation name or registration number"
-    }
+      text: "Search by organisation name"
+    },
+    id: "q",
+    name: "q",
+    value: q
   }) }}
 
   <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
@@ -43,18 +45,11 @@
     %}
   {% endfor %}
 
-  {% set captionHtml %}
-    <span class="govuk-!-margin-right-4">
-      {% if q %}<b>56</b> organisations found of{% endif %}
-      <b>{{ pagination.results.count }}</b> total organisations
-    </span>
-  {% endset %}
-
   {% if results.length %}
     {% call appFigure ({
       id: "organisations",
       caption: {
-        html: captionHtml
+        html: macro.tableCaption("organisations", pagination.results.count, q)
       }
     }) %}
       {% call appTableGroup({
