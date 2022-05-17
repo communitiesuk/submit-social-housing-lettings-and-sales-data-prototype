@@ -50,8 +50,20 @@
     {% set userPath = "/users/" + user.id %}
     {% set userOrganisation = data.organisations[user.organisationId].name %}
     {% set userRole = data.roles[user.role].name %}
+    {% set nameRowHtml %}
+      {{ macro.entityHtml(user.name, userPath, user.email) }}
+      {% if user.dpo == "true" or user["key-contact"] == "true" %}<br>{% endif %}
+      {{ govukTag({
+        classes: "app-tag--small govuk-tag--turquoise govuk-tag--small govuk-!-margin-top-1",
+        text: "Key contact"
+      }) if user.dpo == "true" }}
+      {{ govukTag({
+        classes: "app-tag--small govuk-tag--turquoise govuk-!-margin-top-1",
+        text: "Data protection officer"
+      }) if user["key-contact"] == "true" }}
+    {% endset %}
     {% set row = userRows.push([{
-        html: macro.entityHtml(user.name, userPath, user.email)
+        html: nameRowHtml
       }, {
         html: macro.entityHtml(userOrganisation, false, userRole)
       }, {
@@ -73,13 +85,10 @@
         {{ govukTable({
           firstCellIsHeader: true,
           head: [{
-            classes: "govuk-!-width-one-quarter",
             text: "Name and email address"
           }, {
-            classes: "govuk-!-width-one-half",
             text: "Organisation and role"
           }, {
-            classes: "govuk-!-width-one-quarter",
             text: "Last logged in"
           }],
           rows: userRows

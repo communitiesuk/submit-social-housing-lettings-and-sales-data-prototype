@@ -27,15 +27,15 @@
       {% set dataCoordinatorPermissionsHintHtml %}
         {% set organisation = data.organisations[user.organisationId] %}
         <ul class="govuk-list govuk-list--bullet govuk-hint">
-          <li>Manages logs for {{ organisation.name }} and its managing agents</li>
-          <li>Manages details for {{ organisation.name }}</li>
-          <li>Manages users for {{ organisation.name }}</li>
+          <li>Can view and submit logs for {{ organisation.name or "this organisation" }} and any of its managing agents</li>
+          <li>Can manage details for {{ organisation.name or "this organisation" }}</li>
+          <li>Can manage users for {{ organisation.name or "this organisation" }}</li>
         </ul>
       {% endset %}
 
       {% set dataProviderPermissionsHintHtml %}
         <ul class="govuk-list govuk-list--bullet govuk-hint">
-          <li>Views and submits logs for {{ organisation.name }}</li>
+          <li>Can view and submit logs for {{ organisation.name or "this organisation" }}</li>
         </ul>
       {% endset %}
 
@@ -50,7 +50,7 @@
           value: "admin",
           text: "Customer support agent",
           label: {
-            classes: "govuk-label--s"
+            classes: "govuk-label--m"
           },
           hint: {
             html: adminPermissionsHintHtml
@@ -59,7 +59,7 @@
           value: "coordinator",
           text: "Data coordinator",
           label: {
-            classes: "govuk-label--s"
+            classes: "govuk-label--m"
           },
           hint: {
             html: dataCoordinatorPermissionsHintHtml
@@ -68,50 +68,11 @@
           value: "provider",
           text: "Data provider",
           label: {
-            classes: "govuk-label--s"
+            classes: "govuk-label--m"
           },
           hint: {
             html: dataProviderPermissionsHintHtml
           }
-        }]
-      }) }}
-
-      {{ govukRadios({
-        decorate: ["users", user.id, "dpo"],
-        classes: "govuk-radios--inline",
-        fieldset: {
-          legend: {
-            classes: "govuk-fieldset__legend--m",
-            text: "Is this user also your organisation’s data protection officer?"
-          }
-        },
-        items: [{
-          value: "true",
-          text: "Yes"
-        }, {
-          value: "false",
-          text: "No"
-        }]
-      }) }}
-
-      {{ govukRadios({
-        decorate: ["users", user.id, "keycontact"],
-        classes: "govuk-radios--inline",
-        fieldset: {
-          legend: {
-            classes: "govuk-fieldset__legend--m",
-            text: "Is this user the key contact for CORE?"
-          }
-        },
-        hint: {
-          text: "This is the person responsible for sharing information about CORE within your organisation"
-        },
-        items: [{
-          value: "true",
-          text: "Yes"
-        }, {
-          value: "false",
-          text: "No"
         }]
       }) }}
 

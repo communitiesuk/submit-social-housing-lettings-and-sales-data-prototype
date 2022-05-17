@@ -1,0 +1,37 @@
+{% extends "layouts/form.njk" %}
+
+{% set caption = user.name %}
+{% set title = "Is this user a key contact for this service?" %}
+{% set buttonText = "Save changes" %}
+{% set backLink = userPath %}
+{% set formAction = userPath %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      {{ govukRadios({
+        decorate: ["users", user.id, "key-contact"],
+        fieldset: {
+          legend: {
+            classes: "govuk-fieldset__legend--l",
+            html: macro.fieldsetHeading(title, user.name)
+          }
+        },
+        hint: {
+          text: "This is a person responsible for sharing information about social housing lettings and sales data within your organisation."
+        },
+        items: [{
+          value: "true",
+          text: "Yes"
+        }, {
+          value: "false",
+          text: "No"
+        }]
+      }) }}
+
+      {{ govukButton({
+        text: buttonText
+      }) }}
+    </div>
+  </div>
+{% endblock %}

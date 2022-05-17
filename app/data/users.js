@@ -6,7 +6,8 @@ export default {
     organisationId: 'DLUHC',
     role: 'admin',
     lastActive: '2021-10-24T16:04:34',
-    dpo: 'true'
+    dpo: 'true',
+    'key-contact': 'true'
   },
   // Data coordinator at owning organisation
   DC001: {
@@ -16,7 +17,8 @@ export default {
     role: 'coordinator',
     lastActive: '2021-10-24T16:04:34',
     invitedById: 'ADMIN',
-    dpo: 'true'
+    dpo: 'true',
+    'key-contact': 'true'
   },
   // Data provider at owning organisation
   DP001: {
@@ -25,7 +27,8 @@ export default {
     organisationId: 'PARENT1',
     role: 'provider',
     invitedById: 'DC001',
-    dpo: 'false'
+    dpo: 'false',
+    'key-contact': 'false'
   },
   // Data provider at managing organisation
   DCM01: {
@@ -35,7 +38,8 @@ export default {
     role: 'coordinator',
     lastActive: '2021-08-09T12:24:12',
     invitedById: 'DC001',
-    dpo: 'true'
+    dpo: 'true',
+    'key-contact': 'false'
   },
   DPM01: {
     name: 'Sally Jones',
@@ -44,7 +48,8 @@ export default {
     role: 'provider',
     lastActive: '2021-09-02T13:04:18',
     invitedById: 'DCM01',
-    dpo: 'false'
+    dpo: 'false',
+    'key-contact': 'false'
   },
   DPM02: {
     name: 'David Smith',
@@ -53,6 +58,7 @@ export default {
     role: 'provider',
     lastActive: '2021-10-01T11:04:18',
     invitedById: 'DC001',
-    dpo: 'false'
+    dpo: 'false',
+    'key-contact': 'false'
   }
 }

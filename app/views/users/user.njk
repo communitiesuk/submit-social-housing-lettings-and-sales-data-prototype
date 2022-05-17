@@ -88,8 +88,19 @@
             text: user.dpo | textFromInputValue(data.questions["yes-no"])
           },
           actions: actionLinks({
-            href: userPath + "/role",
-            visuallyHiddenText: "role"
+            href: userPath + "/dpo",
+            visuallyHiddenText: "if data protection officer"
+          }) if canAdminUsers and not user.deactivated
+        }, {
+          key: {
+            text: "Key contact"
+          },
+          value: {
+            text: user["key-contact"] | textFromInputValue(data.questions["yes-no"])
+          },
+          actions: actionLinks({
+            href: userPath + "/key-contact",
+            visuallyHiddenText: "if key contact"
           }) if canAdminUsers and not user.deactivated
         }, {
           key: {
