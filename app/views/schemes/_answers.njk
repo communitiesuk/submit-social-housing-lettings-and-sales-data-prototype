@@ -27,7 +27,7 @@
         actions: actionLinks({
           href: schemePath + "/location/" + itemId,
           visuallyHiddenText: "postcode"
-        })
+        }) if isAdmin
       }, {
         key: {
           text: "Type of unit"

@@ -5,7 +5,7 @@
 
 {% if scheme.locations[itemId] %}
   {# Editing an existing scheme #}
-  {% set title = "Location details" %}
+  {% set title = "Location details for " + scheme.locations[itemId].address %}
   {% set buttonText = "Continue" %}
   {% set formAction = schemePath + "/update-your-answers" %}
   {% set hasAnsweredQuestion = true %}
@@ -16,6 +16,7 @@
 {% block question %}
   {{ macro.heading(title, caption) }}
 
+  {# Only admin can edit the postcode for an existing location #}
   {{ govukInput({
     decorate: ["schemes", scheme.id, "locations", itemId, "postcode"],
     classes: "govuk-input--width-5",
@@ -26,7 +27,7 @@
     hint: {
       text: "For example, SW1P 4DF."
     }
-  }) }}
+  }) if isAdmin or not hasAnsweredQuestion }}
 
   {{ govukRadios({
     decorate: ["schemes", scheme.id, "locations", itemId, "type-of-unit"],
