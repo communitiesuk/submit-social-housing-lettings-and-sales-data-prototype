@@ -15,7 +15,7 @@
     "generate-schemes": "node ./scripts/generate-schemes.js"
   },
   "dependencies": {
-    "@faker-js/faker": "^6.0.0-alpha.7",
+    "@faker-js/faker": "^7.1.0",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.0.5",
     "govuk-prototype-rig": "^0.4.1",
