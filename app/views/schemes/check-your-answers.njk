@@ -7,7 +7,6 @@
 {% endif %}
 {% set backLink = "javascript:history.go(-1);" %}
 {% set formAction = userOrganisationPath + "/schemes/?success=created&schemeId=" + scheme.id %}
-{% set logsAffected = 123 %}
 
 {% block form %}
   <div class="govuk-grid-row">
@@ -18,29 +17,26 @@
 
       {% if updateAnswers %}
         {{ govukRadios({
-          decorate: ["schemes", scheme.id, "correction"],
+          decorate: ["schemes", scheme.id, "updated"],
           fieldset: {
             legend: {
               classes: "govuk-fieldset__legend--m",
-              html: "Which logs do you want to update?"
+              html: "When do these changes apply?"
             }
           },
           items: [{
-            text: "All logs",
-            value: "true",
-            hint: {
-              text: logsAffected + " incomplete and submitted logs for the current collection period."
-            }
+            text: "From the start of the current collection period",
+            value: "period"
           }, {
-            text: "Only logs for tenancies starting after a certain date",
+            text: "For tenancies starting after a certain date",
             value: "false",
             conditional: {
               html: govukDateInput({
-                decorate: ["schemes", scheme.id, "change-date"],
+                decorate: ["schemes", scheme.id, "updated-from"],
                 fieldset: {
                   legend: {
                     classes: "govuk-fieldset__legend--s",
-                    text: "When does the tenancy start?"
+                    text: "Date changes apply from"
                   }
                 },
                 hint: {
