@@ -19,6 +19,7 @@ export function sections (log) {
     group: 'before-you-start',
     paths: {
       [`${logPath}setup/organisation`]: {},
+      [`${logPath}setup/letting-start-date`]: {},
       [`${logPath}setup/type-of-need`]: {
         [`${logPath}setup/letting-renewal`]: {
           data: `logs.${logId}.setup['type-of-need']`,
@@ -28,7 +29,6 @@ export function sections (log) {
       [`${logPath}setup/scheme`]: {},
       [`${logPath}setup/scheme-location`]: {},
       [`${logPath}setup/letting-renewal`]: {},
-      [`${logPath}setup/letting-start-date`]: {},
       [`${logPath}setup/type-of-rent`]: {},
       [`${logPath}setup/tenant-code`]: {},
       [`${logPath}setup/property-reference`]: {},
