@@ -229,27 +229,24 @@ export const schemeRoutes = (router) => {
   router.post('/schemes/:schemeId/:view?', (req, res) => {
     const { schemes } = req.session.data
     const { schemeId, view } = req.params
-
     const schemePath = `/schemes/${schemeId}`
 
     // Add another location
     if (req.body['add-another-location'] === 'true') {
-      const { schemeId } = req.params
       const itemId = req.body['next-item-id']
-
-      res.locals.paths.next = `/schemes/${schemeId}/location/${itemId}`
+      res.locals.paths.next = `${schemePath}/location/${itemId}`
     }
 
     // Deactivate scheme
     if (view === 'deactivate') {
       schemes[schemeId].deactivated = true
-      return res.redirect(`${schemePath}?success=deactivated&schemeId=${schemeId}`)
+      res.locals.paths.next = `${schemePath}?success=deactivated`
     }
 
     // Reactivate scheme
     if (view === 'reactivate') {
       schemes[schemeId].deactivated = false
-      return res.redirect(`${schemePath}?success=reactivated&schemeId=${schemeId}`)
+      res.locals.paths.next = `${schemePath}?success=reactivated`
     }
 
     const next = res.locals.paths.next && res.locals.paths.next !== ''
