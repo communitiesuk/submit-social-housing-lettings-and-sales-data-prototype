@@ -26,8 +26,8 @@
 
 {# Postcode answer witjh inferred local authority #}
 {% macro postcodeHtml(postcode, localauthority) %}
-  {{ postcode | upper }}
-  <br><span class="govuk-!-font-weight-regular app-!-colour-muted">{{ localauthority }}</span>
+  <span class="govuk-!-margin-right-4">{{ postcode | upper }}</span>
+  <span class="govuk-!-font-weight-regular app-!-colour-muted">{{ localauthority }}</span>
 {% endmacro %}
 
 {# User macros #}

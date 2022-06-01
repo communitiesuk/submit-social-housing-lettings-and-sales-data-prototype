@@ -10,13 +10,27 @@
   }) if not scheme.deactivated }}
 
   {% for itemId, location in scheme.locations %}
+    {#-
+      Data coordinators can edit locations
+      Admins can edit and delete locations
+    -#}
     {{ xGovukSummaryCard({
-      titleText: location.address,
-      actions: actionLinks({
-        href: schemePath + "/location/" + itemId + "/delete",
-        text: "Delete",
-        visuallyHiddenText: location.address
-      }) if not scheme.deactivated,
+      titleText: location.address or location.postcode,
+      actions: actionLinks(
+        [{
+          href: schemePath + "/location/" + itemId,
+          text: "Edit",
+          visuallyHiddenText: location.address or location.postcode
+        }, {
+          href: schemePath + "/location/" + itemId + "/delete",
+          text: "Delete",
+          visuallyHiddenText: location.address or location.postcode
+        }] if isAdmin else [{
+          href: schemePath + "/location/" + itemId,
+          text: "Edit",
+          visuallyHiddenText: location.address or location.postcode
+        }]
+      ) if not scheme.deactivated,
       classes: "govuk-!-margin-bottom-6",
       rows: [{
         key: {
@@ -32,44 +46,28 @@
         },
         value: {
           text: macro.postcodeHtml(location.postcode, location["local-authority"].name) if location.postcode else "Not known"
-        },
-        actions: actionLinks({
-          href: schemePath + "/location/" + itemId,
-          visuallyHiddenText: "postcode"
-        }) if not scheme.deactivated or scheme.draft or isAdmin
+        }
       }, {
         key: {
           text: "Type of unit"
         },
         value: {
           text: location["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported)
-        },
-        actions: actionLinks({
-          href: schemePath + "/location/" + itemId,
-          visuallyHiddenText: "type of unit"
-        }) if not scheme.deactivated
+        }
       }, {
         key: {
           text: "Type of building"
         },
         value: {
           text: location["type-of-building"] | textFromInputValue(data.questions["type-of-building"])
-        },
-        actions: actionLinks({
-          href: schemePath + "/location/" + itemId,
-          visuallyHiddenText: "type of building"
-        }) if not scheme.deactivated
+        }
       }, {
         key: {
           text: "Wheelchair adaptation"
         },
         value: {
           text: location["is-adapted"] | textFromInputValue(data.questions["yes-no"])
-        },
-        actions: actionLinks({
-          href: schemePath + "/location/" + itemId,
-          visuallyHiddenText: "if location has been built or adapted to wheelchair-user standards"
-        }) if not scheme.deactivated
+        }
       }]
     }) }}
   {% endfor %}
