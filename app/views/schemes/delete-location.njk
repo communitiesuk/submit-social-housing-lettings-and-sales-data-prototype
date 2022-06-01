@@ -8,8 +8,11 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
       {{ macro.heading(title, location.address) }}
 
-      <p>Any logs that have selected this location will lose answers to questions and be marked as incomplete.</p>
-      <p>Any logs that have been submitted in previous collection windows will not be affected.</p>
+      <p>Deleting this location will remove it from the list of available locations for {{ scheme.name }}.</p>
+
+      <p>123 logs that have selected this location will lose answers to questions and be marked as incomplete.</p>
+
+      <p>Logs submitted in previous collection windows will not be affected.</p>
 
       {{ govukButton({
         classes: "govuk-button--warning",

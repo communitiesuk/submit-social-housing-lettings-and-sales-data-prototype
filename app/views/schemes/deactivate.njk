@@ -8,7 +8,9 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
       {{ macro.heading(title, scheme.name) }}
 
-      <p>Deactivating this service will mean data providers can no longer select this service when submitting logs.</p>
+      <p>Deactivating this service will prevent data providers in the organisations you work with from submitting logs for this service.</p>
+
+      <p>Existing logs will not be affected.</p>
 
       {{ govukButton({
         classes: "govuk-button--warning",

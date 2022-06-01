@@ -34,7 +34,8 @@ export const schemeRoutes = (router) => {
    */
   router.all(['/schemes', '/organisations/:organisationId/schemes'], (req, res) => {
     let { organisations, schemes } = req.session.data
-    const { organisationId } = req.params
+    const { organisationId } = req.params || 'PARENT1'
+    const organisation = organisations[organisationId]
 
     // Get schemes as array sorted by scheme name
     schemes = utils.objectToArray(schemes)
@@ -42,7 +43,6 @@ export const schemeRoutes = (router) => {
 
     // Scope schemes to organisation
     if (organisationId) {
-      const organisation = organisations[organisationId]
       const organisationRelationships = [
         organisationId,
         ...(organisation.children ? organisation.children : [])
@@ -71,6 +71,7 @@ export const schemeRoutes = (router) => {
     res.render('schemes/index', {
       query: req.query,
       q,
+      organisation,
       organisations,
       results,
       pagination
@@ -118,10 +119,12 @@ export const schemeRoutes = (router) => {
     const { schemes } = req.session.data
     const { schemeId, itemId } = req.params
 
+    const scheme = utils.getEntityById(schemes, schemeId)
     const location = schemes[schemeId].locations[itemId]
     const locationsPath = `/schemes/${schemeId}/locations`
 
     res.render('schemes/delete-location', {
+      scheme,
       location,
       locationsPath
     })
