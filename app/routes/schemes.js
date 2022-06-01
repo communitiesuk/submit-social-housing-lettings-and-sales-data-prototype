@@ -78,24 +78,6 @@ export const schemeRoutes = (router) => {
   })
 
   /**
-   * Create scheme
-   */
-  router.get('/schemes/new', (req, res) => {
-    const { account, schemes } = req.session.data
-    const schemeId = utils.generateUniqueId()
-
-    // Create a new blank scheme in session data
-    // Assign to user’s organisation (only DC at owning organisation can create)
-    schemes[schemeId] = {
-      created: new Date().toISOString(),
-      draft: true,
-      organisationId: account.organisationId
-    }
-
-    res.redirect(`/schemes/${schemeId}/details`)
-  })
-
-  /**
    * Scheme
    */
   router.all('/schemes/:schemeId/:view?/:itemId?', (req, res, next) => {
@@ -117,6 +99,62 @@ export const schemeRoutes = (router) => {
     const nextItemId = `l${schemeLocationCount + 1}`
 
     res.redirect(`${schemePath}/location/${nextItemId}`)
+  })
+
+  /**
+   * Update location
+   */
+  router.post('/schemes/:schemeId/location/:itemId/update', (req, res) => {
+    const { schemeId, itemId } = req.params
+    const schemePath = `/schemes/${schemeId}`
+
+    res.redirect(`${schemePath}/locations?success=updated-location&itemId=${itemId}`)
+  })
+
+  /**
+   * Confirm delete location
+   */
+  router.get('/schemes/:schemeId/location/:itemId/delete', (req, res) => {
+    const { schemes } = req.session.data
+    const { schemeId, itemId } = req.params
+
+    const location = schemes[schemeId].locations[itemId]
+    const locationsPath = `/schemes/${schemeId}/locations`
+
+    res.render('schemes/delete-location', {
+      location,
+      locationsPath
+    })
+  })
+
+  /**
+   * Delete location
+   */
+  router.post('/schemes/:schemeId/location/:itemId/delete', (req, res) => {
+    const { schemes } = req.session.data
+    const { schemeId, itemId } = req.params
+
+    delete schemes[schemeId].locations[itemId]
+
+    res.redirect(`/schemes/${schemeId}/locations?success=deleted`)
+  })
+
+  /**
+   * Create scheme
+   */
+  router.get('/schemes/new', (req, res) => {
+    const { account, schemes } = req.session.data
+    const schemeId = utils.generateUniqueId()
+
+    // Create a new blank scheme in session data
+    // Assign to user’s organisation (only DC at owning organisation can create)
+    schemes[schemeId] = {
+      created: new Date().toISOString(),
+      draft: true,
+      organisationId: account.organisationId
+    }
+
+    res.redirect(`/schemes/${schemeId}/details`)
   })
 
   /**
@@ -168,34 +206,6 @@ export const schemeRoutes = (router) => {
   })
 
   /**
-   * Confirm delete location
-   */
-  router.get('/schemes/:schemeId/location/:itemId/delete', (req, res) => {
-    const { schemes } = req.session.data
-    const { schemeId, itemId } = req.params
-
-    const location = schemes[schemeId].locations[itemId]
-    const locationsPath = `/schemes/${schemeId}/locations`
-
-    res.render('schemes/delete-location', {
-      location,
-      locationsPath
-    })
-  })
-
-  /**
-   * Delete location
-   */
-  router.post('/schemes/:schemeId/location/:itemId/delete', (req, res) => {
-    const { schemes } = req.session.data
-    const { schemeId, itemId } = req.params
-
-    delete schemes[schemeId].locations[itemId]
-
-    res.redirect(`/schemes/${schemeId}/locations?success=deleted`)
-  })
-
-  /**
    * Delete scheme
    */
   router.post('/schemes/:schemeId/delete', (req, res) => {
@@ -221,22 +231,18 @@ export const schemeRoutes = (router) => {
       res.locals.paths.next = `${schemePath}/location/${itemId}`
     }
 
-    // Create scheme
+    // Confirm scheme
     if (view === 'check-your-answers') {
       delete schemes[schemeId].draft
       res.locals.paths.next = `${schemePath}?success=created`
     }
 
-    // Update scheme
+    // Confirm scheme updates
     if (view === 'check-updated-answers') {
       res.locals.paths.next = `${schemePath}/update`
     }
 
     // Update scheme
-    if (view === 'update-location') {
-      res.locals.paths.next = `${schemePath}/locations?success=updated`
-    }
-
     if (view === 'update') {
       res.locals.paths.next = `${schemePath}?success=updated`
     }

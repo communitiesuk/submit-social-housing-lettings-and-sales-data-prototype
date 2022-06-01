@@ -32,6 +32,11 @@
     type: "success"
   }) if query.success == "deleted" }}
 
+  {{ govukNotificationBanner({
+    text: scheme.locations[query.itemId].address + " has been updated.",
+    type: "success"
+  }) if query.success == "updated-location" }}
+
   {{ macro.heading(title) }}
 
   {% if scheme.deactivated %}
