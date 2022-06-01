@@ -17,7 +17,10 @@
 {% block question %}
   {{ macro.heading(title, caption) }}
 
-  {# Only admin can edit the postcode for an existing location #}
+  {#
+    Postcode can only be edited prior to the scheme being saved.
+    Once the scheme has been saved, only admins can change postcode.
+  #}
   {{ govukInput({
     decorate: ["schemes", scheme.id, "locations", itemId, "postcode"],
     classes: "govuk-input--width-5",
@@ -28,7 +31,7 @@
     hint: {
       text: "For example, SW1P 4DF."
     }
-  }) if isAdmin or not hasAnsweredQuestion }}
+  }) if scheme.draft or isAdmin }}
 
   {{ govukRadios({
     decorate: ["schemes", scheme.id, "locations", itemId, "type-of-unit"],
