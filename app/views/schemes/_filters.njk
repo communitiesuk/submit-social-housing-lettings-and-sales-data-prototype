@@ -15,20 +15,3 @@
     checked: "true"
   }]
 }) }}
-
-{{ govukCheckboxes({
-  decorate: ["filter", "user"],
-  formGroup: {
-    classes: "app-filter__group"
-  },
-  classes: "govuk-checkboxes--small",
-  fieldset: {
-    legend: {
-      classes: "govuk-fieldset__legend--s",
-      text: "Type of service"
-    }
-  },
-  items: data.questions["type-of-scheme"]
-}) }}
-
-{{ managedOrganisations | dump }}
