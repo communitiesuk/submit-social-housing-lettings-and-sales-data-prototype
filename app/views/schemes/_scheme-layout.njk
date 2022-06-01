@@ -8,6 +8,11 @@
 
 {% block form %}
   {{ govukNotificationBanner({
+    text: scheme.name + " has been created and can now be used by your organisation.",
+    type: "success"
+  }) if query.success == "created" }}
+
+  {{ govukNotificationBanner({
     text: scheme.name + " has been deactivated.",
     type: "success"
   }) if query.success == "deactivated" }}

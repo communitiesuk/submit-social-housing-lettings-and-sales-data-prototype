@@ -9,11 +9,6 @@
 
 {% block form %}
   {{ govukNotificationBanner({
-    text: data.schemes[query.schemeId].name + " has been created and can now be used by your organisation.",
-    type: "success"
-  }) if query.success == "created" }}
-
-  {{ govukNotificationBanner({
     text: "Scheme has been deleted.",
     type: "success"
   }) if query.success == "deleted" }}

@@ -88,6 +88,7 @@ export const schemeRoutes = (router) => {
     // Assign to user’s organisation (only DC at owning organisation can create)
     schemes[schemeId] = {
       created: new Date().toISOString(),
+      draft: true,
       organisationId: account.organisationId
     }
 
@@ -235,6 +236,12 @@ export const schemeRoutes = (router) => {
     if (req.body['add-another-location'] === 'true') {
       const itemId = req.body['next-item-id']
       res.locals.paths.next = `${schemePath}/location/${itemId}`
+    }
+
+    // Create scheme
+    if (view === 'check-your-answers') {
+      delete schemes[schemeId].draft
+      res.locals.paths.next = `${schemePath}?success=created`
     }
 
     // Deactivate scheme
