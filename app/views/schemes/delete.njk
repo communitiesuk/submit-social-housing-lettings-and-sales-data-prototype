@@ -8,8 +8,14 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
       {{ macro.heading(title, scheme.name) }}
 
-      <p>Any logs that have selected this service will lose answers to questions and be marked as incomplete.</p>
-      <p>Any logs that have been submitted in previous collection windows will not be affected.</p>
+      <p>Deleting this service will remove it from {{ organisation.name }}’s list of supported housing services.</p>
+
+      <p>Data providers in the organisations that work with {{ organisation.name }} will no longer be able to select this service.</p>
+
+      <p>123 logs that have selected this service will lose answers to questions and be marked as incomplete.</p>
+
+      <p>Logs submitted in previous collection windows will not be affected.</p>
+
 
       {{ govukButton({
         classes: "govuk-button--warning",
