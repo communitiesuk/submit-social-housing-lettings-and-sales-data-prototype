@@ -39,20 +39,21 @@
 
   {{ macro.heading(title) }}
 
-  {% if scheme.deactivated %}
-    <p class="govuk-button-group">
+  <p class="govuk-button-group">
+    {% if scheme.deactivated %}
       <span class="app-!-colour-muted govuk-!-margin-right-2">This service has been deactivated.</span>
       {% if isCoordinator or isAdmin %}
         <a class="govuk-link" href="{{ schemePath }}/reactivate">Reactivate service</a>
+      {% endif %}
+    {% else %}
+      {% if isCoordinator or isAdmin %}
+        <a class="govuk-link" href="{{ schemePath }}/deactivate">Deactivate service</a>
+      {% endif %}
+      {% if isAdmin %}
         <a class="govuk-link" href="{{ schemePath }}/delete">Delete service</a>
       {% endif %}
-    </p>
-  {% elif isCoordinator or isAdmin %}
-    <p class="govuk-button-group">
-      <a class="govuk-link" href="{{ schemePath }}/deactivate">Deactivate service</a>
-      <a class="govuk-link" href="{{ schemePath }}/delete">Delete service</a>
-    </p>
-  {% endif %}
+    {% endif %}
+  </p>
 
   {{ appSubNavigation({
     items: [{
