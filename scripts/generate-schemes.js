@@ -72,10 +72,7 @@ const generateSchemes = () => {
         type = 'older-people'
         clientGroup1 = 'older-people'
         clientGroup2 = 'false'
-        typeOfSupport = faker.helpers.arrayElement([
-          'low',
-          'medium'
-        ])
+        typeOfSupport = 'medium'
         break
       case 4:
         // Mental health
@@ -88,10 +85,7 @@ const generateSchemes = () => {
         type = 'other'
         clientGroup1 = 'learning-disabilities'
         clientGroup2 = 'mental-health'
-        typeOfSupport = faker.helpers.arrayElement([
-          'low',
-          'medium'
-        ])
+        typeOfSupport = 'medium'
         break
       case 5:
         // Physical health
@@ -103,12 +97,7 @@ const generateSchemes = () => {
         type = 'other'
         clientGroup1 = 'physical-disabilities'
         clientGroup2 = 'false'
-        typeOfSupport = faker.helpers.arrayElement([
-          'nursing',
-          'low',
-          'medium',
-          'high'
-        ])
+        typeOfSupport = 'nursing'
         break
       case 6:
         // Other
@@ -120,11 +109,7 @@ const generateSchemes = () => {
         type = 'other'
         clientGroup1 = 'alcohol'
         clientGroup2 = 'drugs'
-        typeOfSupport = faker.helpers.arrayElements([
-          'low',
-          'medium',
-          'high'
-        ])
+        typeOfSupport = 'medium'
     }
 
     // Scheme locations
