@@ -4,10 +4,10 @@
 {% set required = true %}
 
 {% if scheme.locations[itemId] %}
-  {# Editing an existing scheme #}
+  {# Editing an existing location #}
   {% set title = "Location details for " + scheme.locations[itemId].address %}
   {% set buttonText = "Continue" %}
-  {% set formAction = schemePath + "/update-location" %}
+  {% set formAction = schemePath + "/location/" + itemId + "/update" %}
   {% set hasAnsweredQuestion = true %}
 {% else %}
   {% set title = "Add a location to this service" %}
