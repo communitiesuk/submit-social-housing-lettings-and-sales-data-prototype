@@ -1,6 +1,5 @@
 import { faker } from '@faker-js/faker'
 import { generateDataset } from '../app/utils.js'
-import localAuthorities from '../app/datasets/local-authorities.js'
 import registeredProviders from '../app/datasets/registered-providers.js'
 
 faker.locale = 'en_GB'
@@ -27,9 +26,6 @@ const generateOrganisations = () => {
       type: value.designation === 'Local authority'
         ? 'Local authority'
         : 'Housing association',
-      areas: value.areas
-        ? value.areas
-        : faker.helpers.arrayElements(localAuthorities.map(area => area.gss), 3),
       'rent-periods': faker.helpers.arrayElements([
         'fortnightly',
         'every-4-weeks',

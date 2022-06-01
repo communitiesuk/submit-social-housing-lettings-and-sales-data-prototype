@@ -44,22 +44,6 @@
   {% endif %}
 {% endmacro %}
 
-{% macro localAuthoritiesHtml(localAuthorities, areas) %}
-  {% if areas | length > 1 %}
-    <ul class="govuk-list govuk-list--bullet">
-    {% for gss in areas %}
-      {% set localAuthority = localAuthorities | selectwhere("gss", gss) | first %}
-      <li>{{ localAuthority.name }}</li>
-    {% endfor %}
-    </ul>
-  {% elif areas | length == 1 %}
-    {% set localAuthority = localAuthorities | selectwhere("gss", areas[0]) | first %}
-    {{ localAuthority.name }}
-  {% else %}
-    None
-  {% endif %}
-{% endmacro %}
-
 {# Admin macros #}
 {% from "components/sub-navigation/macro.njk" import appSubNavigation %}
 {% macro adminNavigation(title) %}

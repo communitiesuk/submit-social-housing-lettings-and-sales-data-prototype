@@ -95,17 +95,6 @@
           }) if isAdmin or isCoordinator
         }, {
           key: {
-            text: "Local authorities operated in"
-          },
-          value: {
-            html: macro.localAuthoritiesHtml(localAuthorities, organisation.areas)
-          },
-          actions: actionLinks({
-            href: "#",
-            visuallyHiddenText: "local authorities operated in"
-          }) if isAdmin
-        }, {
-          key: {
             text: "Holds own stock"
           },
           value: {
