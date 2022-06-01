@@ -1,5 +1,7 @@
 {% extends "layouts/question.njk" %}
 
+{% set required = true %}
+
 {% if scheme.name %}
   {# Editing an existing scheme #}
   {% set caption = scheme.name %}
