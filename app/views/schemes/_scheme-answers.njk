@@ -64,14 +64,14 @@
     }) if not scheme.deactivated
   }, {
     key: {
-      html: "Total number of units or bedrooms" | noOrphans
+      html: "Total number of units" | noOrphans
     },
     value: {
       text: scheme.units
     },
     actions: actionLinks({
       href: schemePath + "/details",
-      visuallyHiddenText: "total number of units or bedrooms"
+      visuallyHiddenText: "total number of units"
     }) if not scheme.deactivated
   }, {
     key: {
