@@ -36,7 +36,7 @@
         actions: actionLinks({
           href: schemePath + "/location/" + itemId,
           visuallyHiddenText: "postcode"
-        }) if not scheme.deactivated and isAdmin
+        }) if not scheme.deactivated or scheme.draft or isAdmin
       }, {
         key: {
           text: "Type of unit"
