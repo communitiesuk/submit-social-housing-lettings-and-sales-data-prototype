@@ -1,64 +1,18 @@
 {% extends "layouts/form.njk" %}
 
-{% if updateAnswers %}
-  {% set title = "Check your changes before updating this service" %}
-{% else %}
-  {% set title = "Check your answers before creating this service" %}
-{% endif %}
-{% set backLink = "javascript:history.go(-1);" %}
+{% set title = "Check your answers before creating this service" %}
 
 {% block form %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters-from-desktop">
-      {{ macro.heading(title, caption) }}
+      {{ macro.heading(title) }}
 
       {% include "schemes/_answers.njk" %}
 
-      {% if updateAnswers %}
-        {{ govukRadios({
-          decorate: ["schemes", scheme.id, "updated"],
-          fieldset: {
-            legend: {
-              classes: "govuk-fieldset__legend--m",
-              html: "When do these changes apply?"
-            }
-          },
-          items: [{
-            text: "From the start of the current collection period",
-            value: "period"
-          }, {
-            text: "For tenancies starting after a certain date",
-            value: "false",
-            conditional: {
-              html: govukDateInput({
-                decorate: ["schemes", scheme.id, "updated-from"],
-                fieldset: {
-                  legend: {
-                    classes: "govuk-fieldset__legend--s",
-                    text: "Date changes apply from"
-                  }
-                },
-                hint: {
-                  text: "For example, 12 11 2020."
-                },
-                items: data.questions["date-full"]
-              })
-            }
-          }]
-        }) }}
-
-        <div class="govuk-button-group">
-          {{ govukButton({
-            text: "Update service"
-          }) }}
-          <a class="govuk-link" href="{{ userOrganisationPath }}/schemes/">Cancel</a>
-        </div>
-      {% else %}
-        {{ govukButton(decorate({
-          text: "Create service",
-          value: "active"
-        }, ["schemes", scheme.id, "status"])) }}
-      {% endif %}
+      {{ govukButton(decorate({
+        text: "Create service",
+        value: "active"
+      }, ["schemes", scheme.id, "status"])) }}
     </div>
   </div>
 {% endblock %}
