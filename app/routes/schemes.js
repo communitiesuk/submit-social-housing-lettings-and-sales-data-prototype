@@ -120,23 +120,6 @@ export const schemeRoutes = (router) => {
   })
 
   /**
-   * View updated scheme
-   */
-  router.all('/schemes/:schemeId/update-your-answers', (req, res) => {
-    const { organisations, schemes } = req.session.data
-    const { schemeId } = req.params
-    const scheme = utils.getEntityById(schemes, schemeId)
-    const schemePath = `/schemes/${schemeId}`
-
-    res.render('schemes/check-your-answers', {
-      organisations,
-      scheme,
-      schemePath,
-      updateAnswers: true
-    })
-  })
-
-  /**
    * View scheme
    */
   router.get('/schemes/:schemeId/:view?/:itemId?', (req, res) => {
@@ -242,6 +225,20 @@ export const schemeRoutes = (router) => {
     if (view === 'check-your-answers') {
       delete schemes[schemeId].draft
       res.locals.paths.next = `${schemePath}?success=created`
+    }
+
+    // Update scheme
+    if (view === 'check-updated-answers') {
+      res.locals.paths.next = `${schemePath}/update`
+    }
+
+    // Update scheme
+    if (view === 'update-location') {
+      res.locals.paths.next = `${schemePath}/locations?success=updated`
+    }
+
+    if (view === 'update') {
+      res.locals.paths.next = `${schemePath}?success=updated`
     }
 
     // Deactivate scheme

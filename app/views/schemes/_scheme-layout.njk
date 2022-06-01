@@ -13,6 +13,11 @@
   }) if query.success == "created" }}
 
   {{ govukNotificationBanner({
+    text: scheme.name + " has been updated.",
+    type: "success"
+  }) if query.success == "updated" }}
+
+  {{ govukNotificationBanner({
     text: scheme.name + " has been deactivated.",
     type: "success"
   }) if query.success == "deactivated" }}

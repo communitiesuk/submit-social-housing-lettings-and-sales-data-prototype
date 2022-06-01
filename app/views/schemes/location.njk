@@ -1,6 +1,5 @@
 {% extends "layouts/question.njk" %}
 
-{% set formAction = schemePath %}
 {% set caption = scheme.name %}
 {% set required = true %}
 
@@ -8,10 +7,11 @@
   {# Editing an existing scheme #}
   {% set title = "Location details for " + scheme.locations[itemId].address %}
   {% set buttonText = "Continue" %}
-  {% set formAction = schemePath + "/update-your-answers" %}
+  {% set formAction = schemePath + "/update-location" %}
   {% set hasAnsweredQuestion = true %}
 {% else %}
   {% set title = "Add a location to this service" %}
+  {% set formAction = schemePath %}
 {% endif %}
 
 {% block question %}
