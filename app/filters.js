@@ -134,5 +134,23 @@ export default (env) => {
     return int <= 8 ? ordinals[int - 1] : int
   }
 
+  // Convert object saved by govukDateInput to ISO-8601 formatted date
+  filters.dateObjectToIso = object => {
+    if (typeof object === 'string') {
+      return object
+    }
+
+    let day = object.day || 1
+    day = day.padStart(2, '0')
+
+    let month = object.month || 1
+    month = day.padStart(2, '0')
+
+    let year = object.year || 1970
+    year = year.padStart(4, '0')
+
+    return `${year}-${month}-${day}`
+  }
+
   return filters
 }
