@@ -1,0 +1,60 @@
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+<article class="app-log">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <header class="app-log__header">
+        <h2 class="app-log__title">
+          <a class="govuk-link" href="/logs/{{ params.id }}">
+            <span class="govuk-visually-hidden">Log </span>{{ params.id }}
+          </a>
+        </h2>
+        {% if params.tenantCode or params.propertyReference %}
+        <dl class="app-metadata app-metadata--inline">
+          {% if params.tenantCode %}
+          <div class="app-metadata__item">
+            <dt class="app-metadata__term">Tenant</dt>
+            <dd class="app-metadata__definition">{{ params.tenantCode }}</dd>
+          </div>
+          {% endif %}
+          {% if params.propertyReference %}
+          <div class="app-metadata__item">
+            <dt class="app-metadata__term">Property</dt>
+            <dd class="app-metadata__definition">{{ params.propertyReference }}</dd>
+          </div>
+          {% endif %}
+        </dl>
+        {% endif %}
+      </header>
+
+      <p class="govuk-body govuk-!-margin-bottom-2">
+        {% if params.needsType %}{{ params.needsType }}<br>{% endif %}
+        Tenancy starts <time datetime="{{ params.lettingStartDate }}">{{ params.lettingStartDate | govukDate }}</time>
+      </p>
+
+      {% if params.owner or params.manager %}
+      <dl class="app-metadata">
+        {% if params.owner %}
+        <div class="app-metadata__item">
+          <dt class="app-metadata__term">Owned by</dt>
+          <dd class="app-metadata__definition">{{ params.owner }}</dd>
+        </div>
+        {% endif %}
+        {% if params.manager %}
+        <div class="app-metadata__item">
+          <dt class="app-metadata__term">Managed by</dt>
+          <dd class="app-metadata__definition">{{ params.manager }}</dd>
+        </div>
+        {% endif %}
+      </dl>
+      {% endif %}
+    </div>
+
+    <footer class="govuk-grid-column-one-third app-log__footer">
+      <p class="govuk-body govuk-!-margin-bottom-2">{{ govukTag(params.status) }}</p>
+      <p class="govuk-body">
+        Updated <time datetime="{{ params.updated }}">{{ params.updated | govukDate }}</time>
+        <span class="app-log__footer--actor">by {{ params.updatedBy }}</span>
+      </p>
+    </footer>
+  </div>
+</article>

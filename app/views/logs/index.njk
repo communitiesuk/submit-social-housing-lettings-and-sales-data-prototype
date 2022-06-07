@@ -69,35 +69,62 @@
 
       <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
 
-      {%- set logRows = [] -%}
-      {% for log in results | reverse %}
-        {% set row = logRows.push([{
-            html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
-          }, {
-            classes: "app-!-font-tabular",
-            text: log.setup["tenant-code"] or "—"
-          }, {
-            classes: "app-!-font-tabular",
-            text: log.setup["property-reference"] or "—"
-          }, {
-            text: log.setup["letting-start-date"] | textFromInputValue | govukDate
-          }, {
-            html: log.created | govukDate
-          }, {
-            html: govukTag({
+      {% set cardResults %}
+        <h2 class="govuk-body">
+          {{ macro.tableCaption("logs", pagination.results.count, q) }}
+          <a class="govuk-link govuk-link--no-visited-state" href="#" download>Download (CSV)</a>
+        </h2>
+        {% for log in results | reverse %}
+          {{ appLog({
+            id: log.id,
+            tenantCode: log.setup["tenant-code"],
+            propertyReference: log.setup["property-reference"],
+            lettingStartDate: log.setup["letting-start-date"] | dateObjectToIso,
+            needsType: log.setup["type-of-need"] | textFromInputValue(data.questions["type-of-need"]) if log.setup["type-of-need"],
+            owner: data.organisations[log.setup["organisation-owner"]].name if isAdmin,
+            manager: data.organisations[log.setup["organisation-manager"]].name if isAdmin,
+            status: {
               classes: "govuk-tag--" + data.statuses[log.status].colour,
               text: data.statuses[log.status].text
-            }) if log.status else log.progress
-          }])
-        %}
-      {% endfor %}
-
-      {% set captionHtml %}
-        {{ macro.tableCaption("logs", pagination.results.count, q) }}
-        <a class="govuk-link govuk-link--no-visited-state" href="#" download>Download (CSV)</a>
+            } if log.status else {
+              classes: "govuk-tag--" + data.statuses.inProgress.colour,
+              text: data.statuses.inProgress.text
+            },
+            updated: log.updated | dateObjectToIso,
+            updatedBy: users[log.updatedBy].name
+          }) }}
+        {% endfor %}
       {% endset %}
 
-      {% if results.length %}
+      {% set tableResults %}
+        {% set captionHtml %}
+          {{ macro.tableCaption("logs", pagination.results.count, q) }}
+          <a class="govuk-link govuk-link--no-visited-state" href="#" download>Download (CSV)</a>
+        {% endset %}
+
+        {%- set logRows = [] -%}
+        {% for log in results | reverse %}
+          {% set row = logRows.push([{
+              html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
+            }, {
+              classes: "app-!-font-tabular",
+              text: log.setup["tenant-code"] or "—"
+            }, {
+              classes: "app-!-font-tabular",
+              text: log.setup["property-reference"] or "—"
+            }, {
+              text: log.setup["letting-start-date"] | textFromInputValue | govukDate
+            }, {
+              html: log.created | govukDate
+            }, {
+              html: govukTag({
+                classes: "govuk-tag--" + data.statuses[log.status].colour,
+                text: data.statuses[log.status].text
+              }) if log.status else log.progress
+            }])
+          %}
+        {% endfor %}
+
         {% call appTableGroup({ ariaLabel: "logs" }) %}
           {{ govukTable({
             caption: captionHtml | safe,
@@ -119,6 +146,14 @@
             rows: logRows
           }) }}
         {% endcall %}
+      {% endset %}
+
+      {% if results.length %}
+        {% if data.features["card-logs"] %}
+          {{ cardResults | safe }}
+        {% else %}
+          {{ tableResults | safe }}
+        {% endif %}
 
         {{ appPagination(pagination) }}
       {% else %}

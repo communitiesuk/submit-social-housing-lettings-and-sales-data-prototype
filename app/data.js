@@ -11,6 +11,10 @@ export default async () => ({
     '2022-23': {
       on: true,
       name: 'Use 2022/23 questions'
+    },
+    'card-logs': {
+      on: true,
+      name: 'Use log summary cards in logs views'
     }
   },
   logs,
@@ -77,13 +81,13 @@ export default async () => ({
     inProgress: {
       id: 'inProgress',
       text: 'In progress',
-      colour: 'grey',
+      colour: 'blue',
       canStart: true
     },
     completed: {
       id: 'completed',
       text: 'Completed',
-      colour: 'blue',
+      colour: 'green',
       canStart: true
     },
     active: {
@@ -94,7 +98,7 @@ export default async () => ({
     submitted: {
       id: 'completed',
       text: 'Submitted',
-      colour: 'green',
+      colour: 'purple',
       canStart: true
     },
     inactive: {
