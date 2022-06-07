@@ -46,32 +46,26 @@
   {% endfor %}
 
   {% if results.length %}
-    {% call appFigure ({
-      id: "organisations",
-      caption: {
-        html: macro.tableCaption("organisations", pagination.results.count, q)
-      }
-    }) %}
-      {% call appTableGroup({
-        labelledby: "organisations"
-      }) %}
-        {{ govukTable({
-          firstCellIsHeader: true,
-          head: [{
-            classes: "govuk-!-width-one-half",
-            text: "Name"
-          }, {
-            classes: "govuk-!-width-one-quarter",
-            text: "Registration number"
-          }, {
-            classes: "govuk-!-width-one-quarter",
-            text: "Type"
-          }],
-          rows: organisationRows
-        }) }}
-      {% endcall %}
-      {{ appPagination(pagination) }}
+    {% call appTableGroup({ ariaLabel: "organisations" }) %}
+      {{ govukTable({
+        caption: macro.tableCaption("organisations", pagination.results.count, q) | safe,
+        captionClasses: "govuk-table__caption--m govuk-!-font-size-19 govuk-!-font-weight-regular",
+        firstCellIsHeader: true,
+        head: [{
+          classes: "govuk-!-width-one-half",
+          text: "Name"
+        }, {
+          classes: "govuk-!-width-one-quarter",
+          text: "Registration number"
+        }, {
+          classes: "govuk-!-width-one-quarter",
+          text: "Type"
+        }],
+        rows: organisationRows
+      }) }}
     {% endcall %}
+
+    {{ appPagination(pagination) }}
   {% else %}
     <p class="govuk-body">
       <strong>No organisations found</strong>

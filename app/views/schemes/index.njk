@@ -80,34 +80,26 @@
       {% endfor %}
 
       {% if results.length %}
-        {% call appFigure ({
-          id: "services",
-          caption: {
-            html: macro.tableCaption("services", pagination.results.count, q)
-          }
-        }) %}
-          {% call appTableGroup({
-            labelledby: "services"
-          }) %}
-            {{ govukTable({
-              head: [{
-                html: "Code"
-              }, {
-                text: "Service"
-              }, {
-                text: "Managing agent"
-              }, {
-                text: "Created"
-              }],
-              rows: schemeRows
-            }) }}
-          {% endcall %}
-          {{ appPagination(pagination) }}
+        {% call appTableGroup({ ariaLabel: "services" }) %}
+          {{ govukTable({
+            caption: macro.tableCaption("services", pagination.results.count, q) | safe,
+            captionClasses: "govuk-table__caption--m govuk-!-font-size-19 govuk-!-font-weight-regular",
+            head: [{
+              html: "Code"
+            }, {
+              text: "Service"
+            }, {
+              text: "Managing agent"
+            }, {
+              text: "Created"
+            }],
+            rows: schemeRows
+          }) }}
         {% endcall %}
+
+        {{ appPagination(pagination) }}
       {% else %}
-        <p class="govuk-body">
-          <strong>No supported housing services found</strong>
-        </p>
+        <p class="govuk-body"><strong>No supported housing services found</strong></p>
       {% endif %}
     </div>
   </div>

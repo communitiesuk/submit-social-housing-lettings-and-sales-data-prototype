@@ -98,39 +98,31 @@
       {% endset %}
 
       {% if results.length %}
-        {% call appFigure ({
-          id: "logs",
-          caption: {
-            html: captionHtml
-          }
-        }) %}
-          {% call appTableGroup({
-            labelledby: "logs"
-          }) %}
-            {{ govukTable({
-              firstCellIsHeader: true,
-              head: [{
-                text: "Log"
-              }, {
-                text: "Tenant"
-              }, {
-                text: "Property"
-              }, {
-                text: "Tenancy starts"
-              }, {
-                text: "Log created"
-              }, {
-                text: "Completed"
-              }],
-              rows: logRows
-            }) }}
-          {% endcall %}
+        {% call appTableGroup({ ariaLabel: "logs" }) %}
+          {{ govukTable({
+            caption: captionHtml | safe,
+            captionClasses: "govuk-table__caption--m govuk-!-font-size-19 govuk-!-font-weight-regular",
+            firstCellIsHeader: true,
+            head: [{
+              text: "Log"
+            }, {
+              text: "Tenant"
+            }, {
+              text: "Property"
+            }, {
+              text: "Tenancy starts"
+            }, {
+              text: "Log created"
+            }, {
+              text: "Completed"
+            }],
+            rows: logRows
+          }) }}
         {% endcall %}
+
         {{ appPagination(pagination) }}
       {% else %}
-        <p class="govuk-body">
-          <strong>No {{ type }} logs found</strong>
-        </p>
+        <p class="govuk-body"><strong>No {{ type }} logs found</strong></p>
       {% endif %}
     </div>
   </div>

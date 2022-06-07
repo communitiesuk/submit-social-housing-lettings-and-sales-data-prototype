@@ -1,8 +1,0 @@
-.app-figure {
-  margin: 0;
-}
-
-.app-figure__caption {
-  @include govuk-responsive-margin(6, "bottom");
-  @include govuk-font($size: 19);
-}

@@ -1,6 +1,0 @@
-<figure class="app-figure {%- if params.classes %} {{ params.classes }}{% endif -%}">
-  <figcaption id="{{ params.id }}" class="app-figure__caption">
-    {{ params.caption.html | safe if params.caption.html else params.caption.text }}
-  </figcaption>
-  {{ caller() }}
-</figure>

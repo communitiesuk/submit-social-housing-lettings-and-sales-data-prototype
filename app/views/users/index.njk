@@ -73,32 +73,24 @@
   {% endfor %}
 
   {% if results.length %}
-    {% call appFigure ({
-      id: "users",
-      caption: {
-        html: macro.tableCaption("users", pagination.results.count, q)
-      }
-    }) %}
-      {% call appTableGroup({
-        labelledby: "users"
-      }) %}
-        {{ govukTable({
-          firstCellIsHeader: true,
-          head: [{
-            text: "Name and email address"
-          }, {
-            text: "Organisation and role"
-          }, {
-            text: "Last logged in"
-          }],
-          rows: userRows
-        }) }}
-      {% endcall %}
-      {{ appPagination(pagination) }}
+    {% call appTableGroup({ ariaLabel: "users" }) %}
+      {{ govukTable({
+        caption: macro.tableCaption("users", pagination.results.count, q) | safe,
+          captionClasses: "govuk-table__caption--m govuk-!-font-size-19 govuk-!-font-weight-regular",
+        firstCellIsHeader: true,
+        head: [{
+          text: "Name and email address"
+        }, {
+          text: "Organisation and role"
+        }, {
+          text: "Last logged in"
+        }],
+        rows: userRows
+      }) }}
     {% endcall %}
+
+    {{ appPagination(pagination) }}
   {% else %}
-    <p class="govuk-body">
-      <strong>No users found</strong>
-    </p>
+    <p class="govuk-body"><strong>No users found</strong></p>
   {% endif %}
 {% endblock %}
