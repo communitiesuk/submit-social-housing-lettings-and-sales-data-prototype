@@ -1,0 +1,17 @@
+.app-add-another__item {
+  margin-bottom: govuk-spacing(6);
+}
+
+.app-add-another__remove-button {
+  @include govuk-font(19);
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+
+  background-color: transparent;
+  border: none;
+  color: $govuk-link-colour;
+  cursor: pointer;
+  padding: 0;
+}
+
+

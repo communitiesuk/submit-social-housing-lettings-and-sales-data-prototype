@@ -1,80 +1,71 @@
 export default {
   DLUHC: {
     name: 'Department for Levelling Up, Housing & Communities',
-    address: '2 Marsham Street, London. SW1P 4DF',
+    address: {
+      line1: '2 Marsham Street',
+      line2: 'London',
+      postalCode: 'SW1P 4DF'
+    },
     tel: '0303 444 1209',
     type: 'Not applicable',
-    areas: [],
-    stock: false
+    isAgent: 'false',
+    isOwner: 'false'
   },
   PARENT1: { // Example parent organisation
     name: 'Own Homes Limited',
     'registration-date': '2021-10-04',
     designation: 'Non-profit',
     'corporate-form': 'Company',
-    address: 'Fairview House, 18 Water Street, Fareham, Hampshire. PO16 7BB',
+    address: {
+      line1: 'Fairview House, 18 Water Street',
+      line2: 'Fareham',
+      postalCode: 'PO16 7BB'
+    },
     tel: '01329 234600',
-    areas: [
-      'E06000036',
-      'E06000037',
-      'E06000038',
-      'E06000039',
-      'E06000040',
-      'E06000041',
-      'E06000043',
-      'E06000044',
-      'E06000045',
-      'E06000046',
-      'E07000223',
-      'E07000224',
-      'E07000225',
-      'E07000226',
-      'E07000227',
-      'E07000228',
-      'E07000229'
-    ],
-    parents: [],
-    children: [
+    isAgent: 'false',
+    owners: [],
+    isOwner: 'true',
+    agents: [
       'CHILD1',
       'CHILD2'
-    ],
-    stock: true
+    ]
   },
   CHILD1: { // Example child organisation
     name: 'Housing Management Limited',
     'registration-date': '2021-10-04',
     designation: 'Non-profit',
     'corporate-form': 'Company',
-    address: '34 High Street, Exemplar. EX2 2AG',
+    address: {
+      line1: '34 High Street',
+      line2: 'Exemplar',
+      postalCode: 'EX2 2AG'
+    },
     tel: '01432 098765',
-    areas: [
-      'E07000220',
-      'E07000218',
-      'E07000221'
-    ],
-    parents: [
+    isAgent: 'true',
+    owners: [
       'PARENT1'
     ],
-    children: [
+    isOwner: 'true',
+    agents: [
       'CHILD2'
-    ],
-    stock: true
+    ]
   },
   CHILD2: { // Example child organisation that is also a parent
     name: 'Homes Charity CIC',
     'registration-date': '2021-10-04',
     designation: 'Non-profit',
     'corporate-form': 'Charitable company',
-    address: '123a Sandsford Road, Exemplar. EX32 5HC',
+    address: {
+      line1: '123a Sandsford Road',
+      line2: 'Exemplar',
+      postalCode: 'EX32 5HC'
+    },
     tel: '01432 980111',
-    areas: [
-      'E07000218',
-      'E07000221'
-    ],
-    parents: [
+    isAgent: 'true',
+    owners: [
       'PARENT1'
     ],
-    stock: false
+    isOwner: 'false'
   },
   4568: {
     name: 'Bolton at Home Limited',

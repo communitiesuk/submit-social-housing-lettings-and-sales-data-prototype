@@ -2,9 +2,8 @@ import { wizard } from 'govuk-prototype-rig'
 import * as utils from '../utils.js'
 import localAuthorities from '../datasets/local-authorities.js'
 
-const getSchemePaths = (req) => {
-  const { schemeId } = req.params
-  const schemePath = `/schemes/${schemeId}/`
+const getSchemeWizardPaths = (req) => {
+  const schemePath = `/schemes/${req.params.schemeId}/`
 
   const journey = {
     [`${schemePath}details`]: {},
@@ -45,7 +44,7 @@ export const schemeRoutes = (router) => {
     if (organisationId) {
       const organisationRelationships = [
         organisationId,
-        ...(organisation.children ? organisation.children : [])
+        ...(organisation.agents ? organisation.agents : [])
       ]
 
       // Only return users with a relationship with organisation
@@ -82,7 +81,7 @@ export const schemeRoutes = (router) => {
    * Scheme
    */
   router.all('/schemes/:schemeId/:view?/:itemId?', (req, res, next) => {
-    res.locals.paths = getSchemePaths(req)
+    res.locals.paths = getSchemeWizardPaths(req)
     next()
   })
 
@@ -152,7 +151,6 @@ export const schemeRoutes = (router) => {
     const { account, schemes } = req.session.data
     const schemeId = utils.generateUniqueId()
 
-    // Create a new blank scheme in session data
     // Assign to user’s organisation (only DC at owning organisation can create)
     schemes[schemeId] = {
       created: new Date().toISOString(),
@@ -184,8 +182,8 @@ export const schemeRoutes = (router) => {
     // Data coordinators can add schemes to own organisation and its children
     const managedOrganisations = [organisation].concat(
       allOrganisations.filter(organisation => {
-        if (organisation.parents) {
-          return organisation.parents.includes(organisationId)
+        if (organisation.owners) {
+          return organisation.owners.includes(organisationId)
         }
 
         return false

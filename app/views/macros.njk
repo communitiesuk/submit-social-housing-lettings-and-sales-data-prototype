@@ -67,17 +67,17 @@
   <h2 class="govuk-visually-hidden">{{ title }}</h2>
 {% endmacro %}
 
-{% macro organisationRelationshipHtml(organisations, organisation, type) %}
-  {% if organisation[type] | length > 1 %}
+{% macro organisationHtml(organisations, organisation) %}
+  {% if organisation | length > 1 %}
     <ul class="govuk-list govuk-list--bullet">
-    {% for parentId in organisation[type] %}
-      <li>{{ organisations[parentId].name }}</li>
+    {% for organisationId in organisation %}
+      <li>{{ organisations[organisationId[1]].name or organisations[organisationId].name }}</li>
     {% endfor %}
     </ul>
-  {% elif organisation[type] | length == 1 %}
-    {{ organisations[organisation[type][0]].name }}
+  {% elif organisation | length == 1 %}
+    <p class="govuk-body">{{ organisations[organisation[1]].name or organisations[organisation].name }}</p>
   {% else %}
-    None
+    <p class="govuk-body">None</p>
   {% endif %}
 {% endmacro %}
 

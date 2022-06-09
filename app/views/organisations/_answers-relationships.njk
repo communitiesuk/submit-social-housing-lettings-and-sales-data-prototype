@@ -1,0 +1,88 @@
+{% set isAgent = organisation.isAgent == "true" %}
+{% set isOwner = organisation.isOwner == "true" %}
+{% set isOwnerAgent = organisation.isOwnerAgent == "true" %}
+
+{% set outgoingPeriodsHtml %}
+  {% if organisationSettings.rentPeriods %}
+    {% if organisationSettings.rentPeriods.length > 1 %}
+      <ul class="govuk-list govuk-list--bullet">
+      {% for period in organisationSettings.rentPeriods %}
+        <li>{{ period.text }}</li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      {% set period = organisationSettings.rentPeriods | first %}
+      {{ period.text }}
+    {% endif %}
+  {% endif %}
+{% endset %}
+
+{{ govukSummaryList({
+  rows: [{
+    key: {
+      text: "Owns housing stock"
+    },
+    value: {
+      text: organisation.isOwner | textFromInputValue(data.questions["yes-no"])
+    },
+    actions: actionLinks({
+      href: thisOrganisationPath + "/is-owner",
+      visuallyHiddenText: "if owns housing stock"
+    }) if isAdmin or isCoordinator
+  }, {
+    key: {
+      text: "Manages own stock"
+    },
+    value: {
+      html: organisation.isOwnerAgent | textFromInputValue(data.questions["yes-no"])
+    },
+    actions: actionLinks({
+      href: thisOrganisationPath + "/is-owner-agent",
+      visuallyHiddenText: "if manages own stock"
+    }) if isAdmin or isCoordinator
+  } if isOwnerAgent, {
+    key: {
+      text: "Stock managed by"
+    },
+    value: {
+      html: macro.organisationHtml(organisations, organisation.agents)
+    },
+    actions: actionLinks({
+      href: thisOrganisationPath + "/agents",
+      visuallyHiddenText: "managing agents"
+    }) if isAdmin or isCoordinator
+  } if isOwner and not isOwnerAgent, {
+    key: {
+      text: "Manages propeties"
+    },
+    value: {
+      html: organisation.isAgent | textFromInputValue(data.questions["yes-no"])
+    },
+    actions: actionLinks({
+      href: thisOrganisationPath + "/is-agent",
+      visuallyHiddenText: "if manages propeties"
+    }) if isAdmin or isCoordinator
+  }, {
+    key: {
+      text: "Manages properties for"
+    },
+    value: {
+      html: macro.organisationHtml(organisations, organisation.owners)
+    },
+    actions: actionLinks({
+      href: thisOrganisationPath + "/owners",
+      visuallyHiddenText: "manages properties for"
+    }) if isAdmin or isCoordinator
+  } if isAgent, {
+    key: {
+      text: "Rent periods"
+    },
+    value: {
+      html: outgoingPeriodsHtml
+    },
+    actions: actionLinks({
+      href: thisOrganisationPath + "/rent-periods",
+      visuallyHiddenText: "rent periods"
+    }) if isAdmin or isCoordinator
+  } if isAgent or isOwnerAgent]
+}) }}

@@ -5,6 +5,12 @@
 {% set buttonText = "Save changes" %}
 {% set required = true %}
 
+{% if organisation["rent-periods"] %}
+  {# Editing an existing organisation #}
+  {% set buttonText = "Continue" %}
+  {% set formAction = organisationPath + "/check-updated-answers" %}
+{% endif %}
+
 {% block question %}
   {{ govukCheckboxes({
     decorate: ["organisations", thisOrganisation.id, "rent-periods"],

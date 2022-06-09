@@ -61,6 +61,10 @@ export default (env) => {
     text = text || 'name'
     value = value || 'id'
 
+    if (!array) {
+      return
+    }
+
     if (!Array.isArray(array)) {
       array = utils.objectToArray(array)
     }

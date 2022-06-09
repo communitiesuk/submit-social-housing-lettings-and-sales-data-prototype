@@ -41,7 +41,7 @@ export const logRoutes = (router) => {
     logs.filter(log => log.type === type)
 
     // Filter: organisation’s logs (if scoped to organisation)
-    if (organisationId) {
+    if (organisationId && logs) {
       logs = logs.filter(log => {
         return log.setup['organisation-manager'] === organisationId ||
           log.setup['organisation-owner'] === organisationId
@@ -236,7 +236,7 @@ export const logRoutes = (router) => {
       // Organisation data
       const organisationId = account?.organisationId || 'PARENT1'
       const organisation = utils.getEntityById(organisations, organisationId)
-      const childOrganisations = organisation.children || []
+      const childOrganisations = organisation.agents || []
       const userOrganisations = organisationId.concat(childOrganisations)
 
       const managingOrganisations = Object.values(organisations)

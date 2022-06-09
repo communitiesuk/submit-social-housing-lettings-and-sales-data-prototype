@@ -1,0 +1,6 @@
+<div class="app-add-another__item">
+{{ caller() if caller }}
+{% if params.items.length > 1 %}
+  <button class="app-add-another__remove-button">Remove</button>
+{% endif %}
+</div>

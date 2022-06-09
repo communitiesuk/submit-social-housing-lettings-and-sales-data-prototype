@@ -27,7 +27,7 @@ export const userRoutes = (router) => {
       const organisation = organisations[organisationId]
       const organisationRelationships = [
         organisationId,
-        ...(organisation.children ? organisation.children : [])
+        ...(organisation.agents ? organisation.agents : [])
       ]
 
       // Only return users with a relationship with organisation
@@ -92,8 +92,8 @@ export const userRoutes = (router) => {
     // Data coordinators can add users to own organisation and its children
     const managedOrganisations = [organisation].concat(
       allOrganisations.filter(organisation => {
-        if (organisation.parents) {
-          return organisation.parents.includes(organisationId)
+        if (organisation.owners) {
+          return organisation.owners.includes(organisationId)
         }
 
         return false
