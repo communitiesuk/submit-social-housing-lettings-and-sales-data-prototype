@@ -1,0 +1,106 @@
+{% extends "layouts/question.njk" %}
+
+{% set required = true %}
+
+{% if organisation.name %}
+  {# Editing an existing organisation #}
+  {% set caption = organisation.name %}
+  {% set title = "Organisation details" %}
+  {% set buttonText = "Save changes" %}
+  {% set formAction = organisationPath + "/update" %}
+{% else %}
+  {% set title = "Create a new organisation" %}
+{% endif %}
+
+{% block question %}
+  {{ macro.heading(title, caption) }}
+
+  {{ govukInput({
+    decorate: ["organisations", organisation.id, "name"],
+    formGroup: {
+      classes: "govuk-!-margin-bottom-4"
+    },
+    label: {
+      classes: "govuk-label--m",
+      text: "Name"
+    },
+    spellcheck: false
+  }) }}
+
+  {% call govukFieldset({
+    legend: {
+      text: "Address",
+      classes: "govuk-fieldset__legend--m"
+    }
+  }) %}
+
+    {{ govukInput({
+      decorate: ["organisations", organisation.id, "address", "line1"],
+      label: {
+        text: "Address line 1"
+      },
+      autocomplete: "address-line1"
+    }) }}
+
+    {{ govukInput({
+      decorate: ["organisations", organisation.id, "address", "line2"],
+      label: {
+        text: "Address line 2 (optional)"
+      },
+      autocomplete: "address-line2"
+    }) }}
+
+    {{ govukInput({
+      decorate: ["organisations", organisation.id, "address", "postalCode"],
+      label: {
+        text: "Postcode"
+      },
+      classes: "govuk-input--width-10",
+      autocomplete: "postal-code"
+    }) }}
+  {% endcall %}
+
+  {{ govukInput({
+    classes: "govuk-input--width-20",
+    decorate: ["organisations", organisation.id, "tel"],
+    label: {
+      classes: "govuk-label--m",
+      text: "Phone number"
+    },
+    type: "tel"
+  }) }}
+
+  {{ govukRadios({
+    decorate: ["organisations", organisation.id, "type"],
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Type of social housing provider"
+      }
+    },
+    items: data.questions["type-of-organisation"]
+  }) }}
+
+  {{ govukInput({
+    decorate: ["organisations", organisation.id, "registration"],
+    label: {
+      classes: "govuk-label--m",
+      text: "Regulator of Social Housing registration number"
+    },
+    classes: "govuk-input--width-10"
+  }) }}
+
+  {{ govukCheckboxes({
+    fieldset: {
+      legend: {
+        text: "Data sharing agreement",
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    decorate: ["organisations", organisation.id, "acceptedDSA"],
+    items: [{
+      value: "true",
+      text: "The organisation’s data protection officer has read and accepted DLUHC’s data sharing agreement."
+    }]
+  }) if organisation.draft }}
+{% endblock %}

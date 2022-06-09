@@ -1,0 +1,24 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Does this organisation manage properties for other housing providers?" %}
+{% set caption = organisation.name %}
+{% set required = true %}
+
+{% if organisation.isAgent %}
+  {# Editing an existing organisation #}
+  {% set buttonText = "Continue" %}
+  {% set formAction = organisationPath + "/check-updated-answers" %}
+{% endif %}
+
+{% block question %}
+  {{ govukRadios({
+    decorate: ["organisations", organisation.id, "isAgent"],
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--l",
+        html: macro.fieldsetHeading(title, caption)
+      }
+    },
+    items: data.questions["yes-no"]
+  }) }}
+{% endblock %}

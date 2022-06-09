@@ -7,6 +7,11 @@
 {% set caption = thisOrganisation.name %}
 
 {% block content %}
+  {{ govukNotificationBanner({
+    text: organisation.name + " has been " + query.success + ".",
+    type: "success"
+  }) if query.success }}
+
   {{ adminNavigation(title) if isAdmin else macro.heading(title, caption) }}
 
   <div class="govuk-grid-row">
@@ -24,121 +29,11 @@
         </p>
       {% endif %}
 
-{% set outgoingPeriodsHtml %}
-  {% if organisationSettings.rentPeriods.length > 1 %}
-    <ul class="govuk-list govuk-list--bullet">
-    {% for period in organisationSettings.rentPeriods %}
-      <li>{{ period.text }}</li>
-    {% endfor %}
-    </ul>
-  {% else %}
-    {% set period = organisationSettings.rentPeriods | first %}
-    {{ period.text }}
-  {% endif %}
-{% endset %}
+      <h3 class="govuk-heading-m">Details</h3>
+      {% include "organisations/_answers-details.njk" %}
 
-      {{ govukSummaryList({
-        rows: [{
-          key: {
-            text: "Name"
-          },
-          value: {
-            text: organisation.name
-          },
-          actions: actionLinks({
-            href: "#",
-            visuallyHiddenText: "name"
-          }) if isAdmin or isCoordinator
-        }, {
-          key: {
-            text: "Address"
-          },
-          value: {
-            html: organisation.address | replace(", ", "\n") | replace(". ", "\n") | nl2br
-          },
-          actions: actionLinks({
-            href: "#",
-            visuallyHiddenText: "address"
-          }) if isAdmin or isCoordinator
-        }, {
-          key: {
-            text: "Telephone number"
-          },
-          value: {
-            text: organisation.tel
-          },
-          actions: actionLinks({
-            href: "#",
-            visuallyHiddenText: "telephone number"
-          }) if isAdmin or isCoordinator
-        }, {
-          key: {
-            text: "Type"
-          },
-          value: {
-            text: organisation.type
-          },
-          actions: actionLinks({
-            href: "#",
-            visuallyHiddenText: "type"
-          }) if isAdmin
-        }, {
-          key: {
-            text: "Rent periods"
-          },
-          value: {
-            html: outgoingPeriodsHtml
-          },
-          actions: actionLinks({
-            href: thisOrganisationPath + "/rent-periods",
-            visuallyHiddenText: "rent periods"
-          }) if isAdmin or isCoordinator
-        }, {
-          key: {
-            text: "Holds own stock"
-          },
-          value: {
-            text: "Yes" if organisation.stock else "No"
-          },
-          actions: actionLinks({
-            href: "#",
-            visuallyHiddenText: "if holds housing stock"
-          }) if isAdmin
-        }, {
-          key: {
-            text: "Other stock owners"
-          },
-          value: {
-            html: macro.organisationRelationshipHtml(organisations, organisation, "parents")
-          },
-          actions: actionLinks({
-            href: "#",
-            visuallyHiddenText: "parent organisations"
-          }) if isAdmin
-        }, {
-          key: {
-            text: "Managing agents"
-          },
-          value: {
-            html: macro.organisationRelationshipHtml(organisations, organisation, "children")
-          },
-          actions: actionLinks({
-            href: "#",
-            visuallyHiddenText: "child organisations"
-          }) if isAdmin
-        }, {
-          key: {
-            text: "Data sharing agreement"
-          },
-          value: {
-            html: "Signed on " + (organisation.signedDSA | govukDate ) if organisation.signedDSA else "Not yet signed"
-          },
-          actions: actionLinks({
-            text: "View agreement",
-            href: thisOrganisationPath + "/data-sharing-agreement"
-          })
-        }]
-      }) }}
+      <h3 class="govuk-heading-m govuk-!-margin-top-8">Housing stock ownership and management</h3>
+      {% include "organisations/_answers-relationships.njk" %}
     </div>
 
     <div class="govuk-grid-column-one-third-from-desktop">

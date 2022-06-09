@@ -12,11 +12,9 @@
 {% set markdown %}
 ## {{ organisation.name }} and Department for Levelling Up, Housing and Communities
 
-This agreement is made the {{ signedDSADay | ordinal }} day of {{ signedDSAMonth }} {{ signedDSAYear }}.
-
 **between**
 
-1. {{ organisation.name }} of {{ organisation.address }} (“CORE Data Provider”)
+1. {{ organisation.name }} of {{ organisation.address.line1 }}, {{ organisation.address.line2 }} (“CORE Data Provider”)
 
 and
 

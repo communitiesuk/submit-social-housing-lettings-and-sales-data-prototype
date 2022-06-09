@@ -1,0 +1,51 @@
+{% extends "layouts/question.njk" %}
+
+{% import "macros.njk" as macro %}
+
+{% set title = "Which housing providers does this organisation manage properties for?" %}
+{% set caption = organisation.name %}
+{% set required = true %}
+
+{% if organisation.owners %}
+  {# Editing an existing organisation #}
+  {% set buttonText = "Continue" %}
+  {% set formAction = organisationPath + "/check-updated-answers" %}
+{% endif %}
+
+{% macro addAnotherOwner(index, items) %}
+  {% call appAddAnother({
+    items: items
+  }) %}
+    {{ appAutocomplete(decorate({
+      formGroup: {
+        classes: "govuk-!-margin-bottom-1"
+      },
+      label: {
+        text: "Name of housing provider"
+      },
+      allowEmpty: true,
+      showNoOptionsFound: true,
+      items: organisations | optionItems
+    }, ["organisations", organisation.id, "owners", index])) }}
+  {% endcall %}
+{% endmacro %}
+
+{% block question %}
+  <h1 class="govuk-heading-l app-add-another__heading" tabindex="-1">
+    <span class="govuk-caption-l">{{ caption }}</span>
+    {{ title | noOrphans | safe }}
+  </h1>
+
+  <div data-module="add-another">
+    {% for agent in organisation.owners %}
+      {{ addAnotherOwner(loop.index0, organisation.owners) }}
+    {% else %}
+      {{ addAnotherOwner(0, organisation.owners) }}
+    {% endfor %}
+
+    {{ govukButton({
+      classes: "govuk-button--secondary app-add-another__add-button",
+      text: "Add another housing provider"
+    }) }}
+  </div>
+{% endblock %}

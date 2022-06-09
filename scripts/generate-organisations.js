@@ -8,24 +8,42 @@ const generateOrganisations = () => {
   const organisations = {}
 
   Object.entries(registeredProviders).forEach(([key, value]) => {
-    const stock = value.designation === 'Local authority' || value['corporate-form'] === 'Company'
+    const isAgent = (value.designation !== 'Local authority').toString()
+    const isOwner = (value.designation === 'Local authority' || value['corporate-form'] === 'Company').toString()
+
+    // If organisation owns stock, give it some agents (aka children)
+    const agents = (isOwner === 'true')
+      ? faker.helpers.arrayElements(
+        Object.keys(registeredProviders),
+        3
+      )
+      : false
+
+    // If organisation manages stock, give it some owners (aka parents)
+    const owners = isAgent
+      ? faker.helpers.arrayElements(
+        Object.keys(registeredProviders),
+        2
+      )
+      : false
 
     organisations[key] = {
       id: key,
       name: value.name,
       address: value.address
         ? value.address
-        : [
-            faker.address.streetAddress(),
-            faker.address.cityName(),
-            faker.address.zipCode()
-          ].join(', '),
+        : {
+            line1: faker.address.streetAddress(),
+            line2: faker.address.cityName(),
+            postalCode: faker.address.zipCode()
+          },
       tel: value.tel
         ? value.tel
         : faker.phone.phoneNumber(),
       type: value.designation === 'Local authority'
         ? 'Local authority'
         : 'Housing association',
+      registration: key,
       'rent-periods': faker.helpers.arrayElements([
         'fortnightly',
         'every-4-weeks',
@@ -38,26 +56,11 @@ const generateOrganisations = () => {
         'weekly-52',
         'weekly-53'
       ]),
-      parents: value.parents
-        ? value.parents
-        : (value.designation !== 'Local authority')
-            ? faker.helpers.arrayElements(
-              Object.keys(registeredProviders),
-              2
-            )
-            : false,
-      children: value.children
-        ? value.children
-        : stock
-          ? faker.helpers.arrayElements(
-            Object.keys(registeredProviders),
-            3
-          )
-          : false,
-      stock: value.stock
-        ? value.stock
-        : stock,
-      signedDSA: faker.date.past(3)
+      isAgent: value.isAgent || isAgent,
+      owners: value.owners || owners,
+      isOwner: value.isOwner || isOwner,
+      agents: value.agents || agents,
+      acceptedDSA: 'true'
     }
   })
 

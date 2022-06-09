@@ -1,0 +1,52 @@
+{% extends "layouts/form.njk" %}
+
+{% set title = "Check your ownership and management changes before updating this organisation" %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters-from-desktop">
+      {{ macro.heading(title, caption) }}
+
+      {% include "organisations/_answers-relationships.njk" %}
+
+      {{ govukRadios({
+        decorate: ["schemes", scheme.id, "updated"],
+        fieldset: {
+          legend: {
+            classes: "govuk-fieldset__legend--m",
+            html: "When do these changes apply?"
+          }
+        },
+        items: [{
+          text: "From the start of the current collection period",
+          value: "period"
+        }, {
+          text: "From a certain date",
+          value: "false",
+          conditional: {
+            html: govukDateInput({
+              decorate: ["schemes", scheme.id, "updated-from"],
+              fieldset: {
+                legend: {
+                  classes: "govuk-fieldset__legend--s",
+                  text: "Date changes apply from"
+                }
+              },
+              hint: {
+                text: "For example, 12 11 2020."
+              },
+              items: data.questions["date-full"]
+            })
+          }
+        }]
+      }) }}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Update organisation"
+        }) }}
+        <a class="govuk-link" href="{{ organisationPath }}">Cancel</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
