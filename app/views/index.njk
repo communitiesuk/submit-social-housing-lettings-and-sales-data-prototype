@@ -63,7 +63,15 @@
             </div>
           </form>
 
-          <hr class="govuk-section-break govuk-section-break--l">
+          <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+          <h2 class="govuk-heading-m govuk-!-font-size-27">Paper forms</h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="/public/files/paper-form-social-housing-letting.pdf">Lettings log for tenants</a></li>
+            <li><a href="/public/files/paper-form-social-housing-sale.pdf">Sales log for buyers</a></li>
+          </ul>
+
+          <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
           <h2 class="govuk-heading-m govuk-!-font-size-27">Example GOV.UK guidance pages</h2>
           <ul class="govuk-list govuk-list--bullet">
@@ -74,36 +82,28 @@
         <div class="govuk-grid-column-one-third-from-desktop">
           {{ xGovukRelatedNavigation({
             sections: [{
-              title: "Related links",
+              title: "Related resources",
+              items: [{
+                text: "Confluence",
+                href: "https://digital.dclg.gov.uk/confluence/display/MC/DLUHC-+CLDC+Home"
+              }, {
+                text: "Design history",
+                href: "https://core-design-history.netlify.app"
+              }, {
+                text: "Glossary",
+                href: "https://core-design-history.netlify.app/glossary"
+              }, {
+                text: "JIRA",
+                href: "https://digital.dclg.gov.uk/jira/secure/RapidBoard.jspa?projectKey=CLDC&rapidView=152"
+              }],
               subsections: [{
-                title: "Team resources",
-                items: [{
-                  text: "Design history",
-                  href: "https://core-design-history.netlify.app"
-                }, {
-                  text: "Confluence",
-                  href: "https://digital.dclg.gov.uk/confluence/display/MC/DLUHC-+CLDC+Home"
-                }, {
-                  text: "JIRA",
-                  href: "https://digital.dclg.gov.uk/jira/secure/RapidBoard.jspa?projectKey=CLDC&rapidView=152"
-                }]
-              }, {
-                title: "Paper forms",
-                items: [{
-                  href: "/public/files/paper-form-social-housing-letting.pdf",
-                  text: "Lettings log for tenants"
-                }, {
-                  href: "/public/files/paper-form-social-housing-sale.pdf",
-                  text: "Sales log for buyers"
-                }]
-              }, {
                 title: "Live service",
                 items: [{
-                  text: "Staging",
-                  href: "https://dluhc-core-staging.london.cloudapps.digital"
-                }, {
                   text: "Production",
                   href: "https://dluhc-core-production.london.cloudapps.digital"
+                }, {
+                  text: "Staging",
+                  href: "https://dluhc-core-staging.london.cloudapps.digital"
                 }]
               }, {
                 title: "GitHub repositories",
