@@ -15,11 +15,6 @@
 {% endif %}
 
 {% block form %}
-  {{ govukErrorSummary({
-    titleText: "There is a problem",
-    errorList: errorList(errors)
-  }) if errors }}
-
   <div class="govuk-panel app-panel--interruption">
     <h1 class="govuk-panel__title">
       {{ title | noOrphans | safe }}
