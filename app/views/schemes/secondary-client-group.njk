@@ -36,7 +36,7 @@
               text: "What is the other client group?"
             }
           },
-          items: data.questions["client-groups"] | rejectwhere("value", scheme["primary-client-group"])
+          items: data.questions["client-groups"] | rejectFromArray("value", scheme["primary-client-group"])
         })
       }
     }]

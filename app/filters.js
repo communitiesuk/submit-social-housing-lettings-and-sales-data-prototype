@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import * as utils from './utils.js'
 
 /**
@@ -58,32 +57,6 @@ export default (env) => {
     return value
   }
 
-  filters.selectwhere = (array, key, compare) => {
-    compare = [].concat(compare) // Force to Array
-
-    const filtered = array.filter(item => {
-      return compare.includes(_.get(item, key))
-    })
-
-    return filtered
-  }
-
-  filters.rejectwhere = (array, key, compare) => {
-    compare = [].concat(compare) // Force to Array
-
-    const filtered = array.filter(item => {
-      return !compare.includes(_.get(item, key))
-    })
-
-    return filtered
-  }
-
-  filters.ordinal = (number) => {
-    const s = ['th', 'st', 'nd', 'rd']
-    const v = number % 100
-    return number + (s[(v - 20) % 10] || s[v] || s[0])
-  }
-
   filters.optionItems = (array, text, value, hint = false) => {
     text = text || 'name'
     value = value || 'id'
@@ -114,42 +87,6 @@ export default (env) => {
     }))
 
     return array
-  }
-
-  // Used in Household Characteristics, this only supports `first` through
-  // `eighth` at the moment this is a prototype, so lets not guild the lilly.
-  filters.numberToOrdinal = int => {
-    int = parseInt(int)
-    const ordinals = [
-      'first',
-      'second',
-      'third',
-      'fourth',
-      'fifth',
-      'sixth',
-      'seventh',
-      'eighth'
-    ]
-
-    return int <= 8 ? ordinals[int - 1] : int
-  }
-
-  // Convert object saved by govukDateInput to ISO-8601 formatted date
-  filters.dateObjectToIso = object => {
-    if (typeof object === 'string') {
-      return object
-    }
-
-    let day = object.day || 1
-    day = day.padStart(2, '0')
-
-    let month = object.month || 1
-    month = day.padStart(2, '0')
-
-    let year = object.year || 1970
-    year = year.padStart(4, '0')
-
-    return `${year}-${month}-${day}`
   }
 
   return filters

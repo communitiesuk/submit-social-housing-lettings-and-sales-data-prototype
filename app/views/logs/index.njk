@@ -79,7 +79,7 @@
             id: log.id,
             tenantCode: log.setup["tenant-code"],
             propertyReference: log.setup["property-reference"],
-            lettingStartDate: log.setup["letting-start-date"] | dateObjectToIso,
+            lettingStartDate: log.setup["letting-start-date"] | isoDateFromDateInput,
             needsType: log.setup["type-of-need"] | textFromInputValue(data.questions["type-of-need"]) if log.setup["type-of-need"],
             owner: data.organisations[log.setup["organisation-owner"]].name if isAdmin,
             manager: data.organisations[log.setup["organisation-manager"]].name if isAdmin,
@@ -90,7 +90,7 @@
               classes: "govuk-tag--" + data.statuses.inProgress.colour,
               text: data.statuses.inProgress.text
             },
-            updated: log.updated | dateObjectToIso,
+            updated: log.updated | isoDateFromDateInput,
             updatedBy: users[log.updatedBy].name
           }) }}
         {% endfor %}
