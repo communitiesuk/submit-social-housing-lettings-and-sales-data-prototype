@@ -1,14 +1,14 @@
 {% extends "layouts/base.njk" %}
 
-{% set title = serviceName + " prototype" %}
+{% set title = "Prototype for " + serviceName %}
 
 {% block main %}
   {{ xGovukMasthead({
-    classes: "x-govuk-masthead--large",
     title: {
       html: title | noOrphans
     },
     startButton: {
+      classes: "govuk-!-margin-top-0",
       href: "/start",
       text: "View prototype"
     }
