@@ -3,6 +3,7 @@ export default {
     type: 'lettings',
     status: 'submitted',
     created: '2021-07-15',
+    createdBy: 'DP001',
     updated: '2021-07-19',
     updatedBy: 'DP001',
     setup: {
@@ -14,6 +15,7 @@ export default {
   A0002: {
     type: 'lettings',
     created: '2021-07-15',
+    createdBy: 'DP001',
     updated: '2021-07-19',
     updatedBy: 'DP001',
     setup: {
@@ -25,6 +27,7 @@ export default {
   A0003: {
     type: 'lettings',
     created: '2021-07-16',
+    createdBy: 'DP001',
     updated: '2021-07-19',
     updatedBy: 'DP001',
     setup: {
@@ -36,6 +39,7 @@ export default {
   A0004: {
     type: 'lettings',
     created: '2021-07-11',
+    createdBy: 'DP001',
     updated: '2021-07-12',
     updatedBy: 'DP001',
     setup: {
@@ -47,6 +51,7 @@ export default {
   A0005: {
     type: 'lettings',
     created: '2021-07-10',
+    createdBy: 'DP001',
     updated: '2021-07-12',
     updatedBy: 'DP001',
     setup: {
@@ -58,6 +63,7 @@ export default {
   A0006: {
     type: 'lettings',
     created: '2021-06-18',
+    createdBy: 'DP001',
     updated: '2021-06-24',
     updatedBy: 'DP001',
     setup: {
@@ -69,6 +75,7 @@ export default {
   EX001: {
     type: 'lettings',
     created: '2021-07-27',
+    createdBy: 'DP001',
     updated: '2021-07-29',
     updatedBy: 'DP001',
     setup: {
@@ -161,6 +168,7 @@ export default {
   EX002: {
     type: 'lettings',
     created: '2021-07-27',
+    createdBy: 'DP001',
     updated: '2021-07-29',
     updatedBy: 'DP001',
     setup: {
@@ -253,6 +261,7 @@ export default {
   BZ787: {
     type: 'lettings',
     created: '2021-07-26',
+    createdBy: 'DP001',
     updated: '2021-07-29',
     updatedBy: 'DP001',
     setup: {
@@ -262,7 +271,7 @@ export default {
       'letting-renewal': 'false',
       'type-of-rent': 'Affordable Rent',
       'letting-start-date': { day: '12', month: '6', year: '2021' },
-      'tenant-code': 'GN',
+      'tenant-code': 'T0000GN',
       'property-reference': 'P004321',
       completed: 'true'
     }
@@ -270,6 +279,7 @@ export default {
   BZ766: {
     type: 'lettings',
     created: '2021-07-25',
+    createdBy: 'DP001',
     updated: '2021-07-29',
     updatedBy: 'DP001',
     setup: {
@@ -279,7 +289,7 @@ export default {
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',
       'letting-start-date': { day: '12', month: '6', year: '2021' },
-      'tenant-code': 'GN-R',
+      'tenant-code': 'T00GNR',
       'property-reference': 'P005678',
       completed: 'true'
     }
@@ -287,6 +297,7 @@ export default {
   BZ765: {
     type: 'lettings',
     created: '2021-07-20',
+    createdBy: 'DP001',
     updated: '2021-07-29',
     updatedBy: 'DC001',
     setup: {
@@ -297,7 +308,7 @@ export default {
       'letting-renewal': 'false',
       'type-of-rent': 'Affordable Rent',
       'letting-start-date': { day: '12', month: '6', year: '2021' },
-      'tenant-code': 'SH',
+      'tenant-code': 'T0000SH',
       'property-reference': 'P008765',
       completed: 'true'
     }
@@ -305,6 +316,7 @@ export default {
   BZ112: {
     type: 'lettings',
     created: '2021-08-19',
+    createdBy: 'DP001',
     updated: '2021-08-29',
     updatedBy: 'DP001',
     setup: {
@@ -315,7 +327,7 @@ export default {
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',
       'letting-start-date': { day: '12', month: '6', year: '2021' },
-      'tenant-code': 'SH-R',
+      'tenant-code': 'T000SHR',
       'property-reference': 'P04565',
       completed: 'true'
     },

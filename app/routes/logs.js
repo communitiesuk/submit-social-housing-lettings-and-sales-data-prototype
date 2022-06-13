@@ -34,8 +34,8 @@ export const logRoutes = (router) => {
     }
 
     // Filter: updated by current user
-    // const updatedBy = req.session.user || req.query.user || currentUser.id
-    // logs = logs.filter(log => log.updatedBy === updatedBy)
+    // const createdBy = req.session.user || req.query.user || currentUser.id
+    // logs = logs.filter(log => log.createdBy === createdBy)
 
     // Filter: type of log
     logs.filter(log => log.type === type)
@@ -150,7 +150,7 @@ export const logRoutes = (router) => {
       logs[logId]['property-information-supported-housing']?.postcode
       logs[logId].status = 'submitted'
       logs[logId].updated = new Date().toISOString()
-      logs[logId].updatedBy = account
+      logs[logId].createdBy = account
 
       return res.redirect(`/logs/?success=submitted&logId=${logId}`)
     }

@@ -52,8 +52,8 @@
     <footer class="govuk-grid-column-one-third app-log__footer">
       <p class="govuk-body govuk-!-margin-bottom-2">{{ govukTag(params.status) }}</p>
       <p class="govuk-body">
-        Updated <time datetime="{{ params.updated }}">{{ params.updated | govukDate }}</time>
-        <span class="app-log__footer--actor">by {{ params.updatedBy }}</span>
+        Created <time datetime="{{ params.created }}">{{ params.created | govukDate }}</time>
+        <span class="app-log__footer--actor">by {{ params.createdBy }}</span>
       </p>
     </footer>
   </div>

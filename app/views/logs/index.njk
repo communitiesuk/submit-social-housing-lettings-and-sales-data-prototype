@@ -90,8 +90,8 @@
               classes: "govuk-tag--" + data.statuses.inProgress.colour,
               text: data.statuses.inProgress.text
             },
-            updated: log.updated | isoDateFromDateInput,
-            updatedBy: users[log.updatedBy].name
+            created: log.created | isoDateFromDateInput,
+            createdBy: users[log.createdBy].name
           }) }}
         {% endfor %}
       {% endset %}
