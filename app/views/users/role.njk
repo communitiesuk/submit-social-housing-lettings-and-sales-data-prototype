@@ -10,7 +10,7 @@
   {# Inviting a new user #}
   {% set buttonText = "Send invitation" %}
   {% set backLink = userPath + "/organisation" %}
-  {% set formAction = "/users?success=invited&userId=" + user.id %}
+  {% set formAction = "/users/send-invitation" %}
 {% endif %}
 
 {% block form %}

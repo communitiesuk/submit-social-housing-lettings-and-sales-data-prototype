@@ -5,10 +5,9 @@
 {% set title = "Organisations" %}
 
 {% block form %}
-  {{ govukNotificationBanner({
-    text: macro.notificationBannerText(query.success, "Organisation"),
-    type: "success"
-  }) if query.success }}
+  {% for type, text in messages %}
+    {{ govukNotificationBanner({ text: text, type: type }) }}
+  {% endfor %}
 
   {{ macro.heading(title) }}
 

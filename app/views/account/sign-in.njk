@@ -5,10 +5,9 @@
 {% block form %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      {{ govukNotificationBanner({
-        text: "Your password has been reset. Sign in with your new password to continue.",
-        type: "success"
-      }) if query.success == "password-reset" }}
+      {% for type, text in messages %}
+        {{ govukNotificationBanner({ text: text, type: type }) }}
+      {% endfor %}
 
       {{ macro.heading(title) }}
 

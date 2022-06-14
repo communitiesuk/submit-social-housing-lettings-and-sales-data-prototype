@@ -6,15 +6,9 @@
 {% set canAdminUsers = isAdmin or isCoordinator %}
 
 {% block content %}
-  {{ govukNotificationBanner({
-    text: user.name + " has been deactivated.",
-    type: "success"
-  }) if query.success == "deactivated" }}
-
-  {{ govukNotificationBanner({
-    text: user.name + " has been reactivated.",
-    type: "success"
-  }) if query.success == "reactivated" }}
+  {% for type, text in messages %}
+    {{ govukNotificationBanner({ text: text, type: type }) }}
+  {% endfor %}
 
   {{ macro.heading(title) }}
 

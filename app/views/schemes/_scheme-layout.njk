@@ -7,35 +7,9 @@
 {% set locationsCount = scheme.locations | length %}
 
 {% block form %}
-  {{ govukNotificationBanner({
-    text: scheme.name + " has been created and can now be used by your organisation.",
-    type: "success"
-  }) if query.success == "created" }}
-
-  {{ govukNotificationBanner({
-    text: scheme.name + " has been updated.",
-    type: "success"
-  }) if query.success == "updated" }}
-
-  {{ govukNotificationBanner({
-    text: scheme.name + " has been deactivated.",
-    type: "success"
-  }) if query.success == "deactivated" }}
-
-  {{ govukNotificationBanner({
-    text: scheme.name + " has been reactivated.",
-    type: "success"
-  }) if query.success == "reactivated" }}
-
-  {{ govukNotificationBanner({
-    text: "Location has been deleted.",
-    type: "success"
-  }) if query.success == "deleted" }}
-
-  {{ govukNotificationBanner({
-    text: scheme.locations[query.itemId].address + " has been updated.",
-    type: "success"
-  }) if query.success == "updated-location" }}
+  {% for type, text in messages %}
+    {{ govukNotificationBanner({ text: text, type: type }) }}
+  {% endfor %}
 
   {{ macro.heading(title) }}
 

@@ -117,13 +117,21 @@ export const userRoutes = (router) => {
   /**
    * Delete user
    */
-  router.post('/users/:userId/delete', (req, res) => {
+  router.post('/users/:userId/:view', (req, res) => {
     const { account, users } = req.session.data
-    const { userId } = req.params
+    const { userId, view } = req.params
+    const user = users[userId]
 
-    delete users[userId]
+    if (view === 'delete') {
+      delete users[userId]
+      req.flash('success', 'User has been deleted.')
+    }
 
-    res.redirect(`/organisations/${account.organisationId}/users?success=deleted`)
+    if (view === 'send-invitation') {
+      req.flash('success', `An invitation to submit CORE data has been sent to ${user.name}.`)
+    }
+
+    res.redirect(`/organisations/${account.organisationId}/users`)
   })
 
   /**
@@ -132,19 +140,21 @@ export const userRoutes = (router) => {
   router.post('/users/:userId/:view?', (req, res, next) => {
     const { users } = req.session.data
     const { userId, view } = req.params
-
+    const user = users[userId]
     const userPath = `/users/${userId}`
 
     // Deactivate user
     if (view === 'deactivate') {
-      users[userId].deactivated = true
-      return res.redirect(`${userPath}?success=deactivated&userId=${userId}`)
+      user.deactivated = true
+      req.flash('success', `${user.name} has been deactivated.`)
+      return res.redirect(userPath)
     }
 
     // Reactivate user
     if (view === 'reactivate') {
-      users[userId].deactivated = false
-      return res.redirect(`${userPath}?success=reactivated&userId=${userId}`)
+      user.deactivated = false
+      req.flash('success', `${user.name} has been reactivated.`)
+      return res.redirect(userPath)
     }
 
     next()

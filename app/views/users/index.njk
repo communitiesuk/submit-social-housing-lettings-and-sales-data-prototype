@@ -9,20 +9,9 @@
 {% set notificationUser = users | selectFromArray("id", query.userId) | first %}
 
 {% block form %}
-  {{ govukNotificationBanner({
-    text: "An invitation to submit CORE data has been sent to " + notificationUser.name + ".",
-    type: "success"
-  }) if query.success == "invited" }}
-
-  {{ govukNotificationBanner({
-    text: "An invitation to submit CORE data has been resent to " + notificationUser.name + ".",
-    type: "success"
-  }) if query.success == "reinvited" }}
-
-  {{ govukNotificationBanner({
-    text: "User has been deleted.",
-    type: "success"
-  }) if query.success == "deleted" }}
+  {% for type, text in messages %}
+    {{ govukNotificationBanner({ text: text, type: type }) }}
+  {% endfor %}
 
   {% if isGlobalView %}
     {{ macro.heading(title) }}

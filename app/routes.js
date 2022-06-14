@@ -1,4 +1,5 @@
 import express from 'express'
+import flash from 'express-flash-plus'
 import { accountRoutes } from './routes/account.js'
 import { logRoutes } from './routes/logs.js'
 import { organisationRoutes } from './routes/organisations.js'
@@ -6,6 +7,8 @@ import { schemeRoutes } from './routes/schemes.js'
 import { userRoutes } from './routes/users.js'
 
 const router = express.Router()
+
+router.use(flash())
 
 // Set account locals
 router.all('*', (req, res, next) => {

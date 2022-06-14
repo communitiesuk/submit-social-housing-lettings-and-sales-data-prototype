@@ -9,10 +9,9 @@
 {% set typeName = type | capitalize %}
 
 {% block form %}
-  {{ govukNotificationBanner({
-    text: "Log " + query.logId + " has been submitted",
-    type: "success"
-  }) if query.success == "submitted" }}
+  {% for type, text in messages %}
+    {{ govukNotificationBanner({ text: text, type: type }) }}
+  {% endfor %}
 
   {% if isGlobalView %}
     {{ macro.heading(title) }}

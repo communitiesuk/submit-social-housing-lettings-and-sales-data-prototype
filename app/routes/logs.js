@@ -152,7 +152,8 @@ export const logRoutes = (router) => {
       logs[logId].updated = new Date().toISOString()
       logs[logId].createdBy = account
 
-      return res.redirect(`/logs/?success=submitted&logId=${logId}`)
+      req.flash('success', `Log ${logId} has been submitted.`)
+      return res.redirect('/logs/')
     }
 
     const errors = {

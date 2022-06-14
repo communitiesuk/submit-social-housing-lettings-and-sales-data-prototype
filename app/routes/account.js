@@ -89,7 +89,8 @@ export const accountRoutes = (router) => {
    * Reset password
    */
   router.post('/account/reset-password', (req, res) => {
-    res.redirect('/account/sign-in?success=password-reset')
+    req.flash('success', 'Your password has been reset. Sign in with your new password to continue.')
+    res.redirect('/account/sign-in')
   })
 
   /**

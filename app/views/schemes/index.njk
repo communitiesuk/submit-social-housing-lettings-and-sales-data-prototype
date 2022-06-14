@@ -8,10 +8,9 @@
 {% set isGlobalView = isAdmin and path.startsWith("/schemes") %}
 
 {% block form %}
-  {{ govukNotificationBanner({
-    text: "Scheme has been deleted.",
-    type: "success"
-  }) if query.success == "deleted" }}
+  {% for type, text in messages %}
+    {{ govukNotificationBanner({ text: text, type: type }) }}
+  {% endfor %}
 
   {% if isGlobalView %}
     {{ macro.heading(title) }}

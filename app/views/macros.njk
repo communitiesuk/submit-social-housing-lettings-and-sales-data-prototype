@@ -38,9 +38,6 @@
     {{ user.lastActive | govukDate }}
   {% else %}
     Not logged in yet
-    {% if isAdmin or isCoordinator %}
-      <br><a href="/organisations/{{ user.organisationId }}/users?success=reinvited&#38;userId={{ user.id }}">Resend invitation email</a>
-    {% endif %}
   {% endif %}
 {% endmacro %}
 

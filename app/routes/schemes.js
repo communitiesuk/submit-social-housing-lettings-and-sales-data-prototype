@@ -106,10 +106,14 @@ export const schemeRoutes = (router) => {
    * Update location
    */
   router.post('/schemes/:schemeId/location/:itemId/update', (req, res) => {
+    const { schemes } = req.session.data
     const { schemeId, itemId } = req.params
-    const schemePath = `/schemes/${schemeId}`
+    const scheme = schemes[schemeId]
+    const location = scheme.locations[itemId]
+    const locationsPath = `/schemes/${schemeId}/locations`
 
-    res.redirect(`${schemePath}/locations?success=updated-location&itemId=${itemId}`)
+    req.flash('success', `${location.address} has been updated.`)
+    res.redirect(locationsPath)
   })
 
   /**
@@ -118,9 +122,8 @@ export const schemeRoutes = (router) => {
   router.get('/schemes/:schemeId/location/:itemId/delete', (req, res) => {
     const { schemes } = req.session.data
     const { schemeId, itemId } = req.params
-
-    const scheme = utils.getEntityById(schemes, schemeId)
-    const location = schemes[schemeId].locations[itemId]
+    const scheme = schemes[schemeId]
+    const location = scheme.locations[itemId]
     const locationsPath = `/schemes/${schemeId}/locations`
 
     res.render('schemes/delete-location', {
@@ -136,10 +139,13 @@ export const schemeRoutes = (router) => {
   router.post('/schemes/:schemeId/location/:itemId/delete', (req, res) => {
     const { schemes } = req.session.data
     const { schemeId, itemId } = req.params
+    const scheme = schemes[schemeId]
+    const locationsPath = `/schemes/${schemeId}/locations`
 
-    delete schemes[schemeId].locations[itemId]
+    delete scheme.locations[itemId]
 
-    res.redirect(`/schemes/${schemeId}/locations?success=deleted`)
+    req.flash('success', 'Location has been deleted.')
+    res.redirect(locationsPath)
   })
 
   /**
@@ -217,7 +223,8 @@ export const schemeRoutes = (router) => {
 
     delete schemes[schemeId]
 
-    res.redirect(`/organisations/${account.organisationId}/schemes?success=deleted`)
+    req.flash('success', 'Scheme has been deleted.')
+    res.redirect(`/organisations/${account.organisationId}/schemes`)
   })
 
   /**
@@ -226,6 +233,7 @@ export const schemeRoutes = (router) => {
   router.post('/schemes/:schemeId/:view?', (req, res) => {
     const { schemes } = req.session.data
     const { schemeId, view } = req.params
+    const scheme = schemes[schemeId]
     const schemePath = `/schemes/${schemeId}`
 
     // Add another location
@@ -237,7 +245,8 @@ export const schemeRoutes = (router) => {
     // Confirm scheme
     if (view === 'check-your-answers') {
       delete schemes[schemeId].draft
-      res.locals.paths.next = `${schemePath}?success=created`
+      req.flash('success', `${scheme.name} has been created.`)
+      res.locals.paths.next = schemePath
     }
 
     // Confirm scheme updates
@@ -247,24 +256,27 @@ export const schemeRoutes = (router) => {
 
     // Update scheme
     if (view === 'update') {
-      res.locals.paths.next = `${schemePath}?success=updated`
+      req.flash('success', `${scheme.name} has been updated.`)
+      res.locals.paths.next = schemePath
     }
 
     // Deactivate scheme
     if (view === 'deactivate') {
-      schemes[schemeId].deactivated = true
-      res.locals.paths.next = `${schemePath}?success=deactivated`
+      scheme.deactivated = true
+      req.flash('success', `${scheme.name} has been deactivated.`)
+      res.locals.paths.next = schemePath
     }
 
     // Reactivate scheme
     if (view === 'reactivate') {
-      schemes[schemeId].deactivated = false
-      res.locals.paths.next = `${schemePath}?success=reactivated`
+      scheme.deactivated = false
+      req.flash('success', `${scheme.name} has been reactivated.`)
+      res.locals.paths.next = schemePath
     }
 
     const next = res.locals.paths.next && res.locals.paths.next !== ''
       ? res.locals.paths.next
-      : `/schemes/${req.params.schemeId}/check-your-answers`
+      : `${schemePath}/check-your-answers`
 
     res.redirect(next)
   })
