@@ -93,27 +93,16 @@ export const schemeRoutes = (router) => {
     const { schemes } = req.session.data
     const { schemeId } = req.params
 
-    const scheme = utils.getEntityById(schemes, schemeId)
+    const scheme = schemes[schemeId]
     const schemePath = `/schemes/${schemeId}`
 
-    const schemeLocationCount = Object.entries(scheme.locations).length
-    const nextItemId = `l${schemeLocationCount + 1}`
+    // Get an id for new location that hasn’t been used previously
+    // (i.e for a deleted location)
+    const lastLocation = utils.objectToArray(scheme.locations).at(-1)
+    const lastLocationInt = Number(lastLocation.id.replace(/l([\d]*)/, '$1'))
+    const nextItemId = `l${lastLocationInt + 1}`
 
     res.redirect(`${schemePath}/location/${nextItemId}`)
-  })
-
-  /**
-   * Update location
-   */
-  router.post('/schemes/:schemeId/location/:itemId/update', (req, res) => {
-    const { schemes } = req.session.data
-    const { schemeId, itemId } = req.params
-    const scheme = schemes[schemeId]
-    const location = scheme.locations[itemId]
-    const locationsPath = `/schemes/${schemeId}/locations`
-
-    req.flash('success', `${location.address} has been updated.`)
-    res.redirect(locationsPath)
   })
 
   /**
@@ -134,18 +123,26 @@ export const schemeRoutes = (router) => {
   })
 
   /**
-   * Delete location
+   * Update location
    */
-  router.post('/schemes/:schemeId/location/:itemId/delete', (req, res) => {
+  router.post('/schemes/:schemeId/location/:itemId/:view', (req, res) => {
     const { schemes } = req.session.data
-    const { schemeId, itemId } = req.params
+    const { schemeId, itemId, view } = req.params
     const scheme = schemes[schemeId]
+    const location = scheme.locations[itemId]
     const locationsPath = `/schemes/${schemeId}/locations`
 
-    delete scheme.locations[itemId]
+    if (view === 'update') {
+      req.flash('success', `${location.address} has been updated.`)
+      res.redirect(locationsPath)
+    }
 
-    req.flash('success', 'Location has been deleted.')
-    res.redirect(locationsPath)
+    if (view === 'delete') {
+      delete scheme.locations[itemId]
+
+      req.flash('success', 'Location has been deleted.')
+      res.redirect(locationsPath)
+    }
   })
 
   /**
@@ -197,7 +194,6 @@ export const schemeRoutes = (router) => {
 
     if (scheme) {
       res.render(`schemes/${view}`, {
-        query: req.query,
         localAuthorities,
         organisations,
         allOrganisations,
@@ -212,19 +208,6 @@ export const schemeRoutes = (router) => {
     } else {
       res.redirect('/schemes')
     }
-  })
-
-  /**
-   * Delete scheme
-   */
-  router.post('/schemes/:schemeId/delete', (req, res) => {
-    const { account, schemes } = req.session.data
-    const { schemeId } = req.params
-
-    delete schemes[schemeId]
-
-    req.flash('success', 'Scheme has been deleted.')
-    res.redirect(`/organisations/${account.organisationId}/schemes`)
   })
 
   /**
