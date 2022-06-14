@@ -45,7 +45,7 @@
           text: "Postcode"
         },
         value: {
-          text: macro.postcodeHtml(location.postcode, location["local-authority"].name) if location.postcode else "Not known"
+          text: macro.postcodeHtml(location.postcode, location["local-authority"]) if location.postcode else "Not known"
         }
       }, {
         key: {

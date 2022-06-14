@@ -22,9 +22,9 @@
   {%- if log[section.id].schemeLocationId -%}
     {% set schemedId = log[section.id].schemeId[1] %}
     {% set itemId = log[section.id].schemeLocationId %}
-    {{ data.schemes[schemedId].locations[itemId].address }}<br>
+    {{ data.schemes[schemedId].locations[itemId].postcode }}<br>
     <span class="app-!-colour-muted">
-      {{ data.schemes[schemedId].locations[itemId].postcode }}<br>{{ data.schemes[schemedId].locations[itemId]["local-authority"].name }}
+      {{ data.schemes[schemedId].locations[itemId]["local-authority"] }}
     </span>
   {% else %}
     <span class="app-!-colour-muted">You didn’t answer this question</span>
@@ -78,7 +78,7 @@
     }) if not logSubmitted
   } if isSupported, {
     key: {
-      text: "Supported location"
+      text: "Location"
     },
     value: {
       html: schemeLocationHtml
