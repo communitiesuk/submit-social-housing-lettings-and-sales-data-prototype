@@ -1,6 +1,6 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Select a supported housing service" %}
+{% set title = "Select a supported housing scheme" %}
 {% set buttonText = "Continue" %}
 {% set questionId = "schemeId" %}
 
@@ -13,7 +13,7 @@
       }
     },
     hint: {
-      text: "Services found matching ‘"+ data.schemes[log[section.id].schemeId].name + "’"
+      text: "Schemes found matching ‘"+ data.schemes[log[section.id].schemeId].name + "’"
     },
     items: data.questions.scheme
   }) }}
@@ -27,7 +27,7 @@
       text: "Try another search"
     },
     hint: {
-      text: "Enter service name or postcode"
+      text: "Enter scheme name or postcode"
     }
   }) }}
 {% endblock %}

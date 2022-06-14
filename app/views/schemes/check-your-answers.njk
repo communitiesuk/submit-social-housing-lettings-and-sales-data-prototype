@@ -1,6 +1,6 @@
 {% extends "layouts/form.njk" %}
 
-{% set title = "Check your answers before creating this service" %}
+{% set title = "Check your answers before creating this scheme" %}
 
 {% block form %}
   <div class="govuk-grid-row">
@@ -10,7 +10,7 @@
       {% include "schemes/_answers.njk" %}
 
       {{ govukButton(decorate({
-        text: "Create service",
+        text: "Create scheme",
         value: "active"
       }, ["schemes", scheme.id, "status"])) }}
     </div>

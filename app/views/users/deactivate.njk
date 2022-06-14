@@ -8,12 +8,12 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
       {{ macro.heading(title, user.name) }}
 
-      <p>Deactivating this user will mean they can no longer access this service to submit CORE data.</p>
+      <p>Deactivating this user will mean they can no longer access this scheme to submit CORE data.</p>
       <p>Any logs this user has already submitted will not be affected.</p>
 
       {{ govukButton({
         classes: "govuk-button--warning",
-        text: "I’m sure – deactivate this user"
+        text: "I’m sure – deactivate this user"
       }) }}
 
       <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="{{ userPath }}">No - I’ve changed my mind</a></p>

@@ -3,7 +3,7 @@
 {% import "macros.njk" as macro %}
 {% from "macros.njk" import adminNavigation with context %}
 
-{% set title = "Supported housing services" %}
+{% set title = "Supported housing schemes" %}
 {% set caption = thisOrganisation.name %}
 {% set isGlobalView = isAdmin and path.startsWith("/schemes") %}
 
@@ -23,14 +23,14 @@
     <div class="govuk-button-group app-filter-toggle">
       {{ govukButton({
         href: "/schemes/new",
-        text: "Create a new supported housing service"
+        text: "Create a new supported housing scheme"
       }) }}
     </div>
 
     {{ govukDetails({
       classes: "govuk-!-width-two-thirds",
-      summaryText: "What is a supported housing service?",
-      text: "A supported service or scheme provides shared or self-contained housing for a particular client group, for example younger or vulnerable people. A single service can contain multiple units, for example bedrooms in shared houses or a bungalow with 3 bedrooms."
+      summaryText: "What is a supported housing scheme?",
+      text: "A supported housing scheme (also known as a ‘supported housing service’) provides shared or self-contained housing for a particular client group, for example younger or vulnerable people. A single scheme can contain multiple units, for example bedrooms in shared houses or a bungalow with 3 bedrooms."
     }) }}
 
     <div class="app-filter-layout__filter">
@@ -46,7 +46,7 @@
         classes: "govuk-!-margin-bottom-4",
         label: {
           classes: "govuk-!-margin-bottom-2",
-          text: "Search by service name, code or postcode"
+          text: "Search by scheme name, code or postcode"
         }
       }) }}
 
@@ -80,14 +80,14 @@
       {% endfor %}
 
       {% if results.length %}
-        {% call appTableGroup({ ariaLabel: "services" }) %}
+        {% call appTableGroup({ ariaLabel: "schemes" }) %}
           {{ govukTable({
-            caption: macro.tableCaption("services", pagination.results.count, q) | safe,
+            caption: macro.tableCaption("schemes", pagination.results.count, q) | safe,
             captionClasses: "govuk-table__caption--m govuk-!-font-size-19 govuk-!-font-weight-regular",
             head: [{
               html: "Code"
             }, {
-              text: "Service"
+              text: "Scheme"
             }, {
               text: "Managing agent"
             }, {
@@ -99,7 +99,7 @@
 
         {{ appPagination(pagination) }}
       {% else %}
-        <p class="govuk-body"><strong>No supported housing services found</strong></p>
+        <p class="govuk-body"><strong>No supported housing schemes found</strong></p>
       {% endif %}
     </div>
   </div>
