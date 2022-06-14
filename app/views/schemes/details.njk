@@ -5,12 +5,12 @@
 {% if scheme.name %}
   {# Editing an existing scheme #}
   {% set caption = scheme.name %}
-  {% set title = "Service details" %}
+  {% set title = "Scheme details" %}
   {% set buttonText = "Continue" %}
   {% set formAction = schemePath + "/check-updated-answers" %}
   {% set hasAnsweredQuestion = true %}
 {% else %}
-  {% set title = "Create a new supported housing service" %}
+  {% set title = "Create a new supported housing scheme" %}
 {% endif %}
 
 {% block question %}
@@ -29,10 +29,10 @@
     },
     label: {
       classes: "govuk-label--m",
-      text: "Service name"
+      text: "Scheme name"
     },
     hint: {
-      text: "This is how you’ll refer to this supported housing service within your organisation. For example, the name could relate to the address or location. You’ll be able to see the client group when selecting it."
+      text: "This is how you’ll refer to this supported housing scheme within your organisation. For example, the name could relate to the address or location. You’ll be able to see the client group when selecting it."
     },
     spellcheck: false
   }) }}
@@ -41,7 +41,7 @@
     decorate: ["schemes", scheme.id, "confidential"],
     items: [{
       value: "true",
-      text: "This service contains confidential information"
+      text: "This scheme contains confidential information"
     }]
   }) }}
 
@@ -51,7 +51,7 @@
     fieldset: {
       legend: {
         classes: "govuk-label--m",
-        text: "Which organisation manages this service?"
+        text: "Which organisation manages this scheme?"
       }
     },
     allowEmpty: true,
@@ -62,7 +62,7 @@
   {{ appAutocomplete(decorate({
     label: {
       classes: "govuk-label--m",
-      html: "Which organisation manages this service?"
+      html: "Which organisation manages this scheme?"
     },
     hint: {
       text: "Enter organisation name"
@@ -77,7 +77,7 @@
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
-        text: "What is this type of service?"
+        text: "What is this type of scheme?"
       }
     },
     items: data.questions["type-of-scheme"]
@@ -88,7 +88,7 @@
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
-        text: "Is this service registered under the Care Standards Act 2000?"
+        text: "Is this scheme registered under the Care Standards Act 2000?"
       }
     },
     items: data.questions["registered-home"]

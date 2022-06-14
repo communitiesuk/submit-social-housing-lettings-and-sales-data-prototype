@@ -1,6 +1,6 @@
 {% extends "layouts/form.njk" %}
 
-{% set title = "Check your changes before updating this service" %}
+{% set title = "Check your changes before updating this scheme" %}
 
 {% block form %}
   <div class="govuk-grid-row">
@@ -43,7 +43,7 @@
 
       <div class="govuk-button-group">
         {{ govukButton({
-          text: "Update service"
+          text: "Update scheme"
         }) }}
         <a class="govuk-link" href="{{ userOrganisationPath }}/schemes/">Cancel</a>
       </div>

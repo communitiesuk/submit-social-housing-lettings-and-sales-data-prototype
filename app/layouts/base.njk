@@ -73,7 +73,7 @@
       active: path.startsWith("/logs")
     }, {
       href: "/schemes",
-      text: "Supported housing",
+      text: "Schemes",
       active: path.startsWith("/schemes")
     }] if isAdmin else [{
       href: userOrganisationPath + "/logs",
@@ -82,7 +82,7 @@
         path.startsWith("/logs")
     }, {
       href: userOrganisationPath + "/schemes",
-      text: "Supported housing",
+      text: "Schemes",
       active: path.startsWith(userOrganisationPath + "/schemes") or
         path.startsWith("/schemes")
     } if (isOwningOrg == true and isCoordinator), {
