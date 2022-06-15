@@ -80,8 +80,8 @@
             propertyReference: log.setup["property-reference"],
             lettingStartDate: log.setup["letting-start-date"] | isoDateFromDateInput,
             needsType: log.setup["type-of-need"] | textFromInputValue(data.questions["type-of-need"]) if log.setup["type-of-need"],
-            owner: data.organisations[log.setup["organisation-owner"]].name if isAdmin,
-            manager: data.organisations[log.setup["organisation-manager"]].name if isAdmin,
+            owner: data.organisations[log.setup.owner].name if isAdmin,
+            manager: data.organisations[log.setup.agent].name if isAdmin,
             status: {
               classes: "govuk-tag--" + data.statuses[log.status].colour,
               text: data.statuses[log.status].text

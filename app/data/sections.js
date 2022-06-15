@@ -1,6 +1,17 @@
-export function sections (log) {
+export function sections (log, organisation) {
   const logId = log.id
   const logPath = `/logs/${logId}/`
+
+  let needOwner = false
+  let needAgent = false
+
+  if (organisation) {
+    // If organisation manages properties and for multiple owners, need owner
+    needOwner = organisation.isAgent && organisation?.owners.length > 1
+
+    // If organisation owns stock and has multiple agents, need agent
+    needAgent = organisation.isOwner && organisation?.agents.length > 1
+  }
 
   // Answers in ’Set up this log’ affect questions shown in task list
   let isSupportedHousing = false
@@ -18,7 +29,8 @@ export function sections (log) {
     title: 'Set up this lettings log',
     group: 'before-you-start',
     paths: {
-      [`${logPath}setup/organisation`]: {},
+      ...(needOwner && { [`${logPath}setup/owner`]: {} }),
+      ...(needAgent && { [`${logPath}setup/agent`]: {} }),
       [`${logPath}setup/letting-start-date`]: {},
       [`${logPath}setup/type-of-need`]: {
         [`${logPath}setup/letting-renewal`]: {
