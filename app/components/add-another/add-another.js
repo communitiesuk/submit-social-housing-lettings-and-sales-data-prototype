@@ -29,7 +29,6 @@ const resetItem = (item) => {
     if (input.type === 'checkbox' || input.type === 'radio') {
       input.checked = false
     } else {
-      console.log('input to reset', input)
       input.value = ''
     }
   })
@@ -54,13 +53,9 @@ const focusHeading = () => {
 
 const updateAttributes = (index, item) => {
   const inputs = item.querySelectorAll(['.govuk-input', '.govuk-select'])
-  console.log('inputs', inputs)
-
   inputs.forEach((input) => {
     // [data][item][0] => [data][item][1]
     input.name = input.name.replace(/(.*\[)[\d](\])/, '$1' + index + '$2')
-
-    console.log('autoselect?', input.dataset.module)
 
     if (input.dataset.module === 'autocomplete') {
       // data-item-0-select => data-item-1-select

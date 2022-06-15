@@ -1,0 +1,22 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Which organisation manages this property?" %}
+{% set questionId = "agent" %}
+
+{% block question %}
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
+    fieldset: {
+      legend: {
+        classes: "govuk-label--m",
+        html: macro.heading(title, caption)
+      }
+    },
+    items: agents | optionItems,
+    validate: {
+      presence: {
+        message: "Select the organisation that manages this property"
+      }
+    }
+  }) }}
+{% endblock %}

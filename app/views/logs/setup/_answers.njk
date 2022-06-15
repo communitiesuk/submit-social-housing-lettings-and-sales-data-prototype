@@ -33,25 +33,25 @@
 {{ govukSummaryList({
   rows: [{
     key: {
-      text: "Owning organisation"
+      text: "Property owner"
     },
     value: {
-      text: data.organisations[log[section.id]["organisation-owner"]].name | textFromInputValue
+      text: data.organisations[log[section.id].owner].name | textFromInputValue
     },
     actions: actionLinks({
-      href: sectionPath + "/organisation",
-      visuallyHiddenText: "owning organisation"
+      href: sectionPath + "/owner",
+      visuallyHiddenText: "property owner"
     }) if not logSubmitted
   } if isLet and not isOwningOrg, {
     key: {
-      text: "Managing organisation"
+      text: "Managing agent"
     },
     value: {
-      text: data.organisations[log[section.id]["organisation-manager"]].name | textFromInputValue
+      text: data.organisations[log[section.id].agent].name | textFromInputValue
     },
     actions: actionLinks({
-      href: sectionPath + "/organisation",
-      visuallyHiddenText: "managing organisation"
+      href: sectionPath + "/agent",
+      visuallyHiddenText: "managing agent"
     }) if not logSubmitted
   } if isLet, {
     key: {
@@ -143,13 +143,3 @@
     }) if not logSubmitted
   }]
 }) }}
-
-{# Allow all answers to be edited, for now.
-  {{ govukDetails({
-    summaryText: "Why can’t I change some of these answers?",
-    html: "We ask different questions about this log based on the answers you give us. If you want to change any information, you must <a href=\"#\">delete this log and create a new one</a>."
-  }) if isCompleted else govukWarningText({
-    text: "You won’t be able to change some of these answers after you’ve saved them.",
-    iconFallbackText: "Warning"
-  }) }}
-#}

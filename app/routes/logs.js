@@ -9,7 +9,7 @@ export const logRoutes = (router) => {
    */
   router.get(['/logs', '/organisations/:organisationId/logs'], (req, res) => {
     let { logs, users } = req.session.data
-    const { organisationId } = req.params
+    const { organisationId } = req.params || 'PARENT1'
     const type = req.query.type || 'lettings'
 
     // Convert logs to array
@@ -43,8 +43,8 @@ export const logRoutes = (router) => {
     // Filter: organisation’s logs (if scoped to organisation)
     if (organisationId && logs) {
       logs = logs.filter(log => {
-        return log.setup['organisation-manager'] === organisationId ||
-          log.setup['organisation-owner'] === organisationId
+        return log.setup?.agent === organisationId ||
+          log.setup?.owner === organisationId
       })
     }
 
@@ -179,10 +179,12 @@ export const logRoutes = (router) => {
    */
   router.all('/logs/:logId/:sectionId/:itemId?/:view?', (req, res, next) => {
     const { logId, sectionId } = req.params
-    const { logs } = req.session.data
+    const { account, logs, organisations } = req.session.data
+    const organisationId = account?.organisationId || 'PARENT1'
+    const organisation = organisations[organisationId]
 
     const log = utils.getEntityById(logs, logId)
-    const section = utils.getById(getSections(log), sectionId)
+    const section = utils.getById(getSections(log, organisation), sectionId)
 
     res.locals.paths = wizard(section.paths, req)
 
@@ -195,10 +197,12 @@ export const logRoutes = (router) => {
   router.get('/logs/:logId/:sectionId', (req, res, next) => {
     try {
       const { logId, sectionId } = req.params
-      const { logs } = req.session.data
+      const { account, logs, organisations } = req.session.data
+      const organisationId = account?.organisationId || 'PARENT1'
+      const organisation = organisations[organisationId]
 
       const log = utils.getEntityById(logs, logId)
-      const section = utils.getById(getSections(log), sectionId)
+      const section = utils.getById(getSections(log, organisation), sectionId)
 
       if (log[sectionId]) {
         if (sectionId === 'submit') {
@@ -239,11 +243,11 @@ export const logRoutes = (router) => {
       const childOrganisations = organisation.agents || []
       const userOrganisations = organisationId.concat(childOrganisations)
 
-      const managingOrganisations = Object.values(organisations)
+      const agents = Object.values(organisations)
         .filter(org => userOrganisations.includes(org.id))
 
-      const owningOrganisations = managingOrganisations
-        .filter(org => org.stock)
+      const owners = agents
+        .filter(org => org.isOwner)
 
       const organisationSettings = getOrganisationSettings(organisation)
 
@@ -255,8 +259,8 @@ export const logRoutes = (router) => {
         sectionPath,
         itemId,
         organisationId,
-        managingOrganisations,
-        owningOrganisations,
+        agents,
+        owners,
         organisationSettings
       })
     } catch (error) {

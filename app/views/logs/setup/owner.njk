@@ -1,0 +1,22 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Which organisation owns this property?" %}
+{% set questionId = "owner" %}
+
+{% block question %}
+  {{ govukRadios({
+    decorate: ["logs", log.id, section.id, questionId],
+    fieldset: {
+      legend: {
+        classes: "govuk-label--m",
+        html: macro.heading(title, caption)
+      }
+    },
+    items: owners | optionItems,
+    validate: {
+      presence: {
+        message: "Select the organisation that owns this property"
+      }
+    }
+  }) }}
+{% endblock %}
