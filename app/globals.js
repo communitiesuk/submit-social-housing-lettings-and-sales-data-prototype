@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import { sections as getSections } from './data/sections.js'
 import data from './data.js'
 import * as utils from './utils.js'
