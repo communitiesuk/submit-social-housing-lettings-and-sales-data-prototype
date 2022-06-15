@@ -1,5 +1,4 @@
 {% set isLet = log.type == "lettings" %}
-{% set isSale = log.type == "sales" %}
 {% set isSupported = log[section.id]["type-of-need"] == "supported" %}
 {% set isCompleted = log[section.id]["completed"] == "true" %}
 
@@ -132,28 +131,6 @@
       visuallyHiddenText: "tenant code"
     }) if not logSubmitted
   } if isLet, {
-    key: {
-      text: "Sale completion date"
-    },
-    value: {
-      text: log[section.id]["sale-completion-date"] | textFromInputValue | govukDate
-    },
-    actions: actionLinks({
-      href: sectionPath + "/sale-completion-date",
-      visuallyHiddenText: "sale completion date"
-    }) if not logSubmitted
-  } if isSale, {
-    key: {
-      text: "Purchaser code"
-    },
-    value: {
-      text: log[section.id]["purchaser-code"] | textFromInputValue
-    },
-    actions: actionLinks({
-      href: sectionPath + "/purchaser-code",
-      visuallyHiddenText: "purchaser code"
-    }) if not logSubmitted
-  } if isSale, {
     key: {
       text: "Property reference"
     },
