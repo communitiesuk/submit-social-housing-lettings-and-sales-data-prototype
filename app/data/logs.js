@@ -161,6 +161,7 @@ export default {
       'outgoings-support-charge': 0,
       'outgoings-value': 215,
       'outgoings-after-benefits': 'true',
+      'outgoings-outstanding-known': 'true',
       'outgoings-outstanding': 15,
       completed: 'true'
     }
@@ -254,6 +255,7 @@ export default {
       'outgoings-support-charge': 0,
       'outgoings-value': 215,
       'outgoings-after-benefits': 'true',
+      'outgoings-outstanding-known': 'true',
       'outgoings-outstanding': 15,
       completed: 'true'
     }
