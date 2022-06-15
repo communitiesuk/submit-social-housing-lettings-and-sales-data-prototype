@@ -14,15 +14,13 @@ router.use(flash())
 router.all('*', (req, res, next) => {
   const { account } = req.session.data
 
-  // Set state
-  if (account) {
-    res.locals.isAdmin = account.role === 'admin'
-    res.locals.isCoordinator = account.role === 'coordinator'
-    res.locals.userOrganisationPath = `/organisations/${account.organisationId}`
+  const organisationId = account?.organisationId || 'PARENT1'
 
-    // TODO: Better way of determining owning organisation
-    res.locals.isOwningOrg = account.organisationId === 'PARENT1'
-  }
+  // Set state
+  res.locals.isAdmin = account.role === 'admin'
+  res.locals.isCoordinator = account.role === 'coordinator'
+  res.locals.userOrganisationPath = `/organisations/${organisationId}`
+  res.locals.isOwningOrg = organisationId.isOwner
 
   // Provide current path
   res.locals.path = req.path
