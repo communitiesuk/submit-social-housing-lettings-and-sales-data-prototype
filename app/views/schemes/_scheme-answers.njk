@@ -31,14 +31,14 @@
     }) if not scheme.deactivated
   }, {
     key: {
-      text: "Managing agent"
+      text: "Managed by"
     },
     value: {
       text: organisations[scheme.agentId].name
     },
     actions: actionLinks({
       href: schemePath + "/details",
-      visuallyHiddenText: "managing agent"
+      visuallyHiddenText: "who this scheme is managed by"
     }) if not scheme.deactivated
   }, {
     key: {
