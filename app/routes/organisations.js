@@ -9,26 +9,32 @@ const getOrganisationWizardPaths = (req) => {
   const journey = {
     [`${organisationPath}details`]: {},
     [`${organisationPath}is-owner`]: {
-      // SKIP: Can’t have agents if doesn’t own stock
+      // SKIP: Don’t need to know if manages own properties if doesn’t own stock
       [`${organisationPath}is-agent`]: {
         data: `organisations.${organisationId}.isOwner`,
         value: 'false'
       }
     },
-    [`${organisationPath}is-owner-agent`]: {
-      // SKIP: Don’t need agents if manages own stock
+    [`${organisationPath}is-own-agent`]: {
+      // SKIP: Don’t need agents if manages own properties
       [`${organisationPath}is-agent`]: {
-        data: `organisations.${organisationId}.isOwnerAgent`,
+        data: `organisations.${organisationId}.isOwnAgent`,
         value: 'true'
       }
     },
     [`${organisationPath}agents`]: {},
     [`${organisationPath}is-agent`]: {
-      // SKIP: Don’t need rent periods if doesn’t manage properties
-      [`${organisationPath}check-your-answers`]: {
-        data: `organisations.${organisationId}.isAgent`,
-        value: 'false'
-      }
+      // SKIP: Don’t ask any more questions if not an agent or owner
+      [`${organisationPath}check-your-answers`]: () =>
+        req.session.data.organisations[organisationId].isAgent === 'false' &&
+        req.session.data.organisations[organisationId].isOwner === 'false',
+      // SKIP: Don’t ask for owners if not an agent and manages own properties
+      [`${organisationPath}rent-periods`]: () =>
+        req.session.data.organisations[organisationId].isAgent === 'false' &&
+        req.session.data.organisations[organisationId].isOwnAgent === 'true',
+      // SKIP: Don’t ask any more questions if not an agent
+      [`${organisationPath}check-your-answers`]: () =>
+        req.session.data.organisations[organisationId].isAgent === 'false'
     },
     [`${organisationPath}owners`]: {},
     [`${organisationPath}rent-periods`]: {},

@@ -75,9 +75,7 @@
     {% endfor %}
     </ul>
   {% elif organisation | length == 1 %}
-    <p class="govuk-body">{{ organisations[organisation[1]].name or organisations[organisation].name }}</p>
-  {% else %}
-    <p class="govuk-body">None</p>
+    <p class="govuk-body">{{ organisations[organisation[0][1]].name or organisations[organisation].name or "None" }}</p>
   {% endif %}
 {% endmacro %}
 

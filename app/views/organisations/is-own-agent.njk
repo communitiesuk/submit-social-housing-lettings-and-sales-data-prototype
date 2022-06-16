@@ -4,7 +4,7 @@
 {% set caption = organisation.name %}
 {% set required = true %}
 
-{% if organisation.isOwnerAgent %}
+{% if organisation.isOwnAgent %}
   {# Editing an existing organisation #}
   {% set buttonText = "Continue" %}
   {% set formAction = organisationPath + "/check-updated-answers" %}
@@ -12,13 +12,19 @@
 
 {% block question %}
   {{ govukRadios({
-    decorate: ["organisations", organisation.id, "isOwnerAgent"],
+    decorate: ["organisations", organisation.id, "isOwnAgent"],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--l",
         html: macro.fieldsetHeading(title, caption)
       }
     },
-    items: data.questions["yes-no"]
+    items: [{
+      text: "Yes – It manages all of its own housing stock",
+      value: "true"
+    }, {
+      text: "No – Some or all of it’s housing stock is managed by other organisations",
+      value: "false"
+    }]
   }) }}
 {% endblock %}

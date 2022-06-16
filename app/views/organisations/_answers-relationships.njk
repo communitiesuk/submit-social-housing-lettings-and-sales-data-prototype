@@ -1,6 +1,6 @@
 {% set isAgent = organisation.isAgent == "true" %}
 {% set isOwner = organisation.isOwner == "true" %}
-{% set isOwnerAgent = organisation.isOwnerAgent == "true" %}
+{% set isOwnAgent = organisation.isOwnAgent == "true" %}
 
 {% set outgoingPeriodsHtml %}
   {% if organisationSettings.rentPeriods %}
@@ -34,13 +34,13 @@
       text: "Manages own stock"
     },
     value: {
-      html: organisation.isOwnerAgent | textFromInputValue(data.questions["yes-no"])
+      html: organisation.isOwnAgent | textFromInputValue(data.questions["yes-no"])
     },
     actions: actionLinks({
       href: thisOrganisationPath + "/is-owner-agent",
       visuallyHiddenText: "if manages own stock"
     }) if isAdmin or isCoordinator
-  } if isOwnerAgent, {
+  } if isOwnAgent, {
     key: {
       text: "Stock managed by"
     },
@@ -51,7 +51,7 @@
       href: thisOrganisationPath + "/agents",
       visuallyHiddenText: "managing agents"
     }) if isAdmin or isCoordinator
-  } if isOwner and not isOwnerAgent, {
+  } if isOwner and not isOwnAgent, {
     key: {
       text: "Manages propeties"
     },
@@ -84,5 +84,5 @@
       href: thisOrganisationPath + "/rent-periods",
       visuallyHiddenText: "rent periods"
     }) if isAdmin or isCoordinator
-  } if isAgent or isOwnerAgent]
+  } if isAgent or isOwnAgent]
 }) }}
