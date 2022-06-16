@@ -25,7 +25,7 @@
             html: macro.heading(title, user.name)
           }
         },
-        items: (allOrganisations if isAdmin else managedOrganisations) | optionItems("name", "id")
+        items: (allOrganisations if isAdmin else managedOrganisations) | optionItems
       }) }}
 
       {{ govukButton({

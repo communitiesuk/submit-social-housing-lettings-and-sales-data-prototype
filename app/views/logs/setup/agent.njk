@@ -12,7 +12,7 @@
         html: macro.heading(title, caption)
       }
     },
-    items: agents | optionItems,
+    items: agents | optionItems({ hint: "hint" }),
     validate: {
       presence: {
         message: "Select the organisation that manages this property"

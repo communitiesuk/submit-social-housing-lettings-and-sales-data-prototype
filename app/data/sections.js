@@ -7,10 +7,14 @@ export function sections (log, organisation) {
 
   if (organisation) {
     // If organisation manages properties and for multiple owners, need owner
-    needOwner = organisation.isAgent && organisation?.owners.length > 1
+    needOwner =
+      (organisation.isOwner === 'true' && organisation.owners.length > 0) ||
+      organisation.owners.length > 1
 
     // If organisation owns stock and has multiple agents, need agent
-    needAgent = organisation.isOwner && organisation?.agents.length > 1
+    needAgent =
+      (organisation.isAgent === 'true' && organisation.agents.length > 0) ||
+      organisation.agents.length > 1
   }
 
   // Answers in ’Set up this log’ affect questions shown in task list

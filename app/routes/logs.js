@@ -240,15 +240,27 @@ export const logRoutes = (router) => {
       // Organisation data
       const organisationId = account?.organisationId || 'PARENT1'
       const organisation = utils.getEntityById(organisations, organisationId)
-      const childOrganisations = organisation.agents || []
-      const userOrganisations = organisationId.concat(childOrganisations)
+      organisation.hint = 'Your organisation'
 
-      const agents = Object.values(organisations)
-        .filter(org => userOrganisations.includes(org.id))
+      // Get details of every organisation listed as an owner
+      const owners = []
+      organisation.owners.forEach(owner => owners.push(organisations[owner]))
 
-      const owners = agents
-        .filter(org => org.isOwner)
+      // If this organisation is an owner, add it to the start of the list
+      if (owners.length && organisation.isOwner === 'true') {
+        owners.unshift(organisation, { divider: 'or' })
+      }
 
+      // Get details of every organisation listed as an agent
+      const agents = []
+      organisation.agents.forEach(agent => agents.push(organisations[agent]))
+
+      // If this organisation is an agent, add it to the start of the list
+      if (agents.length && organisation.isAgent === 'true') {
+        agents.unshift(organisation, { divider: 'or' })
+      }
+
+      // Get settings for this organisation (rent periods)
       const organisationSettings = getOrganisationSettings(organisation)
 
       res.render(`logs/${sectionId}/${view}`, {

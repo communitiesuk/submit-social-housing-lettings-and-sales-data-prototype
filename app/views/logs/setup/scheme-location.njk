@@ -12,6 +12,10 @@
         html: macro.heading(title, caption)
       }
     },
-    items: data.schemes[schemeId].locations | optionItems("postcode", "id", "local-authority")
+    items: data.schemes[schemeId].locations | optionItems({
+      text: "postcode",
+      value: "id",
+      hint: "local-authority"
+    })
   }) }}
 {% endblock %}

@@ -17,7 +17,7 @@ const generateOrganisations = () => {
         Object.keys(registeredProviders),
         3
       )
-      : false
+      : []
 
     // If organisation manages stock, give it some owners (aka parents)
     const owners = isAgent
@@ -25,7 +25,7 @@ const generateOrganisations = () => {
         Object.keys(registeredProviders),
         2
       )
-      : false
+      : []
 
     organisations[key] = {
       id: key,

@@ -12,7 +12,7 @@
         html: macro.heading(title, caption)
       }
     },
-    items: owners | optionItems,
+    items: owners | optionItems({ hint: "hint" }),
     validate: {
       presence: {
         message: "Select the organisation that owns this property"

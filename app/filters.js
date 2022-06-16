@@ -57,9 +57,10 @@ export default (env) => {
     return value
   }
 
-  filters.optionItems = (array, text, value, hint = false) => {
+  filters.optionItems = (array, { text, value, hint } = {}) => {
     text = text || 'name'
     value = value || 'id'
+    hint = hint || false
 
     if (!array) {
       return
@@ -71,24 +72,33 @@ export default (env) => {
 
     if (array.length > 1) {
       array = array.sort((a, b) => {
-        const fa = a[text].toLowerCase()
-        const fb = b[text].toLowerCase()
+        if (a[text] && b[text]) {
+          const fa = a[text].toLowerCase()
+          const fb = b[text].toLowerCase()
 
-        if (fa < fb) { return -1 }
-        if (fa > fb) { return 1 }
+          if (fa < fb) { return -1 }
+          if (fa > fb) { return 1 }
+        }
+
         return 0
       })
     }
 
-    array = array.map(item => ({
-      text: item[text],
-      value: item[value],
-      ...(hint && {
-        hint: {
-          html: item[hint]
-        }
-      })
-    }))
+    array = array.map(item => {
+      if (item.divider) {
+        return item
+      }
+
+      return {
+        text: item[text],
+        value: item[value],
+        ...((item[hint]) && {
+          hint: {
+            html: item[hint]
+          }
+        })
+      }
+    })
 
     return array
   }

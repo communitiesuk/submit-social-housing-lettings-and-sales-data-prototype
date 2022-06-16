@@ -5,6 +5,7 @@ import { logRoutes } from './routes/logs.js'
 import { organisationRoutes } from './routes/organisations.js'
 import { schemeRoutes } from './routes/schemes.js'
 import { userRoutes } from './routes/users.js'
+import { getEntityById } from './utils.js'
 
 const router = express.Router()
 
@@ -12,16 +13,15 @@ router.use(flash())
 
 // Set account locals
 router.all('*', (req, res, next) => {
-  const { account } = req.session.data
-
-  const organisationId = account?.organisationId || 'PARENT1'
+  const { account, organisations } = req.session.data
 
   // Set state
-  if (account) {
+  if (account?.role && account?.organisationId) {
+    const organisation = getEntityById(organisations, account.organisationId)
     res.locals.isAdmin = account.role === 'admin'
     res.locals.isCoordinator = account.role === 'coordinator'
-    res.locals.userOrganisationPath = `/organisations/${organisationId}`
-    res.locals.isOwningOrg = organisationId.isOwner
+    res.locals.userOrganisationPath = `/organisations/${account.organisationId}`
+    res.locals.isOwningOrg = organisation.isOwner
   }
 
   // Provide current path
