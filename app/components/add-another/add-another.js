@@ -103,10 +103,6 @@ const onRemoveButtonClick = function (event) {
     items[0].querySelector('.app-add-another__remove-button').remove()
   }
 
-  items.forEach((item, index) => {
-    updateAttributes(index, item)
-  })
-
   focusHeading()
 }
 
