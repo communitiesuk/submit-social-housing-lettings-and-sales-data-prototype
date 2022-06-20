@@ -42,7 +42,7 @@
     }) if isAdmin or isCoordinator
   } if isOwnAgent, {
     key: {
-      text: "Stock managed by"
+      text: "Properties managed by"
     },
     value: {
       html: macro.organisationHtml(organisations, organisation.agents)
@@ -53,7 +53,7 @@
     }) if isAdmin or isCoordinator
   } if isOwner and not isOwnAgent, {
     key: {
-      text: "Manages propeties"
+      text: "Manages properties for other organisations"
     },
     value: {
       html: organisation.isAgent | textFromInputValue(data.questions["yes-no"])
@@ -64,7 +64,7 @@
     }) if isAdmin or isCoordinator
   }, {
     key: {
-      text: "Manages properties for"
+      text: "Managing agent for"
     },
     value: {
       html: macro.organisationHtml(organisations, organisation.owners)

@@ -1,6 +1,6 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Does this organisation manage its own housing stock?" %}
+{% set title = "Does this organisation manage all of its own housing stock?" %}
 {% set caption = organisation.name %}
 {% set required = true %}
 
@@ -20,10 +20,10 @@
       }
     },
     items: [{
-      text: "Yes – It manages all of its own housing stock",
+      text: "Yes – manages all its own housing stock",
       value: "true"
     }, {
-      text: "No – Some or all of it’s housing stock is managed by other organisations",
+      text: "No – some or all of its housing stock is managed by other organisations",
       value: "false"
     }]
   }) }}
