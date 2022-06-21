@@ -19,7 +19,7 @@
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.0.5",
     "express-flash-plus": "^0.0.7",
-    "govuk-prototype-rig": "^0.5.2",
+    "govuk-prototype-rig": "^0.6.0",
     "npm-run-all": "^4.1.5",
     "rollup": "^2.58.0",
     "rollup-plugin-copy": "^3.4.0",
@@ -38,7 +38,8 @@
   "type": "module",
   "prototype": {
     "serviceName": "Submit social housing lettings and sales data (CORE)",
-    "templateExtension": "njk"
+    "templateExtension": "njk",
+    "defaultRigLayout": "layouts/base.njk"
   },
   "stylelint": {
     "extends": "stylelint-config-gds/scss"
