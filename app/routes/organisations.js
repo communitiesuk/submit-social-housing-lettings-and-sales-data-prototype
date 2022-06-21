@@ -3,8 +3,10 @@ import * as utils from '../utils.js'
 import { organisationSettings as getOrganisationSettings } from '../data/organisation-settings.js'
 
 const getOrganisationWizardPaths = (req) => {
+  const { organisations } = req.session.data
   const { organisationId } = req.params
   const organisationPath = `/organisations/${organisationId}/`
+  const organisation = organisations[organisationId]
 
   const journey = {
     [`${organisationPath}details`]: {},
@@ -26,15 +28,13 @@ const getOrganisationWizardPaths = (req) => {
     [`${organisationPath}is-agent`]: {
       // SKIP: Don’t ask any more questions if not an agent or owner
       [`${organisationPath}check-your-answers`]: () =>
-        req.session.data.organisations[organisationId].isAgent === 'false' &&
-        req.session.data.organisations[organisationId].isOwner === 'false',
+        organisation.isOwner === 'false' && organisation.isAgent === 'false',
       // SKIP: Don’t ask for owners if not an agent and manages own properties
       [`${organisationPath}rent-periods`]: () =>
-        req.session.data.organisations[organisationId].isAgent === 'false' &&
-        req.session.data.organisations[organisationId].isOwnAgent === 'true',
-      // SKIP: Don’t ask any more questions if not an agent
-      [`${organisationPath}check-your-answers`]: () =>
-        req.session.data.organisations[organisationId].isAgent === 'false'
+        organisation.isOwnAgent === 'true' && organisation.isAgent === 'false',
+      // CONTINUE
+      [`${organisationPath}owners`]: () =>
+        organisation.isAgent === 'true'
     },
     [`${organisationPath}owners`]: {},
     [`${organisationPath}rent-periods`]: {},
