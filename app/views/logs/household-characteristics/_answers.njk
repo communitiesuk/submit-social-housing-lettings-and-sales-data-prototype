@@ -22,8 +22,8 @@
   {{ log[section.id]["number-in-household"] | textFromInputValue }}
 {% endset %}
 
-{{ xGovukSummaryCard({
-  classes: "govuk-!-margin-bottom-6",
+{{ newSummaryList({
+  card: "true",
   rows: [{
     key: {
       text: "Tenant has seen the privacy notice"
@@ -67,9 +67,12 @@
   {% endif %}
   {% set name = "lead tenant" if isLeadTenant else "person " + i %}
 
-  {{ xGovukSummaryCard({
-    classes: "govuk-!-margin-bottom-6",
-    titleText: name | capitalize,
+  {{ newSummaryList({
+    header: {
+      title: {
+        text: name | capitalize
+      }
+    },
     rows: [{
       key: {
         text: "Details known"

@@ -14,24 +14,27 @@
       Data coordinators can edit locations
       Admins can edit and delete locations
     -#}
-    {{ xGovukSummaryCard({
-      titleText: location.address or location.postcode,
-      actions: actionLinks(
-        [{
-          href: schemePath + "/location/" + itemId,
-          text: "Edit",
-          visuallyHiddenText: location.address or location.postcode
-        }, {
-          href: schemePath + "/location/" + itemId + "/delete",
-          text: "Delete",
-          visuallyHiddenText: location.address or location.postcode
-        }] if isAdmin else [{
-          href: schemePath + "/location/" + itemId,
-          text: "Edit",
-          visuallyHiddenText: location.address or location.postcode
-        }]
-      ) if not scheme.deactivated,
-      classes: "govuk-!-margin-bottom-6",
+    {{ newSummaryList({
+      header: {
+        title: {
+          text: location.address or location.postcode
+        },
+        actions: actionLinks(
+          [{
+            href: schemePath + "/location/" + itemId,
+            text: "Edit",
+            visuallyHiddenText: location.address or location.postcode
+          }, {
+            href: schemePath + "/location/" + itemId + "/delete",
+            text: "Delete",
+            visuallyHiddenText: location.address or location.postcode
+          }] if isAdmin else [{
+            href: schemePath + "/location/" + itemId,
+            text: "Edit",
+            visuallyHiddenText: location.address or location.postcode
+          }]
+        ) if not scheme.deactivated
+      },
       rows: [{
         key: {
           text: "Location code"
