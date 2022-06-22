@@ -61,7 +61,7 @@
     value: {
       html: organisation.domains | join("<br>") | urlize
     }
-  }, {
+  } if organisation.domains, {
     key: {
       text: "Data sharing"
     },
