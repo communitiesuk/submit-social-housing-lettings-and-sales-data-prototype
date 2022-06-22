@@ -48,6 +48,17 @@ export const organisationRoutes = (router) => {
     let { organisations } = req.session.data
 
     organisations = utils.objectToArray(organisations)
+    organisations.sort((a, b) => {
+      if (a.name && b.name) {
+        const fa = a.name.toLowerCase()
+        const fb = b.name.toLowerCase()
+
+        if (fa < fb) { return -1 }
+        if (fa > fb) { return 1 }
+      }
+
+      return 0
+    })
 
     // Pagination
     const page = parseInt(req.query.page) || 1
