@@ -16,32 +16,6 @@ export const accountRoutes = (router) => {
   })
 
   /**
-   * Prefill login with a demo account email address
-   */
-  router.get('/start/?:organisationId', (req, res) => {
-    req.session.data.account = {}
-
-    switch (req.params.organisationId) {
-      case 'admin':
-        req.session.data.account.email = 'admin@levellingup.gov.uk'
-        break
-      case 'data-coordinator':
-        req.session.data.account.email = 'data.coordinator@owning.org.uk'
-        break
-      case 'data-provider':
-        req.session.data.account.email = 'data.provider@owning.org.uk'
-        break
-      case 'data-coordinator-agent':
-        req.session.data.account.email = 'data.coordinator@managing.org.uk'
-        break
-      default:
-        req.session.data.account.email = 'data.provider@managing.org.uk'
-    }
-
-    res.render('index')
-  })
-
-  /**
    * Sign out
    */
   router.get('/account/sign-out', (req, res) => {
@@ -57,27 +31,39 @@ export const accountRoutes = (router) => {
    * Sign in
    */
   router.post('/account/sign-in', (req, res) => {
-    const { account, users } = req.session.data
+    const { users } = req.session.data
 
     // Demo accounts
-    switch (account.email) {
+    switch (req.session.data['account-email']) {
       case 'admin@levellingup.gov.uk':
         req.session.data.account = users.ADMIN
         break
-      case 'data.coordinator@owning.org.uk':
-        req.session.data.account = users.DC001
+      case 'data.coordinator@malinsgroup.co.uk':
+        req.session.data.account = users['DC-OWNER']
         break
-      case 'data.provider@owning.org.uk':
-        req.session.data.account = users.DP001
+      case 'data.provider@malinsgroup.co.uk':
+        req.session.data.account = users['DP-OWNER']
         break
-      case 'data.coordinator@managing.org.uk':
-        req.session.data.account = users.DCM01
+      case 'data.coordinator@believehousing.co.uk':
+        req.session.data.account = users['DC-OWNER_MANAGER']
         break
-      case 'data.provider@managing.org.uk':
-        req.session.data.account = users.DPM01
+      case 'data.provider@believehousing.co.uk':
+        req.session.data.account = users['DP-OWNER_MANAGER']
+        break
+      case 'data.coordinator@placesforpeople.co.uk':
+        req.session.data.account = users['DC-OWNER_AGENT']
+        break
+      case 'data.provider@placesforpeople.co.uk':
+        req.session.data.account = users['DP-OWNER_AGENT']
+        break
+      case 'data.coordinator@bcwa.org.uk':
+        req.session.data.account = users['DC-AGENT']
+        break
+      case 'data.provider@bcwa.org.uk':
+        req.session.data.account = users['DP-AGENT']
         break
       default:
-        req.session.data.account = users.DP001
+        req.session.data.account = users.ADMIN
     }
 
     req.session.data.token = true

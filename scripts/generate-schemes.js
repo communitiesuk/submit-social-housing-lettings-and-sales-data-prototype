@@ -153,8 +153,8 @@ const generateSchemes = () => {
       confidential: faker.datatype.boolean().toString(),
       organisationId: value.organisationId,
       agentId: faker.helpers.arrayElement([
-        'CHILD1',
-        'CHILD2',
+        'AGENT',
+        'OWNER_AGENT',
         value.organisationId
       ]),
       type,

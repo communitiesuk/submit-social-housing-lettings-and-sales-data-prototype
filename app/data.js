@@ -19,7 +19,7 @@ export default async () => ({
   },
   logs,
   filter: {
-    user: ['DP001'],
+    user: ['DP-OWNER'],
     collection: ['2022/23'],
     status: ['complete', 'incomplete', 'submitted']
   },
