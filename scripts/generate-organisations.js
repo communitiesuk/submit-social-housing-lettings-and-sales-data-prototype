@@ -27,9 +27,16 @@ const generateOrganisations = () => {
       )
       : []
 
+    const domain = (name) => {
+      name = name.replace(/[,.]/g, '')
+      name = name.replace(/(?:\sLimited)|(?:\sSociety)|(?:\sCo-operative)/g, '')
+      return name.replace(/\s/g, '-').toLowerCase() + '.org.uk'
+    }
+
     organisations[key] = {
       id: key,
       name: value.name,
+      domains: value.domains || [domain(value.name)],
       address: value.address
         ? value.address
         : {
