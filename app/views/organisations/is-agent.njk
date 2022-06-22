@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "Does this organisation manage properties for other housing providers?" %}
+{% set perspective = "this" if isAdmin else "your" %}
+{% set title = "Does " + perspective + " organisation manage properties for other housing providers?" %}
 {% set caption = organisation.name %}
 {% set required = true %}
 

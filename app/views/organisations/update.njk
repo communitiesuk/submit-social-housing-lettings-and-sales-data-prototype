@@ -1,6 +1,7 @@
 {% extends "layouts/form.njk" %}
 
-{% set title = "Check your ownership and management changes before updating this organisation" %}
+{% set perspective = "this" if isAdmin else "your" %}
+{% set title = "Check your ownership and management changes before updating " + perspective + " organisation" %}
 
 {% block form %}
   <div class="govuk-grid-row">

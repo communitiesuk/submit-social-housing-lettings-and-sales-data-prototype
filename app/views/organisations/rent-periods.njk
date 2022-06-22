@@ -1,6 +1,7 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "What rent periods does your organisation use?" %}
+{% set perspective = "this" if isAdmin else "your" %}
+{% set title = "What rent periods does " + perspective + " organisation use?" %}
 {% set caption = thisOrganisation.name %}
 {% set buttonText = "Save changes" %}
 {% set required = true %}

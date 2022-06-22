@@ -2,7 +2,8 @@
 
 {% import "macros.njk" as macro %}
 
-{% set title = "Which housing providers does this organisation manage properties for?" %}
+{% set perspective = "this" if isAdmin else "your" %}
+{% set title = "Which housing providers does " + perspective + " organisation manage properties for?" %}
 {% set caption = organisation.name %}
 {% set required = true %}
 

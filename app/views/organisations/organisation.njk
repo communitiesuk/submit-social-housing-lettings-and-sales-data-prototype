@@ -3,7 +3,8 @@
 {% import "macros.njk" as macro %}
 {% from "macros.njk" import adminNavigation with context %}
 
-{% set title = "About this organisation" if isAdmin else "About your organisation" %}
+{% set perspective = "this" if isAdmin else "your" %}
+{% set title = "About " + perspective + " organisation" %}
 {% set caption = thisOrganisation.name %}
 
 {% block content %}
