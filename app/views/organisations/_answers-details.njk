@@ -56,6 +56,13 @@
     }) if isAdmin
   }, {
     key: {
+      text: "Allowed user domains"
+    },
+    value: {
+      html: organisation.domains | join("<br>") | urlize
+    }
+  }, {
+    key: {
       text: "Data sharing"
     },
     value: {

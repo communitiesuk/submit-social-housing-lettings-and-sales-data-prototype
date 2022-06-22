@@ -1,7 +1,7 @@
 export default {
   SUPPORT: {
     name: 'Department for Levelling Up, Housing & Communities',
-    domains: ['communities.gov.uk', 'levelling.gov.uk'],
+    domains: ['communities.gov.uk', 'levellingup.gov.uk'],
     address: {
       line1: '2 Marsham Street',
       line2: 'London',
