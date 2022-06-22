@@ -33,7 +33,7 @@ export const schemeRoutes = (router) => {
    */
   router.all(['/schemes', '/organisations/:organisationId/schemes'], (req, res) => {
     let { organisations, schemes } = req.session.data
-    const { organisationId } = req.params || 'PARENT1'
+    const { organisationId } = req.params || 'OWNER'
     const organisation = organisations[organisationId]
 
     // Get schemes as array sorted by scheme name

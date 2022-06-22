@@ -1,6 +1,7 @@
 export default {
-  DLUHC: {
+  SUPPORT: {
     name: 'Department for Levelling Up, Housing & Communities',
+    domains: ['communities.gov.uk', 'levelling.gov.uk'],
     address: {
       line1: '2 Marsham Street',
       line2: 'London',
@@ -8,64 +9,86 @@ export default {
     },
     tel: '0303 444 1209',
     type: 'Not applicable',
+    registration: false,
     isAgent: 'false',
     isOwner: 'false'
   },
-  PARENT1: { // Example parent organisation
-    name: 'Own Homes Limited',
-    'registration-date': '2021-10-04',
-    designation: 'Non-profit',
+  OWNER: { // Organisation owns stock and contracts management to agents
+    name: 'Malins Affordable Homes Limited',
+    domains: ['malinsgroup.co.uk'],
+    'registration-date': '2013-10-03',
+    designation: 'Profit',
     'corporate-form': 'Company',
     address: {
-      line1: 'Fairview House, 18 Water Street',
-      line2: 'Fareham',
-      postalCode: 'PO16 7BB'
+      line1: 'Unit 7 Horizon Business Village, 1 Brooklands Road',
+      line2: 'Weybridge',
+      postalCode: 'KT13 0TJ'
     },
-    tel: '01329 234600',
+    tel: '01932 356043',
+    registration: '4777',
+    isOwner: 'true',
+    isOwnAgent: 'false',
+    agents: ['4854', 'L0891', 'LH0117'],
     isAgent: 'false',
-    owners: [],
-    isOwner: 'true',
-    agents: [
-      'CHILD1',
-      'CHILD2'
-    ]
+    owners: []
   },
-  CHILD1: { // Example child organisation
-    name: 'Housing Management Limited',
-    'registration-date': '2021-10-04',
+  OWNER_MANAGER: { // Organisation owns and manages stock
+    name: 'Believe Housing Limited',
+    domains: ['believehousing.co.uk'],
+    'registration-date': '2019-04-12',
+    designation: 'Non-profit',
+    'corporate-form': 'Registered society',
+    address: {
+      line1: 'Coast House, Spectrum 4, Spectrum Business Park',
+      line2: 'Seaham',
+      postalCode: 'SR7 7TT'
+    },
+    tel: '0300 1311 999',
+    registration: '5071',
+    isOwner: 'true',
+    isOwnAgent: 'true',
+    agents: [],
+    isAgent: 'false',
+    owners: []
+  },
+  OWNER_AGENT: { // Organisation owns and manages stock and that of other organisations
+    name: 'Places for People Group Limited',
+    domains: ['placesforpeople.co.uk'],
+    'registration-date': '1999-09-21',
     designation: 'Non-profit',
     'corporate-form': 'Company',
     address: {
-      line1: '34 High Street',
-      line2: 'Exemplar',
-      postalCode: 'EX2 2AG'
+      line1: '305 Gray’s Inn Road',
+      line2: 'London',
+      postalCode: 'WC1X 8QR'
     },
-    tel: '01432 098765',
-    isAgent: 'true',
-    owners: [
-      'PARENT1'
-    ],
+    tel: '020 7843 3820',
+    registration: 'L4236',
     isOwner: 'true',
-    agents: [
-      'CHILD2'
-    ]
+    isOwnAgent: 'true',
+    agents: ['L0659'],
+    isAgent: 'true',
+    owners: ['LH3926']
   },
-  CHILD2: { // Example child organisation that is also a parent
-    name: 'Homes Charity CIC',
-    'registration-date': '2021-10-04',
+  AGENT: { // Organisation manages properties for other organisations
+    name: 'Bromley and Croydon Women’s Aid Limited',
+    domains: ['bcwa.org.uk'],
+    'registration-date': '2021-08-05',
     designation: 'Non-profit',
     'corporate-form': 'Charitable company',
     address: {
-      line1: '123a Sandsford Road',
-      line2: 'Exemplar',
-      postalCode: 'EX32 5HC'
+      line1: '20 King Street',
+      line2: 'London',
+      postalCode: 'EC2V 8EG'
     },
-    tel: '01432 980111',
+    tel: '020 8313 9303',
+    registration: '5139',
+    isOwner: 'false',
+    isOwnAgent: 'false',
+    agents: [],
     isAgent: 'true',
-    owners: [
-      'PARENT1'
-    ],
-    isOwner: 'false'
+    owners: ['4851', 'LH0391', 'LH0032'],
+    'rent-periods': ['fortnightly']
   },
   4568: {
     name: 'Bolton at Home Limited',
@@ -841,12 +864,12 @@ export default {
     designation: 'Non-profit',
     'corporate-form': 'Company'
   },
-  4777: {
-    name: 'Malins Affordable Homes Limited',
-    'registration-date': '2013-10-03',
-    designation: 'Profit',
-    'corporate-form': 'Company'
-  },
+  // 4777: {
+  //   name: 'Malins Affordable Homes Limited',
+  //   'registration-date': '2013-10-03',
+  //   designation: 'Profit',
+  //   'corporate-form': 'Company'
+  // },
   4778: {
     name: 'Reliance Social Housing C.I.C',
     'registration-date': '2013-10-03',
@@ -1531,12 +1554,12 @@ export default {
     designation: 'Local authority',
     'corporate-form': ''
   },
-  5071: {
-    name: 'Believe Housing Limited',
-    'registration-date': '2019-04-12',
-    designation: 'Non-profit',
-    'corporate-form': 'Registered society'
-  },
+  // 5071: {
+  //   name: 'Believe Housing Limited',
+  //   'registration-date': '2019-04-12',
+  //   designation: 'Non-profit',
+  //   'corporate-form': 'Registered society'
+  // },
   5073: {
     name: 'Cottsway 2',
     'registration-date': '2019-07-22',
@@ -1921,12 +1944,12 @@ export default {
     designation: 'Non-profit',
     'corporate-form': 'CIC-community interest company'
   },
-  5139: {
-    name: 'Bromley and Croydon Women’s Aid Limited',
-    'registration-date': '2021-08-05',
-    designation: 'Non-profit',
-    'corporate-form': 'Charitable company'
-  },
+  // 5139: {
+  //   name: 'Bromley and Croydon Women’s Aid Limited',
+  //   'registration-date': '2021-08-05',
+  //   designation: 'Non-profit',
+  //   'corporate-form': 'Charitable company'
+  // },
   5140: {
     name: 'Flint Housing Limited',
     'registration-date': '2021-08-05',
@@ -6535,12 +6558,12 @@ export default {
     designation: 'Non-profit',
     'corporate-form': 'Registered society'
   },
-  L4236: {
-    name: 'Places for People Group Limited',
-    'registration-date': '1999-09-21',
-    designation: 'Non-profit',
-    'corporate-form': 'Company'
-  },
+  // L4236: {
+  //   name: 'Places for People Group Limited',
+  //   'registration-date': '1999-09-21',
+  //   designation: 'Non-profit',
+  //   'corporate-form': 'Company'
+  // },
   L0659: {
     name: 'Places for People Homes Limited',
     'registration-date': '1975-10-14',

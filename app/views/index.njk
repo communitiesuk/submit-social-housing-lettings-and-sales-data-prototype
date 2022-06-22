@@ -10,7 +10,7 @@
     startButton: {
       classes: "govuk-!-margin-top-0",
       href: "/start",
-      text: "View prototype"
+      text: "Service start page"
     }
   }) }}
 
@@ -18,49 +18,91 @@
     <main class="govuk-main-wrapper" id="main-content" role="main">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds-from-desktop">
-          <h2 class="govuk-heading-m govuk-!-font-size-27">Demo accounts</h2>
           <form action="/account/sign-in" method="post">
-            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">DLUHC/Helpdesk</h3>
-            <p>A member of the CORE team at DLUHC or a helpdesk agent can manage all information held by the service.</p>
-            <div class="govuk-button-group">
-              {{ govukButton(decorate({
-                classes: "govuk-button--secondary",
-                text: "Sign in as a customer support agent",
-                value: "admin@levellingup.gov.uk"
-              }, ["account", "email"])) }}
-            </div>
+            {{ govukRadios({
+              decorate: "example-account",
+              fieldset: {
+                legend: {
+                  classes: "govuk-fieldset__legend--m govuk-!-font-size-27",
+                  text: "Sign in with an example account"
+                }
+              },
+              hint: {
+                text: "Select from one of the following accounts"
+              },
+              items: [{
+                value: "admin@levellingup.gov.uk",
+                text: "Customer support agent at DLUHC",
+                label: {
+                  classes: "govuk-label--s"
+                },
+                hint: {
+                  text: "Manages information for all organisations"
+                }
+              }, {
+                text: "Data coordinator",
+                label: {
+                  classes: "govuk-label--s"
+                },
+                hint: {
+                  text: "Manages details of their organisation and its logs"
+                },
+                conditional: {
+                  html: govukRadios({
+                    name: "account-email",
+                    idPrefix: "dc",
+                    classes: "govuk-radios--small",
+                    items: [{
+                      value: "data.coordinator@malinsgroup.co.uk",
+                      text: "Organisation owns stock and contracts management to agents"
+                    }, {
+                      value: "data.coordinator@believehousing.co.uk",
+                      text: "Organisation owns and manages stock"
+                    }, {
+                      value: "data.coordinator@placesforpeople.co.uk",
+                      text: "Organisation owns and manages stock and that of other organisations"
+                    }, {
+                      value: "data.coordinator@bcwa.org.uk",
+                      text: "Organisation manages properties for other organisations"
+                    }]
+                  })
+                }
+              }, {
+                value: "admin@levellingup.gov.uk",
+                text: "Data provider",
+                label: {
+                  classes: "govuk-label--s"
+                },
+                hint: {
+                  text: "Views and submits logs for their organisation"
+                },
+                conditional: {
+                  html: govukRadios({
+                    name: "account-email",
+                    idPrefix: "dp",
+                    classes: "govuk-radios--small",
+                    items: [{
+                      value: "data.provider@malinsgroup.co.uk",
+                      text: "Organisation owns stock and contracts management to agents"
+                    }, {
+                      value: "data.provider@believehousing.co.uk",
+                      text: "Organisation owns and manages stock"
+                    }, {
+                      value: "data.provider@placesforpeople.co.uk",
+                      text: "Organisation owns and manages stock and that of other organisations"
+                    }, {
+                      value: "data.provider@bcwa.org.uk",
+                      text: "Organisation manages properties for other organisations"
+                    }]
+                  })
+                }
+              }]
+            }) }}
 
-            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Organisation that holds its own stock</h3>
-            <p>A data coordinator can manage details about this organisation and manage case logs the organisation is responsible for. A data provider can only submit and view case logs.</p>
-            <div class="govuk-button-group">
-              {{ govukButton(decorate({
-                classes: "govuk-button--secondary",
-                text: "Sign in as a data coordinator",
-                value: "data.coordinator@owning.org.uk"
-              }, ["account", "email"])) }}
-
-              {{ govukButton(decorate({
-                classes: "govuk-button--secondary",
-                text: "Sign in as a data provider",
-                value: "data.provider@owning.org.uk"
-              }, ["account", "email"])) }}
-            </div>
-
-            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Organisation that manages stock on behalf of an owning organisation</h3>
-            <p>A data coordinator can manage details about this organisation and manage case logs the organisation is responsible for. A data provider can only submit and view case logs.</p>
-            <div class="govuk-button-group">
-              {{ govukButton(decorate({
-                classes: "govuk-button--secondary",
-                text: "Sign in as a data coordinator",
-                value: "data.coordinator@managing.org.uk"
-              }, ["account", "email"])) }}
-
-              {{ govukButton(decorate({
-                classes: "govuk-button--secondary",
-                text: "Sign in as a data provider",
-                value: "data.provider@managing.org.uk"
-              }, ["account", "email"])) }}
-            </div>
+            {{ govukButton({
+              classes: "govuk-!-margin-bottom-0",
+              text: "Sign in with example account"
+            }) }}
           </form>
 
           <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">

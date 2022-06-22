@@ -3,9 +3,9 @@ export default {
     type: 'lettings',
     status: 'submitted',
     created: '2021-07-15',
-    createdBy: 'DP001',
+    createdBy: 'DP-OWNER',
     updated: '2021-07-19',
-    updatedBy: 'DP001',
+    updatedBy: 'DP-OWNER',
     setup: {
       'letting-start-date': { day: '12', month: '6', year: '2022' },
       'tenant-code': '298736',
@@ -15,9 +15,9 @@ export default {
   A0002: {
     type: 'lettings',
     created: '2021-07-15',
-    createdBy: 'DP001',
+    createdBy: 'DP-OWNER',
     updated: '2021-07-19',
-    updatedBy: 'DP001',
+    updatedBy: 'DP-OWNER',
     setup: {
       'letting-start-date': { day: '12', month: '6', year: '2022' },
       'tenant-code': '298736',
@@ -27,9 +27,9 @@ export default {
   A0003: {
     type: 'lettings',
     created: '2021-07-16',
-    createdBy: 'DP001',
+    createdBy: 'DP-OWNER',
     updated: '2021-07-19',
-    updatedBy: 'DP001',
+    updatedBy: 'DP-OWNER',
     setup: {
       'letting-start-date': { day: '12', month: '6', year: '2022' },
       'tenant-code': '298736',
@@ -39,9 +39,9 @@ export default {
   A0004: {
     type: 'lettings',
     created: '2021-07-11',
-    createdBy: 'DP001',
+    createdBy: 'DP-OWNER',
     updated: '2021-07-12',
-    updatedBy: 'DP001',
+    updatedBy: 'DP-OWNER',
     setup: {
       'letting-start-date': { day: '12', month: '6', year: '2022' },
       'tenant-code': '298736',
@@ -51,9 +51,9 @@ export default {
   A0005: {
     type: 'lettings',
     created: '2021-07-10',
-    createdBy: 'DP001',
+    createdBy: 'DP-OWNER',
     updated: '2021-07-12',
-    updatedBy: 'DP001',
+    updatedBy: 'DP-OWNER',
     setup: {
       'letting-start-date': { day: '12', month: '6', year: '2022' },
       'tenant-code': '298736',
@@ -63,9 +63,9 @@ export default {
   A0006: {
     type: 'lettings',
     created: '2021-06-18',
-    createdBy: 'DP001',
+    createdBy: 'DP-OWNER',
     updated: '2021-06-24',
-    updatedBy: 'DP001',
+    updatedBy: 'DP-OWNER',
     setup: {
       'letting-start-date': { day: '12', month: '6', year: '2022' },
       'tenant-code': '298736',
@@ -75,12 +75,12 @@ export default {
   EX001: {
     type: 'lettings',
     created: '2021-07-27',
-    createdBy: 'DP001',
+    createdBy: 'DP-OWNER',
     updated: '2021-07-29',
-    updatedBy: 'DP001',
+    updatedBy: 'DP-OWNER',
     setup: {
-      agent: 'CHILD1',
-      owner: 'PARENT1',
+      agent: 'AGENT',
+      owner: 'OWNER',
       'type-of-need': 'general',
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',
@@ -169,12 +169,12 @@ export default {
   EX002: {
     type: 'lettings',
     created: '2021-07-27',
-    createdBy: 'DP001',
+    createdBy: 'DP-OWNER',
     updated: '2021-07-29',
-    updatedBy: 'DP001',
+    updatedBy: 'DP-OWNER',
     setup: {
-      agent: 'CHILD1',
-      owner: 'PARENT1',
+      agent: 'AGENT',
+      owner: 'OWNER',
       'type-of-need': 'general',
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',
@@ -263,12 +263,12 @@ export default {
   BZ787: {
     type: 'lettings',
     created: '2021-07-26',
-    createdBy: 'DP001',
+    createdBy: 'DP-OWNER',
     updated: '2021-07-29',
-    updatedBy: 'DP001',
+    updatedBy: 'DP-OWNER',
     setup: {
-      agent: 'PARENT1',
-      owner: 'PARENT1',
+      agent: 'OWNER',
+      owner: 'OWNER',
       'type-of-need': 'general',
       'letting-renewal': 'false',
       'type-of-rent': 'Affordable Rent',
@@ -281,12 +281,12 @@ export default {
   BZ766: {
     type: 'lettings',
     created: '2021-07-25',
-    createdBy: 'DP001',
+    createdBy: 'DP-OWNER',
     updated: '2021-07-29',
-    updatedBy: 'DP001',
+    updatedBy: 'DP-OWNER',
     setup: {
-      agent: 'PARENT1',
-      owner: 'PARENT1',
+      agent: 'OWNER',
+      owner: 'OWNER',
       'type-of-need': 'general',
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',
@@ -299,13 +299,13 @@ export default {
   BZ765: {
     type: 'lettings',
     created: '2021-07-20',
-    createdBy: 'DP001',
+    createdBy: 'DP-OWNER',
     updated: '2021-07-29',
-    updatedBy: 'DC001',
+    updatedBy: 'DC-OWNER',
     setup: {
       schemeId: 'EXAMPLE',
-      agent: 'CHILD2',
-      owner: 'PARENT1',
+      agent: 'OWNER_AGENT',
+      owner: 'OWNER',
       'type-of-need': 'supported',
       'letting-renewal': 'false',
       'type-of-rent': 'Affordable Rent',
@@ -318,13 +318,13 @@ export default {
   BZ112: {
     type: 'lettings',
     created: '2021-08-19',
-    createdBy: 'DP001',
+    createdBy: 'DP-OWNER',
     updated: '2021-08-29',
-    updatedBy: 'DP001',
+    updatedBy: 'DP-OWNER',
     setup: {
       schemeId: 'EXAMPLE',
-      agent: 'CHILD2',
-      owner: 'PARENT1',
+      agent: 'OWNER_AGENT',
+      owner: 'OWNER',
       'type-of-need': 'supported',
       'letting-renewal': 'true',
       'type-of-rent': 'Affordable Rent',

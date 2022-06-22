@@ -9,7 +9,7 @@ export const logRoutes = (router) => {
    */
   router.get(['/logs', '/organisations/:organisationId/logs'], (req, res) => {
     let { logs, users } = req.session.data
-    const { organisationId } = req.params || 'PARENT1'
+    const { organisationId } = req.params || 'OWNER'
     const type = req.query.type || 'lettings'
 
     // Convert logs to array
@@ -180,7 +180,7 @@ export const logRoutes = (router) => {
   router.all('/logs/:logId/:sectionId/:itemId?/:view?', (req, res, next) => {
     const { logId, sectionId } = req.params
     const { account, logs, organisations } = req.session.data
-    const organisationId = account?.organisationId || 'PARENT1'
+    const organisationId = account?.organisationId || 'OWNER'
     const organisation = organisations[organisationId]
 
     const log = utils.getEntityById(logs, logId)
@@ -198,7 +198,7 @@ export const logRoutes = (router) => {
     try {
       const { logId, sectionId } = req.params
       const { account, logs, organisations } = req.session.data
-      const organisationId = account?.organisationId || 'PARENT1'
+      const organisationId = account?.organisationId || 'OWNER'
       const organisation = organisations[organisationId]
 
       const log = utils.getEntityById(logs, logId)
@@ -238,7 +238,7 @@ export const logRoutes = (router) => {
       const sectionPath = `/logs/${logId}/${sectionId}`
 
       // Organisation data
-      const organisationId = account?.organisationId || 'PARENT1'
+      const organisationId = account?.organisationId || 'OWNER'
       const organisation = utils.getEntityById(organisations, organisationId)
 
       // Add hint to your organisation in options

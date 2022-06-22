@@ -39,12 +39,12 @@ const generateOrganisations = () => {
           },
       tel: value.tel
         ? value.tel
-        : faker.phone.phoneNumber(),
+        : faker.phone.number(),
       type: value.designation === 'Local authority'
         ? 'Local authority'
         : 'Housing association',
-      registration: key,
-      'rent-periods': faker.helpers.arrayElements([
+      registration: value.registration || key,
+      'rent-periods': value['rent-periods'] || faker.helpers.arrayElements([
         'fortnightly',
         'every-4-weeks',
         'monthly',
@@ -56,10 +56,11 @@ const generateOrganisations = () => {
         'weekly-52',
         'weekly-53'
       ]),
+      isOwner: value.isOwner || isOwner,
+      isOwnAgent: value.isOwnAgent || 'false',
+      agents: value.agents || agents,
       isAgent: value.isAgent || isAgent,
       owners: value.owners || owners,
-      isOwner: value.isOwner || isOwner,
-      agents: value.agents || agents,
       acceptedDSA: 'true'
     }
   })
