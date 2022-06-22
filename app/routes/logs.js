@@ -240,7 +240,9 @@ export const logRoutes = (router) => {
       // Organisation data
       const organisationId = account?.organisationId || 'PARENT1'
       const organisation = utils.getEntityById(organisations, organisationId)
-      organisation.hint = 'Your organisation'
+
+      // Add hint to your organisation in options
+      organisations[organisationId].hint = 'Your organisation'
 
       // Get details of every organisation listed as an owner
       const owners = []
