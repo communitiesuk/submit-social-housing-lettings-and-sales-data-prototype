@@ -180,22 +180,15 @@ export const schemeRoutes = (router) => {
     const allOrganisations = utils.objectToArray(organisations)
 
     // Data coordinators can add schemes to own organisation and its children
-    const managedOrganisations = [organisation].concat(
-      allOrganisations.filter(organisation => {
-        if (organisation.owners) {
-          return organisation.owners.includes(organisationId)
-        }
-
-        return false
-      })
+    const agents = [organisation].concat(
+      allOrganisations.filter(organisation => organisation.isAgent === 'true')
     )
 
     if (scheme) {
       res.render(`schemes/${view}`, {
         localAuthorities,
         organisations,
-        allOrganisations,
-        managedOrganisations,
+        agents,
         organisation,
         organisationId,
         itemId,
