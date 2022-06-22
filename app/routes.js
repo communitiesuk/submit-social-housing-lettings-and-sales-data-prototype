@@ -21,7 +21,7 @@ router.all('*', (req, res, next) => {
     res.locals.isAdmin = account.role === 'admin'
     res.locals.isCoordinator = account.role === 'coordinator'
     res.locals.userOrganisationPath = `/organisations/${account.organisationId}`
-    res.locals.isOwningOrg = organisation.isOwner
+    res.locals.isOwningOrg = organisation.isOwner === 'true'
   }
 
   // Provide current path
