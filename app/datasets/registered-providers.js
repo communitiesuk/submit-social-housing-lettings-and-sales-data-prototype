@@ -13,7 +13,7 @@ export default {
     isAgent: 'false',
     isOwner: 'false'
   },
-  OWNER: { // Organisation owns stock and contracts management to agents
+  OWNER: { // Organisation owns housing stock and uses agents to manage the properties
     name: 'Malins Affordable Homes Limited',
     domains: ['malinsgroup.co.uk'],
     'registration-date': '2013-10-03',
@@ -33,7 +33,7 @@ export default {
     owners: [],
     'rent-periods': ['fortnightly', 'monthly']
   },
-  OWNER_MANAGER: { // Organisation owns and manages stock
+  OWNER_MANAGER: { // Organisation owns and manages housing stock
     name: 'Believe Housing Limited',
     domains: ['believehousing.co.uk'],
     'registration-date': '2019-04-12',
@@ -53,7 +53,7 @@ export default {
     owners: [],
     'rent-periods': ['monthly']
   },
-  OWNER_AGENT: { // Organisation owns and manages stock and that of other organisations
+  OWNER_AGENT: { // Organisation owns and manages housing stock and that of other organisations
     name: 'Places for People Group Limited',
     domains: ['placesforpeople.co.uk'],
     'registration-date': '1999-09-21',

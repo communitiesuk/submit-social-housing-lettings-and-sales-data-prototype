@@ -28,11 +28,11 @@
                 }
               },
               hint: {
-                text: "Select from one of the following accounts"
+                text: "Select from one of the following roles"
               },
               items: [{
                 value: "admin@levellingup.gov.uk",
-                text: "Customer support agent at DLUHC",
+                text: "Customer support agent",
                 label: {
                   classes: "govuk-label--s"
                 },
@@ -45,7 +45,7 @@
                   classes: "govuk-label--s"
                 },
                 hint: {
-                  text: "Manages details of their organisation and its logs"
+                  text: "Manages their organisation’s data and logs"
                 },
                 conditional: {
                   html: govukRadios({
@@ -54,13 +54,13 @@
                     classes: "govuk-radios--small",
                     items: [{
                       value: "data.coordinator@malinsgroup.co.uk",
-                      text: "Organisation owns stock and contracts management to agents"
+                      text: "Organisation owns housing stock and uses agents to manage the properties"
                     }, {
                       value: "data.coordinator@believehousing.co.uk",
-                      text: "Organisation owns and manages stock"
+                      text: "Organisation owns and manages housing stock"
                     }, {
                       value: "data.coordinator@placesforpeople.co.uk",
-                      text: "Organisation owns and manages stock and that of other organisations"
+                      text: "Organisation owns and manages housing stock and that of other organisations"
                     }, {
                       value: "data.coordinator@bcwa.org.uk",
                       text: "Organisation manages properties for other organisations"
@@ -83,13 +83,13 @@
                     classes: "govuk-radios--small",
                     items: [{
                       value: "data.provider@malinsgroup.co.uk",
-                      text: "Organisation owns stock and contracts management to agents"
+                      text: "Organisation owns housing stock and uses agents to manage the properties"
                     }, {
                       value: "data.provider@believehousing.co.uk",
-                      text: "Organisation owns and manages stock"
+                      text: "Organisation owns and manages housing stock"
                     }, {
                       value: "data.provider@placesforpeople.co.uk",
-                      text: "Organisation owns and manages stock and that of other organisations"
+                      text: "Organisation owns and manages housing stock and that of other organisations"
                     }, {
                       value: "data.provider@bcwa.org.uk",
                       text: "Organisation manages properties for other organisations"
