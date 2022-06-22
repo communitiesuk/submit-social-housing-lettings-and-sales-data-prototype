@@ -30,7 +30,8 @@ export default {
     isOwnAgent: 'false',
     agents: ['4854', 'L0891', 'LH0117'],
     isAgent: 'false',
-    owners: []
+    owners: [],
+    'rent-periods': ['fortnightly', 'monthly']
   },
   OWNER_MANAGER: { // Organisation owns and manages stock
     name: 'Believe Housing Limited',
@@ -49,7 +50,8 @@ export default {
     isOwnAgent: 'true',
     agents: [],
     isAgent: 'false',
-    owners: []
+    owners: [],
+    'rent-periods': ['monthly']
   },
   OWNER_AGENT: { // Organisation owns and manages stock and that of other organisations
     name: 'Places for People Group Limited',
@@ -68,7 +70,8 @@ export default {
     isOwnAgent: 'true',
     agents: ['L0659'],
     isAgent: 'true',
-    owners: ['LH3926']
+    owners: ['LH3926'],
+    'rent-periods': ['every-4-weeks']
   },
   AGENT: { // Organisation manages properties for other organisations
     name: 'Bromley and Croydon Women’s Aid Limited',
