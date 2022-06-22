@@ -26,15 +26,12 @@ const getOrganisationWizardPaths = (req) => {
     },
     [`${organisationPath}agents`]: {},
     [`${organisationPath}is-agent`]: {
-      // SKIP: Don’t ask any more questions if not an agent or owner
-      [`${organisationPath}check-your-answers`]: () =>
-        organisation.isOwner === 'false' && organisation.isAgent === 'false',
       // SKIP: Don’t ask for owners if not an agent and manages own properties
       [`${organisationPath}rent-periods`]: () =>
-        organisation.isOwnAgent === 'true' && organisation.isAgent === 'false',
-      // CONTINUE
-      [`${organisationPath}owners`]: () =>
-        organisation.isAgent === 'true'
+        organisation.isAgent === 'false' && organisation.isOwnAgent === 'true',
+      // SKIP: Don’t ask any more questions if not an agent
+      [`${organisationPath}check-your-answers`]: () =>
+        organisation.isAgent === 'false'
     },
     [`${organisationPath}owners`]: {},
     [`${organisationPath}rent-periods`]: {},
