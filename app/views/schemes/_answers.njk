@@ -6,7 +6,7 @@
 
 {% set locationsHtml %}
   {% for itemId, location in scheme.locations %}
-    <h2 class="govuk-heading-m">{{ location.address }}</h2>
+    <h2 class="govuk-heading-m">{{ location.postcode }}</h2>
     {{ govukSummaryList({
       classes: "govuk-!-margin-bottom-9" if not loop.last else "",
       rows: [{

@@ -24,7 +24,7 @@ Object.entries(schemes).forEach(([key, value]) => {
   const schemeLocationCount = Object.entries(value.locations).length
   const hintText = schemeLocationCount > 1
     ? `${schemeLocationCount} locations`
-    : `${value.locations.l1.address}`
+    : `${value.locations.l1.name}`
 
   // Add postcodes to search synonyms
   const synonyms = []
