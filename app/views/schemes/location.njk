@@ -5,7 +5,7 @@
 
 {% if scheme.locations[itemId] %}
   {# Editing an existing location #}
-  {% set title = "Location details for " + scheme.locations[itemId].address %}
+  {% set title = "Location details for " + scheme.locations[itemId].postcode %}
   {% set buttonText = "Continue" %}
   {% set formAction = schemePath + "/location/" + itemId + "/update" %}
   {% set hasAnsweredQuestion = true %}
@@ -32,6 +32,17 @@
       text: "For example, SW1P 4DF."
     }
   }) if scheme.draft or isAdmin }}
+
+  {{ govukInput({
+    decorate: ["schemes", scheme.id, "locations", itemId, "name"],
+    label: {
+      classes: "govuk-label--m",
+      text: "Name (optional)"
+    },
+    hint: {
+      text: "This is how you’ll refer to this location within your organisation"
+    }
+  }) }}
 
   {{ govukRadios({
     decorate: ["schemes", scheme.id, "locations", itemId, "type-of-unit"],

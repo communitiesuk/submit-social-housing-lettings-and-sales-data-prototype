@@ -23,7 +23,7 @@
     {% set itemId = log[section.id].schemeLocationId %}
     {{ data.schemes[schemedId].locations[itemId].postcode }}<br>
     <span class="app-!-colour-muted">
-      {{ data.schemes[schemedId].locations[itemId]["local-authority"] }}
+      {{ data.schemes[schemedId].locations[itemId].name }}
     </span>
   {% else %}
     <span class="app-!-colour-muted">You didn’t answer this question</span>

@@ -44,14 +44,6 @@
       {% set schemeRows = [] %}
       {% for scheme in results %}
         {% set schemePath = "/schemes/" + scheme.id %}
-        {% set schemeLocationCount = scheme.locations | length %}
-        {% set schemeDescription %}
-          {% if schemeLocationCount > 1 %}
-            {{ schemeLocationCount }} locations
-          {% else %}
-            {{ scheme.locations.l1.address }}, {{ scheme.locations.l1.postcode }}
-          {% endif %}
-        {% endset %}
         {% set schemePath = schemePath + "/check-your-answers" if scheme.status == "inProgress" else schemePath %}
         {% set row = schemeRows.push([{
             classes: "govuk-!-text-align-left",

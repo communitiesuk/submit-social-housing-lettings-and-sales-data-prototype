@@ -98,6 +98,7 @@ export const schemeRoutes = (router) => {
     // Get locations as array sorted by scheme name
     let locations = scheme.locations
     locations = utils.objectToArray(locations)
+    locations = utils.sortArray(locations, 'postcode')
 
     // Pagination
     const page = parseInt(req.query.page) || 1
@@ -132,7 +133,7 @@ export const schemeRoutes = (router) => {
   })
 
   /**
-   * Create location
+   * Create scheme location
    */
   router.get('/schemes/:schemeId/location/new', (req, res) => {
     const { schemes } = req.session.data
@@ -151,7 +152,7 @@ export const schemeRoutes = (router) => {
   })
 
   /**
-   * Confirm delete location
+   * Confirm delete scheme location
    */
   router.get('/schemes/:schemeId/location/:itemId/delete', (req, res) => {
     const { schemes } = req.session.data
@@ -168,7 +169,7 @@ export const schemeRoutes = (router) => {
   })
 
   /**
-   * Update location
+   * Update scheme location
    */
   router.post('/schemes/:schemeId/location/:itemId/:view', (req, res) => {
     const { schemes } = req.session.data
@@ -178,7 +179,7 @@ export const schemeRoutes = (router) => {
     const locationsPath = `/schemes/${schemeId}/locations`
 
     if (view === 'update') {
-      req.flash('success', `${location.address} has been updated.`)
+      req.flash('success', `${location.postcode} has been updated.`)
       res.redirect(locationsPath)
     }
 
