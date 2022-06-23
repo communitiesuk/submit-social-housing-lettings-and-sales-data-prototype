@@ -31,6 +31,17 @@
     }) if not scheme.deactivated
   }, {
     key: {
+      text: "Housing stock owned by"
+    },
+    value: {
+      text: organisations[scheme.ownerId].name
+    },
+    actions: actionLinks({
+      href: schemePath + "/details",
+      visuallyHiddenText: "who owns the housing stock for this scheme"
+    }) if not scheme.deactivated
+  } if isAdmin, {
+    key: {
       text: "Managed by"
     },
     value: {
