@@ -150,11 +150,11 @@ const generateSchemes = () => {
       deactivated: faker.datatype.boolean(),
       name,
       confidential: faker.datatype.boolean().toString(),
-      organisationId: value.organisationId,
+      ownerId: value.ownerId,
       agentId: faker.helpers.arrayElement([
         'AGENT',
         'OWNER_AGENT',
-        value.organisationId
+        value.ownerId
       ]),
       type,
       'registered-home': faker.helpers.arrayElement([

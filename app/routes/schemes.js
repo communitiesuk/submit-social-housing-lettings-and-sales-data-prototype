@@ -220,24 +220,27 @@ export const schemeRoutes = (router) => {
     const schemePath = `/schemes/${schemeId}`
 
     // Get organisation that owns scheme
-    const organisationId = scheme.organisationId
-    const organisation = utils.getEntityById(organisations, organisationId)
+    const owner = utils.getEntityById(organisations, scheme.ownerId)
 
     // Admin can add schemes to any organisation
     const allOrganisations = utils.objectToArray(organisations)
 
     // Data coordinators can add schemes to own organisation and its children
-    const agents = [organisation].concat(
+    const agents = [owner].concat(
       allOrganisations.filter(organisation => organisation.isAgent === 'true')
+    )
+
+    // Support agents can add schemes on behalf of any owning organisation
+    const owners = [owner].concat(
+      allOrganisations.filter(organisation => organisation.isOwner === 'true')
     )
 
     if (scheme) {
       res.render(`schemes/${view}`, {
         localAuthorities,
         organisations,
+        owners,
         agents,
-        organisation,
-        organisationId,
         itemId,
         scheme,
         schemes,
@@ -272,6 +275,14 @@ export const schemeRoutes = (router) => {
 
     // Confirm scheme updates
     if (view === 'check-updated-answers') {
+      // Autocomplete sends a [text, value] array, we just want the value
+      scheme.ownerId = Array.isArray(scheme.ownerId)
+        ? scheme.ownerId.at(-1)
+        : scheme.ownerId
+      scheme.agentId = Array.isArray(scheme.agentId)
+        ? scheme.agentId.at(-1)
+        : scheme.agentId
+
       res.locals.paths.next = `${schemePath}/update`
     }
 
