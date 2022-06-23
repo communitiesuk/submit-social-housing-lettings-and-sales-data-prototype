@@ -5,6 +5,6 @@
 .start.pid
 .tmuxp.*
 
-app/datasets/generated/*
+app/data/generated/*
 node_modules
 public

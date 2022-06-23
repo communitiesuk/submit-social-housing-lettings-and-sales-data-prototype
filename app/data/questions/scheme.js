@@ -2,7 +2,7 @@ import { createRequire } from 'node:module'
 import clientGroups from './client-groups.js'
 
 const require = createRequire(import.meta.url)
-const schemes = require('../../datasets/generated/schemes.json')
+const schemes = require('../../data/generated/schemes.json')
 
 const _getClientGroups = (data) => {
   const primaryClientGroup = clientGroups.find(question => question.value === data['primary-client-group']).text

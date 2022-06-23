@@ -37,7 +37,7 @@ export default async () => ({
     title: 'Finances'
   }],
   questions: await questions(),
-  organisations: require('./datasets/generated/organisations.json'),
+  organisations: require('./data/generated/organisations.json'),
   rentPeriods: [{
     text: 'Every 2 weeks',
     value: 'fortnightly'
@@ -70,7 +70,7 @@ export default async () => ({
     value: 'weekly-53'
   }],
   roles,
-  schemes: require('./datasets/generated/schemes.json'),
+  schemes: require('./data/generated/schemes.json'),
   statuses: {
     notStarted: {
       id: 'notStarted',

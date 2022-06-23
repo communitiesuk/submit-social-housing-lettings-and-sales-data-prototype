@@ -1,7 +1,7 @@
 import { writeFile } from 'node:fs/promises'
 
 export const generateDataset = (generator, fileName) => {
-  const filePath = `./app/datasets/generated/${fileName}.json`
+  const filePath = `./app/data/generated/${fileName}.json`
   const fileData = JSON.stringify(generator, null, 2)
 
   try {

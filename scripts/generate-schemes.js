@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 import { generateDataset } from '../app/utils.js'
 import localAuthorities from '../app/datasets/local-authorities.js'
 import seedSchemes from '../app/datasets/seed-schemes.js'
-import fixedSchemes from './fixed-schemes.js'
+import exampleSchemes from '../app/datasets/example-schemes.js'
 
 faker.locale = 'en_GB'
 
@@ -189,7 +189,7 @@ const generateSchemes = () => {
 
   return {
     ...schemes,
-    ...fixedSchemes
+    ...exampleSchemes
   }
 }
 
