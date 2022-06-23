@@ -35,15 +35,11 @@
       href: schemePath,
       active: section == "scheme"
     }, {
-      text: locationsCount + " locations" if locationsCount > 1 else "Location",
+      text: "Locations",
       href: schemePath + "/locations",
       active: section == "locations"
     }]
   }) }}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-three-quarters">
-      {% block sectionContent %}{% endblock %}
-    </div>
-  </div>
+  {% block sectionContent %}{% endblock %}
 {% endblock %}

@@ -3,5 +3,9 @@
 {% set section = "scheme" %}
 
 {% block sectionContent %}
-  {% include "schemes/_scheme-answers.njk" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      {% include "schemes/_scheme-answers.njk" %}
+    </div>
+  </div>
 {% endblock %}

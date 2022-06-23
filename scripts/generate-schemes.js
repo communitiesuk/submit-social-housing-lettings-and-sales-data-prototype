@@ -172,7 +172,7 @@ const generateSchemes = () => {
       ]),
       locations: generateLocations(faker.datatype.number({
         min: 1,
-        max: 9
+        max: 150
       }))
     }
 
