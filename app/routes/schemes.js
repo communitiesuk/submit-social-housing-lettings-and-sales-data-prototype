@@ -86,6 +86,44 @@ export const schemeRoutes = (router) => {
   })
 
   /**
+   * List scheme locations
+   */
+  router.all('/schemes/:schemeId/locations', (req, res) => {
+    const { schemes } = req.session.data
+    const { schemeId } = req.params
+
+    const scheme = schemes[schemeId]
+    const schemePath = `/schemes/${schemeId}`
+
+    // Get locations as array sorted by scheme name
+    let locations = scheme.locations
+    locations = utils.objectToArray(locations)
+
+    // Pagination
+    const page = parseInt(req.query.page) || 1
+    const limit = parseInt(req.query.limit) || 50
+    const skip = (page - 1) * limit
+    const results = locations.slice(skip, skip + limit)
+    const pagination = utils.getPaginationItems(
+      page,
+      limit,
+      locations.length
+    )
+
+    // Search query
+    const q = req.query.q || req.body.q
+
+    res.render('schemes/locations', {
+      query: req.query,
+      q,
+      scheme,
+      schemePath,
+      results,
+      pagination
+    })
+  })
+
+  /**
    * Scheme
    */
   router.all('/schemes/:schemeId/:view?/:itemId?', (req, res, next) => {

@@ -9,59 +9,54 @@
     href: schemePath + "/location/new"
   }) if not scheme.deactivated }}
 
-  {% for itemId, location in scheme.locations %}
-    {#-
-      Data coordinators can edit locations
-      Admins can edit and delete locations
-    -#}
-    {{ xGovukSummaryCard({
-      titleText: location.address or location.postcode,
-      actions: actionLinks(
-        [{
-          href: schemePath + "/location/" + itemId,
-          text: "Edit",
-          visuallyHiddenText: location.address or location.postcode
-        }, {
-          href: schemePath + "/location/" + itemId + "/delete",
-          text: "Delete",
-          visuallyHiddenText: location.address or location.postcode
-        }] if isAdmin else [{
-          href: schemePath + "/location/" + itemId,
-          text: "Edit",
-          visuallyHiddenText: location.address or location.postcode
-        }]
-      ) if not scheme.deactivated,
-      classes: "govuk-!-margin-bottom-6",
-      rows: [{
-        key: {
-          text: "Location code"
-        },
-        value: {
-          classes: "app-!-font-tabular",
-          text: "S" + scheme.id + "-" + location.postcode | replace(" ", "")
-        }
-      }, {
-        key: {
-          text: "Postcode"
-        },
-        value: {
-          text: macro.postcodeHtml(location.postcode, location["local-authority"]) if location.postcode else "Not known"
-        }
-      }, {
-        key: {
-          text: "Type of unit"
-        },
-        value: {
-          text: location["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported)
-        }
-      }, {
-        key: {
-          text: "Wheelchair adaptation"
-        },
-        value: {
-          text: location["is-adapted"] | textFromInputValue(data.questions["yes-no"])
-        }
-      }]
-    }) }}
+  {% set locationRows = [] %}
+  {% for location in results %}
+    {% set locationPath = "/schemes/" + scheme.id + "/location/" + itemId %}
+    {% set row = locationRows.push([{
+      classes: "govuk-!-text-align-left",
+      text: "S" + scheme.id + "-" + location.postcode | replace(" ", ""),
+      format: "numeric"
+    }, {
+      html: macro.entityHtml(location.postcode, locationPath, location["local-authority"]) if location.postcode else "Not known"
+    }, {
+      text: location["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported)
+    }, {
+      text: location["is-adapted"] | textFromInputValue(data.questions["yes-no"])
+    }, {
+      html: "<a href=\"" + locationPath + "/delete\">Delete<span class=\"govuk-visually-hidden\">" + location.postcode + "</span>" if isAdmin and not scheme.deactivated
+    }])
+    %}
   {% endfor %}
+
+  {% if locationsCount > 0 %}
+    {{ appSearch({
+      classes: "govuk-!-margin-bottom-4",
+      label: {
+        text: "Search by location code or postcode"
+      }
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {% call appTableGroup({ ariaLabel: "locations" }) %}
+      {{ govukTable({
+        caption: macro.tableCaption("locations", pagination.results.count, q) | safe,
+        captionClasses: "govuk-table__caption--m govuk-!-font-size-19 govuk-!-font-weight-regular",
+        head: [{
+          html: "Code"
+        }, {
+          text: "Postcode"
+        }, {
+          text: "Type of unit"
+        }, {
+          html: "Adapted"
+        }, {
+          text: "Actions"
+        } if isAdmin and not scheme.deactivated],
+        rows: locationRows
+      }) }}
+    {% endcall %}
+
+    {{ appPagination(pagination) }}
+  {% endif %}
 {% endblock %}

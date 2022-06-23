@@ -41,15 +41,6 @@
     </div>
 
     <div class="app-filter-layout__content">
-      {{ appSearch({
-        classes: "govuk-!-margin-bottom-4",
-        label: {
-          text: "Search by scheme name, code or postcode"
-        }
-      }) }}
-
-      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
-
       {% set schemeRows = [] %}
       {% for scheme in results %}
         {% set schemePath = "/schemes/" + scheme.id %}
@@ -78,6 +69,15 @@
       {% endfor %}
 
       {% if results.length %}
+        {{ appSearch({
+          classes: "govuk-!-margin-bottom-4",
+          label: {
+            text: "Search by scheme name, code or postcode"
+          }
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
         {% call appTableGroup({ ariaLabel: "schemes" }) %}
           {{ govukTable({
             caption: macro.tableCaption("schemes", pagination.results.count, q) | safe,
