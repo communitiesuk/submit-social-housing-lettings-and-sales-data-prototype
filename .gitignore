@@ -5,6 +5,6 @@
 .start.pid
 .tmuxp.*
 
-app/data/generated/*
+app/data/generated/*.json
 node_modules
 public
