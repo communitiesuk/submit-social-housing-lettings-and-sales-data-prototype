@@ -128,6 +128,10 @@ const generateSchemes = () => {
             max: 150
           })} ${faker.helpers.arrayElement(streetNames)}`,
           'local-authority': faker.helpers.arrayElement(localAuthorities).name,
+          units: faker.datatype.number({
+            min: 1,
+            max: 100
+          }),
           'type-of-unit': faker.helpers.arrayElement([
             'bungalow',
             'flat',
@@ -178,12 +182,6 @@ const generateSchemes = () => {
         max: 150
       }))
     }
-
-    const schemeLocationCount = Object.entries(schemes[id].locations).length
-    schemes[id].units = faker.datatype.number({
-      min: schemeLocationCount,
-      max: schemeLocationCount + 20
-    })
   })
 
   return {

@@ -44,6 +44,21 @@
     }
   }) }}
 
+  {{ govukInput({
+    decorate: ["schemes", scheme.id, "locations", itemId, "units"],
+    classes: "govuk-input--width-2",
+    hint: {
+      text: "A unit can be a bedroom in a shared house or flat, or a house with 4 bedrooms. Do not include bedrooms used for wardens, managers, volunteers or sleep-in staff."
+    },
+    label: {
+      classes: "govuk-label--m",
+      text: "Total number of units at this location"
+    },
+    inputmode: "numeric",
+    pattern: "[0-9]*",
+    spellcheck: false
+  }) }}
+
   {{ govukRadios({
     decorate: ["schemes", scheme.id, "locations", itemId, "type-of-unit"],
     fieldset: {

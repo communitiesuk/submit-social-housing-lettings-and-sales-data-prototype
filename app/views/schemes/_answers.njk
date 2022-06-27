@@ -30,6 +30,17 @@
         }) if scheme.draft or isAdmin
       }, {
         key: {
+          html: "Total number of units" | noOrphans
+        },
+        value: {
+          text: location.units | textFromInputValue
+        },
+        actions: actionLinks({
+          href: schemePath + "/location/" + itemId,
+          visuallyHiddenText: "number of units"
+        })
+      }, {
+        key: {
           text: "Type of unit"
         },
         value: {
@@ -38,17 +49,6 @@
         actions: actionLinks({
           href: schemePath + "/location/" + itemId,
           visuallyHiddenText: "type of unit"
-        })
-      }, {
-        key: {
-          text: "Type of building"
-        },
-        value: {
-          text: location["type-of-building"] | textFromInputValue(data.questions["type-of-building"])
-        },
-        actions: actionLinks({
-          href: schemePath + "/location/" + itemId,
-          visuallyHiddenText: "type of building"
         })
       }, {
         key: {

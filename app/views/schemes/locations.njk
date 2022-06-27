@@ -11,13 +11,15 @@
 
   {% set locationRows = [] %}
   {% for location in results %}
-    {% set locationPath = "/schemes/" + scheme.id + "/location/" + itemId %}
+    {% set locationPath = "/schemes/" + scheme.id + "/location/" + location.id %}
     {% set row = locationRows.push([{
       classes: "govuk-!-text-align-left",
       text: "S" + scheme.id + "-" + location.postcode | replace(" ", ""),
       format: "numeric"
     }, {
       html: macro.entityHtml(location.postcode, locationPath, location.name) if location.postcode else "Not known"
+    }, {
+      text: location.units
     }, {
       html: macro.entityHtml(location["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported), false, "With wheelchair adaptations" if location["is-adapted"] == "true")
     }, {
@@ -45,7 +47,9 @@
         }, {
           text: "Postcode"
         }, {
-          text: "Type of unit"
+          text: "Units"
+        }, {
+          text: "Common unit type"
         }, {
           text: "Actions"
         } if isAdmin and not scheme.deactivated],
