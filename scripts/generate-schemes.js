@@ -37,7 +37,9 @@ const generateSchemes = () => {
     const preset = faker.datatype.number({ min: 1, max: 6 })
 
     // Scheme values
-    let name, clientGroup1, clientGroup2, type, typeOfSupport
+    let name, clientGroup1, type, typeOfSupport
+    let clientGroup2 = false
+
     switch (preset) {
       case 1:
         // Rough sleepers
@@ -71,7 +73,6 @@ const generateSchemes = () => {
         ])}`
         type = 'older-people'
         clientGroup1 = 'older-people'
-        clientGroup2 = 'false'
         typeOfSupport = 'medium'
         break
       case 4:
@@ -96,7 +97,6 @@ const generateSchemes = () => {
         ])}`
         type = 'other'
         clientGroup1 = 'physical-disabilities'
-        clientGroup2 = 'false'
         typeOfSupport = 'nursing'
         break
       case 6:
@@ -165,8 +165,8 @@ const generateSchemes = () => {
         'false'
       ]),
       'primary-client-group': clientGroup1,
-      'has-secondary-client-group': clientGroup2 === 'false' ? 'false' : 'true',
-      'secondary-client-group': clientGroup2,
+      'has-secondary-client-group': clientGroup2 ? 'true' : 'false',
+      ...(clientGroup2 && { 'secondary-client-group': clientGroup2 }),
       'type-of-support': typeOfSupport,
       'intended-stay': faker.helpers.arrayElement([
         'very-short',

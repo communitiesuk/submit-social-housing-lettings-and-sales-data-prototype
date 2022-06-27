@@ -3,11 +3,19 @@ import * as utils from '../utils.js'
 import localAuthorities from '../datasets/local-authorities.js'
 
 const getSchemeWizardPaths = (req) => {
-  const schemePath = `/schemes/${req.params.schemeId}/`
+  const { schemeId } = req.params
+  const schemePath = `/schemes/${schemeId}/`
 
   const journey = {
     [`${schemePath}details`]: {},
     [`${schemePath}primary-client-group`]: {},
+    [`${schemePath}has-secondary-client-group`]: {
+      // SKIP: Don’t ask for secondary client group if none needed
+      [`${schemePath}support`]: {
+        data: `schemes.${schemeId}['has-secondary-client-group']`,
+        value: 'false'
+      }
+    },
     [`${schemePath}secondary-client-group`]: {},
     [`${schemePath}support`]: {},
     [`${schemePath}location/l1`]: {},

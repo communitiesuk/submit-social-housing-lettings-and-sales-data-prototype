@@ -1,10 +1,10 @@
 {% extends "layouts/question.njk" %}
 
-{% set title = "What is the secondary client group?" %}
+{% set title = "Does this scheme provide for another client group?" %}
 {% set caption = scheme.name %}
 {% set required = true %}
 
-{% if scheme["secondary-client-group"] %}
+{% if scheme["has-secondary-client-group"] %}
   {# Editing an existing scheme #}
   {% set buttonText = "Continue" %}
   {% set formAction = schemePath + "/check-updated-answers" %}
@@ -13,13 +13,13 @@
 
 {% block question %}
   {{ govukRadios({
-    decorate: ["schemes", scheme.id, "secondary-client-group"],
+    decorate: ["schemes", scheme.id, "has-secondary-client-group"],
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--l",
         html: macro.fieldsetHeading(title, caption)
       }
     },
-    items: data.questions["client-groups"] | rejectFromArray("value", scheme["primary-client-group"])
-  })  }}
+    items: data.questions["yes-no"]
+  }) }}
 {% endblock %}

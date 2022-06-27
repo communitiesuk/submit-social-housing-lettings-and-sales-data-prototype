@@ -86,16 +86,27 @@
     }) if not scheme.deactivated
   }, {
     key: {
+      text: "Has another client group"
+    },
+    value: {
+      html: (scheme["has-secondary-client-group"] | textFromInputValue(data.questions["yes-no"]))
+    },
+    actions: actionLinks({
+      href: schemePath + "/has-secondary-client-group",
+      visuallyHiddenText: "has another client group"
+    }) if not scheme.deactivated
+  }, {
+    key: {
       text: "Secondary client group"
     },
     value: {
-      html: (scheme["secondary-client-group"] | textFromInputValue(data.questions["client-groups"])) if scheme["has-secondary-client-group"] !== "false" else "None"
+      html: (scheme["secondary-client-group"] | textFromInputValue(data.questions["client-groups"]))
     },
     actions: actionLinks({
       href: schemePath + "/secondary-client-group",
       visuallyHiddenText: "secondary client group"
     }) if not scheme.deactivated
-  }, {
+  } if scheme["has-secondary-client-group"] !== "false", {
     key: {
       text: "Level of support given"
     },

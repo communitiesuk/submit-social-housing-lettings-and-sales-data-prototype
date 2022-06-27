@@ -7,8 +7,8 @@ const schemes = require('../../data/generated/schemes.json')
 const _getClientGroups = (data) => {
   const primaryClientGroup = clientGroups.find(question => question.value === data['primary-client-group']).text
 
-  if (data['secondary-client-group'] !== 'false') {
-    const secondaryClientGroup = clientGroups.find(question => question.value === data['secondary-client-group']).text
+  if (data['has-secondary-client-group'] !== 'false') {
+    const secondaryClientGroup = clientGroups.find(question => question.value === data['secondary-client-group'])?.text
 
     return `${primaryClientGroup}<br>${secondaryClientGroup}`
   }
