@@ -20,8 +20,7 @@ export const accountRoutes = (router) => {
    */
   router.get('/account/sign-out', (req, res) => {
     if (req.session.data.account) {
-      delete req.session.data.account
-      delete req.session.data.token
+      delete req.session.data
     }
 
     res.redirect('/account/sign-in')
