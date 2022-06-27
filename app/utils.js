@@ -13,28 +13,46 @@ export const generateDataset = (generator, fileName) => {
 }
 
 /**
- * Generate pagination items
+ * Generate results page
  *
+ * @param {Array} items Items to paginate
  * @param {number} currentPage Current page
- * @param {limit} limit Limit of items per page
- * @param {count} count Count of all items
+ * @param {number} limit Limit of items per page
  * @returns {object}
  */
-export const getPaginationItems = function (currentPage, limit, count) {
-  // Pagination pages
+export const getResults = function (items, currentPage, limit) {
+  const count = items.length
+  const skip = (currentPage - 1) * limit
+  const resultsFrom = (currentPage - 1) * limit + 1
+  let resultsTo = resultsFrom - 1 + limit
+  resultsTo = resultsTo > count ? count : resultsTo
+
+  return {
+    page: items.slice(skip, skip + limit),
+    to: resultsTo,
+    from: resultsFrom,
+    count
+  }
+}
+
+/**
+ * Generate pagination items
+ *
+ * @param {Array} items Items to paginate
+ * @param {number} currentPage Current page
+ * @param {number} limit Limit of items per page
+ * @returns {object}
+ */
+export const getPagination = function (items, currentPage, limit) {
+  const count = items.length
   const totalPages = Math.ceil(count / limit)
   const nextPage = currentPage < totalPages ? currentPage + 1 : false
   const previousPage = currentPage > 0 ? currentPage - 1 : false
   const pageItems = [...Array(totalPages).keys()].map((item) => ({
     current: item + 1 === currentPage,
     href: `?${new URLSearchParams({ page: item + 1, limit })}`,
-    text: item + 1
+    number: item + 1
   }))
-
-  // Pagination results
-  const resultsFrom = (currentPage - 1) * limit + 1
-  let resultsTo = resultsFrom - 1 + limit
-  resultsTo = resultsTo > count ? count : resultsTo
 
   return {
     items: pageItems.length > 1 ? pageItems : false,
@@ -48,12 +66,7 @@ export const getPaginationItems = function (currentPage, limit, count) {
       ? {
           href: `?${new URLSearchParams({ page: previousPage, limit })}`
         }
-      : false,
-    results: {
-      from: resultsFrom,
-      to: resultsTo,
-      count
-    }
+      : false
   }
 }
 

@@ -10,7 +10,7 @@
   }) if not scheme.deactivated }}
 
   {% set locationRows = [] %}
-  {% for location in results %}
+  {% for location in results.page %}
     {% set locationPath = "/schemes/" + scheme.id + "/location/" + location.id %}
     {% set row = locationRows.push([{
       classes: "govuk-!-text-align-left",
@@ -40,7 +40,7 @@
 
     {% call appTableGroup({ ariaLabel: "locations" }) %}
       {{ govukTable({
-        caption: macro.tableCaption("locations", pagination.results.count, q) | safe,
+        caption: macro.tableCaption("locations", results.count, q) | safe,
         captionClasses: "govuk-table__caption--m govuk-!-font-size-19 govuk-!-font-weight-regular",
         head: [{
           html: "Code"
@@ -57,6 +57,7 @@
       }) }}
     {% endcall %}
 
-    {{ appPagination(pagination) }}
+    {{ govukPagination(pagination) }}
+    {{ macro.results(results) }}
   {% endif %}
 {% endblock %}

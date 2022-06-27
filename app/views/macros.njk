@@ -13,6 +13,10 @@
 </h{{ headingLevel }}>
 {% endmacro %}
 
+{% macro results(results) %}
+<p class="govuk-body">Showing <b>{{ results.from }}</b> to <b>{{ results.to }}</b> of <b>{{ results.count }}</b> {{ results.type | default("results") }}</p>
+{% endmacro %}
+
 {% macro entityHtml(title, href, caption) %}
   {% if href %}
     <a class="govuk-link govuk-!-font-weight-bold" href="{{ href }}">{{ title | nl2br | escape }}</a>

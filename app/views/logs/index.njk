@@ -69,10 +69,10 @@
 
       {% set cardResults %}
         <h2 class="govuk-body">
-          {{ macro.tableCaption("logs", pagination.results.count, q) }}
+          {{ macro.tableCaption("logs", results.count, q) }}
           <a class="govuk-link govuk-link--no-visited-state" href="#" download>Download (CSV)</a>
         </h2>
-        {% for log in results | reverse %}
+        {% for log in results.page | reverse %}
           {{ appLog({
             id: log.id,
             tenantCode: log.setup["tenant-code"],
@@ -101,7 +101,7 @@
         {% endset %}
 
         {%- set logRows = [] -%}
-        {% for log in results | reverse %}
+        {% for log in results.page | reverse %}
           {% set row = logRows.push([{
               html: "<a href=\"/logs/" + log.id + "\">" + log.id + "</a>"
             }, {
@@ -146,14 +146,17 @@
         {% endcall %}
       {% endset %}
 
-      {% if results.length %}
+      {% if results.count %}
         {% if data.features["card-logs"] %}
           {{ cardResults | safe }}
         {% else %}
           {{ tableResults | safe }}
         {% endif %}
 
-        {{ appPagination(pagination) }}
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+        {{ govukPagination(pagination) }}
+        {{ macro.results(results) }}
       {% else %}
         <p class="govuk-body"><strong>No {{ type }} logs found</strong></p>
       {% endif %}

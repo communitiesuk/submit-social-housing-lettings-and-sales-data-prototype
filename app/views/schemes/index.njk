@@ -42,7 +42,7 @@
 
     <div class="app-filter-layout__content">
       {% set schemeRows = [] %}
-      {% for scheme in results %}
+      {% for scheme in results.page %}
         {% set schemePath = "/schemes/" + scheme.id %}
         {% set schemePath = schemePath + "/check-your-answers" if scheme.status == "inProgress" else schemePath %}
         {% set row = schemeRows.push([{
@@ -60,7 +60,7 @@
         %}
       {% endfor %}
 
-      {% if results.length %}
+      {% if results.count %}
         {{ appSearch({
           classes: "govuk-!-margin-bottom-4",
           label: {
@@ -72,7 +72,7 @@
 
         {% call appTableGroup({ ariaLabel: "schemes" }) %}
           {{ govukTable({
-            caption: macro.tableCaption("schemes", pagination.results.count, q) | safe,
+            caption: macro.tableCaption("schemes", results.count, q) | safe,
             captionClasses: "govuk-table__caption--m govuk-!-font-size-19 govuk-!-font-weight-regular",
             head: [{
               html: "Code"
@@ -87,7 +87,10 @@
           }) }}
         {% endcall %}
 
-        {{ appPagination(pagination) }}
+         <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+        {{ govukPagination(pagination) }}
+        {{ macro.results(results) }}
       {% else %}
         <p class="govuk-body"><strong>No supported housing schemes found</strong></p>
       {% endif %}

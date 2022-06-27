@@ -39,13 +39,8 @@ export const userRoutes = (router) => {
     // Pagination
     const page = parseInt(req.query.page) || 1
     const limit = parseInt(req.query.limit) || 100
-    const skip = (page - 1) * limit
-    const results = users.slice(skip, skip + limit)
-    const pagination = utils.getPaginationItems(
-      page,
-      limit,
-      users.length
-    )
+    const results = utils.getResults(users, page, limit)
+    const pagination = utils.getPagination(users, page, limit)
 
     // Search query
     const q = req.query.q || req.body.q

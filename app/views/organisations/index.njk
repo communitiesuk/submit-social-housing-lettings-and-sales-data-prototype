@@ -32,7 +32,7 @@
   <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
 
   {%- set organisationRows = [] -%}
-  {% for organisation in results %}
+  {% for organisation in results.page %}
     {% set row = organisationRows.push([{
         html: "<a href=\"/organisations/" + organisation.id + "/logs\">" + organisation.name + "</a>" + ("<br><span class=\"govuk-!-font-weight-regular app-!-colour-muted\">Deactivated</span>" if organisation.deactivated)
       }, {
@@ -43,10 +43,10 @@
     %}
   {% endfor %}
 
-  {% if results.length %}
+  {% if results.count %}
     {% call appTableGroup({ ariaLabel: "organisations" }) %}
       {{ govukTable({
-        caption: macro.tableCaption("organisations", pagination.results.count, q) | safe,
+        caption: macro.tableCaption("organisations", results.count, q) | safe,
         captionClasses: "govuk-table__caption--m govuk-!-font-size-19 govuk-!-font-weight-regular",
         firstCellIsHeader: true,
         head: [{
@@ -63,7 +63,10 @@
       }) }}
     {% endcall %}
 
-    {{ appPagination(pagination) }}
+     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {{ govukPagination(pagination) }}
+    {{ macro.results(results) }}
   {% else %}
     <p class="govuk-body">
       <strong>No organisations found</strong>

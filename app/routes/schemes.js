@@ -64,13 +64,8 @@ export const schemeRoutes = (router) => {
     // Pagination
     const page = parseInt(req.query.page) || 1
     const limit = parseInt(req.query.limit) || 20
-    const skip = (page - 1) * limit
-    const results = schemes.slice(skip, skip + limit)
-    const pagination = utils.getPaginationItems(
-      page,
-      limit,
-      schemes.length
-    )
+    const results = utils.getResults(schemes, page, limit)
+    const pagination = utils.getPagination(schemes, page, limit)
 
     // Search query
     const q = req.query.q || req.body.q
@@ -103,13 +98,8 @@ export const schemeRoutes = (router) => {
     // Pagination
     const page = parseInt(req.query.page) || 1
     const limit = parseInt(req.query.limit) || 50
-    const skip = (page - 1) * limit
-    const results = locations.slice(skip, skip + limit)
-    const pagination = utils.getPaginationItems(
-      page,
-      limit,
-      locations.length
-    )
+    const results = utils.getResults(locations, page, limit)
+    const pagination = utils.getPagination(locations, page, limit)
 
     // Search query
     const q = req.query.q || req.body.q

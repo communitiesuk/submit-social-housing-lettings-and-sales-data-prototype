@@ -51,13 +51,8 @@ export const logRoutes = (router) => {
     // Pagination
     const page = parseInt(req.query.page) || 1
     const limit = parseInt(req.query.limit) || 50
-    const skip = (page - 1) * limit
-    const results = logs.slice(skip, skip + limit)
-    const pagination = utils.getPaginationItems(
-      page,
-      limit,
-      logs.length
-    )
+    const results = utils.getResults(logs, page, limit)
+    const pagination = utils.getPagination(logs, page, limit)
 
     // Search query
     const q = req.query.q || req.body.q

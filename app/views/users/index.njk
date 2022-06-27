@@ -34,7 +34,7 @@
   <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
 
   {% set userRows = [] %}
-  {% for user in results %}
+  {% for user in results.page %}
     {% set userPath = "/users/" + user.id %}
     {% set userOrganisation = data.organisations[user.organisationId].name %}
     {% set userRole = data.roles[user.role].name %}
@@ -60,10 +60,10 @@
     %}
   {% endfor %}
 
-  {% if results.length %}
+  {% if results.count %}
     {% call appTableGroup({ ariaLabel: "users" }) %}
       {{ govukTable({
-        caption: macro.tableCaption("users", pagination.results.count, q) | safe,
+        caption: macro.tableCaption("users", results.count, q) | safe,
           captionClasses: "govuk-table__caption--m govuk-!-font-size-19 govuk-!-font-weight-regular",
         firstCellIsHeader: true,
         head: [{
@@ -77,7 +77,10 @@
       }) }}
     {% endcall %}
 
-    {{ appPagination(pagination) }}
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {{ govukPagination(pagination) }}
+    {{ macro.results(results) }}
   {% else %}
     <p class="govuk-body"><strong>No users found</strong></p>
   {% endif %}

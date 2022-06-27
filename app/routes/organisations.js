@@ -63,13 +63,8 @@ export const organisationRoutes = (router) => {
     // Pagination
     const page = parseInt(req.query.page) || 1
     const limit = parseInt(req.query.limit) || 100
-    const skip = (page - 1) * limit
-    const results = organisations.slice(skip, skip + limit)
-    const pagination = utils.getPaginationItems(
-      page,
-      limit,
-      organisations.length
-    )
+    const results = utils.getResults(organisations, page, limit)
+    const pagination = utils.getPagination(organisations, page, limit)
 
     // Search query
     const q = req.query.q || req.body.q
