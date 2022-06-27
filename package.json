@@ -38,8 +38,7 @@
   "type": "module",
   "prototype": {
     "serviceName": "Submit social housing lettings and sales data (CORE)",
-    "templateExtension": "njk",
-    "defaultRigLayout": "layouts/base.njk"
+    "templateExtension": "njk"
   },
   "stylelint": {
     "extends": "stylelint-config-gds/scss"
