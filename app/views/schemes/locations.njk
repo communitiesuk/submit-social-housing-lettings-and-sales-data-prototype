@@ -19,9 +19,7 @@
     }, {
       html: macro.entityHtml(location.postcode, locationPath, location.name) if location.postcode else "Not known"
     }, {
-      text: location["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported)
-    }, {
-      text: location["is-adapted"] | textFromInputValue(data.questions["yes-no"])
+      html: macro.entityHtml(location["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported), false, "With wheelchair adaptations" if location["is-adapted"] == "true")
     }, {
       html: "<a href=\"" + locationPath + "/delete\">Delete<span class=\"govuk-visually-hidden\">" + location.postcode + "</span>" if isAdmin and not scheme.deactivated
     }])
@@ -48,8 +46,6 @@
           text: "Postcode"
         }, {
           text: "Type of unit"
-        }, {
-          html: "Adapted"
         }, {
           text: "Actions"
         } if isAdmin and not scheme.deactivated],
