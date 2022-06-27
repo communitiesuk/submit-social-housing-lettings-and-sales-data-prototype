@@ -45,17 +45,6 @@
   }) }}
 
   {{ govukRadios({
-    decorate: ["schemes", scheme.id, "locations", itemId, "type-of-building"],
-    fieldset: {
-      legend: {
-        classes: "govuk-fieldset__legend--m",
-        text: "What is the most common type of building at this location?"
-      }
-    },
-    items: data.questions["type-of-building"]
-  }) }}
-
-  {{ govukRadios({
     decorate: ["schemes", scheme.id, "locations", itemId, "is-adapted"],
     fieldset: {
       legend: {

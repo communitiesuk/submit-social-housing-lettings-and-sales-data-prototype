@@ -133,11 +133,7 @@ const generateSchemes = () => {
             'shared-flat',
             'shared-house-or-hostel'
           ]),
-          'is-adapted': faker.datatype.boolean().toString(),
-          'type-of-building': faker.helpers.arrayElement([
-            'converted',
-            'purpose-built'
-          ])
+          'is-adapted': faker.datatype.boolean().toString()
         }
       }
 
