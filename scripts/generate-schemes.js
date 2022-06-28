@@ -1,8 +1,6 @@
 import { faker } from '@faker-js/faker'
 import { generateDataset } from '../app/utils.js'
 import localAuthorities from '../app/datasets/local-authorities.js'
-import seedSchemes from '../app/datasets/seed-schemes.js'
-import exampleSchemes from '../app/datasets/example-schemes.js'
 
 faker.locale = 'en_GB'
 
@@ -31,9 +29,10 @@ const streetNames = [
 
 const generateSchemes = () => {
   const schemes = {}
+  const range = Array.from(Array(100).keys())
 
-  Object.entries(seedSchemes).forEach(([key, value]) => {
-    const id = faker.datatype.number({ min: 100, max: 999 })
+  for (const i of range) {
+    const id = i + 1000
     const preset = faker.datatype.number({ min: 1, max: 6 })
 
     // Scheme values
@@ -154,11 +153,13 @@ const generateSchemes = () => {
       deactivated: faker.datatype.boolean(),
       name,
       confidential: faker.datatype.boolean().toString(),
-      ownerId: value.ownerId,
+      ownerId: faker.helpers.arrayElement([
+        'OWNER',
+        'OWNER_AGENT'
+      ]),
       agentId: faker.helpers.arrayElement([
         'AGENT',
-        'OWNER_AGENT',
-        value.ownerId
+        'OWNER_AGENT'
       ]),
       type,
       'registered-home': faker.helpers.arrayElement([
@@ -182,12 +183,9 @@ const generateSchemes = () => {
         max: 150
       }))
     }
-  })
-
-  return {
-    ...schemes,
-    ...exampleSchemes
   }
+
+  return schemes
 }
 
 generateDataset(generateSchemes(), 'schemes')
