@@ -1,0 +1,21 @@
+{% extends "layouts/question.njk" %}
+
+{# Editing an existing location, with limited editing options #}
+{% set caption = scheme.name %}
+{% set title = "Location name for " + scheme.locations[itemId].postcode %}
+{% set buttonText = "Continue" %}
+{% set formAction = schemePath + "/locations/" %}
+{% set hasAnsweredQuestion = true %}
+
+{% block question %}
+  {{ govukInput({
+    decorate: ["schemes", scheme.id, "locations", itemId, "name"],
+    label: {
+      classes: "govuk-label--l",
+      text: macro.heading(title, caption)
+    },
+    hint: {
+      text: "This is how you refer to this location within your organisation"
+    }
+  }) }}
+{% endblock %}
