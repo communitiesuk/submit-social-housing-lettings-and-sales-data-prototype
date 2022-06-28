@@ -184,7 +184,7 @@ export const schemeRoutes = (router) => {
     schemes[schemeId] = {
       created: new Date().toISOString(),
       draft: true,
-      organisationId: account.organisationId
+      ownerId: account.organisationId
     }
 
     res.redirect(`/schemes/${schemeId}/details`)
@@ -241,6 +241,14 @@ export const schemeRoutes = (router) => {
     const { schemeId, view } = req.params
     const scheme = schemes[schemeId]
     const schemePath = `/schemes/${schemeId}`
+
+    // Autocomplete sends a [text, value] array, we just want the value
+    scheme.ownerId = Array.isArray(scheme.ownerId)
+      ? scheme.ownerId.at(-1)
+      : scheme.ownerId
+    scheme.agentId = Array.isArray(scheme.agentId)
+      ? scheme.agentId.at(-1)
+      : scheme.agentId
 
     // Add another location
     if (req.body['add-another-location'] === 'true') {
