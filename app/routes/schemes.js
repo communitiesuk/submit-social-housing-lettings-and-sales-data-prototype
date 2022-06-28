@@ -41,7 +41,7 @@ export const schemeRoutes = (router) => {
    */
   router.all(['/schemes', '/organisations/:organisationId/schemes'], (req, res) => {
     let { organisations, schemes } = req.session.data
-    const { organisationId } = req.params || 'OWNER'
+    const { organisationId } = req.params
     const organisation = organisations[organisationId]
 
     // Get schemes as array
@@ -50,8 +50,10 @@ export const schemeRoutes = (router) => {
     // Sort schemes by name
     schemes = utils.sortArray(schemes, 'name')
 
-    // Only show schemes owned by the current organisation
-    schemes = schemes.filter(scheme => scheme.ownerId === organisationId)
+    // Only show schemes owned by the current organisation in URL
+    if (req.params.organisationId) {
+      schemes = schemes.filter(scheme => scheme.ownerId === organisationId)
+    }
 
     // Pagination
     const page = parseInt(req.query.page) || 1
