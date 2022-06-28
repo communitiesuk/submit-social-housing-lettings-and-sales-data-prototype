@@ -44,22 +44,14 @@ export const schemeRoutes = (router) => {
     const { organisationId } = req.params || 'OWNER'
     const organisation = organisations[organisationId]
 
-    // Get schemes as array sorted by scheme name
+    // Get schemes as array
     schemes = utils.objectToArray(schemes)
+
+    // Sort schemes by name
     schemes = utils.sortArray(schemes, 'name')
 
-    // Scope schemes to organisation
-    if (organisationId) {
-      const organisationRelationships = [
-        organisationId,
-        ...(organisation.agents ? organisation.agents : [])
-      ]
-
-      // Only return users with a relationship with organisation
-      schemes = schemes.filter(user => organisationRelationships
-        .includes(user.organisationId)
-      )
-    }
+    // Only show schemes owned by the current organisation
+    schemes = schemes.filter(scheme => scheme.ownerId === organisationId)
 
     // Pagination
     const page = parseInt(req.query.page) || 1
