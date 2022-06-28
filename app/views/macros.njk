@@ -119,7 +119,7 @@
 {% macro tableCaption(type, total, q) %}
   <span class="govuk-!-margin-right-4">
     {% if q %}<b>56</b> {{ type }} found matching ‘{{ q }}’ of{% endif %}
-    <b>{{ total }}</b> total {{ type }}
+    <b>{{ total }}</b> {{ type }}
     {%- if q %}. <a class="govuk-link" href="#">Clear search</a>{% endif %}
   </span>
 {% endmacro %}

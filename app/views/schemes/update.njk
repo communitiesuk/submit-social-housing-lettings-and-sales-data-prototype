@@ -7,7 +7,7 @@
     <div class="govuk-grid-column-three-quarters-from-desktop">
       {{ macro.heading(title, caption) }}
 
-      {% include "schemes/_scheme-answers.njk" %}
+      {% include "schemes/_scheme-details.njk" %}
 
       {{ govukRadios({
         decorate: ["schemes", scheme.id, "updated"],

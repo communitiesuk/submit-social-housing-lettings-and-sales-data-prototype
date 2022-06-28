@@ -217,6 +217,12 @@ export const schemeRoutes = (router) => {
       allOrganisations.filter(organisation => organisation.isOwner === 'true')
     )
 
+    // Get locations as an array (needed for locations list in check answers)
+    let locations
+    if (scheme.locations) {
+      locations = utils.objectToArray(scheme.locations)
+    }
+
     if (scheme) {
       res.render(`schemes/${view}`, {
         localAuthorities,
@@ -226,7 +232,8 @@ export const schemeRoutes = (router) => {
         itemId,
         scheme,
         schemes,
-        schemePath
+        schemePath,
+        locations
       })
     } else {
       res.redirect('/schemes')

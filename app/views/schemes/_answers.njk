@@ -1,69 +1,9 @@
-{% set locationsCount = scheme.locations | length %}
-
 {% set detailsHtml %}
-  {% include "schemes/_scheme-answers.njk" %}
+  {% include "schemes/_scheme-details.njk" %}
 {% endset %}
 
 {% set locationsHtml %}
-  {% for itemId, location in scheme.locations %}
-    <h2 class="govuk-heading-m">{{ location.postcode }}</h2>
-    {{ govukSummaryList({
-      classes: "govuk-!-margin-bottom-9" if not loop.last else "",
-      rows: [{
-        key: {
-          text: "Location code"
-        },
-        value: {
-          classes: "app-!-font-tabular",
-          text: "S" + scheme.id + "-" + location.postcode | replace(" ", "")
-        }
-      }, {
-        key: {
-          text: "Postcode"
-        },
-        value: {
-          text: macro.postcodeHtml(location.postcode, location["local-authority"]) if location.postcode else "Not known"
-        },
-        actions: actionLinks({
-          href: schemePath + "/location/" + itemId,
-          visuallyHiddenText: "postcode"
-        }) if scheme.draft or isAdmin
-      }, {
-        key: {
-          html: "Total number of units" | noOrphans
-        },
-        value: {
-          text: location.units | textFromInputValue
-        },
-        actions: actionLinks({
-          href: schemePath + "/location/" + itemId,
-          visuallyHiddenText: "number of units"
-        })
-      }, {
-        key: {
-          text: "Type of unit"
-        },
-        value: {
-          text: location["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported)
-        },
-        actions: actionLinks({
-          href: schemePath + "/location/" + itemId,
-          visuallyHiddenText: "type of unit"
-        })
-      }, {
-        key: {
-          text: "Wheelchair adaptation"
-        },
-        value: {
-          text: location["is-adapted"] | textFromInputValue(data.questions["yes-no"])
-        },
-        actions: actionLinks({
-          href: schemePath + "/location/" + itemId,
-          visuallyHiddenText: "if location has been built or adapted to wheelchair-user standards"
-        })
-      }]
-    }) }}
-  {% endfor %}
+  {% include "schemes/_scheme-locations.njk" %}
 
   {{ govukButton({
     classes: "govuk-button--secondary",
@@ -81,7 +21,7 @@
         html: detailsHtml
       }
     }, {
-      label: locationsCount + " locations" if locationsCount > 1 else "Location",
+      label: "Locations",
       id: "locations",
       panel: {
         html: locationsHtml

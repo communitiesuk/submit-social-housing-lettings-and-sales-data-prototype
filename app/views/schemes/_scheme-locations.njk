@@ -1,0 +1,37 @@
+{% set locationRows = [] %}
+{% for location in locations %}
+  {% set locationPath = "/schemes/" + scheme.id + "/location/" + location.id %}
+  {% set row = locationRows.push([{
+    classes: "govuk-!-text-align-left",
+    text: "S" + scheme.id + "-" + location.postcode | replace(" ", ""),
+    format: "numeric"
+  }, {
+    html: macro.entityHtml(location.postcode, locationPath, location.name) if location.postcode else "Not known"
+  }, {
+    text: location.units
+  }, {
+    html: macro.entityHtml(location["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported), false, "With wheelchair adaptations" if location["is-adapted"] == "true")
+  }, {
+    html: "<a href=\"" + locationPath + "/delete\">Delete<span class=\"govuk-visually-hidden\">" + location.postcode + "</span>" if isAdmin and not scheme.deactivated
+  }])
+  %}
+{% endfor %}
+
+{% call appTableGroup({ ariaLabel: "locations" }) %}
+  {{ govukTable({
+    caption: macro.tableCaption("locations", locations.length, q) | safe,
+    captionClasses: "govuk-table__caption--m govuk-!-font-size-19 govuk-!-font-weight-regular",
+    head: [{
+      html: "Code"
+    }, {
+      text: "Postcode"
+    }, {
+      text: "Units"
+    }, {
+      text: "Common unit type"
+    }, {
+      text: "Actions"
+    } if isAdmin and not scheme.deactivated],
+    rows: locationRows
+  }) }}
+{% endcall %}
