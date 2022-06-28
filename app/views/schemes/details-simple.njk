@@ -6,7 +6,7 @@
 {% set caption = scheme.name %}
 {% set title = "Scheme details" %}
 {% set buttonText = "Continue" %}
-{% set formAction = schemePath %}
+{% set formAction = schemePath + "/update" %}
 {% set hasAnsweredQuestion = true %}
 
 {% block question %}
@@ -35,4 +35,23 @@
     },
     items: data.questions["yes-no"]
   }) }}
+
+  {% if isAdmin %}
+    {# Ideally show radio options if number of organisations is less than 10 #}
+    {{ appAutocomplete(decorate({
+      label: {
+        classes: "govuk-label--m",
+        html: "Which organisation owns the housing stock for this scheme?"
+      },
+      allowEmpty: true,
+      showNoOptionsFound: true,
+      items: owners | optionItems
+    }, ["schemes", scheme.id, "ownerId"])) }}
+  {% else %}
+    {{ govukInput({
+      decorate: ["schemes", scheme.id, "ownerId"],
+      value: scheme.ownerId,
+      type: "hidden"
+    }) }}
+  {% endif %}
 {% endblock %}

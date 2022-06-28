@@ -1,6 +1,7 @@
 {% set locationRows = [] %}
+{% set locationEditPage = locationEditPage or "location" %}
 {% for location in locations %}
-  {% set locationPath = "/schemes/" + scheme.id + "/location/" + location.id %}
+  {% set locationPath = "/schemes/" + scheme.id + "/" + locationEditPage + "/" + location.id %}
   {% set row = locationRows.push([{
     classes: "govuk-!-text-align-left",
     text: "S" + scheme.id + "-" + location.postcode | replace(" ", ""),

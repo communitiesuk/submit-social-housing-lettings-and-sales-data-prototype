@@ -20,6 +20,7 @@
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
 
     {% set locations = results.page %}
+    {% set locationEditPage = "location-simple" %}
     {% include "schemes/_scheme-locations.njk" %}
 
     {{ govukPagination(pagination) }}
