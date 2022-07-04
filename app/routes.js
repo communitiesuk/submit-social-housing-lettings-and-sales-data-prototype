@@ -50,4 +50,11 @@ schemeRoutes(router)
 userRoutes(router)
 organisationRoutes(router) // Must come after log, scheme and user routes
 
+// Contact form
+router.post('/contact/', (req, res, next) => {
+  req.flash('success', 'Your message has been sent. We aim to respond within 2 working days.')
+
+  next()
+})
+
 export default router

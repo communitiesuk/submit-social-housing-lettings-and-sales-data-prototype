@@ -1,0 +1,77 @@
+{% extends "layouts/form.njk" %}
+
+{% set title = "Contact the DLUHC service desk" %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      {% for type, text in messages %}
+        {{ govukNotificationBanner({ text: text, type: type }) }}
+      {% endfor %}
+
+      {{ macro.heading(title) }}
+
+      {{ govukInput({
+        decorate: "name",
+        label: {
+          classes: "govuk-label--m",
+          text: "Name"
+        },
+        autocomplete: "name",
+        spellcheck: false
+      }) }}
+
+      {{ govukInput({
+        decorate: "email",
+        label: {
+          classes: "govuk-label--m",
+          text: "Email address"
+        },
+        autocomplete: "email",
+        spellcheck: false
+      }) }}
+
+      {{ govukRadios({
+        decorate: "category",
+        fieldset: {
+          legend: {
+            classes: "govuk-fieldset__legend--m",
+            text: "Category"
+          }
+        },
+        items: [{
+          text: "Analysis, tables and reports"
+        }, {
+          text: "Definitions used in log submission forms"
+        }, {
+          text: "Organisation management (including mergers)"
+        }, {
+          text: "Problem accessing the service"
+        }, {
+          text: "Submission deadlines"
+        }, {
+          text: "Supported housing lettings and schemes"
+        }, {
+          text: "User account management"
+        }, {
+          text: "Validation and error messages"
+        }, {
+          text: "Other"
+        }]
+      }) }}
+
+      {{ govukTextarea({
+        decorate: "message",
+        label: {
+          classes: "govuk-label--m",
+          text: "Your query"
+        },
+        rows: 10
+      }) }}
+
+      {{ govukButton({
+        text: "Send"
+      }) }}
+    </div>
+  </div>
+{% endblock %}
