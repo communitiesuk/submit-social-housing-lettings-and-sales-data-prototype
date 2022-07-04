@@ -56,7 +56,7 @@
       text: "Support prototype" if isAdmin else "Prototype"
     },
     text: "This is a prototype of a new service. Some parts may not work yet."
-  }) if data.token }}
+  }) if not hidePhaseBanner }}
 
   {{ appPrimaryNavigation({
     items: [{

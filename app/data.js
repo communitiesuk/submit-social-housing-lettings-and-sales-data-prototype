@@ -112,5 +112,33 @@ export default async () => ({
       colour: 'grey'
     }
   },
-  users
+  users,
+  exampleAccounts: {
+    coordinator: [{
+      value: 'data.coordinator@malinsgroup.co.uk',
+      text: 'Organisation owns housing stock and uses agents to manage the properties'
+    }, {
+      value: 'data.coordinator@believehousing.co.uk',
+      text: 'Organisation owns and manages their own housing stock'
+    }, {
+      value: 'data.coordinator@placesforpeople.co.uk',
+      text: 'Organisation owns and manages housing stock and that of other organisations'
+    }, {
+      value: 'data.coordinator@bcwa.org.uk',
+      text: 'Organisation manages properties for other organisations'
+    }],
+    provider: [{
+      value: 'data.provider@malinsgroup.co.uk',
+      text: 'Organisation owns housing stock and uses agents to manage the properties'
+    }, {
+      value: 'data.provider@believehousing.co.uk',
+      text: 'Organisation owns and manages their own housing stock'
+    }, {
+      value: 'data.provider@placesforpeople.co.uk',
+      text: 'Organisation owns and manages housing stock and that of other organisations'
+    }, {
+      value: 'data.provider@bcwa.org.uk',
+      text: 'Organisation manages properties for other organisations'
+    }]
+  }
 })

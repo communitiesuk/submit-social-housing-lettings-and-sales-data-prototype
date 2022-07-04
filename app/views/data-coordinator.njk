@@ -1,0 +1,23 @@
+{% extends "layouts/form.njk" %}
+
+{% import "macros.njk" as macro %}
+
+{% set title = "Which of the following best describes your organisation?" %}
+{% set formAction = "/account/sign-in" %}
+
+{% block form %}
+  {{ govukRadios({
+    decorate: "account-email",
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--l",
+        html: macro.fieldsetHeading(title)
+      }
+    },
+    items: data.exampleAccounts.coordinator
+  }) }}
+
+  {{ govukButton({
+    text: "Sign in as a data coordinator"
+  }) }}
+{% endblock %}
