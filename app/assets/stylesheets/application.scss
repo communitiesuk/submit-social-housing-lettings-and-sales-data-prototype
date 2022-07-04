@@ -13,7 +13,7 @@ $govuk-assets-path: "/govuk/assets/";
 @import "govuk-prototype-components/x-govuk/all";
 
 // Import app components
-$app-assets-path: '/public/';
+$app-assets-path: "/public/";
 @import "../app/components/all";
 
 // GOV.UK Notify email (used for prototyping emails sent by GOV.UK Notify)
@@ -33,6 +33,7 @@ $app-assets-path: '/public/';
 
 // App utilities
 .app-\!-colour-muted {
+  // stylelint-disable-next-line declaration-no-important
   color: $govuk-secondary-text-colour !important;
 }
 
@@ -57,12 +58,9 @@ $app-assets-path: '/public/';
   &:before {
     border-top: 1px dashed $govuk-secondary-text-colour;
     content: "";
-    position: relative;
-  }
-
-  &:before {
     flex-grow: 1;
     margin-bottom: govuk-spacing(2);
+    position: relative;
   }
 }
 
