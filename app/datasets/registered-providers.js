@@ -14,21 +14,21 @@ export default {
     isOwner: 'false'
   },
   OWNER: { // Organisation owns housing stock and uses agents to manage the properties
-    name: 'Malins Affordable Homes Limited',
-    domains: ['malinsgroup.co.uk'],
-    'registration-date': '2013-10-03',
-    designation: 'Profit',
-    'corporate-form': 'Company',
+    name: 'Accent Housing Limited',
+    domains: ['accentgroup.org'],
+    'registration-date': '1976-04-12',
+    designation: 'Non-profit',
+    'corporate-form': 'Registered society',
     address: {
-      line1: 'Unit 7 Horizon Business Village, 1 Brooklands Road',
-      line2: 'Weybridge',
-      postalCode: 'KT13 0TJ'
+      line1: 'Charlestown House, Acorn Park Industrial Estate',
+      line2: 'Shipley, West Yorkshire',
+      postalCode: 'BD17 7SW'
     },
-    tel: '01932 356043',
-    registration: '4777',
+    tel: '0345 678 0555',
+    registration: '1722',
     isOwner: 'true',
     isOwnAgent: 'false',
-    agents: ['4854', 'L0891', 'LH0117'],
+    agents: ['C4110', '4860', '5132', '00CX', '4688', 'L3076', 'A2989', 'C2849', 'H2025', 'H2509'],
     isAgent: 'false',
     owners: [],
     'rent-periods': ['fortnightly', 'monthly']
@@ -54,23 +54,23 @@ export default {
     'rent-periods': ['monthly']
   },
   OWNER_AGENT: { // Organisation owns and manages housing stock and that of other organisations
-    name: 'Places for People Group Limited',
-    domains: ['placesforpeople.co.uk'],
-    'registration-date': '1999-09-21',
+    name: 'Centrepoint Soho',
+    domains: ['centrepoint.org.uk'],
+    'registration-date': '1976-05-10',
     designation: 'Non-profit',
-    'corporate-form': 'Company',
+    'corporate-form': 'Charitable company',
     address: {
-      line1: '305 Gray’s Inn Road',
+      line1: 'Central House, 25 Camperdown Street',
       line2: 'London',
-      postalCode: 'WC1X 8QR'
+      postalCode: 'E1 8DZ'
     },
-    tel: '020 7843 3820',
-    registration: 'L4236',
+    tel: '0800 587 5158',
+    registration: 'H1869',
     isOwner: 'true',
-    isOwnAgent: 'true',
-    agents: ['L0659'],
+    isOwnAgent: 'false',
+    agents: ['LH2429', '4742'],
     isAgent: 'true',
-    owners: ['LH3926'],
+    owners: ['H1528', '00EJ', 'L1538', 'LH0032', 'L4517', 'L0726', '4825', '4880', 'LH0171', '4851', '4878', 'L0659', 'LH3926', 'LH0050', 'L0078', 'H3158', 'L4219', 'L4521'],
     'rent-periods': ['every-4-weeks']
   },
   AGENT: { // Organisation manages properties for other organisations
@@ -867,12 +867,12 @@ export default {
     designation: 'Non-profit',
     'corporate-form': 'Company'
   },
-  // 4777: {
-  //   name: 'Malins Affordable Homes Limited',
-  //   'registration-date': '2013-10-03',
-  //   designation: 'Profit',
-  //   'corporate-form': 'Company'
-  // },
+  4777: {
+    name: 'Malins Affordable Homes Limited',
+    'registration-date': '2013-10-03',
+    designation: 'Profit',
+    'corporate-form': 'Company'
+  },
   4778: {
     name: 'Reliance Social Housing C.I.C',
     'registration-date': '2013-10-03',
@@ -2109,12 +2109,12 @@ export default {
     designation: 'Non-profit',
     'corporate-form': 'Registered society'
   },
-  LH1722: {
-    name: 'Accent Housing Limited',
-    'registration-date': '1976-04-12',
-    designation: 'Non-profit',
-    'corporate-form': 'Registered society'
-  },
+  // LH1722: {
+  //   name: 'Accent Housing Limited',
+  //   'registration-date': '1976-04-12',
+  //   designation: 'Non-profit',
+  //   'corporate-form': 'Registered society'
+  // },
   SL3605: {
     name: 'Access Homes Housing Association Limited',
     'registration-date': '1985-10-21',
@@ -3051,12 +3051,12 @@ export default {
     designation: 'Local authority',
     'corporate-form': ''
   },
-  H1869: {
-    name: 'Centrepoint Soho',
-    'registration-date': '1976-05-10',
-    designation: 'Non-profit',
-    'corporate-form': 'Charitable company'
-  },
+  // H1869: {
+  //   name: 'Centrepoint Soho',
+  //   'registration-date': '1976-05-10',
+  //   designation: 'Non-profit',
+  //   'corporate-form': 'Charitable company'
+  // },
   A2820: {
     name: 'Charity of Alice Dale',
     'registration-date': '1979-06-04',
@@ -6561,12 +6561,12 @@ export default {
     designation: 'Non-profit',
     'corporate-form': 'Registered society'
   },
-  // L4236: {
-  //   name: 'Places for People Group Limited',
-  //   'registration-date': '1999-09-21',
-  //   designation: 'Non-profit',
-  //   'corporate-form': 'Company'
-  // },
+  L4236: {
+    name: 'Places for People Group Limited',
+    'registration-date': '1999-09-21',
+    designation: 'Non-profit',
+    'corporate-form': 'Company'
+  },
   L0659: {
     name: 'Places for People Homes Limited',
     'registration-date': '1975-10-14',
