@@ -74,12 +74,12 @@ export const userRoutes = (router) => {
     const { userId } = req.params
     const view = req.params.view ? req.params.view : 'user'
 
-    const user = utils.getEntityById(users, userId)
+    const user = utils.getFromObjectById(users, userId)
     const userPath = `/users/${userId}`
 
     // Get organisation that user belongs to
     const organisationId = account.organisationId
-    const organisation = utils.getEntityById(organisations, organisationId)
+    const organisation = utils.getFromObjectById(organisations, organisationId)
 
     // Admin can add users to any organisation
     const allOrganisations = utils.objectToArray(organisations)

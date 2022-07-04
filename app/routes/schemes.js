@@ -200,11 +200,11 @@ export const schemeRoutes = (router) => {
     const { itemId, schemeId } = req.params
     const view = req.params.view ? req.params.view : 'scheme'
 
-    const scheme = utils.getEntityById(schemes, schemeId)
+    const scheme = utils.getFromObjectById(schemes, schemeId)
     const schemePath = `/schemes/${schemeId}`
 
     // Get organisation that owns scheme
-    const owner = utils.getEntityById(organisations, scheme.ownerId)
+    const owner = utils.getFromObjectById(organisations, scheme.ownerId)
 
     // Admin can add schemes to any organisation
     const allOrganisations = utils.objectToArray(organisations)

@@ -12,7 +12,7 @@ export default () => {
 
   globals.incompleteSections = function (logId, logsObject = false) {
     const logs = logsObject || this.ctx.data.logs
-    const log = utils.getEntityById(logs, logId)
+    const log = utils.getFromObjectById(logs, logId)
     const sections = getSections(log)
     const incompleteSections = []
 

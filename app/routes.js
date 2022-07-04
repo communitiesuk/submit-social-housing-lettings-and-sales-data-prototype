@@ -5,7 +5,7 @@ import { logRoutes } from './routes/logs.js'
 import { organisationRoutes } from './routes/organisations.js'
 import { schemeRoutes } from './routes/schemes.js'
 import { userRoutes } from './routes/users.js'
-import { getEntityById } from './utils.js'
+import { getFromObjectById } from './utils.js'
 
 const router = express.Router()
 
@@ -17,7 +17,7 @@ router.all('*', (req, res, next) => {
 
   // Set state
   if (account?.role && account?.organisationId) {
-    const organisation = getEntityById(organisations, account.organisationId)
+    const organisation = getFromObjectById(organisations, account.organisationId)
     res.locals.isAdmin = account.role === 'admin'
     res.locals.isCoordinator = account.role === 'coordinator'
     res.locals.userOrganisationPath = `/organisations/${account.organisationId}`

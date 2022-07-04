@@ -1,5 +1,11 @@
 import { writeFile } from 'node:fs/promises'
 
+/**
+ * Generate dataset
+ *
+ * @param {Function} generator - Function to generate data
+ * @param {string} fileName - File name
+ */
 export const generateDataset = (generator, fileName) => {
   const filePath = `./app/data/generated/${fileName}.json`
   const fileData = JSON.stringify(generator, null, 2)
@@ -13,11 +19,20 @@ export const generateDataset = (generator, fileName) => {
 }
 
 /**
+ * Generate a unique ID
+ *
+ * @returns {string}
+ */
+export const generateUniqueId = () => {
+  return (Number(new Date())).toString(36).slice(-5).toUpperCase()
+}
+
+/**
  * Generate results page
  *
- * @param {Array} items Items to paginate
- * @param {number} currentPage Current page
- * @param {number} limit Limit of items per page
+ * @param {Array} items - Items to paginate
+ * @param {number} currentPage - Current page
+ * @param {number} limit - Limit of items per page
  * @returns {object}
  */
 export const getResults = function (items, currentPage, limit) {
@@ -38,9 +53,9 @@ export const getResults = function (items, currentPage, limit) {
 /**
  * Generate pagination items
  *
- * @param {Array} items Items to paginate
- * @param {number} currentPage Current page
- * @param {number} limit Limit of items per page
+ * @param {Array} items - Items to paginate
+ * @param {number} currentPage - Current page
+ * @param {number} limit - Limit of items per page
  * @returns {object}
  */
 export const getPagination = function (items, currentPage, limit) {
@@ -70,15 +85,26 @@ export const getPagination = function (items, currentPage, limit) {
   }
 }
 
-export const generateUniqueId = () => {
-  return (Number(new Date())).toString(36).slice(-5).toUpperCase()
-}
-
-export const getById = (items, id) => {
+/**
+ * Get data object from an array
+ *
+ * @param {Array} items - Array of data objects
+ * @param {string} id - Data object ID
+ * @returns {object}
+ */
+export const getFromArrayById = (items, id) => {
   return items.find(item => item.id === id)
 }
 
-export const getEntityById = (items, id) => {
+/**
+ * Get data object from an object.
+ * Adds `id` value to returned object if missing.
+ *
+ * @param {object} items - Object of data objects
+ * @param {string} id - Data object ID
+ * @returns {object}
+ */
+export const getFromObjectById = (items, id) => {
   for (const [key, value] of Object.entries(items)) {
     value.id = key
   }
@@ -90,6 +116,12 @@ export const getEntityById = (items, id) => {
   return items[id]
 }
 
+/**
+ * Convert object to an array
+ *
+ * @param {object} object - Object of data objects
+ * @returns {Array} Array of data objects
+ */
 export const objectToArray = (object) => {
   const objArray = []
   Object.keys(object).forEach(key => objArray.push(
@@ -98,6 +130,13 @@ export const objectToArray = (object) => {
   return objArray
 }
 
+/**
+ * Sort an array by key value
+ *
+ * @param {Array} array - Array of data objects
+ * @param {string} key - Key to sort by
+ * @returns {Array}
+ */
 export const sortArray = (array, key) => {
   return array.sort((a, b) => {
     // If key not provided, don’t sort

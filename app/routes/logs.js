@@ -93,7 +93,7 @@ export const logRoutes = (router) => {
     const { logId } = req.params
     const { logs } = req.session.data
 
-    const log = utils.getEntityById(logs, logId)
+    const log = utils.getFromObjectById(logs, logId)
     const sections = getSections(log)
 
     if (log) {
@@ -113,7 +113,7 @@ export const logRoutes = (router) => {
   router.get('/logs/:logId/review', (req, res, next) => {
     const { logId } = req.params
     const { account, logs } = req.session.data
-    const log = utils.getEntityById(logs, logId)
+    const log = utils.getFromObjectById(logs, logId)
     const sections = getSections(log)
 
     res.render('logs/review', { account, log, logs, sections })
@@ -132,7 +132,7 @@ export const logRoutes = (router) => {
   router.post('/logs/:logId/review', (req, res, next) => {
     const { logId } = req.params
     const { account, logs } = req.session.data
-    const log = utils.getEntityById(logs, logId)
+    const log = utils.getFromObjectById(logs, logId)
     const sections = getSections(log)
 
     const privacyNotice = logs[logId]?.['household-characteristics']?.['privacy-notice'] !== undefined
@@ -178,8 +178,8 @@ export const logRoutes = (router) => {
     const organisationId = account?.organisationId || 'OWNER'
     const organisation = organisations[organisationId]
 
-    const log = utils.getEntityById(logs, logId)
-    const section = utils.getById(getSections(log, organisation), sectionId)
+    const log = utils.getFromObjectById(logs, logId)
+    const section = utils.getFromArrayById(getSections(log, organisation), sectionId)
 
     res.locals.paths = wizard(section.paths, req)
 
@@ -196,8 +196,8 @@ export const logRoutes = (router) => {
       const organisationId = account?.organisationId || 'OWNER'
       const organisation = organisations[organisationId]
 
-      const log = utils.getEntityById(logs, logId)
-      const section = utils.getById(getSections(log, organisation), sectionId)
+      const log = utils.getFromObjectById(logs, logId)
+      const section = utils.getFromArrayById(getSections(log, organisation), sectionId)
 
       if (log[sectionId]) {
         if (sectionId === 'submit') {
@@ -227,14 +227,14 @@ export const logRoutes = (router) => {
         view = itemId
       }
 
-      const log = utils.getEntityById(logs, logId)
+      const log = utils.getFromObjectById(logs, logId)
       const logPath = `/logs/${logId}`
-      const section = utils.getById(getSections(log), sectionId)
+      const section = utils.getFromArrayById(getSections(log), sectionId)
       const sectionPath = `/logs/${logId}/${sectionId}`
 
       // Organisation data
       const organisationId = account?.organisationId || 'OWNER'
-      const organisation = utils.getEntityById(organisations, organisationId)
+      const organisation = utils.getFromObjectById(organisations, organisationId)
 
       // Add hint to your organisation in options
       organisations[organisationId].hint = 'Your organisation'
