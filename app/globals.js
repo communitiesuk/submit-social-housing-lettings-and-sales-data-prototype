@@ -81,7 +81,7 @@ export default () => {
       }
     }
 
-    let taskListSections = []
+    const taskListSections = []
     for (const group of groups) {
       taskListSections.push({
         titleText: group.title,
@@ -90,10 +90,6 @@ export default () => {
           .map(section => taskListItem(section))
       })
     }
-
-    // Remove groups with no sections (i.e. ‘Submission’ post-submit)
-    taskListSections = taskListSections
-      .filter(section => section.items.length !== 0)
 
     return taskListSections
   }
