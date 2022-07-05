@@ -67,7 +67,7 @@ export default {
   },
   'DP-OWNER_AGENT': {
     id: 'DP-OWNER_AGENT',
-    name: 'David Smith',
+    name: 'Rachel Hughes',
     email: 'data.provider@placesforpeople.co.uk',
     organisationId: 'OWNER_AGENT',
     role: 'provider',
@@ -79,7 +79,7 @@ export default {
   // Organisation manages properties for other organisations
   'DC-AGENT': {
     id: 'DC-AGENT',
-    name: 'Michael Smith',
+    name: 'Ali Ames',
     email: 'data.coordinator@bcwa.org.uk',
     organisationId: 'AGENT',
     role: 'coordinator',

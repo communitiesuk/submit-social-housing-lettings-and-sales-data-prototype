@@ -1,5 +1,4 @@
 import { createRequire } from 'node:module'
-import logs from './data/logs.js'
 import questions from './data/questions.js'
 import roles from './data/roles.js'
 import users from './data/users.js'
@@ -17,7 +16,6 @@ export default async () => ({
       name: 'Use log summary cards in logs views'
     }
   },
-  logs,
   filter: {
     user: ['DP-OWNER'],
     collection: ['2022/23'],
@@ -36,8 +34,9 @@ export default async () => ({
     id: 'finances',
     title: 'Finances'
   }],
-  questions: await questions(),
+  logs: require('./data/generated/logs.json'),
   organisations: require('./data/generated/organisations.json'),
+  questions: await questions(),
   rentPeriods: [{
     text: 'Every 2 weeks',
     value: 'fortnightly'

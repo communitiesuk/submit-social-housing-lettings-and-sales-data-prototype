@@ -50,7 +50,7 @@ export const logRoutes = (router) => {
 
     // Pagination
     const page = parseInt(req.query.page) || 1
-    const limit = parseInt(req.query.limit) || 50
+    const limit = parseInt(req.query.limit) || 25
     const results = utils.getResults(logs, page, limit)
     const pagination = utils.getPagination(logs, page, limit)
 
