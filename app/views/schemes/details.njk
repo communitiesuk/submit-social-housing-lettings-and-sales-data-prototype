@@ -39,36 +39,6 @@
     }]
   }) }}
 
-  {% if isAdmin %}
-    {# Ideally show radio options if number of organisations is less than 10 #}
-    {{ appAutocomplete(decorate({
-      label: {
-        classes: "govuk-label--m",
-        html: "Which organisation owns the housing stock for this scheme?"
-      },
-      allowEmpty: true,
-      showNoOptionsFound: true,
-      items: owners | optionItems
-    }, ["schemes", scheme.id, "ownerId"])) }}
-  {% else %}
-    {{ govukInput({
-      decorate: ["schemes", scheme.id, "ownerId"],
-      value: scheme.ownerId,
-      type: "hidden"
-    }) }}
-  {% endif %}
-
-  {# Ideally show radio options if number of organisations is less than 10 #}
-  {{ appAutocomplete(decorate({
-    label: {
-      classes: "govuk-label--m",
-      html: "Which organisation manages this scheme?"
-    },
-    allowEmpty: true,
-    showNoOptionsFound: true,
-    items: agents | optionItems
-  }, ["schemes", scheme.id, "agentId"])) }}
-
   {{ govukRadios({
     decorate: ["schemes", scheme.id, "type"],
     fieldset: {
@@ -89,5 +59,39 @@
       }
     },
     items: data.questions["registered-home"]
+  }) }}
+
+  {# Ideally show radio options if number of organisations is less than 10 #}
+  {{ appAutocomplete(decorate({
+    label: {
+      classes: "govuk-label--m",
+      html: "Which organisation owns the housing stock for this scheme?"
+    },
+    allowEmpty: true,
+    showNoOptionsFound: true,
+    items: agents | optionItems
+  }, ["schemes", scheme.id, "ownerId"])) if isAdmin }}
+
+  {{ govukRadios({
+    decorate: ["schemes", scheme.id, "arrangement"],
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Who manages the properties used by this scheme?"
+      }
+    },
+    items: [{
+      text: "The same organisation that owns the housing stock",
+      value: "owner"
+    }, {
+      text: "Another registered housing provider",
+      value: "agent"
+    }, {
+      text: "A registered charity or voluntary organisation",
+      value: "charity"
+    }, {
+      text: "Another organisation",
+      value: "other"
+    }] if isAdmin else data.questions.arrangement
   }) }}
 {% endblock %}

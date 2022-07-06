@@ -32,28 +32,6 @@
     }) if not scheme.deactivated
   }, {
     key: {
-      text: "Housing stock owned by"
-    },
-    value: {
-      text: organisations[scheme.ownerId].name
-    },
-    actions: actionLinks({
-      href: schemePath + "/details-simple",
-      visuallyHiddenText: "who owns the housing stock for this scheme"
-    }) if not scheme.deactivated
-  } if isAdmin, {
-    key: {
-      text: "Managed by"
-    },
-    value: {
-      text: organisations[scheme.agentId].name
-    },
-    actions: actionLinks({
-      href: schemePath + "/details",
-      visuallyHiddenText: "who this scheme is managed by"
-    }) if not descoped
-  }, {
-    key: {
       text: "Type of scheme"
     },
     value: {
@@ -75,6 +53,39 @@
       visuallyHiddenText: "if scheme is a registered as a care home"
     }) if not descoped
   }, {
+    key: {
+      text: "Housing stock owned by"
+    },
+    value: {
+      text: organisations[scheme.ownerId].name
+    },
+    actions: actionLinks({
+      href: schemePath + "/details-simple",
+      visuallyHiddenText: "who owns the housing stock for this scheme"
+    }) if not scheme.deactivated
+  } if isAdmin, {
+    key: {
+      text: "Properties managed by"
+    },
+    value: {
+      text: scheme.arrangement | textFromInputValue(data.questions.arrangement)
+    },
+    actions: actionLinks({
+      href: schemePath + "/details",
+      visuallyHiddenText: "who manages this scheme"
+    }) if not descoped
+  }, {
+    key: {
+      text: "Managing organisation"
+    },
+    value: {
+      text: organisations[scheme.agentId].name
+    },
+    actions: actionLinks({
+      href: schemePath + "/agent",
+      visuallyHiddenText: "organisation that manages this scheme"
+    }) if not descoped
+  } if scheme.arrangement != "owner", {
     key: {
       text: "Primary client group"
     },

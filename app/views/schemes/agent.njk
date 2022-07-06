@@ -1,0 +1,25 @@
+{% extends "layouts/question.njk" %}
+
+{% set title = "Which organisation manages the properties used by this scheme?" %}
+{% set caption = scheme.name %}
+{% set required = true %}
+
+{% if scheme.agentId %}
+  {# Editing an existing scheme #}
+  {% set buttonText = "Continue" %}
+  {% set formAction = schemePath + "/check-updated-answers" %}
+  {% set hasAnsweredQuestion = true %}
+{% endif %}
+
+{% block question %}
+  {# Ideally show radio options if number of organisations is less than 10 #}
+  {{ appAutocomplete(decorate({
+    label: {
+      classes: "govuk-label--l",
+      html: macro.heading(title, caption)
+    },
+    allowEmpty: true,
+    showNoOptionsFound: true,
+    items: agents | optionItems
+  }, ["schemes", scheme.id, "agentId"])) }}
+{% endblock %}

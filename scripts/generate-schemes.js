@@ -146,6 +146,18 @@ const generateSchemes = () => {
       return locations
     }
 
+    const arrangement = faker.helpers.arrayElement([
+      'owner',
+      'agent',
+      'charity',
+      'other'
+    ])
+
+    const ownerId = faker.helpers.arrayElement([
+      'OWNER',
+      'OWNER_AGENT'
+    ])
+
     // Scheme
     schemes[id] = {
       id,
@@ -153,14 +165,14 @@ const generateSchemes = () => {
       deactivated: faker.datatype.boolean(),
       name,
       confidential: faker.datatype.boolean().toString(),
-      ownerId: faker.helpers.arrayElement([
-        'OWNER',
-        'OWNER_AGENT'
-      ]),
-      agentId: faker.helpers.arrayElement([
-        'AGENT',
-        'OWNER_AGENT'
-      ]),
+      arrangement,
+      ownerId,
+      agentId: arrangement === 'owner'
+        ? ownerId
+        : faker.helpers.arrayElement([
+          'AGENT',
+          'OWNER_AGENT'
+        ]),
       type,
       'registered-home': faker.helpers.arrayElement([
         'nursing',
