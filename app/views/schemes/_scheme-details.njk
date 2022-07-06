@@ -65,7 +65,7 @@
     }) if not scheme.deactivated
   } if isAdmin, {
     key: {
-      text: "Properties managed by"
+      html: "Support services provided by" | noOrphans
     },
     value: {
       text: scheme.arrangement | textFromInputValue(data.questions.arrangement)
@@ -76,7 +76,7 @@
     }) if not descoped
   }, {
     key: {
-      text: "Managing organisation"
+      text: "Organisation providing support"
     },
     value: {
       text: organisations[scheme.agentId].name
