@@ -90,7 +90,7 @@ export default {
     isOwnAgent: 'false',
     agents: [],
     isAgent: 'true',
-    owners: ['4851', 'LH0391', 'LH0032'],
+    owners: ['LH0391', 'L4240', 'SL4293', 'LH4149', 'A0352', 'LH0495', 'LH0032', 'L4517', '5103', '00AH', '00BF', 'LH4377', '4851', 'L0721'],
     'rent-periods': ['fortnightly']
   },
   4568: {
