@@ -7,7 +7,14 @@ const getSchemeWizardPaths = (req) => {
   const schemePath = `/schemes/${schemeId}/`
 
   const journey = {
-    [`${schemePath}details`]: {},
+    [`${schemePath}details`]: {
+      // SKIP: Don’t ask for agent if managed by owner
+      [`${schemePath}primary-client-group`]: {
+        data: `schemes.${schemeId}.arrangement`,
+        value: 'owner'
+      }
+    },
+    [`${schemePath}agent`]: {},
     [`${schemePath}primary-client-group`]: {},
     [`${schemePath}has-secondary-client-group`]: {
       // SKIP: Don’t ask for secondary client group if none needed
@@ -229,6 +236,7 @@ export const schemeRoutes = (router) => {
       res.render(`schemes/${view}`, {
         localAuthorities,
         organisations,
+        owner,
         owners,
         agents,
         itemId,
