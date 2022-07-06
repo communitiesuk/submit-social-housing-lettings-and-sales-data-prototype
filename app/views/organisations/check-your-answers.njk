@@ -7,10 +7,8 @@
     <div class="govuk-grid-column-three-quarters-from-desktop">
       {{ macro.heading(title) }}
 
-      <h3 class="govuk-heading-m">Details</h3>
       {% include "organisations/_answers-details.njk" %}
 
-      <h3 class="govuk-heading-m govuk-!-margin-top-8">Housing stock ownership and management</h3>
       {% include "organisations/_answers-relationships.njk" %}
 
       {{ govukButton(decorate({

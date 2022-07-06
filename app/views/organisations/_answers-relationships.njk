@@ -17,32 +17,34 @@
   {% endif %}
 {% endset %}
 
+<h3 class="govuk-heading-m govuk-!-margin-bottom-2">Housing stock</h3>
 {{ govukSummaryList({
+  classes: "govuk-!-margin-bottom-8",
   rows: [{
     key: {
-      text: "Owns housing stock"
+      text: "Organisation owns housing stock"
     },
     value: {
       text: organisation.isOwner | textFromInputValue(data.questions["yes-no"])
     },
     actions: actionLinks({
       href: thisOrganisationPath + "/is-owner",
-      visuallyHiddenText: "if owns housing stock"
+      visuallyHiddenText: "if organisation owns housing stock"
     }) if isAdmin or isCoordinator
   }, {
     key: {
-      text: "Manages own stock"
+      text: "Organisation manages its own stock"
     },
     value: {
       html: organisation.isOwnAgent | textFromInputValue(data.questions["yes-no"])
     },
     actions: actionLinks({
       href: thisOrganisationPath + "/is-owner-agent",
-      visuallyHiddenText: "if manages own stock"
+      visuallyHiddenText: "if organisation manages its own stock"
     }) if isAdmin or isCoordinator
   } if isOwnAgent, {
     key: {
-      text: "Properties managed by"
+      text: "Managing agents"
     },
     value: {
       html: macro.organisationHtml(organisations, organisation.agents)
@@ -51,9 +53,14 @@
       href: thisOrganisationPath + "/agents",
       visuallyHiddenText: "managing agents"
     }) if isAdmin or isCoordinator
-  } if isOwner and not isOwnAgent, {
+  } if isOwner and not isOwnAgent]
+}) }}
+
+<h3 class="govuk-heading-m govuk-!-margin-bottom-2">Property management</h3>
+{{ govukSummaryList({
+  rows: [{
     key: {
-      text: "Manages properties for other organisations"
+      text: "Organisation manages properties for other housing providers"
     },
     value: {
       html: organisation.isAgent | textFromInputValue(data.questions["yes-no"])
@@ -64,14 +71,14 @@
     }) if isAdmin or isCoordinator
   }, {
     key: {
-      text: "Managing agent for"
+      text: "Housing providers"
     },
     value: {
       html: macro.organisationHtml(organisations, organisation.owners)
     },
     actions: actionLinks({
       href: thisOrganisationPath + "/owners",
-      visuallyHiddenText: "manages properties for"
+      visuallyHiddenText: "housing providers"
     }) if isAdmin or isCoordinator
   } if isAgent, {
     key: {
