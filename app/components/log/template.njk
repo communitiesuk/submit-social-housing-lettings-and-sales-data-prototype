@@ -26,10 +26,12 @@
         {% endif %}
       </header>
 
+      {% if params.needsType or params.lettingStartDate %}
       <p class="govuk-body govuk-!-margin-bottom-2">
         {% if params.needsType %}{{ params.needsType }}<br>{% endif %}
-        Tenancy starts <time datetime="{{ params.lettingStartDate }}">{{ params.lettingStartDate | govukDate }}</time>
+        {% if params.lettingStartDate %}Tenancy starts <time datetime="{{ params.lettingStartDate }}">{{ params.lettingStartDate | govukDate }}</time>{% endif %}
       </p>
+      {% endif %}
 
       {% if params.owner or params.manager %}
       <dl class="app-metadata">

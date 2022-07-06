@@ -78,9 +78,9 @@ export const logRoutes = (router) => {
     logs[logId] = {
       type,
       created: new Date().toISOString(),
-      createdBy: account,
+      createdBy: account?.id || 'ADMIN',
       updated: new Date().toISOString(),
-      updatedBy: account
+      updatedBy: account?.id || 'ADMIN'
     }
 
     res.redirect(`/logs/${logId}/`)

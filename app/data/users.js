@@ -1,6 +1,7 @@
 export default {
   // DLUHC
   ADMIN: {
+    id: 'ADMIN',
     name: 'Gary Meyler',
     email: 'admin@levellingup.gov.uk',
     organisationId: 'SUPPORT',
@@ -11,6 +12,7 @@ export default {
   },
   // Organisation that owns stock and contracts management to agents
   'DC-OWNER': {
+    id: 'DC-OWNER',
     name: 'Delia Cross',
     email: 'data.coordinator@malinsgroup.co.uk',
     organisationId: 'OWNER',
@@ -21,6 +23,7 @@ export default {
     'key-contact': 'true'
   },
   'DP-OWNER': {
+    id: 'DP-OWNER',
     name: 'Daisy Perkins',
     email: 'data.provider@malinsgroup.co.uk',
     organisationId: 'OWNER',
@@ -31,6 +34,7 @@ export default {
   },
   // Organisation that owns and manages stock
   'DC-OWNER_MANAGER': {
+    id: 'DC-OWNER_MANAGER',
     name: 'Judith Summer',
     email: 'data.coordinator@believehousing.co.uk',
     organisationId: 'OWNER_MANAGER',
@@ -40,6 +44,7 @@ export default {
     'key-contact': 'true'
   },
   'DP-OWNER_MANAGER': {
+    id: 'DP-OWNER_MANAGER',
     name: 'Brendan Phillips',
     email: 'data.provider@believehousing.co.uk',
     organisationId: 'OWNER_MANAGER',
@@ -50,6 +55,7 @@ export default {
   },
   // Organisation that owns and manages stock and that of other organisations
   'DC-OWNER_AGENT': {
+    id: 'DC-OWNER_AGENT',
     name: 'David Smith',
     email: 'data.coordinator@placesforpeople.co.uk',
     organisationId: 'OWNER_AGENT',
@@ -60,6 +66,7 @@ export default {
     'key-contact': 'true'
   },
   'DP-OWNER_AGENT': {
+    id: 'DP-OWNER_AGENT',
     name: 'David Smith',
     email: 'data.provider@placesforpeople.co.uk',
     organisationId: 'OWNER_AGENT',
@@ -71,6 +78,7 @@ export default {
   },
   // Organisation manages properties for other organisations
   'DC-AGENT': {
+    id: 'DC-AGENT',
     name: 'Michael Smith',
     email: 'data.coordinator@bcwa.org.uk',
     organisationId: 'AGENT',
@@ -81,6 +89,7 @@ export default {
     'key-contact': 'false'
   },
   'DP-AGENT': {
+    id: 'DP-AGENT',
     name: 'Sally Jones',
     email: 'data.provider@bcwa.org.uk',
     organisationId: 'AGENT',
