@@ -85,7 +85,7 @@ export default (env) => {
     }
 
     array = array.map(item => {
-      if (item.divider) {
+      if (item && item.divider) {
         return item
       }
 
