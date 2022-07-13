@@ -11,7 +11,7 @@
   }, {
     text: location.units
   }, {
-    html: macro.entityHtml(location["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported), false, "With wheelchair adaptations" if location["is-adapted"] == "true")
+    html: macro.entityHtml(location["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported), false, location.adaptation | textFromInputValue(data.questions.adaptation) if location.adaptation == "true" or location.adaptation == "general")
   }, {
     html: "<a href=\"" + locationPath + "/delete\">Delete<span class=\"govuk-visually-hidden\">" + location.postcode + "</span>" if isAdmin and not scheme.deactivated
   }])
