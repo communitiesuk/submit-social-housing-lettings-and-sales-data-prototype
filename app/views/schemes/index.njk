@@ -52,6 +52,8 @@
           }, {
             html: macro.entityHtml(scheme.name, schemePath, scheme["primary-client-group"] | textFromInputValue(data.questions["client-groups"]) if scheme["primary-client-group"] else false)
           }, {
+            text: scheme.locations | length
+          }, {
             html: organisations[scheme.agentId].name
           }, {
             classes: "app-!-no-wrap",
@@ -78,6 +80,8 @@
               html: "Code"
             }, {
               text: "Scheme"
+            }, {
+              text: "Locations"
             }, {
               text: "Managed by"
             }, {
