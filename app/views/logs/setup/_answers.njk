@@ -1,3 +1,5 @@
+{% import "macros.njk" as macro %}
+
 {% set isLet = log.type == "lettings" %}
 {% set isSupported = log[section.id]["type-of-need"] == "supported" %}
 {% set isCompleted = log[section.id]["completed"] == "true" %}
@@ -21,7 +23,10 @@
   {%- if log[section.id].schemeLocationId -%}
     {% set schemedId = log[section.id].schemeId[1] %}
     {% set itemId = log[section.id].schemeLocationId %}
-    {{ data.schemes[schemedId].locations[itemId].postcode }}<br>
+    {{ macro.postcodeHtml(
+      data.schemes[schemedId].locations[itemId].postcode,
+      data.schemes[schemedId].locations[itemId]["local-authority"])
+    }}<br>
     <span class="app-!-colour-muted">
       {{ data.schemes[schemedId].locations[itemId].name }}
     </span>
