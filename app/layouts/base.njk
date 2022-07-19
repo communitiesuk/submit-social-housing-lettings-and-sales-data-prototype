@@ -6,7 +6,6 @@
 {% from "components/filter/macro.njk" import appFilter with context %}
 {% from "components/log/macro.njk" import appLog %}
 {% from "components/output/macro.njk" import appOutput %}
-{% from "components/primary-navigation/macro.njk" import appPrimaryNavigation %}
 {% from "components/search/macro.njk" import appSearch %}
 {% from "components/sub-navigation/macro.njk" import appSubNavigation %}
 {% from "components/table-group/macro.njk" import appTableGroup %}
@@ -58,42 +57,42 @@
     text: "This is a prototype of a new service. Some parts may not work yet."
   }) if not hidePhaseBanner }}
 
-  {{ appPrimaryNavigation({
+  {{ xGovukPrimaryNavigation({
     items: [{
       href: "/organisations",
       text: "Organisations",
-      active: path.startsWith("/organisations")
+      current: path.startsWith("/organisations")
     }, {
       href: "/users",
       text: "Users",
-      active: path.startsWith("/users")
+      current: path.startsWith("/users")
     }, {
       href: "/logs",
       text: "Logs",
-      active: path.startsWith("/logs")
+      current: path.startsWith("/logs")
     }, {
       href: "/schemes",
       text: "Schemes",
-      active: path.startsWith("/schemes")
+      current: path.startsWith("/schemes")
     }] if isAdmin else [{
       href: userOrganisationPath + "/logs",
       text: "Logs",
-      active: path.startsWith(userOrganisationPath + "/logs") or
+      current: path.startsWith(userOrganisationPath + "/logs") or
         path.startsWith("/logs")
     }, {
       href: userOrganisationPath + "/schemes",
       text: "Schemes",
-      active: path.startsWith(userOrganisationPath + "/schemes") or
+      current: path.startsWith(userOrganisationPath + "/schemes") or
         path.startsWith("/schemes")
     } if (isOwningOrg == true and isCoordinator), {
       href: userOrganisationPath + "/users",
       text: "Users",
-      active: path.startsWith(userOrganisationPath + "/users") or
+      current: path.startsWith(userOrganisationPath + "/users") or
         path.startsWith("/users")
     }, {
       href: userOrganisationPath,
       text: "About your organisation",
-      active: path == userOrganisationPath or isOrganisationPage
+      current: path == userOrganisationPath or isOrganisationPage
     }]
   }) if data.token }}
 {% endblock %}
