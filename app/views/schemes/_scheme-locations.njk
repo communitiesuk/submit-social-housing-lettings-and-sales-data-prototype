@@ -13,6 +13,8 @@
   }, {
     html: macro.entityHtml(location["type-of-unit"] | textFromInputValue(data.questions["type-of-unit"].supported), false, location.adaptation | textFromInputValue(data.questions.adaptation) if location.adaptation == "true" or location.adaptation == "general")
   }, {
+    text: location["start-date"] | isoDateFromDateInput | govukDate
+  }, {
     html: "<a href=\"" + locationPath + "/delete\">Delete<span class=\"govuk-visually-hidden\">" + location.postcode + "</span>" if isAdmin and not scheme.deactivated
   }])
   %}
@@ -30,6 +32,8 @@
       text: "Units"
     }, {
       text: "Common unit type"
+    }, {
+      text: "Available from"
     }, {
       text: "Actions"
     } if isAdmin and not scheme.deactivated],

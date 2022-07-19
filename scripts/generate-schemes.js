@@ -144,7 +144,8 @@ const generateSchemes = () => {
             'general',
             'false',
             'unknown'
-          ])
+          ]),
+          'start-date': faker.date.past()
         }
       }
 

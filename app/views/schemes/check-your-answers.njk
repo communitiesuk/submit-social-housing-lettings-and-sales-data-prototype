@@ -3,16 +3,12 @@
 {% set title = "Check your answers before creating this scheme" %}
 
 {% block form %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-three-quarters-from-desktop">
-      {{ macro.heading(title) }}
+  {{ macro.heading(title) }}
 
-      {% include "schemes/_answers.njk" %}
+  {% include "schemes/_answers.njk" %}
 
-      {{ govukButton(decorate({
-        text: "Create scheme",
-        value: "active"
-      }, ["schemes", scheme.id, "status"])) }}
-    </div>
-  </div>
+  {{ govukButton(decorate({
+    text: "Create scheme",
+    value: "active"
+  }, ["schemes", scheme.id, "status"])) }}
 {% endblock %}

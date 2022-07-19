@@ -81,6 +81,17 @@
     items: data.questions.adaptation
   }) }}
 
+  {{ govukDateInput({
+    decorate: ["schemes", scheme.id, "locations", itemId, "start-date"],
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "When did the first property in this location become available under this scheme?"
+      }
+    },
+    items: data.questions["date-full"]
+  }) }}
+
   {% if not scheme.locations[itemId] %}
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
