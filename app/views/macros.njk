@@ -24,7 +24,7 @@
     {{ title | nl2br | escape }}
   {% endif %}
   {% if caption %}
-    <br><span class="govuk-!-font-weight-regular app-!-colour-muted">{{ caption }}</span>
+    <br><span class="govuk-!-font-weight-regular app-!-colour-muted">{{ caption | nl2br | safe }}</span>
   {% endif %}
 {% endmacro %}
 

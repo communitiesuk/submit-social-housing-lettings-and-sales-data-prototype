@@ -7,7 +7,7 @@
     text: "S" + scheme.id + "-" + location.postcode | replace(" ", ""),
     format: "numeric"
   }, {
-    html: macro.entityHtml(location.postcode, locationPath, location.name) if location.postcode else "Not known"
+    html: macro.entityHtml(location.postcode, locationPath, location.name + "\n" + location["local-authority"]) if location.postcode else "Not known"
   }, {
     text: location.units
   }, {
