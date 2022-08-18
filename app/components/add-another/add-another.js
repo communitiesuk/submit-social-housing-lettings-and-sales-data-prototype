@@ -106,15 +106,19 @@ const onRemoveButtonClick = function (event) {
   focusHeading()
 }
 
-export default function () {
-  this.start = (element) => {
-    const addButtons = element.querySelectorAll('.app-add-another__add-button')
-    for (const addButton of addButtons) {
-      addButton.type = 'button'
-      addButton.addEventListener('click', (event) => onAddButtonClick(event, element))
+export default function ($module) {
+  this.init = () => {
+    if (!$module) {
+      return
     }
 
-    const removeButtons = element.querySelectorAll('.app-add-another__remove-button')
+    const addButtons = $module.querySelectorAll('.app-add-another__add-button')
+    for (const addButton of addButtons) {
+      addButton.type = 'button'
+      addButton.addEventListener('click', (event) => onAddButtonClick(event, $module))
+    }
+
+    const removeButtons = $module.querySelectorAll('.app-add-another__remove-button')
     for (const removeButton of removeButtons) {
       removeButton.type = 'button'
       removeButton.addEventListener('click', (event) => onRemoveButtonClick(event))
