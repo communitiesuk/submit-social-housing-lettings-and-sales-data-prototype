@@ -111,20 +111,24 @@ class FilterToggleButton {
   }
 }
 
-export default function () {
-  this.start = (element) => {
+export default function ($module) {
+  this.init = () => {
+    if (!$module) {
+      return
+    }
+
     const filterToggleButton = new FilterToggleButton({
       bigModeMediaQuery: '(min-width: 48.0625em)',
       closeButton: {
-        container: element.querySelector('.app-filter__header'),
+        container: $module.querySelector('.app-filter__header'),
         text: 'Close'
       },
       filter: {
-        container: element.querySelector('.app-filter-layout__filter')
+        container: $module.querySelector('.app-filter-layout__filter')
       },
       startHidden: false,
       toggleButton: {
-        container: element.querySelector('.app-filter-toggle'),
+        container: $module.querySelector('.app-filter-toggle'),
         showText: 'Show filters',
         hideText: 'Hide filters',
         classes: 'govuk-button--secondary'

@@ -28,24 +28,24 @@ const enhanceOption = (option) => {
   }
 }
 
-export const setupAutoComplete = (element) => {
-  const selectOptions = Array.from(element.options)
+export const setupAutoComplete = ($module) => {
+  const selectOptions = Array.from($module.options)
   const options = selectOptions.map(o => enhanceOption(o))
   // const inError = element.querySelector('div.govuk-form-group').className.includes('error')
   const inError = false
-  const inputValue = element.value || ''
+  const inputValue = $module.value || ''
 
   // Autocomplete options get passed from Nunjucks params to data attributes
-  const params = element.dataset
+  const params = $module.dataset
 
   accessibleAutocomplete.enhanceSelectElement({
     defaultValue: inError ? '' : inputValue,
-    selectElement: element,
+    selectElement: $module,
     autoselect: params.autoselect === 'true',
     displayMenu: params.displayMenu,
     minLength: params.minLength ? parseInt(params.minLength) : 0,
     showAllValues: params.showAllValues === 'true',
-    name: element.name,
+    name: $module.name,
     showNoOptionsFound: params.showNoOptionsFound === 'true',
     source: (query, populateResults) => {
       if (/\S/.test(query)) {
@@ -60,12 +60,16 @@ export const setupAutoComplete = (element) => {
   })
 
   if (inError) {
-    element.querySelector('input').value = inputValue
+    $module.querySelector('input').value = inputValue
   }
 }
 
-export default function () {
-  this.start = (element) => {
-    setupAutoComplete(element)
+export default function ($module) {
+  this.init = () => {
+    if (!$module) {
+      return
+    }
+
+    setupAutoComplete($module)
   }
 }

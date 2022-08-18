@@ -1,23 +1,27 @@
-export default function () {
-  this.start = (element) => {
+export default function ($module) {
+  this.init = () => {
+    if (!$module) {
+      return
+    }
+
     const outputElement = document.createElement('output')
 
     // Copy attributes from input element to output element
-    outputElement.classList = element.classList
+    outputElement.classList = $module.classList
     outputElement.classList.add('app-input--output')
-    outputElement.id = `${element.id}-output`
-    outputElement.name = element.name
-    outputElement.value = element.value
-    outputElement.htmlFor = element.dataset.outputFor
+    outputElement.id = `${$module.id}-output`
+    outputElement.name = $module.name
+    outputElement.value = $module.value
+    outputElement.htmlFor = $module.dataset.outputFor
     outputElement.setAttribute(
-      'aria-describedby', element.getAttribute('aria-describedby')
+      'aria-describedby', $module.getAttribute('aria-describedby')
     )
 
     // Insert output element
-    element.after(outputElement)
+    $module.after(outputElement)
 
     // Hide element used to input manually calculated total if no JS
-    element.hidden = true
+    $module.hidden = true
 
     // List of inputs that update output are in `for` attribute
     const inputIds = []
@@ -40,7 +44,7 @@ export default function () {
     }
 
     inputElements.forEach((inputElement, index, inputElements) => {
-      updateOutput(inputElements[index], inputElements, outputElement, element)
+      updateOutput(inputElements[index], inputElements, outputElement, $module)
     })
   }
 }
