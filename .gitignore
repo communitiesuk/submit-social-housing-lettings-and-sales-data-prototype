@@ -6,5 +6,6 @@
 .tmuxp.*
 
 app/data/generated/*.json
+app/datasets/generated/*.json
 node_modules
 public
