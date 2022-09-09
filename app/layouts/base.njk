@@ -91,8 +91,18 @@
         path.startsWith("/users")
     }, {
       href: userOrganisationPath,
-      text: "About your organisation",
+      text: "Your organisation",
       current: path == userOrganisationPath or isOrganisationPage
+    }, {
+      href: userOrganisationPath + "/housing-providers",
+      text: "Housing providers",
+      current: path.startsWith(userOrganisationPath + "/housing-providers") or
+        path.startsWith("/housing-providers")
+    }, {
+      text: "Managing agents",
+      href: userOrganisationPath + "/managing-agents",
+      current: path.startsWith(userOrganisationPath + "/managing-agents") or
+        path.startsWith("/managing-agents")
     }]
   }) if data.token }}
 {% endblock %}
