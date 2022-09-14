@@ -23,7 +23,17 @@
 
       {{ govukButton({
         text: "Add a managing agent",
-        href: "/userOrganisationPath" + "/managing-agents/add"
+        href: "add-managing-agent"
+      }) }}
+
+      {{ appSearch({
+        classes: "govuk-!-margin-bottom-4",
+        label: {
+          text: "Search by managing agent name"
+        },
+        id: "q",
+        name: "q",
+        value: q
       }) }}
 
       {{ govukTable({
