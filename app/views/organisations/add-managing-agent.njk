@@ -1,0 +1,48 @@
+{% extends "layouts/form.njk" %}
+
+{% set title = "Add managing agent" %}
+
+{% set helpHtml %}
+<ul>
+  <li>Double check the spelling and try again</li>
+  <li>Type the first few letters to see the suggestions</li>
+  <li>If you still can't find it, <a href="#">contact the DLUHC service desk</a></li>
+</ul>
+{% endset %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      {{ appAutocomplete(decorate({
+        label: {
+          classes: "govuk-label--l",
+          text: "What is the name of the managing agent?"
+        },
+        hint: {
+          text: "Start typing to search for your managing agent"
+        },
+        allowEmpty: true,
+        showNoOptionsFound: true,
+        items: [{
+          text: "City of Bradford"
+        },
+        {
+          text: "Blenheim Housing"
+        },
+        {
+          text: "Turning Point"
+        }]
+      }, ["organisation", organisation.id, "managing-agents"])) }}
+
+      {{ govukButton({
+        text: "Add",
+        href: "managing-agents"
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "Can't find the managing agent you're looking for?",
+        html: helpHtml
+      }) }}
+    </div>
+  </div>
+{% endblock %}
