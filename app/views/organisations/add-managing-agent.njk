@@ -22,6 +22,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       {{ appAutocomplete(decorate({
+        classes: "app-search__input",
         label: {
           classes: "govuk-label--l",
           text: "What is the name of the managing agent?"
@@ -35,7 +36,10 @@
       }, ["managing_agent"])) }}
 
       {{ govukButton({
-        text: "Add"
+        text: "Add",
+        attributes: {
+          "data-requires-autocomplete": true
+        }
       }) }}
 
       {{ govukDetails({
