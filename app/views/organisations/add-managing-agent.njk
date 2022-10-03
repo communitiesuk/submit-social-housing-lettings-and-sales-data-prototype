@@ -6,9 +6,17 @@
 <ul>
   <li>Double check the spelling and try again</li>
   <li>Type the first few letters to see the suggestions</li>
-  <li>If you still can't find it, <a href="#">contact the DLUHC service desk</a></li>
+  <li>
+    If you still can't find it, <a href="#">contact the DLUHC service desk</a>
+  </li>
 </ul>
 {% endset %}
+
+{% set items = [] %}
+{% for id, org in organisations %}
+  {# TODO: filter by org.isAgent #}
+  {% set row = items.push({text: org.name, value: id}) %}
+{% endfor %}
 
 {% block form %}
   <div class="govuk-grid-row">
@@ -23,20 +31,11 @@
         },
         allowEmpty: true,
         showNoOptionsFound: true,
-        items: [{
-          text: "City of Bradford"
-        },
-        {
-          text: "Blenheim Housing"
-        },
-        {
-          text: "Turning Point"
-        }]
-      }, ["organisation", organisation.id, "managing-agents"])) }}
+        items: items
+      }, ["managing_agent"])) }}
 
       {{ govukButton({
-        text: "Add",
-        href: "managing-agents"
+        text: "Add"
       }) }}
 
       {{ govukDetails({

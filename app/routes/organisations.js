@@ -210,6 +210,15 @@ export const organisationRoutes = (router) => {
       res.locals.paths.next = `${organisationPath}?success=reactivated`
     }
 
+    if (view === 'add-managing-agent') {
+      const [agentName, agentId] = req.body.managing_agent
+
+      organisations[organisationId].agents.push(agentId)
+
+      req.flash('success', `${agentName} is now one of your managing agents`)
+      res.locals.paths.next = `${organisationPath}/managing-agents`
+    }
+
     res.redirect(res.locals.paths.next)
   })
 }
