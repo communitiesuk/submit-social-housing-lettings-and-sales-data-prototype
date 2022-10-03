@@ -1,0 +1,36 @@
+{% extends "layouts/form.njk" %}
+
+{% set title = "You are removing ‘" + "" + "’ from your organisation's managing agents" %}
+
+{% set helpHtml %}
+<ul>
+  <li>Double check the spelling and try again</li>
+  <li>Type the first few letters to see the suggestions</li>
+  <li>If you still can't find it, <a href="#">contact the DLUHC service desk</a></li>
+</ul>
+{% endset %}
+
+{% block form %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-l">You are removing ‘FILL_ME_IN’ from your organisation's managing agents</h1>
+
+      {{ govukWarningText({
+        text: "FILL_ME_IN will no longer be able to submit logs for you.",
+        iconFallbackText: "Warning"
+      }) }}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Confirm",
+          href: "managing-agents"
+        }) }}
+        {{ govukButton({
+          text: "Cancel",
+          classes: "govuk-button--secondary",
+          href: "managing-agents"
+        }) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}
