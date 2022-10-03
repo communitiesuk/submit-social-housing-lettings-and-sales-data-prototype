@@ -5,6 +5,20 @@
 {% set isGlobalView = isAdmin and path.startsWith("/logs") %}
 {% set typeName = type | capitalize %}
 
+{% set agentRows = [] %}
+{% for agentId in organisation.agents %}
+  {% set deletionPath = "agent/" + agentId + "/delete" %}
+  {% set row = agentRows.push([
+    {
+      text: organisations[agentId].name
+    },
+    {
+      html: "<a class=\"govuk-link govuk-link--no-visited-state\" href=\"" + deletionPath + "\">Remove</a>"
+    }
+  ])
+  %}
+{% endfor %}
+
 {% block form %}
   {% for type, text in messages %}
     {{ govukNotificationBanner({ text: text, type: type }) }}
@@ -37,32 +51,7 @@
       }) }}
 
       {{ govukTable({
-          rows: [
-            [
-              {
-                text: "City of Bradford"
-              },
-              {
-                html: "<a class=\"govuk-link govuk-link--no-visited-state\" href=\"remove-managing-agent\">Remove</a>"
-              }
-            ],
-            [
-              {
-                text: "Blenheim Housing"
-              },
-              {
-                html: "<a class=\"govuk-link govuk-link--no-visited-state\" href=\"remove-managing-agent\">Remove</a>"
-              }
-            ],
-            [
-              {
-                text: "Turning Point"
-              },
-              {
-                html: "<a class=\"govuk-link govuk-link--no-visited-state\" href=\"remove-managing-agent\">Remove</a>"
-              }
-            ]
-          ]
+        rows: agentRows
       }) }}
 
     </div>
