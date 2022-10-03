@@ -1,6 +1,6 @@
 import { wizard } from 'govuk-prototype-rig'
-import * as utils from '../utils.js'
 import { organisationSettings as getOrganisationSettings } from '../data/organisation-settings.js'
+import * as utils from '../utils.js'
 
 const getOrganisationWizardPaths = (req) => {
   const { organisations } = req.session.data
@@ -53,8 +53,12 @@ export const organisationRoutes = (router) => {
         const fa = a.name.toLowerCase()
         const fb = b.name.toLowerCase()
 
-        if (fa < fb) { return -1 }
-        if (fa > fb) { return 1 }
+        if (fa < fb) {
+          return -1
+        }
+        if (fa > fb) {
+          return 1
+        }
       }
 
       return 0
@@ -127,6 +131,49 @@ export const organisationRoutes = (router) => {
   })
 
   /**
+   * Delete managing agent
+   */
+  router.get(
+    '/organisations/:organisationId/agent/:agentId/delete',
+    (req, res) => {
+      const { organisations } = req.session.data
+      const { organisationId, agentId } = req.params
+
+      const organisation = organisations[organisationId]
+      const agent = organisations[agentId]
+
+      if (agent && organisation.agents.includes(agentId)) {
+        res.render(`organisations/remove-managing-agent`, {
+          query: req.query,
+          organisation,
+          agent,
+          organisations
+        })
+      }
+    }
+  )
+  router.post(
+    '/organisations/:organisationId/agent/:agentId/delete',
+    (req, res) => {
+      const { organisations } = req.session.data
+      const { organisationId, agentId } = req.params
+
+      const organisation = organisations[organisationId]
+      const agentName = organisations[agentId].name
+
+      // Drop the ID from the agents array.
+      const index = organisation.agents.indexOf(agentId)
+      organisation.agents.splice(index, 1)
+
+      req.flash(
+        'success',
+        `${agentName} is no longer one of your managing agents`
+      )
+      res.redirect(`/organisations/${organisationId}/managing-agents`)
+    }
+  )
+
+  /**
    * Update organisation
    */
   router.post('/organisations/:organisationId/:view?', (req, res) => {
@@ -161,6 +208,15 @@ export const organisationRoutes = (router) => {
     if (view === 'reactivate') {
       organisations[organisationId].deactivated = false
       res.locals.paths.next = `${organisationPath}?success=reactivated`
+    }
+
+    if (view === 'add-managing-agent') {
+      const [agentName, agentId] = req.body.managing_agent
+
+      organisations[organisationId].agents.push(agentId)
+
+      req.flash('success', `${agentName} is now one of your managing agents`)
+      res.locals.paths.next = `${organisationPath}/managing-agents`
     }
 
     res.redirect(res.locals.paths.next)
