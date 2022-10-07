@@ -49,14 +49,20 @@ export const setupAutoComplete = ($module) => {
     },
     templates: { suggestion: (value) => suggestion(value, options) },
     onConfirm: (val) => {
-      enableDependentButtons()
-
       const selectedOption = [].filter.call(
         selectOptions,
         (option) => (option.textContent || option.innerText) === val
       )[0]
 
-      if (selectedOption) selectedOption.selected = true
+      if (selectedOption) {
+        selectedOption.selected = true
+      }
+
+      if (selectOptions.some((option) => option.selected && option.value)) {
+        enableDependentButtons()
+      } else {
+        disableDependentButtons()
+      }
     }
   })
 

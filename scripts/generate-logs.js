@@ -57,8 +57,10 @@ const generateLogs = () => {
           'Social Rent'
         ]),
         'letting-start-date': faker.date.past(2),
-        'tenant-code': faker.datatype.hexadecimal(8).toUpperCase(),
-        'property-reference': faker.datatype.hexadecimal(8).toUpperCase(),
+        'tenant-code': faker.datatype.hexadecimal({ length: 8 }).toUpperCase(),
+        'property-reference': faker.datatype
+          .hexadecimal({ length: 8 })
+          .toUpperCase(),
         completed: 'true'
       },
       'household-characteristics': {
