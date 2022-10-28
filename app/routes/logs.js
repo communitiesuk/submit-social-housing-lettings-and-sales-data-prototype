@@ -75,14 +75,14 @@ export const logRoutes = (router) => {
   })
 
   /**
-   * Confirmation that bulk upload file has been recieved
+   * Confirmation that the bulk upload file has been received
    */
   router.get('/logs/bulk-upload/file-uploaded', (req, res) => {
     return res.render('logs/bulk-upload/file-uploaded')
   })
 
   /**
-   * Summary of errors in the file uploaded
+   * Summary of errors in the bulk upload file
    */
   router.get('/logs/bulk-upload/error-report', (req, res) => {
     return res.render('logs/bulk-upload/error-report')

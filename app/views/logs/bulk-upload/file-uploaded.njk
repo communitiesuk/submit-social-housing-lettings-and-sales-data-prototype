@@ -1,7 +1,7 @@
 {% extends "layouts/base.njk" %}
 
 {% set title = "We're checking the logs" %}
-{% set caption = "Bulk upload for lettings" %}
+{% set caption = "Bulk upload for lettings 2022/23" %}
 
 {% block pageNavigation %}
   {{ govukBackLink({
@@ -15,7 +15,10 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
       {{ macro.heading(title, caption) }}
 
-      <p>Please wait while we check your file for any missing data, issues or errors.</p>
+      <p>
+        We are checking your file for any missing data, issues or errors.
+        Depending on how large the file is it could only take a few minutes or much longer.
+      </p>
 
       <p>We’ll send you an email to let you know the outcome.</p>
     </div>

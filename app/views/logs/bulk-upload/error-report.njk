@@ -1,7 +1,7 @@
 {% extends "layouts/base.njk" %}
 
-{% set title = "There are 14 errors in your file" %}
-{% set caption = "Bulk upload for lettings" %}
+{% set title = "There are 12 errors in your file" %}
+{% set caption = "Bulk upload for lettings 2022/23" %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -9,7 +9,7 @@
 
       {{ macro.heading(title, caption) }}
 
-      <p>There was a problem with your bulk upload and we found 14 errors. Here’s a list of everything that you need to fix.</p>
+      <p>There was a problem with your bulk upload and we found 12 errors. Here’s a list of everything that you need to fix.</p>
 
       {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
@@ -33,7 +33,7 @@
       {% from "govuk/components/table/macro.njk" import govukTable %}
 
       {{ govukTable({
-        caption: "2022_23 Lettings eCORE October [UT - bulk upload] copy",
+        caption: "2022_23 Lettings eCORE October [UT - bulk upload]",
         captionClasses: "govuk-table__caption--m",
         firstCellIsHeader: true,
         head: [
@@ -65,7 +65,7 @@
               text: "Data Protection"
             },
             {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
             }
           ],
           [
@@ -79,7 +79,7 @@
               text: "Data Protection"
             },
             {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
             }
           ],
           [
@@ -93,7 +93,7 @@
               text: "Data Protection"
             },
             {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
             }
           ],
           [
@@ -107,7 +107,7 @@
               text: "Data Protection"
             },
             {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
             }
           ],
           [
@@ -121,7 +121,7 @@
               text: "Data Protection"
             },
             {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
             }
           ],
           [
@@ -135,7 +135,7 @@
               text: "Data Protection"
             },
             {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
             }
           ],
           [
@@ -149,7 +149,7 @@
               text: "Data Protection"
             },
             {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
             }
           ],
           [
@@ -163,7 +163,7 @@
               text: "Data Protection"
             },
             {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
             }
           ],
           [
@@ -177,84 +177,56 @@
               text: "Data Protection"
             },
             {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
             }
           ],
           [
             {
-              text: "CC9"
+              text: "CL9"
             },
             {
-              text: "80"
+              text: "89"
             },
             {
-              text: "What is the basic rent?"
+              text: "What is the void or renewal date?"
             },
             {
-              text: "Household rent and other charges must be between £20 and £2000 if paying every 2 weeks."
+              text: "Enter a void date that is before the tenancy start date."
             }
           ],
           [
             {
-              text: "CD9"
+              text: "CM9"
             },
             {
-              text: "81"
+              text: "90"
             },
             {
-              text: "What is the service charge?"
+              text: "What is the void or renewal date?"
             },
             {
-              text: "Household rent and other charges must be between £20 and £2000 if paying every 2 weeks."
+              text: "Enter a void date that is before the tenancy start date."
             }
           ],
           [
             {
-              text: "CE9"
+              text: "CN9"
             },
             {
-              text: "82"
+              text: "91"
             },
             {
-              text: "What is the personal service charge?"
+              text: "What is the void or renewal date?"
             },
             {
-              text: "Household rent and other charges must be between £20 and £2000 if paying every 2 weeks."
-            }
-          ],
-          [
-            {
-              text: "CF9"
-            },
-            {
-              text: "83"
-            },
-            {
-              text: "What is the support charge?"
-            },
-            {
-              text: "Household rent and other charges must be between £20 and £2000 if paying every 2 weeks."
-            }
-          ],
-          [
-            {
-              text: "CG9"
-            },
-            {
-              text: "84"
-            },
-            {
-              text: "Total Charge"
-            },
-            {
-              text: "Household rent and other charges must be between £20 and £2000 if paying every 2 weeks."
+              text: "Enter a void date that is before the tenancy start date."
             }
           ]
         ]
       }) }}
 
       <a class="govuk-button govuk-button--primary" href="/logs/bulk-upload">
-        Go to bulk upload
+        Go to lettings bulk upload
       </a>
 
     </div>
