@@ -1,0 +1,262 @@
+{% extends "layouts/base.njk" %}
+
+{% set title = "There are 14 errors in your file" %}
+{% set caption = "Bulk upload for lettings" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      {{ macro.heading(title, caption) }}
+
+      <p>There was a problem with your bulk upload and we found 14 errors. Here’s a list of everything that you need to fix.</p>
+
+      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+      {{ govukInsetText({
+        text: "Make sure that all of the data is complete and formatted correctly. If it is not, we will have to reject all the logs in the file."
+      }) }}
+
+      <div class="govuk-!-margin-bottom-7">
+        <a href="https://core.communities.gov.uk/public/download/guides-and-manuals/Lettings%202022-23%20Bulk%20Upload%20Specification.csv?download-format=csv"
+           class="govuk-link">
+          Download 2022/23 Lettings Bulk Upload Specification (51.1 KB)
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full-from-desktop">
+
+      {% from "govuk/components/table/macro.njk" import govukTable %}
+
+      {{ govukTable({
+        caption: "2022_23 Lettings eCORE October [UT - bulk upload] copy",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Cell"
+          },
+          {
+            text: "Bulk upload field number",
+            classes: 'govuk-!-width-one-quarter'
+          },
+          {
+            text: "Question",
+            classes: 'govuk-!-width-one-quarter'
+          },
+          {
+            text: "Error",
+            classes: 'govuk-!-width-one-third'
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "EC1"
+            },
+            {
+              text: "132"
+            },
+            {
+              text: "Data Protection"
+            },
+            {
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+            }
+          ],
+          [
+            {
+              text: "EC2"
+            },
+            {
+              text: "132"
+            },
+            {
+              text: "Data Protection"
+            },
+            {
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+            }
+          ],
+          [
+            {
+              text: "EC3"
+            },
+            {
+              text: "132"
+            },
+            {
+              text: "Data Protection"
+            },
+            {
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+            }
+          ],
+          [
+            {
+              text: "EC4"
+            },
+            {
+              text: "132"
+            },
+            {
+              text: "Data Protection"
+            },
+            {
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+            }
+          ],
+          [
+            {
+              text: "EC5"
+            },
+            {
+              text: "132"
+            },
+            {
+              text: "Data Protection"
+            },
+            {
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+            }
+          ],
+          [
+            {
+              text: "EC6"
+            },
+            {
+              text: "132"
+            },
+            {
+              text: "Data Protection"
+            },
+            {
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+            }
+          ],
+          [
+            {
+              text: "EC7"
+            },
+            {
+              text: "132"
+            },
+            {
+              text: "Data Protection"
+            },
+            {
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+            }
+          ],
+          [
+            {
+              text: "EC8"
+            },
+            {
+              text: "132"
+            },
+            {
+              text: "Data Protection"
+            },
+            {
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+            }
+          ],
+          [
+            {
+              text: "EC9"
+            },
+            {
+              text: "132"
+            },
+            {
+              text: "Data Protection"
+            },
+            {
+              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log."
+            }
+          ],
+          [
+            {
+              text: "CC9"
+            },
+            {
+              text: "80"
+            },
+            {
+              text: "What is the basic rent?"
+            },
+            {
+              text: "Household rent and other charges must be between £20 and £2000 if paying every 2 weeks."
+            }
+          ],
+          [
+            {
+              text: "CD9"
+            },
+            {
+              text: "81"
+            },
+            {
+              text: "What is the service charge?"
+            },
+            {
+              text: "Household rent and other charges must be between £20 and £2000 if paying every 2 weeks."
+            }
+          ],
+          [
+            {
+              text: "CE9"
+            },
+            {
+              text: "82"
+            },
+            {
+              text: "What is the personal service charge?"
+            },
+            {
+              text: "Household rent and other charges must be between £20 and £2000 if paying every 2 weeks."
+            }
+          ],
+          [
+            {
+              text: "CF9"
+            },
+            {
+              text: "83"
+            },
+            {
+              text: "What is the support charge?"
+            },
+            {
+              text: "Household rent and other charges must be between £20 and £2000 if paying every 2 weeks."
+            }
+          ],
+          [
+            {
+              text: "CG9"
+            },
+            {
+              text: "84"
+            },
+            {
+              text: "Total Charge"
+            },
+            {
+              text: "Household rent and other charges must be between £20 and £2000 if paying every 2 weeks."
+            }
+          ]
+        ]
+      }) }}
+
+      <a class="govuk-button govuk-button--primary" href="/logs/bulk-upload">
+        Go to bulk upload
+      </a>
+
+    </div>
+  </div>
+{% endblock %}

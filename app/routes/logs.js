@@ -68,6 +68,27 @@ export const logRoutes = (router) => {
   })
 
   /**
+   * Bulk upload lettings logs
+   */
+  router.get('/logs/bulk-upload', (req, res) => {
+    return res.render('logs/bulk-upload/upload-file')
+  })
+
+  /**
+   * Confirmation that bulk upload file has been recieved
+   */
+  router.get('/logs/bulk-upload/file-uploaded', (req, res) => {
+    return res.render('logs/bulk-upload/file-uploaded')
+  })
+
+  /**
+   * Summary of errors in the file uploaded
+   */
+  router.get('/logs/bulk-upload/error-report', (req, res) => {
+    return res.render('logs/bulk-upload/error-report')
+  })
+
+  /**
    * Create new log
    */
   router.post('/logs/create', (req, res) => {
