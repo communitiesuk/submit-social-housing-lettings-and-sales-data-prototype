@@ -1,6 +1,6 @@
 {% extends "layouts/base.njk" %}
 
-{% set title = "There are 12 errors in your file" %}
+{% set title = "We found 12 errors in your file" %}
 {% set caption = "Bulk upload for lettings 2022/23" %}
 
 {% block content %}
@@ -11,18 +11,18 @@
 
       <p>There was a problem with your bulk upload and we found 12 errors. Here’s a list of everything that you need to fix.</p>
 
+      <p>
+        It might be useful to refer to the
+        <a href="https://core.communities.gov.uk/public/download/guides-and-manuals/Lettings%202022-23%20Bulk%20Upload%20Specification.csv?download-format=csv"
+           class="govuk-link">bulk upload specification for lettings (2022/23)</a>
+        to help guide you through these errors.
+      </p>
+
       {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
       {{ govukInsetText({
         text: "Make sure that all of the data is complete and formatted correctly. If it is not, we will have to reject all the logs in the file."
       }) }}
-
-      <div class="govuk-!-margin-bottom-7">
-        <a href="https://core.communities.gov.uk/public/download/guides-and-manuals/Lettings%202022-23%20Bulk%20Upload%20Specification.csv?download-format=csv"
-           class="govuk-link">
-          Download 2022/23 Lettings Bulk Upload Specification (51.1 KB)
-        </a>
-      </div>
 
     </div>
   </div>
@@ -226,7 +226,7 @@
       }) }}
 
       <a class="govuk-button govuk-button--primary" href="/logs/bulk-upload">
-        Go to lettings bulk upload
+        Upload your file again
       </a>
 
     </div>
