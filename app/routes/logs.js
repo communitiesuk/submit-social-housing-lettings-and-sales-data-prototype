@@ -68,21 +68,21 @@ export const logRoutes = (router) => {
   })
 
   /**
-   * Bulk upload - instructions page
+   * Bulk upload - Instructions page
    */
   router.get('/logs/bulk-upload', (req, res) => {
     return res.render('logs/bulk-upload/instructions')
   })
 
   /**
-   * Bulk upload - upload file page
+   * Bulk upload - Upload file page
    */
    router.get('/logs/bulk-upload/upload-file', (req, res) => {
     return res.render('logs/bulk-upload/upload-file')
   })
 
   /**
-   * Post request for bulk upload
+   * Bulk upload - Post request uploading file
    */
    router.post('/logs/bulk-upload/upload-file', (req, res) => {
     const { file } = req.session.data
@@ -103,14 +103,14 @@ export const logRoutes = (router) => {
   })
 
   /**
-   * Confirmation that the bulk upload file has been received
+   * Bulk upload - Confirmation that the bulk upload file has been received
    */
   router.get('/logs/bulk-upload/file-uploaded', (req, res) => {
     return res.render('logs/bulk-upload/file-uploaded')
   })
 
   /**
-   * Error report page - summary of errors in the bulk upload file
+   * Bulk upload - Error report page
    */
   router.get('/logs/bulk-upload/error-report', (req, res) => {
     const { bulkUploadErrors } = req.session.data
@@ -118,16 +118,16 @@ export const logRoutes = (router) => {
   })
 
   /**
-   * Check your answers page - summary of answers that might be wrong
+   * Bulk upload- Check your answers page
    */
    router.get('/logs/bulk-upload/check-your-answers', (req, res) => {
     return res.render('logs/bulk-upload/check-your-answers')
   })
 
     /**
-   * Bulk upload - success page
+   * Bulk upload - Success confirmation page
    */
-     router.get('/logs/bulk-upload/success', (req, res) => {
+     router.get('/logs/bulk-upload/confirmation', (req, res) => {
       return res.render('logs/bulk-upload/success')
     })
 
