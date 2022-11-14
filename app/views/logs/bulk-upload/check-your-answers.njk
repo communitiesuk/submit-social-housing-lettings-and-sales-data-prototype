@@ -1,7 +1,7 @@
 {% extends "layouts/base.njk" %}
 
 {% set title = "Check your answers" %}
-{% set caption = "Bulk upload for lettings 2022/23" %}
+{% set caption = "Upload lettings in bulk (2022/23)" %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -44,7 +44,8 @@
           <div class="x-govuk-summary-card__header">
             <div class="error-summary-card-header">
               <h3 class="x-govuk-summary-card__title"><strong>Row 1</strong></h3>
-              <p class="govuk-caption-m">Tenant code: 0XFF6DFC7    Property reference: 0X6F205CD4</p>
+              <p class="govuk-caption-m">Tenant code: 0XFF6DFC7</p>
+              <p class="govuk-caption-m">Property reference: 0X6F205CD4</p>
             </div>
           </div>
           <div class="x-govuk-summary-card__body">
@@ -53,9 +54,9 @@
               <thead class="govuk-table__head">
                 <tr class="govuk-table__row">
                   <th scope="col" class="govuk-table__header width-one-tenth">Cell</th>
-                  <th scope="col" class="govuk-table__header govuk-!-width-one-third">Question</th>
-                  <th scope="col" class="govuk-table__header width-two-fifths">Error</th>
-                  <th scope="col" class="govuk-table__header"></th>
+                  <th scope="col" class="govuk-table__header govuk-!-width-one-third question-header-margin">Question</th>
+                  <th scope="col" class="govuk-table__header width-one-half">Error</th>
+                  <th scope="col" class="govuk-table__header details-link-header"></th>
                 </tr>
               </thead>
             </table>
@@ -65,7 +66,7 @@
                 <tr class="govuk-table__row no-bottom-border">
                   <th scope="row" class="govuk-table__header width-one-tenth no-bottom-border">AV14</th>
                   <td class="govuk-table__cell no-bottom-border govuk-!-width-one-third">Is anybody in the household pregnant?</td>
-                  <td class="govuk-table__cell no-bottom-border width-two-fifths">You told us somebody in the household is pregnant, but that there are no female tenants. Is this correct?</td>
+                  <td class="govuk-table__cell no-bottom-border width-one-half">You told us somebody in the household is pregnant, but that there are no female tenants. Is this correct?</td>
                   <td  class="govuk-table__cell no-bottom-border">
                     <a data-module="details-link" class="govuk-link expand-details-link">
                       Details
@@ -84,7 +85,7 @@
 
                     <h3 class="govuk-heading-s">Possible input</h3>
                     <p>1 = Yes</p>
-                    <p>2= No</p>
+                    <p>2 = No</p>
                     <p>3 = Person prefers not to say</p>
 
                     <h3 class="govuk-heading-s">Can be null?</h3>
@@ -101,34 +102,35 @@
           </div>
         </div>
 
-        <div class="govuk-form-group govuk-!-margin-top-8">
-        <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-heading-m">
-                What would you like to do?
-            </h1>
-            </legend>
-            <div class="govuk-radios" data-module="govuk-radios">
-            <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live">
-                Fix these errors and reupload the file
-                </label>
+        <form action="/logs/bulk-upload/check-answers" method="post">
+            
+            <div class="govuk-form-group govuk-!-margin-top-8">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-heading-m">
+                        What would you like to do?
+                    </h1>
+                    </legend>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="reupload-action" name="action" type="radio" value="reupload">
+                        <label class="govuk-label govuk-radios__label" for="reupload-action">
+                        Fix these errors and reupload the file
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="continue-action" name="action" type="radio" value="continue">
+                        <label class="govuk-label govuk-radios__label" for="continue-action">
+                        These answers are correct, continue
+                        </label>
+                    </div>
+                    </div>
+                </fieldset>
             </div>
-            <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
-                These answers are correct, continue
-                </label>
-            </div>
-            </div>
-
-        </fieldset>
-        </div>
-
-      <a class="govuk-button govuk-button--primary govuk-!-margin-top-5" href="/logs/bulk-upload/success">
-        Continue
-      </a>
+            
+            <button name="foo" class="govuk-button govuk-button--primary govuk-!-margin-top-5" value="action">Continue</button>
+        
+        </form>
 
     </div>
   </div>

@@ -1,7 +1,7 @@
 {% extends "layouts/base.njk" %}
 
-{% set title = "We found 12 errors in your file" %}
-{% set caption = "Bulk upload for lettings 2022/23" %}
+{% set title = "We found 11 file errors" %}
+{% set caption = "Upload lettings in bulk (2022/23)" %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -45,7 +45,8 @@
           <div class="x-govuk-summary-card__header">
             <div class="error-summary-card-header">
               <h3 class="x-govuk-summary-card__title"><strong>Row {{row.rowNumber}}</strong></h3>
-              <p class="govuk-caption-m">Tenant code: {{row.tenant}}    Property reference: {{row.property}}</p>
+              <p class="govuk-caption-m">Tenant code: {{row.tenant}}</p>
+              <p class="govuk-caption-m">Property reference: {{row.property}}</p>
             </div>
           </div>
           <div class="x-govuk-summary-card__body">
@@ -54,9 +55,9 @@
               <thead class="govuk-table__head">
                 <tr class="govuk-table__row">
                   <th scope="col" class="govuk-table__header width-one-tenth">Cell</th>
-                  <th scope="col" class="govuk-table__header govuk-!-width-one-third">Question</th>
-                  <th scope="col" class="govuk-table__header width-two-fifths">Error</th>
-                  <th scope="col" class="govuk-table__header"></th>
+                  <th scope="col" class="govuk-table__header govuk-!-width-one-third question-header-margin">Question</th>
+                  <th scope="col" class="govuk-table__header width-one-half">Error</th>
+                  <th scope="col" class="govuk-table__header details-link-header"></th>
                 </tr>
               </thead>
             </table>
@@ -66,9 +67,9 @@
             <table>
               <tbody class="govuk-table__body">
                 <tr class="govuk-table__row no-bottom-border">
-                  <th scope="row" class="govuk-table__header width-one-tenth no-bottom-border">{{error.cell}}</th>
+                  <th scope="row" class="govuk-table__header width-one-tenth cell-number-table-cell no-bottom-border">{{error.cell}}</th>
                   <td class="govuk-table__cell no-bottom-border govuk-!-width-one-third">{{error.question}}</td>
-                  <td class="govuk-table__cell no-bottom-border width-two-fifths">{{error.errorMessage}}</td>
+                  <td class="govuk-table__cell no-bottom-border width-one-half">{{error.errorMessage}}</td>
                   <td  class="govuk-table__cell no-bottom-border">
                     <a data-module="details-link" class="govuk-link expand-details-link">
                       Details
@@ -84,7 +85,7 @@
                   <td class="govuk-table__cell govuk-!-width-three-quarters govuk-!-padding-left-3">
 
                     {% if error.checkResponse %}
-                      <h3 class="govuk-heading-m">If your answer to this question is correct, ignore this error, fix any other errors and upload the file again</h3>
+                      <h3 class="govuk-heading-m govuk-!-margin-bottom-7">If your answer to this question is correct, ignore this error, fix any other errors and upload the file again</h3>
                     {% endif %}
 
                     <h3 class="govuk-heading-s">Possible input</h3>
@@ -111,7 +112,7 @@
         </div>
       {% endfor %}
 
-      <a class="govuk-button govuk-button--primary govuk-!-margin-top-6" href="/logs/bulk-upload">
+      <a class="govuk-button govuk-button--primary govuk-!-margin-top-6" href="/logs/bulk-upload/upload-file">
         Upload your file again
       </a>
 

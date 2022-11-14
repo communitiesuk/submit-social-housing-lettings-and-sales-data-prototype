@@ -3,12 +3,7 @@
 {% set title = "Upload your file" %}
 {% set caption = "Upload lettings in bulk (2022/23)" %}
 
-{% block pageNavigation %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "/logs/bulk-upload"
-  }) }}
-{% endblock %}
+{% set backLink = "javascript:history.go(-1);" %}
 
 {% block content %}
   <div class="govuk-grid-row">

@@ -1,7 +1,7 @@
 {% extends "layouts/base.njk" %}
 
 {% set title = "We’re checking the logs" %}
-{% set caption = "Bulk upload for lettings 2022/23" %}
+{% set caption = "Upload lettings in bulk (2022/23)" %}
 
 {% block pageNavigation %}
   {{ govukBackLink({
@@ -16,11 +16,11 @@
       {{ macro.heading(title, caption) }}
 
       <p>
-        We're checking your file for any missing data, issues or errors.
-        Depending on how large the file is, this could take a few minutes or a bit longer.
+        We’re checking for any missing data, issues or errors. 
+        Depending on file size, this could take a few minutes.
       </p>
 
-      <p>We’ll send you an email to let you know the outcome.</p>
+      <p>We’ll email you about the outcome.</p>
     </div>
   </div>
 {% endblock %}
