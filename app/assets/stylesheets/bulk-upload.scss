@@ -74,7 +74,8 @@ section {
 
 .expand-details-link, .collapse-details-link {
     display: inline-block;
-    padding: 5px 30px 5px 25px;
+    padding: 5px 0px;
+    min-width: 100px !important;
     cursor: pointer;
     color: #1d70b8;
     font-family: "GDS Transport",arial,sans-serif;
@@ -88,6 +89,7 @@ section {
     font-size: 1.1875rem;
     font-weight: bold;
     margin-right: 10px;
+
 }
 
 .expand-details-link:hover, .collapse-details-link:hover {
@@ -151,4 +153,24 @@ section {
 
 .width-one-third {
     width: 33% !important;
+}
+
+.width-one-half {
+    width: 50% !important;
+}
+
+.cell-number-table-cell {
+    min-width: 50px !important;
+}
+
+.white-text {
+    color: white;
+}
+
+.details-link-header {
+    min-width: 105px !important;
+}
+
+.question-header-margin {
+    padding-left: 3px;
 }

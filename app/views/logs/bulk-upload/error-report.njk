@@ -54,9 +54,9 @@
               <thead class="govuk-table__head">
                 <tr class="govuk-table__row">
                   <th scope="col" class="govuk-table__header width-one-tenth">Cell</th>
-                  <th scope="col" class="govuk-table__header govuk-!-width-one-third">Question</th>
-                  <th scope="col" class="govuk-table__header width-two-fifths">Error</th>
-                  <th scope="col" class="govuk-table__header"></th>
+                  <th scope="col" class="govuk-table__header govuk-!-width-one-third question-header-margin">Question</th>
+                  <th scope="col" class="govuk-table__header width-one-half">Error</th>
+                  <th scope="col" class="govuk-table__header details-link-header"></th>
                 </tr>
               </thead>
             </table>
@@ -66,9 +66,9 @@
             <table>
               <tbody class="govuk-table__body">
                 <tr class="govuk-table__row no-bottom-border">
-                  <th scope="row" class="govuk-table__header width-one-tenth no-bottom-border">{{error.cell}}</th>
+                  <th scope="row" class="govuk-table__header width-one-tenth cell-number-table-cell no-bottom-border">{{error.cell}}</th>
                   <td class="govuk-table__cell no-bottom-border govuk-!-width-one-third">{{error.question}}</td>
-                  <td class="govuk-table__cell no-bottom-border width-two-fifths">{{error.errorMessage}}</td>
+                  <td class="govuk-table__cell no-bottom-border width-one-half">{{error.errorMessage}}</td>
                   <td  class="govuk-table__cell no-bottom-border">
                     <a data-module="details-link" class="govuk-link expand-details-link">
                       Details
@@ -111,7 +111,7 @@
         </div>
       {% endfor %}
 
-      <a class="govuk-button govuk-button--primary govuk-!-margin-top-6" href="/logs/bulk-upload">
+      <a class="govuk-button govuk-button--primary govuk-!-margin-top-6" href="/logs/bulk-upload/upload-file">
         Upload your file again
       </a>
 

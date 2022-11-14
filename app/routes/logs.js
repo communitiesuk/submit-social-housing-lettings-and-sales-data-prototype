@@ -82,7 +82,7 @@ export const logRoutes = (router) => {
   })
 
   /**
-   * Bulk upload - Post request uploading file
+   * Bulk upload - Post request for uploading a file
    */
    router.post('/logs/bulk-upload/upload-file', (req, res) => {
     const { file } = req.session.data
@@ -124,12 +124,24 @@ export const logRoutes = (router) => {
     return res.render('logs/bulk-upload/check-your-answers')
   })
 
-    /**
-   * Bulk upload - Success confirmation page
+  /**
+   * Bulk upload - Post request for next action after checking answers
    */
-     router.get('/logs/bulk-upload/success', (req, res) => {
-      return res.render('logs/bulk-upload/success')
-    })
+   router.post('/logs/bulk-upload/check-answers', (req, res) => {
+    const { action } = req.session.data
+    if (action == 'reupload'){
+      return res.redirect(`/logs/bulk-upload/upload-file`)
+      }
+      return res.redirect(`/logs/bulk-upload/success`)
+    }
+  )
+
+  /**
+    * Bulk upload - Success confirmation page
+    */
+    router.get('/logs/bulk-upload/success', (req, res) => {
+    return res.render('logs/bulk-upload/success')
+  })
 
   /**
    * Create new log
