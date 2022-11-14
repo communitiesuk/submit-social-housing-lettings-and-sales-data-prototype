@@ -3,26 +3,39 @@
 {% set title = "We found 12 errors in your file" %}
 {% set caption = "Bulk upload for lettings 2022/23" %}
 
+{% block head %}
+  <link rel="stylesheet" href="/public/stylesheets/application.css" media="all">
+  <script src="/public/javascripts/application.js" defer></script>
+{% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
       {{ macro.heading(title, caption) }}
 
-      <p>There was a problem with your bulk upload and we found 12 errors. Here’s a list of everything that you need to fix.</p>
+      <p>See below for error details.</p>
 
-      <p>
-        It might be useful to refer to the
-        <a href="https://core.communities.gov.uk/public/download/guides-and-manuals/Lettings%202022-23%20Bulk%20Upload%20Specification.csv?download-format=csv"
-           class="govuk-link">bulk upload specification for lettings (2022/23)</a>
-        to help guide you through these errors.
-      </p>
-
-      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-
-      {{ govukInsetText({
-        text: "Make sure that all of the data is complete and formatted correctly. If it is not, we will have to reject all the logs in the file."
-      }) }}
+      <section class="attachment embedded govuk-!-margin-bottom-5" id="attachment_7025126">
+        <div class="attachment-thumb">
+            <a class="govuk-link" tabindex="-1" href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1116378/OTS_IMP_2209.ods"><svg viewBox="0 0 99 140" width="99" height="140">
+            <path d="M12 12h75v27H12zm0 47h18.75v63H12zm55 2v59H51V61h16m2-2H49v63h20V59z"></path>
+            <path d="M49 61.05V120H32.8V61.05H49m2-2H30.75v63H51V59zm34 2V120H69.05V61.05H85m2-2H67v63h20V59z"></path>
+            <path d="M30 68.5h56.5M30 77.34h56.5M30 112.7h56.5M30 95.02h56.5M30 86.18h56.5M30 103.86h56.5" fill="none"></path>
+        </svg>
+        </a>
+        </div>
+        <div class="attachment-details">
+            <h3 class="title govuk-!-font-size-27 govuk-!-font-weight-regular">
+                <a class="govuk-link" href="https://core.communities.gov.uk/public/download/guides-and-manuals/Lettings%202022-23%20Bulk%20Upload%20Specification.csv?download-format=csv">
+                    Specification - bulk lettings (2022/23)
+                </a>
+            </h3>
+            <p class="govuk-body metadata">
+                <span class="type">CSV</span>, <span class="file-size">53 KB</span>
+            </p>
+        </div>
+      </section>
 
     </div>
   </div>
@@ -30,200 +43,75 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full-from-desktop">
 
-      {% from "govuk/components/table/macro.njk" import govukTable %}
+      <h2 class="govuk-heading-m govuk-!-margin-top-6 govuk-!-margin-bottom-7">2022_23 Lettings eCORE October [UT - bulk upload]</h2>
 
-      {{ govukTable({
-        caption: "2022_23 Lettings eCORE October",
-        captionClasses: "govuk-table__caption--m",
-        firstCellIsHeader: true,
-        head: [
-          {
-            text: "Cell"
-          },
-          {
-            text: "Bulk upload field number",
-            classes: 'govuk-!-width-one-quarter'
-          },
-          {
-            text: "Question",
-            classes: 'govuk-!-width-one-quarter'
-          },
-          {
-            text: "Error",
-            classes: 'govuk-!-width-one-third'
-          }
-        ],
-        rows: [
-          [
-            {
-              text: "CL9"
-            },
-            {
-              text: "89"
-            },
-            {
-              text: "What is the void or renewal date?"
-            },
-            {
-              text: "Enter a void date that is before the tenancy start date."
-            }
-          ],
-          [
-            {
-              text: "CM9"
-            },
-            {
-              text: "90"
-            },
-            {
-              text: "What is the void or renewal date?"
-            },
-            {
-              text: "Enter a void date that is before the tenancy start date."
-            }
-          ],
-          [
-            {
-              text: "CN9"
-            },
-            {
-              text: "91"
-            },
-            {
-              text: "What is the void or renewal date?"
-            },
-            {
-              text: "Enter a void date that is before the tenancy start date."
-            }
-          ],
-          [
-            {
-              text: "EC1"
-            },
-            {
-              text: "132"
-            },
-            {
-              text: "Data Protection"
-            },
-            {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
-            }
-          ],
-          [
-            {
-              text: "EC2"
-            },
-            {
-              text: "132"
-            },
-            {
-              text: "Data Protection"
-            },
-            {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
-            }
-          ],
-          [
-            {
-              text: "EC3"
-            },
-            {
-              text: "132"
-            },
-            {
-              text: "Data Protection"
-            },
-            {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
-            }
-          ],
-          [
-            {
-              text: "EC4"
-            },
-            {
-              text: "132"
-            },
-            {
-              text: "Data Protection"
-            },
-            {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
-            }
-          ],
-          [
-            {
-              text: "EC5"
-            },
-            {
-              text: "132"
-            },
-            {
-              text: "Data Protection"
-            },
-            {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
-            }
-          ],
-          [
-            {
-              text: "EC6"
-            },
-            {
-              text: "132"
-            },
-            {
-              text: "Data Protection"
-            },
-            {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
-            }
-          ],
-          [
-            {
-              text: "EC7"
-            },
-            {
-              text: "132"
-            },
-            {
-              text: "Data Protection"
-            },
-            {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
-            }
-          ],
-          [
-            {
-              text: "EC8"
-            },
-            {
-              text: "132"
-            },
-            {
-              text: "Data Protection"
-            },
-            {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
-            }
-          ],
-          [
-            {
-              text: "EC9"
-            },
-            {
-              text: "132"
-            },
-            {
-              text: "Data Protection"
-            },
-            {
-              text: "You must show the DLUHC privacy notice to the tenant before you can submit this log"
-            }
-          ]
-        ]
-      }) }}
+      {% for row in bulkUploadErrors %}
+        <div class="x-govuk-summary-card govuk-!-margin-bottom-6">
+          <div class="x-govuk-summary-card__header">
+            <div class="error-summary-card-header">
+              <h3 class="x-govuk-summary-card__title"><strong>Row {{row.rowNumber}}</strong></h3>
+              <p class="govuk-caption-m">Tenant code: {{row.tenant}}    Property reference: {{row.property}}</p>
+            </div>
+          </div>
+          <div class="x-govuk-summary-card__body">
+            
+            <table class="govuk-table govuk-!-margin-bottom-0">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header width-one-tenth">Cell</th>
+                  <th scope="col" class="govuk-table__header govuk-!-width-one-third">Question</th>
+                  <th scope="col" class="govuk-table__header width-two-fifths">Error</th>
+                  <th scope="col" class="govuk-table__header"></th>
+                </tr>
+              </thead>
+            </table>
+
+            {% for error in row.errors %}
+
+            <table>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row no-bottom-border">
+                  <th scope="row" class="govuk-table__header width-one-tenth no-bottom-border">{{error.cell}}</th>
+                  <td class="govuk-table__cell no-bottom-border govuk-!-width-one-third">{{error.question}}</td>
+                  <td class="govuk-table__cell no-bottom-border width-two-fifths">{{error.errorMessage}}</td>
+                  <td  class="govuk-table__cell no-bottom-border">
+                    <a data-module="details-link" class="govuk-link expand-details-link">
+                      Details
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table data-module="specification-details" class="govuk-visually-hidden govuk-!-margin-bottom-2">
+              </tbody>
+                <tr class="govuk-table__row no-bottom-border  hidden-details govuk-!-margin-bottom-2">
+                  <td class="govuk-table__cell govuk-!-width-three-quarters govuk-!-padding-left-3">
+                    <h3 class="govuk-heading-m">If your answer to this question is correct, ignore this error, fix any other errors and upload the file again</h3>
+
+                    <h3 class="govuk-heading-s">Possible input</h3>
+
+                    {% for line in error.possibleInput %}
+                      <p>{{line}}</p>
+                    {% endfor %}
+
+                    <h3 class="govuk-heading-s">Can be null?</h3>
+                    <p class="govuk-!-margin-bottom-0">No</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            {% if error.cell !== row.errors[row.errors.length - 1].cell %}
+              <div id="row-divider-1" class="govuk-table__cell row-divider"></div>
+            {% endif %}
+           
+
+            {% endfor %}   
+          
+          </div>
+        </div>
+      {% endfor %}
 
       <a class="govuk-button govuk-button--primary" href="/logs/bulk-upload">
         Upload your file again

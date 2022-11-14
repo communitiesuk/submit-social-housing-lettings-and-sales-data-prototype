@@ -68,10 +68,38 @@ export const logRoutes = (router) => {
   })
 
   /**
-   * Bulk upload lettings logs
+   * Bulk upload - instructions page
    */
   router.get('/logs/bulk-upload', (req, res) => {
+    return res.render('logs/bulk-upload/instructions')
+  })
+
+  /**
+   * Bulk upload - upload file page
+   */
+   router.get('/logs/bulk-upload/upload-file', (req, res) => {
     return res.render('logs/bulk-upload/upload-file')
+  })
+
+  /**
+   * Post request for bulk upload
+   */
+   router.post('/logs/bulk-upload/upload-file', (req, res) => {
+    const { file } = req.session.data
+    if (file == ''){
+      const errors = {
+        'file': file === ""
+          ? {
+              msg: 'Select a CSV file',
+              param: 'file'
+            }
+          : {}
+      }
+      console.log(errors)
+      return res.redirect(`/logs/bulk-upload`, { errors })
+    }
+
+    return res.redirect(`/logs/bulk-upload/file-uploaded`)
   })
 
   /**
@@ -85,7 +113,8 @@ export const logRoutes = (router) => {
    * Summary of errors in the bulk upload file
    */
   router.get('/logs/bulk-upload/error-report', (req, res) => {
-    return res.render('logs/bulk-upload/error-report')
+    const { bulkUploadErrors } = req.session.data
+    return res.render('logs/bulk-upload/error-report', { bulkUploadErrors })
   })
 
   /**
