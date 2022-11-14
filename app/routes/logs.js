@@ -127,7 +127,7 @@ export const logRoutes = (router) => {
     /**
    * Bulk upload - Success confirmation page
    */
-     router.get('/logs/bulk-upload/confirmation', (req, res) => {
+     router.get('/logs/bulk-upload/success', (req, res) => {
       return res.render('logs/bulk-upload/success')
     })
 
