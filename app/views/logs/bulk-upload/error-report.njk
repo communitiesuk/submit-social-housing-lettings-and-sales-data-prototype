@@ -1,7 +1,7 @@
 {% extends "layouts/base.njk" %}
 
-{% set title = "We found 12 errors in your file" %}
-{% set caption = "Bulk upload for lettings 2022/23" %}
+{% set title = "We found 11 file errors" %}
+{% set caption = "Upload lettings in bulk (2022/23)" %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -45,7 +45,8 @@
           <div class="x-govuk-summary-card__header">
             <div class="error-summary-card-header">
               <h3 class="x-govuk-summary-card__title"><strong>Row {{row.rowNumber}}</strong></h3>
-              <p class="govuk-caption-m">Tenant code: {{row.tenant}}    Property reference: {{row.property}}</p>
+              <p class="govuk-caption-m">Tenant code: {{row.tenant}}</p>
+              <p class="govuk-caption-m">Property reference: {{row.property}}</p>
             </div>
           </div>
           <div class="x-govuk-summary-card__body">
@@ -84,7 +85,7 @@
                   <td class="govuk-table__cell govuk-!-width-three-quarters govuk-!-padding-left-3">
 
                     {% if error.checkResponse %}
-                      <h3 class="govuk-heading-m">If your answer to this question is correct, ignore this error, fix any other errors and upload the file again</h3>
+                      <h3 class="govuk-heading-m govuk-!-margin-bottom-7">If your answer to this question is correct, ignore this error, fix any other errors and upload the file again</h3>
                     {% endif %}
 
                     <h3 class="govuk-heading-s">Possible input</h3>

@@ -10,7 +10,7 @@ export default {
                     "question": "Is anybody in the household pregnant?",
                     "errorMessage": "You told us somebody in the household is pregnant, but that there are no female tenants. Is this correct?",
                     "checkResponse": true,
-                    "possibleInput": ["Value labels", "1 = Yes", "2= No", "3 = Person prefers not to say"],
+                    "possibleInput": ["Value labels", "1 = Yes", "2 = No", "3 = Person prefers not to say"],
                     "canBeNull": "No",
                 },
                 {
@@ -58,7 +58,7 @@ export default {
                 },
                 {
                     "cell": "CU6",
-                    "question": "What month did the tenancy start? - YYYY",
+                    "question": "What year did the tenancy start? - YY",
                     "errorMessage": "Enter a tenancy start date that’s after the void date",
                     "checkResponse": false,
                     "possibleInput": ["Numeric, range 22 - 23"],
@@ -132,7 +132,7 @@ export default {
                     "question": "Is anybody in the household pregnant?",
                     "errorMessage": "You told us somebody in the household is pregnant, but that there are no female tenants. Is this correct?",
                     "checkResponse": true,
-                    "possibleInput": ["Value labels", "1 = Yes", "2= No", "3 = Person prefers not to say"],
+                    "possibleInput": ["Value labels", "1 = Yes", "2 = No", "3 = Person prefers not to say"],
                     "canBeNull": "No",
                 },
                 {
@@ -155,7 +155,7 @@ export default {
                 },
                 {
                     "cell": "CN8",
-                    "question": "What is the void or renewal year? - YYYY",
+                    "question": "What is the void or renewal year? - YY",
                     "errorMessage": "Enter void date that’s before the tenancy start date",
                     "checkResponse": false,
                     "possibleInput": ["Numeric, range 22 - 23"],
@@ -180,7 +180,7 @@ export default {
                 },
                 {
                     "cell": "CU8",
-                    "question": "What month did the tenancy start? - YYYY",
+                    "question": "What year did the tenancy start? - YY",
                     "errorMessage": "Enter a tenancy start date that’s after the void date",
                     "checkResponse": false,
                     "possibleInput": ["Numeric, range 22 - 23"],
