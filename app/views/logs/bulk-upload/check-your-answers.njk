@@ -1,0 +1,135 @@
+{% extends "layouts/base.njk" %}
+
+{% set title = "Check your answers" %}
+{% set caption = "Bulk upload for lettings 2022/23" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full-from-desktop">
+
+      {{ macro.heading(title, caption) }}
+
+      <p>Some data might not be right. Check the below fields, fix if needed, then reupload the file. If the file is fine, continue.</p>
+
+      <section class="attachment embedded govuk-!-margin-bottom-5" id="attachment_7025126">
+        <div class="attachment-thumb">
+            <a class="govuk-link" tabindex="-1" href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1116378/OTS_IMP_2209.ods"><svg viewBox="0 0 99 140" width="99" height="140">
+            <path d="M12 12h75v27H12zm0 47h18.75v63H12zm55 2v59H51V61h16m2-2H49v63h20V59z"></path>
+            <path d="M49 61.05V120H32.8V61.05H49m2-2H30.75v63H51V59zm34 2V120H69.05V61.05H85m2-2H67v63h20V59z"></path>
+            <path d="M30 68.5h56.5M30 77.34h56.5M30 112.7h56.5M30 95.02h56.5M30 86.18h56.5M30 103.86h56.5" fill="none"></path>
+        </svg>
+        </a>
+        </div>
+        <div class="attachment-details">
+            <h3 class="title govuk-!-font-size-27 govuk-!-font-weight-regular">
+                <a class="govuk-link" href="https://core.communities.gov.uk/public/download/guides-and-manuals/Lettings%202022-23%20Bulk%20Upload%20Specification.csv?download-format=csv">
+                    Specification - bulk lettings (2022/23)
+                </a>
+            </h3>
+            <p class="govuk-body metadata">
+                <span class="type">CSV</span>, <span class="file-size">53 KB</span>
+            </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full-from-desktop">
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6 govuk-!-margin-bottom-7">2022_23 Lettings eCORE October [UT - bulk upload]</h2>
+
+        <div class="x-govuk-summary-card govuk-!-margin-bottom-6">
+          <div class="x-govuk-summary-card__header">
+            <div class="error-summary-card-header">
+              <h3 class="x-govuk-summary-card__title"><strong>Row 1</strong></h3>
+              <p class="govuk-caption-m">Tenant code: 0XFF6DFC7    Property reference: 0X6F205CD4</p>
+            </div>
+          </div>
+          <div class="x-govuk-summary-card__body">
+            
+            <table class="govuk-table govuk-!-margin-bottom-0">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header width-one-tenth">Cell</th>
+                  <th scope="col" class="govuk-table__header govuk-!-width-one-third">Question</th>
+                  <th scope="col" class="govuk-table__header width-two-fifths">Error</th>
+                  <th scope="col" class="govuk-table__header"></th>
+                </tr>
+              </thead>
+            </table>
+
+            <table>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row no-bottom-border">
+                  <th scope="row" class="govuk-table__header width-one-tenth no-bottom-border">AV14</th>
+                  <td class="govuk-table__cell no-bottom-border govuk-!-width-one-third">Is anybody in the household pregnant?</td>
+                  <td class="govuk-table__cell no-bottom-border width-two-fifths">You told us somebody in the household is pregnant, but that there are no female tenants. Is this correct?</td>
+                  <td  class="govuk-table__cell no-bottom-border">
+                    <a data-module="details-link" class="govuk-link expand-details-link">
+                      Details
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table data-module="specification-details" class="govuk-visually-hidden govuk-!-margin-bottom-2">
+              </tbody>
+                <tr class="govuk-table__row no-bottom-border  hidden-details govuk-!-margin-bottom-2">
+                  <td class="govuk-table__cell govuk-!-width-three-quarters govuk-!-padding-left-3">
+
+                    <h3 class="govuk-heading-m">If your answer to this question is correct, ignore this error, fix any other errors and upload the file again</h3>
+
+                    <h3 class="govuk-heading-s">Possible input</h3>
+                    <p>1 = Yes</p>
+                    <p>2= No</p>
+                    <p>3 = Person prefers not to say</p>
+
+                    <h3 class="govuk-heading-s">Can be null?</h3>
+                    <p class="govuk-!-margin-bottom-0">No</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            {% if error.cell !== row.errors[row.errors.length - 1].cell %}
+              <div id="row-divider-1" class="govuk-table__cell row-divider"></div>
+            {% endif %} 
+          
+          </div>
+        </div>
+
+        <div class="govuk-form-group govuk-!-margin-top-8">
+        <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-heading-m">
+                What would you like to do?
+            </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                Fix these errors and reupload the file
+                </label>
+            </div>
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                These answers are correct, continue
+                </label>
+            </div>
+            </div>
+
+        </fieldset>
+        </div>
+
+      <a class="govuk-button govuk-button--primary govuk-!-margin-top-5" href="/logs/bulk-upload/success">
+        Continue
+      </a>
+
+    </div>
+  </div>
+{% endblock %}

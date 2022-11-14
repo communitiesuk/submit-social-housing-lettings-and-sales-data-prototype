@@ -1,0 +1,26 @@
+{% extends "layouts/base.njk" %}
+
+{% set title = "Check your answers" %}
+{% set caption = "Bulk upload for lettings 2022/23" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full-from-desktop">
+
+    {% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+    {{ govukPanel({
+    titleText: "Bulk upload complete",
+    html: "You have successfully uploaded 9 logs"
+    }) }}
+
+    <p class="govuk-!-margin-top-7">You can view the uploaded logs under <a class="govuk-link" href="/logs">Lettings logs.</a><p>
+
+    <a class="govuk-button govuk-button--primary govuk-!-margin-top-5" href="/logs/bulk-upload/upload-file">
+        Upload another file
+    </a>
+
+    </div>
+</div>
+
+{% endblock %}
