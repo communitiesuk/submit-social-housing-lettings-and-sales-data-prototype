@@ -22,6 +22,9 @@ $app-assets-path: "/public/";
 // GOV.UK Publishing Components (used for prototyping pages that exist on GOV.UK)
 @import "./govuk-publishing-components";
 
+// Import bulk upload styles
+@import "./bulk-upload";
+
 // Overrides
 .govuk-tag {
   white-space: nowrap;

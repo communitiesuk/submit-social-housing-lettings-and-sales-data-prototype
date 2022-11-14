@@ -2,10 +2,12 @@ import { createRequire } from 'node:module'
 import questions from './data/questions.js'
 import roles from './data/roles.js'
 import users from './data/users.js'
+import bulkUploadErrors from './data/bulk-upload-errors.js'
 
 const require = createRequire(import.meta.url)
 
 export default async () => ({
+  bulkUploadErrors: bulkUploadErrors.rows,
   features: {
     '2022-23': {
       on: true,
