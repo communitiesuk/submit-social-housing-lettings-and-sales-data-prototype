@@ -110,12 +110,26 @@ export const logRoutes = (router) => {
   })
 
   /**
-   * Summary of errors in the bulk upload file
+   * Error report page - summary of errors in the bulk upload file
    */
   router.get('/logs/bulk-upload/error-report', (req, res) => {
     const { bulkUploadErrors } = req.session.data
     return res.render('logs/bulk-upload/error-report', { bulkUploadErrors })
   })
+
+  /**
+   * Check your answers page - summary of answers that might be wrong
+   */
+   router.get('/logs/bulk-upload/check-your-answers', (req, res) => {
+    return res.render('logs/bulk-upload/check-your-answers')
+  })
+
+    /**
+   * Bulk upload - success page
+   */
+     router.get('/logs/bulk-upload/success', (req, res) => {
+      return res.render('logs/bulk-upload/success')
+    })
 
   /**
    * Create new log
